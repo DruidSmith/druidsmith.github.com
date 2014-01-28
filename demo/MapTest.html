@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet FRS Query Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
+	
+	    <!-- Load jQuery - jQuery can be hosted externally -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    
+</head>
+<body>
+Map
+	<div id="map" style="width: 600px; height: 400px"></div>
+
+	<script src="http://leafletjs.com/dist/leaflet.js"></script>
+	<script>
+
+		var map = L.map('map').setView([39.104869,-84.803951], 11);
+
+		L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+		}).addTo(map);
+
+		var popup = L.popup();
+
+		function XXonMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + e.latlng.toString())
+				.openOn(map);
+		}
+
+		map.on('click', onMapClick);
+
+		
+		function onMapClick(e) {
+    //read the user-entered ZIP code value
+    var qLat = e.latlng.lat;
+    var qLong = e.latlng.lng;
+    $("#facs").html("");
+    //For this REST service, it is important to specify cache: true because otherwise jQuery will append an erroneous parameter to the query.
+    jQuery.ajaxSetup({
+        cache: true
+    });
+    //specify base endpoint - note callback
+    var echoAPI = "http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?callback=?";
+    //pass in parameters
+    $.getJSON(echoAPI, {
+        output: "jsonp",
+        latitude83: qLat,
+        longitude83: qLong,
+        search_radius: "10",
+        pgm_sys_acrnm: "CERCLIS",
+        program_output: "YES"
+    })
+    //execute the action to parse the returned JSON on completion
+    .done(function (data) {
+
+        //iterate through each item returned - in this case, item is a facility
+        $.each(data.Results.FRSFacility, function (i, item) {
+            //access the elements inside each item and append them to the content in facs
+            $("<li>FRS RegistryID: " + item.RegistryId + " Facility Name: " + item.FacilityName + "</li>").appendTo("#facs");
+            $.each(item.ProgramFacilities, function (j, xxx) {
+                $("<li><ul><li>Program ACRNM: " + xxx.ProgramSystemAcronym + " Program ID: " + xxx.ProgramSystemId + "</li></ul></li>").appendTo("#facs");
+            });
+            // close the UL tags
+            $("</ul>").appendTo("#facs");
+
+            // limit to first three results
+            if (i === 3) {
+                return false;
+            }
+        });
+    });
+
+}
+
+	</script>
+	
+	<h3>Query CERCLIS Facilities</h3>
+	<p>Click on the map to search a 10-mile radius</p>
+
+<h3>List of Facilities</h3>
+
+<!-- jQuery will use the tag 'facs' to populate the returned data -->
+<ul id="facs"></ul>
+</body>
+</html>
