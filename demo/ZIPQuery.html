@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <!-- Load jQuery - jQuery can be hosted externally -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+
+    <h3>Query CERCLIS Facilities</h3>
+    ZIP Code
+    
+    <!-- label field with the tag 'zip' to use in jQuery to read the entered ZIP code -->
+    <input type="text" id="zip" />
+
+    <!-- Use the tag 'btnSubmit' to attach the button click event in jQuery -->
+    <input id="btnSubmit" type="submit" value="query" />
+    
+    <h3>List of Facilities</h3>
+
+    <!-- jQuery will use the tag 'facs' to populate the returned data -->
+    <ul id="facs"></ul>
+
+    <!-- This is the sample query that will be used: http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?pgm_sys_acrnm=CERCLIS&zip_code=60085&program_output=YES&output=JSONP&callback=? -->
+
+    <script>
+        // attach the runQuery function to the button click event
+        $("#btnSubmit").click((function () {
+            runQuery();
+        }));
+
+        function runQuery() {
+            //read the user-entered ZIP code value
+            var qZip = $('#zip').val();
+            //For this REST service, it is important to specify cache: true because otherwise jQuery will append an erroneous parameter to the query.
+            jQuery.ajaxSetup({
+                cache: true
+            });
+            //specify base endpoint - note callback
+            var echoAPI = "http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?callback=?";
+            //pass in parameters
+            $.getJSON(echoAPI, {
+                output: "jsonp",
+                zip_code: qZip,
+                pgm_sys_acrnm: "CERCLIS",
+                program_output: "YES"
+            })
+            //execute the action to parse the returned JSON on completion
+            .done(function (data) {
+                
+                //iterate through each item returned - in this case, item is a facility
+                $.each(data.Results.FRSFacility, function (i, item) {
+                    //access the elements inside each item and append them to the content in facs
+                    $("<li>FRS RegistryID: " + item.RegistryId + " Facility Name: " + item.FacilityName + "</li>").appendTo("#facs");
+                    $.each(item.ProgramFacilities, function (j, xxx) {
+                        $("<li><ul><li>Program ACRNM: " + xxx.ProgramSystemAcronym + " Program ID: " + xxx.ProgramSystemId + "</li></ul></li>").appendTo("#facs");
+                    });
+                    //close the UL tags
+                    $("</ul>").appendTo("#facs");
+
+                    if (i === 3) {
+                        return false;
+                    }
+                });
+            });
+
+        }
+    </script>
+
+
+</body>
+</html>
