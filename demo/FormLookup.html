@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+    <head>
     <title></title>
 
     <!-- Load jQuery - jQuery can be hosted externally -->
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
     <!-- Style is optional... -->
     <style>
-        body {
+body {
 	background-color: #CCC;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
-	}
-
-        h3 {
-            color: darkcyan;
-        }
-
-        input[type=text] {
+}
+h3 {
+	color: darkcyan;
+}
+input[type=text] {
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
 	font-size: 11px;
 	font-style: italic;
-	font-weight:bold;
+	font-weight: bold;
 	line-height: normal;
-	background-color:#999;
+	background-color: #999;
 	position: absolute;
 	left: 120px;
 }
+input[type=text]:focus {
+	border-color: #333;
+}
+input[type=submit] {
+	background-color: #036;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	color: #FFF
+}
+</style>
+    </head>
+    <body>
+<h3>Facility Lookup</h3>
+<p>Name 
+      <!-- label field with the tag 'zip' to use in jQuery to read the entered ZIP code -->
+      <input type="text" id="name" />
+      <br />
+      City 
+      <!-- label field with the tag 'zip' to use in jQuery to read the entered city name -->
+      <input type="text" id="city" />
+      <br />
+      State code 
+      <!-- label field with the tag 'zip' to use in jQuery to read the entered state code -->
+      <input type="text" id="state" />
+      <br />
+      <br />
+      
+      <!-- Use the tag 'btnSubmit' to attach the button click event in jQuery.   Styling is just for positioning the button horizontally-->
+      <input style="position: absolute; left: 120px" id="btnSubmit" type="submit" value="query" />
+      <input style="position: absolute; left: 195px" id="btnClear" type="submit" value="clear" />
+    </p>
+<br />
+<h3>List of Facilities</h3>
 
-            input[type=text]:focus {
-                border-color: #333;
-            }
+<!-- jQuery will use the tag 'facs' to populate the returned data -->
+<div id="resultsPanel">
+      <ul id="facs">
+  </ul>
+      <input style="position: absolute; left: 120px" id="btnSelect" type="submit" value="select" />
+    </div>
 
-        input[type=submit] {
-	background-color:#036;
-	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	color:#FFF}
-	
-    </style>
+<!-- This is the sample query that will be used: http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?pgm_sys_acrnm=CERCLIS&zip_code=60085&program_output=YES&output=JSONP&callback=? --> 
 
-</head>
-<body>
-
-    <h3>Facility Lookup</h3>
-    <p>Name
-    <!-- label field with the tag 'zip' to use in jQuery to read the entered ZIP code -->
-    <input type="text" id="name" />
-    <br />
-    City
-    <!-- label field with the tag 'zip' to use in jQuery to read the entered city name -->
-    <input type="text" id="city" />
-    <br />
-    State code
-    <!-- label field with the tag 'zip' to use in jQuery to read the entered state code -->
-    <input type="text" id="state" />
-    <br />
-               <br />
-
-    <!-- Use the tag 'btnSubmit' to attach the button click event in jQuery.   Styling is just for positioning the button horizontally-->
-    <input style="position: absolute; left: 120px" id="btnSubmit" type="submit" value="query" />
-    <input style="position: absolute; left: 195px" id="btnClear" type="submit" value="clear" />
-
-     </p>
-    <br />
-    <h3>List of Facilities</h3>
-
-    <!-- jQuery will use the tag 'facs' to populate the returned data -->
-    <ul id="facs"></ul>
-
-    <!-- This is the sample query that will be used: http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?pgm_sys_acrnm=CERCLIS&zip_code=60085&program_output=YES&output=JSONP&callback=? -->
-
-    <script>
+<script>
+		var jsonObj =""
         // attach the runQuery function to the button click event
         $("#btnSubmit").click((function () {
             runQuery();
@@ -79,6 +77,10 @@
 
         $("#btnClear").click((function () {
             clearInfo();
+        }));
+		
+		 $("#btnSelect").click((function () {
+			 btnSelect();
         }));
 
         function runQuery() {
@@ -90,6 +92,7 @@
             jQuery.ajaxSetup({
                 cache: true
             });
+			
             //specify base endpoint - note callback
             var echoAPI = "http://ofmpub.epa.gov/enviro/frs_rest_services.get_facilities?callback=?";
             //pass in parameters
@@ -102,23 +105,18 @@
             })
             //execute the action to parse the returned JSON on completion
             .done(function (data) {
-
+				jsonObj = data
                 //iterate through each item returned - in this case, item is a facility
                 $.each(data.Results.FRSFacility, function (i, item) {
                     //access the elements inside each item and append them to the content in facs
-                    $("<li>FRS RegistryID: " + item.RegistryId + " Facility Name: " + item.FacilityName + "</li>").appendTo("#facs");
-                    $.each(item.ProgramFacilities, function (j, xxx) {
-                        $("<li><ul><li>Program ACRNM: " + xxx.ProgramSystemAcronym + " Program ID: " + xxx.ProgramSystemId + "</li></ul></li>").appendTo("#facs");
-                    });
-                    //close the UL tags
-                    $("</ul>").appendTo("#facs");
+                    $("<input type='radio' name='radioSelect' value=" + i + "> <b> FRS Registry ID: " + item.RegistryId + " Facility Name: " + item.FacilityName + "</b><br/>" + "<ul><li>"+item.LocationAddress+"<br/>"+item.CityName+" "+item.StateAbbr+" "+item.ZipCode+"</li></ul>").appendTo("#facs");
 
-                    if (i === 3) {
+                    if (i === 4) {
                         return false;
                     }
                 });
             });
-
+			
         }
 
         function clearInfo() {
@@ -127,8 +125,10 @@
             $("#state").val("");
             $("#facs").html("");
         }
+function btnSelect() {
+           // alert($('input[name=radioSelect]:checked').val());
+			alert(jsonObj.Results.FRSFacility[$('input[name=radioSelect]:checked').val()].FacilityName);
+}
     </script>
-
-
 </body>
 </html>
