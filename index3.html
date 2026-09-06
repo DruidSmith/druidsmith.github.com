@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David G. Smith | Data Science, Author & Strategic Advisor</title>
+    <meta name="description" content="David G. Smith's professional intellectual home: Data Science, Solutions Architecture, Author, and Strategic Advisor.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#111827',
+                            muted: '#374151',
+                            accent: '#b45309', // A restrained editorial orange/gold
+                            light: '#f9fafb'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fcfcfc; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">
+                        David G. Smith
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                    <a href="#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                    <a href="#writing" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Writing</a>
+                    <a href="#books" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                    <a href="#consulting" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Consulting</a>
+                    <a href="#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
+                <a href="#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
+                <a href="#writing" class="mobile-link block py-2 text-base font-medium text-gray-600">Writing</a>
+                <a href="#books" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
+                <a href="#consulting" class="mobile-link block py-2 text-base font-medium text-gray-600">Consulting</a>
+                <a href="#contact" class="mobile-link block py-2 text-base font-medium text-brand-accent">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="pt-40 pb-24 lg:pt-52 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-brand-dark mb-6 leading-tight">
+            Turning Complex Data & Technology Into Better Decisions
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-500 mb-10 leading-relaxed max-w-3xl mx-auto">
+            Data scientist, solutions architect, author, and strategic advisor specializing in federal technology modernization, cloud architecture, geospatial intelligence, and critical thinking.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#work" class="px-8 py-3 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors">
+                Explore My Work
+            </a>
+            <a href="#books" class="px-8 py-3 bg-transparent border border-gray-300 text-brand-dark hover:border-brand-dark rounded font-medium transition-colors">
+                My Books
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5">
+                    <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" class="w-full h-auto object-cover rounded shadow-md">
+                    <!-- <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" class="w-full h-auto object-cover rounded shadow-md grayscale hover:grayscale-0 transition-all duration-500"> -->
+                </div>
+                <div class="lg:col-span-7">
+                    <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">About David</h2>
+                    <h3 class="text-3xl font-serif font-medium text-brand-dark mb-6">Making complex information useful.</h3>
+                    <div class="prose prose-lg text-gray-600 leading-relaxed space-y-4">
+                        <p>
+                            I am an engineer, technical architect, data scientist, and author based in Washington, D.C. With extensive experience in the private sector and as a federal IT professional, I specialize in navigating the complex intersection of enterprise data, cloud architecture, and geospatial technology.
+                        </p>
+                        <p>
+                            While my technical expertise spans AI and machine learning, cloud architecture, data science and data engineering, geospatial and other technologies, my core focus is always on the human element: helping leaders and organizations improve strategic direction and understand complex information. Whether I'm designing a data mesh for environmental quality tracking or writing about cognitive biases, the unifying theme of my work is <strong>equipping people with the tools to make better, more rational decisions</strong>.
+                        </p>
+                        <p>
+                            I am passionate about translating technical possibilities into practical realities, and I bring a disciplined, critical-thinking approach to both technology modernization and everyday problem-solving.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Selected Work</h2>
+                <h3 class="text-3xl font-serif font-medium text-brand-dark">Enterprise Architecture & Data Modernization</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-brand-accent text-sm font-semibold mb-2">Cloud Architecture & Data Mesh</div>
+                    <h4 class="text-xl font-serif font-medium text-brand-dark mb-3">USGS Water Quality Portal Migration</h4>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Led the architectural migration of the USGS Water Quality Portal data mesh into the US EPA Data Management and Analytics Platform (DMAP). This modernization effort securely federated massive environmental datasets for improved accessibility and scalable cloud performance.
+                    </p>
+                    <a href="https://www.waterqualitydata.us/" target="_blank" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Portal &rarr;</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-brand-accent text-sm font-semibold mb-2">Federal IT Modernization</div>
+                    <h4 class="text-xl font-serif font-medium text-brand-dark mb-3">Envirofacts Cloud-Native Rebuild</h4>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Architected the rebuild of the EPA's Envirofacts system as a cloud-native application within the DMAP environment. Replaced legacy monolithic structures with resilient, AWS-backed data pipelines to ensure reliable public access to critical environmental records.
+                    </p>
+                    <a href="https://enviro.epa.gov/" target="_blank" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Envirofacts &rarr;</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence</div>
+                    <h4 class="text-xl font-serif font-medium text-brand-dark mb-3">MyEnvironment Spatial Integration</h4>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Provided geospatial data integration and systems engineering for the EPA MyEnvironment mapping platform, enabling users to effortlessly visualize cross-media environmental data in their immediate geographic location.
+                    </p>
+                    <a href="https://geopub.epa.gov/myem/envmap/find.html" target="_blank" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Application &rarr;</a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence & Policy</div>
+                    <h4 class="text-xl font-serif font-medium text-brand-dark mb-3">NEPAssist</h4>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Supported advanced spatial analysis capabilities for NEPAssist, an application facilitating the environmental review process. The tool leverages complex GIS web services to support critical infrastructure and regulatory decision-making.
+                    </p>
+                    <a href="https://nepassisttool.epa.gov/nepassist/nepamap.aspx" target="_blank" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Application &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Writing / Insights -->
+<section id="writing" class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+            <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Thinking About Technology</h2>
+            <h3 class="text-3xl font-serif font-medium text-brand-dark">Latest Insights</h3>
+        </div>
+
+        <!-- Dynamic Feed Container -->
+        <div id="linkedin-feed" class="space-y-12">
+            <p class="text-gray-500">Loading latest posts...</p>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-100">
+            <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" class="text-brand-dark font-medium hover:text-brand-accent transition-colors">Read more on LinkedIn &rarr;</a>
+        </div>
+    </div>
+</section>
+
+    <!-- Books / Author Platform -->
+    <section id="books" class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Author</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-medium mb-6">Critical Thinking: A Practical Guide Through Manipulation</h3>
+                    
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg">
+                        How to recognize manipulation, identify flawed reasoning, and think more clearly in an information-saturated world. Equip yourself with the mental tools to navigate misinformation and make sound, rational decisions in everyday life and business.
+                    </p>
+
+                    <div class="space-y-6 mb-10">
+                        <div>
+                            <h4 class="text-brand-accent font-semibold mb-2">Who this book is for:</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Professionals, students, and citizens looking to build cognitive resilience against logical fallacies, media spin, and everyday manipulative tactics.</p>
+                        </div>
+                        <div class="pl-4 border-l-2 border-brand-accent">
+                            <p class="text-gray-300 italic text-sm mb-2">"An incredibly grounded and practical manual for making better decisions. Smith breaks down complex cognitive science into actionable daily defenses."</p>
+                            <span class="text-xs text-gray-500 uppercase tracking-wide">— Advance Reviewer</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation/dp/B0HH3CYK79" target="_blank" class="px-8 py-3 bg-white text-brand-dark rounded font-medium hover:bg-gray-100 transition-colors text-center">
+                            Get the Book
+                        </a>
+                        <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" class="px-8 py-3 bg-transparent border border-gray-600 text-white rounded font-medium hover:border-gray-400 transition-colors text-center">
+                            View Author Profile
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" class="w-full max-w-md rounded shadow-2xl">
+                </div>
+            </div>
+            
+            <!-- Forthcoming -->
+            <div class="mt-20 pt-10 border-t border-gray-800">
+                <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Forthcoming Work</h4>
+                <div class="bg-gray-900 p-6 rounded border border-gray-800">
+                    <h5 class="text-xl font-serif text-white mb-2">AI for Small Business (Series)</h5>
+                    <p class="text-gray-400 text-sm max-w-2xl">Demystifying artificial intelligence for SMEs. This upcoming series provides actionable roadmaps for integrating AI tools to optimize operations, reduce costs, and scale effectively without needing enterprise budgets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting & Who I Help -->
+    <section id="consulting" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Consulting & Advisory</h2>
+                <h3 class="text-3xl font-serif font-medium text-brand-dark mb-6">I help organizations make better use of data and technology.</h3>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    My work spans data science, cloud architecture, geospatial systems, data governance, and technology modernization. I particularly enjoy problems where the technical solution has to work within complex organizational, regulatory, and operational constraints.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 border border-gray-200 rounded">
+                    <h4 class="text-lg font-bold text-brand-dark mb-3">Federal & Public-Sector Organizations</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Modernizing legacy data environments, navigating compliance, and architecting secure, resilient cloud solutions (AWS) for massive datasets.</p>
+                </div>
+                
+                <div class="bg-white p-8 border border-gray-200 rounded">
+                    <h4 class="text-lg font-bold text-brand-dark mb-3">Organizations With Complex Data</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Building data pipelines, mesh architectures, and geospatial intelligence systems that make information easier to find, understand, and use.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-200 rounded">
+                    <h4 class="text-lg font-bold text-brand-dark mb-3">Business Leaders</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Translating technical possibilities into practical, executive-level decisions. Advisory guidance on data strategy, engineering leadership, and innovation.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-200 rounded">
+                    <h4 class="text-lg font-bold text-brand-dark mb-3">Authors & Educators</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Collaborating on topics related to critical thinking, information literacy, and the practical impacts of artificial intelligence on small business.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-sm font-semibold text-brand-accent uppercase tracking-widest">Available for selected advisory and consulting engagements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Let's Talk</h2>
+            <h3 class="text-3xl font-serif font-medium text-brand-dark mb-8">Get In Touch</h3>
+            <p class="text-gray-600 mb-10 leading-relaxed">
+                Interested in discussing advisory board roles, technology consulting, speaking engagements, or my writing? Reach out directly via email or connect with me on LinkedIn.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="mailto:d.smith.publishing@gmail.com" class="px-8 py-4 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors w-full sm:w-auto shadow-sm">
+                    Email: d.smith.publishing@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" class="px-8 py-4 bg-transparent border border-gray-300 text-brand-dark rounded font-medium hover:border-brand-dark transition-colors w-full sm:w-auto">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-serif font-semibold text-white tracking-tight">
+                    David G. Smith
+                </span>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm">
+                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Replace this with your actual RSS.app URL
+    const linkedinRssUrl = 'https://rss.app/feeds/YuGr16MsXmjBoomz.xml'; 
+    // Uses rss2json to bypass CORS and parse the XML to JSON
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(linkedinRssUrl)}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const feedContainer = document.getElementById('linkedin-feed');
+            feedContainer.innerHTML = ''; // Clear loading text
+
+            // Grab only the first 3 posts
+            const posts = data.items.slice(0, 3);
+
+            posts.forEach(post => {
+                // Format the date
+                const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: '2-digit'
+                });
+
+                // Create the HTML structure matching your Tailwind classes
+                const articleHTML = `
+                    <article class="group">
+                        <span class="text-sm text-gray-400 mb-2 block">${date} • LinkedIn</span>
+                        <a href="${post.link}" target="_blank" class="block">
+                            <h4 class="text-2xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">
+                                ${post.title || 'Latest Update'}
+                            </h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                <!-- Strip HTML tags and truncate to 150 characters -->
+                                ${post.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
+                            </p>
+                        </a>
+                    </article>
+                `;
+                feedContainer.innerHTML += articleHTML;
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching LinkedIn feed:', error);
+            document.getElementById('linkedin-feed').innerHTML = '<p class="text-red-400">Unable to load posts at this time.</p>';
+        });
+});
+</script>
+</body>
+</html>
