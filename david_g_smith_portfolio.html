@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David G. Smith | Data Science, Author & Strategic Advisor</title>
+    <meta name="description" content="Portfolio of David G. Smith: Data Science, Solutions Architecture, Author, and Strategic Advisor.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for subtle enhancements */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-gold-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-serif font-bold text-white tracking-wide">
+                        D.G. Smith<span class="text-gold-500">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#expertise" class="text-slate-300 hover:text-gold-400 transition-colors text-sm font-medium">Expertise & Advisory</a>
+                    <a href="#publications" class="text-slate-300 hover:text-gold-400 transition-colors text-sm font-medium">Books</a>
+                    <a href="#projects" class="text-slate-300 hover:text-gold-400 transition-colors text-sm font-medium">Projects</a>
+                    <a href="#contact" class="px-5 py-2 rounded-full border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-white transition-all text-sm font-medium">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#expertise" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Expertise</a>
+                <a href="#publications" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Books</a>
+                <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Projects</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gold-500 hover:bg-slate-800">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                David G. Smith
+            </h1>
+            <p class="text-lg sm:text-xl text-gold-400 font-medium mb-4 tracking-widest uppercase">
+                Data Science | Solutions Architecture | Author | Strategic Advisor
+            </p>
+            <p class="max-w-2xl text-base sm:text-lg text-slate-400 mb-10 leading-relaxed">
+                Transforming complex data into strategic advantages. Specializing in federal IT modernization, 
+                advanced cloud architecture, and equipping leaders with critical thinking tools.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#expertise" class="px-8 py-3 bg-gold-600 hover:bg-gold-500 text-white rounded-full font-medium transition-colors shadow-lg shadow-gold-500/30">
+                    Explore My Expertise
+                </a>
+                <a href="#publications" class="px-8 py-3 bg-transparent border border-slate-500 text-slate-300 hover:border-slate-300 hover:text-white rounded-full font-medium transition-colors">
+                    View Publications
+                </a>
+            </div>
+        </div>
+        <!-- Decorative bottom gradient -->
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-slate-50 to-transparent"></div>
+    </header>
+
+    <section id="expertise" class="py-20 lg:py-32 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-sm font-bold text-gold-600 tracking-widest uppercase mb-2">Background & Consulting</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900 mb-6">Expertise & Advisory</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        With extensive experience in Federal IT and enterprise-scale solutions, I specialize in architecting 
+                        robust data platforms and driving digital transformation. My focus is on leveraging data science and 
+                        cloud technologies to solve complex organizational challenges.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Currently employed in the sector, I am selectively open to <strong>advisory board roles</strong> and 
+                        <strong>strategic consulting</strong> where I can provide executive-level guidance on data strategy, 
+                        cloud architecture, and technological leadership.
+                    </p>
+                    
+                    <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center text-navy-900 hover:text-gold-600 font-semibold transition-colors group">
+                        <svg class="w-6 h-6 mr-2 fill-current" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        Connect on LinkedIn
+                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100">
+                    <h4 class="text-xl font-bold text-navy-900 mb-6">Core Competencies</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <h5 class="font-semibold text-slate-800 mb-2 flex justify-between"><span>Data Science & Analytics</span></h5>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-gold-500 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-slate-800 mb-2 flex justify-between"><span>Solutions Architecture (AWS)</span></h5>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-gold-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Specializing in Glue, RDS, and Redshift</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-slate-800 mb-2 flex justify-between"><span>Python & Development</span></h5>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-gold-500 h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-slate-800 mb-2 flex justify-between"><span>Federal IT Modernization</span></h5>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-gold-500 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="py-20 lg:py-32 bg-navy-900 text-white relative">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-gold-500 tracking-widest uppercase mb-2">Publications</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold mb-4">Books & Authorship</h3>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Exploring the intersections of cognitive science, practical logic, and the future of technology in business.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Book 1 -->
+                <div class="bg-navy-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col sm:flex-row border border-slate-700 hover:border-gold-500/50 transition-colors">
+                    <div class="w-full sm:w-1/3 bg-slate-800 flex-shrink-0 relative h-64 sm:h-auto">
+                        <!-- Placeholder for Book Cover -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-gold-500 font-serif font-bold text-lg leading-tight">Critical Thinking</span>
+                            <span class="text-xs text-slate-400 mt-2">A Practical Guide</span>
+                        </div>
+                        <img src="https://placehold.co/400x600/1e293b/d97706?text=Book+Cover" alt="Critical Thinking Book Cover" class="w-full h-full object-cover opacity-20">
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-gold-500/20 text-gold-400 text-xs font-bold rounded-full mb-4">Available Now</span>
+                            <h4 class="text-xl font-bold mb-2">Critical Thinking: A Practical Guide Through Manipulation</h4>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                A comprehensive breakdown of logic and cognitive biases. Equip yourself with the mental tools to navigate 
+                                misinformation, recognize manipulative tactics, and make sound, rational decisions in everyday life and business.
+                            </p>
+                        </div>
+                        <a href="https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation/dp/B0HH3CYK79/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer" 
+                           class="inline-block w-full text-center px-4 py-2 bg-white text-navy-900 font-bold rounded hover:bg-gold-500 hover:text-white transition-colors">
+                            View on Amazon
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Book 2 (Forthcoming) -->
+                <div class="bg-navy-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col sm:flex-row border border-slate-700 relative">
+                    <div class="absolute inset-0 bg-slate-900/50 z-10 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="px-6 py-2 bg-navy-900/90 border border-gold-500/30 text-gold-400 font-bold tracking-widest uppercase rounded-full shadow-lg">Forthcoming</span>
+                    </div>
+                    <div class="w-full sm:w-1/3 bg-slate-800 flex-shrink-0 relative h-64 sm:h-auto">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-white font-serif font-bold text-lg leading-tight">AI for Small Business</span>
+                            <span class="text-xs text-slate-400 mt-2">Series</span>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col justify-between opacity-50">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">AI for Small Business (Series)</h4>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                Demystifying artificial intelligence for small and medium enterprises. This upcoming series will provide 
+                                actionable roadmaps for integrating AI tools to optimize operations, reduce costs, and scale effectively.
+                            </p>
+                        </div>
+                        <button disabled class="w-full px-4 py-2 bg-slate-700 text-slate-400 font-bold rounded cursor-not-allowed">
+                            Coming Soon
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center text-gold-400 hover:text-gold-300 font-medium transition-colors">
+                    Visit my complete Amazon Author Page
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-gold-600 tracking-widest uppercase mb-2">Personal Pursuits</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900 mb-4">Maker Hobbies & Projects</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Beyond the digital realm, I engage in hands-on creative pursuits that blend precision, design, and traditional craftsmanship.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 3D Printing Card -->
+                <div class="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 bg-slate-200 relative overflow-hidden">
+                        <img src="https://placehold.co/600x400/cbd5e1/475569?text=3D+Printing" alt="3D Printing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-navy-900 mb-2">3D Printing</h4>
+                        <p class="text-slate-600 text-sm">
+                            Prototyping physical solutions and exploring additive manufacturing techniques. From functional parts to creative designs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Leathercraft Card -->
+                <div class="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 bg-slate-200 relative overflow-hidden">
+                        <img src="https://placehold.co/600x400/cbd5e1/475569?text=Leathercraft" alt="Leathercraft" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-navy-900 mb-2">Leathercraft</h4>
+                        <p class="text-slate-600 text-sm">
+                            Traditional hand-stitching, tooling, and pattern design. Creating durable, custom goods with meticulous attention to detail.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Painting Card -->
+                <div class="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 bg-slate-200 relative overflow-hidden">
+                        <img src="https://placehold.co/600x400/cbd5e1/475569?text=Painting" alt="Painting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-navy-900 mb-2">Painting</h4>
+                        <p class="text-slate-600 text-sm">
+                            Exploring visual expression through color theory and composition. A tactile counterpoint to digital architecture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 lg:py-32 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-sm font-bold text-gold-600 tracking-widest uppercase mb-2">Let's Connect</h2>
+            <h3 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900 mb-8">Open to Opportunities</h3>
+            <p class="text-slate-600 mb-10 max-w-xl mx-auto">
+                Interested in discussing advisory board roles, consulting opportunities, or data strategy? 
+                Reach out below or connect with me directly on LinkedIn.
+            </p>
+
+            <form class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 text-left mb-10" onsubmit="event.preventDefault(); alert('This is a placeholder form for demonstration purposes.');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all" placeholder="Jane Doe">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all" placeholder="jane@example.com">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Inquiry Type</label>
+                    <select id="subject" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all bg-white">
+                        <option>Advisory Board Role</option>
+                        <option>Consulting Inquiry</option>
+                        <option>Speaking Engagement</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                    <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all" placeholder="How can we collaborate?"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-4 rounded-lg transition-colors shadow-md">
+                    Send Message
+                </button>
+            </form>
+
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <p class="text-slate-600 font-medium">Or email directly:</p>
+                <a href="mailto:contact@[placeholder].com" class="text-xl font-bold text-navy-900 hover:text-gold-600 transition-colors">
+                    contact@[placeholder].com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-navy-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-serif font-bold text-white tracking-wide">
+                    D.G. Smith<span class="text-gold-500">.</span>
+                </span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    <span class="sr-only">Amazon Author</span>
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </a>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm">
+                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Optional: Add simple navbar background effect on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
