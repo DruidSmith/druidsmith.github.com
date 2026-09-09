@@ -10,6 +10,7 @@ permissions:
   
 jobs:
   update-html:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
