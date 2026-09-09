@@ -56,31 +56,67 @@
         }
     </script>
     <!-- JSON-LD schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "David G. Smith",
-    "url": "https://davidgsmith.net/",
-    "image": "https://davidgsmith.net/assets/img/david-smith-og.jpg",
-    "jobTitle": "Data Scientist & Strategic Advisor",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Independent Consulting"
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://davidgsmith.net/#webpage",
+      "url": "https://davidgsmith.net/",
+      "name": "David G. Smith — Technical Architect & Strategic Advisor in Washington, DC",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://davidgsmith.net/#website",
+        "url": "https://davidgsmith.net/",
+        "name": "David G. Smith"
+      },
+      "about": {
+        "@id": "https://davidgsmith.net/#person"
+      }
     },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Washington",
-      "addressRegion": "DC",
-      "addressCountry": "US"
+    {
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
+      "url": "https://davidgsmith.net/",
+      "image": "https://davidgsmith.net/assets/img/david-smith-og.jpg",
+      "jobTitle": "Data Scientist & Strategic Advisor",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Independent Consulting"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/davidgsmith",
+        "https://druidsmith.github.io",
+        "https://rss.app/r/feed/YuGr16MsXmjBoomz"
+      ],
+      "knowsAbout": [
+        "Data Science",
+        "Cloud Architecture",
+        "Geospatial Intelligence",
+        "Federal Technology Modernization"
+      ]
     },
-    "sameAs": [
-      "https://www.linkedin.com/in/davidgsmith",
-      "https://druidsmith.github.io",
-      "https://rss.app/r/feed/YuGr16MsXmjBoomz"
-    ]
-  }
-  </script>
+    {
+      "@type": "Book",
+      "@id": "https://davidgsmith.net/#book",
+      "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
+      "author": {
+        "@id": "https://davidgsmith.net/#person"
+      },
+      "url": "https://www.amazon.com/dp/B0HH3CYK79",
+      "image": "https://davidgsmith.net/images/CriticalThinkingCover.jpg"
+    }
+  ]
+}
+</script>
     <style>
         body { background-color: #fcfcfc; }
         .glass-nav {
@@ -158,7 +194,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div class="lg:col-span-5">
-                    <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" class="w-full h-auto object-cover rounded shadow-md">
+                    <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" width="800" height="800" loading="lazy" class="w-full h-auto object-cover rounded shadow-md">
                     <!-- <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" class="w-full h-auto object-cover rounded shadow-md grayscale hover:grayscale-0 transition-all duration-500"> -->
                 </div>
                 <div class="lg:col-span-7">
@@ -285,7 +321,7 @@
                 </div>
                 
                 <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" class="w-full max-w-md rounded shadow-2xl">
+                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" width="600" height="900" loading="lazy" class="w-full max-w-md rounded shadow-2xl">
                 </div>
             </div>
             
