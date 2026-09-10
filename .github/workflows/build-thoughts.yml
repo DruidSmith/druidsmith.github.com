@@ -2,15 +2,14 @@ name: Build Thoughts Page
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # Runs daily at 2:00 AM UTC
+    - cron: '0 */3 * * *' # Runs every 3 hours
   workflow_dispatch: # Allows manual trigger from GitHub UI
   
-permissions:
+permissions: 
   contents: write
   
 jobs:
   update-html:
-    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
