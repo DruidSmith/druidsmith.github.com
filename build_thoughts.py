@@ -8,7 +8,14 @@ POST_LIMIT = 8
 def clean_text(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
     text = soup.get_text(separator=" ")
-    return text[:210] + "..." if len(text) > 180 else text
+    
+    if len(text) > 400:
+        # Slice at 400 characters
+        truncated = text[:400]
+        # Split from the right at the first space and keep the left portion
+        return truncated.rsplit(' ', 1)[0] + "..."
+        
+    return text
 
 def generate_html():
     feed = feedparser.parse(RSS_URL)
