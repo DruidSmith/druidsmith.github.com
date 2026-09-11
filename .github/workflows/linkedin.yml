@@ -1,0 +1,40 @@
+name: Update LinkedIn Feed
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs daily at 12:00 UTC
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    # Allows the action to commit files back to the repo
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install linkedin-api
+
+      - name: Run Fetch Script
+        env:
+          LINKEDIN_LI_AT: ${{ secrets.LINKEDIN_LI_AT }}
+        run: python fetch_posts.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          # The exit 0 ensures the workflow doesn't fail if there are no new posts to commit
+          git commit -m "Auto-update LinkedIn feed" || exit 0
+          git push
