@@ -2,10 +2,20 @@
 <?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Homepage (This serves as your /index.html) -->
   <url>
        <loc>https://davidgsmith.net/</loc>
-       <lastmod>2026-09-06T22:21:30+00:00</lastmod>
+       <lastmod>2026-09-11T12:00:00+00:00</lastmod>
        <changefreq>weekly</changefreq>
-       <priority>1.0000</priority>
+       <priority>1.00</priority>
   </url>
+
+  <!-- Thoughts Page -->
+  <url>
+       <loc>https://davidgsmith.net/thoughts.html</loc>
+       <lastmod>2026-09-11T12:00:00+00:00</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.90</priority>
+  </url>
+
 </urlset>
