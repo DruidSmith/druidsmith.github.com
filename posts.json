@@ -61,5 +61,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_redis-for-ai-and-search-activity-7501243831435161600-Wad9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T17:10:45.149Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "AI and Cognitive Debt",
+    "body": "One of the topics I didn't talk about in [my book](https://www.amazon.com/dp/B0HH3CYK79) is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.\n\nMIT Media Labs talks about this phenomenon:  [Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task – MIT Media Lab](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)\n\nOutsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.\n\nOver time, this overreliance can lead to:\n* Cognitive atrophy (losing the \"muscle memory\" for critical analysis).\n* Distributed deskilling (becoming unable to audit or catch subtle AI errors).\n* Metacognitive laziness (defaulting to the path of least resistance).\n\nAI can be an incredible co-pilot, but it shouldn't replace the pilot. To avoid building up unsustainable cognitive debt, we need to intentionally design friction back into our workflows, actively questioning, stress-testing, and building upon AI outputs rather than just copy-pasting them.\n\nI have a mental outline for another book on applied AI, this is one of many areas I want it to focus on.",
+    "url": "https://www.linkedin.com/posts/davidgsmith_your-brain-on-chatgpt-accumulation-of-cognitive-activity-7501271014631227392-vvKH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T17:19:03.939Z",
+    "platform": "linkedin"
   }
 ]
