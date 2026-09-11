@@ -1,3 +1,30 @@
 [
- 
+  {
+    "title": "Thought of the Day",
+    "body": "Before you tear down a \"pointless\" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton’s classic thought experiment.\n\nImagine you're walking down a country road and encounter a sturdy wooden fence blocking your path. To your eye, it serves absolutely no purpose.\n\nWhat's your first instinct?\n\nThe \"reformer\" in us wants to yell: \"Tear it down!\"\n\nBut Chesterton’s answer is: \"No. You cannot destroy it until you can explain exactly why it was built in the first place.\"\n\nThis is the principle of Chesterton’s Fence: a vital rule of intellectual humility for leadership and decision-making.\n\nWhen we join a new team, take over a department, or evaluate a legacy system, it is incredibly easy to spot inefficiencies. We look at a clunky bureaucratic step, a piece of old legacy code, or a strange company policy and assume the people who created them were simply incompetent.\n\nBut someone went to the effort of building that fence. They spent time and money on it. And even if the system looks broken today, it was almost certainly a logical solution to a very real problem at the time.\n\nIf you tear down the fence without understanding that original problem, you risk letting the wolves back into the yard. The original problem didn't vanish; you just made yourself blind to it.\n\nThe next time you want to \"disrupt\" or streamline a process, pause and ask the load-bearing question:\n\n\"What exact problem was this solving, and what happens if that problem returns?\"",
+    "url": "https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T15:02:27.436Z",
+    "platform": "linkedin"
+  },
+  {
+    "title": "Gaussian Splats versus 3D mesh",
+    "body": "Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.\n\nhttps://lnkd.in/gFbpKXV3",
+    "url": "https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T15:03:11.321Z",
+    "platform": "linkedin"
+  },
+  {
+    "title": "AI Containment Failure",
+    "body": "Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry’s definition of “isolated evaluation environments” is fundamentally flawed. These failures reveal that AI safety is shifting from a model‑alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.\n\nhttps://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722",
+    "url": "https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T15:03:57.151Z",
+    "platform": "linkedin"
+  },
+  {
+    "title": "Capturing Expertise Before It Walks Out the Door",
+    "body": "My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional knowledge faster than we can document it. AI isn’t the threat; it could be the lifeline.\n\nBill’s team at Clairvoyint AI is building something deceptively simple and incredibly powerful: tools that capture how experts think, not just what they produce. Their “Bundles” turn decades of judgment, rules, exceptions, and evidence standards into transparent, inspectable analytical agents. It’s not automation. It’s continuity.\n\nThe big idea: If you can preserve expert methodology, you preserve capability: no matter who retires, moves on, or changes roles. That’s the kind of AI work that actually matters.\n\nhttps://blog.geomusings.com/2026/08/11/what-were-building-at-clairvoyint/",
+    "url": "https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T15:07:14.657Z",
+    "platform": "linkedin"
+  }
 ]
