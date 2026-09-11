@@ -19,7 +19,7 @@ PLATFORM_ICONS = {
     "bluesky": "https://unpkg.com/simple-icons/icons/bluesky.svg",
     "mastodon": "https://unpkg.com/simple-icons/icons/mastodon.svg",
     "other": "https://unpkg.com/simple-icons/icons/link.svg",
-
+}
 
 def platform_for_url(url):
     hostname = urlparse(url).netloc.lower().removeprefix("www.")
