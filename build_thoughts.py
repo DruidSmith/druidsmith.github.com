@@ -24,6 +24,21 @@ PLATFORM_ICONS = {
     "other": "https://unpkg.com/simple-icons/icons/link.svg",
 }
 
+PLATFORM_ALT_TEXT = {
+    "linkedin": "LinkedIn icon",
+    "twitter": "X / Twitter icon",
+    "facebook": "Facebook icon",
+    "instagram": "Instagram icon",
+    "youtube": "YouTube icon",
+    "tiktok": "TikTok icon",
+    "threads": "Threads icon",
+    "medium": "Medium icon",
+    "github": "GitHub icon",
+    "bluesky": "Bluesky icon",
+    "mastodon": "Mastodon icon",
+    "other": "Blog post image",
+}
+
 def platform_for_url(url):
     hostname = urlparse(url).netloc.lower().removeprefix("www.")
 
@@ -95,23 +110,23 @@ def render_share_bar(url):
             <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
+                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
             </a>
             <a href="https://twitter.com/intent/tweet?url={escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u={escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
             </a>
             <a href="https://bsky.app/intent/share?url={escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
             </a>
             <a href="https://mastodon.social/share?text={escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
             </a>
         </div>
     </div>
@@ -127,6 +142,7 @@ def render_post(post):
     date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
     platform = post.get("platform") or platform_for_url(post["url"])
     icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["other"])
+    icon_alt = PLATFORM_ALT_TEXT.get(platform, PLATFORM_ALT_TEXT["other"])
     label = platform.title() if platform != "twitter" else "X / Twitter"
 
     return f"""
@@ -134,7 +150,7 @@ def render_post(post):
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="{icon}" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
+                <img src="{icon}" alt="{icon_alt}" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">{date} &bull; {html.escape(label)}</span>
             </div>
 
