@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install renderer dependencies
+        run: python -m pip install markdown bleach
+
       - name: Build thoughts page
         run: python build_thoughts.py
 

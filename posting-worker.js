@@ -79,7 +79,7 @@ export default {
       if (!fileResponse.ok) return response({ error: 'Could not read posts.json.' }, 502);
       const file = await fileResponse.json();
       const posts = JSON.parse(decodeContent(file.content));
-      posts.push({ title: input.title.trim(), body: input.body.trim(), url: url.href, date: new Date().toISOString(), platform: platformForUrl(url.href) });
+      posts.push({ title: input.title.trim(), body: input.body.trim(), format: 'markdown', url: url.href, date: new Date().toISOString(), platform: platformForUrl(url.href) });
       const update = await githubRequest(env, 'PUT', 'posts.json', { message: `Add thought: ${input.title.trim()}`, content: encodeContent(JSON.stringify(posts, null, 2) + '\n'), sha: file.sha, branch: env.GITHUB_BRANCH || 'main' });
       if (!update.ok) return response({ error: 'GitHub rejected the update. Please retry.' }, 502);
       return response({ saved: true });

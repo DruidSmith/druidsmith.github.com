@@ -6,6 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Post editor | David G. Smith</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css">
+<script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
 <style>body { background: #f7f5f0; } .serif { font-family: Georgia, serif; }</style>
 </head>
 <body class="min-h-screen text-slate-900">
@@ -27,7 +29,9 @@
     <section id="editor-panel" class="hidden rounded border border-slate-200 bg-white p-6 shadow-sm">
         <form id="post-form" class="space-y-5">
             <label class="block text-sm font-medium" for="title">Title<input id="title" name="title" required maxlength="200" class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
-            <label class="block text-sm font-medium" for="body">Post body<textarea id="body" name="body" required rows="10" class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></textarea></label>
+            <label class="block text-sm font-medium" for="body">Post body</label>
+            <textarea id="body" name="body" required rows="12"></textarea>
+            <p class="text-xs text-slate-500">Write in Markdown. Use the preview button to check the formatted post before saving.</p>
             <label class="block text-sm font-medium" for="url">Original post URL<input id="url" name="url" type="url" required placeholder="https://www.linkedin.com/..." class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
             <p id="platform-preview" class="text-sm text-slate-500"></p>
             <button class="rounded bg-amber-700 px-5 py-3 text-sm font-semibold text-white hover:bg-amber-800" type="submit">Save post</button>
@@ -41,6 +45,14 @@ const config = window.POSTING_CONFIG || { endpoint: '' };
 let sessionToken = '';
 const status = document.querySelector('#status');
 const platformPreview = document.querySelector('#platform-preview');
+const bodyEditor = new EasyMDE({
+    element: document.querySelector('#body'),
+    autofocus: false,
+    forceSync: true,
+    spellChecker: false,
+    status: false,
+    toolbar: ['bold', 'italic', 'heading', '|', 'quote', 'unordered-list', 'ordered-list', '|', 'link', 'preview', 'side-by-side', 'fullscreen']
+});
 
 function setStatus(message, isError = false) {
     status.textContent = message;

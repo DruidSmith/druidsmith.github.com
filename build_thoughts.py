@@ -1,5 +1,7 @@
 import html
 import json
+import bleach
+import markdown
 from pathlib import Path
 from datetime import datetime
 from urllib.parse import urlparse
@@ -49,6 +51,26 @@ def load_posts():
     return sorted(posts, key=lambda post: post.get("date", ""), reverse=True)
 
 
+def render_markdown(text):
+    rendered = markdown.markdown(
+        text,
+        extensions=["extra", "nl2br", "sane_lists"],
+        output_format="html",
+    )
+    allowed_tags = set(bleach.sanitizer.ALLOWED_TAGS).union({
+        "p", "br", "hr", "h1", "h2", "h3", "h4", "h5", "h6",
+        "blockquote", "pre", "code", "ul", "ol", "li", "strong", "em",
+    })
+    allowed_attributes = {"a": ["href", "title"], "code": ["class"]}
+    return bleach.clean(
+        rendered,
+        tags=allowed_tags,
+        attributes=allowed_attributes,
+        protocols=["http", "https", "mailto"],
+        strip=True,
+    )
+
+
 def render_share_bar(url):
     escaped = html.escape(url, quote=True)
     return f"""
@@ -83,7 +105,8 @@ def render_share_bar(url):
 
 def render_post(post):
     title = html.escape(post.get("title", "Untitled"))
-    body = html.escape(post.get("body", ""))
+    body_source = post.get("body", "")
+    body = render_markdown(body_source)
     url = html.escape(post["url"], quote=True)
     date_iso = post["date"]
     date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
@@ -96,14 +119,14 @@ def render_post(post):
     {{
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "{title}",
+    "headline": {json.dumps(post.get("title", "Untitled"))},
       "datePublished": "{date_iso}",
       "author": {{
         "@type": "Person",
         "name": "David G. Smith"
       }},
-      "url": "{url}",
-      "articleBody": "{body}"
+    "url": {json.dumps(post["url"])},
+    "articleBody": {json.dumps(body_source)}
     }}
     </script>
     """
@@ -122,8 +145,8 @@ def render_post(post):
                 {title}
             </h2>
 
-            <p itemprop="articleBody"
-               class="text-gray-600 leading-loose text-sm whitespace-pre-wrap">{body}</p>
+              <div itemprop="articleBody"
+                  class="markdown-content text-gray-600 leading-loose text-sm">{body}</div>
 
             <a href="{url}" target="_blank" rel="noopener noreferrer"
                class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
@@ -207,6 +230,25 @@ def generate_html():
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
     }}
+    .markdown-content p {{ margin-bottom: 1rem; }}
+    .markdown-content p:last-child {{ margin-bottom: 0; }}
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {{
+        color: #111827;
+        font-family: Lora, serif;
+        font-weight: 500;
+        margin: 1.25rem 0 0.5rem;
+    }}
+    .markdown-content h1 {{ font-size: 1.5rem; }}
+    .markdown-content h2 {{ font-size: 1.25rem; }}
+    .markdown-content h3 {{ font-size: 1.125rem; }}
+    .markdown-content ul, .markdown-content ol {{ margin: 0 0 1rem 1.25rem; }}
+    .markdown-content ul {{ list-style: disc; }}
+    .markdown-content ol {{ list-style: decimal; }}
+    .markdown-content blockquote {{ border-left: 3px solid #b45309; color: #4b5563; margin: 1rem 0; padding-left: 1rem; }}
+    .markdown-content a {{ color: #92400e; text-decoration: underline; }}
+    .markdown-content code {{ background: #f3f4f6; border-radius: 0.25rem; padding: 0.1rem 0.25rem; }}
+    .markdown-content pre {{ background: #f3f4f6; border-radius: 0.25rem; margin: 1rem 0; overflow-x: auto; padding: 1rem; }}
+    .markdown-content pre code {{ background: transparent; padding: 0; }}
 </style>
 
 {json_ld_blog}

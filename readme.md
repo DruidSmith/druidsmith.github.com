@@ -12,4 +12,4 @@ GitHub Pages cannot securely protect a password or write to a repository by itse
 4. Give the fine-grained `GITHUB_TOKEN` Contents: Read and write access to this repository only.
 5. Set `window.POSTING_CONFIG.endpoint` in `posting.html` to the Worker URL.
 
-The Worker returns a short-lived signed session after login, validates the title, body, and URL, detects the platform, timestamps the post, and commits the updated JSON file. Never put a GitHub token or the posting password in this repository or in browser storage.
+The Worker returns a short-lived signed session after login, validates the title, Markdown body, and URL, detects the platform, timestamps the post, and commits the updated JSON file. The GitHub Action installs `markdown` and `bleach`, then sanitizes and renders the Markdown as HTML. Never put a GitHub token or the posting password in this repository or in browser storage.
