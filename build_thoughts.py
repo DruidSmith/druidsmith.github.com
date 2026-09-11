@@ -1,5 +1,6 @@
 import html
 import json
+import re
 import bleach
 import markdown
 from pathlib import Path
@@ -67,12 +68,17 @@ def render_markdown(text):
         "code": ["class"],
         "img": ["src", "alt", "title", "class", "loading"]
     }
-    return bleach.clean(
+    cleaned = bleach.clean(
         rendered,
         tags=allowed_tags,
         attributes=allowed_attributes,
         protocols=["http", "https", "mailto"],
         strip=True,
+    )
+    return re.sub(
+        r'<a\b(?![^>]*\btarget=)',
+        '<a target="_blank" rel="noopener noreferrer"',
+        cleaned,
     )
 
 
