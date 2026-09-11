@@ -103,5 +103,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_aiagents-contextwindow-aicompression-activity-7503258158551769088-kSDx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T23:27:14.592Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "AI and Attention Loss",
+    "body": "Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. \n\nHere's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.\n\n[Towards AI - AI Fundamentals: Attention Mechanisms in Transformers](https://pub.towardsai.net/ai-fundamentals-attention-mechanisms-in-transformers-part-1-a91cce62fbab)\n\nAt a high level, attention helps models determine which tokens in a sequence matter most to each other, allowing them to build context-aware representations rather than treating words as isolated pieces of text.\n\nKey ideas covered:\n* Scaled dot-product attention: how models score relevance between tokens\n* Global vs. local attention: how far a token can “look”\n* Soft vs. hard attention: continuous weighting vs. discrete selection\n* Self-attention, causal attention, and cross-attention: how information flows\n* Q, K, and V vectors: the core building blocks behind attention\n* Multi-head, multi-query, and grouped-query attention: different ways to balance expressiveness and efficiency\n\nThe big takeaway: Why is attention critical? Attention is what allows transformers to understand relationships, context, and meaning at scale.",
+    "url": "https://www.linkedin.com/posts/davidgsmith_ai-fundamentals-attention-mechanisms-in-activity-7503437443103186946-mcg_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T23:40:17.598Z",
+    "platform": "linkedin"
   }
 ]
