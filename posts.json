@@ -110,5 +110,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_ai-fundamentals-attention-mechanisms-in-activity-7503437443103186946-mcg_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T23:40:17.598Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "It's Time to Get Serious About AI Risk",
+    "body": "I keep seeing headlines like this one: \n[Anthropic Researcher Exitts, Issues Stark AI Warning](https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/)\nNotable quote: *“10% chance AI could destroy all humanity by 2030.”*\n\nAnd yet, the reaction often feels far too small.\n\nSomeone issues a serious warning, and then the next day the conversation just shifts right back to model launches, benchmarks, and how powerful the latest AI system is. It feels like we’re careening at breakneck speed down a treacherous mountain pass with the brakes barely being touched.\n\nThe recent Hugging Face breach should be a wake-up call. If we’re going to keep pushing AI forward at this pace, then safety, security, and safeguards can’t be an afterthought. They have to be part of the core conversation, not something we mention only after something goes wrong.\n\nProgress is important. Innovation matters. But so does responsibility.\n\nWe need more serious dialogue about:\n\n- model security\n- access controls\n- misuse prevention\n- red teaming\n- governance\n- and long-term safety\n\nIf we’re building systems with enormous power, we owe it to society to build them with equal seriousness about risk.",
+    "url": "https://www.linkedin.com/posts/davidgsmith_aisafety-responsibleai-aiethics-activity-7503560249086238720-xJAp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T23:56:14.489Z",
+    "platform": "linkedin"
   }
 ]
