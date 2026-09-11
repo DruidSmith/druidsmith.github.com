@@ -7,29 +7,38 @@ from urllib.parse import urlparse
 POSTS_FILE = Path("posts.json")
 
 PLATFORM_ICONS = {
-    "linkedin": "https://cdn.simpleicons.org/linkedin/0A66C2",
-    "twitter": "https://cdn.simpleicons.org/x/111827",
-    "facebook": "https://cdn.simpleicons.org/facebook/1877F2",
-    "instagram": "https://cdn.simpleicons.org/instagram/E4405F",
-    "youtube": "https://cdn.simpleicons.org/youtube/FF0000",
-    "tiktok": "https://cdn.simpleicons.org/tiktok/111827",
-    "threads": "https://cdn.simpleicons.org/threads/111827",
-    "medium": "https://cdn.simpleicons.org/medium/111827",
-    "github": "https://cdn.simpleicons.org/github/111827",
-    "other": "https://cdn.simpleicons.org/link/6B7280",
-}
+    "linkedin": "/images/InBug-Black.png",  # local, reliable
+    "twitter": "https://unpkg.com/simple-icons/icons/x.svg",
+    "facebook": "https://unpkg.com/simple-icons/icons/facebook.svg",
+    "instagram": "https://unpkg.com/simple-icons/icons/instagram.svg",
+    "youtube": "https://unpkg.com/simple-icons/icons/youtube.svg",
+    "tiktok": "https://unpkg.com/simple-icons/icons/tiktok.svg",
+    "threads": "https://unpkg.com/simple-icons/icons/threads.svg",
+    "medium": "https://unpkg.com/simple-icons/icons/medium.svg",
+    "github": "https://unpkg.com/simple-icons/icons/github.svg",
+    "bluesky": "https://unpkg.com/simple-icons/icons/bluesky.svg",
+    "mastodon": "https://unpkg.com/simple-icons/icons/mastodon.svg",
+    "other": "https://unpkg.com/simple-icons/icons/link.svg",
 
 
 def platform_for_url(url):
     hostname = urlparse(url).netloc.lower().removeprefix("www.")
+
     if "linkedin.com" in hostname:
         return "linkedin"
     if hostname in {"twitter.com", "x.com"}:
         return "twitter"
+    if "bsky.app" in hostname:
+        return "bluesky"
+    if "mastodon" in hostname or hostname.endswith(".social") or hostname.endswith(".io"):
+        return "mastodon"
+
     for platform in ("facebook", "instagram", "youtube", "tiktok", "threads", "medium", "github"):
         if platform in hostname:
             return platform
+
     return "other"
+
 
 
 def load_posts():
@@ -43,21 +52,33 @@ def load_posts():
 def render_share_bar(url):
     escaped = html.escape(url, quote=True)
     return f"""
-    <div class="flex gap-4 mt-6">
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}"
-           target="_blank" class="hover:text-brand-accent transition">
-           <img src="https://cdn.simpleicons.org/linkedin/0A66C2" class="h-5 w-5" alt="Share on LinkedIn">
-        </a>
-        <a href="https://twitter.com/intent/tweet?url={escaped}"
-           target="_blank" class="hover:text-brand-accent transition">
-           <img src="https://cdn.simpleicons.org/x/111827" class="h-5 w-5" alt="Share on X">
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={escaped}"
-           target="_blank" class="hover:text-brand-accent transition">
-           <img src="https://cdn.simpleicons.org/facebook/1877F2" class="h-5 w-5" alt="Share on Facebook">
-        </a>
+    <div class="absolute bottom-4 right-4 text-right">
+        <p class="text-xs text-gray-400 mb-2">Share this post</p>
+        <div class="flex gap-3 justify-end">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}"
+               target="_blank" class="hover:text-brand-accent transition">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url={escaped}"
+               target="_blank" class="hover:text-brand-accent transition">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={escaped}"
+               target="_blank" class="hover:text-brand-accent transition">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+            </a>
+            <a href="https://bsky.app/intent/share?url={escaped}"
+               target="_blank" class="hover:text-brand-accent transition">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+            </a>
+            <a href="https://mastodon.social/share?text={escaped}"
+               target="_blank" class="hover:text-brand-accent transition">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+            </a>
+        </div>
     </div>
     """
+
 
 
 def render_post(post):
@@ -89,7 +110,8 @@ def render_post(post):
 
     return f"""
         <article itemscope itemtype="https://schema.org/BlogPosting"
-                 class="group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="{icon}" alt="" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">{date} &bull; {html.escape(label)}</span>
@@ -109,7 +131,6 @@ def render_post(post):
             </a>
 
             {render_share_bar(post["url"])}
-            {json_ld}
         </article>
     """
 
