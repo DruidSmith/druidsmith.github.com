@@ -96,5 +96,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_how-to-help-nepal-flood-victims-activity-7503194924205424641-iHeR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T23:17:23.733Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "AI Failure - It's All About Context",
+    "body": "More often than not, AI agents end up failing because they’re drowning in their own context windows.\n\nOne of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.\n\nIn critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.\nThe future belongs to models that can summarize, prioritize, and discard with intention. Not unlike humans.\n\nI'm curious to see how this evolves, especially as agentic workflows become more common in enterprise environments.\n\nWhat do you think: does compression become the new frontier? And what about other approaches, like knowledge graphs? (I'm particularly interested in that angle.)",
+    "url": "https://www.linkedin.com/posts/davidgsmith_aiagents-contextwindow-aicompression-activity-7503258158551769088-kSDx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T23:27:14.592Z",
+    "platform": "linkedin"
   }
 ]
