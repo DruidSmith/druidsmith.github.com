@@ -1,0 +1,9 @@
+# David G. Smith - Technical Architect & Strategic Advisor
+
+David G. Smith is a data scientist, cloud architect, author, and strategic advisor based in Washington, DC[cite: 1]. He specializes in federal technology modernization, AI, geospatial intelligence, and critical thinking[cite: 1].
+
+## Key Information
+* **Projects:** Led architectural modernization for the USGS Water Quality Portal Migration and the EPA's Envirofacts Cloud-Native Rebuild within the DMAP/AWS environment[cite: 1].
+* **Books:** Author of "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation" (Published Aug 2026)[cite: 1].
+* **Focus:** Helps federal organizations, business leaders, and organizations with complex data turn technology into better decisions[cite: 1].
+* **Contact:** info@davidgsmith.net or https://www.linkedin.com/in/davidgsmith/[cite: 1].

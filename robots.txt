@@ -2,3 +2,13 @@ User-agent: *
 Disallow: /posting.html
 Allow: /
 Sitemap: https://davidgsmith.net/sitemap.xml
+
+# Explicit AI Crawler Stance
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
