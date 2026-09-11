@@ -1,52 +1,71 @@
-import feedparser
-from bs4 import BeautifulSoup
+import html
+import json
+from pathlib import Path
 from datetime import datetime
+from urllib.parse import urlparse
 
-RSS_URL = 'https://rss.app/feeds/YuGr16MsXmjBoomz.xml'
-POST_LIMIT = 8
+POSTS_FILE = Path("posts.json")
 
-def clean_text(html_content):
-    soup = BeautifulSoup(html_content, "html.parser")
-    text = soup.get_text(separator=" ")
-    
-    if len(text) > 400:
-        # Slice at 400 characters
-        truncated = text[:400]
-        # Split from the right at the first space and keep the left portion
-        return truncated.rsplit(' ', 1)[0] + "..."
-        
-    return text
+PLATFORM_ICONS = {
+    "linkedin": "https://cdn.simpleicons.org/linkedin/0A66C2",
+    "twitter": "https://cdn.simpleicons.org/x/111827",
+    "facebook": "https://cdn.simpleicons.org/facebook/1877F2",
+    "instagram": "https://cdn.simpleicons.org/instagram/E4405F",
+    "youtube": "https://cdn.simpleicons.org/youtube/FF0000",
+    "tiktok": "https://cdn.simpleicons.org/tiktok/111827",
+    "threads": "https://cdn.simpleicons.org/threads/111827",
+    "medium": "https://cdn.simpleicons.org/medium/111827",
+    "github": "https://cdn.simpleicons.org/github/111827",
+    "other": "https://cdn.simpleicons.org/link/6B7280",
+}
 
-def generate_html():
-    feed = feedparser.parse(RSS_URL)
-    
-    posts_html = ""
-    for entry in feed.entries[:POST_LIMIT]:
-        # Parse standard RSS dates
-        try:
-            dt = datetime.strptime(entry.published, "%a, %d %b %Y %H:%M:%S %Z")
-            date_str = dt.strftime("%B %d, %Y")
-        except:
-            date_str = entry.published
 
-        description = clean_text(entry.description)
-        
-        posts_html += f"""
+def platform_for_url(url):
+    hostname = urlparse(url).netloc.lower().removeprefix("www.")
+    if "linkedin.com" in hostname:
+        return "linkedin"
+    if hostname in {"twitter.com", "x.com"}:
+        return "twitter"
+    for platform in ("facebook", "instagram", "youtube", "tiktok", "threads", "medium", "github"):
+        if platform in hostname:
+            return platform
+    return "other"
+
+
+def load_posts():
+    if not POSTS_FILE.exists():
+        return []
+    with POSTS_FILE.open(encoding="utf-8") as posts_file:
+        posts = json.load(posts_file)
+    return sorted(posts, key=lambda post: post.get("date", ""), reverse=True)
+
+
+def render_post(post):
+    title = html.escape(post.get("title", "Untitled"))
+    body = html.escape(post.get("body", ""))
+    url = html.escape(post["url"], quote=True)
+    date = datetime.fromisoformat(post["date"].replace("Z", "+00:00")).strftime("%B %d, %Y")
+    platform = post.get("platform") or platform_for_url(post["url"])
+    icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["other"])
+    label = platform.title() if platform != "twitter" else "X / Twitter"
+    return f"""
         <article class="group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
-            <span class="text-sm text-gray-400 mb-2 block">{date_str} • LinkedIn</span>
-            <a href="{entry.link}" target="_blank" class="block">
-                <h4 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">
-                    {entry.title}
-                </h4>
-                <p class="text-gray-600 leading-relaxed text-sm">
-                    {description}
-                </p>
-            </a>
-            <a href="{entry.link}" target="_blank" class="mt-4 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">Read Post &rarr;</a>
+            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                <img src="{icon}" alt="" class="h-4 w-4" loading="lazy">
+                <span>{date} &bull; {html.escape(label)}</span>
+            </div>
+            <h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2>
+            <p class="text-gray-600 leading-relaxed text-sm whitespace-pre-wrap">{body}</p>
+            <a href="{url}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">Original post &rarr;</a>
         </article>
         """
 
-    # HTML Template matching your index.html styling
+
+def generate_html():
+    posts_html = "\n".join(render_post(post) for post in load_posts())
+    if not posts_html:
+        posts_html = '<p class="text-gray-500 text-center py-12">New thoughts will appear here soon.</p>'
+
     html_template = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -115,9 +134,9 @@ def generate_html():
 </body>
 </html>"""
 
-    with open("thoughts.html", "w", encoding="utf-8") as f:
+    with open("thoughts2.html", "w", encoding="utf-8") as f:
         f.write(html_template)
         
 if __name__ == "__main__":
     generate_html()
-    print("Successfully generated thoughts.html")
+    print("Successfully generated thoughts2.html from posts.json")

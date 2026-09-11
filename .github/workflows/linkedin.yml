@@ -1,9 +1,14 @@
-name: Update LinkedIn Feed
+name: Build Stored Thoughts
 
 on:
+  push:
+    paths:
+      - 'posts.json'
+      - 'build_thoughts.py'
+      - '.github/workflows/linkedin.yml'
   schedule:
-    - cron: '0 12 * * *' # Runs daily at 12:00 UTC
-  workflow_dispatch: # Allows manual triggering
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,19 +27,13 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies
-        run: pip install linkedin-api
-
-      - name: Run Fetch Script
-        env:
-          LINKEDIN_LI_AT: ${{ secrets.LINKEDIN_LI_AT }}
-        run: python fetch_posts.py
+      - name: Build thoughts page
+        run: python build_thoughts.py
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add index.html
-          # The exit 0 ensures the workflow doesn't fail if there are no new posts to commit
-          git commit -m "Auto-update LinkedIn feed" || exit 0
+          git add thoughts2.html
+          git commit -m "Build stored thoughts page" || exit 0
           git push
