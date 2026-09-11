@@ -26,5 +26,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T16:22:55.540Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "The Real Bottleneck in AI Agents Isn't Reasoning, it's Context",
+    "body": "Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. \n\nTeams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.\n\n[Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember](https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808)\n\n[Github: Google Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf)",
+    "url": "https://www.linkedin.com/posts/davidgsmith_your-ai-agents-keep-forgetting-everything-activity-7498100687722172416-3J-5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T16:29:35.217Z",
+    "platform": "linkedin"
   }
 ]
