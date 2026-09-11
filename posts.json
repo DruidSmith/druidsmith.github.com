@@ -12,5 +12,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T16:18:33.744Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "When AI wants to play outside of the sandbox...",
+    "body": "Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry’s definition of “isolated evaluation environments” is fundamentally flawed. These failures reveal that AI safety is shifting from a model‑alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.\n\n[Towards AI:  The Sandbox Was Never Sealed. Four Labs Proved It in Three Weeks.](https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722)",
+    "url": "https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T16:20:29.299Z",
+    "platform": "linkedin"
   }
 ]
