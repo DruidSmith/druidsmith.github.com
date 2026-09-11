@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 POSTS_FILE = Path("posts.json")
 
 PLATFORM_ICONS = {
-    "linkedin": "/images/InBug-Black.png",  # local, reliable
+    "linkedin": "/images/InBug-Black.png",
     "twitter": "https://unpkg.com/simple-icons/icons/x.svg",
     "facebook": "https://unpkg.com/simple-icons/icons/facebook.svg",
     "instagram": "https://unpkg.com/simple-icons/icons/instagram.svg",
@@ -42,7 +42,6 @@ def platform_for_url(url):
     return "other"
 
 
-
 def load_posts():
     if not POSTS_FILE.exists():
         return []
@@ -57,11 +56,17 @@ def render_markdown(text):
         extensions=["extra", "nl2br", "sane_lists"],
         output_format="html",
     )
+    # Added img to the allowed tags to ensure markdown images render properly
     allowed_tags = set(bleach.sanitizer.ALLOWED_TAGS).union({
         "p", "br", "hr", "h1", "h2", "h3", "h4", "h5", "h6",
-        "blockquote", "pre", "code", "ul", "ol", "li", "strong", "em",
+        "blockquote", "pre", "code", "ul", "ol", "li", "strong", "em", "img"
     })
-    allowed_attributes = {"a": ["href", "title"], "code": ["class"]}
+    # Safelisted img attributes for proper rendering
+    allowed_attributes = {
+        "a": ["href", "title", "target", "rel"], 
+        "code": ["class"],
+        "img": ["src", "alt", "title", "class", "loading"]
+    }
     return bleach.clean(
         rendered,
         tags=allowed_tags,
@@ -73,34 +78,38 @@ def render_markdown(text):
 
 def render_share_bar(url):
     escaped = html.escape(url, quote=True)
+    # Refactored to a flex row to avoid absolute overlap issues and added aria-labels
     return f"""
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="{escaped}" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url={escaped}"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u={escaped}"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url={escaped}"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text={escaped}"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
     """
-
 
 
 def render_post(post):
@@ -114,29 +123,12 @@ def render_post(post):
     icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["other"])
     label = platform.title() if platform != "twitter" else "X / Twitter"
 
-    json_ld = f"""
-    <script type="application/ld+json">
-    {{
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-    "headline": {json.dumps(post.get("title", "Untitled"))},
-      "datePublished": "{date_iso}",
-      "author": {{
-        "@type": "Person",
-        "name": "David G. Smith"
-      }},
-    "url": {json.dumps(post["url"])},
-    "articleBody": {json.dumps(body_source)}
-    }}
-    </script>
-    """
-
     return f"""
         <article itemscope itemtype="https://schema.org/BlogPosting"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="{icon}" alt="" class="h-4 w-4" loading="lazy">
+                <img src="{icon}" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">{date} &bull; {html.escape(label)}</span>
             </div>
 
@@ -146,12 +138,7 @@ def render_post(post):
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm">{body}</div>
-
-            <a href="{url}" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm">{body}</div>
 
             {render_share_bar(post["url"])}
         </article>
@@ -159,22 +146,65 @@ def render_post(post):
 
 
 def generate_html():
-    posts_html = "\n".join(render_post(post) for post in load_posts())
+    posts = load_posts()
+    posts_html = "\n".join(render_post(post) for post in posts)
     if not posts_html:
         posts_html = '<p class="text-gray-500 text-center py-12">New thoughts will appear here soon.</p>'
 
-    json_ld_blog = """
+    # Dynamically build the BlogPosting objects for the JSON-LD graph
+    blog_postings_json = []
+    for i, post in enumerate(posts):
+        title = post.get("title", "Untitled")
+        date_iso = post["date"]
+        url = post["url"]
+        blog_postings_json.append(f"""
+        {{
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-{i}",
+          "headline": {json.dumps(title)},
+          "datePublished": "{date_iso}",
+          "author": {{
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          }},
+          "isPartOf": {{
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          }},
+          "url": {json.dumps(url)}
+        }}""")
+
+    blog_postings_str = ",\n".join(blog_postings_json)
+    comma = "," if blog_postings_str else ""
+
+    # Comprehensive JSON-LD Graph for SEO
+    json_ld_graph = f"""
     <script type="application/ld+json">
-    {
+    {{
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Thoughts & Insights — David G. Smith",
-      "url": "https://druidsmith.github.com/thoughts.html",
-      "author": {
-        "@type": "Person",
-        "name": "David G. Smith"
-      }
-    }
+      "@graph": [
+        {{
+          "@type": "Person",
+          "@id": "https://druidsmith.github.com/#davidgsmith",
+          "name": "David G. Smith",
+          "jobTitle": "Solutions Architect & Data Scientist",
+          "url": "https://druidsmith.github.com",
+          "sameAs": [
+            "https://www.linkedin.com/in/davidgsmith",
+            "https://github.com/druidsmith"
+          ],
+          "knowsAbout": ["Data Science", "Solutions Architecture", "Critical Thinking", "Cognitive Biases"]
+        }},
+        {{
+          "@type": "Blog",
+          "@id": "https://druidsmith.github.com/thoughts.html#blog",
+          "name": "Thoughts & Insights — David G. Smith",
+          "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
+          "publisher": {{
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          }}
+        }}{comma}
+        {blog_postings_str}
+      ]
+    }}
     </script>
     """
 
@@ -185,7 +215,7 @@ def generate_html():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Thoughts & Insights — David G. Smith</title>
-<meta name="description" content="Latest writing and insights on data science, technology modernization, and critical thinking from David G. Smith.">
+<meta name="description" content="Read the latest insights from David G. Smith on data science, federal IT modernization, solutions architecture, and applied critical thinking.">
 
 <link rel="canonical" href="https://druidsmith.github.com/thoughts.html">
 
@@ -232,15 +262,20 @@ def generate_html():
     }}
     .markdown-content p {{ margin-bottom: 1rem; }}
     .markdown-content p:last-child {{ margin-bottom: 0; }}
+    
+    /* Clean up empty paragraphs emitted by Markdown */
+    .markdown-content p:empty {{ display: none; }}
+    
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {{
         color: #111827;
         font-family: Lora, serif;
         font-weight: 500;
         margin: 1.25rem 0 0.5rem;
     }}
-    .markdown-content h1 {{ font-size: 1.5rem; }}
-    .markdown-content h2 {{ font-size: 1.25rem; }}
-    .markdown-content h3 {{ font-size: 1.125rem; }}
+    /* Demoted H1 so it doesn't compete with the Page header */
+    .markdown-content h1 {{ font-size: 1.25rem; }}
+    .markdown-content h2 {{ font-size: 1.125rem; }}
+    .markdown-content h3 {{ font-size: 1rem; }}
     .markdown-content ul, .markdown-content ol {{ margin: 0 0 1rem 1.25rem; }}
     .markdown-content ul {{ list-style: disc; }}
     .markdown-content ol {{ list-style: decimal; }}
@@ -251,10 +286,14 @@ def generate_html():
     .markdown-content pre code {{ background: transparent; padding: 0; }}
 </style>
 
-{json_ld_blog}
+{json_ld_graph}
 </head>
 
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
+
+<!-- Accessibility Skip Link -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-dark text-white px-4 py-2 rounded z-[100]">Skip to content</a>
+
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
@@ -278,19 +317,38 @@ def generate_html():
     <p class="text-lg text-gray-500 max-w-2xl mx-auto">Latest perspectives on technical architecture, enterprise data, and critical thinking.</p>
 </header>
 
-<section class="py-16 bg-brand-light min-h-screen">
+<!-- Restructured as MAIN block -->
+<main id="main-content" class="py-16 bg-brand-light min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8">
             {posts_html}
         </div>
     </div>
-</section>
+</main>
 
 <footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
         &copy; {datetime.now().year} David G. Smith. All rights reserved.
     </div>
 </footer>
+
+<!-- Floating Back to Top Button -->
+<button id="bttButton" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})" class="fixed bottom-8 right-8 bg-brand-accent text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-brand-dark z-50" aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+</button>
+<script>
+    window.addEventListener('scroll', () => {{
+        const btt = document.getElementById('bttButton');
+        if (window.scrollY > 300) {{
+            btt.classList.remove('opacity-0', 'pointer-events-none');
+            btt.classList.add('opacity-100', 'pointer-events-auto');
+        }} else {{
+            btt.classList.add('opacity-0', 'pointer-events-none');
+            btt.classList.remove('opacity-100', 'pointer-events-auto');
+        }}
+    }});
+</script>
+
 </body>
 </html>"""
 
