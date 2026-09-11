@@ -223,7 +223,7 @@ def generate_html():
 <title>Thoughts & Insights — David G. Smith</title>
 <meta name="description" content="Read the latest insights from David G. Smith on data science, federal IT modernization, solutions architecture, and applied critical thinking.">
 
-<link rel="canonical" href="https://druidsmith.github.com/thoughts.html">
+<link rel="canonical" href="https://davidgsmith.net/thoughts.html">
 
 <!-- OpenGraph -->
 <meta property="og:title" content="Thoughts & Insights — David G. Smith">
