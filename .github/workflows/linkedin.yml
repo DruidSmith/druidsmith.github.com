@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     
     # Allows the action to commit files back to the repo
     permissions:
@@ -34,9 +36,22 @@ jobs:
         run: python build_thoughts.py
 
       - name: Commit and Push Changes
+        id: publish
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add thoughts.html
-          git commit -m "Build stored thoughts page" || exit 0
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "Build stored thoughts page"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Submit updated page to Bing IndexNow
+        if: steps.publish.outputs.changed == 'true' && env.INDEXNOW_KEY != ''
+        run: |
+          curl --fail-with-body --retry 3 --retry-delay 5 -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data "{\"host\":\"davidgsmith.net\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://davidgsmith.net/$INDEXNOW_KEY.txt\",\"urlList\":[\"https://davidgsmith.net/thoughts.html\"]}"
