@@ -356,22 +356,6 @@
         </div>
     </section>
 
-    <!-- Recent Updates Container (Resolves JS Error) -->
-    <section class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 text-center">
-                <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Latest Posts</p>
-                <h2 class="text-3xl font-serif font-medium text-brand-dark">Recent Thoughts</h2>
-            </div>
-            <div id="linkedin-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feed items will be injected here via JavaScript -->
-            </div>
-            <div class="mt-12 text-center">
-                <a href="thoughts.html" class="px-8 py-3 bg-transparent border border-gray-300 text-brand-dark rounded font-medium hover:border-brand-dark transition-colors inline-block">View All Thoughts</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-brand-light border-t border-gray-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -423,45 +407,6 @@
             });
         });
     </script>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const linkedinRssUrl = 'https://rss.app/feeds/YuGr16MsXmjBoomz.xml'; 
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(linkedinRssUrl)}`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const feedContainer = document.getElementById('linkedin-feed');
-            feedContainer.innerHTML = ''; 
-
-            const posts = data.items.slice(0, 3);
-
-            posts.forEach(post => {
-                const date = new Date(post.pubDate).toLocaleDateString('en-US', {
-                    year: 'numeric', month: 'long', day: '2-digit'
-                });
-
-                const articleHTML = `
-                    <article class="group bg-white p-6 border border-gray-200 rounded shadow-sm">
-                        <span class="text-sm text-gray-400 mb-2 block">${date} • LinkedIn</span>
-                        <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="block">
-                            <h4 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">
-                                ${post.title || 'Latest Update'}
-                            </h4>
-                            <p class="text-gray-600 leading-relaxed text-sm">
-                                ${post.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
-                            </p>
-                        </a>
-                    </article>
-                `;
-                feedContainer.innerHTML += articleHTML;
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching LinkedIn feed:', error);
-            document.getElementById('linkedin-feed').innerHTML = '<p class="text-red-400">Unable to load posts at this time.</p>';
-        });
-});
-</script>
+ 
 </body>
 </html>
