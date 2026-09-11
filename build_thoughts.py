@@ -352,9 +352,9 @@ def generate_html():
 </body>
 </html>"""
 
-    with open("thoughts2.html", "w", encoding="utf-8") as f:
+    with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(html_template)
 
 if __name__ == "__main__":
     generate_html()
-    print("Successfully generated thoughts2.html from posts.json")
+    print("Successfully generated thoughts.html from posts.json")
