@@ -40,25 +40,78 @@ def load_posts():
     return sorted(posts, key=lambda post: post.get("date", ""), reverse=True)
 
 
+def render_share_bar(url):
+    escaped = html.escape(url, quote=True)
+    return f"""
+    <div class="flex gap-4 mt-6">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}"
+           target="_blank" class="hover:text-brand-accent transition">
+           <img src="https://cdn.simpleicons.org/linkedin/0A66C2" class="h-5 w-5" alt="Share on LinkedIn">
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={escaped}"
+           target="_blank" class="hover:text-brand-accent transition">
+           <img src="https://cdn.simpleicons.org/x/111827" class="h-5 w-5" alt="Share on X">
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={escaped}"
+           target="_blank" class="hover:text-brand-accent transition">
+           <img src="https://cdn.simpleicons.org/facebook/1877F2" class="h-5 w-5" alt="Share on Facebook">
+        </a>
+    </div>
+    """
+
+
 def render_post(post):
     title = html.escape(post.get("title", "Untitled"))
     body = html.escape(post.get("body", ""))
     url = html.escape(post["url"], quote=True)
-    date = datetime.fromisoformat(post["date"].replace("Z", "+00:00")).strftime("%B %d, %Y")
+    date_iso = post["date"]
+    date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
     platform = post.get("platform") or platform_for_url(post["url"])
     icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["other"])
     label = platform.title() if platform != "twitter" else "X / Twitter"
+
+    json_ld = f"""
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{title}",
+      "datePublished": "{date_iso}",
+      "author": {{
+        "@type": "Person",
+        "name": "David G. Smith"
+      }},
+      "url": "{url}",
+      "articleBody": "{body}"
+    }}
+    </script>
+    """
+
     return f"""
-        <article class="group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+        <article itemscope itemtype="https://schema.org/BlogPosting"
+                 class="group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="{icon}" alt="" class="h-4 w-4" loading="lazy">
-                <span>{date} &bull; {html.escape(label)}</span>
+                <span itemprop="datePublished">{date} &bull; {html.escape(label)}</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2>
-            <p class="text-gray-600 leading-relaxed text-sm whitespace-pre-wrap">{body}</p>
-            <a href="{url}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">Original post &rarr;</a>
+
+            <h2 itemprop="headline"
+                class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">
+                {title}
+            </h2>
+
+            <p itemprop="articleBody"
+               class="text-gray-600 leading-loose text-sm whitespace-pre-wrap">{body}</p>
+
+            <a href="{url}" target="_blank" rel="noopener noreferrer"
+               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
+               Original post &rarr;
+            </a>
+
+            {render_share_bar(post["url"])}
+            {json_ld}
         </article>
-        """
+    """
 
 
 def generate_html():
@@ -66,16 +119,51 @@ def generate_html():
     if not posts_html:
         posts_html = '<p class="text-gray-500 text-center py-12">New thoughts will appear here soon.</p>'
 
+    json_ld_blog = """
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Thoughts & Insights — David G. Smith",
+      "url": "https://druidsmith.github.com/thoughts.html",
+      "author": {
+        "@type": "Person",
+        "name": "David G. Smith"
+      }
+    }
+    </script>
+    """
+
     html_template = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Thoughts & Insights — David G. Smith</title>
 <meta name="description" content="Latest writing and insights on data science, technology modernization, and critical thinking from David G. Smith.">
+
+<link rel="canonical" href="https://druidsmith.github.com/thoughts.html">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Thoughts & Insights — David G. Smith">
+<meta property="og:description" content="Latest writing and insights on data science, technology modernization, and critical thinking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://druidsmith.github.com/thoughts.html">
+<meta property="og:image" content="https://druidsmith.github.com/assets/og-default.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Thoughts & Insights — David G. Smith">
+<meta name="twitter:description" content="Latest writing and insights on data science, technology modernization, and critical thinking.">
+<meta name="twitter:image" content="https://druidsmith.github.com/assets/og-default.jpg">
+
+<!-- Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" as="style">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {{
@@ -89,11 +177,20 @@ def generate_html():
         }}
     }}
 </script>
+
 <style>
-    body {{ background-color: #fcfcfc; }}
-    .glass-nav {{ background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }}
+    body {{
+        background: linear-gradient(to bottom, #faf9f7, #f3f2ee);
+    }}
+    .glass-nav {{
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+    }}
 </style>
+
+{json_ld_blog}
 </head>
+
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,7 +233,7 @@ def generate_html():
 
     with open("thoughts2.html", "w", encoding="utf-8") as f:
         f.write(html_template)
-        
+
 if __name__ == "__main__":
     generate_html()
     print("Successfully generated thoughts2.html from posts.json")
