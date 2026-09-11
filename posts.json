@@ -54,5 +54,12 @@
     "url": "https://www.mapsofworld.com/style_2019/images/world-map.png?v:1",
     "date": "2026-09-11T15:48:16.577Z",
     "platform": "other"
+  },
+  {
+    "title": "This is a markdown test",
+    "body": "***testingg\n\nhttps://www.mapsofworld.com/style_2019/images/world-map.png?v:1\n\n![A cute cat](./images/cat.png \"Cat Photo\")\n\n![A cute cat](https://www.mapsofworld.com/style_2019/images/world-map.png \"Cat Photo\")",
+    "url": "https://www.mapsofworld.com/style_2019/images/world-map.png?v:1",
+    "date": "2026-09-11T16:09:34.326Z",
+    "platform": "other"
   }
 ]
