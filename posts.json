@@ -54,5 +54,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_take-a-breath-and-look-at-where-a-river-activity-7500910283759144960-iEiC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T16:54:38.309Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "Redis:  From Cache to Vector + Semantic + Agent-Memory Layer",
+    "body": "Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.\n\n[Redis for AI and Search](https://redis.io/docs/latest/develop/ai/)",
+    "url": "https://www.linkedin.com/posts/davidgsmith_redis-for-ai-and-search-activity-7501243831435161600-Wad9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
+    "date": "2026-09-11T17:10:45.149Z",
+    "platform": "linkedin"
   }
 ]
