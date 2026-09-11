@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Thoughts & Insights — David G. Smith</title>
-<meta name="description" content="Latest writing and insights on data science, technology modernization, and critical thinking from David G. Smith.">
+<meta name="description" content="Read the latest insights from David G. Smith on data science, federal IT modernization, solutions architecture, and applied critical thinking.">
 
 <link rel="canonical" href="https://druidsmith.github.com/thoughts.html">
 
@@ -52,15 +52,20 @@
     }
     .markdown-content p { margin-bottom: 1rem; }
     .markdown-content p:last-child { margin-bottom: 0; }
+    
+    /* Clean up empty paragraphs emitted by Markdown */
+    .markdown-content p:empty { display: none; }
+    
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {
         color: #111827;
         font-family: Lora, serif;
         font-weight: 500;
         margin: 1.25rem 0 0.5rem;
     }
-    .markdown-content h1 { font-size: 1.5rem; }
-    .markdown-content h2 { font-size: 1.25rem; }
-    .markdown-content h3 { font-size: 1.125rem; }
+    /* Demoted H1 so it doesn't compete with the Page header */
+    .markdown-content h1 { font-size: 1.25rem; }
+    .markdown-content h2 { font-size: 1.125rem; }
+    .markdown-content h3 { font-size: 1rem; }
     .markdown-content ul, .markdown-content ol { margin: 0 0 1rem 1.25rem; }
     .markdown-content ul { list-style: disc; }
     .markdown-content ol { list-style: decimal; }
@@ -75,19 +80,151 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Thoughts & Insights — David G. Smith",
-      "url": "https://druidsmith.github.com/thoughts.html",
-      "author": {
-        "@type": "Person",
-        "name": "David G. Smith"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://druidsmith.github.com/#davidgsmith",
+          "name": "David G. Smith",
+          "jobTitle": "Solutions Architect & Data Scientist",
+          "url": "https://druidsmith.github.com",
+          "sameAs": [
+            "https://www.linkedin.com/in/davidgsmith",
+            "https://github.com/druidsmith"
+          ],
+          "knowsAbout": ["Data Science", "Solutions Architecture", "Critical Thinking", "Cognitive Biases"]
+        },
+        {
+          "@type": "Blog",
+          "@id": "https://druidsmith.github.com/thoughts.html#blog",
+          "name": "Thoughts & Insights — David G. Smith",
+          "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
+          "publisher": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          }
+        },
+        
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-0",
+          "headline": "Image test",
+          "datePublished": "2026-09-11T15:48:16.577Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-1",
+          "headline": "Markdown test",
+          "datePublished": "2026-09-11T15:30:37.601Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.markdownguide.org/cheat-sheet/"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-2",
+          "headline": "Map pos",
+          "datePublished": "2026-09-11T15:23:46.906Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.markdownguide.org/cheat-sheet/"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-3",
+          "headline": "This is a test of markdown",
+          "datePublished": "2026-09-11T15:19:20.556Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://bassistance.de/2026/02/15/nice-maps/"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-4",
+          "headline": "Capturing Expertise Before It Walks Out the Door",
+          "datePublished": "2026-09-11T15:07:14.657Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-5",
+          "headline": "AI Containment Failure",
+          "datePublished": "2026-09-11T15:03:57.151Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-6",
+          "headline": "Gaussian Splats versus 3D mesh",
+          "datePublished": "2026-09-11T15:03:11.321Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
+        },
+
+        {
+          "@type": "BlogPosting",
+          "@id": "https://druidsmith.github.com/thoughts.html#post-7",
+          "headline": "Thought of the Day",
+          "datePublished": "2026-09-11T15:02:27.436Z",
+          "author": {
+            "@id": "https://druidsmith.github.com/#davidgsmith"
+          },
+          "isPartOf": {
+            "@id": "https://druidsmith.github.com/thoughts.html#blog"
+          },
+          "url": "https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
+        }
+      ]
     }
     </script>
     
 </head>
 
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
+
+<!-- Accessibility Skip Link -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-dark text-white px-4 py-2 rounded z-[100]">Skip to content</a>
+
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
@@ -111,7 +248,8 @@
     <p class="text-lg text-gray-500 max-w-2xl mx-auto">Latest perspectives on technical architecture, enterprise data, and critical thinking.</p>
 </header>
 
-<section class="py-16 bg-brand-light min-h-screen">
+<!-- Restructured as MAIN block -->
+<main id="main-content" class="py-16 bg-brand-light min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8">
             
@@ -119,7 +257,7 @@
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" class="h-4 w-4" loading="lazy">
+                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Other</span>
             </div>
 
@@ -129,36 +267,35 @@
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p></p></div>
-
-            <a href="https://www.mapsofworld.com/style_2019/images/world-map.png?v:1" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p><img alt="alt text" src="https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"></p></div>
 
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.mapsofworld.com/style_2019/images/world-map.png?v:1" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.mapsofworld.com/style_2019/images/world-map.png?v:1"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -170,7 +307,7 @@
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" class="h-4 w-4" loading="lazy">
+                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Other</span>
             </div>
 
@@ -180,7 +317,7 @@
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><h2>Basic Syntax</h2>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><h2>Basic Syntax</h2>
 <p>These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.</p>
 <h3>Heading</h3>
 <h1>H1</h1>
@@ -213,7 +350,7 @@
 <h3>Link</h3>
 <p><a href="https://www.markdownguide.org">Markdown Guide</a></p>
 <h3>Image</h3>
-<p></p>
+<p><img alt="alt text" src="https://www.markdownguide.org/assets/images/tux.png"></p>
 <h2>Extended Syntax</h2>
 <p>These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.</p>
 <h3>Table</h3>
@@ -282,34 +419,33 @@ definition
 </ol>
 </div>
 
-            <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -321,7 +457,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" class="h-4 w-4" loading="lazy">
+                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Other</span>
             </div>
 
@@ -331,37 +467,36 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>This is a test, <em>ain't it cool?</em>  Maybe it is?</p>
-<p></p></div>
-
-            <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>This is a test, <em>ain't it cool?</em>  Maybe it is?</p>
+<p><img alt="alt text" src="https://bassistance.de/wp-content/uploads/Screenshot-2026-02-15-at-11.50.16-1536x920.png"></p></div>
 
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.markdownguide.org/cheat-sheet/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -373,7 +508,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" class="h-4 w-4" loading="lazy">
+                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Other</span>
             </div>
 
@@ -383,39 +518,38 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>This is a test, <em>ain't it cool?</em>  Maybe it is?</p>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>This is a test, <em>ain't it cool?</em>  Maybe it is?</p>
 <p><strong>sdfadf</strong></p>
-<p></p>
+<p><img alt="A cute cat" src="https://bassistance.de/wp-content/uploads/Screenshot-2026-02-15-at-11.50.16-1536x920.png" title="Cat Photo"></p>
 <p><a href="https://bassistance.de/2026/02/15/nice-maps/">some site</a> gssg</p></div>
 
-            <a href="https://bassistance.de/2026/02/15/nice-maps/" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://bassistance.de/2026/02/15/nice-maps/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://bassistance.de/2026/02/15/nice-maps/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://bassistance.de/2026/02/15/nice-maps/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://bassistance.de/2026/02/15/nice-maps/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://bassistance.de/2026/02/15/nice-maps/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://bassistance.de/2026/02/15/nice-maps/"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -427,7 +561,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="" class="h-4 w-4" loading="lazy">
+                <img src="/images/InBug-Black.png" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Linkedin</span>
             </div>
 
@@ -437,39 +571,38 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional knowledge faster than we can document it. AI isn’t the threat; it could be the lifeline.</p>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional knowledge faster than we can document it. AI isn’t the threat; it could be the lifeline.</p>
 <p>Bill’s team at Clairvoyint AI is building something deceptively simple and incredibly powerful: tools that capture how experts think, not just what they produce. Their “Bundles” turn decades of judgment, rules, exceptions, and evidence standards into transparent, inspectable analytical agents. It’s not automation. It’s continuity.</p>
 <p>The big idea: If you can preserve expert methodology, you preserve capability: no matter who retires, moves on, or changes roles. That’s the kind of AI work that actually matters.</p>
 <p>https://blog.geomusings.com/2026/08/11/what-were-building-at-clairvoyint/</p></div>
 
-            <a href="https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -481,7 +614,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="" class="h-4 w-4" loading="lazy">
+                <img src="/images/InBug-Black.png" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Linkedin</span>
             </div>
 
@@ -491,37 +624,36 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry’s definition of “isolated evaluation environments” is fundamentally flawed. These failures reveal that AI safety is shifting from a model‑alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry’s definition of “isolated evaluation environments” is fundamentally flawed. These failures reveal that AI safety is shifting from a model‑alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
 <p>https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722</p></div>
 
-            <a href="https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.linkedin.com/posts/davidgsmith_the-sandbox-was-never-sealed-four-labs-proved-activity-7493646159127732225--ZcQ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -533,7 +665,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="" class="h-4 w-4" loading="lazy">
+                <img src="/images/InBug-Black.png" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Linkedin</span>
             </div>
 
@@ -543,37 +675,36 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
 <p>https://lnkd.in/gFbpKXV3</p></div>
 
-            <a href="https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -585,7 +716,7 @@ definition
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
 
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="" class="h-4 w-4" loading="lazy">
+                <img src="/images/InBug-Black.png" alt="" aria-hidden="true" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 11, 2026 &bull; Linkedin</span>
             </div>
 
@@ -595,7 +726,7 @@ definition
             </h2>
 
               <div itemprop="articleBody"
-                  class="markdown-content text-gray-600 leading-loose text-sm"><p>Before you tear down a "pointless" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton’s classic thought experiment.</p>
+                  class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Before you tear down a "pointless" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton’s classic thought experiment.</p>
 <p>Imagine you're walking down a country road and encounter a sturdy wooden fence blocking your path. To your eye, it serves absolutely no purpose.</p>
 <p>What's your first instinct?</p>
 <p>The "reformer" in us wants to yell: "Tear it down!"</p>
@@ -607,34 +738,33 @@ definition
 <p>The next time you want to "disrupt" or streamline a process, pause and ask the load-bearing question:</p>
 <p>"What exact problem was this solving, and what happens if that problem returns?"</p></div>
 
-            <a href="https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-               class="mt-5 inline-block text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">
-               Original post &rarr;
-            </a>
-
             
-    <div class="absolute bottom-4 right-4 text-right">
-        <p class="text-xs text-gray-400 mb-2">Share this post</p>
-        <div class="flex gap-3 justify-end">
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Original &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+               <img src="/images/InBug-Black.png" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+               <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+               <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://bsky.app/intent/share?url=https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+               <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
             <a href="https://mastodon.social/share?text=https://www.linkedin.com/posts/davidgsmith_thought-of-the-day-before-you-tear-down-activity-7492947179683315712-6CVq?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0"
-               target="_blank" class="hover:text-brand-accent transition">
-               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon">
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+               <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="" aria-hidden="true">
             </a>
         </div>
     </div>
@@ -643,12 +773,30 @@ definition
     
         </div>
     </div>
-</section>
+</main>
 
 <footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
         &copy; 2026 David G. Smith. All rights reserved.
     </div>
 </footer>
+
+<!-- Floating Back to Top Button -->
+<button id="bttButton" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-brand-accent text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-brand-dark z-50" aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+</button>
+<script>
+    window.addEventListener('scroll', () => {
+        const btt = document.getElementById('bttButton');
+        if (window.scrollY > 300) {
+            btt.classList.remove('opacity-0', 'pointer-events-none');
+            btt.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            btt.classList.add('opacity-0', 'pointer-events-none');
+            btt.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+    });
+</script>
+
 </body>
 </html>
