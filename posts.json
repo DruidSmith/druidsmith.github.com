@@ -26,5 +26,12 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_what-were-building-at-clairvoyint-activity-7494482191024910336-7yU_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-11T15:07:14.657Z",
     "platform": "linkedin"
+  },
+  {
+    "title": "This is a test of markdown",
+    "body": "This is a test, *ain't it cool?*  Maybe it is?\n\n**sdfadf**\n\n![A cute cat](https://bassistance.de/wp-content/uploads/Screenshot-2026-02-15-at-11.50.16-1536x920.png \"Cat Photo\")\n\n[some site](https://bassistance.de/2026/02/15/nice-maps/) gssg",
+    "url": "https://bassistance.de/2026/02/15/nice-maps/",
+    "date": "2026-09-11T15:19:20.556Z",
+    "platform": "other"
   }
 ]
