@@ -273,23 +273,60 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
 </body>
 </html>"""
 
+def sanitize_feed_text(text):
+    """Replaces specific Unicode characters that trip up strict RSS parsers."""
+    if not text: return ""
+    replacements = {
+        '‑': '-',       # Non-breaking hyphen
+        '→': '->',      # Rightwards arrow
+        '—': '--',      # Em dash
+        '“': '"',       # Left double quote
+        '”': '"',       # Right double quote
+        '‘': "'",       # Left single quote
+        '’': "'"        # Right single quote
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return text
+
+def create_text_excerpt(html_content, max_length=250):
+    """Strips HTML to create a plain-text summary for the description tag."""
+    plain_text = bleach.clean(html_content, tags=[], strip=True)
+    if len(plain_text) > max_length:
+        return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
+    return plain_text
+
 def generate_rss(posts):
     rss_items = []
     for post in posts:
         slug = slugify(post.get("title", ""))
         # RSS requires RFC 822 dates
         pub_date = datetime.fromisoformat(post["date"].replace("Z", "+00:00")).strftime("%a, %d %b %Y %H:%M:%S +0000")
+        
+        # 1. Get the HTML body and sanitize the unicode characters
+        html_body = render_markdown(post.get("body", ""))
+        html_body = sanitize_feed_text(html_body)
+        
+        # 2. Create a clean, plain-text excerpt for the description tag
+        excerpt = html.escape(create_text_excerpt(html_body))
+        
+        # 3. Sanitize the title as well
+        safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
+
+        # 4. Use description for the excerpt, and content:encoded for the full HTML
         rss_items.append(f"""
         <item>
-            <title>{html.escape(post.get("title", ""))}</title>
+            <title>{safe_title}</title>
             <link>https://davidgsmith.net/thoughts/{slug}.html</link>
             <guid>https://davidgsmith.net/thoughts/{slug}.html</guid>
             <pubDate>{pub_date}</pubDate>
-            <description><![CDATA[{render_markdown(post.get("body", ""))}]]></description>
+            <description>{excerpt}</description>
+            <content:encoded><![CDATA[{html_body}]]></content:encoded>
         </item>""")
 
+    # Add the xmlns:content namespace to the root rss tag
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
-    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Thoughts &amp; Insights — David G. Smith</title>
         <link>https://davidgsmith.net/thoughts.html</link>
