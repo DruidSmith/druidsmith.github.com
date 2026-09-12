@@ -1,0 +1,134 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": "https://davidgsmith.net/#book",
+  "name": "Critical Thinking",
+  "alternateName": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
+  "headline": "A Practical Guide to Seeing Through Bias, Noise, and Manipulation",
+  "url": "https://www.amazon.com/dp/B0HH3CYK79",
+  "isbn": "B0HH3CYK79",
+  "author": {
+    "@type": "Person",
+    "@id": "https://davidgsmith.net/#person",
+    "name": "David G. Smith",
+    "url": "https://davidgsmith.net/",
+    "jobTitle": "Data Scientist, Technical Architect & Strategic Advisor",
+    "description": "Engineer, technical architect, and author specializing in federal technology modernization, cloud architecture, and applied cognitive decision-making models."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "David G. Smith Publishing",
+    "url": "https://davidgsmith.net/",
+    "logo": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
+    "description": "Independent publisher of non-fiction works focusing on critical thinking and technology."
+  },
+  "datePublished": "2026-08-30",
+  "bookEdition": "2026",
+  "inLanguage": "en-US",
+  "numberOfPages": 466,
+  "bookFormat": [
+    "https://schema.org/Paperback",
+    "https://schema.org/EBook"
+  ],
+  "genre": [
+    "Nonfiction",
+    "Cognitive Psychology",
+    "Applied Logic",
+    "Behavioral Economics",
+    "Systems Thinking",
+    "Business Leadership & Decision-Making"
+  ],
+  "description": "An exhaustive, high-depth 466-page practical manual synthesizing cognitive psychology, formal logic, statistical risk assessment, and decision-making frameworks. Designed to help professionals, analysts, and readers identify cognitive biases, navigate digital manipulation, survive AI chatbot sycophancy, and implement robust metacognitive controls.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.amazon.com/dp/B0HH3CYK79",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Amazon / David G. Smith Publishing"
+    }
+  },
+  "sameAs": [
+    "https://www.goodreads.com/book/show/257686553-critical-thinking",
+    "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
+    "https://bookwyrm.social/book/2365772/s/critical-thinking",
+    "https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation-ebook/dp/B0HH8DV2K4"
+  ],
+  "educationalUse": "Self-Paced Professional Training & Applied Logic Curriculum",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": [
+      "Data Analysts",
+      "Systems Engineers",
+      "Business Executives",
+      "Researchers",
+      "Students of Logic & Behavioral Economics"
+    ]
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Cognitive Bias Mitigation",
+      "description": "Protocols for identifying and correcting System 1 intuition errors, narrative fallacies, and the Bias Blind Spot (Emily Pronin)."
+    },
+    {
+      "@type": "Thing",
+      "name": "Statistical Risk Literacy",
+      "description": "Evaluating absolute vs. relative risk, base rates, and Bayesian updating based on Gerd Gigerenzer's risk models."
+    },
+    {
+      "@type": "Thing",
+      "name": "AI Chatbot Sycophancy & Digital Defenses",
+      "description": "Tactical frameworks (including the AI Crux Test) for identifying algorithmic echo chambers, digital dark patterns, and automated confirmation bias."
+    },
+    {
+      "@type": "Thing",
+      "name": "Strategic Decision Frameworks",
+      "description": "Operationalizing Gary Klein's Premortem, Colonel John Boyd's OODA Loop, Second-Order Thinking, and Red Team Thinking."
+    },
+    {
+      "@type": "Thing",
+      "name": "Constructive Disagreement Models",
+      "description": "Interpersonal truth-seeking tools including Steelmanning, the Ideological Turing Test, and Double Crux alignment."
+    }
+  ],
+  "mentions": [
+    { "@type": "Person", "name": "Daniel Kahneman" },
+    { "@type": "Person", "name": "Amos Tversky" },
+    { "@type": "Person", "name": "Gerd Gigerenzer" },
+    { "@type": "Person", "name": "Gary Klein" },
+    { "@type": "Person", "name": "John Boyd" },
+    { "@type": "Person", "name": "Nassim Nicholas Taleb" },
+    { "@type": "Person", "name": "Julia Galef" },
+    { "@type": "Person", "name": "Antonio Damasio" },
+    { "@type": "Person", "name": "Karl Popper" }
+  ],
+  "hasPart": [
+    {
+      "@type": "PublicationIssue",
+      "name": "Part I: The Flawed Machine",
+      "description": "Deconstructs evolutionary hardware bugs, narrative fallacies, and the neurobiology of emotion (Somatic Marker Hypothesis)."
+    },
+    {
+      "@type": "PublicationIssue",
+      "name": "Part II: The Mechanics of Thinking",
+      "description": "Formalizes deductive, inductive, and abductive proof structures alongside statistical self-defense and risk dynamics."
+    },
+    {
+      "@type": "PublicationIssue",
+      "name": "Part III: Information in the Wild",
+      "description": "Navigates descriptive vs. normative claims, lateral reading, CRAAP test vetting, dark patterns, and AI chatbot sycophancy."
+    },
+    {
+      "@type": "PublicationIssue",
+      "name": "Part IV: The Advanced Toolkit",
+      "description": "Operational models covering second-order systems, Bayesian updating, productive disagreement, and metacognitive calibration."
+    }
+  ],
+  "differentiators": {
+    "scientificVetting": "Fully post-replication-crisis vetted, excluding failed social priming and un-replicated behavioral experiments.",
+    "aiScope": "Dedicated chapter (Chapter 11) on surviving conversational AI chatbot sycophancy and digital dark patterns.",
+    "practicalExercises": "Includes chapter-ending practical worksheets including the Personal Bias Inventory (PBI) and 5-Minute Friday Audit."
+  }
+}

@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Homepage (This serves as your /index.html) -->
+  <!-- Homepage -->
   <url>
        <loc>https://davidgsmith.net/</loc>
        <lastmod>2026-09-11T12:00:00+00:00</lastmod>
@@ -10,12 +10,28 @@
        <priority>1.00</priority>
   </url>
 
-  <!-- Thoughts Page -->
+  <!-- Thoughts Hub / Index Page -->
   <url>
        <loc>https://davidgsmith.net/thoughts.html</loc>
        <lastmod>2026-09-11T12:00:00+00:00</lastmod>
-       <changefreq>weekly</changefreq>
+       <changefreq>daily</changefreq>
        <priority>0.90</priority>
+  </url>
+
+  <!-- AI Agent Metadata Directive -->
+  <url>
+       <loc>https://davidgsmith.net/ai-agent-metadata.md</loc>
+       <lastmod>2026-09-11T12:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- Book Metadata JSON Schema -->
+  <url>
+       <loc>https://davidgsmith.net/book-metadata-schema.json</loc>
+       <lastmod>2026-09-11T12:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
   </url>
 
 </urlset>
