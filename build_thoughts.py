@@ -22,7 +22,7 @@ PLATFORM_ICONS = {
     "github": "https://unpkg.com/simple-icons/icons/github.svg",
     "bluesky": "https://unpkg.com/simple-icons/icons/bluesky.svg",
     "mastodon": "https://unpkg.com/simple-icons/icons/mastodon.svg",
-    "other": "https://unpkg.com/simple-icons/icons/link.svg",
+    "other": "https://unpkg.com/feather-icons/dist/icons/link.svg", # Swapped to Feather Icons
 }
 
 PLATFORM_ALT_TEXT = {
@@ -73,18 +73,37 @@ def render_markdown(text):
     cleaned = bleach.clean(rendered, tags=allowed_tags, attributes=allowed_attributes, protocols=["http", "https", "mailto"], strip=True)
     return re.sub(r'<a\b(?![^>]*\btarget=)', '<a target="_blank" rel="noopener noreferrer"', cleaned)
 
-def render_share_bar(url):
-    escaped = html.escape(url, quote=True)
+def render_share_bar(share_url, original_url):
+    share_escaped = html.escape(share_url, quote=True)
+    orig_escaped = html.escape(original_url, quote=True)
     return f"""
     <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <a href="{escaped}" target="_blank" rel="noopener noreferrer"
+        <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
            class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Syndicated Post &rarr;
+           Read Original &rarr;
         </a>
         <div class="flex items-center gap-3">
             <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={escaped}" target="_blank" class="hover:text-brand-accent transition"><img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon"></a>
-            <a href="https://twitter.com/intent/tweet?url={escaped}" target="_blank" class="hover:text-brand-accent transition"><img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X icon"></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url={share_escaped}"
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={share_escaped}"
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url={share_escaped}"
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text={share_escaped}"
+               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+            </a>
         </div>
     </div>
     """
@@ -123,7 +142,7 @@ def render_post(post, is_standalone=False):
             {title_html}
             <div class="mb-4">{tags_html}</div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm">{body}</div>
-            {render_share_bar(canonical_url)}
+            {render_share_bar(share_url=canonical_url, original_url=url)}
         </article>
     """
 
