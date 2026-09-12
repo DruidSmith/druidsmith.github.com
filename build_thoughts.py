@@ -324,7 +324,7 @@ def generate_html():
     tag_options = "".join([f'<option value="{html.escape(t).lower()}">{html.escape(t)}</option>' for t in sorted(all_tags)])
     
     filter_ui = f"""
-    div class="mb-8 flex justify-end items-center gap-3">
+    <div class="mb-8 flex justify-end items-center gap-3">
         <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
         <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
             <option value="all">All Thoughts</option>
