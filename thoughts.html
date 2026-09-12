@@ -52,6 +52,52 @@
         <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                <img src="https://unpkg.com/simple-icons/icons/link.svg" alt="Blog post image" class="h-4 w-4" loading="lazy">
+                <span itemprop="datePublished">September 12, 2026 &bull; Originally on Other</span>
+            </div>
+            <a href="/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud‑Native Imagery, and Analysis at Scale</h2></a>
+            <div class="mb-4"></div>
+            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
+<p><strong>Cloud-native imagery as queryable tables</strong><br>
+Planet publishes crisis imagery as Cloud Optimized GeoTIFFs with STAC‑GeoParquet metadata. SedonaDB reads that catalog directly over HTTPS, and a ST_Intersects query selects the 11 PlanetScope scenes that overlap the study area: eight pre‑fire, three post‑fire. Scene selection took about two seconds, and nothing was downloaded.</p>
+<p><strong>Raster alignment in SQL</strong><br>
+In this Sedona example, each scene is opened lazily with RS_FromPath: metadata loads instantly, pixels stay remote until needed.  RS_Clip and RS_ReprojectMatch then align all scenes onto a 12 m reference grid, averaging the original 3 m pixels. Six raster queries (red, NIR, and usable‑data masks for both dates) took ~11.5 minutes end‑to‑end — on a single machine.  NumPy mosaics the aligned rasters, keeping the first clear pixel per cell. Coverage reached ~87% despite clouds, smoke, and scene gaps.</p>
+<p><strong>Vegetation loss as a SQL‑backed NumPy operation</strong><br>
+As expected from the burn, NDVI drops between dates flag vegetation loss. Otsu’s method found a threshold of 0.225 for pixels with healthy pre‑fire NDVI. The burn mask becomes an in‑database raster via Raster.from_numpy, ready for SQL operations.</p>
+<p><strong>Pixels → polygons → statistics</strong><br>
+They used RS_Polygonize to convert the 7‑million‑cell mask into 3,769 patches in about three seconds. Filtering to patches ≥1 ha yields 173 polygons covering 24,091 ha: the largest a 21,090 ha burn scar between Le Porge and Lanton.  RS_ZonalStats then computes burned area by commune in ~14 seconds, producing a clear ranking:<br>
+Le Porge (6,202 ha), Saumos (4,045 ha), Lanton (3,499 ha), Arès (3,498 ha), and so on.</p>
+<p><strong>Why this matters</strong><br>
+This is what “geospatial at scale” actually looks like:</p>
+<ul>
+<li>Data stays in the cloud; SQL streams only what’s needed.</li>
+<li>Raster operations become declarative, not a tangle of scripts.</li>
+<li>NumPy acts as zero‑copy compute, not a separate pipeline.</li>
+<li>Outputs are transparent: polygons, GeoParquet, GeoTIFF, all versionable.</li>
+<li>Performance is predictable: the entire raster run took ~12 minutes on one machine.</li>
+</ul>
+<p>The distance between raw imagery and actionable insight is shrinking; not because machines are bigger, but because the abstractions are finally right.</p>
+<p>Spatial SQL + cloud‑native rasters isn’t just a convenience. It’s the foundation for environmental analysis that is auditable, scalable, and operationally sane.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <a href="https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           Read Syndicated Post &rarr;
+        </a>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html" target="_blank" class="hover:text-brand-accent transition"><img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon"></a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html" target="_blank" class="hover:text-brand-accent transition"><img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X icon"></a>
+        </div>
+    </div>
+    
+        </article>
+    
+
+        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
+                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
+            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 12, 2026 &bull; Originally on Linkedin</span>
             </div>
@@ -494,34 +540,6 @@ What evidence would make us reconsider our position?</p>
             <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/my-book-has-been-published.html" target="_blank" class="hover:text-brand-accent transition"><img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon"></a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/my-book-has-been-published.html" target="_blank" class="hover:text-brand-accent transition"><img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X icon"></a>
-        </div>
-    </div>
-    
-        </article>
-    
-
-        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 01, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/the-real-bottleneck-in-ai-agents-isnx27t-reasoning-itx27s-context.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context</h2></a>
-            <div class="mb-4"></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. </p>
-<p>Teams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf">Github: Google Open Knowledge Format</a></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <a href="https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnx27t-reasoning-itx27s-context.html" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Syndicated Post &rarr;
-        </a>
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnx27t-reasoning-itx27s-context.html" target="_blank" class="hover:text-brand-accent transition"><img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon"></a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnx27t-reasoning-itx27s-context.html" target="_blank" class="hover:text-brand-accent transition"><img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X icon"></a>
         </div>
     </div>
     
