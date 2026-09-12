@@ -23,7 +23,7 @@ PLATFORM_ICONS = {
     "github": "https://unpkg.com/simple-icons/icons/github.svg",
     "bluesky": "https://unpkg.com/simple-icons/icons/bluesky.svg",
     "mastodon": "https://unpkg.com/simple-icons/icons/mastodon.svg",
-    "post": "https://unpkg.com/feather-icons/dist/icons/link.svg", # Native post fallback
+    "post": "https://unpkg.com/feather-icons/dist/icons/link.svg",
 }
 
 PLATFORM_ALT_TEXT = {
@@ -47,13 +47,11 @@ def slugify(title):
 def platform_for_url(url):
     if not url: return "post"
     hostname = urlparse(url).netloc.lower().removeprefix("www.")
-    
     if "davidgsmith.net" in hostname: return "post"
     if "linkedin.com" in hostname: return "linkedin"
     if hostname in {"twitter.com", "x.com"}: return "twitter"
     if "bsky.app" in hostname: return "bluesky"
     if "mastodon" in hostname or hostname.endswith(".social") or hostname.endswith(".io"): return "mastodon"
-    
     for platform in ("facebook", "instagram", "youtube", "tiktok", "threads", "medium", "github"):
         if platform in hostname: return platform
     return "post"
@@ -80,9 +78,7 @@ def render_markdown(text):
 
 def render_share_bar(share_url, original_url):
     share_escaped = html.escape(share_url, quote=True)
-    
-    # Only show "Read Original" if an external URL is provided
-    read_original_html = "<div></div>" # Spacer for flex layout
+    read_original_html = "<div></div>" 
     if original_url and "davidgsmith.net" not in original_url:
         orig_escaped = html.escape(original_url, quote=True)
         read_original_html = f"""
@@ -122,12 +118,18 @@ def render_share_bar(share_url, original_url):
     """
 
 def get_json_ld(post=None):
-    """Generates Structured JSON-LD Data for AI Crawlers and Search Engines"""
+    """Generates Structured JSON-LD Data with valid ISO timestamps and author nodes"""
     if post:
         title = post.get("title", "Untitled")
         slug = slugify(title)
         canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
-        date_iso = post.get("date", datetime.now(timezone.utc).isoformat())
+        
+        # Ensure ISO 8601 format with timezone offset
+        raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
+        if not raw_date.endswith("Z") and "+" not in raw_date:
+            raw_date += "Z"
+        date_iso = raw_date.replace("Z", "+00:00")
+        
         tags = post.get("tags", [])
         description = create_text_excerpt(render_markdown(post.get("body", "")))
         
@@ -137,7 +139,13 @@ def get_json_ld(post=None):
             "headline": title,
             "url": canonical_url,
             "datePublished": date_iso,
+            "dateModified": date_iso,
             "author": {
+                "@type": "Person",
+                "name": "David G. Smith",
+                "url": "https://davidgsmith.net"
+            },
+            "publisher": {
                 "@type": "Person",
                 "name": "David G. Smith",
                 "url": "https://davidgsmith.net"
@@ -146,7 +154,6 @@ def get_json_ld(post=None):
             "keywords": ", ".join(tags) if tags else ""
         }
     else:
-        # Schema for the main index page
         schema = {
             "@context": "https://schema.org",
             "@type": "Blog",
@@ -354,8 +361,11 @@ def generate_rss(posts):
         excerpt = html.escape(create_text_excerpt(html_body))
         safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
         
-        # Add tags as <category> items for the RSS feed
-        categories = "\n            ".join([f"<category>{html.escape(tag)}</category>" for tag in post.get("tags", [])])
+        # Include both standard <category> and Dublin Core <dc:subject> for broad parser compatibility
+        categories = "\n            ".join([
+            f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
+            for tag in post.get("tags", [])
+        ])
 
         rss_items.append(f"""
         <item>
@@ -368,8 +378,9 @@ def generate_rss(posts):
             <content:encoded><![CDATA[{html_body}]]></content:encoded>
         </item>""")
 
+    # Added Dublin Core namespace (xmlns:dc) for advanced feed aggregators and AI tooling
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
-    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>Thoughts &amp; Insights — David G. Smith</title>
         <link>https://davidgsmith.net/thoughts.html</link>
@@ -386,7 +397,6 @@ def generate_html():
     THOUGHTS_DIR.mkdir(exist_ok=True)
     all_tags = set()
     
-    # 1. Generate Individual Standalone Pages
     for post in posts:
         slug = slugify(post.get("title", "Untitled"))
         for t in post.get("tags", []):
@@ -394,16 +404,15 @@ def generate_html():
             
         single_html = render_post(post, is_standalone=True)
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
-        json_ld_script = get_json_ld(post) # Fetch dynamic post JSON-LD
+        json_ld_script = get_json_ld(post)
         
         page_html = get_base_html(f"{post.get('title')} - David G. Smith", single_html, json_ld=json_ld_script, canonical=canonical)
         
         with open(THOUGHTS_DIR / f"{slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
-    # 2. Generate the Main index page with filtering (showing latest 15)
     index_posts = "\n".join(render_post(post, is_standalone=False) for post in posts[:15])
-    json_ld_script_main = get_json_ld(None) # Fetch generic site JSON-LD
+    json_ld_script_main = get_json_ld(None)
     
     tag_options = "".join([f'<option value="{html.escape(t).lower()}">{html.escape(t)}</option>' for t in sorted(all_tags)])
     
@@ -464,9 +473,8 @@ def generate_html():
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
-    # 3. Generate RSS XML Feed
     generate_rss(posts)
 
 if __name__ == "__main__":
     generate_html()
-    print("Successfully generated files.")
+    print("Successfully generated files with fixed JSON-LD and Dublin Core RSS tags.")
