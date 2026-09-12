@@ -6,6 +6,7 @@ import markdown
 from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import urlparse
+import unicodedata
 
 POSTS_FILE = Path("posts.json")
 THOUGHTS_DIR = Path("thoughts")
@@ -274,20 +275,21 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
 </html>"""
 
 def sanitize_feed_text(text):
-    """Replaces specific Unicode characters that trip up strict RSS parsers."""
     if not text: return ""
+    
+    # 1. Decompose characters (e.g., 'è' becomes 'e' + '`')
+    normalized = unicodedata.normalize('NFKD', text)
+    
+    # 2. Fix the typography that normalization doesn't catch natively
     replacements = {
-        '‑': '-',       # Non-breaking hyphen
-        '→': '->',      # Rightwards arrow
-        '—': '--',      # Em dash
-        '“': '"',       # Left double quote
-        '”': '"',       # Right double quote
-        '‘': "'",       # Left single quote
-        '’': "'"        # Right single quote
+        '‑': '-', '→': '->', '—': '--', 
+        '“': '"', '”': '"', '‘': "'", '’': "'"
     }
     for old, new in replacements.items():
-        text = text.replace(old, new)
-    return text
+        normalized = normalized.replace(old, new)
+        
+    # 3. Safely convert math symbols (≥) or remaining marks into XML entities (e.g., &#8805;)
+    return normalized.encode('ascii', 'xmlcharrefreplace').decode('ascii')
 
 def create_text_excerpt(html_content, max_length=250):
     """Strips HTML to create a plain-text summary for the description tag."""
