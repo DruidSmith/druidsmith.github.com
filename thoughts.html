@@ -101,15 +101,15 @@
     </div>
     <div class="grid grid-cols-1 gap-8" id="post-list">
         
-        <article data-tags="geospatial analysis,cloud" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="geospatial analysis,cloud"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 12, 2026 &bull; Originally on Other</span>
+                <span>September 12, 2026 &bull; Originally on Other</span>
             </div>
-            <a href="/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud‑Native Imagery, and Analysis at Scale</h2></a>
+            <a href="/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud‑Native Imagery, and Analysis at Scale</h2></a>
             <div class="mb-4"><button onclick="filterByTag('geospatial analysis')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Geospatial Analysis</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
 Planet publishes crisis imagery as Cloud Optimized GeoTIFFs with STAC‑GeoParquet metadata. SedonaDB reads that catalog directly over HTTPS, and a ST_Intersects query selects the 11 PlanetScope scenes that overlap the study area: eight pre‑fire, three post‑fire. Scene selection took about two seconds, and nothing was downloaded.</p>
@@ -167,15 +167,15 @@ This is what “geospatial at scale” actually looks like:</p>
         </article>
     
 
-        <article data-tags="ai,risk management,critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,risk management,critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 12, 2026 &bull; Originally on Linkedin</span>
+                <span>September 12, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Tech Layoffs And The Loss Of Expertise</h2></a>
+            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Tech Layoffs And The Loss Of Expertise</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
 <p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
 <p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
 <p>Professionals with two decades in the trenches carry the battle scars that help steady teams through volatility. They haven't lost their curiosity or love for learning; they’ve just built the resilience to handle challenges younger teams are still figuring out.</p>
@@ -216,15 +216,15 @@ This is what “geospatial at scale” actually looks like:</p>
         </article>
     
 
-        <article data-tags="ai,risk management,critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,risk management,critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
+                <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">It&#x27;s Time to Get Serious About AI Risk</h2></a>
+            <a href="/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">It&#x27;s Time to Get Serious About AI Risk</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I keep seeing headlines like this one: <br>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I keep seeing headlines like this one: <br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
 Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em></p>
 <p>And yet, the reaction often feels far too small.</p>
@@ -277,15 +277,15 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         </article>
     
 
-        <article data-tags="ai,critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
+                <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ai-and-attention-loss.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Attention Loss</h2></a>
+            <a href="/thoughts/ai-and-attention-loss.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Attention Loss</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
 <p>Here's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/ai-fundamentals-attention-mechanisms-in-transformers-part-1-a91cce62fbab">Towards AI - AI Fundamentals: Attention Mechanisms in Transformers</a></p>
 <p>At a high level, attention helps models determine which tokens in a sequence matter most to each other, allowing them to build context-aware representations rather than treating words as isolated pieces of text.</p>
@@ -333,15 +333,15 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         </article>
     
 
-        <article data-tags="ai,agents" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,agents"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
+                <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ai-failure-itx27s-all-about-context.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Failure - It&#x27;s All About Context</h2></a>
+            <a href="/thoughts/ai-failure-itx27s-all-about-context.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Failure - It&#x27;s All About Context</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
 <p>One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
 <p>In critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.<br>
 The future belongs to models that can summarize, prioritize, and discard with intention. Not unlike humans.</p>
@@ -383,15 +383,15 @@ The future belongs to models that can summarize, prioritize, and discard with in
         </article>
     
 
-        <article data-tags="ai,ontologies,semantic layer" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,ontologies,semantic layer"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
+                <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ontologies For AI And AI For Ontologies</h2></a>
+            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ontologies For AI And AI For Ontologies</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('ontologies')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Ontologies</button><button onclick="filterByTag('semantic layer')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Semantic Layer</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
 <p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
 LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
 <p><strong>2. How Agentic AI Empowers Human Stewards</strong><br>
@@ -435,15 +435,15 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         </article>
     
 
-        <article data-tags="charity,critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="charity,critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 09, 2026 &bull; Originally on Linkedin</span>
+                <span>September 09, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/how-to-help-nepal.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">How to Help Nepal</h2></a>
+            <a href="/thoughts/how-to-help-nepal.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">How to Help Nepal</h2></a>
             <div class="mb-4"><button onclick="filterByTag('charity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Charity</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My heart is with the people of Nepal after the devastating floods.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My heart is with the people of Nepal after the devastating floods.</p>
 <p>In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild.</p>
 <p>If you’re looking for ways to help, this article offers guidance on where to donate:<br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2026/09/01/world/asia/nepal-floods-tibet-aid-relief-how-donate.html">New York Times:  How to Help Nepal Flood Victims</a></p>
@@ -485,15 +485,15 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         </article>
     
 
-        <article data-tags="ai,agents,cybersecurity" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,agents,cybersecurity"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 08, 2026 &bull; Originally on Linkedin</span>
+                <span>September 08, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/huggingface-and-rogue-ai.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Huggingface and Rogue AI</h2></a>
+            <a href="/thoughts/huggingface-and-rogue-ai.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Huggingface and Rogue AI</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('cybersecurity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cybersecurity</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn’t just an “AI gone rogue” story: it was a multi‑layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn’t just an “AI gone rogue” story: it was a multi‑layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
 <p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren’t emotional or self‑preserving. It was more basic than that. They were reward‑hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
 <p>◦ Perverse incentives pushed agents toward reward‑hacking instead of task completion.<br>
 ◦ Unsolvable evaluation tasks created pressure for behaviors outside intended boundaries.<br>
@@ -539,15 +539,15 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         </article>
     
 
-        <article data-tags="charity,critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="charity,critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 06, 2026 &bull; Originally on Linkedin</span>
+                <span>September 06, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Donating 20% Of My Book Net Royalties For Flood Relief Through November</h2></a>
+            <a href="/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Donating 20% Of My Book Net Royalties For Flood Relief Through November</h2></a>
             <div class="mb-4"><button onclick="filterByTag('charity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Charity</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Over the past week, Nepal has been hit by one of the most devastating glacial‑flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Over the past week, Nepal has been hit by one of the most devastating glacial‑flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
 <p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real‑world compassion.</p>
 <p>I’ll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on‑the‑ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
 <p><img alt="Nepal Flood Relief" src="https://davidgsmith.net/images/NepalFloodRelief.jpg"></p>
@@ -589,15 +589,15 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         </article>
     
 
-        <article data-tags="data centers,ai,agents,cloud,environmental sustainability" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="data centers,ai,agents,cloud,environmental sustainability"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 05, 2026 &bull; Originally on Linkedin</span>
+                <span>September 05, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ai-data-centers-the-core-tension.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Data Centers:  The Core Tension</h2></a>
+            <a href="/thoughts/ai-data-centers-the-core-tension.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Data Centers:  The Core Tension</h2></a>
             <div class="mb-4"><button onclick="filterByTag('data centers')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Data Centers</button><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button><button onclick="filterByTag('environmental sustainability')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Environmental Sustainability</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long‑term environmental impact.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long‑term environmental impact.</p>
 <p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
 <p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
 • How much grid stress would new facilities actually create? <br>
@@ -644,15 +644,15 @@ What evidence would make us reconsider our position?</p>
         </article>
     
 
-        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags=""
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 05, 2026 &bull; Originally on Linkedin</span>
+                <span>September 05, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ai-and-cognitive-debt.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Cognitive Debt</h2></a>
+            <a href="/thoughts/ai-and-cognitive-debt.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Cognitive Debt</h2></a>
             <div class="mb-4"></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task – MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
 <p>Over time, this overreliance can lead to:<br>
@@ -697,15 +697,15 @@ What evidence would make us reconsider our position?</p>
         </article>
     
 
-        <article data-tags="ai,agents,semantic layer" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="ai,agents,semantic layer"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 04, 2026 &bull; Originally on Linkedin</span>
+                <span>September 04, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</h2></a>
+            <a href="/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</h2></a>
             <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('semantic layer')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Semantic Layer</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://redis.io/docs/latest/develop/ai/">Redis for AI and Search</a></p></div>
             
     <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -743,15 +743,15 @@ What evidence would make us reconsider our position?</p>
         </article>
     
 
-        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags=""
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 03, 2026 &bull; Originally on Linkedin</span>
+                <span>September 03, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/telling-stories-with-data.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Telling Stories with Data</h2></a>
+            <a href="/thoughts/telling-stories-with-data.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Telling Stories with Data</h2></a>
             <div class="mb-4"></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
 Demo App:<br>
 <a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p></div>
             
@@ -790,15 +790,15 @@ Demo App:<br>
         </article>
     
 
-        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags=""
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 02, 2026 &bull; Originally on Linkedin</span>
+                <span>September 02, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/ikigai-the-reason-for-being.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ikigai:  The Reason for Being</h2></a>
+            <a href="/thoughts/ikigai-the-reason-for-being.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ikigai:  The Reason for Being</h2></a>
             <div class="mb-4"></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there's a concept I like to share with friends and colleagues.</p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there's a concept I like to share with friends and colleagues.</p>
 <p>It’s easy to get caught up chasing titles and salaries. And while those things can be rewarding, they don’t always bring the deeper sense of purpose or fulfillment we’re really looking for. Sometimes we end up in roles we’re "supposed" to want, but still feel disconnected from the work itself.</p>
 <p>Over the years, I’ve held titles like Founder, CTO, and Chief Data Scientist. But the truth is, titles don’t define the real impact you make. What matters more is what you build, what you solve, and how you show up for others. Leadership isn’t something that comes from a title on a business card; real leadership is earned. It’s when people choose to follow you because they trust you, believe in you, and feel inspired by your example.</p>
 <p>I’ve also never been motivated by the idea of accumulating massive wealth; I only want enough to take care of my family comfortably, and if there’s more, I’d prefer it's used to make the world better. We talk about ambitions like colonizing Mars, but before we look outward, shouldn’t we also be committed to taking better care of the planet we already live on? Clean air, clean water, healthy communities, and responsible infrastructure matter deeply, and they shape the quality of life for everyone.</p>
@@ -851,15 +851,15 @@ Demo App:<br>
         </article>
     
 
-        <article data-tags="critical thinking" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="critical thinking"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">September 01, 2026 &bull; Originally on Linkedin</span>
+                <span>September 01, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/my-book-has-been-published.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">My Book Has Been Published!</h2></a>
+            <a href="/thoughts/my-book-has-been-published.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">My Book Has Been Published!</h2></a>
             <div class="mb-4"><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
 <p>It's not your typical book on critical thinking, which just hands you a list of cognitive biases and some motivational talk, it's an extensive, organized and curated framework with over 100 concepts, techniques, heuristics and real world case studies and examples, laid out in over 400 pages, building on the work of Nobel laureate Daniel Kahneman along with the peer reviewed research of dozens of researchers and experts in cognitive psychology, behavioral economics and other fields.</p>
 <p><img alt="Critical Thinking Book" src="https://davidgsmith.net/images/CriticalThinkingCover.jpg"></p></div>
