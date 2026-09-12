@@ -38,10 +38,17 @@
             <label class="block text-sm font-medium" for="title">Title<input id="title" name="title" required maxlength="200" class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
             <input type="hidden" id="original_date" name="original_date" value="">
             
-            <label class="block text-sm font-medium" for="tags">Tags (comma-separated)</label>
-            <input list="tag-picklist" id="tags" name="tags" placeholder="e.g., AI, Critical Thinking" class="mt-2 w-full rounded border border-slate-300 px-3 py-3">
-            <datalist id="tag-picklist"></datalist>
-            <p class="text-xs text-slate-500 -mt-3">Select existing tags or type new ones to add them to the list permanently.</p>
+            <!-- Interactive Tagging Section -->
+            <div>
+                <label class="block text-sm font-medium mb-2">Tags</label>
+                <div id="tag-badges" class="flex flex-wrap gap-2 mb-3">
+                    <!-- Badges render here -->
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="new-tag-input" placeholder="Create a new tag..." class="w-full rounded border border-slate-300 px-3 py-2 text-sm outline-none focus:border-amber-700 focus:ring-2 focus:ring-amber-100">
+                    <button type="button" id="add-tag-btn" class="rounded bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-300 transition-colors">Add Tag</button>
+                </div>
+            </div>
 
             <label class="block text-sm font-medium mt-5" for="body">Post body</label>
             <textarea id="body" name="body" required rows="12"></textarea>
@@ -59,7 +66,10 @@
 window.POSTING_CONFIG = { endpoint: 'https://page-post.druidsmith.workers.dev' };
 const config = window.POSTING_CONFIG || { endpoint: '' };
 let sessionToken = '';
-let allPosts = []; // Store posts globally for the editor to access
+
+let allPosts = []; 
+let allTags = new Set();
+let selectedTags = new Set();
 
 const status = document.querySelector('#status');
 const platformPreview = document.querySelector('#platform-preview');
@@ -77,38 +87,82 @@ function setStatus(message, isError = false) {
     status.className = `mt-5 text-sm ${isError ? 'text-red-700' : 'text-slate-600'}`;
 }
 
-// Fetch existing posts to build the tag picklist AND the edit dropdown
+// Render the interactive tag badges
+function renderTags() {
+    const container = document.getElementById('tag-badges');
+    container.innerHTML = '';
+    
+    // Sort alphabetically
+    Array.from(allTags).sort().forEach(tag => {
+        const isSelected = selectedTags.has(tag);
+        const badge = document.createElement('button');
+        badge.type = 'button';
+        badge.textContent = tag;
+        
+        // Active/Inactive states
+        badge.className = isSelected 
+            ? 'px-3 py-1 rounded-full text-xs font-medium bg-amber-700 text-white hover:bg-amber-800 transition-colors'
+            : 'px-3 py-1 rounded-full text-xs font-medium bg-slate-200 text-slate-600 hover:bg-slate-300 transition-colors';
+        
+        badge.addEventListener('click', () => {
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+            } else {
+                selectedTags.add(tag);
+            }
+            renderTags();
+        });
+        
+        container.appendChild(badge);
+    });
+}
+
+// Handle adding a new tag manually
+document.getElementById('add-tag-btn').addEventListener('click', () => {
+    const input = document.getElementById('new-tag-input');
+    const val = input.value.trim();
+    if (val) {
+        allTags.add(val);
+        selectedTags.add(val); // Auto-select the newly added tag
+        input.value = '';
+        renderTags();
+    }
+});
+
+// Prevent pressing enter in the new tag field from submitting the whole form
+document.getElementById('new-tag-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('add-tag-btn').click();
+    }
+});
+
+// Fetch posts, sort them newest first, and extract existing tags
 async function loadData() {
     try {
         const response = await fetch(`${config.endpoint.replace(/\/$/, '')}/posts`);
         if(response.ok) {
-            allPosts = await response.json();
-            const tagSet = new Set();
-            const select = document.getElementById('edit-select');
+            let fetchedPosts = await response.json();
             
-            // Reset dropdown except for the first option
+            // Sort posts by date descending (Newest first)
+            allPosts = fetchedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            const select = document.getElementById('edit-select');
             select.innerHTML = '<option value="">-- Create a New Post --</option>';
 
             allPosts.forEach(p => {
-                // Collect tags
+                // Collect unique tags
                 if (p.tags && Array.isArray(p.tags)) {
-                    p.tags.forEach(t => tagSet.add(t));
+                    p.tags.forEach(t => allTags.add(t));
                 }
-                // Add to edit dropdown
+                // Populate dropdown
                 const opt = document.createElement('option');
-                opt.value = p.date; // Use the date as the unique ID
+                opt.value = p.date; 
                 opt.textContent = p.title;
                 select.appendChild(opt);
             });
 
-            // Populate tags datalist
-            const picklist = document.getElementById('tag-picklist');
-            picklist.innerHTML = '';
-            tagSet.forEach(tag => {
-                const opt = document.createElement('option');
-                opt.value = tag;
-                picklist.appendChild(opt);
-            });
+            renderTags();
         }
     } catch (e) {
         console.warn('Could not load data', e);
@@ -116,17 +170,19 @@ async function loadData() {
 }
 loadData();
 
-// Handle selecting a post to edit
+// Handle dropdown selection (Edit vs New)
 document.getElementById('edit-select').addEventListener('change', (e) => {
     const date = e.target.value;
     const form = document.getElementById('post-form');
     
     if (!date) {
-        // Switch back to New Post mode
+        // Switch to New Post mode
         form.reset();
         bodyEditor.value('');
         document.getElementById('original_date').value = '';
         platformPreview.textContent = '';
+        selectedTags.clear();
+        renderTags();
         return;
     }
     
@@ -135,9 +191,15 @@ document.getElementById('edit-select').addEventListener('change', (e) => {
     if (post) {
         document.getElementById('title').value = post.title || '';
         document.getElementById('url').value = post.url || '';
-        document.getElementById('tags').value = (post.tags || []).join(', ');
         document.getElementById('original_date').value = post.date;
         bodyEditor.value(post.body || '');
+
+        // Select the appropriate tags for this post
+        selectedTags.clear();
+        if (post.tags) {
+            post.tags.forEach(t => selectedTags.add(t));
+        }
+        renderTags();
 
         const platform = platformFromUrl(post.url);
         platformPreview.textContent = platform ? `Platform detected: ${platform}` : '';
@@ -182,9 +244,8 @@ document.querySelector('#post-form').addEventListener('submit', async event => {
     event.preventDefault(); setStatus('Saving...');
     const form = new FormData(event.target);
     
-    // Parse tags into array
-    const rawTags = form.get('tags') || '';
-    const tagsArray = rawTags.split(',').map(t => t.trim()).filter(t => t.length > 0);
+    // Grab selected tags from the Set
+    const tagsArray = Array.from(selectedTags);
 
     try {
         await send('/posts', { 
@@ -192,16 +253,19 @@ document.querySelector('#post-form').addEventListener('submit', async event => {
             body: form.get('body'), 
             url: form.get('url'),
             tags: tagsArray,
-            original_date: form.get('original_date') // Include original date
+            original_date: form.get('original_date') 
         }, sessionToken);
         
+        // Reset the UI cleanly
         event.target.reset(); 
-        bodyEditor.value(''); // Clear markdown editor
-        document.getElementById('edit-select').value = ''; // Reset dropdown
-        document.getElementById('original_date').value = ''; // Clear hidden ID
+        bodyEditor.value(''); 
+        document.getElementById('edit-select').value = ''; 
+        document.getElementById('original_date').value = ''; 
         platformPreview.textContent = ''; 
+        selectedTags.clear();
+        
         setStatus('Saved. GitHub Actions will publish it shortly.');
-        loadData(); // Refresh dropdown and tags
+        loadData(); // Re-fetch to update dropdown/tags
     } catch (error) { setStatus(error.message, true); }
 });
 </script>
