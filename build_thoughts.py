@@ -23,7 +23,7 @@ PLATFORM_ICONS = {
     "github": "https://unpkg.com/simple-icons/icons/github.svg",
     "bluesky": "https://unpkg.com/simple-icons/icons/bluesky.svg",
     "mastodon": "https://unpkg.com/simple-icons/icons/mastodon.svg",
-    "other": "https://unpkg.com/feather-icons/dist/icons/link.svg", # Swapped to Feather Icons
+    "post": "https://unpkg.com/feather-icons/dist/icons/link.svg", # Native post fallback
 }
 
 PLATFORM_ALT_TEXT = {
@@ -38,21 +38,25 @@ PLATFORM_ALT_TEXT = {
     "github": "GitHub icon",
     "bluesky": "Bluesky icon",
     "mastodon": "Mastodon icon",
-    "other": "Blog post image",
+    "post": "Blog post icon",
 }
 
 def slugify(title):
     return re.sub(r'[-\s]+', '-', re.sub(r'[^\w\s-]', '', title.lower())).strip('-')
 
 def platform_for_url(url):
+    if not url: return "post"
     hostname = urlparse(url).netloc.lower().removeprefix("www.")
+    
+    if "davidgsmith.net" in hostname: return "post"
     if "linkedin.com" in hostname: return "linkedin"
     if hostname in {"twitter.com", "x.com"}: return "twitter"
     if "bsky.app" in hostname: return "bluesky"
     if "mastodon" in hostname or hostname.endswith(".social") or hostname.endswith(".io"): return "mastodon"
+    
     for platform in ("facebook", "instagram", "youtube", "tiktok", "threads", "medium", "github"):
         if platform in hostname: return platform
-    return "other"
+    return "post"
 
 def load_posts():
     if not POSTS_FILE.exists(): return []
@@ -76,13 +80,21 @@ def render_markdown(text):
 
 def render_share_bar(share_url, original_url):
     share_escaped = html.escape(share_url, quote=True)
-    orig_escaped = html.escape(original_url, quote=True)
-    return f"""
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+    
+    # Only show "Read Original" if an external URL is provided
+    read_original_html = "<div></div>" # Spacer for flex layout
+    if original_url and "davidgsmith.net" not in original_url:
+        orig_escaped = html.escape(original_url, quote=True)
+        read_original_html = f"""
         <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
            class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
            Read Original &rarr;
         </a>
+        """
+
+    return f"""
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        {read_original_html}
         <div class="flex items-center gap-3">
             <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
@@ -109,27 +121,70 @@ def render_share_bar(share_url, original_url):
     </div>
     """
 
+def get_json_ld(post=None):
+    """Generates Structured JSON-LD Data for AI Crawlers and Search Engines"""
+    if post:
+        title = post.get("title", "Untitled")
+        slug = slugify(title)
+        canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
+        date_iso = post.get("date", datetime.now(timezone.utc).isoformat())
+        tags = post.get("tags", [])
+        description = create_text_excerpt(render_markdown(post.get("body", "")))
+        
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": title,
+            "url": canonical_url,
+            "datePublished": date_iso,
+            "author": {
+                "@type": "Person",
+                "name": "David G. Smith",
+                "url": "https://davidgsmith.net"
+            },
+            "description": description,
+            "keywords": ", ".join(tags) if tags else ""
+        }
+    else:
+        # Schema for the main index page
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Thoughts & Insights — David G. Smith",
+            "url": "https://davidgsmith.net/thoughts.html",
+            "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
+            "author": {
+                "@type": "Person",
+                "name": "David G. Smith",
+                "url": "https://davidgsmith.net"
+            }
+        }
+    return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2)}\n</script>'
+
 def render_post(post, is_standalone=False):
     title = html.escape(post.get("title", "Untitled"))
     slug = slugify(title)
     body = render_markdown(post.get("body", ""))
-    url = html.escape(post["url"], quote=True)
+    url = post.get("url", "")
     canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
     date_iso = post["date"]
     date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
     
-    platform = post.get("platform") or platform_for_url(post["url"])
-    icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["other"])
-    icon_alt = PLATFORM_ALT_TEXT.get(platform, PLATFORM_ALT_TEXT["other"])
+    platform = post.get("platform") or platform_for_url(url)
+    icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["post"])
+    icon_alt = PLATFORM_ALT_TEXT.get(platform, PLATFORM_ALT_TEXT["post"])
     label = platform.title() if platform != "twitter" else "X / Twitter"
     
     tags = post.get("tags", [])
     tags_attr = ",".join(tags).lower()
     
-    # Updated: Added hover styles and an onclick handler to filter the feed
+    if platform == "post":
+        origin_text = "Published by David G. Smith"
+    else:
+        origin_text = f"Originally on {html.escape(label)}"
+        
     tags_html = "".join([f'<button onclick="filterByTag(\'{html.escape(t).lower()}\')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">{html.escape(t)}</button>' for t in tags])
 
-    # If on index page, link title to individual page. If on standalone, just text.
     title_html = f'<h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
     if not is_standalone:
         title_html = f'<a href="/thoughts/{slug}.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
@@ -139,7 +194,7 @@ def render_post(post, is_standalone=False):
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="{icon}" alt="{icon_alt}" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">{date} &bull; Originally on {html.escape(label)}</span>
+                <span itemprop="datePublished">{date} &bull; {origin_text}</span>
             </div>
             {title_html}
             <div class="mb-4">{tags_html}</div>
@@ -184,7 +239,6 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
                 </a>
             </div>
             
-            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
                 <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
@@ -194,7 +248,6 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
                 <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
             </div>
 
-            <!-- Mobile Menu Button -->
             <div class="md:hidden flex items-center">
                 <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -205,7 +258,6 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
         </div>
     </div>
 
-    <!-- Mobile Menu Panel -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
         <div class="px-4 pt-2 pb-4 space-y-1">
             <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
@@ -276,23 +328,16 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
 
 def sanitize_feed_text(text):
     if not text: return ""
-    
-    # 1. Decompose characters (e.g., 'è' becomes 'e' + '`')
     normalized = unicodedata.normalize('NFKD', text)
-    
-    # 2. Fix the typography that normalization doesn't catch natively
     replacements = {
         '‑': '-', '→': '->', '—': '--', 
         '“': '"', '”': '"', '‘': "'", '’': "'"
     }
     for old, new in replacements.items():
         normalized = normalized.replace(old, new)
-        
-    # 3. Safely convert math symbols (≥) or remaining marks into XML entities (e.g., &#8805;)
     return normalized.encode('ascii', 'xmlcharrefreplace').decode('ascii')
 
 def create_text_excerpt(html_content, max_length=250):
-    """Strips HTML to create a plain-text summary for the description tag."""
     plain_text = bleach.clean(html_content, tags=[], strip=True)
     if len(plain_text) > max_length:
         return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
@@ -302,20 +347,16 @@ def generate_rss(posts):
     rss_items = []
     for post in posts:
         slug = slugify(post.get("title", ""))
-        # RSS requires RFC 822 dates
         pub_date = datetime.fromisoformat(post["date"].replace("Z", "+00:00")).strftime("%a, %d %b %Y %H:%M:%S +0000")
         
-        # 1. Get the HTML body and sanitize the unicode characters
         html_body = render_markdown(post.get("body", ""))
         html_body = sanitize_feed_text(html_body)
-        
-        # 2. Create a clean, plain-text excerpt for the description tag
         excerpt = html.escape(create_text_excerpt(html_body))
-        
-        # 3. Sanitize the title as well
         safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
+        
+        # Add tags as <category> items for the RSS feed
+        categories = "\n            ".join([f"<category>{html.escape(tag)}</category>" for tag in post.get("tags", [])])
 
-        # 4. Use description for the excerpt, and content:encoded for the full HTML
         rss_items.append(f"""
         <item>
             <title>{safe_title}</title>
@@ -323,10 +364,10 @@ def generate_rss(posts):
             <guid>https://davidgsmith.net/thoughts/{slug}.html</guid>
             <pubDate>{pub_date}</pubDate>
             <description>{excerpt}</description>
+            {categories}
             <content:encoded><![CDATA[{html_body}]]></content:encoded>
         </item>""")
 
-    # Add the xmlns:content namespace to the root rss tag
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
@@ -353,13 +394,16 @@ def generate_html():
             
         single_html = render_post(post, is_standalone=True)
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
-        page_html = get_base_html(f"{post.get('title')} - David G. Smith", single_html, canonical=canonical)
+        json_ld_script = get_json_ld(post) # Fetch dynamic post JSON-LD
+        
+        page_html = get_base_html(f"{post.get('title')} - David G. Smith", single_html, json_ld=json_ld_script, canonical=canonical)
         
         with open(THOUGHTS_DIR / f"{slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
     # 2. Generate the Main index page with filtering (showing latest 15)
     index_posts = "\n".join(render_post(post, is_standalone=False) for post in posts[:15])
+    json_ld_script_main = get_json_ld(None) # Fetch generic site JSON-LD
     
     tag_options = "".join([f'<option value="{html.escape(t).lower()}">{html.escape(t)}</option>' for t in sorted(all_tags)])
     
@@ -376,7 +420,6 @@ def generate_html():
     </div>
     """
 
-    # Note: Indentation fixed here
     filter_js = """<script>
     function filterPosts() {
         const selected = document.getElementById('tag-filter').value;
@@ -393,22 +436,17 @@ def generate_html():
         });
     }
 
-    // New helper to allow clicking badges to filter
     function filterByTag(tag) {
-        // Only run if we are on the main thoughts.html page where the filter exists
         const filterDropdown = document.getElementById('tag-filter');
         if (filterDropdown) {
             filterDropdown.value = tag;
             filterPosts();
-            // Scroll smoothly back to the top of the feed
             document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            // If clicked from a standalone post page, navigate to main page with tag filter
             window.location.href = '/thoughts.html?tag=' + encodeURIComponent(tag);
         }
     }
 
-    // If navigated with a tag in the URL (from a standalone page), apply it on load
     window.addEventListener('DOMContentLoaded', (event) => {
         const urlParams = new URLSearchParams(window.location.search);
         const tagParam = urlParams.get('tag');
@@ -422,7 +460,7 @@ def generate_html():
     });
     </script>"""
 
-    main_html = get_base_html("Thoughts & Insights — David G. Smith", filter_ui, custom_js=filter_js)
+    main_html = get_base_html("Thoughts & Insights — David G. Smith", filter_ui, json_ld=json_ld_script_main, custom_js=filter_js)
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
