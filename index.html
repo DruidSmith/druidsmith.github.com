@@ -80,46 +80,42 @@
       }
     },
     "mainEntity": {
-      "@id": "https://davidgsmith.net/#person"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://davidgsmith.net/#person",
-    "name": "David G. Smith",
-    "url": "https://davidgsmith.net/",
-    "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-    "jobTitle": "Data Scientist, Technical Architect & Strategic Advisor",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "David G. Smith Advisory",
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
       "url": "https://davidgsmith.net/",
-      "logo": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-      "description": "Independent strategic advisory specializing in federal technology modernization, cloud architecture, and data science.",
+      "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+      "jobTitle": "Data Scientist, Technical Architect & Strategic Advisor",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "David G. Smith Advisory",
+        "url": "https://davidgsmith.net/",
+        "logo": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+        "description": "Independent strategic advisory specializing in federal technology modernization, cloud architecture, and data science."
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "addressCountry": "US"
+      },
       "sameAs": [
-        "https://www.linkedin.com/in/davidgsmith"
+        "https://www.linkedin.com/in/davidgsmith",
+        "https://druidsmith.github.io",
+        "https://www.goodreads.com/author/show/72277946.David_G_Smith",
+        "https://www.librarything.com/a/32948024/David-G-Smith",
+        "https://bookwyrm.social/author/445970/s/david-g-smith"
+      ],
+      "knowsAbout": [
+        "Data Science",
+        "Cloud Architecture",
+        "Geospatial Intelligence",
+        "Critical Thinking",
+        "Artificial Intelligence",
+        "AI",
+        "Federal Technology Modernization"
       ]
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Washington",
-      "addressRegion": "DC",
-      "addressCountry": "US"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/davidgsmith",
-      "https://druidsmith.github.io"
-    ],
-    "knowsAbout": [
-      "Data Science",
-      "Cloud Architecture",
-      "Geospatial Intelligence",
-      "Critical Thinking",
-      "Artificial Intelligence",
-      "AI",
-      "Federal Technology Modernization"
-    ]
+    }
   },
   {
     "@context": "https://schema.org",
@@ -130,6 +126,11 @@
       "@id": "https://davidgsmith.net/#person"
     },
     "url": "https://www.amazon.com/dp/B0HH3CYK79",
+    "sameAs": [
+      "https://www.goodreads.com/book/show/257686553-critical-thinking",
+      "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
+      "https://bookwyrm.social/book/2365772/s/critical-thinking"
+    ],
     "image": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
     "numberOfPages": 466,
     "datePublished": "2026-08-30",
