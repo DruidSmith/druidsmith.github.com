@@ -22,27 +22,69 @@
 </head>
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
 
+<!-- Navigation -->
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0"><a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">David G. Smith</a></div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+            <div class="flex-shrink-0">
+                <a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">
+                    David G. Smith
+                </a>
             </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+                <a href="/#books" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                <a href="/#advisory" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
+            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
+            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent">Thoughts</a>
+            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
+            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
+            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-gray-600">Contact</a>
         </div>
     </div>
 </nav>
 
 <header class="pt-32 pb-16 px-4 max-w-5xl mx-auto text-center border-b border-gray-100">
-    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-6">Thoughts & Insights</h1>
+    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
+    
+    <div class="flex justify-center mb-6">
+        <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-sm font-medium text-brand-accent hover:text-brand-dark transition-all shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+            </svg>
+            Subscribe via RSS
+        </a>
+    </div>
 </header>
 
 <main id="main-content" class="py-16 bg-brand-light min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-    <div class="mb-8 flex justify-between items-center">
-        <h3 class="text-lg font-serif font-medium text-brand-dark">Filter by topic</h3>
-        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent">
+    <div class="mb-8 flex justify-end items-center gap-3">
+        <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
+        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
             <option value="all">All Thoughts</option>
             <option value="ai">AI</option><option value="cloud">Cloud</option><option value="critical thinking">Critical Thinking</option><option value="geospatial analysis">Geospatial Analysis</option><option value="ontologies">Ontologies</option><option value="risk management">Risk Management</option><option value="semantic layer">Semantic Layer</option>
         </select>
@@ -56,7 +98,7 @@
                 <span itemprop="datePublished">September 12, 2026 &bull; Originally on Other</span>
             </div>
             <a href="/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud‑Native Imagery, and Analysis at Scale</h2></a>
-            <div class="mb-4"><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Geospatial Analysis</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Cloud</span></div>
+            <div class="mb-4"><button onclick="filterByTag('geospatial analysis')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Geospatial Analysis</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button></div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
@@ -120,7 +162,7 @@ This is what “geospatial at scale” actually looks like:</p>
                 <span itemprop="datePublished">September 12, 2026 &bull; Originally on Linkedin</span>
             </div>
             <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Tech Layoffs And The Loss Of Expertise</h2></a>
-            <div class="mb-4"><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">AI</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Risk Management</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Critical Thinking</span></div>
+            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
 <p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
 <p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
@@ -167,7 +209,7 @@ This is what “geospatial at scale” actually looks like:</p>
                 <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
             <a href="/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">It&#x27;s Time to Get Serious About AI Risk</h2></a>
-            <div class="mb-4"><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">AI</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Risk Management</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Critical Thinking</span></div>
+            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I keep seeing headlines like this one: <br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
 Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em></p>
@@ -328,7 +370,7 @@ The future belongs to models that can summarize, prioritize, and discard with in
                 <span itemprop="datePublished">September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
             <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ontologies For AI And AI For Ontologies</h2></a>
-            <div class="mb-4"><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">AI</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Ontologies</span><span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">Semantic Layer</span></div>
+            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('ontologies')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Ontologies</button><button onclick="filterByTag('semantic layer')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Semantic Layer</button></div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
 <p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
 LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
@@ -819,12 +861,48 @@ What evidence would make us reconsider our position?</p>
     
     </div>
 </main>
+
+<!-- Footer -->
+<footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+            <span class="text-lg font-serif font-semibold text-white tracking-tight">
+                David G. Smith
+            </span>
+        </div>
+        <div class="mt-4 md:mt-0 text-sm">
+            &copy; <span id="year"></span> David G. Smith. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if(btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    }
+</script>
 <script>
     function filterPosts() {
         const selected = document.getElementById('tag-filter').value;
         const posts = document.querySelectorAll('.post-card');
         posts.forEach(post => {
-            const tags = post.getAttribute('data-tags') || '';
+            const tagsAttr = post.getAttribute('data-tags') || '';
+            const tags = tagsAttr.split(',').map(t => t.trim());
+            
             if (selected === 'all' || tags.includes(selected)) {
                 post.style.display = 'block';
             } else {
@@ -832,6 +910,34 @@ What evidence would make us reconsider our position?</p>
             }
         });
     }
+
+    // New helper to allow clicking badges to filter
+    function filterByTag(tag) {
+        // Only run if we are on the main thoughts.html page where the filter exists
+        const filterDropdown = document.getElementById('tag-filter');
+        if (filterDropdown) {
+            filterDropdown.value = tag;
+            filterPosts();
+            // Scroll smoothly back to the top of the feed
+            document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // If clicked from a standalone post page, navigate to main page with tag filter
+            window.location.href = '/thoughts.html?tag=' + encodeURIComponent(tag);
+        }
+    }
+
+    // If navigated with a tag in the URL (from a standalone page), apply it on load
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tagParam = urlParams.get('tag');
+        if (tagParam) {
+            const filterDropdown = document.getElementById('tag-filter');
+            if (filterDropdown) {
+                filterDropdown.value = tagParam;
+                filterPosts();
+            }
+        }
+    });
     </script>
 </body>
 </html>
