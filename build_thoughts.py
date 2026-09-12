@@ -192,20 +192,20 @@ def render_post(post, is_standalone=False):
         
     tags_html = "".join([f'<button onclick="filterByTag(\'{html.escape(t).lower()}\')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">{html.escape(t)}</button>' for t in tags])
 
-    title_html = f'<h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
+    title_html = f'<h2 class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
     if not is_standalone:
-        title_html = f'<a href="/thoughts/{slug}.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
+        title_html = f'<a href="/thoughts/{slug}.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
 
     return f"""
-        <article data-tags="{html.escape(tags_attr)}" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="{html.escape(tags_attr)}"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="{icon}" alt="{icon_alt}" class="h-4 w-4" loading="lazy">
-                <span itemprop="datePublished">{date} &bull; {origin_text}</span>
+                <span>{date} &bull; {origin_text}</span>
             </div>
             {title_html}
             <div class="mb-4">{tags_html}</div>
-            <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm">{body}</div>
+            <div class="markdown-content text-gray-600 leading-relaxed text-sm">{body}</div>
             {render_share_bar(share_url=canonical_url, original_url=url)}
         </article>
     """
