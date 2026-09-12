@@ -172,19 +172,61 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
 </head>
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
 
+<!-- Navigation -->
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0"><a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">David G. Smith</a></div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+            <div class="flex-shrink-0">
+                <a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">
+                    David G. Smith
+                </a>
             </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+                <a href="/#books" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                <a href="/#advisory" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
+            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
+            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent">Thoughts</a>
+            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
+            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
+            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-gray-600">Contact</a>
         </div>
     </div>
 </nav>
 
 <header class="pt-32 pb-16 px-4 max-w-5xl mx-auto text-center border-b border-gray-100">
-    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-6">Thoughts & Insights</h1>
+    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
+    
+    <div class="flex justify-center mb-6">
+        <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-sm font-medium text-brand-accent hover:text-brand-dark transition-all shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+            </svg>
+            Subscribe via RSS
+        </a>
+    </div>
 </header>
 
 <main id="main-content" class="py-16 bg-brand-light min-h-screen">
@@ -192,6 +234,40 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
         {content}
     </div>
 </main>
+
+<!-- Footer -->
+<footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+            <span class="text-lg font-serif font-semibold text-white tracking-tight">
+                David G. Smith
+            </span>
+        </div>
+        <div class="mt-4 md:mt-0 text-sm">
+            &copy; <span id="year"></span> David G. Smith. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if(btn && menu) {{
+        btn.addEventListener('click', () => {{
+            menu.classList.toggle('hidden');
+        }});
+
+        mobileLinks.forEach(link => {{
+            link.addEventListener('click', () => {{
+                menu.classList.add('hidden');
+            }});
+        }});
+    }}
+</script>
 {custom_js}
 </body>
 </html>"""
@@ -248,9 +324,9 @@ def generate_html():
     tag_options = "".join([f'<option value="{html.escape(t).lower()}">{html.escape(t)}</option>' for t in sorted(all_tags)])
     
     filter_ui = f"""
-    <div class="mb-8 flex justify-between items-center">
-        <h3 class="text-lg font-serif font-medium text-brand-dark">Filter by topic</h3>
-        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent">
+    div class="mb-8 flex justify-end items-center gap-3">
+        <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
+        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
             <option value="all">All Thoughts</option>
             {tag_options}
         </select>
@@ -260,12 +336,15 @@ def generate_html():
     </div>
     """
 
-    filter_js = """<script>
+filter_js = """<script>
     function filterPosts() {
         const selected = document.getElementById('tag-filter').value;
         const posts = document.querySelectorAll('.post-card');
         posts.forEach(post => {
-            const tags = post.getAttribute('data-tags') || '';
+            const tagsAttr = post.getAttribute('data-tags') || '';
+            // Split the comma-separated string into an actual array
+            const tags = tagsAttr.split(',').map(t => t.trim());
+            
             if (selected === 'all' || tags.includes(selected)) {
                 post.style.display = 'block';
             } else {
