@@ -18,7 +18,22 @@
     .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
     .markdown-content a { color: #92400e; text-decoration: underline; }
 </style>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Spatial SQL, Cloud\u2011Native Imagery, and Analysis at Scale",
+  "url": "https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html",
+  "datePublished": "2026-09-12T15:14:30.390Z",
+  "author": {
+    "@type": "Person",
+    "name": "David G. Smith",
+    "url": "https://davidgsmith.net"
+  },
+  "description": "One of the most important shifts happening in geospatial right now is the collapse of the old \u201cdownload \u2192 preprocess \u2192 stitch \u2192 analyze\u201d workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud\u2011native data and the entire...",
+  "keywords": "Geospatial Analysis, Cloud"
+}
+</script>
 </head>
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
 
@@ -32,7 +47,6 @@
                 </a>
             </div>
             
-            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
                 <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
@@ -42,7 +56,6 @@
                 <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
             </div>
 
-            <!-- Mobile Menu Button -->
             <div class="md:hidden flex items-center">
                 <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,7 +66,6 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Panel -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
         <div class="px-4 pt-2 pb-4 space-y-1">
             <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
@@ -85,7 +97,7 @@
         <article data-tags="geospatial analysis,cloud" itemscope itemtype="https://schema.org/BlogPosting"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post image" class="h-4 w-4" loading="lazy">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 12, 2026 &bull; Originally on Other</span>
             </div>
             <h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark mb-3">Spatial SQL, Cloud‑Native Imagery, and Analysis at Scale</h2>
@@ -114,10 +126,12 @@ This is what “geospatial at scale” actually looks like:</p>
 <p>Spatial SQL + cloud‑native rasters isn’t just a convenience. It’s the foundation for environmental analysis that is auditable, scalable, and operationally sane.</p></div>
             
     <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
         <a href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/" target="_blank" rel="noopener noreferrer"
            class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
            Read Original &rarr;
         </a>
+        
         <div class="flex items-center gap-3">
             <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html"
