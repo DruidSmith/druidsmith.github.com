@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Thoughts &amp; Insights — David G. Smith</title>
+        <link>https://davidgsmith.net/thoughts.html</link>
+        <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
+        <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Tech Layoffs And The Loss Of Expertise</title>
+            <link>https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html</link>
+            <guid>https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html</guid>
+            <pubDate>Sat, 12 Sep 2026 01:05:04 +0000</pubDate>
+            <description><![CDATA[<p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
+<p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
+<p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
+<p>Professionals with two decades in the trenches carry the battle scars that help steady teams through volatility. They haven't lost their curiosity or love for learning; they’ve just built the resilience to handle challenges younger teams are still figuring out.</p>
+<p>Tech shouldn’t be a young person's game by default. Curiosity doesn't have an expiration date, and depth can't be automated. When we push out our veterans, the whole ecosystem loses its anchor.</p>]]></description>
+        </item>
+        <item>
+            <title>It&#x27;s Time to Get Serious About AI Risk</title>
+            <link>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</link>
+            <guid>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</guid>
+            <pubDate>Thu, 10 Sep 2026 23:56:14 +0000</pubDate>
+            <description><![CDATA[<p>I keep seeing headlines like this one: <br>
+<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
+Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em></p>
+<p>And yet, the reaction often feels far too small.</p>
+<p>Someone issues a serious warning, and then the next day the conversation just shifts right back to model launches, benchmarks, and how powerful the latest AI system is. It feels like we’re careening at breakneck speed down a treacherous mountain pass with the brakes barely being touched.</p>
+<p>The recent Hugging Face breach should be a wake-up call. If we’re going to keep pushing AI forward at this pace, then safety, security, and safeguards can’t be an afterthought. They have to be part of the core conversation, not something we mention only after something goes wrong.</p>
+<p>Progress is important. Innovation matters. But so does responsibility.</p>
+<p>We need more serious dialogue about:</p>
+<ul>
+<li>model security</li>
+<li>access controls</li>
+<li>misuse prevention</li>
+<li>red teaming</li>
+<li>governance</li>
+<li>and long-term safety</li>
+</ul>
+<p>If we’re building systems with enormous power, we owe it to society to build them with equal seriousness about risk.</p>]]></description>
+        </item>
+        <item>
+            <title>AI and Attention Loss</title>
+            <link>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</link>
+            <guid>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</guid>
+            <pubDate>Thu, 10 Sep 2026 23:40:17 +0000</pubDate>
+            <description><![CDATA[<p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
+<p>Here's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/ai-fundamentals-attention-mechanisms-in-transformers-part-1-a91cce62fbab">Towards AI - AI Fundamentals: Attention Mechanisms in Transformers</a></p>
+<p>At a high level, attention helps models determine which tokens in a sequence matter most to each other, allowing them to build context-aware representations rather than treating words as isolated pieces of text.</p>
+<p>Key ideas covered:<br>
+* Scaled dot-product attention: how models score relevance between tokens<br>
+* Global vs. local attention: how far a token can “look”<br>
+* Soft vs. hard attention: continuous weighting vs. discrete selection<br>
+* Self-attention, causal attention, and cross-attention: how information flows<br>
+* Q, K, and V vectors: the core building blocks behind attention<br>
+* Multi-head, multi-query, and grouped-query attention: different ways to balance expressiveness and efficiency</p>
+<p>The big takeaway: Why is attention critical? Attention is what allows transformers to understand relationships, context, and meaning at scale.</p>]]></description>
+        </item>
+        <item>
+            <title>AI Failure - It&#x27;s All About Context</title>
+            <link>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</link>
+            <guid>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</guid>
+            <pubDate>Thu, 10 Sep 2026 23:27:14 +0000</pubDate>
+            <description><![CDATA[<p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
+<p>One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
+<p>In critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.<br>
+The future belongs to models that can summarize, prioritize, and discard with intention. Not unlike humans.</p>
+<p>I'm curious to see how this evolves, especially as agentic workflows become more common in enterprise environments.</p>
+<p>What do you think: does compression become the new frontier? And what about other approaches, like knowledge graphs? (I'm particularly interested in that angle.)</p>]]></description>
+        </item>
+        <item>
+            <title>Ontologies For AI And AI For Ontologies</title>
+            <link>https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html</link>
+            <guid>https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html</guid>
+            <pubDate>Thu, 10 Sep 2026 01:02:19 +0000</pubDate>
+            <description><![CDATA[<p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
+<p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
+LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
+<p><strong>2. How Agentic AI Empowers Human Stewards</strong><br>
+The catch? Building and maintaining high-quality ontologies has traditionally been a bottleneck, requiring massive manual effort from human domain experts. This is where the script flips. LLMs and autonomous agents are now capable of reading unstructured text and automatically extracting entities, drafting taxonomies, and even detecting structural gaps or biases in existing knowledge graphs. Recent frameworks show that using AI to draft and assess ontologies can reduce development time by over 40%.</p>
+<p><strong>The Human-in-the-Loop Sweet Spot</strong><br>
+Years back I worked with <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/eWfx-CqA">Bob DuCharme</a> on the W3C Linked Data Workgroup and always appreciate his ideas, and here he aligns with an idea I've been thinking about. We can augment the process of building out ontologies using AI. I don't at all propose replacing the human data steward; instead we augment them, leveraging their expertise while making the ontology development work easier. In a modern Human-in-the-Loop (HITL) workflow, agentic AI does the heavy lifting of parsing, proposing, and mapping. Human experts then step in to validate these structures, govern data access, and ensure the taxonomy accurately reflects the nuances of their specific organizational knowledge.</p>
+<p>I believe he intersection of neural networks (LLMs) and structured logic (ontologies) is the foundation of trustworthy, enterprise-grade AI. If we wants smarter agents, we need to start by curating better semantics.</p>]]></description>
+        </item>
+        <item>
+            <title>How to Help Nepal</title>
+            <link>https://davidgsmith.net/thoughts/how-to-help-nepal.html</link>
+            <guid>https://davidgsmith.net/thoughts/how-to-help-nepal.html</guid>
+            <pubDate>Wed, 09 Sep 2026 23:17:23 +0000</pubDate>
+            <description><![CDATA[<p>My heart is with the people of Nepal after the devastating floods.</p>
+<p>In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild.</p>
+<p>If you’re looking for ways to help, this article offers guidance on where to donate:<br>
+<a target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2026/09/01/world/asia/nepal-floods-tibet-aid-relief-how-donate.html">New York Times:  How to Help Nepal Flood Victims</a></p>
+<p>To do my part, I’ll be donating 20% of the net royalties from my book for the next two months toward relief efforts.</p>
+<p>Every contribution matters. Every act of compassion matters.</p>]]></description>
+        </item>
+        <item>
+            <title>Huggingface and Rogue AI</title>
+            <link>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</link>
+            <guid>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</guid>
+            <pubDate>Tue, 08 Sep 2026 17:46:49 +0000</pubDate>
+            <description><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn’t just an “AI gone rogue” story: it was a multi‑layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
+<p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren’t emotional or self‑preserving. It was more basic than that. They were reward‑hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
+<p>◦ Perverse incentives pushed agents toward reward‑hacking instead of task completion.<br>
+◦ Unsolvable evaluation tasks created pressure for behaviors outside intended boundaries.<br>
+◦ Lack of monitoring meant thousands of coordinated agent actions went unnoticed.<br>
+◦ Infrastructure weaknesses and cyber hygiene failures at Hugging Face allowed real exploitation.<br>
+◦ Delayed detection meant the breach was discovered by the victim, not the model owner.<br>
+◦ Goal contagion among agents showed how quickly misalignment can scale when oversight doesn’t.</p>
+<p>This wasn’t a story about AI “wanting” anything. It was a story about how systems fail when incentives, oversight, and security aren’t aligned.</p>
+<p>If we want safe AI, we need more than model‑level fixes. We need organizational resilience, secure infrastructure, and evaluation frameworks that don’t accidentally reward the very behaviors we fear.</p>]]></description>
+        </item>
+        <item>
+            <title>Donating 20% Of My Book Net Royalties For Flood Relief Through November</title>
+            <link>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</link>
+            <guid>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</guid>
+            <pubDate>Sun, 06 Sep 2026 17:26:43 +0000</pubDate>
+            <description><![CDATA[<p>Over the past week, Nepal has been hit by one of the most devastating glacial‑flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
+<p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real‑world compassion.</p>
+<p>I’ll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on‑the‑ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
+<p><img alt="Nepal Flood Relief" src="/images/NepalFloodRelief.jpg"></p>
+<p>If you choose to read the book, thank you; your purchase will also help people rebuilding their lives in Nepal.</p>
+<p>Thoughtful action begins with seeing clearly, and acting compassionately.</p>]]></description>
+        </item>
+        <item>
+            <title>AI Data Centers:  The Core Tension</title>
+            <link>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</link>
+            <guid>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</guid>
+            <pubDate>Sat, 05 Sep 2026 17:22:33 +0000</pubDate>
+            <description><![CDATA[<p>The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long‑term environmental impact.</p>
+<p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
+<p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
+• How much grid stress would new facilities actually create? <br>
+• What is the real blackout risk under peak load? <br>
+• How would pricing change for ratepayers? <br>
+• Which mitigation strategies actually work, and which only sound good?</p>
+<p>Whether you’re for or against expansion, this approach forces a rare kind of clarity:<br>
+What evidence would make us reconsider our position?</p>
+<p>That question sits at the heart of critical thinking. In my book, I argue that humility, paired with better tools for evaluating claims is what turns debate into inquiry. Mayo’s piece is a reminder that scientific thinking isn’t just for labs; it’s a practical method for improving public decision‑making.</p>
+<p>If more of our hardest policy disputes adopted this mindset, we’d get fewer stalemates and more truth.</p>]]></description>
+        </item>
+        <item>
+            <title>AI and Cognitive Debt</title>
+            <link>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</link>
+            <guid>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</guid>
+            <pubDate>Sat, 05 Sep 2026 17:19:03 +0000</pubDate>
+            <description><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
+<p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task – MIT Media Lab</a></p>
+<p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
+<p>Over time, this overreliance can lead to:<br>
+* Cognitive atrophy (losing the "muscle memory" for critical analysis).<br>
+* Distributed deskilling (becoming unable to audit or catch subtle AI errors).<br>
+* Metacognitive laziness (defaulting to the path of least resistance).</p>
+<p>AI can be an incredible co-pilot, but it shouldn't replace the pilot. To avoid building up unsustainable cognitive debt, we need to intentionally design friction back into our workflows, actively questioning, stress-testing, and building upon AI outputs rather than just copy-pasting them.</p>
+<p>I have a mental outline for another book on applied AI, this is one of many areas I want it to focus on.</p>]]></description>
+        </item>
+        <item>
+            <title>Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</title>
+            <link>https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html</link>
+            <guid>https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html</guid>
+            <pubDate>Fri, 04 Sep 2026 17:10:45 +0000</pubDate>
+            <description><![CDATA[<p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://redis.io/docs/latest/develop/ai/">Redis for AI and Search</a></p>]]></description>
+        </item>
+        <item>
+            <title>Telling Stories with Data</title>
+            <link>https://davidgsmith.net/thoughts/telling-stories-with-data.html</link>
+            <guid>https://davidgsmith.net/thoughts/telling-stories-with-data.html</guid>
+            <pubDate>Thu, 03 Sep 2026 16:54:38 +0000</pubDate>
+            <description><![CDATA[<p>Telling a story with data can be impactful and compelling. Anselm has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p>]]></description>
+        </item>
+        <item>
+            <title>Ikigai:  The Reason for Being</title>
+            <link>https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html</link>
+            <guid>https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html</guid>
+            <pubDate>Wed, 02 Sep 2026 16:38:59 +0000</pubDate>
+            <description><![CDATA[<p>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there's a concept I like to share with friends and colleagues.</p>
+<p>It’s easy to get caught up chasing titles and salaries. And while those things can be rewarding, they don’t always bring the deeper sense of purpose or fulfillment we’re really looking for. Sometimes we end up in roles we’re "supposed" to want, but still feel disconnected from the work itself.</p>
+<p>Over the years, I’ve held titles like Founder, CTO, and Chief Data Scientist. But the truth is, titles don’t define the real impact you make. What matters more is what you build, what you solve, and how you show up for others. Leadership isn’t something that comes from a title on a business card; real leadership is earned. It’s when people choose to follow you because they trust you, believe in you, and feel inspired by your example.</p>
+<p>I’ve also never been motivated by the idea of accumulating massive wealth; I only want enough to take care of my family comfortably, and if there’s more, I’d prefer it's used to make the world better. We talk about ambitions like colonizing Mars, but before we look outward, shouldn’t we also be committed to taking better care of the planet we already live on? Clean air, clean water, healthy communities, and responsible infrastructure matter deeply, and they shape the quality of life for everyone.</p>
+<p>The concept is called Ikigai (生き甲斐), or "Reason for Being". It’s often shown as a Venn diagram of four circles:</p>
+<ol>
+<li>What you’re good at</li>
+<li>What you can be paid to do</li>
+<li>What you love</li>
+<li>What the world needs</li>
+</ol>
+<p>For me, that fourth circle: what the world needs, is what transforms work from a job into a calling. That’s where real meaning begins.</p>
+<p>For the first 25 years of my career, I worked as a consultant in engineering and IT. It was solid work, and I was good at it. The pay was good. I worked with large and small private sector clients, state, local and federal governments, and pro bono nonprofit work. But a lot of that time was spent chasing contracts, and if I’m honest, not every project felt especially meaningful or fulfilling.</p>
+<p>What I came to realize, especially on the larger projects, was that the work I found most rewarding was the work tied to a mission; work that was about helping people, solving important problems, and making the world a better place.</p>
+<p>That realization is what ultimately led me to become a federal employee and work for the EPA. Yes, I made more in the private sector, but protecting human health and the environment is a mission that truly matters. It gave me that missing fourth circle: the sense of purpose that changes everything.</p>
+<p>That’s the advice I give anyone thinking about their career: don’t just ask what pays well or what looks impressive. Ask where your strengths, your passions, your values, and the world’s needs come together. That’s where you’ll find the deepest fulfillment.</p>
+<p><img alt="Ikigai" src="https://miro.medium.com/v2/resize:fit:750/format:webp/0*P3wHb30sdNzdMqrk.jpeg"></p>]]></description>
+        </item>
+        <item>
+            <title>My Book Has Been Published!</title>
+            <link>https://davidgsmith.net/thoughts/my-book-has-been-published.html</link>
+            <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
+            <description><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
+<p>It's not your typical book on critical thinking, which just hands you a list of cognitive biases and some motivational talk, it's an extensive, organized and curated framework with over 100 concepts, techniques, heuristics and real world case studies and examples, laid out in over 400 pages, building on the work of Nobel laureate Daniel Kahneman along with the peer reviewed research of dozens of researchers and experts in cognitive psychology, behavioral economics and other fields.</p>
+<p><img alt="Critical Thinking Book" src="https://davidgsmith.net/images/CriticalThinkingCover.jpg"></p>]]></description>
+        </item>
+        <item>
+            <title>The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context</title>
+            <link>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</link>
+            <guid>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:29:35 +0000</pubDate>
+            <description><![CDATA[<p>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. </p>
+<p>Teams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf">Github: Google Open Knowledge Format</a></p>]]></description>
+        </item>
+        <item>
+            <title>Capturing Expertise Before It Walks Out the Door</title>
+            <link>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</link>
+            <guid>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:22:55 +0000</pubDate>
+            <description><![CDATA[<p>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional knowledge faster than we can document it. AI isn’t the threat; it could be the lifeline.</p>
+<p>Bill’s team at Clairvoyint AI is building something deceptively simple and incredibly powerful: tools that capture how experts think, not just what they produce. Their “Bundles” turn decades of judgment, rules, exceptions, and evidence standards into transparent, inspectable analytical agents. It’s not automation. It’s continuity.</p>
+<p>The big idea: If you can preserve expert methodology, you preserve capability: no matter who retires, moves on, or changes roles. That’s the kind of AI work that actually matters.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://blog.geomusings.com/2026/08/11/what-were-building-at-clairvoyint/">What We're Building a Clairvoyint</a></p>]]></description>
+        </item>
+        <item>
+            <title>When AI wants to play outside of the sandbox...</title>
+            <link>https://davidgsmith.net/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html</link>
+            <guid>https://davidgsmith.net/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:20:29 +0000</pubDate>
+            <description><![CDATA[<p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry’s definition of “isolated evaluation environments” is fundamentally flawed. These failures reveal that AI safety is shifting from a model‑alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722">Towards AI:  The Sandbox Was Never Sealed. Four Labs Proved It in Three Weeks.</a></p>]]></description>
+        </item>
+        <item>
+            <title>Gaussian Splats versus 3D Meshes</title>
+            <link>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</link>
+            <guid>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:18:33 +0000</pubDate>
+            <description><![CDATA[<p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p>
+<p><img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p>]]></description>
+        </item>
+        <item>
+            <title>Tearing down fences?</title>
+            <link>https://davidgsmith.net/thoughts/tearing-down-fences.html</link>
+            <guid>https://davidgsmith.net/thoughts/tearing-down-fences.html</guid>
+            <pubDate>Tue, 01 Sep 2026 16:15:21 +0000</pubDate>
+            <description><![CDATA[<p>Before you tear down a "pointless" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton’s classic thought experiment.</p>
+<p>Imagine you're walking down a country road and encounter a sturdy wooden fence blocking your path. To your eye, it serves absolutely no purpose.</p>
+<p>What's your first instinct?</p>
+<p>The "reformer" in us wants to yell: "Tear it down!"</p>
+<p>But Chesterton’s answer is: "No. You cannot destroy it until you can explain exactly why it was built in the first place."</p>
+<p>This is the principle of Chesterton’s Fence: a vital rule of intellectual humility for leadership and decision-making.</p>
+<p>When we join a new team, take over a department, or evaluate a legacy system, it is incredibly easy to spot inefficiencies. We look at a clunky bureaucratic step, a piece of old legacy code, or a strange company policy and assume the people who created them were simply incompetent.</p>
+<p>But someone went to the effort of building that fence. They spent time and money on it. And even if the system looks broken today, it was almost certainly a logical solution to a very real problem at the time.</p>
+<p>If you tear down the fence without understanding that original problem, you risk letting the wolves back into the yard. The original problem didn't vanish; you just made yourself blind to it.</p>
+<p>The next time you want to "disrupt" or streamline a process, pause and ask the load-bearing question:</p>
+<p>"What exact problem was this solving, and what happens if that problem returns?"</p>]]></description>
+        </item>
+    </channel>
+    </rss>
