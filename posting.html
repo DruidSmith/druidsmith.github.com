@@ -29,18 +29,26 @@
     <section id="editor-panel" class="hidden rounded border border-slate-200 bg-white p-6 shadow-sm">
         <form id="post-form" class="space-y-5">
             <label class="block text-sm font-medium" for="title">Title<input id="title" name="title" required maxlength="200" class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
-            <label class="block text-sm font-medium" for="body">Post body</label>
+            
+            <label class="block text-sm font-medium" for="tags">Tags (comma-separated)</label>
+            <input list="tag-picklist" id="tags" name="tags" placeholder="e.g., AI, Critical Thinking" class="mt-2 w-full rounded border border-slate-300 px-3 py-3">
+            <datalist id="tag-picklist"></datalist>
+            <p class="text-xs text-slate-500 -mt-3">Select existing tags or type new ones to add them to the list permanently.</p>
+
+            <label class="block text-sm font-medium mt-5" for="body">Post body</label>
             <textarea id="body" name="body" required rows="12"></textarea>
             <p class="text-xs text-slate-500">Write in Markdown. Use the preview button to check the formatted post before saving.</p>
-            <label class="block text-sm font-medium" for="url">Original post URL<input id="url" name="url" type="url" required placeholder="https://www.linkedin.com/..." class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
+            
+            <label class="block text-sm font-medium mt-5" for="url">Original post URL<input id="url" name="url" type="url" required placeholder="https://www.linkedin.com/..." class="mt-2 w-full rounded border border-slate-300 px-3 py-3"></label>
             <p id="platform-preview" class="text-sm text-slate-500"></p>
+            
             <button class="rounded bg-amber-700 px-5 py-3 text-sm font-semibold text-white hover:bg-amber-800" type="submit">Save post</button>
         </form>
     </section>
     <p id="status" role="status" class="mt-5 text-sm text-slate-600"></p>
 </main>
 <script>
-    window.POSTING_CONFIG = { endpoint: 'https://page-post.druidsmith.workers.dev' };
+window.POSTING_CONFIG = { endpoint: 'https://page-post.druidsmith.workers.dev' };
 const config = window.POSTING_CONFIG || { endpoint: '' };
 let sessionToken = '';
 const status = document.querySelector('#status');
@@ -58,6 +66,31 @@ function setStatus(message, isError = false) {
     status.textContent = message;
     status.className = `mt-5 text-sm ${isError ? 'text-red-700' : 'text-slate-600'}`;
 }
+
+// Fetch existing tags to build the dynamic picklist
+async function loadTags() {
+    try {
+        const response = await fetch(`${config.endpoint.replace(/\/$/, '')}/posts`);
+        if(response.ok) {
+            const posts = await response.json();
+            const tagSet = new Set();
+            posts.forEach(p => {
+                if (p.tags && Array.isArray(p.tags)) {
+                    p.tags.forEach(t => tagSet.add(t));
+                }
+            });
+            const picklist = document.getElementById('tag-picklist');
+            tagSet.forEach(tag => {
+                const opt = document.createElement('option');
+                opt.value = tag;
+                picklist.appendChild(opt);
+            });
+        }
+    } catch (e) {
+        console.warn('Could not load picklist tags', e);
+    }
+}
+loadTags();
 
 function platformFromUrl(value) {
     try {
@@ -96,9 +129,23 @@ document.querySelector('#login-form').addEventListener('submit', async event => 
 document.querySelector('#post-form').addEventListener('submit', async event => {
     event.preventDefault(); setStatus('Saving...');
     const form = new FormData(event.target);
+    
+    // Parse tags into array
+    const rawTags = form.get('tags') || '';
+    const tagsArray = rawTags.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
     try {
-        await send('/posts', { title: form.get('title'), body: form.get('body'), url: form.get('url') }, sessionToken);
-        event.target.reset(); platformPreview.textContent = ''; setStatus('Saved. GitHub Actions will publish it shortly.');
+        await send('/posts', { 
+            title: form.get('title'), 
+            body: form.get('body'), 
+            url: form.get('url'),
+            tags: tagsArray
+        }, sessionToken);
+        event.target.reset(); 
+        platformPreview.textContent = ''; 
+        setStatus('Saved. GitHub Actions will publish it shortly.');
+        // Refresh picklist with new tag immediately
+        loadTags(); 
     } catch (error) { setStatus(error.message, true); }
 });
 </script>

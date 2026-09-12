@@ -2,7 +2,7 @@ const encoder = new TextEncoder();
 const cors = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
 };
 
 function response(body, status = 200) {
@@ -62,6 +62,14 @@ export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
     try {
+      // Expose a quick GET endpoint to read tags/posts for the picklist safely
+      if (request.method === 'GET' && new URL(request.url).pathname === '/posts') {
+         const fileResponse = await githubRequest(env, 'GET', 'posts.json');
+         if (!fileResponse.ok) return response([], 200);
+         const file = await fileResponse.json();
+         return response(JSON.parse(decodeContent(file.content)));
+      }
+
       if (request.method !== 'POST') return response({ error: 'Method not allowed.' }, 405);
       if (new URL(request.url).pathname === '/login') {
         const { password } = await request.json();
@@ -75,11 +83,24 @@ export default {
       const url = new URL(input.url);
       if (!['http:', 'https:'].includes(url.protocol)) return response({ error: 'A valid HTTP(S) URL is required.' }, 400);
 
+      // Parse tags
+      const tags = Array.isArray(input.tags) ? input.tags : [];
+
       const fileResponse = await githubRequest(env, 'GET', 'posts.json');
       if (!fileResponse.ok) return response({ error: 'Could not read posts.json.' }, 502);
       const file = await fileResponse.json();
       const posts = JSON.parse(decodeContent(file.content));
-      posts.push({ title: input.title.trim(), body: input.body.trim(), format: 'markdown', url: url.href, date: new Date().toISOString(), platform: platformForUrl(url.href) });
+      
+      posts.push({ 
+        title: input.title.trim(), 
+        body: input.body.trim(), 
+        tags: tags,
+        format: 'markdown', 
+        url: url.href, 
+        date: new Date().toISOString(), 
+        platform: platformForUrl(url.href) 
+      });
+      
       const update = await githubRequest(env, 'PUT', 'posts.json', { message: `Add thought: ${input.title.trim()}`, content: encodeContent(JSON.stringify(posts, null, 2) + '\n'), sha: file.sha, branch: env.GITHUB_BRANCH || 'main' });
       if (!update.ok) return response({ error: 'GitHub rejected the update. Please retry.' }, 502);
       return response({ saved: true });
