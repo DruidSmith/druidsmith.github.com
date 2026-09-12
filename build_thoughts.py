@@ -125,7 +125,8 @@ def render_post(post, is_standalone=False):
     tags = post.get("tags", [])
     tags_attr = ",".join(tags).lower()
     
-    tags_html = "".join([f'<span class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2">{html.escape(t)}</span>' for t in tags])
+    # Updated: Added hover styles and an onclick handler to filter the feed
+    tags_html = "".join([f'<button onclick="filterByTag(\'{html.escape(t).lower()}\')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">{html.escape(t)}</button>' for t in tags])
 
     # If on index page, link title to individual page. If on standalone, just text.
     title_html = f'<h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
@@ -336,13 +337,13 @@ def generate_html():
     </div>
     """
 
-filter_js = """<script>
+    # Note: Indentation fixed here
+    filter_js = """<script>
     function filterPosts() {
         const selected = document.getElementById('tag-filter').value;
         const posts = document.querySelectorAll('.post-card');
         posts.forEach(post => {
             const tagsAttr = post.getAttribute('data-tags') || '';
-            // Split the comma-separated string into an actual array
             const tags = tagsAttr.split(',').map(t => t.trim());
             
             if (selected === 'all' || tags.includes(selected)) {
@@ -352,6 +353,34 @@ filter_js = """<script>
             }
         });
     }
+
+    // New helper to allow clicking badges to filter
+    function filterByTag(tag) {
+        // Only run if we are on the main thoughts.html page where the filter exists
+        const filterDropdown = document.getElementById('tag-filter');
+        if (filterDropdown) {
+            filterDropdown.value = tag;
+            filterPosts();
+            // Scroll smoothly back to the top of the feed
+            document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // If clicked from a standalone post page, navigate to main page with tag filter
+            window.location.href = '/thoughts.html?tag=' + encodeURIComponent(tag);
+        }
+    }
+
+    // If navigated with a tag in the URL (from a standalone page), apply it on load
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tagParam = urlParams.get('tag');
+        if (tagParam) {
+            const filterDropdown = document.getElementById('tag-filter');
+            if (filterDropdown) {
+                filterDropdown.value = tagParam;
+                filterPosts();
+            }
+        }
+    });
     </script>"""
 
     main_html = get_base_html("Thoughts & Insights — David G. Smith", filter_ui, custom_js=filter_js)
