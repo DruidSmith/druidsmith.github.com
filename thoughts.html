@@ -86,7 +86,7 @@
         <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
         <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
             <option value="all">All Thoughts</option>
-            <option value="ai">AI</option><option value="agents">Agents</option><option value="charity">Charity</option><option value="cloud">Cloud</option><option value="critical thinking">Critical Thinking</option><option value="cybersecurity">Cybersecurity</option><option value="geospatial analysis">Geospatial Analysis</option><option value="ontologies">Ontologies</option><option value="risk management">Risk Management</option><option value="semantic layer">Semantic Layer</option>
+            <option value="ai">AI</option><option value="agents">Agents</option><option value="charity">Charity</option><option value="cloud">Cloud</option><option value="critical thinking">Critical Thinking</option><option value="cybersecurity">Cybersecurity</option><option value="data centers">Data Centers</option><option value="environmental sustainability">Environmental Sustainability</option><option value="geospatial analysis">Geospatial Analysis</option><option value="ontologies">Ontologies</option><option value="risk management">Risk Management</option><option value="semantic layer">Semantic Layer</option>
         </select>
     </div>
     <div class="grid grid-cols-1 gap-8" id="post-list">
@@ -561,14 +561,14 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         </article>
     
 
-        <article data-tags="" itemscope itemtype="https://schema.org/BlogPosting"
+        <article data-tags="data centers,ai,agents,cloud,environmental sustainability" itemscope itemtype="https://schema.org/BlogPosting"
                  class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span itemprop="datePublished">September 05, 2026 &bull; Originally on Linkedin</span>
             </div>
             <a href="/thoughts/ai-data-centers-the-core-tension.html"><h2 itemprop="headline" class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Data Centers:  The Core Tension</h2></a>
-            <div class="mb-4"></div>
+            <div class="mb-4"><button onclick="filterByTag('data centers')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Data Centers</button><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button><button onclick="filterByTag('environmental sustainability')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Environmental Sustainability</button></div>
             <div itemprop="articleBody" class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long‑term environmental impact.</p>
 <p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
 <p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
@@ -582,7 +582,7 @@ What evidence would make us reconsider our position?</p>
 <p>If more of our hardest policy disputes adopted this mindset, we’d get fewer stalemates and more truth.</p></div>
             
     <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <a href="https://www.linkedin.com/posts/davidgsmith_data-centers-how-about-an-adversarial-collaboration-activity-7501687018226180097-hBpU?utm_source=share&amp;amp;utm_medium=member_desktop&amp;amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.linkedin.com/posts/davidgsmith_data-centers-how-about-an-adversarial-collaboration-activity-7501687018226180097-hBpU" target="_blank" rel="noopener noreferrer"
            class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
            Read Original &rarr;
         </a>
