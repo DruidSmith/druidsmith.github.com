@@ -340,7 +340,12 @@ Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipula
             <guid>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:29:35 +0000</pubDate>
             <description>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models...</description>
-            
+            <category>AI</category>
+            <dc:subject>AI</dc:subject>
+            <category>Agents</category>
+            <dc:subject>Agents</dc:subject>
+            <category>Interoperability</category>
+            <dc:subject>Interoperability</dc:subject>
             <content:encoded><![CDATA[<p>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. </p>
 <p>Teams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
