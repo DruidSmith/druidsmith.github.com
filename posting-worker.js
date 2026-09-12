@@ -61,6 +61,7 @@ async function githubRequest(env, method, path, body) {
 export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
+    
     try {
       // Expose a quick GET endpoint to read tags/posts for the picklist safely
       if (request.method === 'GET' && new URL(request.url).pathname === '/posts') {
@@ -71,39 +72,76 @@ export default {
       }
 
       if (request.method !== 'POST') return response({ error: 'Method not allowed.' }, 405);
+      
       if (new URL(request.url).pathname === '/login') {
         const { password } = await request.json();
         if (!password || password !== env.POSTING_PASSWORD) return response({ error: 'Invalid password.' }, 401);
         return response({ token: await createSession(env) });
       }
-      if (new URL(request.url).pathname !== '/posts' || !(await validSession(request, env))) return response({ error: 'Unauthorized.' }, 401);
+      
+      if (new URL(request.url).pathname !== '/posts' || !(await validSession(request, env))) {
+          return response({ error: 'Unauthorized.' }, 401);
+      }
 
       const input = await request.json();
-      if (typeof input.title !== 'string' || !input.title.trim() || input.title.length > 200 || typeof input.body !== 'string' || !input.body.trim()) return response({ error: 'Title and body are required.' }, 400);
+      if (typeof input.title !== 'string' || !input.title.trim() || input.title.length > 200 || typeof input.body !== 'string' || !input.body.trim()) {
+          return response({ error: 'Title and body are required.' }, 400);
+      }
       const url = new URL(input.url);
-      if (!['http:', 'https:'].includes(url.protocol)) return response({ error: 'A valid HTTP(S) URL is required.' }, 400);
+      if (!['http:', 'https:'].includes(url.protocol)) {
+          return response({ error: 'A valid HTTP(S) URL is required.' }, 400);
+      }
 
       // Parse tags
       const tags = Array.isArray(input.tags) ? input.tags : [];
+      const originalDate = input.original_date; // Check for edits
 
       const fileResponse = await githubRequest(env, 'GET', 'posts.json');
       if (!fileResponse.ok) return response({ error: 'Could not read posts.json.' }, 502);
+      
       const file = await fileResponse.json();
       const posts = JSON.parse(decodeContent(file.content));
+      let message = '';
+
+      if (originalDate) {
+        // EDIT MODE: Find the post by its original timestamp
+        const index = posts.findIndex(p => p.date === originalDate);
+        if (index !== -1) {
+          posts[index].title = input.title.trim();
+          posts[index].body = input.body.trim();
+          posts[index].tags = tags;
+          posts[index].url = url.href;
+          posts[index].platform = platformForUrl(url.href);
+          // We keep the original date to preserve feed order and URL slugs
+          message = `Update thought: ${input.title.trim()}`;
+        } else {
+          return response({ error: 'Original post not found for editing.' }, 404);
+        }
+      } else {
+        // NEW POST MODE
+        posts.push({ 
+          title: input.title.trim(), 
+          body: input.body.trim(), 
+          tags: tags,
+          format: 'markdown', 
+          url: url.href, 
+          date: new Date().toISOString(), 
+          platform: platformForUrl(url.href) 
+        });
+        message = `Add thought: ${input.title.trim()}`;
+      }
       
-      posts.push({ 
-        title: input.title.trim(), 
-        body: input.body.trim(), 
-        tags: tags,
-        format: 'markdown', 
-        url: url.href, 
-        date: new Date().toISOString(), 
-        platform: platformForUrl(url.href) 
+      const update = await githubRequest(env, 'PUT', 'posts.json', { 
+          message: message, 
+          content: encodeContent(JSON.stringify(posts, null, 2) + '\n'), 
+          sha: file.sha, 
+          branch: env.GITHUB_BRANCH || 'main' 
       });
       
-      const update = await githubRequest(env, 'PUT', 'posts.json', { message: `Add thought: ${input.title.trim()}`, content: encodeContent(JSON.stringify(posts, null, 2) + '\n'), sha: file.sha, branch: env.GITHUB_BRANCH || 'main' });
       if (!update.ok) return response({ error: 'GitHub rejected the update. Please retry.' }, 502);
+      
       return response({ saved: true });
+      
     } catch (error) {
       return response({ error: error.message || 'Request failed.' }, 400);
     }
