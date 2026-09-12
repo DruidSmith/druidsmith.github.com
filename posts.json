@@ -14,7 +14,10 @@
     "body": "Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.\n\n[ArcGIS Blog](https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose)\n\n![Gaussian Splat](https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png)",
     "url": "https://www.linkedin.com/posts/davidgsmith_meshes-vs-gaussian-splats-which-reality-activity-7492967636205559809-HhWK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-01T16:18:33.744Z",
-    "platform": "linkedin"
+    "platform": "linkedin",
+    "tags": [
+      "Geospatial Analysis"
+    ]
   },
   {
     "title": "When AI wants to play outside of the sandbox...",
