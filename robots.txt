@@ -5,10 +5,13 @@ Sitemap: https://davidgsmith.net/sitemap.xml
 
 # Explicit AI Crawler Stance
 User-agent: GPTBot
+Disallow: /posting.html
 Allow: /
 
 User-agent: ClaudeBot
+Disallow: /posting.html
 Allow: /
 
 User-agent: PerplexityBot
+Disallow: /posting.html
 Allow: /
