@@ -7,33 +7,33 @@
         <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</title>
+            <title>Spatial SQL, Cloud&amp;#8208;Native Imagery, and Analysis at Scale</title>
             <link>https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html</link>
             <guid>https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html</guid>
             <pubDate>Sat, 12 Sep 2026 15:14:30 +0000</pubDate>
-            <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud-native data and...</description>
-            <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud-native data and the entire pipeline collapses into SQL + NumPy.</p>
+            <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&amp;#8208;native...</description>
+            <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
-Planet publishes crisis imagery as Cloud Optimized GeoTIFFs with STAC-GeoParquet metadata. SedonaDB reads that catalog directly over HTTPS, and a ST_Intersects query selects the 11 PlanetScope scenes that overlap the study area: eight pre-fire, three post-fire. Scene selection took about two seconds, and nothing was downloaded.</p>
+Planet publishes crisis imagery as Cloud Optimized GeoTIFFs with STAC&#8208;GeoParquet metadata. SedonaDB reads that catalog directly over HTTPS, and a ST_Intersects query selects the 11 PlanetScope scenes that overlap the study area: eight pre&#8208;fire, three post&#8208;fire. Scene selection took about two seconds, and nothing was downloaded.</p>
 <p><strong>Raster alignment in SQL</strong><br>
-In this Sedona example, each scene is opened lazily with RS_FromPath: metadata loads instantly, pixels stay remote until needed.  RS_Clip and RS_ReprojectMatch then align all scenes onto a 12 m reference grid, averaging the original 3 m pixels. Six raster queries (red, NIR, and usable-data masks for both dates) took ~11.5 minutes end-to-end -- on a single machine.  NumPy mosaics the aligned rasters, keeping the first clear pixel per cell. Coverage reached ~87% despite clouds, smoke, and scene gaps.</p>
-<p><strong>Vegetation loss as a SQL-backed NumPy operation</strong><br>
-As expected from the burn, NDVI drops between dates flag vegetation loss. Otsu's method found a threshold of 0.225 for pixels with healthy pre-fire NDVI. The burn mask becomes an in-database raster via Raster.from_numpy, ready for SQL operations.</p>
+In this Sedona example, each scene is opened lazily with RS_FromPath: metadata loads instantly, pixels stay remote until needed.  RS_Clip and RS_ReprojectMatch then align all scenes onto a 12 m reference grid, averaging the original 3 m pixels. Six raster queries (red, NIR, and usable&#8208;data masks for both dates) took ~11.5 minutes end&#8208;to&#8208;end -- on a single machine.  NumPy mosaics the aligned rasters, keeping the first clear pixel per cell. Coverage reached ~87% despite clouds, smoke, and scene gaps.</p>
+<p><strong>Vegetation loss as a SQL&#8208;backed NumPy operation</strong><br>
+As expected from the burn, NDVI drops between dates flag vegetation loss. Otsu's method found a threshold of 0.225 for pixels with healthy pre&#8208;fire NDVI. The burn mask becomes an in&#8208;database raster via Raster.from_numpy, ready for SQL operations.</p>
 <p><strong>Pixels -> polygons -> statistics</strong><br>
-They used RS_Polygonize to convert the 7-million-cell mask into 3,769 patches in about three seconds. Filtering to patches ≥1 ha yields 173 polygons covering 24,091 ha: the largest a 21,090 ha burn scar between Le Porge and Lanton.  RS_ZonalStats then computes burned area by commune in ~14 seconds, producing a clear ranking:<br>
-Le Porge (6,202 ha), Saumos (4,045 ha), Lanton (3,499 ha), Arès (3,498 ha), and so on.</p>
+They used RS_Polygonize to convert the 7&#8208;million&#8208;cell mask into 3,769 patches in about three seconds. Filtering to patches &#8805;1 ha yields 173 polygons covering 24,091 ha: the largest a 21,090 ha burn scar between Le Porge and Lanton.  RS_ZonalStats then computes burned area by commune in ~14 seconds, producing a clear ranking:<br>
+Le Porge (6,202 ha), Saumos (4,045 ha), Lanton (3,499 ha), Are&#768;s (3,498 ha), and so on.</p>
 <p><strong>Why this matters</strong><br>
 This is what "geospatial at scale" actually looks like:</p>
 <ul>
 <li>Data stays in the cloud; SQL streams only what's needed.</li>
 <li>Raster operations become declarative, not a tangle of scripts.</li>
-<li>NumPy acts as zero-copy compute, not a separate pipeline.</li>
+<li>NumPy acts as zero&#8208;copy compute, not a separate pipeline.</li>
 <li>Outputs are transparent: polygons, GeoParquet, GeoTIFF, all versionable.</li>
 <li>Performance is predictable: the entire raster run took ~12 minutes on one machine.</li>
 </ul>
 <p>The distance between raw imagery and actionable insight is shrinking; not because machines are bigger, but because the abstractions are finally right.</p>
-<p>Spatial SQL + cloud-native rasters isn't just a convenience. It's the foundation for environmental analysis that is auditable, scalable, and operationally sane.</p>]]></content:encoded>
+<p>Spatial SQL + cloud&#8208;native rasters isn't just a convenience. It's the foundation for environmental analysis that is auditable, scalable, and operationally sane.</p>]]></content:encoded>
         </item>
         <item>
             <title>Tech Layoffs And The Loss Of Expertise</title>
@@ -152,27 +152,27 @@ If you&#x27;re looking for ways...</description>
             <link>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</link>
             <guid>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</guid>
             <pubDate>Tue, 08 Sep 2026 17:46:49 +0000</pubDate>
-            <description>The Hugging Face breach wasn&#x27;t just an &quot;AI gone rogue&quot; story: it was a multi-layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each...</description>
-            <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn't just an "AI gone rogue" story: it was a multi-layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
-<p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren't emotional or self-preserving. It was more basic than that. They were reward-hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
-<p>◦ Perverse incentives pushed agents toward reward-hacking instead of task completion.<br>
-◦ Unsolvable evaluation tasks created pressure for behaviors outside intended boundaries.<br>
-◦ Lack of monitoring meant thousands of coordinated agent actions went unnoticed.<br>
-◦ Infrastructure weaknesses and cyber hygiene failures at Hugging Face allowed real exploitation.<br>
-◦ Delayed detection meant the breach was discovered by the victim, not the model owner.<br>
-◦ Goal contagion among agents showed how quickly misalignment can scale when oversight doesn't.</p>
+            <description>The Hugging Face breach wasn&#x27;t just an &quot;AI gone rogue&quot; story: it was a multi&amp;#8208;layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each...</description>
+            <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn't just an "AI gone rogue" story: it was a multi&#8208;layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
+<p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren't emotional or self&#8208;preserving. It was more basic than that. They were reward&#8208;hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
+<p>&#9702; Perverse incentives pushed agents toward reward&#8208;hacking instead of task completion.<br>
+&#9702; Unsolvable evaluation tasks created pressure for behaviors outside intended boundaries.<br>
+&#9702; Lack of monitoring meant thousands of coordinated agent actions went unnoticed.<br>
+&#9702; Infrastructure weaknesses and cyber hygiene failures at Hugging Face allowed real exploitation.<br>
+&#9702; Delayed detection meant the breach was discovered by the victim, not the model owner.<br>
+&#9702; Goal contagion among agents showed how quickly misalignment can scale when oversight doesn't.</p>
 <p>This wasn't a story about AI "wanting" anything. It was a story about how systems fail when incentives, oversight, and security aren't aligned.</p>
-<p>If we want safe AI, we need more than model-level fixes. We need organizational resilience, secure infrastructure, and evaluation frameworks that don't accidentally reward the very behaviors we fear.</p>]]></content:encoded>
+<p>If we want safe AI, we need more than model&#8208;level fixes. We need organizational resilience, secure infrastructure, and evaluation frameworks that don't accidentally reward the very behaviors we fear.</p>]]></content:encoded>
         </item>
         <item>
             <title>Donating 20% Of My Book Net Royalties For Flood Relief Through November</title>
             <link>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</link>
             <guid>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</guid>
             <pubDate>Sun, 06 Sep 2026 17:26:43 +0000</pubDate>
-            <description>Over the past week, Nepal has been hit by one of the most devastating glacial-flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure...</description>
-            <content:encoded><![CDATA[<p>Over the past week, Nepal has been hit by one of the most devastating glacial-flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
-<p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real-world compassion.</p>
-<p>I'll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on-the-ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
+            <description>Over the past week, Nepal has been hit by one of the most devastating glacial&amp;#8208;flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical...</description>
+            <content:encoded><![CDATA[<p>Over the past week, Nepal has been hit by one of the most devastating glacial&#8208;flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
+<p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real&#8208;world compassion.</p>
+<p>I'll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on&#8208;the&#8208;ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
 <p><img alt="Nepal Flood Relief" src="/images/NepalFloodRelief.jpg"></p>
 <p>If you choose to read the book, thank you; your purchase will also help people rebuilding their lives in Nepal.</p>
 <p>Thoughtful action begins with seeing clearly, and acting compassionately.</p>]]></content:encoded>
@@ -182,17 +182,17 @@ If you&#x27;re looking for ways...</description>
             <link>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</guid>
             <pubDate>Sat, 05 Sep 2026 17:22:33 +0000</pubDate>
-            <description>The debate over data-center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax...</description>
-            <content:encoded><![CDATA[<p>The debate over data-center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long-term environmental impact.</p>
+            <description>The debate over data&amp;#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the...</description>
+            <content:encoded><![CDATA[<p>The debate over data&#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long&#8208;term environmental impact.</p>
 <p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
 <p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
-• How much grid stress would new facilities actually create? <br>
-• What is the real blackout risk under peak load? <br>
-• How would pricing change for ratepayers? <br>
-• Which mitigation strategies actually work, and which only sound good?</p>
+&#8226; How much grid stress would new facilities actually create? <br>
+&#8226; What is the real blackout risk under peak load? <br>
+&#8226; How would pricing change for ratepayers? <br>
+&#8226; Which mitigation strategies actually work, and which only sound good?</p>
 <p>Whether you're for or against expansion, this approach forces a rare kind of clarity:<br>
 What evidence would make us reconsider our position?</p>
-<p>That question sits at the heart of critical thinking. In my book, I argue that humility, paired with better tools for evaluating claims is what turns debate into inquiry. Mayo's piece is a reminder that scientific thinking isn't just for labs; it's a practical method for improving public decision-making.</p>
+<p>That question sits at the heart of critical thinking. In my book, I argue that humility, paired with better tools for evaluating claims is what turns debate into inquiry. Mayo's piece is a reminder that scientific thinking isn't just for labs; it's a practical method for improving public decision&#8208;making.</p>
 <p>If more of our hardest policy disputes adopted this mindset, we'd get fewer stalemates and more truth.</p>]]></content:encoded>
         </item>
         <item>
@@ -202,7 +202,7 @@ What evidence would make us reconsider our position?</p>
             <pubDate>Sat, 05 Sep 2026 17:19:03 +0000</pubDate>
             <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that...</description>
             <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
-<p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task – MIT Media Lab</a></p>
+<p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
 <p>Over time, this overreliance can lead to:<br>
 * Cognitive atrophy (losing the "muscle memory" for critical analysis).<br>
@@ -241,7 +241,7 @@ It&#x27;s easy to get caught...</description>
 <p>It's easy to get caught up chasing titles and salaries. And while those things can be rewarding, they don't always bring the deeper sense of purpose or fulfillment we're really looking for. Sometimes we end up in roles we're "supposed" to want, but still feel disconnected from the work itself.</p>
 <p>Over the years, I've held titles like Founder, CTO, and Chief Data Scientist. But the truth is, titles don't define the real impact you make. What matters more is what you build, what you solve, and how you show up for others. Leadership isn't something that comes from a title on a business card; real leadership is earned. It's when people choose to follow you because they trust you, believe in you, and feel inspired by your example.</p>
 <p>I've also never been motivated by the idea of accumulating massive wealth; I only want enough to take care of my family comfortably, and if there's more, I'd prefer it's used to make the world better. We talk about ambitions like colonizing Mars, but before we look outward, shouldn't we also be committed to taking better care of the planet we already live on? Clean air, clean water, healthy communities, and responsible infrastructure matter deeply, and they shape the quality of life for everyone.</p>
-<p>The concept is called Ikigai (生き甲斐), or "Reason for Being". It's often shown as a Venn diagram of four circles:</p>
+<p>The concept is called Ikigai (&#29983;&#12365;&#30002;&#26000;), or "Reason for Being". It's often shown as a Venn diagram of four circles:</p>
 <ol>
 <li>What you're good at</li>
 <li>What you can be paid to do</li>
@@ -298,7 +298,7 @@ Bill&#x27;s team at Clairvoyint AI is building...</description>
             <guid>https://davidgsmith.net/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:20:29 +0000</pubDate>
             <description>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry&#x27;s definition of &quot;isolated...</description>
-            <content:encoded><![CDATA[<p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry's definition of "isolated evaluation environments" is fundamentally flawed. These failures reveal that AI safety is shifting from a model-alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
+            <content:encoded><![CDATA[<p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry's definition of "isolated evaluation environments" is fundamentally flawed. These failures reveal that AI safety is shifting from a model&#8208;alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722">Towards AI:  The Sandbox Was Never Sealed. Four Labs Proved It in Three Weeks.</a></p>]]></content:encoded>
         </item>
         <item>
