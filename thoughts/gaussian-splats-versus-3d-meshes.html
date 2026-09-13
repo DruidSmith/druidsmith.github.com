@@ -85,7 +85,7 @@
     </div>
 </nav>
 
-<header class="pt-32 pb-16 px-4 max-w-5xl mx-auto text-center border-b border-gray-100">
+<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-100">
     <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
     
     <div class="flex justify-center mb-6">
@@ -98,17 +98,19 @@
     </div>
 </header>
 
-<main id="main-content" class="py-16 bg-brand-light min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <article data-tags="geospatial analysis"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
+<main id="main-content" class="py-12 bg-brand-light min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Main Content Pane -->
+            <div class="lg:col-span-8 space-y-8">
+                
+        <article class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 01, 2026 &bull; Originally on Linkedin</span>
             </div>
             <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">Gaussian Splats versus 3D Meshes</h2>
-            <div class="mb-4"><button onclick="filterByTag('geospatial analysis')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Geospatial Analysis</button></div>
+            <div class="mb-4"><a href="/thoughts-geospatial-analysis.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Geospatial Analysis</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p>
 <p><img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p></div>
@@ -147,6 +149,118 @@
     
         </article>
     
+            </div>
+            
+            <!-- Navigation Rail -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                
+    <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <!-- Mobile Nav Toggle -->
+        <div class="lg:hidden bg-white p-4 rounded border border-gray-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-medium text-sm focus:outline-none">
+                <span>Browse Posts by Tag &amp; Month</span>
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-rail-content" class="space-y-6 hidden lg:block">
+            <!-- Posts by Tag Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Tag</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    
+        <a href="/thoughts-ai.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>AI</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">10</span>
+        </a>
+        
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">7</span>
+        </a>
+        
+        <a href="/thoughts-agents.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Agents</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">6</span>
+        </a>
+        
+        <a href="/thoughts-charity.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Charity</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-cloud.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Cloud</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-cybersecurity.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Cybersecurity</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-geospatial-analysis.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Geospatial Analysis</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Risk Management</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Semantic Layer</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-data-centers.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Data Centers</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-environmental-sustainability.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Environmental Sustainability</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-interoperability.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Interoperability</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Ontologies</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Untagged</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">4</span>
+        </a>
+        
+                </div>
+            </div>
+
+            <!-- Posts by Month Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Month</h3>
+                
+        <div class="mb-4 last:mb-0">
+            <div class="text-center font-serif font-semibold text-brand-dark text-sm mb-2">2026</div>
+            <div class="grid grid-cols-3 gap-1.5">
+                <span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-emerald-600 text-white hover:bg-emerald-700 font-medium">SEP</a><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">OCT</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">DEC</span>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </aside>
+    
+            </div>
+        </div>
     </div>
 </main>
 
@@ -184,5 +298,36 @@
     }
 </script>
 
+<!-- Return to Top Button -->
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-brand-dark text-white p-3 rounded-full shadow-lg hover:bg-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
+<script>
+    const returnToTopBtn = document.getElementById('return-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            returnToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            returnToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+    });
+    returnToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const navToggle = document.getElementById('nav-rail-toggle');
+    const navContent = document.getElementById('nav-rail-content');
+    const navIcon = document.getElementById('nav-toggle-icon');
+    if (navToggle && navContent) {
+        navToggle.addEventListener('click', () => {
+            navContent.classList.toggle('hidden');
+            navIcon.classList.toggle('rotate-180');
+        });
+    }
+</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Thoughts & Insights — David G. Smith</title>
 <meta name="description" content="Latest perspectives on technical architecture, enterprise data, and critical thinking.">
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
-
+<link rel="canonical" href="https://davidgsmith.net/thoughts.html">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }, colors: { brand: { dark: '#111827', muted: '#374151', accent: '#b45309', light: '#f9fafb' } } } } }
@@ -77,7 +77,7 @@
     </div>
 </nav>
 
-<header class="pt-32 pb-16 px-4 max-w-5xl mx-auto text-center border-b border-gray-100">
+<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-100">
     <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
     
     <div class="flex justify-center mb-6">
@@ -90,817 +90,432 @@
     </div>
 </header>
 
-<main id="main-content" class="py-16 bg-brand-light min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-    <div class="mb-8 flex justify-end items-center gap-3">
-        <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
-        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
-            <option value="all">All Thoughts</option>
-            <option value="ai">AI</option><option value="agents">Agents</option><option value="charity">Charity</option><option value="cloud">Cloud</option><option value="critical thinking">Critical Thinking</option><option value="cybersecurity">Cybersecurity</option><option value="data centers">Data Centers</option><option value="environmental sustainability">Environmental Sustainability</option><option value="geospatial analysis">Geospatial Analysis</option><option value="interoperability">Interoperability</option><option value="ontologies">Ontologies</option><option value="risk management">Risk Management</option><option value="semantic layer">Semantic Layer</option>
-        </select>
-    </div>
-    <div class="grid grid-cols-1 gap-8" id="post-list">
-        
-        <article data-tags="geospatial analysis,cloud"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-4 w-4" loading="lazy">
-                <span>September 12, 2026 &bull; Originally on Other</span>
-            </div>
-            <a href="/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('geospatial analysis')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Geospatial Analysis</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
-<p><strong>Cloud-native imagery as queryable tables</strong><br>
-Planet publishes crisis imagery as Cloud Optimized GeoTIFFs with STAC‑GeoParquet metadata. SedonaDB reads that catalog directly over HTTPS, and a ST_Intersects query selects the 11 PlanetScope scenes that overlap the study area: eight pre‑fire, three post‑fire. Scene selection took about two seconds, and nothing was downloaded.</p>
-<p><strong>Raster alignment in SQL</strong><br>
-In this Sedona example, each scene is opened lazily with RS_FromPath: metadata loads instantly, pixels stay remote until needed.  RS_Clip and RS_ReprojectMatch then align all scenes onto a 12 m reference grid, averaging the original 3 m pixels. Six raster queries (red, NIR, and usable‑data masks for both dates) took ~11.5 minutes end‑to‑end — on a single machine.  NumPy mosaics the aligned rasters, keeping the first clear pixel per cell. Coverage reached ~87% despite clouds, smoke, and scene gaps.</p>
-<p><strong>Vegetation loss as a SQL‑backed NumPy operation</strong><br>
-As expected from the burn, NDVI drops between dates flag vegetation loss. Otsu’s method found a threshold of 0.225 for pixels with healthy pre‑fire NDVI. The burn mask becomes an in‑database raster via Raster.from_numpy, ready for SQL operations.</p>
-<p><strong>Pixels → polygons → statistics</strong><br>
-They used RS_Polygonize to convert the 7‑million‑cell mask into 3,769 patches in about three seconds. Filtering to patches ≥1 ha yields 173 polygons covering 24,091 ha: the largest a 21,090 ha burn scar between Le Porge and Lanton.  RS_ZonalStats then computes burned area by commune in ~14 seconds, producing a clear ranking:<br>
-Le Porge (6,202 ha), Saumos (4,045 ha), Lanton (3,499 ha), Arès (3,498 ha), and so on.</p>
-<p><strong>Why this matters</strong><br>
-This is what “geospatial at scale” actually looks like:</p>
-<ul>
-<li>Data stays in the cloud; SQL streams only what’s needed.</li>
-<li>Raster operations become declarative, not a tangle of scripts.</li>
-<li>NumPy acts as zero‑copy compute, not a separate pipeline.</li>
-<li>Outputs are transparent: polygons, GeoParquet, GeoTIFF, all versionable.</li>
-<li>Performance is predictable: the entire raster run took ~12 minutes on one machine.</li>
-</ul>
-<p>The distance between raw imagery and actionable insight is shrinking; not because machines are bigger, but because the abstractions are finally right.</p>
-<p>Spatial SQL + cloud‑native rasters isn’t just a convenience. It’s the foundation for environmental analysis that is auditable, scalable, and operationally sane.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
+<main id="main-content" class="py-12 bg-brand-light min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Main Content Pane -->
+            <div class="lg:col-span-8 space-y-8">
+                
+    <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm flex justify-between items-center">
+        <div>
+            <h2 class="text-2xl font-serif font-medium text-brand-dark">All Thoughts &amp; Insights</h2>
+            <p class="text-sm text-gray-500 mt-1">Explore all published posts, thoughts, and architectural notes.</p>
         </div>
     </div>
+    <div class="grid grid-cols-1 gap-6">
+        
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 12, 2026</div>
+            <a href="/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</h3></a>
+            <div class="mb-3"><a href="/thoughts-geospatial-analysis.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Geospatial Analysis</a><a href="/thoughts-cloud.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cloud</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite...</p>
+        </div>
+        <div>
+            <a href="/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
     
-        </article>
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 12, 2026</div>
+            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Tech Layoffs And The Loss Of Expertise</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Risk Management</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">There are structural elements at play in today&#x27;s tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism...</p>
+        </div>
+        <div>
+            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
     
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 10, 2026</div>
+            <a href="/thoughts/its-time-to-get-serious-about-ai-risk.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">It&#x27;s Time to Get Serious About AI Risk</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Risk Management</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">I keep seeing headlines like this one: 
+Anthropic Researcher Exitts, Issues Stark AI Warning
+Notable quote: “10% chance AI could destroy all humanity by 2030.”
 
-        <article data-tags="ai,risk management,critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 12, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Tech Layoffs And The Loss Of Expertise</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
-<p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
-<p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
-<p>Professionals with two decades in the trenches carry the battle scars that help steady teams through volatility. They haven't lost their curiosity or love for learning; they’ve just built the resilience to handle challenges younger teams are still figuring out.</p>
-<p>Tech shouldn’t be a young person's game by default. Curiosity doesn't have an expiration date, and depth can't be automated. When we push out our veterans, the whole ecosystem loses its anchor.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7503924825699250176/" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+And yet, the reaction often feels far...</p>
+        </div>
+        <div>
+            <a href="/thoughts/its-time-to-get-serious-about-ai-risk.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
-    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 10, 2026</div>
+            <a href="/thoughts/ai-and-attention-loss.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">AI and Attention Loss</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. 
 
-        <article data-tags="ai,risk management,critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 10, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">It&#x27;s Time to Get Serious About AI Risk</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('risk management')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Risk Management</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I keep seeing headlines like this one: <br>
-<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
-Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em></p>
-<p>And yet, the reaction often feels far too small.</p>
-<p>Someone issues a serious warning, and then the next day the conversation just shifts right back to model launches, benchmarks, and how powerful the latest AI system is. It feels like we’re careening at breakneck speed down a treacherous mountain pass with the brakes barely being touched.</p>
-<p>The recent Hugging Face breach should be a wake-up call. If we’re going to keep pushing AI forward at this pace, then safety, security, and safeguards can’t be an afterthought. They have to be part of the core conversation, not something we mention only after something goes wrong.</p>
-<p>Progress is important. Innovation matters. But so does responsibility.</p>
-<p>We need more serious dialogue about:</p>
-<ul>
-<li>model security</li>
-<li>access controls</li>
-<li>misuse prevention</li>
-<li>red teaming</li>
-<li>governance</li>
-<li>and long-term safety</li>
-</ul>
-<p>If we’re building systems with enormous power, we owe it to society to build them with equal seriousness about risk.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_aisafety-responsibleai-aiethics-activity-7503560249086238720-xJAp?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/itx27s-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+Here&#x27;s a great breakdown of attention mechanisms in transformers, and it...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ai-and-attention-loss.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
-    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 10, 2026</div>
+            <a href="/thoughts/ai-failure-its-all-about-context.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">AI Failure - It&#x27;s All About Context</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">More often than not, AI agents end up failing because they’re drowning in their own context windows.
 
-        <article data-tags="ai,critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 10, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/ai-and-attention-loss.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Attention Loss</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
-<p>Here's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/ai-fundamentals-attention-mechanisms-in-transformers-part-1-a91cce62fbab">Towards AI - AI Fundamentals: Attention Mechanisms in Transformers</a></p>
-<p>At a high level, attention helps models determine which tokens in a sequence matter most to each other, allowing them to build context-aware representations rather than treating words as isolated pieces of text.</p>
-<p>Key ideas covered:<br>
-* Scaled dot-product attention: how models score relevance between tokens<br>
-* Global vs. local attention: how far a token can “look”<br>
-* Soft vs. hard attention: continuous weighting vs. discrete selection<br>
-* Self-attention, causal attention, and cross-attention: how information flows<br>
-* Q, K, and V vectors: the core building blocks behind attention<br>
-* Multi-head, multi-query, and grouped-query attention: different ways to balance expressiveness and efficiency</p>
-<p>The big takeaway: Why is attention critical? Attention is what allows transformers to understand relationships, context, and meaning at scale.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_ai-fundamentals-attention-mechanisms-in-activity-7503437443103186946-mcg_" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ai-failure-its-all-about-context.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 10, 2026</div>
+            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Ontologies For AI And AI For Ontologies</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-ontologies.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Ontologies</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Semantic Layer</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
     
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 09, 2026</div>
+            <a href="/thoughts/how-to-help-nepal.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">How to Help Nepal</h3></a>
+            <div class="mb-3"><a href="/thoughts-charity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Charity</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">My heart is with the people of Nepal after the devastating floods.
 
-        <article data-tags="ai,agents"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 10, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/ai-failure-itx27s-all-about-context.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Failure - It&#x27;s All About Context</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
-<p>One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
-<p>In critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.<br>
-The future belongs to models that can summarize, prioritize, and discard with intention. Not unlike humans.</p>
-<p>I'm curious to see how this evolves, especially as agentic workflows become more common in enterprise environments.</p>
-<p>What do you think: does compression become the new frontier? And what about other approaches, like knowledge graphs? (I'm particularly interested in that angle.)</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_aiagents-contextwindow-aicompression-activity-7503258158551769088-kSDx" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-failure-itx27s-all-about-context.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-failure-itx27s-all-about-context.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-failure-itx27s-all-about-context.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ai-failure-itx27s-all-about-context.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-failure-itx27s-all-about-context.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping...</p>
+        </div>
+        <div>
+            <a href="/thoughts/how-to-help-nepal.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 08, 2026</div>
+            <a href="/thoughts/huggingface-and-rogue-ai.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Huggingface and Rogue AI</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a><a href="/thoughts-cybersecurity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cybersecurity</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">The Hugging Face breach wasn’t just an “AI gone rogue” story: it was a multi‑layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails,...</p>
+        </div>
+        <div>
+            <a href="/thoughts/huggingface-and-rogue-ai.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
     
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 06, 2026</div>
+            <a href="/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Donating 20% Of My Book Net Royalties For Flood Relief Through November</h3></a>
+            <div class="mb-3"><a href="/thoughts-charity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Charity</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Over the past week, Nepal has been hit by one of the most devastating glacial‑flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away....</p>
+        </div>
+        <div>
+            <a href="/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 05, 2026</div>
+            <a href="/thoughts/ai-data-centers-the-core-tension.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">AI Data Centers:  The Core Tension</h3></a>
+            <div class="mb-3"><a href="/thoughts-data-centers.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Data Centers</a><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a><a href="/thoughts-cloud.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cloud</a><a href="/thoughts-environmental-sustainability.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Environmental Sustainability</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ai-data-centers-the-core-tension.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 05, 2026</div>
+            <a href="/thoughts/ai-and-cognitive-debt.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">AI and Cognitive Debt</h3></a>
+            <div class="mb-3"></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ai-and-cognitive-debt.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 04, 2026</div>
+            <a href="/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Semantic Layer</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Another recent quiet development: It&#x27;s interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer...</p>
+        </div>
+        <div>
+            <a href="/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 03, 2026</div>
+            <a href="/thoughts/telling-stories-with-data.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Telling Stories with Data</h3></a>
+            <div class="mb-3"></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a...</p>
+        </div>
+        <div>
+            <a href="/thoughts/telling-stories-with-data.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 02, 2026</div>
+            <a href="/thoughts/ikigai-the-reason-for-being.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Ikigai:  The Reason for Being</h3></a>
+            <div class="mb-3"></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there&#x27;s a concept I like to share with...</p>
+        </div>
+        <div>
+            <a href="/thoughts/ikigai-the-reason-for-being.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/my-book-has-been-published.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">My Book Has Been Published!</h3></a>
+            <div class="mb-3"><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. 
 
-        <article data-tags="ai,ontologies,semantic layer"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 10, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ontologies For AI And AI For Ontologies</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('ontologies')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Ontologies</button><button onclick="filterByTag('semantic layer')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Semantic Layer</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
-<p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
-LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
-<p><strong>2. How Agentic AI Empowers Human Stewards</strong><br>
-The catch? Building and maintaining high-quality ontologies has traditionally been a bottleneck, requiring massive manual effort from human domain experts. This is where the script flips. LLMs and autonomous agents are now capable of reading unstructured text and automatically extracting entities, drafting taxonomies, and even detecting structural gaps or biases in existing knowledge graphs. Recent frameworks show that using AI to draft and assess ontologies can reduce development time by over 40%.</p>
-<p><strong>The Human-in-the-Loop Sweet Spot</strong><br>
-Years back I worked with <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/eWfx-CqA">Bob DuCharme</a> on the W3C Linked Data Workgroup and always appreciate his ideas, and here he aligns with an idea I've been thinking about. We can augment the process of building out ontologies using AI. I don't at all propose replacing the human data steward; instead we augment them, leveraging their expertise while making the ontology development work easier. In a modern Human-in-the-Loop (HITL) workflow, agentic AI does the heavy lifting of parsing, proposing, and mapping. Human experts then step in to validate these structures, govern data access, and ensure the taxonomy accurately reflects the nuances of their specific organizational knowledge.</p>
-<p>I believe he intersection of neural networks (LLMs) and structured logic (ontologies) is the foundation of trustworthy, enterprise-grade AI. If we wants smarter agents, we need to start by curating better semantics.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_so-i-have-at-least-five-former-colleagues-activity-7503924825699250176-t5T8?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+Critical Thinking:  A Practical Guide to Seeing Through Bias,...</p>
+        </div>
+        <div>
+            <a href="/thoughts/my-book-has-been-published.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a><a href="/thoughts-interoperability.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Interoperability</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The...</p>
+        </div>
+        <div>
+            <a href="/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
     
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/capturing-expertise-before-it-walks-out-the-door.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Capturing Expertise Before It Walks Out the Door</h3></a>
+            <div class="mb-3"></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional knowledge faster than we can document it. AI isn’t the threat; it could be the...</p>
+        </div>
+        <div>
+            <a href="/thoughts/capturing-expertise-before-it-walks-out-the-door.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">When AI wants to play outside of the sandbox...</h3></a>
+            <div class="mb-3"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-cybersecurity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cybersecurity</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but...</p>
+        </div>
+        <div>
+            <a href="/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/gaussian-splats-versus-3d-meshes.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Gaussian Splats versus 3D Meshes</h3></a>
+            <div class="mb-3"><a href="/thoughts-geospatial-analysis.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Geospatial Analysis</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.
 
-        <article data-tags="charity,critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 09, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/how-to-help-nepal.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">How to Help Nepal</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('charity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Charity</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My heart is with the people of Nepal after the devastating floods.</p>
-<p>In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild.</p>
-<p>If you’re looking for ways to help, this article offers guidance on where to donate:<br>
-<a target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2026/09/01/world/asia/nepal-floods-tibet-aid-relief-how-donate.html">New York Times:  How to Help Nepal Flood Victims</a></p>
-<p>To do my part, I’ll be donating 20% of the net royalties from my book for the next two months toward relief efforts.</p>
-<p>Every contribution matters. Every act of compassion matters.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_how-to-help-nepal-flood-victims-activity-7503194924205424641-iHeR" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
+ArcGIS Blog
 
-        <article data-tags="ai,agents,cybersecurity"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 08, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/huggingface-and-rogue-ai.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Huggingface and Rogue AI</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('cybersecurity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cybersecurity</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn’t just an “AI gone rogue” story: it was a multi‑layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
-<p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren’t emotional or self‑preserving. It was more basic than that. They were reward‑hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
-<p>◦ Perverse incentives pushed agents toward reward‑hacking instead of task completion.<br>
-◦ Unsolvable evaluation tasks created pressure for behaviors outside intended boundaries.<br>
-◦ Lack of monitoring meant thousands of coordinated agent actions went unnoticed.<br>
-◦ Infrastructure weaknesses and cyber hygiene failures at Hugging Face allowed real exploitation.<br>
-◦ Delayed detection meant the breach was discovered by the victim, not the model owner.<br>
-◦ Goal contagion among agents showed how quickly misalignment can scale when oversight doesn’t.</p>
-<p>This wasn’t a story about AI “wanting” anything. It was a story about how systems fail when incentives, oversight, and security aren’t aligned.</p>
-<p>If we want safe AI, we need more than model‑level fixes. We need organizational resilience, secure infrastructure, and evaluation frameworks that don’t accidentally reward the very behaviors we fear.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_hugging-face-breach-anatomy-of-a-rogue-ai-activity-7502802189409484803-krKL" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+</p>
+        </div>
+        <div>
+            <a href="/thoughts/gaussian-splats-versus-3d-meshes.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
-    </div>
+    </article>
     
-        </article>
-    
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">September 01, 2026</div>
+            <a href="/thoughts/tearing-down-fences.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">Tearing down fences?</h3></a>
+            <div class="mb-3"><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton’s classic thought experiment.
 
-        <article data-tags="charity,critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 06, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Donating 20% Of My Book Net Royalties For Flood Relief Through November</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('charity')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Charity</button><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Over the past week, Nepal has been hit by one of the most devastating glacial‑flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
-<p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real‑world compassion.</p>
-<p>I’ll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on‑the‑ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
-<p><img alt="Nepal Flood Relief" src="https://davidgsmith.net/images/NepalFloodRelief.jpg"></p>
-<p>If you choose to read the book, thank you; your purchase will also help people rebuilding their lives in Nepal.</p>
-<p>Thoughtful action begins with seeing clearly, and acting compassionately.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_nepalfloods-standwithnepal-nepal-activity-7501861588816216064-TOcU" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+Imagine you&#x27;re...</p>
+        </div>
+        <div>
+            <a href="/thoughts/tearing-down-fences.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
             </a>
         </div>
+    </article>
+    
     </div>
     
-        </article>
-    
+            </div>
+            
+            <!-- Navigation Rail -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                
+    <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <!-- Mobile Nav Toggle -->
+        <div class="lg:hidden bg-white p-4 rounded border border-gray-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-medium text-sm focus:outline-none">
+                <span>Browse Posts by Tag &amp; Month</span>
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+        </div>
 
-        <article data-tags="data centers,ai,agents,cloud,environmental sustainability"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 05, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/ai-data-centers-the-core-tension.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Data Centers:  The Core Tension</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('data centers')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Data Centers</button><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('cloud')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Cloud</button><button onclick="filterByTag('environmental sustainability')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Environmental Sustainability</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>The debate over data‑center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long‑term environmental impact.</p>
-<p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
-<p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
-• How much grid stress would new facilities actually create? <br>
-• What is the real blackout risk under peak load? <br>
-• How would pricing change for ratepayers? <br>
-• Which mitigation strategies actually work, and which only sound good?</p>
-<p>Whether you’re for or against expansion, this approach forces a rare kind of clarity:<br>
-What evidence would make us reconsider our position?</p>
-<p>That question sits at the heart of critical thinking. In my book, I argue that humility, paired with better tools for evaluating claims is what turns debate into inquiry. Mayo’s piece is a reminder that scientific thinking isn’t just for labs; it’s a practical method for improving public decision‑making.</p>
-<p>If more of our hardest policy disputes adopted this mindset, we’d get fewer stalemates and more truth.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_data-centers-how-about-an-adversarial-collaboration-activity-7501687018226180097-hBpU" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
+        <div id="nav-rail-content" class="space-y-6 hidden lg:block">
+            <!-- Posts by Tag Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Tag</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    
+        <a href="/thoughts-ai.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>AI</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">10</span>
         </a>
         
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">7</span>
+        </a>
+        
+        <a href="/thoughts-agents.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Agents</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">6</span>
+        </a>
+        
+        <a href="/thoughts-charity.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Charity</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-cloud.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Cloud</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-cybersecurity.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Cybersecurity</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-geospatial-analysis.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Geospatial Analysis</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Risk Management</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Semantic Layer</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">2</span>
+        </a>
+        
+        <a href="/thoughts-data-centers.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Data Centers</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-environmental-sustainability.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Environmental Sustainability</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-interoperability.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Interoperability</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Ontologies</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">1</span>
+        </a>
+        
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent">
+            <span>Untagged</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">4</span>
+        </a>
+        
+                </div>
+            </div>
 
-        <article data-tags=""
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 05, 2026 &bull; Originally on Linkedin</span>
+            <!-- Posts by Month Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Month</h3>
+                
+        <div class="mb-4 last:mb-0">
+            <div class="text-center font-serif font-semibold text-brand-dark text-sm mb-2">2026</div>
+            <div class="grid grid-cols-3 gap-1.5">
+                <span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-emerald-600 text-white hover:bg-emerald-700 font-medium">SEP</a><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">OCT</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">DEC</span>
             </div>
-            <a href="/thoughts/ai-and-cognitive-debt.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Cognitive Debt</h2></a>
-            <div class="mb-4"></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
-<p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task – MIT Media Lab</a></p>
-<p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
-<p>Over time, this overreliance can lead to:<br>
-* Cognitive atrophy (losing the "muscle memory" for critical analysis).<br>
-* Distributed deskilling (becoming unable to audit or catch subtle AI errors).<br>
-* Metacognitive laziness (defaulting to the path of least resistance).</p>
-<p>AI can be an incredible co-pilot, but it shouldn't replace the pilot. To avoid building up unsustainable cognitive debt, we need to intentionally design friction back into our workflows, actively questioning, stress-testing, and building upon AI outputs rather than just copy-pasting them.</p>
-<p>I have a mental outline for another book on applied AI, this is one of many areas I want it to focus on.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_your-brain-on-chatgpt-accumulation-of-cognitive-activity-7501271014631227392-vvKH?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
         </div>
-    </div>
-    
-        </article>
-    
-
-        <article data-tags="ai,agents,semantic layer"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 04, 2026 &bull; Originally on Linkedin</span>
+        
             </div>
-            <a href="/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('ai')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">AI</button><button onclick="filterByTag('agents')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Agents</button><button onclick="filterByTag('semantic layer')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Semantic Layer</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://redis.io/docs/latest/develop/ai/">Redis for AI and Search</a></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_redis-for-ai-and-search-activity-7501243831435161600-Wad9" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
         </div>
-    </div>
+    </aside>
     
-        </article>
-    
-
-        <article data-tags=""
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 03, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <a href="/thoughts/telling-stories-with-data.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Telling Stories with Data</h2></a>
-            <div class="mb-4"></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
-Demo App:<br>
-<a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_take-a-breath-and-look-at-where-a-river-activity-7500910283759144960-iEiC?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/telling-stories-with-data.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/telling-stories-with-data.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/telling-stories-with-data.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/telling-stories-with-data.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/telling-stories-with-data.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
         </div>
-    </div>
-    
-        </article>
-    
-
-        <article data-tags=""
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 02, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/ikigai-the-reason-for-being.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ikigai:  The Reason for Being</h2></a>
-            <div class="mb-4"></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there's a concept I like to share with friends and colleagues.</p>
-<p>It’s easy to get caught up chasing titles and salaries. And while those things can be rewarding, they don’t always bring the deeper sense of purpose or fulfillment we’re really looking for. Sometimes we end up in roles we’re "supposed" to want, but still feel disconnected from the work itself.</p>
-<p>Over the years, I’ve held titles like Founder, CTO, and Chief Data Scientist. But the truth is, titles don’t define the real impact you make. What matters more is what you build, what you solve, and how you show up for others. Leadership isn’t something that comes from a title on a business card; real leadership is earned. It’s when people choose to follow you because they trust you, believe in you, and feel inspired by your example.</p>
-<p>I’ve also never been motivated by the idea of accumulating massive wealth; I only want enough to take care of my family comfortably, and if there’s more, I’d prefer it's used to make the world better. We talk about ambitions like colonizing Mars, but before we look outward, shouldn’t we also be committed to taking better care of the planet we already live on? Clean air, clean water, healthy communities, and responsible infrastructure matter deeply, and they shape the quality of life for everyone.</p>
-<p>The concept is called Ikigai (生き甲斐), or "Reason for Being". It’s often shown as a Venn diagram of four circles:</p>
-<ol>
-<li>What you’re good at</li>
-<li>What you can be paid to do</li>
-<li>What you love</li>
-<li>What the world needs</li>
-</ol>
-<p>For me, that fourth circle: what the world needs, is what transforms work from a job into a calling. That’s where real meaning begins.</p>
-<p>For the first 25 years of my career, I worked as a consultant in engineering and IT. It was solid work, and I was good at it. The pay was good. I worked with large and small private sector clients, state, local and federal governments, and pro bono nonprofit work. But a lot of that time was spent chasing contracts, and if I’m honest, not every project felt especially meaningful or fulfilling.</p>
-<p>What I came to realize, especially on the larger projects, was that the work I found most rewarding was the work tied to a mission; work that was about helping people, solving important problems, and making the world a better place.</p>
-<p>That realization is what ultimately led me to become a federal employee and work for the EPA. Yes, I made more in the private sector, but protecting human health and the environment is a mission that truly matters. It gave me that missing fourth circle: the sense of purpose that changes everything.</p>
-<p>That’s the advice I give anyone thinking about their career: don’t just ask what pays well or what looks impressive. Ask where your strengths, your passions, your values, and the world’s needs come together. That’s where you’ll find the deepest fulfillment.</p>
-<p><img alt="Ikigai" src="https://miro.medium.com/v2/resize:fit:750/format:webp/0*P3wHb30sdNzdMqrk.jpeg"></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_my-colleague-ketan-patel-recently-made-a-activity-7500581340979961856-P3kA?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
-
-        <article data-tags="critical thinking"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
-                <span>September 01, 2026 &bull; Originally on Linkedin</span>
-            </div>
-            <a href="/thoughts/my-book-has-been-published.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">My Book Has Been Published!</h2></a>
-            <div class="mb-4"><button onclick="filterByTag('critical thinking')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">Critical Thinking</button></div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
-<p>It's not your typical book on critical thinking, which just hands you a list of cognitive biases and some motivational talk, it's an extensive, organized and curated framework with over 100 concepts, techniques, heuristics and real world case studies and examples, laid out in over 400 pages, building on the work of Nobel laureate Daniel Kahneman along with the peer reviewed research of dozens of researchers and experts in cognitive psychology, behavioral economics and other fields.</p>
-<p><img alt="Critical Thinking Book" src="https://davidgsmith.net/images/CriticalThinkingCover.jpg"></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_critical-thinking-a-practical-guide-to-seeing-activity-7500188074644197376-72kA?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/my-book-has-been-published.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/my-book-has-been-published.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/my-book-has-been-published.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/my-book-has-been-published.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/my-book-has-been-published.html"
-               target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
-    </div>
-    
     </div>
 </main>
 
@@ -937,44 +552,37 @@ Demo App:<br>
         });
     }
 </script>
+
+<!-- Return to Top Button -->
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-brand-dark text-white p-3 rounded-full shadow-lg hover:bg-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
 <script>
-    function filterPosts() {
-        const selected = document.getElementById('tag-filter').value;
-        const posts = document.querySelectorAll('.post-card');
-        posts.forEach(post => {
-            const tagsAttr = post.getAttribute('data-tags') || '';
-            const tags = tagsAttr.split(',').map(t => t.trim());
-            
-            if (selected === 'all' || tags.includes(selected)) {
-                post.style.display = 'block';
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-
-    function filterByTag(tag) {
-        const filterDropdown = document.getElementById('tag-filter');
-        if (filterDropdown) {
-            filterDropdown.value = tag;
-            filterPosts();
-            document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const returnToTopBtn = document.getElementById('return-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            returnToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
         } else {
-            window.location.href = '/thoughts.html?tag=' + encodeURIComponent(tag);
-        }
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tagParam = urlParams.get('tag');
-        if (tagParam) {
-            const filterDropdown = document.getElementById('tag-filter');
-            if (filterDropdown) {
-                filterDropdown.value = tagParam;
-                filterPosts();
-            }
+            returnToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
         }
     });
-    </script>
+    returnToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const navToggle = document.getElementById('nav-rail-toggle');
+    const navContent = document.getElementById('nav-rail-content');
+    const navIcon = document.getElementById('nav-toggle-icon');
+    if (navToggle && navContent) {
+        navToggle.addEventListener('click', () => {
+            navContent.classList.toggle('hidden');
+            navIcon.classList.toggle('rotate-180');
+        });
+    }
+</script>
 </body>
 </html>
