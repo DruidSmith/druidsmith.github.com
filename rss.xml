@@ -12,10 +12,10 @@
             <guid>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</guid>
             <pubDate>Sat, 12 Sep 2026 15:14:30 +0000</pubDate>
             <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery...</description>
-            <category>Geospatial Analysis</category>
-            <dc:subject>Geospatial Analysis</dc:subject>
             <category>Cloud</category>
             <dc:subject>Cloud</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
