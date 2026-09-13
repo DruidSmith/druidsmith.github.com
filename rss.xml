@@ -7,9 +7,9 @@
         <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Spatial SQL, Cloud&amp;#8208;Native Imagery, and Analysis at Scale</title>
-            <link>https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html</link>
-            <guid>https://davidgsmith.net/thoughts/spatial-sql-cloudnative-imagery-and-analysis-at-scale.html</guid>
+            <title>Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</title>
+            <link>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</link>
+            <guid>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</guid>
             <pubDate>Sat, 12 Sep 2026 15:14:30 +0000</pubDate>
             <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&amp;#8208;native...</description>
             <category>Geospatial Analysis</category>
