@@ -40,12 +40,12 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add thoughts.html rss.xml thoughts/
+          git add thoughts.html thoughts-*.html rss.xml thoughts/
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git commit -m "Build stored thoughts page"
+          git commit -m "Auto-generate thoughts, tag aggregators, and month pages"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
