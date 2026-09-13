@@ -124,7 +124,6 @@ def get_json_ld(post=None):
         slug = slugify(title)
         canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
         
-        # Ensure ISO 8601 format with timezone offset
         raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
         if not raw_date.endswith("Z") and "+" not in raw_date:
             raw_date += "Z"
@@ -210,14 +209,16 @@ def render_post(post, is_standalone=False):
         </article>
     """
 
-def get_base_html(title, content, json_ld="", canonical="", custom_js=""):
+def get_base_html(title, content, json_ld="", canonical="", custom_js="", description=""):
     canonical_tag = f'<link rel="canonical" href="{canonical}">' if canonical else ''
+    meta_description = f'<meta name="description" content="{html.escape(description, quote=True)}">' if description else ''
     return f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
+{meta_description}
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
 {canonical_tag}
 <script src="https://cdn.tailwindcss.com"></script>
@@ -361,7 +362,6 @@ def generate_rss(posts):
         excerpt = html.escape(create_text_excerpt(html_body))
         safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
         
-        # Include both standard <category> and Dublin Core <dc:subject> for broad parser compatibility
         categories = "\n            ".join([
             f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
             for tag in post.get("tags", [])
@@ -378,7 +378,6 @@ def generate_rss(posts):
             <content:encoded><![CDATA[{html_body}]]></content:encoded>
         </item>""")
 
-    # Added Dublin Core namespace (xmlns:dc) for advanced feed aggregators and AI tooling
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
@@ -406,7 +405,16 @@ def generate_html():
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
         json_ld_script = get_json_ld(post)
         
-        page_html = get_base_html(f"{post.get('title')} - David G. Smith", single_html, json_ld=json_ld_script, canonical=canonical)
+        # SEO-optimized text excerpt (limited to 150 characters for clean SERP previews)
+        description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=150)
+        
+        page_html = get_base_html(
+            f"{post.get('title')} - David G. Smith", 
+            single_html, 
+            json_ld=json_ld_script, 
+            canonical=canonical, 
+            description=description
+        )
         
         with open(THOUGHTS_DIR / f"{slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -469,7 +477,14 @@ def generate_html():
     });
     </script>"""
 
-    main_html = get_base_html("Thoughts & Insights — David G. Smith", filter_ui, json_ld=json_ld_script_main, custom_js=filter_js)
+    main_description = "Latest perspectives on technical architecture, enterprise data, and critical thinking."
+    main_html = get_base_html(
+        "Thoughts & Insights — David G. Smith", 
+        filter_ui, 
+        json_ld=json_ld_script_main, 
+        custom_js=filter_js, 
+        description=main_description
+    )
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
@@ -477,4 +492,4 @@ def generate_html():
 
 if __name__ == "__main__":
     generate_html()
-    print("Successfully generated files with fixed JSON-LD and Dublin Core RSS tags.")
+    print("Successfully generated files with meta description tags.")
