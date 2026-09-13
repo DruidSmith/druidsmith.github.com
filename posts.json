@@ -81,7 +81,10 @@
     "url": "https://www.linkedin.com/posts/davidgsmith_take-a-breath-and-look-at-where-a-river-activity-7500910283759144960-iEiC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0",
     "date": "2026-09-03T16:54:38.309Z",
     "platform": "linkedin",
-    "tags": []
+    "tags": [
+      "Data Visualization",
+      "Geospatial"
+    ]
   },
   {
     "title": "Redis:  From Cache to Vector + Semantic + Agent-Memory Layer",
