@@ -354,7 +354,12 @@ Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and...</desc
             <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it. AI isn&#x27;t the threat; it could be the lifeline.
 
 Bill&#x27;s team...</description>
-            
+            <category>AI</category>
+            <dc:subject>AI</dc:subject>
+            <category>Agents</category>
+            <dc:subject>Agents</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we're losing institutional knowledge faster than we can document it. AI isn't the threat; it could be the lifeline.</p>
 <p>Bill's team at Clairvoyint AI is building something deceptively simple and incredibly powerful: tools that capture how experts think, not just what they produce. Their "Bundles" turn decades of judgment, rules, exceptions, and evidence standards into transparent, inspectable analytical agents. It's not automation. It's continuity.</p>
 <p>The big idea: If you can preserve expert methodology, you preserve capability: no matter who retires, moves on, or changes roles. That's the kind of AI work that actually matters.</p>
