@@ -16,7 +16,7 @@
     "date": "2026-09-01T16:18:33.744Z",
     "platform": "linkedin",
     "tags": [
-      "Geospatial Analysis"
+      "Geospatial"
     ]
   },
   {
@@ -28,7 +28,8 @@
     "tags": [
       "AI",
       "Cybersecurity",
-      "Agents"
+      "Agents",
+      "Risk Management"
     ]
   },
   {
@@ -144,7 +145,8 @@
     "tags": [
       "AI",
       "Agents",
-      "Cybersecurity"
+      "Cybersecurity",
+      "Risk Management"
     ]
   },
   {
@@ -189,7 +191,8 @@
     "tags": [
       "AI",
       "Risk Management",
-      "Critical Thinking"
+      "Critical Thinking",
+      "Cybersecurity"
     ]
   },
   {
@@ -223,8 +226,8 @@
     "date": "2026-09-12T15:14:30.390Z",
     "platform": "other",
     "tags": [
-      "Geospatial Analysis",
-      "Cloud"
+      "Cloud",
+      "Geospatial"
     ]
   }
 ]

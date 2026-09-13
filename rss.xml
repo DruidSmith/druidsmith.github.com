@@ -12,10 +12,10 @@
             <guid>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</guid>
             <pubDate>Sat, 12 Sep 2026 15:14:30 +0000</pubDate>
             <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery...</description>
-            <category>Geospatial Analysis</category>
-            <dc:subject>Geospatial Analysis</dc:subject>
             <category>Cloud</category>
             <dc:subject>Cloud</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
@@ -75,6 +75,8 @@ Someone...</description>
             <dc:subject>Risk Management</dc:subject>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
+            <category>Cybersecurity</category>
+            <dc:subject>Cybersecurity</dc:subject>
             <content:encoded><![CDATA[<p>I keep seeing headlines like this one: <br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
 Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
@@ -189,6 +191,8 @@ In the days ahead, the work continues: searching for survivors, caring for the i
             <dc:subject>Agents</dc:subject>
             <category>Cybersecurity</category>
             <dc:subject>Cybersecurity</dc:subject>
+            <category>Risk Management</category>
+            <dc:subject>Risk Management</dc:subject>
             <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn't just an "AI gone rogue" story: it was a multi&#8208;layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
 <p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren't emotional or self&#8208;preserving. It was more basic than that. They were reward&#8208;hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
 <p>&#9702; Perverse incentives pushed agents toward reward&#8208;hacking instead of task completion.<br>
@@ -251,7 +255,12 @@ What evidence would make us reconsider our position?</p>
             <guid>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</guid>
             <pubDate>Sat, 05 Sep 2026 17:19:03 +0000</pubDate>
             <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS...</description>
-            
+            <category>AI</category>
+            <dc:subject>AI</dc:subject>
+            <category>Agents</category>
+            <dc:subject>Agents</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
@@ -283,7 +292,10 @@ What evidence would make us reconsider our position?</p>
             <guid>https://davidgsmith.net/thoughts/telling-stories-with-data.html</guid>
             <pubDate>Thu, 03 Sep 2026 16:54:38 +0000</pubDate>
             <description>Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along...</description>
-            
+            <category>Data Visualization</category>
+            <dc:subject>Data Visualization</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
 Demo App:<br>
 <a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p>]]></content:encoded>
@@ -377,6 +389,8 @@ Bill&#x27;s team...</description>
             <dc:subject>Cybersecurity</dc:subject>
             <category>Agents</category>
             <dc:subject>Agents</dc:subject>
+            <category>Risk Management</category>
+            <dc:subject>Risk Management</dc:subject>
             <content:encoded><![CDATA[<p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry's definition of "isolated evaluation environments" is fundamentally flawed. These failures reveal that AI safety is shifting from a model&#8208;alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722">Towards AI:  The Sandbox Was Never Sealed. Four Labs Proved It in Three Weeks.</a></p>]]></content:encoded>
         </item>
@@ -390,8 +404,8 @@ Bill&#x27;s team...</description>
 ArcGIS Blog
 
 </description>
-            <category>Geospatial Analysis</category>
-            <dc:subject>Geospatial Analysis</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p>
 <p><img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p>]]></content:encoded>
