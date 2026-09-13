@@ -251,7 +251,12 @@ What evidence would make us reconsider our position?</p>
             <guid>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</guid>
             <pubDate>Sat, 05 Sep 2026 17:19:03 +0000</pubDate>
             <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS...</description>
-            
+            <category>AI</category>
+            <dc:subject>AI</dc:subject>
+            <category>Agents</category>
+            <dc:subject>Agents</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
@@ -283,7 +288,10 @@ What evidence would make us reconsider our position?</p>
             <guid>https://davidgsmith.net/thoughts/telling-stories-with-data.html</guid>
             <pubDate>Thu, 03 Sep 2026 16:54:38 +0000</pubDate>
             <description>Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along...</description>
-            
+            <category>Data Visualization</category>
+            <dc:subject>Data Visualization</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
 Demo App:<br>
 <a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p>]]></content:encoded>
