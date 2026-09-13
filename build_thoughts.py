@@ -1,4 +1,4 @@
-import html
+impoimport html
 import json
 import re
 import bleach
@@ -188,21 +188,21 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
         is_active = (current_type == "tag" and current_value == tag)
-        active_class = "border-brand-accent bg-amber-900/40 text-white font-semibold shadow-sm" if is_active else "border-gray-700 bg-gray-900 text-gray-300 hover:border-brand-accent hover:text-white"
+        active_class = "border-amber-500 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-slate-700 bg-slate-800 text-white hover:border-brand-accent hover:bg-slate-700"
         tags_html += f"""
         <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
             <span>{html.escape(tag)}</span>
-            <span class="ml-2 bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
+            <span class="ml-2 bg-slate-900 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
         </a>
         """
 
     if untagged_count > 0:
         is_active = (current_type == "tag" and current_value == "untagged")
-        active_class = "border-brand-accent bg-amber-900/40 text-white font-semibold shadow-sm" if is_active else "border-gray-700 bg-gray-900 text-gray-300 hover:border-brand-accent hover:text-white"
+        active_class = "border-amber-500 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-slate-700 bg-slate-800 text-white hover:border-brand-accent hover:bg-slate-700"
         tags_html += f"""
         <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
             <span>Untagged</span>
-            <span class="ml-2 bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
+            <span class="ml-2 bg-slate-900 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
         </a>
         """
 
@@ -234,7 +234,7 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
                 active_style = "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400 font-bold" if is_active else "bg-emerald-600 text-white hover:bg-emerald-700 font-medium"
                 cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
             else:
-                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-gray-900 text-gray-600 border border-gray-800 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-slate-800 text-gray-400 border border-slate-700 rounded cursor-not-allowed select-none">{m_abbr}</span>'
             grid_cells += cell
 
         months_tables_html += f"""
@@ -249,8 +249,8 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
         <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-brand-dark p-4 rounded border border-gray-800 shadow-sm text-white">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-white font-serif font-medium text-sm focus:outline-none">
+        <div class="lg:hidden bg-slate-900 p-4 rounded border border-slate-800 shadow-sm text-white">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-white font-serif font-bold text-sm focus:outline-none">
                 <span>Browse Posts by Tag &amp; Month</span>
                 <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -260,16 +260,16 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
             <!-- Posts by Tag Container -->
-            <div class="bg-brand-dark p-5 rounded border border-gray-800 shadow-sm text-white">
-                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-gray-800">Posts by Tag</h3>
+            <div class="bg-slate-900 p-5 rounded border border-slate-800 shadow-sm text-white">
+                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-slate-800">Posts by Tag</h3>
                 <div class="flex flex-wrap gap-1.5">
                     {tags_html}
                 </div>
             </div>
 
             <!-- Posts by Month Container -->
-            <div class="bg-brand-dark p-5 rounded border border-gray-800 shadow-sm text-white">
-                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-gray-800">Posts by Month</h3>
+            <div class="bg-slate-900 p-5 rounded border border-slate-800 shadow-sm text-white">
+                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-slate-800">Posts by Month</h3>
                 {months_tables_html}
             </div>
         </div>
@@ -412,16 +412,18 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     </div>
 </nav>
 
-<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-800 bg-brand-dark text-white">
-    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
-    
-    <div class="flex justify-center mb-6">
-        <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 bg-gray-900 hover:bg-gray-800 text-sm font-medium text-brand-accent hover:text-white transition-all shadow-sm">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
-            </svg>
-            Subscribe via RSS
-        </a>
+<header class="pt-32 pb-12 px-4 w-full bg-slate-900 text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
+        
+        <div class="flex justify-center mb-2">
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
+                <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+                </svg>
+                Subscribe via RSS
+            </a>
+        </div>
     </div>
 </header>
 
