@@ -398,8 +398,8 @@ Bill&#x27;s team...</description>
 ArcGIS Blog
 
 </description>
-            <category>Geospatial Analysis</category>
-            <dc:subject>Geospatial Analysis</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p>
 <p><img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p>]]></content:encoded>
