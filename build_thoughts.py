@@ -118,7 +118,6 @@ def render_share_bar(share_url, original_url):
     """
 
 def get_json_ld(post=None):
-    """Generates Structured JSON-LD Data with valid ISO timestamps and author nodes"""
     if post:
         title = post.get("title", "Untitled")
         slug = slugify(title)
@@ -167,9 +166,119 @@ def get_json_ld(post=None):
         }
     return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2)}\n</script>'
 
+def create_text_excerpt(html_content, max_length=220):
+    plain_text = bleach.clean(html_content, tags=[], strip=True)
+    if len(plain_text) > max_length:
+        return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
+    return plain_text
+
+def generate_nav_rail(posts, current_type=None, current_value=None):
+    tag_counts = {}
+    untagged_count = 0
+    for post in posts:
+        tags = post.get("tags", [])
+        if not tags:
+            untagged_count += 1
+        for t in tags:
+            tag_counts[t] = tag_counts.get(t, 0) + 1
+
+    sorted_tags = sorted(tag_counts.items(), key=lambda x: (-x[1], x[0].lower()))
+
+    tags_html = ""
+    for tag, count in sorted_tags:
+        t_slug = slugify(tag)
+        is_active = (current_type == "tag" and current_value == tag)
+        active_class = "border-brand-accent bg-amber-50 text-brand-dark font-semibold shadow-sm" if is_active else "border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent"
+        tags_html += f"""
+        <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
+            <span>{html.escape(tag)}</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
+        </a>
+        """
+
+    if untagged_count > 0:
+        is_active = (current_type == "tag" and current_value == "untagged")
+        active_class = "border-brand-accent bg-amber-50 text-brand-dark font-semibold shadow-sm" if is_active else "border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent"
+        tags_html += f"""
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
+            <span>Untagged</span>
+            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
+        </a>
+        """
+
+    year_months = {}
+    for post in posts:
+        dt = datetime.fromisoformat(post["date"].replace("Z", "+00:00"))
+        year = dt.strftime("%Y")
+        month_abbr = dt.strftime("%b").upper()
+        if year not in year_months:
+            year_months[year] = set()
+        year_months[year].add(month_abbr)
+
+    sorted_years = sorted(year_months.keys(), reverse=True)
+
+    months_order = [
+        ("JAN", "01"), ("FEB", "02"), ("MAR", "03"),
+        ("APR", "04"), ("MAY", "05"), ("JUN", "06"),
+        ("JUL", "07"), ("AUG", "08"), ("SEP", "09"),
+        ("OCT", "10"), ("NOV", "11"), ("DEC", "12")
+    ]
+
+    months_tables_html = ""
+    for year in sorted_years:
+        present_months = year_months[year]
+        grid_cells = ""
+        for m_abbr, m_num in months_order:
+            if m_abbr in present_months:
+                is_active = (current_type == "month" and current_value == (year, m_abbr))
+                active_style = "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400 font-bold" if is_active else "bg-emerald-600 text-white hover:bg-emerald-700 font-medium"
+                cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
+            else:
+                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+            grid_cells += cell
+
+        months_tables_html += f"""
+        <div class="mb-4 last:mb-0">
+            <div class="text-center font-serif font-semibold text-brand-dark text-sm mb-2">{year}</div>
+            <div class="grid grid-cols-3 gap-1.5">
+                {grid_cells}
+            </div>
+        </div>
+        """
+
+    return f"""
+    <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <!-- Mobile Nav Toggle -->
+        <div class="lg:hidden bg-white p-4 rounded border border-gray-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-medium text-sm focus:outline-none">
+                <span>Browse Posts by Tag &amp; Month</span>
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-rail-content" class="space-y-6 hidden lg:block">
+            <!-- Posts by Tag Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Tag</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    {tags_html}
+                </div>
+            </div>
+
+            <!-- Posts by Month Container -->
+            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
+                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Month</h3>
+                {months_tables_html}
+            </div>
+        </div>
+    </aside>
+    """
+
 def render_post(post, is_standalone=False):
     title = html.escape(post.get("title", "Untitled"))
-    slug = slugify(title)
+    slug = slugify(post.get("title", ""))
     body = render_markdown(post.get("body", ""))
     url = post.get("url", "")
     canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
@@ -182,22 +291,19 @@ def render_post(post, is_standalone=False):
     label = platform.title() if platform != "twitter" else "X / Twitter"
     
     tags = post.get("tags", [])
-    tags_attr = ",".join(tags).lower()
-    
     if platform == "post":
         origin_text = "Published by David G. Smith"
     else:
         origin_text = f"Originally on {html.escape(label)}"
         
-    tags_html = "".join([f'<button onclick="filterByTag(\'{html.escape(t).lower()}\')" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer">{html.escape(t)}</button>' for t in tags])
+    tags_html = "".join([f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' for t in tags])
 
     title_html = f'<h2 class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
     if not is_standalone:
         title_html = f'<a href="/thoughts/{slug}.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
 
     return f"""
-        <article data-tags="{html.escape(tags_attr)}"
-                 class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
+        <article class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
             <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <img src="{icon}" alt="{icon_alt}" class="h-4 w-4" loading="lazy">
                 <span>{date} &bull; {origin_text}</span>
@@ -209,7 +315,35 @@ def render_post(post, is_standalone=False):
         </article>
     """
 
-def get_base_html(title, content, json_ld="", canonical="", custom_js="", description=""):
+def render_aggregator_card(post):
+    title = html.escape(post.get("title", "Untitled"))
+    slug = slugify(post.get("title", ""))
+    date_iso = post["date"]
+    date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
+    
+    body_html = render_markdown(post.get("body", ""))
+    excerpt = create_text_excerpt(body_html, max_length=200)
+    
+    tags = post.get("tags", [])
+    tags_html = "".join([f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' for t in tags])
+    
+    return f"""
+    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+            <div class="text-xs text-gray-400 mb-2">{date}</div>
+            <a href="/thoughts/{slug}.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">{title}</h3></a>
+            <div class="mb-3">{tags_html}</div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">{html.escape(excerpt)}</p>
+        </div>
+        <div>
+            <a href="/thoughts/{slug}.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
+                (click for more) &rarr;
+            </a>
+        </div>
+    </article>
+    """
+
+def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description=""):
     canonical_tag = f'<link rel="canonical" href="{canonical}">' if canonical else ''
     meta_description = f'<meta name="description" content="{html.escape(description, quote=True)}">' if description else ''
     return f"""<!DOCTYPE html>
@@ -278,7 +412,7 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js="", descri
     </div>
 </nav>
 
-<header class="pt-32 pb-16 px-4 max-w-5xl mx-auto text-center border-b border-gray-100">
+<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-100">
     <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
     
     <div class="flex justify-center mb-6">
@@ -291,9 +425,19 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js="", descri
     </div>
 </header>
 
-<main id="main-content" class="py-16 bg-brand-light min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {content}
+<main id="main-content" class="py-12 bg-brand-light min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Main Content Pane -->
+            <div class="lg:col-span-8 space-y-8">
+                {main_content_html}
+            </div>
+            
+            <!-- Navigation Rail -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                {nav_rail_html}
+            </div>
+        </div>
     </div>
 </main>
 
@@ -330,7 +474,38 @@ def get_base_html(title, content, json_ld="", canonical="", custom_js="", descri
         }});
     }}
 </script>
-{custom_js}
+
+<!-- Return to Top Button -->
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-brand-dark text-white p-3 rounded-full shadow-lg hover:bg-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
+<script>
+    const returnToTopBtn = document.getElementById('return-to-top');
+    window.addEventListener('scroll', () => {{
+        if (window.scrollY > 300) {{
+            returnToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+        }} else {{
+            returnToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+        }}
+    }});
+    returnToTopBtn.addEventListener('click', () => {{
+        window.scrollTo({{ top: 0, behavior: 'smooth' }});
+    }});
+
+    const navToggle = document.getElementById('nav-rail-toggle');
+    const navContent = document.getElementById('nav-rail-content');
+    const navIcon = document.getElementById('nav-toggle-icon');
+    if (navToggle && navContent) {{
+        navToggle.addEventListener('click', () => {{
+            navContent.classList.toggle('hidden');
+            navIcon.classList.toggle('rotate-180');
+        }});
+    }}
+</script>
 </body>
 </html>"""
 
@@ -344,12 +519,6 @@ def sanitize_feed_text(text):
     for old, new in replacements.items():
         normalized = normalized.replace(old, new)
     return normalized.encode('ascii', 'xmlcharrefreplace').decode('ascii')
-
-def create_text_excerpt(html_content, max_length=250):
-    plain_text = bleach.clean(html_content, tags=[], strip=True)
-    if len(plain_text) > max_length:
-        return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
-    return plain_text
 
 def generate_rss(posts):
     rss_items = []
@@ -397,93 +566,144 @@ def generate_html():
     all_tags = set()
     
     for post in posts:
-        slug = slugify(post.get("title", "Untitled"))
         for t in post.get("tags", []):
             all_tags.add(t)
-            
+
+    # 1. Generate individual post pages
+    for post in posts:
+        slug = slugify(post.get("title", "Untitled"))
         single_html = render_post(post, is_standalone=True)
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
         json_ld_script = get_json_ld(post)
-        
-        # SEO-optimized text excerpt (limited to 150 characters for clean SERP previews)
         description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=150)
+        nav_rail = generate_nav_rail(posts)
         
-        page_html = get_base_html(
-            f"{post.get('title')} - David G. Smith", 
-            single_html, 
-            json_ld=json_ld_script, 
-            canonical=canonical, 
+        page_html = wrap_with_layout(
+            f"{post.get('title')} - David G. Smith",
+            single_html,
+            nav_rail,
+            json_ld=json_ld_script,
+            canonical=canonical,
             description=description
         )
-        
         with open(THOUGHTS_DIR / f"{slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
-    index_posts = "\n".join(render_post(post, is_standalone=False) for post in posts[:15])
-    json_ld_script_main = get_json_ld(None)
-    
-    tag_options = "".join([f'<option value="{html.escape(t).lower()}">{html.escape(t)}</option>' for t in sorted(all_tags)])
-    
-    filter_ui = f"""
-    <div class="mb-8 flex justify-end items-center gap-3">
-        <label for="tag-filter" class="text-lg font-serif font-medium text-brand-dark whitespace-nowrap">Filter by topic</label>
-        <select id="tag-filter" onchange="filterPosts()" class="rounded border border-gray-300 text-sm px-3 py-2 bg-white outline-none focus:border-brand-accent cursor-pointer max-w-xs">
-            <option value="all">All Thoughts</option>
-            {tag_options}
-        </select>
+    # 2. Generate Tag Aggregator Pages
+    for tag in all_tags:
+        t_slug = slugify(tag)
+        tag_posts = [p for p in posts if tag in p.get("tags", [])]
+        cards_html = "".join(render_aggregator_card(p) for p in tag_posts)
+        main_content = f"""
+        <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm">
+            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Posts Tagged: {html.escape(tag)}</h2>
+            <p class="text-sm text-gray-500">Showing {len(tag_posts)} post(s) filed under this topic.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6">
+            {cards_html}
+        </div>
+        """
+        nav_rail = generate_nav_rail(posts, current_type="tag", current_value=tag)
+        canonical = f"https://davidgsmith.net/thoughts-{t_slug}.html"
+        page_html = wrap_with_layout(
+            f"Posts tagged '{tag}' — David G. Smith",
+            main_content,
+            nav_rail,
+            canonical=canonical,
+            description=f"Explore thoughts and insights tagged with {tag} by David G. Smith."
+        )
+        with open(f"thoughts-{t_slug}.html", "w", encoding="utf-8") as f:
+            f.write(page_html)
+
+    # Untagged aggregator page if untagged posts exist
+    untagged_posts = [p for p in posts if not p.get("tags")]
+    if untagged_posts:
+        cards_html = "".join(render_aggregator_card(p) for p in untagged_posts)
+        main_content = f"""
+        <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm">
+            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Untagged Posts</h2>
+            <p class="text-sm text-gray-500">Showing {len(untagged_posts)} untagged post(s).</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6">
+            {cards_html}
+        </div>
+        """
+        nav_rail = generate_nav_rail(posts, current_type="tag", current_value="untagged")
+        canonical = "https://davidgsmith.net/thoughts-untagged.html"
+        page_html = wrap_with_layout(
+            "Untagged Posts — David G. Smith",
+            main_content,
+            nav_rail,
+            canonical=canonical,
+            description="Explore untagged thoughts and insights by David G. Smith."
+        )
+        with open("thoughts-untagged.html", "w", encoding="utf-8") as f:
+            f.write(page_html)
+
+    # 3. Generate Month Aggregator Pages
+    year_month_posts = {}
+    for post in posts:
+        dt = datetime.fromisoformat(post["date"].replace("Z", "+00:00"))
+        year = dt.strftime("%Y")
+        m_abbr = dt.strftime("%b").upper()
+        key = (year, m_abbr)
+        if key not in year_month_posts:
+            year_month_posts[key] = []
+        year_month_posts[key].append(post)
+
+    months_map = {
+        "JAN": "January", "FEB": "February", "MAR": "March",
+        "APR": "April", "MAY": "May", "JUN": "June",
+        "JUL": "July", "AUG": "August", "SEP": "September",
+        "OCT": "October", "NOV": "November", "DEC": "December"
+    }
+
+    for (year, m_abbr), m_posts in year_month_posts.items():
+        m_full = months_map[m_abbr]
+        cards_html = "".join(render_aggregator_card(p) for p in m_posts)
+        main_content = f"""
+        <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm">
+            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Posts from {m_full} {year}</h2>
+            <p class="text-sm text-gray-500">Showing {len(m_posts)} post(s) published in {m_full} {year}.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6">
+            {cards_html}
+        </div>
+        """
+        nav_rail = generate_nav_rail(posts, current_type="month", current_value=(year, m_abbr))
+        canonical = f"https://davidgsmith.net/thoughts-{year}-{m_abbr.lower()}.html"
+        page_html = wrap_with_layout(
+            f"Posts from {m_full} {year} — David G. Smith",
+            main_content,
+            nav_rail,
+            canonical=canonical,
+            description=f"Explore thoughts and insights published in {m_full} {year} by David G. Smith."
+        )
+        with open(f"thoughts-{year}-{m_abbr.lower()}.html", "w", encoding="utf-8") as f:
+            f.write(page_html)
+
+    # 4. Generate Main thoughts.html Index Page
+    index_cards = "".join(render_aggregator_card(p) for p in posts)
+    main_content_index = f"""
+    <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm flex justify-between items-center">
+        <div>
+            <h2 class="text-2xl font-serif font-medium text-brand-dark">All Thoughts &amp; Insights</h2>
+            <p class="text-sm text-gray-500 mt-1">Explore all published posts, thoughts, and architectural notes.</p>
+        </div>
     </div>
-    <div class="grid grid-cols-1 gap-8" id="post-list">
-        {index_posts}
+    <div class="grid grid-cols-1 gap-6">
+        {index_cards}
     </div>
     """
-
-    filter_js = """<script>
-    function filterPosts() {
-        const selected = document.getElementById('tag-filter').value;
-        const posts = document.querySelectorAll('.post-card');
-        posts.forEach(post => {
-            const tagsAttr = post.getAttribute('data-tags') || '';
-            const tags = tagsAttr.split(',').map(t => t.trim());
-            
-            if (selected === 'all' || tags.includes(selected)) {
-                post.style.display = 'block';
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-
-    function filterByTag(tag) {
-        const filterDropdown = document.getElementById('tag-filter');
-        if (filterDropdown) {
-            filterDropdown.value = tag;
-            filterPosts();
-            document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            window.location.href = '/thoughts.html?tag=' + encodeURIComponent(tag);
-        }
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tagParam = urlParams.get('tag');
-        if (tagParam) {
-            const filterDropdown = document.getElementById('tag-filter');
-            if (filterDropdown) {
-                filterDropdown.value = tagParam;
-                filterPosts();
-            }
-        }
-    });
-    </script>"""
-
-    main_description = "Latest perspectives on technical architecture, enterprise data, and critical thinking."
-    main_html = get_base_html(
-        "Thoughts & Insights — David G. Smith", 
-        filter_ui, 
-        json_ld=json_ld_script_main, 
-        custom_js=filter_js, 
-        description=main_description
+    nav_rail_index = generate_nav_rail(posts)
+    json_ld_main = get_json_ld(None)
+    main_html = wrap_with_layout(
+        "Thoughts & Insights — David G. Smith",
+        main_content_index,
+        nav_rail_index,
+        json_ld=json_ld_main,
+        canonical="https://davidgsmith.net/thoughts.html",
+        description="Latest perspectives on technical architecture, enterprise data, and critical thinking."
     )
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
@@ -492,4 +712,4 @@ def generate_html():
 
 if __name__ == "__main__":
     generate_html()
-    print("Successfully generated files with meta description tags.")
+    print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
