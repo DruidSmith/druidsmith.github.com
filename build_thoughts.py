@@ -83,35 +83,35 @@ def render_share_bar(share_url, original_url):
         orig_escaped = html.escape(original_url, quote=True)
         read_original_html = f"""
         <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-brand-dark transition-colors">
+           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
            Read Original &rarr;
         </a>
         """
 
     return f"""
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="mt-8 pt-4 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
         {read_original_html}
         <div class="flex items-center gap-3">
             <span class="text-xs text-gray-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
+                <img src="/images/InBug-Black.png" class="h-5 w-5 filter invert" alt="LinkedIn icon">
             </a>
             <a href="https://twitter.com/intent/tweet?url={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5" alt="X / Twitter icon">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-5 w-5 filter invert" alt="X / Twitter icon">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5" alt="Facebook icon">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-5 w-5 filter invert" alt="Facebook icon">
             </a>
             <a href="https://bsky.app/intent/share?url={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5" alt="Bluesky icon">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-5 w-5 filter invert" alt="Bluesky icon">
             </a>
             <a href="https://mastodon.social/share?text={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5" alt="Mastodon icon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-5 w-5 filter invert" alt="Mastodon icon">
             </a>
         </div>
     </div>
@@ -188,21 +188,21 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
         is_active = (current_type == "tag" and current_value == tag)
-        active_class = "border-brand-accent bg-amber-50 text-brand-dark font-semibold shadow-sm" if is_active else "border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent"
+        active_class = "border-brand-accent bg-amber-900/40 text-white font-semibold shadow-sm" if is_active else "border-gray-700 bg-gray-900 text-gray-300 hover:border-brand-accent hover:text-white"
         tags_html += f"""
         <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
             <span>{html.escape(tag)}</span>
-            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
+            <span class="ml-2 bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
         </a>
         """
 
     if untagged_count > 0:
         is_active = (current_type == "tag" and current_value == "untagged")
-        active_class = "border-brand-accent bg-amber-50 text-brand-dark font-semibold shadow-sm" if is_active else "border-gray-200 bg-white text-gray-700 hover:border-brand-accent hover:text-brand-accent"
+        active_class = "border-brand-accent bg-amber-900/40 text-white font-semibold shadow-sm" if is_active else "border-gray-700 bg-gray-900 text-gray-300 hover:border-brand-accent hover:text-white"
         tags_html += f"""
         <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
             <span>Untagged</span>
-            <span class="ml-2 bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
+            <span class="ml-2 bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
         </a>
         """
 
@@ -234,12 +234,12 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
                 active_style = "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400 font-bold" if is_active else "bg-emerald-600 text-white hover:bg-emerald-700 font-medium"
                 cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
             else:
-                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-gray-100 text-gray-400 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-gray-900 text-gray-600 border border-gray-800 rounded cursor-not-allowed select-none">{m_abbr}</span>'
             grid_cells += cell
 
         months_tables_html += f"""
         <div class="mb-4 last:mb-0">
-            <div class="text-center font-serif font-semibold text-brand-dark text-sm mb-2">{year}</div>
+            <div class="text-center font-serif font-semibold text-white text-sm mb-2">{year}</div>
             <div class="grid grid-cols-3 gap-1.5">
                 {grid_cells}
             </div>
@@ -249,8 +249,8 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
         <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-white p-4 rounded border border-gray-200 shadow-sm">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-medium text-sm focus:outline-none">
+        <div class="lg:hidden bg-brand-dark p-4 rounded border border-gray-800 shadow-sm text-white">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-white font-serif font-medium text-sm focus:outline-none">
                 <span>Browse Posts by Tag &amp; Month</span>
                 <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -260,16 +260,16 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
             <!-- Posts by Tag Container -->
-            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
-                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Tag</h3>
+            <div class="bg-brand-dark p-5 rounded border border-gray-800 shadow-sm text-white">
+                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-gray-800">Posts by Tag</h3>
                 <div class="flex flex-wrap gap-1.5">
                     {tags_html}
                 </div>
             </div>
 
             <!-- Posts by Month Container -->
-            <div class="bg-white p-5 rounded border border-gray-200 shadow-sm">
-                <h3 class="text-base font-serif font-medium text-brand-dark mb-3 pb-2 border-b border-gray-100">Posts by Month</h3>
+            <div class="bg-brand-dark p-5 rounded border border-gray-800 shadow-sm text-white">
+                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-gray-800">Posts by Month</h3>
                 {months_tables_html}
             </div>
         </div>
@@ -412,11 +412,11 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     </div>
 </nav>
 
-<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-100">
-    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-brand-dark mb-4">Thoughts & Insights</h1>
+<header class="pt-32 pb-12 px-4 max-w-7xl mx-auto text-center border-b border-gray-800 bg-brand-dark text-white">
+    <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
     
     <div class="flex justify-center mb-6">
-        <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-sm font-medium text-brand-accent hover:text-brand-dark transition-all shadow-sm">
+        <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 bg-gray-900 hover:bg-gray-800 text-sm font-medium text-brand-accent hover:text-white transition-all shadow-sm">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
             </svg>
@@ -682,17 +682,18 @@ def generate_html():
         with open(f"thoughts-{year}-{m_abbr.lower()}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
-    # 4. Generate Main thoughts.html Index Page
-    index_cards = "".join(render_aggregator_card(p) for p in posts)
+    # 4. Generate Main thoughts.html Index Page (Recent 8 posts in full)
+    recent_posts = posts[:8]
+    index_posts_html = "".join(render_post(p, is_standalone=True) for p in recent_posts)
     main_content_index = f"""
     <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm flex justify-between items-center">
         <div>
-            <h2 class="text-2xl font-serif font-medium text-brand-dark">All Thoughts &amp; Insights</h2>
-            <p class="text-sm text-gray-500 mt-1">Explore all published posts, thoughts, and architectural notes.</p>
+            <h2 class="text-2xl font-serif font-medium text-brand-dark">Recent Thoughts</h2>
+            <p class="text-sm text-gray-500 mt-1">Showing the 8 most recent perspectives and notes.</p>
         </div>
     </div>
-    <div class="grid grid-cols-1 gap-6">
-        {index_cards}
+    <div class="space-y-8">
+        {index_posts_html}
     </div>
     """
     nav_rail_index = generate_nav_rail(posts)
