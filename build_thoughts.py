@@ -7,6 +7,8 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 import unicodedata
+import urllib.request
+import urllib.parse
 
 POSTS_FILE = Path("posts.json")
 THOUGHTS_DIR = Path("thoughts")
@@ -567,6 +569,7 @@ def generate_rss(posts):
         <link>https://davidgsmith.net/thoughts.html</link>
         <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
         <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         {''.join(rss_items)}
     </channel>
     </rss>"""
@@ -721,9 +724,29 @@ def generate_html():
     )
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
+        
+    def ping_websub_hub():
+    hub_url = "https://pubsubhubbub.appspot.com/"
+    feed_url = "https://davidgsmith.net/rss.xml"
+    
+    data = urllib.parse.urlencode({
+        "hub.mode": "publish",
+        "hub.url": feed_url
+    }).encode("utf-8")
+    
+    try:
+        req = urllib.request.Request(hub_url, data=data, method="POST")
+        with urllib.request.urlopen(req) as response:
+            if response.status in (200, 204):
+                print("Successfully notified WebSub hub.")
+            else:
+                print(f"WebSub hub notification returned status: {response.status}")
+    except Exception as e:
+        print(f"Could not reach WebSub hub: {e}")
 
     generate_rss(posts)
 
 if __name__ == "__main__":
     generate_html()
+    ping_websub_hub()
     print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
