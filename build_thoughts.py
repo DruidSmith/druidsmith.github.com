@@ -725,7 +725,7 @@ def generate_html():
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
         
-def ping_search_hubs(feed_url="https://davidgsmith.net"):
+def ping_websub_hub(feed_url="https://davidgsmith.net"):
     """
     Notifies the Google PubSubHubbub hub that rss.xml has updated.
     Uses existing urllib module imports.
