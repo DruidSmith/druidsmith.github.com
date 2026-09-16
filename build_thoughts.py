@@ -766,6 +766,5 @@ def ping_websub_hub(feed_url="https://davidgsmith.net"):
 
 if __name__ == "__main__":
     generate_html()
-    generate_rss(posts)
     ping_websub_hub()
     print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
