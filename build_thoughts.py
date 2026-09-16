@@ -763,9 +763,9 @@ def ping_websub_hub(feed_url="https://davidgsmith.net"):
     except Exception as error:
         print(f"✗ Failed to complete publish notification: {error}")
     
-    generate_rss(posts)
 
 if __name__ == "__main__":
     generate_html()
+    generate_rss(posts)
     ping_websub_hub()
     print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
