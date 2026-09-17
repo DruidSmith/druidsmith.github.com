@@ -725,26 +725,44 @@ def generate_html():
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
         
-    def ping_websub_hub():
-    hub_url = "https://pubsubhubbub.appspot.com/"
-    feed_url = "https://davidgsmith.net/rss.xml"
+def ping_websub_hub(feed_url="https://davidgsmith.net"):
+    """
+    Notifies the Google PubSubHubbub hub that rss.xml has updated.
+    Uses existing urllib module imports.
+    """
+    # Line 729: Indented exactly 4 spaces
+    hub_url = "https://appspot.com"
     
-    data = urllib.parse.urlencode({
-        "hub.mode": "publish",
-        "hub.url": feed_url
-    }).encode("utf-8")
+    # Structure the parameters required by the PubSubHubbub 0.4 spec
+    payload = {
+        'hub.mode': 'publish',
+        'hub.url': feed_url
+    }
     
     try:
-        req = urllib.request.Request(hub_url, data=data, method="POST")
-        with urllib.request.urlopen(req) as response:
+        # Encode the payload parameters using your existing urllib.parse import
+        encoded_data = urllib.parse.urlencode(payload).encode('utf-8')
+        
+        # Build the HTTP POST request using your existing urllib.request import
+        request_wrapper = urllib.request.Request(
+            hub_url,
+            data=encoded_data,
+            headers={'Content-Type': 'application/x-www-form-urlencoded'},
+            method='POST'
+        )
+        
+        print(f"Sending WebSub publish signal for {feed_url}...")
+        
+        # Execute network call safely
+        with urllib.request.urlopen(request_wrapper) as response:
             if response.status in (200, 204):
-                print("Successfully notified WebSub hub.")
+                print("✓ Success! Google PubSubHubbub has been notified.")
             else:
-                print(f"WebSub hub notification returned status: {response.status}")
-    except Exception as e:
-        print(f"Could not reach WebSub hub: {e}")
-
-    generate_rss(posts)
+                print(f"⚠ Hub responded with an unexpected status: {response.status}")
+                
+    except Exception as error:
+        print(f"✗ Failed to complete publish notification: {error}")
+    
 
 if __name__ == "__main__":
     generate_html()
