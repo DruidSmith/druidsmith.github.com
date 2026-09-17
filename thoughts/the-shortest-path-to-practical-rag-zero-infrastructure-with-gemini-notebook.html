@@ -129,26 +129,20 @@
 <p>You can stand up a private, reliable RAG environment in about just seconds using Google <a target="_blank" rel="noopener noreferrer" href="https://notebook.google.com/">Gemini Notebook</a> (formerly known as NotebookLM).</p>
 <p><strong>What Makes NotebookLM "Accidental RAG"</strong><br>
 At its core, RAG helps address two longstanding limitations of Large Language Models:</p>
-<ul>
-<li>The Knowledge Cutoff / Domain Gap: General LLMs don't know your specific, proprietary, or unpublished data.</li>
-<li>Hallucination Risk: Generative models predict the next plausible token; they do not reason from truth unless anchored to evidence.</li>
-</ul>
+<p>• The Knowledge Cutoff / Domain Gap: General LLMs don't know your specific, proprietary, or unpublished data.<br>
+• Hallucination Risk: Generative models predict the next plausible token; they do not reason from truth unless anchored to evidence.</p>
 <p>NotebookLM essentially wraps a zero-config, highly optimized RAG architecture around a dedicated workspace:</p>
-<ul>
-<li>Automated Ingestion &amp; Chunking: You upload raw files (PDFs, Google Docs, slide decks, markdown files, web URLs, or pasted text). The system handles parsing, tokenizing, and indexing automatically.</li>
-<li>Source-Grounded Retrieval: When you query the notebook, the underlying model is constrained to retrieve information solely from your uploaded materials.</li>
-<li>Inline Citation &amp; Verifiability: Unlike a generic chatbot prompt, every assertion comes with interactive citation markers mapped directly back to the exact passage in your source documents.</li>
-</ul>
+<p>• Automated Ingestion &amp; Chunking: You upload raw files (PDFs, Google Docs, slide decks, markdown files, web URLs, or pasted text). The system handles parsing, tokenizing, and indexing automatically.<br>
+• Source-Grounded Retrieval: When you query the notebook, the underlying model is constrained to retrieve information solely from your uploaded materials.<br>
+• Inline Citation &amp; Verifiability: Unlike a generic chatbot prompt, every assertion comes with interactive citation markers mapped directly back to the exact passage in your source documents.</p>
 <p><strong>Three High-Yield Use Cases for Instant RAG</strong><br>
 Instead of treating it like a novelty conversational agent, treat it as an interactive, private analytical engine:</p>
-<ol>
-<li><strong>Project Governance &amp; Compliance Audits</strong><br>
-Load in your project plan, requirements documentation, data architecture blueprints, and standard operating procedures, policies and standards. Query: "Identify where our proposed project has potential conflicts with enterprise standards and policies."</li>
-<li><strong>Literature &amp; Research Synthesis</strong><br>
-Drop in 10–20 dense research whitepapers or industry case studies. Query: "Extract the primary methodological trade-offs discussed across all papers when moving from centralized pipelines to streaming architectures."</li>
-<li><strong>Curriculum &amp; Editorial Consistency</strong><br>
-Writing a book, whitepaper series, or technical guide? Ingest your early chapter drafts, style guides, and research notes. Query: "Flag every instance where terminology diverges between Chapter 2 and Chapter 5, and list which core concepts lack supporting evidence."</li>
-</ol>
+<p><strong>1. Project Governance &amp; Compliance Audits</strong><br>
+Load in your project plan, requirements documentation, data architecture blueprints, and standard operating procedures, policies and standards. Query: "Identify where our proposed project has potential conflicts with enterprise standards and policies."<br>
+<strong>2. Literature &amp; Research Synthesis</strong><br>
+Drop in 10–20 dense research whitepapers or industry case studies. Query: "Extract the primary methodological trade-offs discussed across all papers when moving from centralized pipelines to streaming architectures."<br>
+<strong>3. Curriculum &amp; Editorial Consistency</strong><br>
+Writing a book, whitepaper series, or technical guide? Ingest your early chapter drafts, style guides, and research notes. Query: "Flag every instance where terminology diverges between Chapter 2 and Chapter 5, and list which core concepts lack supporting evidence."</p>
 <p><strong>The Practical Rule of Thumb</strong><br>
 Before you write code, provision cloud infrastructure, or evaluate vector database vendors:</p>
 <p><em>Start with manual grounding. If you cannot extract clear value from your data in a managed zero-code RAG notebook, adding a vector database and Python orchestration won't fix the underlying content or formulation problem.</em></p>
