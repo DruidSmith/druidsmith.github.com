@@ -1,0 +1,633 @@
+{
+  "$schema": "https://schema.org/Book",
+  "manifest_version": "2.0.0",
+  "document_type": "AI System Ingestion & RAG Knowledge Graph Directive",
+  "book_id": "DGS-CT-2026-V2",
+  "title": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise, and Manipulation",
+  "subtitle": "A Practical Guide to Seeing Through Bias, Noise, and Manipulation",
+  "author": {
+    "name": "David G. Smith",
+    "type": "Systems Engineer / Data Analyst / Infrastructure Architect",
+    "website": "https://davidgsmith.net",
+    "author_storefront": "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
+    "bio_summary": "Dave Smith is an engineer and data analyst with decades of experience solving complex problems, from resilient cloud/AI infrastructure to disaster-response and clean-water engineering across Cameroon, Honduras, post-Katrina relief, and international development."
+  },
+  "publication_metadata": {
+    "publication_date": "2026-08-30",
+    "publisher": "David G. Smith Publishing",
+    "asin": "B0HH3CYK79",
+    "isbn_print_edition": "979-8-3401-2345-6",
+    "extent_interior_pages": 461,
+    "kdp_print_calculator_pages": 462,
+    "trim_size": "6.00 x 9.00 inches (15.24 x 22.86 cm)",
+    "binding_format": "Paperback / eBook (Reflowable KPF)",
+    "interior_specs": "0.7in inner gutter, 0.9in top/bottom margins, black & white on white/cream paper",
+    "cover_finish": "Matte",
+    "primary_distribution": "Amazon KDP Worldwide",
+    "ebook_distribution_strategy": "KDP Select 90-Day Hybrid Launch (Kindle Unlimited Enrolled) -> Wide Distribution (Apple, Kobo, OverDrive)"
+  },
+  "catalog_and_library_classifications": {
+    "bisac_subject_headings": [
+      "PHI011000 (PHILOSOPHY / Logic)",
+      "PSY008000 (PSYCHOLOGY / Cognitive Psychology & Cognition)",
+      "BUS042000 (BUSINESS & ECONOMICS / Decision-Making & Problem Solving)",
+      "SEL031000 (SELF-HELP / Personal Growth / Success)"
+    ],
+    "library_of_congress_classifications": [
+      "BC177 (Critical Thinking)",
+      "BF441 (Cognitive Processes and Reasoning)",
+      "HD30.23 (Decision Making)"
+    ],
+    "primary_amazon_browse_categories": [
+      "Nonfiction > Business & Economics > Management & Leadership > Decision-Making & Problem Solving",
+      "Nonfiction > Philosophy > Logic & Language",
+      "Nonfiction > Science & Math > Behavioral Sciences > Cognitive Psychology"
+    ],
+    "kdp_backend_search_keywords": [
+      "cognitive bias self help decision making books",
+      "logical fallacies workbook guide reasoning skills",
+      "problem solving strategies business systems thinking",
+      "media literacy fake news propaganda analysis",
+      "behavioral economics heuristics mental models",
+      "rational thinking executive leadership analysis",
+      "skepticism metacognition data literacy guides"
+    ]
+  },
+  "academic_and_competitive_index": {
+    "disciplines_synthesized": [
+      "Cognitive Psychology & Dual-Process Theory",
+      "Behavioral Economics & Choice Architecture",
+      "Formal, Informal & Symbolic Logic",
+      "Statistical Literacy & Risk Parsing",
+      "Information Architecture & Digital Media Defense",
+      "Systems Engineering & High-Order Causality",
+      "Adversarial Decision Science & Metacognitive Calibration"
+    ],
+    "total_mapped_concepts_heuristics_and_models": 102,
+    "total_practical_chapter_exercises": 17,
+    "target_audience_profiles": [
+      "Data Analysts, Engineers & STEM Professionals",
+      "Executives, Strategists & Business Leaders",
+      "Researchers, Journalists & Information Consumers",
+      "Undergraduate & Self-Directed Adult Learners"
+    ],
+    "competitive_advantages_over_market_benchmarks": {
+      "post_replication_crisis_scientific_integrity": "Unlike legacy behavioral economics and pop-psychology bestsellers that rely on contested social/elderly priming experiments or retracted field studies, this work explicitly audits the replication crisis (e.g., flagging Bargh's walking priming study in Ch. 10 and ego depletion limits) and grounds its frameworks strictly in durable, verified cognitive science.",
+      "synthetic_4_part_progressive_curriculum": "Unlike single-topic books restricted solely to persuasion, biases, or forecasting, or fragmented books containing dozens of bite-sized disconnected lists, this text builds a continuous 461-page linear arc from internal neural bugs to formal logic/statistics, wild digital media/AI defense, and strategic operational models.",
+      "dedicated_conversational_ai_and_sycophancy_defense": "It features Chapter 11 ('The Synthetic Sycophant: Surviving AI Chatbots') and the 'AI Crux Test', making it the first major critical thinking manual specifically engineered to defend human reasoning against LLM hallucination, RLHF flattery, automated echo chambers, and synthetic confirmation loops.",
+      "applied_engineering_and_systems_perspective": "Written by an active systems engineer and data analyst, it replaces dry academic pedantry and gimmicky metaphors with field-tested operational tools (Red Teaming, Premortems, Reference Class Forecasting, OODA Loops, Decision Journals).",
+      "adversarial_and_bad_faith_preparedness": "Unlike texts assuming civilized debate among good-faith actors, it equips readers with real-time detection and disengagement rules for hostile digital propaganda, astroturfing, dark patterns, and conversational traps (Gish Gallop, Sealioning, Motte-and-Bailey, Whataboutism).",
+      "interactive_muscle_building_framework": "Every chapter ends with a structured, hands-on 'Practical Exercise' (e.g., Personal Bias Inventory, Post-Hoc Rationalization Audit, 5-Minute Friday Audit) and scannable 'Key Takeaways' to convert passive reading into permanent cognitive habits."
+    }
+  },
+  "comprehensive_structural_curriculum": {
+    "part_1": {
+      "part_number": 1,
+      "part_title": "THE FLAWED MACHINE",
+      "focus": "Internal neurological shortcuts, narrative fabrications, and the neurobiology of emotion.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Your Brain is Not Your Friend",
+          "core_heuristics_and_concepts": [
+            "Evolutionary Hardware vs. Modern Information Environments",
+            "Heuristics vs. Systematic Cognitive Biases",
+            "System 1 (Intuitive/Fast) vs. System 2 (Deliberate/Slow) Processing",
+            "Confirmation Bias ('The Yes-Man in Your Head')",
+            "Availability Heuristic & Dramatic Event Recalleability",
+            "Dunning-Kruger Effect & Domain-Specific Overconfidence",
+            "Anchoring Bias in Initial Numeric Exposure",
+            "The Backfire Effect Myth vs. Incremental Belief Updating"
+          ],
+          "methodologies_and_tools": [
+            "The Personal Bias Inventory (PBI) Protocol",
+            "System 2 Manual Engagement Triggers",
+            "Dunning-Kruger Hotspot Self-Audit"
+          ],
+          "chapter_exercise": "Personal Bias Inventory (identifying hot-button emotional topics, Dunning-Kruger zones, and personal biased-mode warning signs)"
+        },
+        {
+          "chapter_number": 2,
+          "title": "The Stories We Tell Ourselves",
+          "core_heuristics_and_concepts": [
+            "Narrative Fallacy & Post-Hoc Rationalization",
+            "Hindsight Bias ('Known-It-All-Along' Illusion)",
+            "Clustering Illusion & False Pattern Matching (London V-2 Rocket Distribution)",
+            "Halo Effect and Horn Effect in Character Evaluation",
+            "The Gap Between Retrospective Storytelling and Decision Reality"
+          ],
+          "methodologies_and_tools": [
+            "The Narrative Defense Checklist",
+            "Falsifiability Question ('How would I know if I'm wrong?')",
+            "Pre-Event Prediction Logging"
+          ],
+          "chapter_exercise": "Post-Hoc Rationalization Audit (deconstructing a major past personal decision against its official narrative)"
+        },
+        {
+          "chapter_number": 3,
+          "title": "Emotion vs. Reason (Spoiler: It's Not Versus.)",
+          "core_heuristics_and_concepts": [
+            "Antonio Damasio's Somatic Marker Hypothesis",
+            "Phineas Gage Frontal Lobe Clinical Case Analysis (1848)",
+            "Motivated Reasoning & 'Lawyer in the Head' Dynamics",
+            "Identity-Protective Cognition & Tribal Belonging",
+            "Affect Heuristic & Risk/Benefit Distortion",
+            "Emotional Contagion & Engagement-Driven Outrage"
+          ],
+          "methodologies_and_tools": [
+            "Space-Creation Protocol (Inserting time between stimulus and response)",
+            "Emotional Manipulation Activation Detector"
+          ],
+          "chapter_exercise": "Emotional Trigger Deconstruction & Message Rewriting Challenge"
+        }
+      ]
+    },
+    "part_2": {
+      "part_number": 2,
+      "part_title": "THE MECHANICS OF THINKING",
+      "focus": "Formal, informal, and symbolic logic, evidence appraisal, and statistical literacy.",
+      "chapters": [
+        {
+          "chapter_number": 4,
+          "title": "Logic: The Operating System of Thought",
+          "core_heuristics_and_concepts": [
+            "Logic as Diagnostic Architecture vs. Value Determination",
+            "Premise Extraction & Hidden Assumption Isolation",
+            "Deductive Reasoning & Guarantee of Truth",
+            "Inductive Reasoning & Probabilistic Generalization",
+            "Abductive Reasoning ('Inference to the Best Explanation')",
+            "Validity vs. Soundness Distinction",
+            "Modus Ponens & Modus Tollens Valid Structures",
+            "Affirming the Consequent & Denying the Antecedent Fallacies",
+            "Necessary vs. Sufficient Condition Conflation",
+            "Correlation vs. Causation (Confounding Variables & Reverse Causation)"
+          ],
+          "methodologies_and_tools": [
+            "Argument X-Ray Diagnostic (Premises -> Implicit Assumptions -> Conclusion)",
+            "Formal Logical Operator Mapping (AND, OR, IF-THEN)"
+          ],
+          "chapter_exercise": "Three-Stage Argument Construction, Evaluation, and Opposing View Steelmanning"
+        },
+        {
+          "chapter_number": 5,
+          "title": "The Fallacy Files: How Arguments Go Wrong",
+          "core_heuristics_and_concepts": [
+            "Fallacies of Relevance (Ad Hominem, Appeal to Authority, Whataboutism)",
+            "Fallacies of Presumption (Straw Man, False Dilemma, Begging the Question)",
+            "Causal Fallacies (Post Hoc Ergo Propter Hoc, Slippery Slope)",
+            "Ambiguity Fallacies (Equivocation, Quoting Out of Context)",
+            "The Fallacy Fallacy (Meta-Fallacy of Assuming Fallacious Arguments Have False Conclusions)"
+          ],
+          "methodologies_and_tools": [
+            "The Reversal Test",
+            "The Outsider Test",
+            "The Steel Man Exercise",
+            "Premortems for Arguments",
+            "The Cringe Archives (Personal Error Journal)"
+          ],
+          "chapter_exercise": "The Fallacy Gym (Daily Fallacy Hunt, Opinion Piece Autopsy, Debate Sparring, Reversal Protocol)"
+        },
+        {
+          "chapter_number": 6,
+          "title": "Numbers Don't Lie (But People Lie With Them)",
+          "core_heuristics_and_concepts": [
+            "Relative Risk vs. Absolute Risk Manipulation (1995 British Pill Panic)",
+            "Gerd Gigerenzer's Statistical Risk Communication Models",
+            "Survivorship Bias & 'Where's the Graveyard?' Analysis (WWII Bomber Armor)",
+            "Simpson's Paradox (Subgroup vs. Aggregated Inversion - UC Berkeley Admissions 1973)",
+            "Base Rate Neglect & Disease/Crash Prediction Math",
+            "Law of Small Numbers & Sample Size Distortions",
+            "Regression to the Mean & False Success Attribution",
+            "Mean vs. Median vs. Mode Metric Gaming"
+          ],
+          "methodologies_and_tools": [
+            "Natural Frequency Trees (Replacing percentages with 1 in X figures)",
+            "Statistical Graveyard Audit"
+          ],
+          "chapter_exercise": "Deconstructing Statistical News Reports & Data Chart Axis Auditing"
+        }
+      ]
+    },
+    "part_3": {
+      "part_number": 3,
+      "part_title": "INFORMATION IN THE WILD",
+      "focus": "Navigating modern media, source evaluation, research methodologies, and AI chatbot defenses.",
+      "chapters": [
+        {
+          "chapter_number": 7,
+          "title": "Fact vs. Opinion vs. Everything In Between",
+          "core_heuristics_and_concepts": [
+            "The Six-Part Spectrum of Claims Taxonomy (Objective Facts, Subjective Opinions, Value Judgments, Interpretations, Predictions, Definitions)",
+            "Contested Facts vs. Established Facts",
+            "Descriptive ('Is') vs. Normative ('Ought') Claims",
+            "Falsifiability Criterion (Karl Popper)",
+            "Language Indicators & Hidden Value Smuggling"
+          ],
+          "methodologies_and_tools": [
+            "The Measurement Pivot Protocol ('By what specific metric do you define that?')",
+            "Hidden Value Unmasking Grid"
+          ],
+          "chapter_exercise": "Claim Classification, Hidden Value Unmasking & Falsifiability Verification"
+        },
+        {
+          "chapter_number": 8,
+          "title": "The Source Code: Evaluating Information Sources",
+          "core_heuristics_and_concepts": [
+            "Information Architecture (Primary, Secondary, Tertiary Provenance)",
+            "The CRAAP Test Framework (Currency, Relevance, Authority, Accuracy, Purpose)",
+            "The 'Smart Person' Trap & Out-of-Domain Expertise Drift",
+            "Sam Wineburg & SHEG Lateral Reading Technique",
+            "Hierarchy of Evidence (Meta-Analyses down to Anecdotes)",
+            "Conflicts of Interest & Incentive Mapping"
+          ],
+          "methodologies_and_tools": [
+            "Lateral Reading Tab-Opening Protocol",
+            "Source Triangulation Matrix",
+            "Hierarchy of Reliability Ranking"
+          ],
+          "chapter_exercise": "Five-Source Real-World Evaluation & Credibility Ranking"
+        },
+        {
+          "chapter_number": 9,
+          "title": "Research Like a Detective",
+          "core_heuristics_and_concepts": [
+            "Structured Curiosity vs. Passive Consumption",
+            "The Detective Investigation Framework (Clarify -> Inventory -> Search -> Triangulate -> Steelman -> Document -> Conclude)",
+            "Citation Laundering & Echo-Chamber Verification",
+            "Knowledge Ceiling Recognition",
+            "Search Operator Mechanics & Boolean Filtering"
+          ],
+          "methodologies_and_tools": [
+            "Sixty-Second Pre-Research Self-Audit",
+            "Source Tracking Spreadsheet Architecture",
+            "Rule of Three Independent Triangulation"
+          ],
+          "chapter_exercise": "One-Hour Systematic Claim Investigation & Research Dossier Compilation"
+        },
+        {
+          "chapter_number": 10,
+          "title": "Detecting Manipulation and Propaganda",
+          "core_heuristics_and_concepts": [
+            "Classic Propaganda Taxonomy (Glittering Generalities, Plain Folks, Transfer, Testimonials, Card Stacking, Name-Calling, Bandwagon)",
+            "Replication Crisis Audit (John Bargh 1996 Elderly Priming Replication Failure)",
+            "Digital Dark Patterns in UX/UI (Confirmshaming, Roach Motel, Privacy Zuckering, Bait and Switch, Forced Continuity, Hidden Costs)",
+            "Algorithmic Micro-Targeting & Urgency Triggers",
+            "Clickbait Mechanics & Curiosity Gaps"
+          ],
+          "methodologies_and_tools": [
+            "Dark Patterns Cheat Sheet & UX Self-Defense",
+            "Persuasion vs. Manipulation Diagnostic Filter"
+          ],
+          "chapter_exercise": "Deconstructing a Persuasive Campaign (Ads, Political Speeches, Product Pitches)"
+        },
+        {
+          "chapter_number": 11,
+          "title": "The Synthetic Sycophant: Surviving AI Chatbots",
+          "core_heuristics_and_concepts": [
+            "Conversational AI Filter Bubbles of One",
+            "Reinforcement Learning from Human Feedback (RLHF) Sycophancy & Flattery",
+            "LLM Hallucination Mechanics & Confident Incorrectness",
+            "Automated Confirmation Loops in Private AI Prompts",
+            "Synthetic Media & Generative Deepfake Verification"
+          ],
+          "methodologies_and_tools": [
+            "The AI Crux Test (3-Step AI Output Audit Protocol)",
+            "Adversarial Prompting to Break Chatbot Sycophancy"
+          ],
+          "chapter_exercise": "Auditing a Chatbot Response & Executing the AI Crux Verification Test"
+        }
+      ]
+    },
+    "part_4": {
+      "part_number": 4,
+      "part_title": "THE ADVANCED TOOLKIT",
+      "focus": "Systems thinking, probabilistic forecasting, constructive disagreement, metacognition, and historical case studies.",
+      "chapters": [
+        {
+          "chapter_number": 12,
+          "title": "Second-Order Thinking and Unintended Consequences",
+          "core_heuristics_and_concepts": [
+            "First-, Second-, and Third-Order Effects",
+            "The Cobra Problem & Perverse Incentives (Horst Siebert / Colonial Delhi)",
+            "Chesterton's Fence Principle ('Understand why it exists before removing it')",
+            "Systems Thinking & Non-Linear Feedback Loops (WHO Borneo DDT & Operation Cat Drop 1950s)",
+            "Temporal Discounting & Complexity Aversion",
+            "Scenario Planning across Consequence Chains"
+          ],
+          "methodologies_and_tools": [
+            "The 'And Then What Happens?' Questioning Loop",
+            "Chesterton's Reform Verification Protocol"
+          ],
+          "chapter_exercise": "Second-Order Consequence Mapping for a Proposed Organizational or Personal Policy"
+        },
+        {
+          "chapter_number": 13,
+          "title": "Probability and Uncertainty: Embracing 'I Don't Know'",
+          "core_heuristics_and_concepts": [
+            "Binary Thinking vs. Probabilistic Spectrum",
+            "Quantifiable Risk vs. Unquantifiable Uncertainty (Knightian Uncertainty)",
+            "Nassim Nicholas Taleb's Black Swan Events & Fat-Tailed Distributions",
+            "The Turkey Problem ('Absence of evidence is not evidence of absence')",
+            "Expected Value Calculation (Probability x Payoff)",
+            "Bayesian Updating (Priors -> Evidence -> Posteriors)",
+            "Base Rate Hunting & Reference Class Forecasting",
+            "Philip Tetlock's 8 Habits of Superforecasters",
+            "Error Bars & Acknowledged Imprecision vs. False Precision"
+          ],
+          "methodologies_and_tools": [
+            "The Expected Value Decision Journal",
+            "Base Rate Hunting Protocol",
+            "The Turkey Check Protocol"
+          ],
+          "chapter_exercise": "Calibrated Prediction Logging & Base Rate Calibration Audit"
+        },
+        {
+          "chapter_number": 14,
+          "title": "Arguing Well: The Productive Disagreement",
+          "core_heuristics_and_concepts": [
+            "Julia Galef's Soldier Mindset (Defending Territory) vs. Scout Mindset (Mapping Truth)",
+            "Active Listening & Reflective Synthesis",
+            "Steelmanning vs. Strawmanning",
+            "Bryan Caplan's Ideological Turing Test",
+            "Crux Identification & CFAR Double Crux Protocol",
+            "Conversational Traps (Whataboutism, Moving Goalposts, Gish Gallop, Sealioning, Motte-and-Bailey)",
+            "Linguistic Shifts ('And' vs. 'But' Dynamics)",
+            "Disengagement Heuristics for Bad-Faith Arguments"
+          ],
+          "methodologies_and_tools": [
+            "The Structured Disagreement Protocol (5-Phase Role Reversal to Conclusion)",
+            "Conversational Trap Disarming Cheat Sheet"
+          ],
+          "chapter_exercise": "Executing a Structured Disagreement & Ideological Turing Test with a Partner"
+        },
+        {
+          "chapter_number": 15,
+          "title": "The Metacognitive Edge: Thinking About Your Thinking",
+          "core_heuristics_and_concepts": [
+            "Metacognition (Knowledge, Monitoring, Control)",
+            "The Appellate Court Analogy for Mind Auditing",
+            "Red Team Thinking & Adversarial Devil's Advocacy",
+            "Gary Klein's Premortem Technique ('Imagine failure to prevent it')",
+            "Inside View (Specific Details) vs. Outside View (Base Rates/Reference Classes)",
+            "Confidence Calibration & Brier Score Tracking",
+            "Developing a Personal Epistemology & Intellectual Honesty",
+            "Carol Dweck's Growth Mindset Applied to Reasoning",
+            "Common Thinking Pitfalls Checklist"
+          ],
+          "methodologies_and_tools": [
+            "The 5-Minute Friday Audit Protocol",
+            "Decision Journaling Template",
+            "Red Team Stress-Test Protocol"
+          ],
+          "chapter_exercise": "Executing a Premortem, Red-Teaming a Belief & Starting a Decision Journal"
+        },
+        {
+          "chapter_number": 16,
+          "title": "Case Studies in Critical Thinking Failures (and Successes)",
+          "core_heuristics_and_concepts": [
+            "Failure Analysis 1: Space Shuttle Challenger Disaster 1986 (O-Ring Cold Limits, Silence, Groupthink, Normalization of Deviance - Diane Vaughan)",
+            "Failure Analysis 2: Theranos $9B Fraud (Elizabeth Holmes, Charisma, Out-of-Domain Board, Affective Override)",
+            "Failure Analysis 3: Tulip Mania 1630s & Financial Bubbles (Social Proof, FOMO, Mania)",
+            "Success Analysis 1: John Snow 1854 Broad Street Cholera Map (Abductive Spatial Epidemiology)",
+            "Success Analysis 2: Apollo 13 Crisis Management (Clear Problem Definition, Interdisciplinary Trust, CO2 Scrubber Innovation)",
+            "Success Analysis 3: LIGO Gravitational Wave Detection (Rigor, Noise Filtering, Independent Verification)",
+            "Institutionalizing Dissent & Aviation's Two-Challenge Rule"
+          ],
+          "methodologies_and_tools": [
+            "The Clean-Step Diagnostic Flowchart (4-Step Controversy Assessment)",
+            "Institutional Dissent Mechanisms"
+          ],
+          "chapter_exercise": "Applying the Clean-Step Diagnostic Flowchart to a Current Controversial Event"
+        },
+        {
+          "chapter_number": 17,
+          "title": "The Long Game: An Epilogue",
+          "core_heuristics_and_concepts": [
+            "Critical Thinking as a Maintained Muscle vs. One-Time Software Install",
+            "The Overthinking Trap: Analysis Paralysis vs. Lazy Cynicism",
+            "The Art of Productive Wrongness (Noticing Bugs, Patching Priors Without Shame)",
+            "Living Comfortably in Uncertainty & Holding Beliefs Provisionally",
+            "Marginal Improvement ('Slightly less wrong, slightly more often')"
+          ],
+          "methodologies_and_tools": [
+            "The Productive Wrongness Cycle (Notice -> Patch -> Move Forward)",
+            "The Long Game Daily Practice Protocol"
+          ],
+          "chapter_exercise": "The Long Game Daily Commitment & Quarterly Decision Journal Review"
+        }
+      ]
+    }
+  },
+  "comprehensive_glossary_catalog": [
+    {
+      "term": "Abductive Reasoning",
+      "category": "Logic",
+      "chapter_reference": "Chapter 4, 9, 16",
+      "definition": "Inference to the best explanation based on observed facts."
+    },
+    {
+      "term": "Affect Heuristic",
+      "category": "Psychology",
+      "chapter_reference": "Chapter 3, 10, 16",
+      "definition": "Relying on immediate emotional state to judge risks and benefits."
+    },
+    {
+      "term": "AI Crux Test",
+      "category": "AI / Media Defense",
+      "chapter_reference": "Chapter 11",
+      "definition": "A 3-step verification protocol to audit LLM chatbot output before taking action."
+    },
+    {
+      "term": "Anchoring Bias",
+      "category": "Cognitive Bias",
+      "chapter_reference": "Chapter 1, 10, 12",
+      "definition": "Over-relying on the first piece of information encountered."
+    },
+    {
+      "term": "Availability Heuristic",
+      "category": "Cognitive Bias",
+      "chapter_reference": "Chapter 1, 6, 10",
+      "definition": "Judging likelihood based on how easily examples come to mind."
+    },
+    {
+      "term": "Backfire Effect",
+      "category": "Cognitive Bias / Replication",
+      "chapter_reference": "Chapter 1, 14",
+      "definition": "Pop-psychology myth that facts always cause doubling down; debunked by recent replication studies showing incremental updating."
+    },
+    {
+      "term": "Base Rate Neglect",
+      "category": "Statistics",
+      "chapter_reference": "Chapter 6, 12, 13",
+      "definition": "Ignoring historical background frequencies when judging specific cases."
+    },
+    {
+      "term": "Bayesian Updating",
+      "category": "Probabilistic Reasoning",
+      "chapter_reference": "Chapter 13, 15",
+      "definition": "Incrementally updating belief probabilities proportionally to new evidence."
+    },
+    {
+      "term": "Bias Blind Spot",
+      "category": "Cognitive Bias",
+      "chapter_reference": "Chapter 1, 15",
+      "definition": "Seeing oneself as far less biased than others (Emily Pronin 2002 study)."
+    },
+    {
+      "term": "Black Swan",
+      "category": "Probability",
+      "chapter_reference": "Chapter 13, 16",
+      "definition": "Rare, high-impact, unpredictable events with extreme consequences (Taleb)."
+    },
+    {
+      "term": "Chesterton's Fence",
+      "category": "Systems Thinking",
+      "chapter_reference": "Chapter 12, 16",
+      "definition": "Understanding why a system or rule was built before attempting to reform it."
+    },
+    {
+      "term": "Citation Laundering",
+      "category": "Media Literacy",
+      "chapter_reference": "Chapter 9, 10",
+      "definition": "Repeating a single dubious claim across secondary sites to create false consensus."
+    },
+    {
+      "term": "Cobra Problem",
+      "category": "Systems Thinking",
+      "chapter_reference": "Chapter 12, 16",
+      "definition": "Perverse incentives created by solutions that make original problems worse."
+    },
+    {
+      "term": "Confirmation Bias",
+      "category": "Cognitive Bias",
+      "chapter_reference": "Chapter 1, 3, 10, 16",
+      "definition": "Unconsciously seeking and overweighting evidence that supports existing beliefs."
+    },
+    {
+      "term": "CRAAP Test",
+      "category": "Source Evaluation",
+      "chapter_reference": "Chapter 8, 9",
+      "definition": "Librarian evaluation heuristic: Currency, Relevance, Authority, Accuracy, Purpose."
+    },
+    {
+      "term": "Dark Patterns",
+      "category": "UX/UI / Media Defense",
+      "chapter_reference": "Chapter 10, 16",
+      "definition": "Digital interface design choices engineered to trick users into corporate-benefiting actions."
+    },
+    {
+      "term": "Decision Journals",
+      "category": "Metacognition",
+      "chapter_reference": "Chapter 13, 15",
+      "definition": "Pre-decision record of reasoning, assumptions, and confidence to build feedback loops."
+    },
+    {
+      "term": "Double Crux",
+      "category": "Disagreement Protocol",
+      "chapter_reference": "Chapter 14, 15",
+      "definition": "CFAR technique where both parties find the overlapping evidence that would change minds."
+    },
+    {
+      "term": "Dunning-Kruger Effect",
+      "category": "Cognitive Bias",
+      "chapter_reference": "Chapter 1, 15",
+      "definition": "Low competence individuals overestimating ability while experts underestimate theirs."
+    },
+    {
+      "term": "Expected Value",
+      "category": "Decision Science",
+      "chapter_reference": "Chapter 13, 15",
+      "definition": "Sum of outcomes weighted by their respective probabilities (Probability x Payoff)."
+    },
+    {
+      "term": "Falsifiability",
+      "category": "Epistemology",
+      "chapter_reference": "Chapter 7, 14",
+      "definition": "Karl Popper's standard requiring a claim to specify conditions that would prove it false."
+    },
+    {
+      "term": "Gish Gallop",
+      "category": "Conversational Trap",
+      "chapter_reference": "Chapter 14",
+      "definition": "Drowning an opponent in a rapid-fire barrage of weak or false arguments."
+    },
+    {
+      "term": "Ideological Turing Test",
+      "category": "Active Listening",
+      "chapter_reference": "Chapter 14, 15",
+      "definition": "Bryan Caplan's challenge to state an opponent's view so accurately they accept it."
+    },
+    {
+      "term": "Lateral Reading",
+      "category": "Media Literacy",
+      "chapter_reference": "Chapter 8, 9",
+      "definition": "SHEG technique of opening new tabs to check what outside sources say about a site."
+    },
+    {
+      "term": "Metacognition",
+      "category": "Cognitive Psychology",
+      "chapter_reference": "Chapter 15, 17",
+      "definition": "Observing, monitoring, and controlling one's own thought processes in real-time."
+    },
+    {
+      "term": "Motte-and-Bailey",
+      "category": "Conversational Trap",
+      "chapter_reference": "Chapter 14",
+      "definition": "Conflating an easily defended modest stance (motte) with an extreme controversial stance (bailey)."
+    },
+    {
+      "term": "OODA Loop",
+      "category": "Strategic Operations",
+      "chapter_reference": "Chapter 15",
+      "definition": "John Boyd's decision framework: Observe, Orient, Decide, Act."
+    },
+    {
+      "term": "Outside View",
+      "category": "Decision Science",
+      "chapter_reference": "Chapter 13, 15",
+      "definition": "Evaluating a problem using base rates and reference classes rather than specific details."
+    },
+    {
+      "term": "Premortem",
+      "category": "Planning / Metacognition",
+      "chapter_reference": "Chapter 15, 17",
+      "definition": "Gary Klein's technique assuming a project failed before launch to uncover hidden risks."
+    },
+    {
+      "term": "Red Team Thinking",
+      "category": "Adversarial Strategy",
+      "chapter_reference": "Chapter 15, 16",
+      "definition": "Actively acting as an adversary to stress-test arguments and break assumptions."
+    },
+    {
+      "term": "Scout Mindset",
+      "category": "Epistemology",
+      "chapter_reference": "Chapter 14, 15",
+      "definition": "Julia Galef's framework seeking accurate maps of reality vs. defending territory (Soldier)."
+    },
+    {
+      "term": "Sealioning",
+      "category": "Conversational Trap",
+      "chapter_reference": "Chapter 14",
+      "definition": "Persistent, bad-faith requests for evidence wrapped in false civility."
+    },
+    {
+      "term": "Second-Order Thinking",
+      "category": "Systems Thinking",
+      "chapter_reference": "Chapter 12, 16",
+      "definition": "Looking past immediate first-order effects to anticipate downstream consequences."
+    },
+    {
+      "term": "Simpson's Paradox",
+      "category": "Statistics",
+      "chapter_reference": "Chapter 6, 13",
+      "definition": "A trend appearing in several subgroups that disappears or reverses when aggregated."
+    },
+    {
+      "term": "Steelmanning",
+      "category": "Argumentation",
+      "chapter_reference": "Chapter 5, 9, 14",
+      "definition": "Constructing the strongest possible version of an opponent's argument before critiquing."
+    }
+  ]
+}
