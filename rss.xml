@@ -27,7 +27,7 @@
             <dc:subject>Knowledge Graphs</dc:subject>
             <content:encoded><![CDATA[<p><strong>GraphRAG (Graph Retrieval-Augmented Generation)</strong> is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies entirely on searching through isolated text chunks, GraphRAG maps your data into a network of interconnected points (referred to as nodes and edges). This subtle change completely reshapes how a Large Language Model (LLM) understands your data.</p>
 <p>If you have been putting off learning it because graph databases sound intimidating, the barrier to entry is actually incredibly low. By using free resources like self-paced tutorials on <strong>Neo4j GraphAcademy</strong> and a cloud-hosted <strong>Neo4j Aura free-tier account</strong>, you can build a working prototype in a single afternoon.</p>
-<h2>The Real-World Utility of GraphRAG</h2>
+<h1>The Real-World Utility of GraphRAG</h1>
 <p>To understand why this architecture is gaining traction, look at how traditional vector search handles complex data compared to GraphRAG.</p>
 <p>Imagine you are building an AI assistant to analyze <strong>hundreds of corporate legal contracts and vendor agreements</strong>.</p>
 <ul>
@@ -35,7 +35,7 @@
 <li><strong>The GraphRAG Approach:</strong> GraphRAG treats vendors, contracts, clauses, and regulations as interconnected points (nodes) and lines (relationships). The system can trace a path like: <code>[Vendor A] -&gt; signs -&gt; [Contract B] -&gt; references -&gt; [Regulation C]</code>.</li>
 </ul>
 <p>Because the data structure inherently understands connections, the LLM can easily perform "multi-hop" reasoning. It can instantly see that five different vendors are all bound to an outdated version of a specific regulation, allowing it to synthesize a comprehensive, global answer that traditional semantic search would completely miss.</p>
-<h2>Traditional RAG vs. GraphRAG at a Glance</h2>
+<h1>Traditional RAG vs. GraphRAG at a Glance</h1>
 
 
 
