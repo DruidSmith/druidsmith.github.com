@@ -21,6 +21,10 @@
             <dc:subject>AI Workflows</dc:subject>
             <category>Retrieval-Augmented Generation</category>
             <dc:subject>Retrieval-Augmented Generation</dc:subject>
+            <category>GraphRAG</category>
+            <dc:subject>GraphRAG</dc:subject>
+            <category>Knowledge Graphs</category>
+            <dc:subject>Knowledge Graphs</dc:subject>
             <content:encoded><![CDATA[<p><strong>GraphRAG (Graph Retrieval-Augmented Generation)</strong> is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies entirely on searching through isolated text chunks, GraphRAG maps your data into a network of interconnected points (referred to as nodes and edges). This subtle change completely reshapes how a Large Language Model (LLM) understands your data.</p>
 <p>If you have been putting off learning it because graph databases sound intimidating, the barrier to entry is actually incredibly low. By using free resources like self-paced tutorials on <strong>Neo4j GraphAcademy</strong> and a cloud-hosted <strong>Neo4j Aura free-tier account</strong>, you can build a working prototype in a single afternoon.</p>
 <h2>The Real-World Utility of GraphRAG</h2>
