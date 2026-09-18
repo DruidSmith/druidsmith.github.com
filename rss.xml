@@ -54,6 +54,8 @@ True technical maturity isn't about choosing the most complex stack; it's about 
             <dc:subject>Cloud</dc:subject>
             <category>Geospatial</category>
             <dc:subject>Geospatial</dc:subject>
+            <category>Remote Sensing</category>
+            <dc:subject>Remote Sensing</dc:subject>
             <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
