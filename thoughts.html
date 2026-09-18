@@ -39,6 +39,38 @@
     .markdown-content p:empty { display: none; }
     .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
     .markdown-content a { color: #92400e; text-decoration: underline; }
+
+    /* Table Styles */
+    .markdown-content table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+    }
+    .markdown-content th {
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-weight: 600;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid #cbd5e1;
+    }
+    .markdown-content td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+    }
+    .markdown-content tr:nth-child(even) {
+        background-color: #fcfbf9;
+    }
+    .markdown-content tr:last-child td {
+        border-bottom: none;
+    }
 </style>
 <script type="application/ld+json">
 {
@@ -147,38 +179,37 @@
 </ul>
 <p>Because the data structure inherently understands connections, the LLM can easily perform "multi-hop" reasoning. It can instantly see that five different vendors are all bound to an outdated version of a specific regulation, allowing it to synthesize a comprehensive, global answer that traditional semantic search would completely miss.</p>
 <h1>Traditional RAG vs. GraphRAG at a Glance</h1>
-
-
-
-
-Feature
-Traditional RAG
-GraphRAG
-
-
-
-
-<strong>Data Organization</strong>
-Isolated text chunks and vectors
-Interconnected concepts, entities, and relationships
-
-
-<strong>Search Mechanism</strong>
-Flat semantic similarity
-Similarity combined with relationship tracing
-
-
-<strong>Contextual Depth</strong>
-Limited to immediate text fragments
-High (captures the broader network of information)
-
-
-<strong>Complex Queries</strong>
-Struggles with cross-document summarization
-Excels at global, multi-document synthesis
-
-
-
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Traditional RAG</th>
+<th>GraphRAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Organization</strong></td>
+<td>Isolated text chunks and vectors</td>
+<td>Interconnected concepts, entities, and relationships</td>
+</tr>
+<tr>
+<td><strong>Search Mechanism</strong></td>
+<td>Flat semantic similarity</td>
+<td>Similarity combined with relationship tracing</td>
+</tr>
+<tr>
+<td><strong>Contextual Depth</strong></td>
+<td>Limited to immediate text fragments</td>
+<td>High (captures the broader network of information)</td>
+</tr>
+<tr>
+<td><strong>Complex Queries</strong></td>
+<td>Struggles with cross-document summarization</td>
+<td>Excels at global, multi-document synthesis</td>
+</tr>
+</tbody>
+</table>
 <h2>A Frictionless, Cost-Free Way to Learn</h2>
 <p>You don’t need an enterprise infrastructure budget or a background in advanced data structures to experiment with this. The existing developer ecosystem makes it highly accessible:</p>
 <h3>1. Hands-on Learning via GraphAcademy</h3>
