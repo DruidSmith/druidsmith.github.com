@@ -50,6 +50,24 @@ function encodeContent(value) {
   return btoa(String.fromCharCode(...encoder.encode(value)));
 }
 
+function encodeBytes(bytes) {
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
+  }
+  return btoa(binary);
+}
+
+function imageExtension(contentType) {
+  return { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/gif': 'gif', 'image/webp': 'webp', 'image/avif': 'avif' }[contentType];
+}
+
+function safeImageName(name, extension) {
+  const stem = name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'image';
+  return `${stem}-${Date.now().toString(36)}-${crypto.randomUUID().slice(0, 8)}.${extension}`;
+}
+
 async function githubRequest(env, method, path, body) {
   return fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPOSITORY}/contents/${path}`, {
     method,
@@ -71,12 +89,50 @@ export default {
          return response(JSON.parse(decodeContent(file.content)));
       }
 
+      if (request.method === 'GET' && new URL(request.url).pathname === '/images') {
+        const fileResponse = await githubRequest(env, 'GET', 'thoughts/images');
+        if (!fileResponse.ok) return response([]);
+        const files = await fileResponse.json();
+        return response(files.filter(file => file.type === 'file').map(file => ({
+          name: file.name,
+          url: `https://davidgsmith.net/thoughts/images/${encodeURIComponent(file.name)}`
+        })).sort((a, b) => a.name.localeCompare(b.name)));
+      }
+
       if (request.method !== 'POST') return response({ error: 'Method not allowed.' }, 405);
       
       if (new URL(request.url).pathname === '/login') {
         const { password } = await request.json();
         if (!password || password !== env.POSTING_PASSWORD) return response({ error: 'Invalid password.' }, 401);
         return response({ token: await createSession(env) });
+      }
+
+      if (new URL(request.url).pathname === '/images' && !(await validSession(request, env))) {
+        return response({ error: 'Unauthorized.' }, 401);
+      }
+
+      if (new URL(request.url).pathname === '/images') {
+        const input = await request.json();
+        const extension = imageExtension(input.type);
+        if (!extension || typeof input.data !== 'string' || !input.data || input.data.length > 14_000_000) {
+          return response({ error: 'Upload a PNG, JPEG, GIF, WebP, or AVIF image smaller than 10 MB.' }, 400);
+        }
+
+        const bytes = Uint8Array.from(atob(input.data), character => character.charCodeAt(0));
+        if (bytes.byteLength > 10 * 1024 * 1024) {
+          return response({ error: 'Image must be smaller than 10 MB.' }, 400);
+        }
+
+        const filename = safeImageName(typeof input.name === 'string' ? input.name : 'image', extension);
+        const path = `thoughts/images/${filename}`;
+        const update = await githubRequest(env, 'PUT', path, {
+          message: `Add post image: ${filename}`,
+          content: encodeBytes(bytes),
+          branch: env.GITHUB_BRANCH || 'main'
+        });
+        if (!update.ok) return response({ error: 'GitHub rejected the image upload. Please retry.' }, 502);
+        const url = `https://davidgsmith.net/thoughts/images/${encodeURIComponent(filename)}`;
+        return response({ name: filename, url, markdown: `![${filename.replace(/\.[^.]+$/, '')}](${url})` });
       }
       
       if (new URL(request.url).pathname !== '/posts' || !(await validSession(request, env))) {

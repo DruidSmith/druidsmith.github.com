@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 import unicodedata
 import urllib.request
 import urllib.parse
+import os
 
 POSTS_FILE = Path("posts.json")
 THOUGHTS_DIR = Path("thoughts")
@@ -725,6 +726,9 @@ def generate_html():
     )
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
+
+    # Keep the feed in the same build transaction as the generated pages.
+    generate_rss(posts)
         
 def ping_websub_hub(feed_url="https://davidgsmith.net"):
     """
@@ -732,7 +736,7 @@ def ping_websub_hub(feed_url="https://davidgsmith.net"):
     Uses existing urllib module imports.
     """
     # Line 729: Indented exactly 4 spaces
-    hub_url = "https://appspot.com"
+    hub_url = "https://pubsubhubbub.appspot.com/publish"
     
     # Structure the parameters required by the PubSubHubbub 0.4 spec
     payload = {
@@ -763,9 +767,39 @@ def ping_websub_hub(feed_url="https://davidgsmith.net"):
                 
     except Exception as error:
         print(f"✗ Failed to complete publish notification: {error}")
+
+def notify_indexnow():
+    key = os.environ.get("INDEXNOW_KEY")
+    if not key or os.environ.get("INDEXNOW_NOTIFY", "true").lower() == "false":
+        return
+
+    payload = json.dumps({
+        "host": "davidgsmith.net",
+        "key": key,
+        "keyLocation": f"https://davidgsmith.net/{key}.txt",
+        "urlList": [
+            "https://davidgsmith.net/thoughts.html",
+            "https://davidgsmith.net/rss.xml"
+        ]
+    }).encode("utf-8")
+    request_wrapper = urllib.request.Request(
+        "https://api.indexnow.org/indexnow",
+        data=payload,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        method="POST"
+    )
+    try:
+        with urllib.request.urlopen(request_wrapper, timeout=20) as response:
+            if response.status not in (200, 202):
+                print(f"IndexNow returned an unexpected status: {response.status}")
+            else:
+                print("IndexNow notified successfully.")
+    except Exception as error:
+        print(f"IndexNow notification failed: {error}")
     
 
 if __name__ == "__main__":
     generate_html()
     ping_websub_hub()
+    notify_indexnow()
     print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
