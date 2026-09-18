@@ -261,21 +261,23 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
         is_active = (current_type == "tag" and current_value == tag)
-        active_class = "border-amber-500 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-slate-700 bg-slate-800 text-white hover:border-brand-accent hover:bg-slate-700"
+        active_class = "border-amber-600 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50"
+        badge_bg = "bg-amber-800 text-white" if is_active else "bg-gray-200/70 text-gray-600"
         tags_html += f"""
-        <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
+        <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
             <span>{html.escape(tag)}</span>
-            <span class="ml-2 bg-slate-900 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{count}</span>
+            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono">{count}</span>
         </a>
         """
 
     if untagged_count > 0:
         is_active = (current_type == "tag" and current_value == "untagged")
-        active_class = "border-amber-500 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-slate-700 bg-slate-800 text-white hover:border-brand-accent hover:bg-slate-700"
+        active_class = "border-amber-600 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50"
+        badge_bg = "bg-amber-800 text-white" if is_active else "bg-gray-200/70 text-gray-600"
         tags_html += f"""
-        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-3 py-1.5 rounded border text-xs transition-all {active_class}">
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
             <span>Untagged</span>
-            <span class="ml-2 bg-slate-900 text-gray-300 px-1.5 py-0.5 rounded-full text-[10px]">{untagged_count}</span>
+            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono">{untagged_count}</span>
         </a>
         """
 
@@ -304,16 +306,16 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
         for m_abbr, m_num in months_order:
             if m_abbr in present_months:
                 is_active = (current_type == "month" and current_value == (year, m_abbr))
-                active_style = "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400 font-bold" if is_active else "bg-emerald-600 text-white hover:bg-emerald-700 font-medium"
+                active_style = "bg-amber-700 text-white shadow-sm ring-1 ring-amber-700 font-semibold" if is_active else "bg-slate-800 text-white hover:bg-amber-700 font-medium"
                 cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
             else:
-                cell = f'<span class="block py-1.5 text-center text-xs font-medium bg-slate-800 text-gray-400 border border-slate-700 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+                cell = f'<span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">{m_abbr}</span>'
             grid_cells += cell
 
         months_tables_html += f"""
         <div class="mb-4 last:mb-0">
-            <div class="text-center font-serif font-semibold text-white text-sm mb-2">{year}</div>
-            <div class="grid grid-cols-3 gap-1.5">
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">{year}</div>
+            <div class="grid grid-cols-4 gap-1.5">
                 {grid_cells}
             </div>
         </div>
@@ -322,27 +324,32 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
         <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-slate-900 p-4 rounded border border-slate-800 shadow-sm text-white">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-white font-serif font-bold text-sm focus:outline-none">
-                <span>Browse Posts by Tag &amp; Month</span>
-                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="lg:hidden bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-bold text-sm focus:outline-none">
+                <span>Filter by Tag &amp; Archive</span>
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </button>
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Posts by Tag Container -->
-            <div class="bg-slate-900 p-5 rounded border border-slate-800 shadow-sm text-white">
-                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-slate-800">Posts by Tag</h3>
+            <!-- Posts by Tag -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
+                    <span class="text-xs text-gray-400 font-mono">{len(sorted_tags)}</span>
+                </div>
                 <div class="flex flex-wrap gap-1.5">
                     {tags_html}
                 </div>
             </div>
 
-            <!-- Posts by Month Container -->
-            <div class="bg-slate-900 p-5 rounded border border-slate-800 shadow-sm text-white">
-                <h3 class="text-base font-serif font-bold text-white mb-3 pb-2 border-b border-slate-800">Posts by Month</h3>
+            <!-- Posts by Month -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="pb-3 mb-4 border-b border-gray-100">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Archive</h3>
+                </div>
                 {months_tables_html}
             </div>
         </div>
@@ -367,24 +374,32 @@ def render_post(post, is_standalone=False):
     if platform == "post":
         origin_text = "Published by David G. Smith"
     else:
-        origin_text = f"Originally on {html.escape(label)}"
+        origin_text = f"Originally published on {html.escape(label)}"
         
-    tags_html = "".join([f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' for t in tags])
+    tags_html = "".join([
+        f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' 
+        for t in tags
+    ])
 
     if is_standalone:
-        title_html = f'<h1 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark mb-3">{title}</h1>'
+        title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-brand-dark tracking-tight leading-tight mb-4">{title}</h1>'
     else:
-        title_html = f'<a href="/thoughts/{slug}.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
+        title_html = f'''
+        <a href="/thoughts/{slug}.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                {title}
+            </h2>
+        </a>'''
 
     return f"""
-        <article class="relative group bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-lg transition-all post-card">
-            <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <img src="{icon}" alt="{icon_alt}" class="h-4 w-4" loading="lazy">
+        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+                <img src="{icon}" alt="{icon_alt}" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>{date} &bull; {origin_text}</span>
             </div>
             {title_html}
-            <div class="mb-4">{tags_html}</div>
-            <div class="markdown-content text-gray-600 leading-relaxed text-sm">{body}</div>
+            <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
+            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]">{body}</div>
             {render_share_bar(share_url=canonical_url, original_url=url)}
         </article>
     """
@@ -399,19 +414,26 @@ def render_aggregator_card(post):
     excerpt = create_text_excerpt(body_html, max_length=200)
     
     tags = post.get("tags", [])
-    tags_html = "".join([f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' for t in tags])
+    tags_html = "".join([
+        f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-[11px] px-2 py-0.5 rounded mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' 
+        for t in tags
+    ])
     
     return f"""
-    <article class="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+    <article class="bg-white p-6 sm:p-7 border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:border-gray-300 transition-all flex flex-col justify-between">
         <div>
-            <div class="text-xs text-gray-400 mb-2">{date}</div>
-            <a href="/thoughts/{slug}.html"><h3 class="text-lg font-serif font-medium text-brand-dark hover:text-brand-accent transition-colors mb-2">{title}</h3></a>
-            <div class="mb-3">{tags_html}</div>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">{html.escape(excerpt)}</p>
+            <div class="text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">{date}</div>
+            <a href="/thoughts/{slug}.html" class="block group">
+                <h3 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug mb-2.5">
+                    {title}
+                </h3>
+            </a>
+            <div class="mb-3 flex flex-wrap">{tags_html}</div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-5">{html.escape(excerpt)}</p>
         </div>
-        <div>
-            <a href="/thoughts/{slug}.html" class="text-sm font-medium text-brand-accent hover:text-brand-dark inline-flex items-center gap-1">
-                (click for more) &rarr;
+        <div class="pt-3 border-t border-gray-100">
+            <a href="/thoughts/{slug}.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+                Read Perspective &rarr;
             </a>
         </div>
     </article>
