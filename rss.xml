@@ -102,13 +102,7 @@ This is what "geospatial at scale" actually looks like:</p>
             <link>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</link>
             <guid>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:56:14 +0000</pubDate>
-            <description>I keep seeing headlines like this one: 
-Anthropic Researcher Exitts, Issues Stark AI Warning
-Notable quote: &quot;10% chance AI could destroy all humanity by 2030.&quot;
-
-And yet, the reaction often feels far too small.
-
-Someone...</description>
+            <description>I keep seeing headlines like this one: Anthropic Researcher Exitts, Issues Stark AI Warning Notable quote: &quot;10% chance AI could destroy all humanity by 2030.&quot; And yet, the reaction often feels far too small. Someone...</description>
             <category>AI</category>
             <dc:subject>AI</dc:subject>
             <category>Risk Management</category>
@@ -140,9 +134,7 @@ Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
             <link>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:40:17 +0000</pubDate>
-            <description>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. 
-
-Here&#x27;s a great breakdown of attention mechanisms in transformers, and it reinforces why attention...</description>
+            <description>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. Here&#x27;s a great breakdown of attention mechanisms in transformers, and it reinforces why attention is...</description>
             <category>AI</category>
             <dc:subject>AI</dc:subject>
             <category>Critical Thinking</category>
@@ -165,9 +157,7 @@ Here&#x27;s a great breakdown of attention mechanisms in transformers, and it re
             <link>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:27:14 +0000</pubDate>
-            <description>More often than not, AI agents end up failing because they&#x27;re drowning in their own context windows.
-
-One of the most interesting ideas I&#x27;ve seen lately is the shift from &quot;bigger models&quot; to better ways to manage the...</description>
+            <description>More often than not, AI agents end up failing because they&#x27;re drowning in their own context windows. One of the most interesting ideas I&#x27;ve seen lately is the shift from &quot;bigger models&quot; to better ways to manage the...</description>
             <category>AI</category>
             <dc:subject>AI</dc:subject>
             <category>Agents</category>
@@ -205,9 +195,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <link>https://davidgsmith.net/thoughts/how-to-help-nepal.html</link>
             <guid>https://davidgsmith.net/thoughts/how-to-help-nepal.html</guid>
             <pubDate>Wed, 09 Sep 2026 23:17:23 +0000</pubDate>
-            <description>My heart is with the people of Nepal after the devastating floods.
-
-In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities...</description>
+            <description>My heart is with the people of Nepal after the devastating floods. In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild....</description>
             <category>Charity</category>
             <dc:subject>Charity</dc:subject>
             <category>Critical Thinking</category>
@@ -371,9 +359,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/my-book-has-been-published.html</link>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
-            <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. 
-
-Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and...</description>
+            <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation....</description>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
@@ -403,9 +389,7 @@ Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and...</desc
             <link>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</link>
             <guid>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:22:55 +0000</pubDate>
-            <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it. AI isn&#x27;t the threat; it could be the lifeline.
-
-Bill&#x27;s team...</description>
+            <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it. AI isn&#x27;t the threat; it could be the lifeline. Bill&#x27;s team...</description>
             <category>AI</category>
             <dc:subject>AI</dc:subject>
             <category>Agents</category>
@@ -439,11 +423,7 @@ Bill&#x27;s team...</description>
             <link>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</link>
             <guid>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:18:33 +0000</pubDate>
-            <description>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.
-
-ArcGIS Blog
-
-</description>
+            <description>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each. ArcGIS Blog</description>
             <category>Geospatial</category>
             <dc:subject>Geospatial</dc:subject>
             <content:encoded><![CDATA[<p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
@@ -455,9 +435,7 @@ ArcGIS Blog
             <link>https://davidgsmith.net/thoughts/tearing-down-fences.html</link>
             <guid>https://davidgsmith.net/thoughts/tearing-down-fences.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:15:21 +0000</pubDate>
-            <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic thought experiment.
-
-Imagine you&#x27;re walking down a country...</description>
+            <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic thought experiment. Imagine you&#x27;re walking down a country...</description>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <category>Risk Management</category>
