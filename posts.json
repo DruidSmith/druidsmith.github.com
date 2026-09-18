@@ -6,12 +6,14 @@
       "AI Agents",
       "AI Infrastructure",
       "AI Workflows",
-      "Retrieval-Augmented Generation"
+      "Retrieval-Augmented Generation",
+      "GraphRAG",
+      "Knowledge Graphs"
     ],
     "format": "markdown",
     "url": "https://davidgsmith.net/",
     "date": "2026-09-18T14:46:28.485Z",
-    "platform": "post"
+    "platform": "other"
   },
   {
     "title": "Tearing down fences?",
