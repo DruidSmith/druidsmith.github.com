@@ -33,7 +33,7 @@
     tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }, colors: { brand: { dark: '#111827', muted: '#374151', accent: '#b45309', light: '#f9fafb' } } } } }
 </script>
 <style>
-    body { background: linear-gradient(to bottom, #faf9f7, #f3f2ee); }
+    body { background-color: #120e18; }
     .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     .markdown-content p { margin-bottom: 1rem; }
     .markdown-content p:empty { display: none; }
@@ -51,6 +51,7 @@
         line-height: 1.5;
         border: 1px solid #e2e8f0;
         border-radius: 4px;
+        background-color: #ffffff;
     }
     .markdown-content th {
         background-color: #f8fafc;
@@ -74,7 +75,10 @@
 </style>
 
 </head>
-<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white">
+<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
+
+<!-- Full-Page Vanta Canvas Layer -->
+<div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
 <!-- Navigation -->
 <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
@@ -134,19 +138,19 @@
         
 </header>
 
-<main id="main-content" class="py-12 bg-brand-light min-h-screen">
+<main id="main-content" class="py-12 bg-transparent min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Main Content Pane -->
             <div class="lg:col-span-8 space-y-8">
                 
-        <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm">
+        <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
             <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Posts Tagged: Career Development</h2>
             <p class="text-sm text-gray-500">Showing 1 post(s) filed under this topic.</p>
         </div>
         <div class="grid grid-cols-1 gap-6">
             
-    <article class="bg-white p-6 sm:p-7 border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:border-gray-300 transition-all flex flex-col justify-between">
+    <article class="bg-white p-6 sm:p-7 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
         <div>
             <div class="text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">September 02, 2026</div>
             <a href="/thoughts/ikigai-the-reason-for-being.html" class="block group">
@@ -183,8 +187,8 @@
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Posts by Tag -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+            <!-- Posts by Tag Container -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
                     <span class="text-xs text-gray-400 font-mono">60</span>
@@ -494,14 +498,14 @@
                 </div>
             </div>
 
-            <!-- Posts by Month -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+            <!-- Posts by Month Container -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
                 <div class="pb-3 mb-4 border-b border-gray-100">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Archive</h3>
                 </div>
                 
         <div class="mb-4 last:mb-0">
-            <div class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">2026</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">2026</div>
             <div class="grid grid-cols-4 gap-1.5">
                 <span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-slate-800 text-white hover:bg-amber-700 font-medium">SEP</a><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">OCT</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">DEC</span>
             </div>
@@ -579,6 +583,46 @@
             navContent.classList.toggle('hidden');
             navIcon.classList.toggle('rotate-180');
         });
+    }
+</script>
+
+<!-- Vanta.js & Three.js Libraries -->
+<script src="/js/three.r134.min.js"></script>
+<script src="/js/vanta.net.min.js"></script>
+<script>
+    // Fallback loader if local files are in the process of being deployed
+    function initVanta() {
+        if (window.VANTA && window.VANTA.NET) {
+            VANTA.NET({
+                el: "#vanta-canvas",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x5c5cb1,
+                backgroundColor: 0x120e18,
+                points: 10.00,
+                maxDistance: 20.00,
+                spacing: 18.00
+            });
+        }
+    }
+
+    if (!window.THREE) {
+        const s1 = document.createElement('script');
+        s1.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
+        s1.onload = () => {
+            const s2 = document.createElement('script');
+            s2.src = "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js";
+            s2.onload = initVanta;
+            document.body.appendChild(s2);
+        };
+        document.body.appendChild(s1);
+    } else {
+        initVanta();
     }
 </script>
 </body>
