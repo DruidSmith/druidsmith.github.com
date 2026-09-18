@@ -39,6 +39,38 @@
     .markdown-content p:empty { display: none; }
     .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
     .markdown-content a { color: #92400e; text-decoration: underline; }
+
+    /* Table Styles */
+    .markdown-content table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+    }
+    .markdown-content th {
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-weight: 600;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid #cbd5e1;
+    }
+    .markdown-content td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+    }
+    .markdown-content tr:nth-child(even) {
+        background-color: #fcfbf9;
+    }
+    .markdown-content tr:last-child td {
+        border-bottom: none;
+    }
 </style>
 
 </head>
