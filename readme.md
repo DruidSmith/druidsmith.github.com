@@ -12,6 +12,8 @@ GitHub Pages cannot securely protect a password or write to a repository by itse
 4. Give the fine-grained `GITHUB_TOKEN` Contents: Read and write access to this repository only.
 5. Set `window.POSTING_CONFIG.endpoint` in `posting.html` to the Worker URL.
 
+From this directory, deploy the Worker with `npx wrangler deploy`. The included `wrangler.toml` targets the `page-post` Worker and `posting-worker.js`; configure `POSTING_PASSWORD`, `POSTING_SESSION_SECRET`, `GITHUB_TOKEN`, `GITHUB_OWNER`, and `GITHUB_REPOSITORY` in Cloudflare before deploying.
+
 The editor can upload PNG, JPEG, GIF, WebP, and AVIF images up to 10 MB to `thoughts/images/`. Uploaded images appear in the editor library and can be inserted into Markdown at the cursor.
 
 The publishing workflow also submits the updated `thoughts.html` URL to Bing IndexNow. Add an `INDEXNOW_KEY` Actions repository secret, and publish a plain-text file named `<INDEXNOW_KEY>.txt` at the site root containing exactly the same key. The submission is skipped when the generated page has not changed.

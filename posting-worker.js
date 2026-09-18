@@ -3,6 +3,7 @@ const cors = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
+  'Access-Control-Max-Age': '86400',
 };
 
 function response(body, status = 200) {
@@ -78,7 +79,9 @@ async function githubRequest(env, method, path, body) {
 
 export default {
   async fetch(request, env) {
-    if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: cors });
+    }
     
     try {
       // Expose a quick GET endpoint to read tags/posts for the picklist safely

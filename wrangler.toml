@@ -1,0 +1,6 @@
+name = "page-post"
+main = "posting-worker.js"
+compatibility_date = "2026-09-17"
+
+[vars]
+GITHUB_BRANCH = "main"
