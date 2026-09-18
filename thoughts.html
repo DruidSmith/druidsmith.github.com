@@ -5,17 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
-<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-4T0MRLF4V8');
-    </script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4T0MRLF4V8');
+</script>
 <title>Thoughts & Insights — David G. Smith</title>
 <meta name="description" content="Latest perspectives on technical architecture, enterprise data, and critical thinking.">
+
+<meta property="og:site_name" content="David G. Smith">
+<meta property="og:title" content="Thoughts &amp; Insights — David G. Smith">
+<meta property="og:description" content="Latest perspectives on technical architecture, enterprise data, and critical thinking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://davidgsmith.net/thoughts.html">
+<meta property="og:image" content="https://davidgsmith.net/images/og-default.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Thoughts &amp; Insights — David G. Smith">
+<meta name="twitter:description" content="Latest perspectives on technical architecture, enterprise data, and critical thinking.">
+<meta name="twitter:image" content="https://davidgsmith.net/images/og-default.jpg">
+
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
 <link rel="canonical" href="https://davidgsmith.net/thoughts.html">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -89,18 +99,20 @@
 </nav>
 
 <header class="pt-32 pb-12 px-4 w-full bg-slate-900 text-white border-b border-slate-800">
-    <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
-        
-        <div class="flex justify-center mb-2">
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
-                <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
-                </svg>
-                Subscribe via RSS
-            </a>
+    
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
+            
+            <div class="flex justify-center mb-2">
+                <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+                    </svg>
+                    Subscribe via RSS
+                </a>
+            </div>
         </div>
-    </div>
+        
 </header>
 
 <main id="main-content" class="py-12 bg-brand-light min-h-screen">
@@ -122,7 +134,7 @@
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-4 w-4" loading="lazy">
                 <span>September 17, 2026 &bull; Originally on Other</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">The Shortest Path to Practical RAG: Zero Infrastructure with Gemini Notebook</h2>
+            <a href="/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">The Shortest Path to Practical RAG: Zero Infrastructure with Gemini Notebook</h2></a>
             <div class="mb-4"><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Retrieval Augmented Generation</a><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting, high-maintenance software stack: chunking pipelines, embedding models, vector databases, rerankers, and orchestrators.</p>
 <p>For enterprise architectures and dynamic production systems, that engineering effort is justified. But if your goal is immediate practical utility: testing hypotheses, synthesizing project documentation, or interrogating a discrete corpus of research, you don't need to spin up an expensive vector pipeline.</p>
@@ -158,7 +170,6 @@ True technical maturity isn't about choosing the most complex stack; it’s abou
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -186,7 +197,7 @@ True technical maturity isn't about choosing the most complex stack; it’s abou
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-4 w-4" loading="lazy">
                 <span>September 12, 2026 &bull; Originally on Other</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</h2>
+            <a href="/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Spatial SQL, Cloud-Native Imagery, and Analysis at Scale</h2></a>
             <div class="mb-4"><a href="/thoughts-cloud.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cloud</a><a href="/thoughts-geospatial.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Geospatial</a><a href="/thoughts-remote-sensing.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Remote Sensing</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>One of the most important shifts happening in geospatial right now is the collapse of the old “download → preprocess → stitch → analyze” workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud‑native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
@@ -223,7 +234,6 @@ This is what “geospatial at scale” actually looks like:</p>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -251,7 +261,7 @@ This is what “geospatial at scale” actually looks like:</p>
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 12, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">Tech Layoffs And The Loss Of Expertise</h2>
+            <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Tech Layoffs And The Loss Of Expertise</h2></a>
             <div class="mb-4"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Risk Management</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
 <p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
@@ -271,7 +281,6 @@ This is what “geospatial at scale” actually looks like:</p>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -299,7 +308,7 @@ This is what “geospatial at scale” actually looks like:</p>
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">It&#x27;s Time to Get Serious About AI Risk</h2>
+            <a href="/thoughts/its-time-to-get-serious-about-ai-risk.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">It&#x27;s Time to Get Serious About AI Risk</h2></a>
             <div class="mb-4"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Risk Management</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a><a href="/thoughts-cybersecurity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Cybersecurity</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>I keep seeing headlines like this one: <br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
@@ -331,7 +340,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -359,7 +367,7 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">AI and Attention Loss</h2>
+            <a href="/thoughts/ai-and-attention-loss.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI and Attention Loss</h2></a>
             <div class="mb-4"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
 <p>Here's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.</p>
@@ -386,7 +394,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-and-attention-loss.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -414,7 +421,7 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">AI Failure - It&#x27;s All About Context</h2>
+            <a href="/thoughts/ai-failure-its-all-about-context.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">AI Failure - It&#x27;s All About Context</h2></a>
             <div class="mb-4"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-agents.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Agents</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
 <p>One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
@@ -435,7 +442,6 @@ The future belongs to models that can summarize, prioritize, and discard with in
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -463,7 +469,7 @@ The future belongs to models that can summarize, prioritize, and discard with in
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 10, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">Ontologies For AI And AI For Ontologies</h2>
+            <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">Ontologies For AI And AI For Ontologies</h2></a>
             <div class="mb-4"><a href="/thoughts-ai.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">AI</a><a href="/thoughts-ontologies.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Ontologies</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Semantic Layer</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
 <p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
@@ -486,7 +492,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -514,7 +519,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-4 w-4" loading="lazy">
                 <span>September 09, 2026 &bull; Originally on Linkedin</span>
             </div>
-            <h2 class="text-xl font-serif font-medium text-brand-dark mb-3">How to Help Nepal</h2>
+            <a href="/thoughts/how-to-help-nepal.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">How to Help Nepal</h2></a>
             <div class="mb-4"><a href="/thoughts-charity.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Charity</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">Critical Thinking</a></div>
             <div class="markdown-content text-gray-600 leading-relaxed text-sm"><p>My heart is with the people of Nepal after the devastating floods.</p>
 <p>In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild.</p>
@@ -535,7 +540,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/how-to-help-nepal.html"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
