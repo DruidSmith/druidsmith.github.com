@@ -21,9 +21,13 @@
             <dc:subject>AI Workflows</dc:subject>
             <category>Retrieval-Augmented Generation</category>
             <dc:subject>Retrieval-Augmented Generation</dc:subject>
+            <category>GraphRAG</category>
+            <dc:subject>GraphRAG</dc:subject>
+            <category>Knowledge Graphs</category>
+            <dc:subject>Knowledge Graphs</dc:subject>
             <content:encoded><![CDATA[<p><strong>GraphRAG (Graph Retrieval-Augmented Generation)</strong> is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies entirely on searching through isolated text chunks, GraphRAG maps your data into a network of interconnected points (referred to as nodes and edges). This subtle change completely reshapes how a Large Language Model (LLM) understands your data.</p>
 <p>If you have been putting off learning it because graph databases sound intimidating, the barrier to entry is actually incredibly low. By using free resources like self-paced tutorials on <strong>Neo4j GraphAcademy</strong> and a cloud-hosted <strong>Neo4j Aura free-tier account</strong>, you can build a working prototype in a single afternoon.</p>
-<h2>The Real-World Utility of GraphRAG</h2>
+<h1>The Real-World Utility of GraphRAG</h1>
 <p>To understand why this architecture is gaining traction, look at how traditional vector search handles complex data compared to GraphRAG.</p>
 <p>Imagine you are building an AI assistant to analyze <strong>hundreds of corporate legal contracts and vendor agreements</strong>.</p>
 <ul>
@@ -31,7 +35,7 @@
 <li><strong>The GraphRAG Approach:</strong> GraphRAG treats vendors, contracts, clauses, and regulations as interconnected points (nodes) and lines (relationships). The system can trace a path like: <code>[Vendor A] -&gt; signs -&gt; [Contract B] -&gt; references -&gt; [Regulation C]</code>.</li>
 </ul>
 <p>Because the data structure inherently understands connections, the LLM can easily perform "multi-hop" reasoning. It can instantly see that five different vendors are all bound to an outdated version of a specific regulation, allowing it to synthesize a comprehensive, global answer that traditional semantic search would completely miss.</p>
-<h2>Traditional RAG vs. GraphRAG at a Glance</h2>
+<h1>Traditional RAG vs. GraphRAG at a Glance</h1>
 
 
 
@@ -69,11 +73,12 @@ Excels at global, multi-document synthesis
 <h3>1. Hands-on Learning via GraphAcademy</h3>
 <p>Instead of wading through dense documentation, Neo4j's <a target="_blank" rel="noopener noreferrer" href="https://graphacademy.neo4j.com/"><strong>GraphAcademy</strong></a> offers entirely free, self-paced courses. They feature dedicated developer paths for LLMs and AI integration, providing interactive environments where you write code directly in the browser to see how graphs feed context into LLMs.</p>
 <h3>2. Sandbox Environments with Neo4J Aura Free Tier</h3>
-<p>You don't need to go through the hassle of installing databases locally or configuring Docker containers. <a target="_blank" rel="noopener noreferrer" href="https://neo4j.com/product/auradb/"><strong>Neo4j Aura</strong></a> provides a completely free cloud instance that spins up in minutes. It gives you a fully functional sandbox to load your data, run vector searches, and test your RAG pipelines without pulling out a credit card.</p>
+<p>You don't need to go through the hassle of installing databases locally or configuring Docker containers. <a target="_blank" rel="noopener noreferrer" href="https://neo4j.com/product/auradb/"><strong>Neo4j Aura</strong></a> provides a completely free cloud instance that spins up in minutes. It gives you a fully functional sandbox to load your data, run vector searches, and test your RAG pipelines without having to build infrastructure or pull out a credit card.<br>
+<img alt="neo4j-graphrag-ecosystem-mu72n48g-c87b063e" src="https://davidgsmith.net/thoughts/images/neo4j-graphrag-ecosystem-mu72n48g-c87b063e.png"></p>
 <h3>3. Open Framework Integration</h3>
 <p>GraphRAG isn't a walled garden. A free graph instance hooks directly into the tools developers already use daily, including <strong>LangChain</strong>, <strong>LlamaIndex</strong>, and standard Python AI libraries.</p>
 <h2>How to Start Experimenting</h2>
-<p>If you want to move past basic semantic search and build AI tools capable of exploring complex connections, the tools are readily available. You can get a baseline prototype running today by signing up for a free sandbox on <strong>Neo4j Aura</strong>, looking over the foundational LLM courses on <strong>GraphAcademy</strong>, and connecting them to your favorite AI orchestration framework.<img alt="neo4j-graphrag-ecosystem-mu72n48g-c87b063e" src="https://davidgsmith.net/thoughts/images/neo4j-graphrag-ecosystem-mu72n48g-c87b063e.png"></p>]]></content:encoded>
+<p>If you want to move past basic semantic search and build AI tools capable of exploring complex connections, the tools are readily available. You can get a baseline prototype running today by signing up for a free sandbox on <strong>Neo4j Aura</strong>, looking over the foundational LLM courses on <strong>GraphAcademy</strong>, and connecting them to your favorite AI orchestration framework.</p>]]></content:encoded>
         </item>
         <item>
             <title>The Shortest Path to Practical RAG: Zero Infrastructure with Gemini Notebook</title>
