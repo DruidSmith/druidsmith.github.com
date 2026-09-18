@@ -13,6 +13,7 @@ import os
 
 POSTS_FILE = Path("posts.json")
 THOUGHTS_DIR = Path("thoughts")
+DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/og-default.jpg"
 
 PLATFORM_ICONS = {
     "linkedin": "/images/InBug-Black.png",
@@ -99,7 +100,6 @@ def render_share_bar(share_url, original_url):
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-5 w-5" alt="LinkedIn icon">
-
             </a>
             <a href="https://twitter.com/intent/tweet?url={share_escaped}"
                target="_blank" class="hover:text-brand-accent transition" aria-label="Share on X">
@@ -121,6 +121,26 @@ def render_share_bar(share_url, original_url):
     </div>
     """
 
+def extract_post_image(post):
+    """Finds an image defined on the post, embedded in the body markdown, or returns the fallback."""
+    if post.get("image"):
+        img = post["image"]
+        return img if img.startswith("http") else f"https://davidgsmith.net{img}"
+    
+    match = re.search(r'!\[.*?\]\((https?://[^\s\)]+|/[^\s\)]+)\)', post.get("body", ""))
+    if match:
+        img_url = match.group(1)
+        return img_url if img_url.startswith("http") else f"https://davidgsmith.net{img_url}"
+        
+    return DEFAULT_OG_IMAGE
+
+def create_text_excerpt(html_content, max_length=220):
+    plain_text = bleach.clean(html_content, tags=[], strip=True)
+    plain_text = re.sub(r'\s+', ' ', plain_text).strip()
+    if len(plain_text) > max_length:
+        return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
+    return plain_text
+
 def get_json_ld(post=None):
     if post:
         title = post.get("title", "Untitled")
@@ -133,28 +153,64 @@ def get_json_ld(post=None):
         date_iso = raw_date.replace("Z", "+00:00")
         
         tags = post.get("tags", [])
-        description = create_text_excerpt(render_markdown(post.get("body", "")))
-        
-        schema = {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": title,
-            "url": canonical_url,
-            "datePublished": date_iso,
-            "dateModified": date_iso,
-            "author": {
-                "@type": "Person",
-                "name": "David G. Smith",
-                "url": "https://davidgsmith.net"
+        body_text = post.get("body", "")
+        description = create_text_excerpt(render_markdown(body_text), max_length=200)
+        post_image = extract_post_image(post)
+        word_count = len(body_text.split())
+
+        schema = [
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": canonical_url
+                },
+                "headline": title,
+                "image": post_image,
+                "url": canonical_url,
+                "datePublished": date_iso,
+                "dateModified": date_iso,
+                "inLanguage": "en-US",
+                "wordCount": word_count,
+                "author": {
+                    "@type": "Person",
+                    "name": "David G. Smith",
+                    "url": "https://davidgsmith.net"
+                },
+                "publisher": {
+                    "@type": "Person",
+                    "name": "David G. Smith",
+                    "url": "https://davidgsmith.net"
+                },
+                "description": description,
+                "keywords": ", ".join(tags) if tags else ""
             },
-            "publisher": {
-                "@type": "Person",
-                "name": "David G. Smith",
-                "url": "https://davidgsmith.net"
-            },
-            "description": description,
-            "keywords": ", ".join(tags) if tags else ""
-        }
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://davidgsmith.net/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Thoughts",
+                        "item": "https://davidgsmith.net/thoughts.html"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": title,
+                        "item": canonical_url
+                    }
+                ]
+            }
+        ]
     else:
         schema = {
             "@context": "https://schema.org",
@@ -169,12 +225,6 @@ def get_json_ld(post=None):
             }
         }
     return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2)}\n</script>'
-
-def create_text_excerpt(html_content, max_length=220):
-    plain_text = bleach.clean(html_content, tags=[], strip=True)
-    if len(plain_text) > max_length:
-        return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
-    return plain_text
 
 def generate_nav_rail(posts, current_type=None, current_value=None):
     tag_counts = {}
@@ -302,8 +352,9 @@ def render_post(post, is_standalone=False):
         
     tags_html = "".join([f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full mr-2 mb-2 hover:bg-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' for t in tags])
 
-    title_html = f'<h2 class="text-xl font-serif font-medium text-brand-dark mb-3">{title}</h2>'
-    if not is_standalone:
+    if is_standalone:
+        title_html = f'<h1 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark mb-3">{title}</h1>'
+    else:
         title_html = f'<a href="/thoughts/{slug}.html"><h2 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors mb-3">{title}</h2></a>'
 
     return f"""
@@ -347,9 +398,58 @@ def render_aggregator_card(post):
     </article>
     """
 
-def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description=""):
+def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description="", og_meta=None, is_post=False):
     canonical_tag = f'<link rel="canonical" href="{canonical}">' if canonical else ''
     meta_description = f'<meta name="description" content="{html.escape(description, quote=True)}">' if description else ''
+    
+    og_html = ""
+    if og_meta:
+        og_html = f"""
+<meta property="og:site_name" content="David G. Smith">
+<meta property="og:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
+<meta property="og:description" content="{html.escape(og_meta.get('description', description), quote=True)}">
+<meta property="og:type" content="{og_meta.get('type', 'website')}">
+<meta property="og:url" content="{og_meta.get('url', canonical)}">
+<meta property="og:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
+<meta name="twitter:description" content="{html.escape(og_meta.get('description', description), quote=True)}">
+<meta name="twitter:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">
+"""
+
+    if is_post:
+        header_content = """
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1 text-gray-300 hover:text-brand-accent transition-colors font-medium">
+                &larr; Back to all Thoughts
+            </a>
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-gray-400 hover:text-brand-accent transition-colors">
+                <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+                </svg>
+                RSS Feed
+            </a>
+        </div>
+        """
+        header_classes = "pt-28 pb-6 px-4 w-full bg-slate-900 text-white border-b border-slate-800"
+    else:
+        header_content = """
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
+            
+            <div class="flex justify-center mb-2">
+                <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+                    </svg>
+                    Subscribe via RSS
+                </a>
+            </div>
+        </div>
+        """
+        header_classes = "pt-32 pb-12 px-4 w-full bg-slate-900 text-white border-b border-slate-800"
+
     return f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -357,17 +457,15 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
-<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){{dataLayer.push(arguments);}}
-        gtag('js', new Date());
-
-        gtag('config', 'G-4T0MRLF4V8');
-    </script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-4T0MRLF4V8');
+</script>
 <title>{title}</title>
 {meta_description}
+{og_html}
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
 {canonical_tag}
 <script src="https://cdn.tailwindcss.com"></script>
@@ -427,19 +525,8 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     </div>
 </nav>
 
-<header class="pt-32 pb-12 px-4 w-full bg-slate-900 text-white border-b border-slate-800">
-    <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
-        
-        <div class="flex justify-center mb-2">
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
-                <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
-                </svg>
-                Subscribe via RSS
-            </a>
-        </div>
-    </div>
+<header class="{header_classes}">
+    {header_content}
 </header>
 
 <main id="main-content" class="py-12 bg-brand-light min-h-screen">
@@ -582,6 +669,7 @@ def generate_html():
     posts = load_posts()
     THOUGHTS_DIR.mkdir(exist_ok=True)
     all_tags = set()
+    generated_urls = ["https://davidgsmith.net/thoughts.html", "https://davidgsmith.net/rss.xml"]
     
     for post in posts:
         for t in post.get("tags", []):
@@ -590,19 +678,32 @@ def generate_html():
     # 1. Generate individual post pages
     for post in posts:
         slug = slugify(post.get("title", "Untitled"))
-        single_html = render_post(post, is_standalone=True)
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
+        generated_urls.append(canonical)
+
+        single_html = render_post(post, is_standalone=True)
         json_ld_script = get_json_ld(post)
-        description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=150)
+        description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=160)
         nav_rail = generate_nav_rail(posts)
+        post_img = extract_post_image(post)
+        
+        og_metadata = {
+            "title": post.get("title", "Thoughts & Insights"),
+            "description": description,
+            "url": canonical,
+            "image": post_img,
+            "type": "article"
+        }
         
         page_html = wrap_with_layout(
-            f"{post.get('title')} - David G. Smith",
+            f"{post.get('title')} — David G. Smith",
             single_html,
             nav_rail,
             json_ld=json_ld_script,
             canonical=canonical,
-            description=description
+            description=description,
+            og_meta=og_metadata,
+            is_post=True
         )
         with open(THOUGHTS_DIR / f"{slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -623,12 +724,25 @@ def generate_html():
         """
         nav_rail = generate_nav_rail(posts, current_type="tag", current_value=tag)
         canonical = f"https://davidgsmith.net/thoughts-{t_slug}.html"
+        generated_urls.append(canonical)
+        description = f"Explore thoughts and insights tagged with {tag} by David G. Smith."
+
+        og_metadata = {
+            "title": f"Posts tagged '{tag}' — David G. Smith",
+            "description": description,
+            "url": canonical,
+            "image": DEFAULT_OG_IMAGE,
+            "type": "website"
+        }
+
         page_html = wrap_with_layout(
             f"Posts tagged '{tag}' — David G. Smith",
             main_content,
             nav_rail,
             canonical=canonical,
-            description=f"Explore thoughts and insights tagged with {tag} by David G. Smith."
+            description=description,
+            og_meta=og_metadata,
+            is_post=False
         )
         with open(f"thoughts-{t_slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -648,12 +762,25 @@ def generate_html():
         """
         nav_rail = generate_nav_rail(posts, current_type="tag", current_value="untagged")
         canonical = "https://davidgsmith.net/thoughts-untagged.html"
+        generated_urls.append(canonical)
+        description = "Explore untagged thoughts and insights by David G. Smith."
+
+        og_metadata = {
+            "title": "Untagged Posts — David G. Smith",
+            "description": description,
+            "url": canonical,
+            "image": DEFAULT_OG_IMAGE,
+            "type": "website"
+        }
+
         page_html = wrap_with_layout(
             "Untagged Posts — David G. Smith",
             main_content,
             nav_rail,
             canonical=canonical,
-            description="Explore untagged thoughts and insights by David G. Smith."
+            description=description,
+            og_meta=og_metadata,
+            is_post=False
         )
         with open("thoughts-untagged.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -690,19 +817,32 @@ def generate_html():
         """
         nav_rail = generate_nav_rail(posts, current_type="month", current_value=(year, m_abbr))
         canonical = f"https://davidgsmith.net/thoughts-{year}-{m_abbr.lower()}.html"
+        generated_urls.append(canonical)
+        description = f"Explore thoughts and insights published in {m_full} {year} by David G. Smith."
+
+        og_metadata = {
+            "title": f"Posts from {m_full} {year} — David G. Smith",
+            "description": description,
+            "url": canonical,
+            "image": DEFAULT_OG_IMAGE,
+            "type": "website"
+        }
+
         page_html = wrap_with_layout(
             f"Posts from {m_full} {year} — David G. Smith",
             main_content,
             nav_rail,
             canonical=canonical,
-            description=f"Explore thoughts and insights published in {m_full} {year} by David G. Smith."
+            description=description,
+            og_meta=og_metadata,
+            is_post=False
         )
         with open(f"thoughts-{year}-{m_abbr.lower()}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
     # 4. Generate Main thoughts.html Index Page (Recent 8 posts in full)
     recent_posts = posts[:8]
-    index_posts_html = "".join(render_post(p, is_standalone=True) for p in recent_posts)
+    index_posts_html = "".join(render_post(p, is_standalone=False) for p in recent_posts)
     main_content_index = f"""
     <div class="mb-6 bg-white p-6 rounded border border-gray-200 shadow-sm flex justify-between items-center">
         <div>
@@ -716,72 +856,76 @@ def generate_html():
     """
     nav_rail_index = generate_nav_rail(posts)
     json_ld_main = get_json_ld(None)
+    main_description = "Latest perspectives on technical architecture, enterprise data, and critical thinking."
+    
+    og_metadata_index = {
+        "title": "Thoughts & Insights — David G. Smith",
+        "description": main_description,
+        "url": "https://davidgsmith.net/thoughts.html",
+        "image": DEFAULT_OG_IMAGE,
+        "type": "website"
+    }
+
     main_html = wrap_with_layout(
         "Thoughts & Insights — David G. Smith",
         main_content_index,
         nav_rail_index,
         json_ld=json_ld_main,
         canonical="https://davidgsmith.net/thoughts.html",
-        description="Latest perspectives on technical architecture, enterprise data, and critical thinking."
+        description=main_description,
+        og_meta=og_metadata_index,
+        is_post=False
     )
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
-    # Keep the feed in the same build transaction as the generated pages.
+    # Generate RSS
     generate_rss(posts)
+    return generated_urls
         
 def ping_websub_hub(feed_url="https://davidgsmith.net"):
     """
     Notifies the Google PubSubHubbub hub that rss.xml has updated.
-    Uses existing urllib module imports.
     """
-    # Line 729: Indented exactly 4 spaces
     hub_url = "https://pubsubhubbub.appspot.com/publish"
-    
-    # Structure the parameters required by the PubSubHubbub 0.4 spec
     payload = {
         'hub.mode': 'publish',
         'hub.url': feed_url
     }
-    
     try:
-        # Encode the payload parameters using your existing urllib.parse import
         encoded_data = urllib.parse.urlencode(payload).encode('utf-8')
-        
-        # Build the HTTP POST request using your existing urllib.request import
         request_wrapper = urllib.request.Request(
             hub_url,
             data=encoded_data,
             headers={'Content-Type': 'application/x-www-form-urlencoded'},
             method='POST'
         )
-        
         print(f"Sending WebSub publish signal for {feed_url}...")
-        
-        # Execute network call safely
         with urllib.request.urlopen(request_wrapper) as response:
             if response.status in (200, 204):
                 print("✓ Success! Google PubSubHubbub has been notified.")
             else:
                 print(f"⚠ Hub responded with an unexpected status: {response.status}")
-                
     except Exception as error:
         print(f"✗ Failed to complete publish notification: {error}")
 
-def notify_indexnow():
+def notify_indexnow(urls=None):
     key = os.environ.get("INDEXNOW_KEY")
     if not key or os.environ.get("INDEXNOW_NOTIFY", "true").lower() == "false":
         return
+
+    url_list = urls if urls else [
+        "https://davidgsmith.net/thoughts.html",
+        "https://davidgsmith.net/rss.xml"
+    ]
 
     payload = json.dumps({
         "host": "davidgsmith.net",
         "key": key,
         "keyLocation": f"https://davidgsmith.net/{key}.txt",
-        "urlList": [
-            "https://davidgsmith.net/thoughts.html",
-            "https://davidgsmith.net/rss.xml"
-        ]
+        "urlList": url_list[:10000]
     }).encode("utf-8")
+    
     request_wrapper = urllib.request.Request(
         "https://api.indexnow.org/indexnow",
         data=payload,
@@ -793,13 +937,12 @@ def notify_indexnow():
             if response.status not in (200, 202):
                 print(f"IndexNow returned an unexpected status: {response.status}")
             else:
-                print("IndexNow notified successfully.")
+                print(f"IndexNow notified successfully for {len(url_list)} URLs.")
     except Exception as error:
         print(f"IndexNow notification failed: {error}")
-    
 
 if __name__ == "__main__":
-    generate_html()
+    urls = generate_html()
     ping_websub_hub()
-    notify_indexnow()
+    notify_indexnow(urls)
     print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
