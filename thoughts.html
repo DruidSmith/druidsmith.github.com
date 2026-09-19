@@ -198,6 +198,74 @@
         <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 19, 2026 &bull; Originally published on Other</span>
+            </div>
+            
+        <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"></div>
+            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of my book, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
+<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
+LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
+<p><strong>1. A full office suite built on open standards</strong></p>
+<p>LibreOffice Writer supports long‑form writing, page styles, cross‑references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
+<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
+<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Make a copy of your <code>.odt</code> file.  </li>
+<li>Rename it to <code>.zip</code>.  </li>
+<li>Extract the contents.  </li>
+<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
+<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
+<li>Re‑zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
+</ol>
+<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards‑based format.</p>
+<p><strong>3. A free and capable PDF editor</strong></p>
+<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
+<p><strong>Closing thought</strong></p>
+<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://libreoffice.com/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 18, 2026 &bull; Published by David G. Smith</span>
             </div>
             
@@ -655,61 +723,6 @@ The future belongs to models that can summarize, prioritize, and discard with in
     
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 10, 2026 &bull; Originally published on Linkedin</span>
-            </div>
-            
-        <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                Ontologies For AI And AI For Ontologies
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ontologies.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Ontologies</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">GraphRAG</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Semantic Layer</a></div>
-            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
-<p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
-LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
-<p><strong>2. How Agentic AI Empowers Human Stewards</strong><br>
-The catch? Building and maintaining high-quality ontologies has traditionally been a bottleneck, requiring massive manual effort from human domain experts. This is where the script flips. LLMs and autonomous agents are now capable of reading unstructured text and automatically extracting entities, drafting taxonomies, and even detecting structural gaps or biases in existing knowledge graphs. Recent frameworks show that using AI to draft and assess ontologies can reduce development time by over 40%.</p>
-<p><strong>The Human-in-the-Loop Sweet Spot</strong><br>
-Years back I worked with <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/eWfx-CqA">Bob DuCharme</a> on the W3C Linked Data Workgroup and always appreciate his ideas, and here he aligns with an idea I've been thinking about. We can augment the process of building out ontologies using AI. I don't at all propose replacing the human data steward; instead we augment them, leveraging their expertise while making the ontology development work easier. In a modern Human-in-the-Loop (HITL) workflow, agentic AI does the heavy lifting of parsing, proposing, and mapping. Human experts then step in to validate these structures, govern data access, and ensure the taxonomy accurately reflects the nuances of their specific organizational knowledge.</p>
-<p>I believe he intersection of neural networks (LLMs) and structured logic (ontologies) is the foundation of trustworthy, enterprise-grade AI. If we wants smarter agents, we need to start by curating better semantics.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_so-i-have-at-least-five-former-colleagues-activity-7503924825699250176-t5T8?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
     </div>
     
             </div>
@@ -1034,6 +1047,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         
         <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Workforce Strategy</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Untagged</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         

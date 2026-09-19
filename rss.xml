@@ -8,6 +8,35 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</title>
+            <link>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</link>
+            <guid>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</guid>
+            <pubDate>Sat, 19 Sep 2026 14:08:42 +0000</pubDate>
+            <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the...</description>
+            
+            <content:encoded><![CDATA[<p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of my book, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
+<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
+LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
+<p><strong>1. A full office suite built on open standards</strong></p>
+<p>LibreOffice Writer supports long&#8208;form writing, page styles, cross&#8208;references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
+<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
+<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Make a copy of your <code>.odt</code> file.  </li>
+<li>Rename it to <code>.zip</code>.  </li>
+<li>Extract the contents.  </li>
+<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
+<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
+<li>Re&#8208;zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
+</ol>
+<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards&#8208;based format.</p>
+<p><strong>3. A free and capable PDF editor</strong></p>
+<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
+<p><strong>Closing thought</strong></p>
+<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free</title>
             <link>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</link>
             <guid>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</guid>
