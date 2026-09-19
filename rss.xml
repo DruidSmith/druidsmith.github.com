@@ -23,6 +23,10 @@
             <dc:subject>Workforce Strategy</dc:subject>
             <category>AI Strategy</category>
             <dc:subject>AI Strategy</dc:subject>
+            <category>Human-AI Collaboration</category>
+            <dc:subject>Human-AI Collaboration</dc:subject>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
             <content:encoded><![CDATA[<p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
 <p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
 <p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
