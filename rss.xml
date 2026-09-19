@@ -13,7 +13,14 @@
             <guid>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</guid>
             <pubDate>Sat, 19 Sep 2026 14:08:42 +0000</pubDate>
             <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the...</description>
-            
+            <category>LibreOffice</category>
+            <dc:subject>LibreOffice</dc:subject>
+            <category>Career Development</category>
+            <dc:subject>Career Development</dc:subject>
+            <category>Writing</category>
+            <dc:subject>Writing</dc:subject>
+            <category>Open Standards</category>
+            <dc:subject>Open Standards</dc:subject>
             <content:encoded><![CDATA[<p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of my book, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
 <p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
 LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
