@@ -96,6 +96,44 @@ def render_markdown(text):
     )
     return re.sub(r'<a\b(?![^>]*\btarget=)', '<a target="_blank" rel="noopener noreferrer"', cleaned)
 
+def calculate_reading_time(text):
+    words = len(re.findall(r'\w+', text))
+    minutes = max(1, round(words / 200))
+    return f"{minutes} min read"
+
+def render_tag_badges(tags, size="normal"):
+    if not tags: return ""
+    size_classes = "text-xs px-2.5 py-1" if size == "normal" else "text-[11px] px-2 py-0.5"
+    badges = []
+    for t in tags:
+        t_slug = slugify(t)
+        # High contrast: slate-800 on slate-100 with visible slate-300 border
+        badges.append(
+            f'<a href="/thoughts-{t_slug}.html" '
+            f'class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 '
+            f'{size_classes} rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent '
+            f'hover:text-white transition-all shadow-xs">{html.escape(t)}</a>'
+        )
+    return "".join(badges)
+
+def render_breadcrumbs(post):
+    title = html.escape(post.get("title", "Untitled"))
+    return f"""
+    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-gray-500">
+        <ol class="flex items-center flex-wrap gap-1.5">
+            <li>
+                <a href="/" class="hover:text-brand-accent text-gray-500 transition-colors">Home</a>
+            </li>
+            <li class="text-gray-400">/</li>
+            <li>
+                <a href="/thoughts.html" class="hover:text-brand-accent text-gray-500 transition-colors">Thoughts</a>
+            </li>
+            <li class="text-gray-400">/</li>
+            <li class="text-brand-dark font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">{title}</li>
+        </ol>
+    </nav>
+    """
+
 def render_share_bar(share_url, original_url):
     share_escaped = html.escape(share_url, quote=True)
     read_original_html = "<div></div>" 
@@ -149,12 +187,86 @@ def extract_post_image(post):
         
     return DEFAULT_OG_IMAGE
 
-def create_text_excerpt(html_content, max_length=220):
+def create_text_excerpt(html_content, max_length=160):
     plain_text = bleach.clean(html_content, tags=[], strip=True)
     plain_text = re.sub(r'\s+', ' ', plain_text).strip()
     if len(plain_text) > max_length:
         return plain_text[:max_length].rsplit(' ', 1)[0] + '...'
     return plain_text
+
+def get_related_posts(current_post, all_posts, limit=3):
+    current_tags = set(current_post.get("tags", []))
+    current_slug = slugify(current_post.get("title", ""))
+    candidates = []
+    
+    for p in all_posts:
+        p_slug = slugify(p.get("title", ""))
+        if p_slug == current_slug:
+            continue
+        p_tags = set(p.get("tags", []))
+        shared = current_tags.intersection(p_tags)
+        candidates.append({
+            "post": p,
+            "shared_count": len(shared),
+            "date": p.get("date", "")
+        })
+    
+    # Sort first by highest shared tags, then by most recent date
+    candidates.sort(key=lambda x: (x["shared_count"], x["date"]), reverse=True)
+    return [c["post"] for c in candidates[:limit]]
+
+def render_related_posts_section(related_posts):
+    if not related_posts: return ""
+    cards = []
+    for p in related_posts:
+        slug = slugify(p.get("title", "Untitled"))
+        title = html.escape(p.get("title", "Untitled"))
+        date_iso = p.get("date", "")
+        date_str = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%b %d, %Y")
+        body_html = render_markdown(p.get("body", ""))
+        excerpt = html.escape(create_text_excerpt(body_html, max_length=120))
+        reading_time = calculate_reading_time(p.get("body", ""))
+        tags_html = render_tag_badges(p.get("tags", [])[:2], size="small")
+
+        cards.append(f"""
+        <div class="bg-white p-5 rounded-lg border border-gray-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                    <span>{date_str}</span>
+                    <span>{reading_time}</span>
+                </div>
+                <a href="/thoughts/{slug}.html" class="block group mb-2">
+                    <h3 class="text-base font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                        {title}
+                    </h3>
+                </a>
+                <p class="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">{excerpt}</p>
+            </div>
+            <div>
+                <div class="flex flex-wrap">{tags_html}</div>
+                <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-brand-dark transition-colors mt-2">
+                    Read Thought &rarr;
+                </a>
+            </div>
+        </div>
+        """)
+
+    return f"""
+    <section class="mt-10 pt-8 border-t border-gray-200" aria-label="Related Thoughts">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h2 class="text-xl sm:text-2xl font-serif font-medium text-brand-dark">Related Thoughts</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Explore perspectives on similar architecture, data, and strategy topics.</p>
+            </div>
+            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-brand-dark transition-colors">
+                All Thoughts &rarr;
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {''.join(cards)}
+        </div>
+    </section>
+    """
 
 def get_json_ld(post=None):
     if post:
@@ -169,20 +281,21 @@ def get_json_ld(post=None):
         
         tags = post.get("tags", [])
         body_text = post.get("body", "")
-        description = create_text_excerpt(render_markdown(body_text), max_length=200)
+        description = create_text_excerpt(render_markdown(body_text), max_length=160)
         post_image = extract_post_image(post)
-        word_count = len(body_text.split())
+        word_count = len(re.findall(r'\w+', body_text))
 
         schema = [
             {
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
+                "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
                     "@id": canonical_url
                 },
                 "headline": title,
-                "image": post_image,
+                "image": [post_image],
                 "url": canonical_url,
                 "datePublished": date_iso,
                 "dateModified": date_iso,
@@ -191,19 +304,21 @@ def get_json_ld(post=None):
                 "author": {
                     "@type": "Person",
                     "name": "David G. Smith",
-                    "url": "https://davidgsmith.net"
+                    "url": "https://davidgsmith.net/"
                 },
                 "publisher": {
                     "@type": "Person",
                     "name": "David G. Smith",
-                    "url": "https://davidgsmith.net"
+                    "url": "https://davidgsmith.net/"
                 },
                 "description": description,
-                "keywords": ", ".join(tags) if tags else ""
+                "keywords": ", ".join(tags) if tags else "",
+                "articleSection": tags[0] if tags else "Technology"
             },
             {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
+                "@id": f"{canonical_url}#breadcrumb",
                 "itemListElement": [
                     {
                         "@type": "ListItem",
@@ -236,7 +351,7 @@ def get_json_ld(post=None):
             "author": {
                 "@type": "Person",
                 "name": "David G. Smith",
-                "url": "https://davidgsmith.net"
+                "url": "https://davidgsmith.net/"
             }
         }
     return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2)}\n</script>'
@@ -352,7 +467,7 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     </aside>
     """
 
-def render_post(post, is_standalone=False):
+def render_post(post, is_standalone=False, prev_post=None, next_post=None, related_posts=None):
     title = html.escape(post.get("title", "Untitled"))
     slug = slugify(post.get("title", ""))
     body = render_markdown(post.get("body", ""))
@@ -360,6 +475,7 @@ def render_post(post, is_standalone=False):
     canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
     date_iso = post["date"]
     date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
+    reading_time = calculate_reading_time(post.get("body", ""))
     
     platform = post.get("platform") or platform_for_url(url)
     icon = PLATFORM_ICONS.get(platform, PLATFORM_ICONS["post"])
@@ -372,14 +488,14 @@ def render_post(post, is_standalone=False):
     else:
         origin_text = f"Originally published on {html.escape(label)}"
         
-    tags_html = "".join([
-        f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' 
-        for t in tags
-    ])
+    tags_html = render_tag_badges(tags, size="normal")
 
     if is_standalone:
+        breadcrumbs_html = render_breadcrumbs(post)
+        # H1 precisely matches the page title
         title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-brand-dark tracking-tight leading-tight mb-4">{title}</h1>'
     else:
+        breadcrumbs_html = ""
         title_html = f'''
         <a href="/thoughts/{slug}.html" class="block group">
             <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
@@ -387,16 +503,44 @@ def render_post(post, is_standalone=False):
             </h2>
         </a>'''
 
+    prev_next_html = ""
+    if is_standalone and (prev_post or next_post):
+        prev_link = f'''
+        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all">
+            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">&larr; Older Thought</span>
+            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(prev_post.get("title", ""))}</span>
+        </a>
+        ''' if prev_post else '<div class="flex-1"></div>'
+
+        next_link = f'''
+        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all text-right">
+            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Newer Thought &rarr;</span>
+            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(next_post.get("title", ""))}</span>
+        </a>
+        ''' if next_post else '<div class="flex-1"></div>'
+
+        prev_next_html = f'''
+        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4 justify-between">
+            {prev_link}
+            {next_link}
+        </nav>
+        '''
+
+    related_posts_html = render_related_posts_section(related_posts) if is_standalone and related_posts else ""
+
     return f"""
         <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+            {breadcrumbs_html}
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
                 <img src="{icon}" alt="{icon_alt}" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>{date} &bull; {origin_text}</span>
+                <span>{date} &bull; {reading_time} &bull; {origin_text}</span>
             </div>
             {title_html}
             <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
             <div class="markdown-content text-gray-700 leading-relaxed text-[15px]">{body}</div>
             {render_share_bar(share_url=canonical_url, original_url=url)}
+            {prev_next_html}
+            {related_posts_html}
         </article>
     """
 
@@ -405,20 +549,21 @@ def render_aggregator_card(post):
     slug = slugify(post.get("title", ""))
     date_iso = post["date"]
     date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
+    reading_time = calculate_reading_time(post.get("body", ""))
     
     body_html = render_markdown(post.get("body", ""))
-    excerpt = create_text_excerpt(body_html, max_length=200)
+    excerpt = create_text_excerpt(body_html, max_length=180)
     
     tags = post.get("tags", [])
-    tags_html = "".join([
-        f'<a href="/thoughts-{slugify(t)}.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-[11px] px-2 py-0.5 rounded mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">{html.escape(t)}</a>' 
-        for t in tags
-    ])
+    tags_html = render_tag_badges(tags, size="small")
     
     return f"""
     <article class="bg-white p-6 sm:p-7 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
         <div>
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">{date}</div>
+            <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">
+                <span>{date}</span>
+                <span>{reading_time}</span>
+            </div>
             <a href="/thoughts/{slug}.html" class="block group">
                 <h3 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug mb-2.5">
                     {title}
@@ -435,19 +580,28 @@ def render_aggregator_card(post):
     </article>
     """
 
-def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description="", og_meta=None, is_post=False):
+def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description="", og_meta=None, is_post=False, banner_title=None, banner_subtitle=None):
     canonical_tag = f'<link rel="canonical" href="{canonical}">' if canonical else ''
     meta_description = f'<meta name="description" content="{html.escape(description, quote=True)}">' if description else ''
     
     og_html = ""
     if og_meta:
+        extra_article_tags = ""
+        if og_meta.get("type") == "article":
+            if og_meta.get("published_time"):
+                extra_article_tags += f'\n<meta property="article:published_time" content="{og_meta["published_time"]}">'
+            if og_meta.get("tags"):
+                for tag in og_meta["tags"]:
+                    extra_article_tags += f'\n<meta property="article:tag" content="{html.escape(tag, quote=True)}">'
+            extra_article_tags += '\n<meta property="article:author" content="David G. Smith">'
+
         og_html = f"""
 <meta property="og:site_name" content="David G. Smith">
 <meta property="og:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
 <meta property="og:description" content="{html.escape(og_meta.get('description', description), quote=True)}">
 <meta property="og:type" content="{og_meta.get('type', 'website')}">
 <meta property="og:url" content="{og_meta.get('url', canonical)}">
-<meta property="og:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">
+<meta property="og:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">{extra_article_tags}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
@@ -458,7 +612,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     if is_post:
         header_content = """
         <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
-            <a href="/thoughts.html" class="inline-flex items-center gap-1 text-gray-300 hover:text-brand-accent transition-colors font-medium">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-brand-accent transition-colors font-medium">
                 &larr; Back to all Thoughts
             </a>
             <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-gray-400 hover:text-brand-accent transition-colors">
@@ -471,10 +625,12 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         """
         header_classes = "pt-28 pb-6 px-4 w-full bg-slate-900 text-white border-b border-slate-800"
     else:
-        header_content = """
+        h1_text = banner_title if banner_title else "Thoughts & Insights"
+        sub_text = f'<p class="text-sm text-gray-400 max-w-xl mx-auto mt-2 mb-4">{html.escape(banner_subtitle)}</p>' if banner_subtitle else ''
+        header_content = f"""
         <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-4">Thoughts & Insights</h1>
-            
+            <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-2">{html.escape(h1_text)}</h1>
+            {sub_text}
             <div class="flex justify-center mb-2">
                 <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
                     <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -718,7 +874,6 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
 <script>
-    // Fallback loader if local files are in the process of being deployed
     function initVanta() {{
         if (window.VANTA && window.VANTA.NET) {{
             VANTA.NET({{
@@ -808,6 +963,58 @@ def generate_rss(posts):
     with open("rss.xml", "w", encoding="utf-8") as f:
         f.write(rss_feed.strip())
 
+def generate_sitemap(posts, tag_slugs, month_slugs):
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    entries = [
+        f"""  <url>
+    <loc>https://davidgsmith.net/</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>""",
+        f"""  <url>
+    <loc>https://davidgsmith.net/thoughts.html</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>"""
+    ]
+    
+    for post in posts:
+        slug = slugify(post.get("title", "Untitled"))
+        raw_date = post.get("date", now_iso)
+        date_clean = raw_date[:10] if len(raw_date) >= 10 else now_iso
+        entries.append(f"""  <url>
+    <loc>https://davidgsmith.net/thoughts/{slug}.html</loc>
+    <lastmod>{date_clean}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+        
+    for t in sorted(tag_slugs):
+        entries.append(f"""  <url>
+    <loc>https://davidgsmith.net/thoughts-{t}.html</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>""")
+
+    for m in sorted(month_slugs):
+        entries.append(f"""  <url>
+    <loc>https://davidgsmith.net/thoughts-{m}.html</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>""")
+
+    sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{chr(10).join(entries)}
+</urlset>"""
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap_xml.strip())
+    print("✓ Generated sitemap.xml for Google search indexing.")
+
 def generate_html():
     posts = load_posts()
     THOUGHTS_DIR.mkdir(exist_ok=True)
@@ -818,24 +1025,45 @@ def generate_html():
         for t in post.get("tags", []):
             all_tags.add(t)
 
+    tag_slugs = [slugify(t) for t in all_tags]
+    month_slugs = []
+
     # 1. Generate individual post pages
-    for post in posts:
+    total_posts = len(posts)
+    for index, post in enumerate(posts):
         slug = slugify(post.get("title", "Untitled"))
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
         generated_urls.append(canonical)
 
-        single_html = render_post(post, is_standalone=True)
+        prev_post = posts[index + 1] if index + 1 < total_posts else None
+        next_post = posts[index - 1] if index > 0 else None
+        related = get_related_posts(post, posts, limit=3)
+
+        single_html = render_post(
+            post, 
+            is_standalone=True, 
+            prev_post=prev_post, 
+            next_post=next_post, 
+            related_posts=related
+        )
         json_ld_script = get_json_ld(post)
         description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=160)
         nav_rail = generate_nav_rail(posts)
         post_img = extract_post_image(post)
         
+        raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
+        if not raw_date.endswith("Z") and "+" not in raw_date:
+            raw_date += "Z"
+        date_iso = raw_date.replace("Z", "+00:00")
+
         og_metadata = {
             "title": post.get("title", "Thoughts & Insights"),
             "description": description,
             "url": canonical,
             "image": post_img,
-            "type": "article"
+            "type": "article",
+            "published_time": date_iso,
+            "tags": post.get("tags", [])
         }
         
         page_html = wrap_with_layout(
@@ -868,7 +1096,7 @@ def generate_html():
         nav_rail = generate_nav_rail(posts, current_type="tag", current_value=tag)
         canonical = f"https://davidgsmith.net/thoughts-{t_slug}.html"
         generated_urls.append(canonical)
-        description = f"Explore thoughts and insights tagged with {tag} by David G. Smith."
+        description = f"Explore perspectives and technical insights on {tag} by David G. Smith."
 
         og_metadata = {
             "title": f"Posts tagged '{tag}' — David G. Smith",
@@ -885,7 +1113,9 @@ def generate_html():
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
-            is_post=False
+            is_post=False,
+            banner_title=f"Topic: {tag}",
+            banner_subtitle=f"Perspectives and architecture notes relating to {tag}."
         )
         with open(f"thoughts-{t_slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -893,6 +1123,7 @@ def generate_html():
     # Untagged aggregator page if untagged posts exist
     untagged_posts = [p for p in posts if not p.get("tags")]
     if untagged_posts:
+        tag_slugs.append("untagged")
         cards_html = "".join(render_aggregator_card(p) for p in untagged_posts)
         main_content = f"""
         <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
@@ -906,7 +1137,7 @@ def generate_html():
         nav_rail = generate_nav_rail(posts, current_type="tag", current_value="untagged")
         canonical = "https://davidgsmith.net/thoughts-untagged.html"
         generated_urls.append(canonical)
-        description = "Explore untagged thoughts and insights by David G. Smith."
+        description = "Explore uncategorized thoughts and insights by David G. Smith."
 
         og_metadata = {
             "title": "Untagged Posts — David G. Smith",
@@ -923,7 +1154,9 @@ def generate_html():
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
-            is_post=False
+            is_post=False,
+            banner_title="Untagged Perspectives",
+            banner_subtitle="Archived notes without specific category tags."
         )
         with open("thoughts-untagged.html", "w", encoding="utf-8") as f:
             f.write(page_html)
@@ -948,6 +1181,8 @@ def generate_html():
 
     for (year, m_abbr), m_posts in year_month_posts.items():
         m_full = months_map[m_abbr]
+        m_slug_suffix = f"{year}-{m_abbr.lower()}"
+        month_slugs.append(m_slug_suffix)
         cards_html = "".join(render_aggregator_card(p) for p in m_posts)
         main_content = f"""
         <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
@@ -959,7 +1194,7 @@ def generate_html():
         </div>
         """
         nav_rail = generate_nav_rail(posts, current_type="month", current_value=(year, m_abbr))
-        canonical = f"https://davidgsmith.net/thoughts-{year}-{m_abbr.lower()}.html"
+        canonical = f"https://davidgsmith.net/thoughts-{m_slug_suffix}.html"
         generated_urls.append(canonical)
         description = f"Explore thoughts and insights published in {m_full} {year} by David G. Smith."
 
@@ -978,9 +1213,11 @@ def generate_html():
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
-            is_post=False
+            is_post=False,
+            banner_title=f"{m_full} {year} Archive",
+            banner_subtitle=f"Published writings and analysis from {m_full} {year}."
         )
-        with open(f"thoughts-{year}-{m_abbr.lower()}.html", "w", encoding="utf-8") as f:
+        with open(f"thoughts-{m_slug_suffix}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
     # 4. Generate Main thoughts.html Index Page (Recent 8 posts in full)
@@ -1022,8 +1259,9 @@ def generate_html():
     with open("thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
-    # Generate RSS
+    # Generate Feeds and Sitemaps
     generate_rss(posts)
+    generate_sitemap(posts, tag_slugs, month_slugs)
     return generated_urls
         
 def ping_websub_hub(feed_url="https://davidgsmith.net/rss.xml"):
@@ -1085,4 +1323,4 @@ if __name__ == "__main__":
     urls = generate_html()
     ping_websub_hub()
     notify_indexnow(urls)
-    print("Successfully generated all thoughts, tag aggregators, month aggregators, and RSS feed.")
+    print("Successfully built thoughts, aggregators, sitemap.xml, and RSS feed.")
