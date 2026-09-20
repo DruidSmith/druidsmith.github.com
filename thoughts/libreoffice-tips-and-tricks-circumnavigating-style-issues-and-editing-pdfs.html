@@ -35,17 +35,37 @@
 <link rel="canonical" href="https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }, colors: { brand: { dark: '#111827', muted: '#374151', accent: '#b45309', light: '#f9fafb' } } } } }
+    tailwind.config = { 
+        theme: { 
+            extend: { 
+                fontFamily: { 
+                    sans: ['Inter', 'sans-serif'], 
+                    serif: ['Lora', 'serif'] 
+                }, 
+                colors: { 
+                    brand: { 
+                        dark: '#0f172a', 
+                        muted: '#334155', 
+                        accent: '#0284c7', 
+                        warm: '#d97706', 
+                        light: '#f8fafc' 
+                    } 
+                } 
+            } 
+        } 
+    }
 </script>
 <style>
-    body { background-color: #120e18; }
-    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    /* Coordinated Deep Midnight Navy Background */
+    body { background-color: #0a1128; }
+    .glass-nav { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }
     .markdown-content p { margin-bottom: 1rem; }
     .markdown-content p:empty { display: none; }
-    .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
-    .markdown-content a { color: #92400e; text-decoration: underline; }
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
+    .markdown-content a { color: #0284c7; text-decoration: underline; }
+    .markdown-content a:hover { color: #0369a1; }
 
-    /* List Styles (reverses Tailwind Preflight CSS reset) */
+    /* List Styles */
     .markdown-content ul {
         list-style-type: disc;
         margin-top: 0.75rem;
@@ -85,7 +105,7 @@
         font-size: 0.875rem;
         line-height: 1.5;
         border: 1px solid #e2e8f0;
-        border-radius: 4px;
+        border-radius: 6px;
         background-color: #ffffff;
     }
     .markdown-content th {
@@ -175,26 +195,26 @@
 <div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
 <!-- Navigation -->
-<nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
+<nav class="fixed w-full z-50 glass-nav border-b border-slate-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex-shrink-0">
-                <a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">
+                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">
                     David G. Smith
                 </a>
             </div>
             
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
-                <a href="/#books" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
-                <a href="/#advisory" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
+                <a href="/#about" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                <a href="/#work" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-semibold">Thoughts</a>
+                <a href="/#books" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                <a href="/#advisory" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                <a href="/#contact" class="px-5 py-2 rounded border border-slate-300 text-slate-900 hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
             </div>
 
             <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                <button id="mobile-menu-btn" class="text-slate-900 focus:outline-none" aria-label="Toggle menu">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -203,26 +223,26 @@
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg">
         <div class="px-4 pt-2 pb-4 space-y-1">
-            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
-            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
-            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent">Thoughts</a>
-            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
-            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
-            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-gray-600">Contact</a>
+            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-600">About</a>
+            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-600">Work</a>
+            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent font-semibold">Thoughts</a>
+            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-slate-600">Books</a>
+            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-600">Advisory</a>
+            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-600">Contact</a>
         </div>
     </div>
 </nav>
 
-<header class="pt-28 pb-6 px-4 w-full bg-slate-900 text-white border-b border-slate-800">
+<header class="pt-28 pb-6 px-4 w-full bg-slate-950 text-white border-b border-slate-800">
     
         <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
-            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-brand-accent transition-colors font-medium">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-sky-400 transition-colors font-medium">
                 &larr; Back to all Thoughts
             </a>
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-gray-400 hover:text-brand-accent transition-colors">
-                <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors">
+                <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                 </svg>
                 RSS Feed
@@ -237,29 +257,29 @@
             <!-- Main Content Pane -->
             <div class="lg:col-span-8 space-y-8">
                 
-        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
             
-    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-gray-500">
+    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-slate-500">
         <ol class="flex items-center flex-wrap gap-1.5">
             <li>
-                <a href="/" class="hover:text-brand-accent text-gray-500 transition-colors">Home</a>
+                <a href="/" class="hover:text-brand-accent text-slate-500 transition-colors">Home</a>
             </li>
-            <li class="text-gray-400">/</li>
+            <li class="text-slate-400">/</li>
             <li>
-                <a href="/thoughts.html" class="hover:text-brand-accent text-gray-500 transition-colors">Thoughts</a>
+                <a href="/thoughts.html" class="hover:text-brand-accent text-slate-500 transition-colors">Thoughts</a>
             </li>
-            <li class="text-gray-400">/</li>
-            <li class="text-brand-dark font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</li>
+            <li class="text-slate-400">/</li>
+            <li class="text-slate-900 font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</li>
         </ol>
     </nav>
     
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 19, 2026 &bull; 2 min read &bull; Published by David G. Smith</span>
+                <span>September 19, 2026 &bull; <span class="text-sky-800 font-semibold">2 min read</span> &bull; Published by David G. Smith</span>
             </div>
-            <h1 class="text-3xl sm:text-4xl font-serif font-medium text-brand-dark tracking-tight leading-tight mb-4">LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</h1>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-libreoffice.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">LibreOffice</a><a href="/thoughts-writing.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Writing</a><a href="/thoughts-open-standards.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a></div>
-            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
+            <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</h1>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-libreoffice.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">LibreOffice</a><a href="/thoughts-writing.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">Writing</a><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">Open Standards</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
 <p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
 LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
 <p><strong>1. A full office suite built on open standards</strong></p>
@@ -281,10 +301,10 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
 <p><strong>Closing thought</strong></p>
 <p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p></div>
             
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div></div>
         <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
                target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
@@ -309,92 +329,92 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
     </div>
     
             
-        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4 justify-between">
+        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 justify-between">
             
-        <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all">
-            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">&larr; Older Thought</span>
-            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free</span>
+        <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">&larr; Older Thought</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free</span>
         </a>
         
             
-        <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all text-right">
-            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Newer Thought &rarr;</span>
-            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill</span>
+        <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all text-right">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Newer Thought &rarr;</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill</span>
         </a>
         
         </nav>
         
             
-    <section class="mt-10 pt-8 border-t border-gray-200" aria-label="Related Thoughts">
+    <section class="mt-10 pt-8 border-t border-slate-200" aria-label="Related Thoughts">
         <div class="flex items-center justify-between mb-6">
             <div>
-                <h2 class="text-xl sm:text-2xl font-serif font-medium text-brand-dark">Related Thoughts</h2>
-                <p class="text-xs text-gray-500 mt-0.5">Explore perspectives on similar architecture, data, and strategy topics.</p>
+                <h2 class="text-xl sm:text-2xl font-serif font-medium text-slate-900">Related Thoughts</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Perspectives sharing related architectures, models, and domain context.</p>
             </div>
-            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-brand-dark transition-colors">
+            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-blue-900 transition-colors">
                 All Thoughts &rarr;
             </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             
-        <div class="bg-white p-5 rounded-lg border border-gray-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>Sep 19, 2026</span>
-                    <span>3 min read</span>
+                    <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded text-[11px] font-semibold">3 min read</span>
                 </div>
                 <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="block group mb-2">
-                    <h3 class="text-base font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
                         The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill
                     </h3>
                 </a>
-                <p class="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has...</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has...</p>
             </div>
             <div>
-                <div class="flex flex-wrap"><a href="/thoughts-critical-thinking.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a></div>
-                <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-brand-dark transition-colors mt-2">
+                <div class="flex flex-wrap"><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">AI Workflows</a></div>
+                <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-blue-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
         </div>
         
-        <div class="bg-white p-5 rounded-lg border border-gray-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>Sep 18, 2026</span>
-                    <span>3 min read</span>
+                    <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded text-[11px] font-semibold">3 min read</span>
                 </div>
                 <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="block group mb-2">
-                    <h3 class="text-base font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
                         Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free
                     </h3>
                 </a>
-                <p class="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI...</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI...</p>
             </div>
             <div>
-                <div class="flex flex-wrap"><a href="/thoughts-ai-agents.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Infrastructure</a></div>
-                <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-brand-dark transition-colors mt-2">
+                <div class="flex flex-wrap"><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">AI Infrastructure</a></div>
+                <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-blue-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
         </div>
         
-        <div class="bg-white p-5 rounded-lg border border-gray-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>Sep 17, 2026</span>
-                    <span>3 min read</span>
+                    <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded text-[11px] font-semibold">3 min read</span>
                 </div>
                 <a href="/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html" class="block group mb-2">
-                    <h3 class="text-base font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
                         The Shortest Path to Practical RAG: Zero Infrastructure with Gemini Notebook
                     </h3>
                 </a>
-                <p class="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting,...</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting,...</p>
             </div>
             <div>
-                <div class="flex flex-wrap"><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation</a><a href="/thoughts-notebooklm.html" class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 text-[11px] px-2 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">NotebookLM</a></div>
-                <a href="/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-brand-dark transition-colors mt-2">
+                <div class="flex flex-wrap"><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation</a><a href="/thoughts-notebooklm.html" class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-xs">NotebookLM</a></div>
+                <a href="/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-blue-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
@@ -412,362 +432,368 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
                 
     <aside aria-label="Sidebar Navigation" class="space-y-6">
         <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-bold text-sm focus:outline-none">
+        <div class="lg:hidden bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-900 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
-                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </button>
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Posts by Tag Container -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-                <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
-                    <span class="text-xs text-gray-400 font-mono">65</span>
+            <!-- Topics Container -->
+            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                        Topics
+                    </h3>
+                    <span class="text-xs font-mono font-semibold text-sky-800 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-full">65</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
-        <a href="/thoughts-ai-agents.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-agents.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Agents</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">6</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
-        <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Infrastructure</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Critical Thinking</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Safety</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Workflows</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Context Window</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Knowledge Graphs</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Governance</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-cybersecurity.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-cybersecurity.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Cybersecurity</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Decision Making</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-disaster-relief.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-disaster-relief.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Disaster Relief</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Enterprise AI</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Geospatial</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>GraphRAG</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Human-AI Collaboration</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Humanitarian Aid</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-institutional-knowledge.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-institutional-knowledge.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Institutional Knowledge</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-nepal-floods.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-nepal-floods.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Nepal Floods</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Responsible AI</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Retrieval-Augmented Generation</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Semantic Layer</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Workforce Strategy</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-3d-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-3d-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>3D Visualization</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>AI Strategy</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-attention-mechanism.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-attention-mechanism.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Attention Mechanism</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-behavioral-economics.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-behavioral-economics.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Behavioral Economics</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-book-announcement.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-book-announcement.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Book Announcement</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-career-development.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-career-development.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Career Development</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-chestertons-fence.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-chestertons-fence.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Chesterton&#x27;s Fence</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Cloud-Native Geospatial</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-cognitive-biases.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-cognitive-biases.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Cognitive Biases</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-cognitive-debt.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-cognitive-debt.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Cognitive Debt</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-cognitive-science.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-cognitive-science.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Cognitive Science</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-context-compression.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-context-compression.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Context Compression</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-data-centers.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-data-centers.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Data Centers</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-data-storytelling.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-data-storytelling.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Data Storytelling</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-data-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-data-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Data Visualization</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-deep-learning.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-deep-learning.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Deep Learning</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-energy-transition.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-energy-transition.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Energy Transition</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-engineering-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-engineering-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Engineering Leadership</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-enterprise-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-enterprise-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Enterprise Architecture</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-environmental-sustainability.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-environmental-sustainability.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Environmental Sustainability</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-gaussian-splatting.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-gaussian-splatting.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Gaussian Splatting</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Generative AI</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-geoparquet.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-geoparquet.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>GeoParquet</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ikigai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ikigai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Ikigai</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-interactive-maps.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-interactive-maps.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Interactive Maps</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-knowledge-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-knowledge-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Knowledge Management</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Leadership</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-libreoffice.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-libreoffice.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>LibreOffice</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-notebooklm.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-notebooklm.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>NotebookLM</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Ontologies</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-open-knowledge-format.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-open-knowledge-format.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Open Knowledge Format</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Open Standards</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-personal-growth.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-personal-growth.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Personal Growth</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-reality-capture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-reality-capture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Reality Capture</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-redis.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-redis.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Redis</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-remote-sensing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-remote-sensing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Remote Sensing</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Risk Management</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Spatial SQL</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Systems Thinking</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-tech-layoffs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-tech-layoffs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Tech Layoffs</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-transformers.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-transformers.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Transformers</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-vector-databases.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-vector-databases.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Vector Databases</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-writing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+        <a href="/thoughts-writing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80">
             <span>Writing</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+            <span class="ml-2 bg-slate-200/80 text-slate-600 group-hover:bg-sky-100 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
                 </div>
             </div>
 
-            <!-- Posts by Month Container -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-                <div class="pb-3 mb-4 border-b border-gray-100">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Archive</h3>
+            <!-- Archive Container -->
+            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                        Archive
+                    </h3>
                 </div>
                 
         <div class="mb-4 last:mb-0">
-            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">2026</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">2026</div>
             <div class="grid grid-cols-4 gap-1.5">
-                <span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-slate-800 text-white hover:bg-amber-700 font-medium">SEP</a><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">OCT</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">DEC</span>
+                <span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-slate-800 text-slate-100 hover:bg-sky-600 hover:text-white font-medium border border-slate-700">SEP</a><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">OCT</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">DEC</span>
             </div>
         </div>
         
@@ -781,7 +807,7 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
 </main>
 
 <!-- Footer -->
-<footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
+<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
             <span class="text-lg font-serif font-semibold text-white tracking-tight">
@@ -815,7 +841,7 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
 </script>
 
 <!-- Return to Top Button -->
-<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-brand-dark text-white p-3 rounded-full shadow-lg hover:bg-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
     </svg>
@@ -846,7 +872,7 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
     }
 </script>
 
-<!-- Vanta.js & Three.js Libraries -->
+<!-- Vanta.js & Three.js (Configured with Dark Blue Canvas & Cyan Neural Net) -->
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
 <script>
@@ -861,8 +887,8 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: 0x5c5cb1,
-                backgroundColor: 0x120e18,
+                color: 0x38bdf8,            /* Electric Sky Blue lines and nodes */
+                backgroundColor: 0x0a1128,  /* Deep Midnight Navy Canvas */
                 points: 10.00,
                 maxDistance: 20.00,
                 spacing: 18.00
