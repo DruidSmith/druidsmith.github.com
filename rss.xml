@@ -12,7 +12,7 @@
             <link>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</link>
             <guid>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</guid>
             <pubDate>Sat, 19 Sep 2026 14:44:56 +0000</pubDate>
-            <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language models (LLMs) can summarize research, draft software, and...</description>
+            <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language...</description>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <category>AI Workflows</category>
@@ -80,7 +80,7 @@
             <link>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</link>
             <guid>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</guid>
             <pubDate>Sat, 19 Sep 2026 14:08:42 +0000</pubDate>
-            <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the...</description>
+            <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced...</description>
             <category>LibreOffice</category>
             <dc:subject>LibreOffice</dc:subject>
             <category>Writing</category>
@@ -114,7 +114,7 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <link>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</link>
             <guid>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</guid>
             <pubDate>Fri, 18 Sep 2026 14:46:28 +0000</pubDate>
-            <description>GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies entirely on searching through isolated text chunks, GraphRAG...</description>
+            <description>GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies...</description>
             <category>AI Agents</category>
             <dc:subject>AI Agents</dc:subject>
             <category>AI Infrastructure</category>
@@ -186,7 +186,7 @@ GraphRAG isn't a walled garden. A free graph instance hooks directly into the to
             <link>https://davidgsmith.net/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html</link>
             <guid>https://davidgsmith.net/thoughts/the-shortest-path-to-practical-rag-zero-infrastructure-with-gemini-notebook.html</guid>
             <pubDate>Thu, 17 Sep 2026 01:06:23 +0000</pubDate>
-            <description>I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting, high-maintenance software stack: chunking pipelines, embedding models, vector databases, rerankers, and...</description>
+            <description>I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting, high-maintenance software stack: chunking...</description>
             <category>Retrieval-Augmented Generation</category>
             <dc:subject>Retrieval-Augmented Generation</dc:subject>
             <category>NotebookLM</category>
@@ -227,7 +227,7 @@ True technical maturity isn't about choosing the most complex stack; it's about 
             <link>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</link>
             <guid>https://davidgsmith.net/thoughts/spatial-sql-cloud-native-imagery-and-analysis-at-scale.html</guid>
             <pubDate>Sat, 12 Sep 2026 15:14:30 +0000</pubDate>
-            <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow. Tools like SedonaDB show what happens when satellite imagery...</description>
+            <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow....</description>
             <category>Spatial SQL</category>
             <dc:subject>Spatial SQL</dc:subject>
             <category>Cloud-Native Geospatial</category>
@@ -264,7 +264,7 @@ This is what "geospatial at scale" actually looks like:</p>
             <link>https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html</link>
             <guid>https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html</guid>
             <pubDate>Sat, 12 Sep 2026 01:05:04 +0000</pubDate>
-            <description>There are structural elements at play in today&#x27;s tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts...</description>
+            <description>There are structural elements at play in today&#x27;s tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need...</description>
             <category>Tech Layoffs</category>
             <dc:subject>Tech Layoffs</dc:subject>
             <category>Institutional Knowledge</category>
@@ -284,7 +284,7 @@ This is what "geospatial at scale" actually looks like:</p>
             <link>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</link>
             <guid>https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:56:14 +0000</pubDate>
-            <description>I keep seeing headlines like this one: Anthropic Researcher Exitts, Issues Stark AI Warning Notable quote: &quot;10% chance AI could destroy all humanity by 2030.&quot; And yet, the reaction often feels far too small. Someone...</description>
+            <description>I keep seeing headlines like this one: Anthropic Researcher Exitts, Issues Stark AI Warning Notable quote: &quot;10% chance AI could destroy all humanity by 2030.&quot;...</description>
             <category>AI Safety</category>
             <dc:subject>AI Safety</dc:subject>
             <category>AI Governance</category>
@@ -316,7 +316,7 @@ Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
             <link>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-and-attention-loss.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:40:17 +0000</pubDate>
-            <description>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. Here&#x27;s a great breakdown of attention mechanisms in transformers, and it reinforces why attention is...</description>
+            <description>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. Here&#x27;s a great breakdown of attention...</description>
             <category>Attention Mechanism</category>
             <dc:subject>Attention Mechanism</dc:subject>
             <category>Transformers</category>
@@ -343,7 +343,7 @@ Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
             <link>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html</guid>
             <pubDate>Thu, 10 Sep 2026 23:27:14 +0000</pubDate>
-            <description>More often than not, AI agents end up failing because they&#x27;re drowning in their own context windows. One of the most interesting ideas I&#x27;ve seen lately is the shift from &quot;bigger models&quot; to better ways to manage the...</description>
+            <description>More often than not, AI agents end up failing because they&#x27;re drowning in their own context windows. One of the most interesting ideas I&#x27;ve seen lately is the...</description>
             <category>Context Window</category>
             <dc:subject>Context Window</dc:subject>
             <category>AI Agents</category>
@@ -364,7 +364,7 @@ The future belongs to models that can summarize, prioritize, and discard with in
             <link>https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html</link>
             <guid>https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html</guid>
             <pubDate>Thu, 10 Sep 2026 01:02:19 +0000</pubDate>
-            <description>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful,...</description>
+            <description>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to...</description>
             <category>Ontologies</category>
             <dc:subject>Ontologies</dc:subject>
             <category>Knowledge Graphs</category>
@@ -387,7 +387,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <link>https://davidgsmith.net/thoughts/how-to-help-nepal.html</link>
             <guid>https://davidgsmith.net/thoughts/how-to-help-nepal.html</guid>
             <pubDate>Wed, 09 Sep 2026 23:17:23 +0000</pubDate>
-            <description>My heart is with the people of Nepal after the devastating floods. In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild....</description>
+            <description>My heart is with the people of Nepal after the devastating floods. In the days ahead, the work continues: searching for survivors, caring for the injured,...</description>
             <category>Disaster Relief</category>
             <dc:subject>Disaster Relief</dc:subject>
             <category>Humanitarian Aid</category>
@@ -406,7 +406,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <link>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</link>
             <guid>https://davidgsmith.net/thoughts/huggingface-and-rogue-ai.html</guid>
             <pubDate>Tue, 08 Sep 2026 17:46:49 +0000</pubDate>
-            <description>The Hugging Face breach wasn&#x27;t just an &quot;AI gone rogue&quot; story: it was a multi&amp;#8208;layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile...</description>
+            <description>The Hugging Face breach wasn&#x27;t just an &quot;AI gone rogue&quot; story: it was a multi&amp;#8208;layer failure across agents, incentives, and corporate systems. The real...</description>
             <category>AI Safety</category>
             <dc:subject>AI Safety</dc:subject>
             <category>Cybersecurity</category>
@@ -431,7 +431,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <link>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</link>
             <guid>https://davidgsmith.net/thoughts/donating-20-of-my-book-net-royalties-for-flood-relief-through-november.html</guid>
             <pubDate>Sun, 06 Sep 2026 17:26:43 +0000</pubDate>
-            <description>Over the past week, Nepal has been hit by one of the most devastating glacial&amp;#8208;flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are...</description>
+            <description>Over the past week, Nepal has been hit by one of the most devastating glacial&amp;#8208;flood disasters in its modern history. Entire mountain communities in...</description>
             <category>Disaster Relief</category>
             <dc:subject>Disaster Relief</dc:subject>
             <category>Humanitarian Aid</category>
@@ -452,7 +452,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <link>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-data-centers-the-core-tension.html</guid>
             <pubDate>Sat, 05 Sep 2026 17:22:33 +0000</pubDate>
-            <description>The debate over data&amp;#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some...</description>
+            <description>The debate over data&amp;#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on...</description>
             <category>AI Infrastructure</category>
             <dc:subject>AI Infrastructure</dc:subject>
             <category>Data Centers</category>
@@ -478,7 +478,7 @@ What evidence would make us reconsider our position?</p>
             <link>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-and-cognitive-debt.html</guid>
             <pubDate>Sat, 05 Sep 2026 17:19:03 +0000</pubDate>
-            <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS...</description>
+            <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them,...</description>
             <category>Cognitive Debt</category>
             <dc:subject>Cognitive Debt</dc:subject>
             <category>Critical Thinking</category>
@@ -502,7 +502,7 @@ What evidence would make us reconsider our position?</p>
             <link>https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html</link>
             <guid>https://davidgsmith.net/thoughts/redis-from-cache-to-vector-semantic-agent-memory-layer.html</guid>
             <pubDate>Fri, 04 Sep 2026 17:10:45 +0000</pubDate>
-            <description>Another recent quiet development: It&#x27;s interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and...</description>
+            <description>Another recent quiet development: It&#x27;s interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into...</description>
             <category>Vector Databases</category>
             <dc:subject>Vector Databases</dc:subject>
             <category>Redis</category>
@@ -519,7 +519,7 @@ What evidence would make us reconsider our position?</p>
             <link>https://davidgsmith.net/thoughts/telling-stories-with-data.html</link>
             <guid>https://davidgsmith.net/thoughts/telling-stories-with-data.html</guid>
             <pubDate>Thu, 03 Sep 2026 16:54:38 +0000</pubDate>
-            <description>Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along...</description>
+            <description>Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively...</description>
             <category>Data Storytelling</category>
             <dc:subject>Data Storytelling</dc:subject>
             <category>Data Visualization</category>
@@ -537,7 +537,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html</link>
             <guid>https://davidgsmith.net/thoughts/ikigai-the-reason-for-being.html</guid>
             <pubDate>Wed, 02 Sep 2026 16:38:59 +0000</pubDate>
-            <description>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there&#x27;s a concept I like to share with friends and...</description>
+            <description>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled,...</description>
             <category>Ikigai</category>
             <dc:subject>Ikigai</dc:subject>
             <category>Career Development</category>
@@ -569,7 +569,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/my-book-has-been-published.html</link>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
-            <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation....</description>
+            <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <category>Cognitive Biases</category>
@@ -588,7 +588,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</link>
             <guid>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:29:35 +0000</pubDate>
-            <description>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a...</description>
+            <description>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...</description>
             <category>AI Agents</category>
             <dc:subject>AI Agents</dc:subject>
             <category>Context Window</category>
@@ -607,7 +607,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</link>
             <guid>https://davidgsmith.net/thoughts/capturing-expertise-before-it-walks-out-the-door.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:22:55 +0000</pubDate>
-            <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it. AI isn&#x27;t the threat; it could be the lifeline. Bill&#x27;s team...</description>
+            <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it....</description>
             <category>Institutional Knowledge</category>
             <dc:subject>Institutional Knowledge</dc:subject>
             <category>Knowledge Management</category>
@@ -626,7 +626,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html</link>
             <guid>https://davidgsmith.net/thoughts/when-ai-wants-to-play-outside-of-the-sandbox.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:20:29 +0000</pubDate>
-            <description>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry&#x27;s...</description>
+            <description>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not...</description>
             <category>AI Safety</category>
             <dc:subject>AI Safety</dc:subject>
             <category>Cybersecurity</category>
@@ -643,7 +643,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</link>
             <guid>https://davidgsmith.net/thoughts/gaussian-splats-versus-3d-meshes.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:18:33 +0000</pubDate>
-            <description>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each. ArcGIS Blog</description>
+            <description>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of...</description>
             <category>Gaussian Splatting</category>
             <dc:subject>Gaussian Splatting</dc:subject>
             <category>Geospatial</category>
@@ -661,7 +661,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/tearing-down-fences.html</link>
             <guid>https://davidgsmith.net/thoughts/tearing-down-fences.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:15:21 +0000</pubDate>
-            <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic thought experiment. Imagine you&#x27;re walking down a country...</description>
+            <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic...</description>
             <category>Chesterton&#x27;s Fence</category>
             <dc:subject>Chesterton&#x27;s Fence</dc:subject>
             <category>Critical Thinking</category>
