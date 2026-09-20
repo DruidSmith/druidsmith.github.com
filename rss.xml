@@ -8,6 +8,108 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill</title>
+            <link>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</link>
+            <guid>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</guid>
+            <pubDate>Sat, 19 Sep 2026 14:44:56 +0000</pubDate>
+            <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language models (LLMs) can summarize research, draft software, and...</description>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>Cognitive Science</category>
+            <dc:subject>Cognitive Science</dc:subject>
+            <category>Workforce Strategy</category>
+            <dc:subject>Workforce Strategy</dc:subject>
+            <category>AI Strategy</category>
+            <dc:subject>AI Strategy</dc:subject>
+            <category>Human-AI Collaboration</category>
+            <dc:subject>Human-AI Collaboration</dc:subject>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
+            <content:encoded><![CDATA[<p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
+<p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
+<p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
+<p><img alt="AI and the Risk of Cognitive Offloading" src="https://davidgsmith.net/thoughts/images/criticalthinkingandai-mu8hzvle-47002032.jpg"></p>
+<p><strong>1. The Cost of Cognitive Offloading</strong></p>
+<p>Cognitive offloading, or using external tools to reduce mental effort, has been around for centuries. Writing helped with memory, calculators replaced manual arithmetic, and digital maps replaced printed road atlases. </p>
+<p>However, as research covered by the <a target="_blank" rel="noopener noreferrer" href="https://www.apa.org/monitor/2026/07-08/ai-job-skills-thinking">American Psychological Association</a> explains, generative AI differs in a fundamental way. It offloads the organization of ideas, the structure of arguments, and creative synthesis itself.</p>
+<p>Bypassing the friction of writing, outlining, and editing brings risks. When you skip the work of structuring messy ideas into a clear line of thought, you hand over control of your own reasoning.</p>
+<p>The practical response is not to abandon these tools. It is to keep from accepting their answers uncritically. The objective is to stop using AI to decide what to think, and instead use it to test how you think.</p>
+<p><strong>2. Plausibility vs. Accuracy</strong></p>
+<p>Language models are probabilistic systems designed for coherent syntax, not objective fact. As outlined in <a target="_blank" rel="noopener noreferrer" href="https://policycommons.net/artifacts/6942367/guidance-for-generative-ai-in-education-and-research/7852269/">UNESCO's Guidance for Generative AI in Education and Research</a>, generative tools build likely sequences of words without any direct comprehension of physical or social reality.</p>
+<p>This creates a common trap: superficial plausibility. Because an answer sounds authoritative and well-constructed, people tend to accept it without verification.</p>
+<p>Avoiding this error requires a few clear practices:</p>
+<ul>
+<li>
+<p><strong>Verify primary sources:</strong> Never rely on synthetic citations or summaries for critical claims. Follow assertions back to source papers, raw data, or verifiable documents.</p>
+</li>
+<li>
+<p><strong>Seek disconfirming evidence:</strong> Instead of prompting a tool to support an idea, ask it for counterexamples, alternative explanations, and historical cases where the logic failed.</p>
+</li>
+<li>
+<p><strong>Separate noise from bias:</strong> Watch for both systemic bias in training datasets and hallucinations caused by leading prompts.</p>
+</li>
+</ul>
+<p>This can be built upon, leveraging the heuristics and tools I lay out in my <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B00KxwQsW">book</a>, and adapting them for AI.</p>
+<p><strong>3. Moving Beyond Basic Prompts</strong></p>
+<p>Early discussions about AI often focused on prompt syntax, treating specific phrases as the key to getting good answers on the first try. In practice, effective work looks more like an editorial review.</p>
+<p>Experienced operators treat an LLM like a junior researcher. The process moves in stages:</p>
+<pre><code>[ Human: Define parameters, context, and core hypothesis ]
+                           |
+                           v
+[ AI: Synthesize research, outline options, identify counterarguments ]
+                           |
+                           v
+[ Human: Fact-check sources, challenge assumptions, evaluate edge cases ]
+                           |
+                           v
+[ Final Decision or Output ]
+</code></pre>
+<p>Instead of asking, "What should my market entry strategy be?", an experienced user provides the ground rules:</p>
+<blockquote>
+<p>"Here is my market entry hypothesis and its core assumptions. Challenge each assumption with historical examples where similar approaches failed."</p>
+</blockquote>
+<p>This keeps the human responsible for judgment while using the model for broad research and stress-testing.</p>
+<p><strong>4. The Value of Human Judgment</strong></p>
+<p>The professionals who get the most value from language models will not be the people collecting prompt templates. They will be the ones with strong domain knowledge, clear mental models, and the discipline to double-check convenient answers.</p>
+<p>Software can produce infinite volume. Critical thinking determines what is worth keeping, what is accurate, and what to ignore.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title>LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</title>
+            <link>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</link>
+            <guid>https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html</guid>
+            <pubDate>Sat, 19 Sep 2026 14:08:42 +0000</pubDate>
+            <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the...</description>
+            <category>LibreOffice</category>
+            <dc:subject>LibreOffice</dc:subject>
+            <category>Writing</category>
+            <dc:subject>Writing</dc:subject>
+            <category>Open Standards</category>
+            <dc:subject>Open Standards</dc:subject>
+            <content:encoded><![CDATA[<p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
+<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
+LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
+<p><strong>1. A full office suite built on open standards</strong></p>
+<p>LibreOffice Writer supports long&#8208;form writing, page styles, cross&#8208;references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
+<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
+<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Make a copy of your <code>.odt</code> file.  </li>
+<li>Rename it to <code>.zip</code>.  </li>
+<li>Extract the contents.  </li>
+<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
+<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
+<li>Re&#8208;zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
+</ol>
+<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards&#8208;based format.</p>
+<p><strong>3. A free and capable PDF editor</strong></p>
+<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
+<p><strong>Closing thought</strong></p>
+<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free</title>
             <link>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</link>
             <guid>https://davidgsmith.net/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html</guid>

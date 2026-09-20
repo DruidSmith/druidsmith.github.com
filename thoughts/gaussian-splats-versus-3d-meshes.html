@@ -40,6 +40,36 @@
     .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
     .markdown-content a { color: #92400e; text-decoration: underline; }
 
+    /* List Styles (reverses Tailwind Preflight CSS reset) */
+    .markdown-content ul {
+        list-style-type: disc;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .markdown-content ol {
+        list-style-type: decimal;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .markdown-content li {
+        margin-bottom: 0.35rem;
+        line-height: 1.6;
+    }
+    .markdown-content li > ul {
+        list-style-type: circle;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        padding-left: 1.25rem;
+    }
+    .markdown-content li > ol {
+        list-style-type: lower-alpha;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        padding-left: 1.25rem;
+    }
+
     /* Table Styles */
     .markdown-content table {
         display: block;
@@ -263,7 +293,7 @@
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
-                    <span class="text-xs text-gray-400 font-mono">60</span>
+                    <span class="text-xs text-gray-400 font-mono">65</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -277,18 +307,23 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
         </a>
         
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
+        </a>
+        
         <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>AI Safety</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
-        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Context Window</span>
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>AI Workflows</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
-        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Critical Thinking</span>
+        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Context Window</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
@@ -299,11 +334,6 @@
         
         <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>AI Governance</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
-        </a>
-        
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>AI Workflows</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
@@ -337,6 +367,11 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Human-AI Collaboration</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Humanitarian Aid</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
@@ -352,6 +387,11 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Retrieval-Augmented Generation</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
@@ -362,8 +402,18 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Workforce Strategy</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-3d-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>3D Visualization</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>AI Strategy</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -404,6 +454,11 @@
         
         <a href="/thoughts-cognitive-debt.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Cognitive Debt</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-cognitive-science.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Cognitive Science</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -467,11 +522,6 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
-        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Human-AI Collaboration</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
-        </a>
-        
         <a href="/thoughts-ikigai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Ikigai</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
@@ -492,6 +542,11 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
+        <a href="/thoughts-libreoffice.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>LibreOffice</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
         <a href="/thoughts-notebooklm.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>NotebookLM</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
@@ -504,6 +559,11 @@
         
         <a href="/thoughts-open-knowledge-format.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Open Knowledge Format</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Open Standards</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -524,11 +584,6 @@
         
         <a href="/thoughts-remote-sensing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Remote Sensing</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
-        </a>
-        
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Responsible AI</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -562,8 +617,8 @@
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
-        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Workforce Strategy</span>
+        <a href="/thoughts-writing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Writing</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         

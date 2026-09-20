@@ -40,6 +40,36 @@
     .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
     .markdown-content a { color: #92400e; text-decoration: underline; }
 
+    /* List Styles (reverses Tailwind Preflight CSS reset) */
+    .markdown-content ul {
+        list-style-type: disc;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .markdown-content ol {
+        list-style-type: decimal;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .markdown-content li {
+        margin-bottom: 0.35rem;
+        line-height: 1.6;
+    }
+    .markdown-content li > ul {
+        list-style-type: circle;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        padding-left: 1.25rem;
+    }
+    .markdown-content li > ol {
+        list-style-type: lower-alpha;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        padding-left: 1.25rem;
+    }
+
     /* Table Styles */
     .markdown-content table {
         display: block;
@@ -165,6 +195,158 @@
     </div>
     <div class="space-y-8">
         
+        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 19, 2026 &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-critical-thinking.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Critical Thinking</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">AI Workflows</a><a href="/thoughts-cognitive-science.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Cognitive Science</a><a href="/thoughts-workforce-strategy.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Workforce Strategy</a><a href="/thoughts-ai-strategy.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">AI Strategy</a><a href="/thoughts-human-ai-collaboration.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Human-AI Collaboration</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Responsible AI</a></div>
+            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
+<p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
+<p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
+<p><img alt="AI and the Risk of Cognitive Offloading" src="https://davidgsmith.net/thoughts/images/criticalthinkingandai-mu8hzvle-47002032.jpg"></p>
+<p><strong>1. The Cost of Cognitive Offloading</strong></p>
+<p>Cognitive offloading, or using external tools to reduce mental effort, has been around for centuries. Writing helped with memory, calculators replaced manual arithmetic, and digital maps replaced printed road atlases. </p>
+<p>However, as research covered by the <a target="_blank" rel="noopener noreferrer" href="https://www.apa.org/monitor/2026/07-08/ai-job-skills-thinking">American Psychological Association</a> explains, generative AI differs in a fundamental way. It offloads the organization of ideas, the structure of arguments, and creative synthesis itself.</p>
+<p>Bypassing the friction of writing, outlining, and editing brings risks. When you skip the work of structuring messy ideas into a clear line of thought, you hand over control of your own reasoning.</p>
+<p>The practical response is not to abandon these tools. It is to keep from accepting their answers uncritically. The objective is to stop using AI to decide what to think, and instead use it to test how you think.</p>
+<p><strong>2. Plausibility vs. Accuracy</strong></p>
+<p>Language models are probabilistic systems designed for coherent syntax, not objective fact. As outlined in <a target="_blank" rel="noopener noreferrer" href="https://policycommons.net/artifacts/6942367/guidance-for-generative-ai-in-education-and-research/7852269/">UNESCO's Guidance for Generative AI in Education and Research</a>, generative tools build likely sequences of words without any direct comprehension of physical or social reality.</p>
+<p>This creates a common trap: superficial plausibility. Because an answer sounds authoritative and well-constructed, people tend to accept it without verification.</p>
+<p>Avoiding this error requires a few clear practices:</p>
+<ul>
+<li>
+<p><strong>Verify primary sources:</strong> Never rely on synthetic citations or summaries for critical claims. Follow assertions back to source papers, raw data, or verifiable documents.</p>
+</li>
+<li>
+<p><strong>Seek disconfirming evidence:</strong> Instead of prompting a tool to support an idea, ask it for counterexamples, alternative explanations, and historical cases where the logic failed.</p>
+</li>
+<li>
+<p><strong>Separate noise from bias:</strong> Watch for both systemic bias in training datasets and hallucinations caused by leading prompts.</p>
+</li>
+</ul>
+<p>This can be built upon, leveraging the heuristics and tools I lay out in my <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B00KxwQsW">book</a>, and adapting them for AI.</p>
+<p><strong>3. Moving Beyond Basic Prompts</strong></p>
+<p>Early discussions about AI often focused on prompt syntax, treating specific phrases as the key to getting good answers on the first try. In practice, effective work looks more like an editorial review.</p>
+<p>Experienced operators treat an LLM like a junior researcher. The process moves in stages:</p>
+<pre><code>[ Human: Define parameters, context, and core hypothesis ]
+                           |
+                           v
+[ AI: Synthesize research, outline options, identify counterarguments ]
+                           |
+                           v
+[ Human: Fact-check sources, challenge assumptions, evaluate edge cases ]
+                           |
+                           v
+[ Final Decision or Output ]
+</code></pre>
+<p>Instead of asking, "What should my market entry strategy be?", an experienced user provides the ground rules:</p>
+<blockquote>
+<p>"Here is my market entry hypothesis and its core assumptions. Challenge each assumption with historical examples where similar approaches failed."</p>
+</blockquote>
+<p>This keeps the human responsible for judgment while using the model for broad research and stress-testing.</p>
+<p><strong>4. The Value of Human Judgment</strong></p>
+<p>The professionals who get the most value from language models will not be the people collecting prompt templates. They will be the ones with strong domain knowledge, clear mental models, and the discipline to double-check convenient answers.</p>
+<p>Software can produce infinite volume. Critical thinking determines what is worth keeping, what is accurate, and what to ignore.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 19, 2026 &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-libreoffice.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">LibreOffice</a><a href="/thoughts-writing.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Writing</a><a href="/thoughts-open-standards.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Open Standards</a></div>
+            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
+<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
+LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
+<p><strong>1. A full office suite built on open standards</strong></p>
+<p>LibreOffice Writer supports long‑form writing, page styles, cross‑references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
+<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
+<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Make a copy of your <code>.odt</code> file.  </li>
+<li>Rename it to <code>.zip</code>.  </li>
+<li>Extract the contents.  </li>
+<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
+<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
+<li>Re‑zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
+</ol>
+<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards‑based format.</p>
+<p><strong>3. A free and capable PDF editor</strong></p>
+<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
+<p><strong>Closing thought</strong></p>
+<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+        </article>
+    
         <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
@@ -572,114 +754,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
     
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 10, 2026 &bull; Originally published on Linkedin</span>
-            </div>
-            
-        <a href="/thoughts/ai-failure-its-all-about-context.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                AI Failure - It&#x27;s All About Context
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-context-window.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Context Window</a><a href="/thoughts-ai-agents.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">AI Agents</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Knowledge Graphs</a><a href="/thoughts-context-compression.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Context Compression</a></div>
-            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>More often than not, AI agents end up failing because they’re drowning in their own context windows.</p>
-<p>One of the most interesting ideas I’ve seen lately is the shift from “bigger models” to better ways to manage the context window, one of which is through compression. If an LLM or agent can’t efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
-<p>In critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.<br>
-The future belongs to models that can summarize, prioritize, and discard with intention. Not unlike humans.</p>
-<p>I'm curious to see how this evolves, especially as agentic workflows become more common in enterprise environments.</p>
-<p>What do you think: does compression become the new frontier? And what about other approaches, like knowledge graphs? (I'm particularly interested in that angle.)</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_aiagents-contextwindow-aicompression-activity-7503258158551769088-kSDx" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-failure-its-all-about-context.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
-        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 10, 2026 &bull; Originally published on Linkedin</span>
-            </div>
-            
-        <a href="/thoughts/ontologies-for-ai-and-ai-for-ontologies.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                Ontologies For AI And AI For Ontologies
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ontologies.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Ontologies</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">GraphRAG</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-stone-100 text-stone-700 border border-stone-200/60 text-xs px-2.5 py-0.5 rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-colors">Semantic Layer</a></div>
-            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]"><p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
-<p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
-LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn’t just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
-<p><strong>2. How Agentic AI Empowers Human Stewards</strong><br>
-The catch? Building and maintaining high-quality ontologies has traditionally been a bottleneck, requiring massive manual effort from human domain experts. This is where the script flips. LLMs and autonomous agents are now capable of reading unstructured text and automatically extracting entities, drafting taxonomies, and even detecting structural gaps or biases in existing knowledge graphs. Recent frameworks show that using AI to draft and assess ontologies can reduce development time by over 40%.</p>
-<p><strong>The Human-in-the-Loop Sweet Spot</strong><br>
-Years back I worked with <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/eWfx-CqA">Bob DuCharme</a> on the W3C Linked Data Workgroup and always appreciate his ideas, and here he aligns with an idea I've been thinking about. We can augment the process of building out ontologies using AI. I don't at all propose replacing the human data steward; instead we augment them, leveraging their expertise while making the ontology development work easier. In a modern Human-in-the-Loop (HITL) workflow, agentic AI does the heavy lifting of parsing, proposing, and mapping. Human experts then step in to validate these structures, govern data access, and ensure the taxonomy accurately reflects the nuances of their specific organizational knowledge.</p>
-<p>I believe he intersection of neural networks (LLMs) and structured logic (ontologies) is the foundation of trustworthy, enterprise-grade AI. If we wants smarter agents, we need to start by curating better semantics.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_so-i-have-at-least-five-former-colleagues-activity-7503924825699250176-t5T8?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ontologies-for-ai-and-ai-for-ontologies.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-        </article>
-    
     </div>
     
             </div>
@@ -703,7 +777,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
-                    <span class="text-xs text-gray-400 font-mono">60</span>
+                    <span class="text-xs text-gray-400 font-mono">65</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -717,18 +791,23 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
         </a>
         
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">4</span>
+        </a>
+        
         <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>AI Safety</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
-        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Context Window</span>
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>AI Workflows</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
-        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Critical Thinking</span>
+        <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Context Window</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">3</span>
         </a>
         
@@ -739,11 +818,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         
         <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>AI Governance</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
-        </a>
-        
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>AI Workflows</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
@@ -777,6 +851,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Human-AI Collaboration</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Humanitarian Aid</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
@@ -792,6 +871,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Retrieval-Augmented Generation</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
@@ -802,8 +886,18 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
         </a>
         
+        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Workforce Strategy</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">2</span>
+        </a>
+        
         <a href="/thoughts-3d-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>3D Visualization</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>AI Strategy</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -844,6 +938,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         
         <a href="/thoughts-cognitive-debt.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Cognitive Debt</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-cognitive-science.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Cognitive Science</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -907,11 +1006,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
-        <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Human-AI Collaboration</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
-        </a>
-        
         <a href="/thoughts-ikigai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Ikigai</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
@@ -932,6 +1026,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
+        <a href="/thoughts-libreoffice.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>LibreOffice</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
         <a href="/thoughts-notebooklm.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>NotebookLM</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
@@ -944,6 +1043,11 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         
         <a href="/thoughts-open-knowledge-format.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Open Knowledge Format</span>
+            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
+        </a>
+        
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Open Standards</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -964,11 +1068,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
         
         <a href="/thoughts-remote-sensing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
             <span>Remote Sensing</span>
-            <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
-        </a>
-        
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Responsible AI</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
@@ -1002,8 +1101,8 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
-        <a href="/thoughts-workforce-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
-            <span>Workforce Strategy</span>
+        <a href="/thoughts-writing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50">
+            <span>Writing</span>
             <span class="ml-2 bg-gray-200/70 text-gray-600 px-1.5 py-0.5 rounded-full text-[10px] font-mono">1</span>
         </a>
         
