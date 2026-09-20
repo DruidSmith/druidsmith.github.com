@@ -107,11 +107,11 @@ def render_tag_badges(tags, size="normal"):
     badges = []
     for t in tags:
         t_slug = slugify(t)
-        # High contrast: slate-800 on slate-100 with visible slate-300 border
+        # Tech aesthetic: Sky-50 background, dark navy-blue text (sky-900), sky-200 border, electric blue hover
         badges.append(
             f'<a href="/thoughts-{t_slug}.html" '
-            f'class="inline-block bg-slate-100 text-slate-800 font-semibold border border-slate-300 '
-            f'{size_classes} rounded-md mr-2 mb-2 hover:bg-brand-accent hover:border-brand-accent '
+            f'class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 '
+            f'{size_classes} rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 '
             f'hover:text-white transition-all shadow-xs">{html.escape(t)}</a>'
         )
     return "".join(badges)
@@ -119,17 +119,17 @@ def render_tag_badges(tags, size="normal"):
 def render_breadcrumbs(post):
     title = html.escape(post.get("title", "Untitled"))
     return f"""
-    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-gray-500">
+    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-slate-500">
         <ol class="flex items-center flex-wrap gap-1.5">
             <li>
-                <a href="/" class="hover:text-brand-accent text-gray-500 transition-colors">Home</a>
+                <a href="/" class="hover:text-brand-accent text-slate-500 transition-colors">Home</a>
             </li>
-            <li class="text-gray-400">/</li>
+            <li class="text-slate-400">/</li>
             <li>
-                <a href="/thoughts.html" class="hover:text-brand-accent text-gray-500 transition-colors">Thoughts</a>
+                <a href="/thoughts.html" class="hover:text-brand-accent text-slate-500 transition-colors">Thoughts</a>
             </li>
-            <li class="text-gray-400">/</li>
-            <li class="text-brand-dark font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">{title}</li>
+            <li class="text-slate-400">/</li>
+            <li class="text-slate-900 font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">{title}</li>
         </ol>
     </nav>
     """
@@ -141,16 +141,16 @@ def render_share_bar(share_url, original_url):
         orig_escaped = html.escape(original_url, quote=True)
         read_original_html = f"""
         <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-medium text-brand-accent hover:text-white transition-colors">
+           class="text-sm font-semibold text-brand-accent hover:text-blue-800 transition-colors inline-flex items-center gap-1">
            Read Original &rarr;
         </a>
         """
 
     return f"""
-    <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         {read_original_html}
         <div class="flex items-center gap-3">
-            <span class="text-xs text-gray-400">Share:</span>
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
                target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
@@ -211,7 +211,6 @@ def get_related_posts(current_post, all_posts, limit=3):
             "date": p.get("date", "")
         })
     
-    # Sort first by highest shared tags, then by most recent date
     candidates.sort(key=lambda x: (x["shared_count"], x["date"]), reverse=True)
     return [c["post"] for c in candidates[:limit]]
 
@@ -229,22 +228,22 @@ def render_related_posts_section(related_posts):
         tags_html = render_tag_badges(p.get("tags", [])[:2], size="small")
 
         cards.append(f"""
-        <div class="bg-white p-5 rounded-lg border border-gray-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>{date_str}</span>
-                    <span>{reading_time}</span>
+                    <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded text-[11px] font-semibold">{reading_time}</span>
                 </div>
                 <a href="/thoughts/{slug}.html" class="block group mb-2">
-                    <h3 class="text-base font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
                         {title}
                     </h3>
                 </a>
-                <p class="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">{excerpt}</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">{excerpt}</p>
             </div>
             <div>
                 <div class="flex flex-wrap">{tags_html}</div>
-                <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-brand-dark transition-colors mt-2">
+                <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-blue-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
@@ -252,13 +251,13 @@ def render_related_posts_section(related_posts):
         """)
 
     return f"""
-    <section class="mt-10 pt-8 border-t border-gray-200" aria-label="Related Thoughts">
+    <section class="mt-10 pt-8 border-t border-slate-200" aria-label="Related Thoughts">
         <div class="flex items-center justify-between mb-6">
             <div>
-                <h2 class="text-xl sm:text-2xl font-serif font-medium text-brand-dark">Related Thoughts</h2>
-                <p class="text-xs text-gray-500 mt-0.5">Explore perspectives on similar architecture, data, and strategy topics.</p>
+                <h2 class="text-xl sm:text-2xl font-serif font-medium text-slate-900">Related Thoughts</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Perspectives sharing related architectures, models, and domain context.</p>
             </div>
-            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-brand-dark transition-colors">
+            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-blue-900 transition-colors">
                 All Thoughts &rarr;
             </a>
         </div>
@@ -368,27 +367,33 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     sorted_tags = sorted(tag_counts.items(), key=lambda x: (-x[1], x[0].lower()))
 
+    # Topics / Tags styling in Navigation Rail
     tags_html = ""
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
         is_active = (current_type == "tag" and current_value == tag)
-        active_class = "border-amber-600 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50"
-        badge_bg = "bg-amber-800 text-white" if is_active else "bg-gray-200/70 text-gray-600"
+        if is_active:
+            active_class = "border-sky-600 bg-sky-600 text-white font-semibold shadow-sm shadow-sky-500/20"
+            badge_bg = "bg-sky-800 text-sky-100"
+        else:
+            active_class = "border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80"
+            badge_bg = "bg-slate-200/80 text-slate-600 group-hover:bg-sky-100"
+
         tags_html += f"""
         <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
             <span>{html.escape(tag)}</span>
-            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono">{count}</span>
+            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">{count}</span>
         </a>
         """
 
     if untagged_count > 0:
         is_active = (current_type == "tag" and current_value == "untagged")
-        active_class = "border-amber-600 bg-amber-600 text-white font-semibold shadow-sm" if is_active else "border-gray-200 bg-gray-50 text-gray-700 hover:border-amber-600 hover:text-amber-800 hover:bg-amber-50/50"
-        badge_bg = "bg-amber-800 text-white" if is_active else "bg-gray-200/70 text-gray-600"
+        active_class = "border-sky-600 bg-sky-600 text-white font-semibold shadow-sm" if is_active else "border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80"
+        badge_bg = "bg-sky-800 text-sky-100" if is_active else "bg-slate-200/80 text-slate-600"
         tags_html += f"""
         <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
             <span>Untagged</span>
-            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono">{untagged_count}</span>
+            <span class="ml-2 {badge_bg} px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">{untagged_count}</span>
         </a>
         """
 
@@ -417,15 +422,18 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
         for m_abbr, m_num in months_order:
             if m_abbr in present_months:
                 is_active = (current_type == "month" and current_value == (year, m_abbr))
-                active_style = "bg-amber-700 text-white shadow-sm ring-1 ring-amber-700 font-semibold" if is_active else "bg-slate-800 text-white hover:bg-amber-700 font-medium"
+                if is_active:
+                    active_style = "bg-sky-600 text-white shadow-sm ring-1 ring-sky-500 font-semibold"
+                else:
+                    active_style = "bg-slate-800 text-slate-100 hover:bg-sky-600 hover:text-white font-medium border border-slate-700"
                 cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
             else:
-                cell = f'<span class="block py-1.5 text-center text-xs text-gray-400 bg-gray-50 border border-gray-100 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+                cell = f'<span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">{m_abbr}</span>'
             grid_cells += cell
 
         months_tables_html += f"""
         <div class="mb-4 last:mb-0">
-            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">{year}</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">{year}</div>
             <div class="grid grid-cols-4 gap-1.5">
                 {grid_cells}
             </div>
@@ -435,31 +443,37 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
         <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-brand-dark font-serif font-bold text-sm focus:outline-none">
+        <div class="lg:hidden bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-900 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
-                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </button>
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Posts by Tag Container -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-                <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Topics</h3>
-                    <span class="text-xs text-gray-400 font-mono">{len(sorted_tags)}</span>
+            <!-- Topics Container -->
+            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                        Topics
+                    </h3>
+                    <span class="text-xs font-mono font-semibold text-sky-800 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-full">{len(sorted_tags)}</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     {tags_html}
                 </div>
             </div>
 
-            <!-- Posts by Month Container -->
-            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-                <div class="pb-3 mb-4 border-b border-gray-100">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-dark">Archive</h3>
+            <!-- Archive Container -->
+            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                        Archive
+                    </h3>
                 </div>
                 {months_tables_html}
             </div>
@@ -492,13 +506,12 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
 
     if is_standalone:
         breadcrumbs_html = render_breadcrumbs(post)
-        # H1 precisely matches the page title
-        title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-brand-dark tracking-tight leading-tight mb-4">{title}</h1>'
+        title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">{title}</h1>'
     else:
         breadcrumbs_html = ""
         title_html = f'''
         <a href="/thoughts/{slug}.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
                 {title}
             </h2>
         </a>'''
@@ -506,21 +519,21 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     prev_next_html = ""
     if is_standalone and (prev_post or next_post):
         prev_link = f'''
-        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all">
-            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">&larr; Older Thought</span>
-            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(prev_post.get("title", ""))}</span>
+        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">&larr; Older Thought</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(prev_post.get("title", ""))}</span>
         </a>
         ''' if prev_post else '<div class="flex-1"></div>'
 
         next_link = f'''
-        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-3.5 rounded-lg border border-gray-200 hover:border-brand-accent group transition-all text-right">
-            <span class="block text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Newer Thought &rarr;</span>
-            <span class="text-sm font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(next_post.get("title", ""))}</span>
+        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all text-right">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Newer Thought &rarr;</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(next_post.get("title", ""))}</span>
         </a>
         ''' if next_post else '<div class="flex-1"></div>'
 
         prev_next_html = f'''
-        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4 justify-between">
+        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 justify-between">
             {prev_link}
             {next_link}
         </nav>
@@ -529,15 +542,15 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     related_posts_html = render_related_posts_section(related_posts) if is_standalone and related_posts else ""
 
     return f"""
-        <article class="bg-white p-7 sm:p-9 border border-gray-200/90 rounded-lg shadow-md hover:shadow-xl transition-all">
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
             {breadcrumbs_html}
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="{icon}" alt="{icon_alt}" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>{date} &bull; {reading_time} &bull; {origin_text}</span>
+                <span>{date} &bull; <span class="text-sky-800 font-semibold">{reading_time}</span> &bull; {origin_text}</span>
             </div>
             {title_html}
             <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
-            <div class="markdown-content text-gray-700 leading-relaxed text-[15px]">{body}</div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]">{body}</div>
             {render_share_bar(share_url=canonical_url, original_url=url)}
             {prev_next_html}
             {related_posts_html}
@@ -558,22 +571,22 @@ def render_aggregator_card(post):
     tags_html = render_tag_badges(tags, size="small")
     
     return f"""
-    <article class="bg-white p-6 sm:p-7 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
+    <article class="bg-white p-6 sm:p-7 border border-slate-200 rounded-lg shadow-md hover:shadow-xl hover:border-sky-300 transition-all flex flex-col justify-between">
         <div>
-            <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">
+            <div class="flex items-center justify-between text-xs uppercase tracking-wider text-slate-400 font-medium mb-2">
                 <span>{date}</span>
-                <span>{reading_time}</span>
+                <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded font-semibold text-[11px]">{reading_time}</span>
             </div>
             <a href="/thoughts/{slug}.html" class="block group">
-                <h3 class="text-xl font-serif font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug mb-2.5">
+                <h3 class="text-xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug mb-2.5">
                     {title}
                 </h3>
             </a>
             <div class="mb-3 flex flex-wrap">{tags_html}</div>
-            <p class="text-gray-600 text-sm leading-relaxed mb-5">{html.escape(excerpt)}</p>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">{html.escape(excerpt)}</p>
         </div>
-        <div class="pt-3 border-t border-gray-100">
-            <a href="/thoughts/{slug}.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-brand-dark inline-flex items-center gap-1.5 transition-colors">
+        <div class="pt-3 border-t border-slate-100">
+            <a href="/thoughts/{slug}.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-blue-900 inline-flex items-center gap-1.5 transition-colors">
                 Read Perspective &rarr;
             </a>
         </div>
@@ -612,28 +625,28 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     if is_post:
         header_content = """
         <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
-            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-brand-accent transition-colors font-medium">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-sky-400 transition-colors font-medium">
                 &larr; Back to all Thoughts
             </a>
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-gray-400 hover:text-brand-accent transition-colors">
-                <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors">
+                <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                 </svg>
                 RSS Feed
             </a>
         </div>
         """
-        header_classes = "pt-28 pb-6 px-4 w-full bg-slate-900 text-white border-b border-slate-800"
+        header_classes = "pt-28 pb-6 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
     else:
         h1_text = banner_title if banner_title else "Thoughts & Insights"
-        sub_text = f'<p class="text-sm text-gray-400 max-w-xl mx-auto mt-2 mb-4">{html.escape(banner_subtitle)}</p>' if banner_subtitle else ''
+        sub_text = f'<p class="text-sm text-slate-400 max-w-xl mx-auto mt-2 mb-4">{html.escape(banner_subtitle)}</p>' if banner_subtitle else ''
         header_content = f"""
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl sm:text-5xl font-serif font-medium text-white mb-2">{html.escape(h1_text)}</h1>
             {sub_text}
             <div class="flex justify-center mb-2">
-                <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium text-gray-900 transition-all shadow-sm">
-                    <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-sm font-medium text-slate-200 transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                     </svg>
                     Subscribe via RSS
@@ -641,7 +654,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             </div>
         </div>
         """
-        header_classes = "pt-32 pb-12 px-4 w-full bg-slate-900 text-white border-b border-slate-800"
+        header_classes = "pt-32 pb-12 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
 
     return f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -663,17 +676,37 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 {canonical_tag}
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = {{ theme: {{ extend: {{ fontFamily: {{ sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }}, colors: {{ brand: {{ dark: '#111827', muted: '#374151', accent: '#b45309', light: '#f9fafb' }} }} }} }} }}
+    tailwind.config = {{ 
+        theme: {{ 
+            extend: {{ 
+                fontFamily: {{ 
+                    sans: ['Inter', 'sans-serif'], 
+                    serif: ['Lora', 'serif'] 
+                }}, 
+                colors: {{ 
+                    brand: {{ 
+                        dark: '#0f172a', 
+                        muted: '#334155', 
+                        accent: '#0284c7', 
+                        warm: '#d97706', 
+                        light: '#f8fafc' 
+                    }} 
+                }} 
+            }} 
+        }} 
+    }}
 </script>
 <style>
-    body {{ background-color: #120e18; }}
-    .glass-nav {{ background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }}
+    /* Coordinated Deep Midnight Navy Background */
+    body {{ background-color: #0a1128; }}
+    .glass-nav {{ background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }}
     .markdown-content p {{ margin-bottom: 1rem; }}
     .markdown-content p:empty {{ display: none; }}
-    .markdown-content h1, .markdown-content h2, .markdown-content h3 {{ color: #111827; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }}
-    .markdown-content a {{ color: #92400e; text-decoration: underline; }}
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {{ color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }}
+    .markdown-content a {{ color: #0284c7; text-decoration: underline; }}
+    .markdown-content a:hover {{ color: #0369a1; }}
 
-    /* List Styles (reverses Tailwind Preflight CSS reset) */
+    /* List Styles */
     .markdown-content ul {{
         list-style-type: disc;
         margin-top: 0.75rem;
@@ -713,7 +746,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         font-size: 0.875rem;
         line-height: 1.5;
         border: 1px solid #e2e8f0;
-        border-radius: 4px;
+        border-radius: 6px;
         background-color: #ffffff;
     }}
     .markdown-content th {{
@@ -744,26 +777,26 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 <div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
 <!-- Navigation -->
-<nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300">
+<nav class="fixed w-full z-50 glass-nav border-b border-slate-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex-shrink-0">
-                <a href="/" class="text-xl font-serif font-semibold text-brand-dark tracking-tight">
+                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">
                     David G. Smith
                 </a>
             </div>
             
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="/#about" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                <a href="/#work" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
-                <a href="/#books" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
-                <a href="/#advisory" class="text-gray-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                <a href="/#contact" class="px-5 py-2 rounded border border-gray-300 text-brand-dark hover:border-brand-dark transition-all text-sm font-medium">Contact</a>
+                <a href="/#about" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                <a href="/#work" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                <a href="/thoughts.html" class="text-brand-accent transition-colors text-sm font-semibold">Thoughts</a>
+                <a href="/#books" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                <a href="/#advisory" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                <a href="/#contact" class="px-5 py-2 rounded border border-slate-300 text-slate-900 hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
             </div>
 
             <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                <button id="mobile-menu-btn" class="text-slate-900 focus:outline-none" aria-label="Toggle menu">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -772,14 +805,14 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg">
         <div class="px-4 pt-2 pb-4 space-y-1">
-            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
-            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
-            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent">Thoughts</a>
-            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
-            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
-            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-gray-600">Contact</a>
+            <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-600">About</a>
+            <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-600">Work</a>
+            <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-brand-accent font-semibold">Thoughts</a>
+            <a href="/#books" class="mobile-link block py-2 text-base font-medium text-slate-600">Books</a>
+            <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-600">Advisory</a>
+            <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-600">Contact</a>
         </div>
     </div>
 </nav>
@@ -805,7 +838,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 </main>
 
 <!-- Footer -->
-<footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
+<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
             <span class="text-lg font-serif font-semibold text-white tracking-tight">
@@ -839,7 +872,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 </script>
 
 <!-- Return to Top Button -->
-<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-brand-dark text-white p-3 rounded-full shadow-lg hover:bg-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
     </svg>
@@ -870,7 +903,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     }}
 </script>
 
-<!-- Vanta.js & Three.js Libraries -->
+<!-- Vanta.js & Three.js (Configured with Dark Blue Canvas & Cyan Neural Net) -->
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
 <script>
@@ -885,8 +918,8 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: 0x5c5cb1,
-                backgroundColor: 0x120e18,
+                color: 0x38bdf8,            /* Electric Sky Blue lines and nodes */
+                backgroundColor: 0x0a1128,  /* Deep Midnight Navy Canvas */
                 points: 10.00,
                 maxDistance: 20.00,
                 spacing: 18.00
@@ -1085,9 +1118,9 @@ def generate_html():
         tag_posts = [p for p in posts if tag in p.get("tags", [])]
         cards_html = "".join(render_aggregator_card(p) for p in tag_posts)
         main_content = f"""
-        <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Posts Tagged: {html.escape(tag)}</h2>
-            <p class="text-sm text-gray-500">Showing {len(tag_posts)} post(s) filed under this topic.</p>
+        <div class="mb-6 bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+            <h2 class="text-2xl font-serif font-medium text-slate-900 mb-1">Posts Tagged: {html.escape(tag)}</h2>
+            <p class="text-sm text-slate-500">Showing {len(tag_posts)} post(s) filed under this topic.</p>
         </div>
         <div class="grid grid-cols-1 gap-6">
             {cards_html}
@@ -1126,9 +1159,9 @@ def generate_html():
         tag_slugs.append("untagged")
         cards_html = "".join(render_aggregator_card(p) for p in untagged_posts)
         main_content = f"""
-        <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Untagged Posts</h2>
-            <p class="text-sm text-gray-500">Showing {len(untagged_posts)} untagged post(s).</p>
+        <div class="mb-6 bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+            <h2 class="text-2xl font-serif font-medium text-slate-900 mb-1">Untagged Posts</h2>
+            <p class="text-sm text-slate-500">Showing {len(untagged_posts)} untagged post(s).</p>
         </div>
         <div class="grid grid-cols-1 gap-6">
             {cards_html}
@@ -1185,9 +1218,9 @@ def generate_html():
         month_slugs.append(m_slug_suffix)
         cards_html = "".join(render_aggregator_card(p) for p in m_posts)
         main_content = f"""
-        <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-            <h2 class="text-2xl font-serif font-medium text-brand-dark mb-1">Posts from {m_full} {year}</h2>
-            <p class="text-sm text-gray-500">Showing {len(m_posts)} post(s) published in {m_full} {year}.</p>
+        <div class="mb-6 bg-white p-6 rounded-lg border border-slate-200 shadow-md">
+            <h2 class="text-2xl font-serif font-medium text-slate-900 mb-1">Posts from {m_full} {year}</h2>
+            <p class="text-sm text-slate-500">Showing {len(m_posts)} post(s) published in {m_full} {year}.</p>
         </div>
         <div class="grid grid-cols-1 gap-6">
             {cards_html}
@@ -1224,10 +1257,10 @@ def generate_html():
     recent_posts = posts[:8]
     index_posts_html = "".join(render_post(p, is_standalone=False) for p in recent_posts)
     main_content_index = f"""
-    <div class="mb-6 bg-white p-6 rounded-lg border border-gray-200 shadow-md flex justify-between items-center">
+    <div class="mb-6 bg-white p-6 rounded-lg border border-slate-200 shadow-md flex justify-between items-center">
         <div>
-            <h2 class="text-2xl font-serif font-medium text-brand-dark">Recent Thoughts</h2>
-            <p class="text-sm text-gray-500 mt-1">Showing the 8 most recent perspectives and notes.</p>
+            <h2 class="text-2xl font-serif font-medium text-slate-900">Recent Thoughts</h2>
+            <p class="text-sm text-slate-500 mt-1">Showing the 8 most recent perspectives and notes.</p>
         </div>
     </div>
     <div class="space-y-8">
