@@ -107,11 +107,11 @@ def render_tag_badges(tags, size="normal"):
     badges = []
     for t in tags:
         t_slug = slugify(t)
-        # Tech aesthetic: Sky-50 background, dark navy-blue text (sky-900), sky-200 border, electric blue hover
+        # Distinct high-contrast sky badge on white card backgrounds, hover transitions to brand orange (rgb 180 83 9)
         badges.append(
             f'<a href="/thoughts-{t_slug}.html" '
-            f'class="inline-block bg-sky-50 text-sky-900 font-semibold border border-sky-200/90 '
-            f'{size_classes} rounded-md mr-1.5 mb-1.5 hover:bg-blue-600 hover:border-blue-600 '
+            f'class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 '
+            f'{size_classes} rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent '
             f'hover:text-white transition-all shadow-xs">{html.escape(t)}</a>'
         )
     return "".join(badges)
@@ -141,7 +141,7 @@ def render_share_bar(share_url, original_url):
         orig_escaped = html.escape(original_url, quote=True)
         read_original_html = f"""
         <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-semibold text-brand-accent hover:text-blue-800 transition-colors inline-flex items-center gap-1">
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
            Read Original &rarr;
         </a>
         """
@@ -228,11 +228,11 @@ def render_related_posts_section(related_posts):
         tags_html = render_tag_badges(p.get("tags", [])[:2], size="small")
 
         cards.append(f"""
-        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between">
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
             <div>
                 <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>{date_str}</span>
-                    <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded text-[11px] font-semibold">{reading_time}</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">{reading_time}</span>
                 </div>
                 <a href="/thoughts/{slug}.html" class="block group mb-2">
                     <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
@@ -243,7 +243,7 @@ def render_related_posts_section(related_posts):
             </div>
             <div>
                 <div class="flex flex-wrap">{tags_html}</div>
-                <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-blue-900 transition-colors mt-2">
+                <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
@@ -257,7 +257,7 @@ def render_related_posts_section(related_posts):
                 <h2 class="text-xl sm:text-2xl font-serif font-medium text-slate-900">Related Thoughts</h2>
                 <p class="text-xs text-slate-500 mt-0.5">Perspectives sharing related architectures, models, and domain context.</p>
             </div>
-            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-blue-900 transition-colors">
+            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-amber-900 transition-colors">
                 All Thoughts &rarr;
             </a>
         </div>
@@ -367,17 +367,17 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     sorted_tags = sorted(tag_counts.items(), key=lambda x: (-x[1], x[0].lower()))
 
-    # Topics / Tags styling in Navigation Rail
+    # Topics tags inside dark container: clean slate badges, hovering into brand accent
     tags_html = ""
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
         is_active = (current_type == "tag" and current_value == tag)
         if is_active:
-            active_class = "border-sky-600 bg-sky-600 text-white font-semibold shadow-sm shadow-sky-500/20"
-            badge_bg = "bg-sky-800 text-sky-100"
+            active_class = "border-brand-accent bg-brand-accent text-white font-semibold shadow-sm"
+            badge_bg = "bg-amber-950/80 text-amber-200"
         else:
-            active_class = "border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80"
-            badge_bg = "bg-slate-200/80 text-slate-600 group-hover:bg-sky-100"
+            active_class = "border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700"
+            badge_bg = "bg-slate-950 text-slate-400 group-hover:bg-slate-900"
 
         tags_html += f"""
         <a href="/thoughts-{t_slug}.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
@@ -388,8 +388,8 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     if untagged_count > 0:
         is_active = (current_type == "tag" and current_value == "untagged")
-        active_class = "border-sky-600 bg-sky-600 text-white font-semibold shadow-sm" if is_active else "border-slate-200 bg-slate-50 text-slate-700 hover:border-sky-500 hover:text-sky-900 hover:bg-sky-50/80"
-        badge_bg = "bg-sky-800 text-sky-100" if is_active else "bg-slate-200/80 text-slate-600"
+        active_class = "border-brand-accent bg-brand-accent text-white font-semibold shadow-sm" if is_active else "border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700"
+        badge_bg = "bg-amber-950/80 text-amber-200" if is_active else "bg-slate-950 text-slate-400"
         tags_html += f"""
         <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all {active_class}">
             <span>Untagged</span>
@@ -423,17 +423,17 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
             if m_abbr in present_months:
                 is_active = (current_type == "month" and current_value == (year, m_abbr))
                 if is_active:
-                    active_style = "bg-sky-600 text-white shadow-sm ring-1 ring-sky-500 font-semibold"
+                    active_style = "bg-brand-accent text-white shadow-sm ring-1 ring-amber-500 font-semibold"
                 else:
-                    active_style = "bg-slate-800 text-slate-100 hover:bg-sky-600 hover:text-white font-medium border border-slate-700"
+                    active_style = "bg-slate-800 text-slate-200 hover:bg-brand-accent hover:text-white font-medium border border-slate-700"
                 cell = f'<a href="/thoughts-{year}-{m_abbr.lower()}.html" class="block py-1.5 text-center text-xs rounded transition-all {active_style}">{m_abbr}</a>'
             else:
-                cell = f'<span class="block py-1.5 text-center text-xs text-slate-400 bg-slate-50 border border-slate-200/60 rounded cursor-not-allowed select-none">{m_abbr}</span>'
+                cell = f'<span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">{m_abbr}</span>'
             grid_cells += cell
 
         months_tables_html += f"""
         <div class="mb-4 last:mb-0">
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">{year}</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">{year}</div>
             <div class="grid grid-cols-4 gap-1.5">
                 {grid_cells}
             </div>
@@ -442,36 +442,36 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
-        <!-- Mobile Nav Toggle -->
-        <div class="lg:hidden bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-900 font-serif font-bold text-sm focus:outline-none">
+        <!-- Mobile Nav Toggle (Darkened) -->
+        <div class="lg:hidden bg-slate-900 p-4 rounded-lg border border-slate-800 shadow-sm text-slate-100">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-100 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
-                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </button>
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Topics Container -->
-            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
-                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+            <!-- Topics Container (Darkened with text-sm/base Header) -->
+            <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+                    <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-sky-800 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-full">{len(sorted_tags)}</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">{len(sorted_tags)}</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     {tags_html}
                 </div>
             </div>
 
-            <!-- Archive Container -->
-            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-md">
-                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+            <!-- Archive Container (Darkened with text-sm/base Header) -->
+            <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+                    <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Archive
                     </h3>
                 </div>
@@ -519,14 +519,14 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     prev_next_html = ""
     if is_standalone and (prev_post or next_post):
         prev_link = f'''
-        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all">
+        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all">
             <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">&larr; Older Thought</span>
             <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(prev_post.get("title", ""))}</span>
         </a>
         ''' if prev_post else '<div class="flex-1"></div>'
 
         next_link = f'''
-        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-sky-400 group transition-all text-right">
+        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all text-right">
             <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Newer Thought &rarr;</span>
             <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(next_post.get("title", ""))}</span>
         </a>
@@ -546,7 +546,7 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
             {breadcrumbs_html}
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="{icon}" alt="{icon_alt}" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>{date} &bull; <span class="text-sky-800 font-semibold">{reading_time}</span> &bull; {origin_text}</span>
+                <span>{date} &bull; <span class="text-amber-900 font-semibold">{reading_time}</span> &bull; {origin_text}</span>
             </div>
             {title_html}
             <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
@@ -571,11 +571,11 @@ def render_aggregator_card(post):
     tags_html = render_tag_badges(tags, size="small")
     
     return f"""
-    <article class="bg-white p-6 sm:p-7 border border-slate-200 rounded-lg shadow-md hover:shadow-xl hover:border-sky-300 transition-all flex flex-col justify-between">
+    <article class="bg-white p-6 sm:p-7 border border-slate-200 rounded-lg shadow-md hover:shadow-xl hover:border-amber-300 transition-all flex flex-col justify-between">
         <div>
             <div class="flex items-center justify-between text-xs uppercase tracking-wider text-slate-400 font-medium mb-2">
                 <span>{date}</span>
-                <span class="text-sky-800 bg-sky-50 px-2 py-0.5 rounded font-semibold text-[11px]">{reading_time}</span>
+                <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded font-semibold text-[11px]">{reading_time}</span>
             </div>
             <a href="/thoughts/{slug}.html" class="block group">
                 <h3 class="text-xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug mb-2.5">
@@ -586,7 +586,7 @@ def render_aggregator_card(post):
             <p class="text-slate-600 text-sm leading-relaxed mb-5">{html.escape(excerpt)}</p>
         </div>
         <div class="pt-3 border-t border-slate-100">
-            <a href="/thoughts/{slug}.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-blue-900 inline-flex items-center gap-1.5 transition-colors">
+            <a href="/thoughts/{slug}.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-amber-900 inline-flex items-center gap-1.5 transition-colors">
                 Read Perspective &rarr;
             </a>
         </div>
@@ -625,11 +625,11 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     if is_post:
         header_content = """
         <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
-            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-sky-400 transition-colors font-medium">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-brand-accent transition-colors font-medium">
                 &larr; Back to all Thoughts
             </a>
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors">
-                <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-brand-accent transition-colors">
+                <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                 </svg>
                 RSS Feed
@@ -646,7 +646,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             {sub_text}
             <div class="flex justify-center mb-2">
                 <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-sm font-medium text-slate-200 transition-all shadow-sm">
-                    <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                     </svg>
                     Subscribe via RSS
@@ -687,8 +687,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
                     brand: {{ 
                         dark: '#0f172a', 
                         muted: '#334155', 
-                        accent: '#0284c7', 
-                        warm: '#d97706', 
+                        accent: '#b45309', /* rgb(180, 83, 9) warm rich orange */
                         light: '#f8fafc' 
                     }} 
                 }} 
@@ -697,14 +696,14 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     }}
 </script>
 <style>
-    /* Coordinated Deep Midnight Navy Background */
+    /* Dark Midnight Blue Canvas */
     body {{ background-color: #0a1128; }}
     .glass-nav {{ background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }}
     .markdown-content p {{ margin-bottom: 1rem; }}
     .markdown-content p:empty {{ display: none; }}
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {{ color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }}
-    .markdown-content a {{ color: #0284c7; text-decoration: underline; }}
-    .markdown-content a:hover {{ color: #0369a1; }}
+    .markdown-content a {{ color: #b45309; text-decoration: underline; }}
+    .markdown-content a:hover {{ color: #78350f; }}
 
     /* List Styles */
     .markdown-content ul {{
@@ -903,7 +902,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     }}
 </script>
 
-<!-- Vanta.js & Three.js (Configured with Dark Blue Canvas & Cyan Neural Net) -->
+<!-- Vanta.js & Three.js (Deep Navy Blue Canvas + Cyan Neural Nodes) -->
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
 <script>
@@ -918,7 +917,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: 0x38bdf8,            /* Electric Sky Blue lines and nodes */
+                color: 0x38bdf8,            /* Electric Cyan / Sky Blue network lines */
                 backgroundColor: 0x0a1128,  /* Deep Midnight Navy Canvas */
                 points: 10.00,
                 maxDistance: 20.00,
