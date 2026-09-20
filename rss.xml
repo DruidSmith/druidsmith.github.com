@@ -8,6 +8,30 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>PixelRAG: A New Way to Search the Web</title>
+            <link>https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html</link>
+            <guid>https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html</guid>
+            <pubDate>Sun, 20 Sep 2026 23:11:41 +0000</pubDate>
+            <description>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots...</description>
+            <category>AI Agents</category>
+            <dc:subject>AI Agents</dc:subject>
+            <category>Retrieval-Augmented Generation</category>
+            <dc:subject>Retrieval-Augmented Generation</dc:subject>
+            <category>AI Infrastructure</category>
+            <dc:subject>AI Infrastructure</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>PixelRAG</category>
+            <dc:subject>PixelRAG</dc:subject>
+            <content:encoded><![CDATA[<p>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots and searches the images directly. This keeps tables, charts, diagrams, layout and visual structure intact. Traditional RAG pipelines lose these details when they strip a page down to text.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/StarTrail-org/PixelRAG">PixelRAG</a> uses a vision&#8208;language embedding model fine&#8208;tuned on screenshots. It breaks a page into tiles, embeds each tile and builds a visual index. You can query the hosted index of more than eight million Wikipedia pages with text or images. The system returns the tiles that contain the answer, even when the answer is inside a table or chart.</p>
+<p>PixelRAG also ships a screenshot tool called pixelshot. Claude can use it through the pixelbrowse plugin to read pages visually. Instead of fetching HTML, Claude looks at the rendered page and interprets the content the way a person would.<br>
+<img alt="PixelRAG Infographic" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/pipeline.png"></p>
+<p>The project includes tools for rendering, embedding, indexing and serving your own visual search pipeline. You can build a local index, serve it through a FastAPI service or use Qdrant for large&#8208;scale vector storage.</p>
+<p>PixelRAG shows what happens when retrieval stops relying on text and starts using the full visual structure of a document. It is a practical step toward search systems that understand pages the way humans see them.</p>
+<p><img alt="PixelRAG Logo" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/banner.png"></p>]]></content:encoded>
+        </item>
+        <item>
             <title>The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill</title>
             <link>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</link>
             <guid>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</guid>
