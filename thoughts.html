@@ -218,6 +218,75 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 21, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Convergence of Spatial SQL and Ontologies: Building a Semantic Backbone for Earth Observation
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-spatial-sql.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial SQL</a><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GraphRAG</a><a href="/thoughts-ontologies.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Ontologies</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Infrastructure</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The geospatial industry is undergoing a quiet but profound shift. For decades, the standard workflow for analyzing satellite imagery was a fragmented process. Analysts had to download massive files, preprocess the imagery, stitch scenes together, and then run localized analysis scripts.</p>
+<p>Recent advancements have started to collapse this pipeline. With the rise of cloud-native geospatial data structures like Cloud Optimized GeoTIFFs (COGs) and STAC-GeoParquet metadata, data can now stay in the cloud. Tools like Apache Sedona demonstrate how an entire remote sensing pipeline can be compressed into declarative Spatial SQL and NumPy operations, drastically reducing the time from raw pixels to actionable insights.</p>
+<p>However, scaling the physical computation of pixels solves only half the problem. As we stream larger volumes of observational data into automated pipelines, we face a new bottleneck: context.</p>
+<p><strong>The Core Limitation of Raw Geometry</strong></p>
+<p>Spatial SQL excels at geometric execution. It can process millions of raster cells, calculate vegetation indices like NDVI, polygonize burn masks, and return precise zonal statistics across administrative boundaries in minutes.</p>
+<p>What Spatial SQL cannot do on its own is understand what those geometries mean in a broader organizational or ecological context. To a database, a polygon is simply a coordinate string with an area value. It lacks inherent knowledge of identity, regulatory constraints, or historical relationships.</p>
+<p>If an automated pipeline flags a 20,000-hectare burn scar, a human analyst or an advanced AI agent still needs to answer complex questions:<br>
+* Which specific environmental regulations govern this administrative zone?<br>
+* Are there overlapping multi-tenant land agreements tied to these coordinates?<br>
+* What historical restoration projects occurred on this tract over the last decade?<br>
+When AI agents attempt to answer these questions using traditional Retrieval-Augmented Generation (RAG) pipelines, they often struggle. Standard vector search looks for flat text fragments that sound similar to a prompt, but it cannot naturally trace complex, interconnected dependencies across diverse corporate documents.</p>
+<p><strong>Anchoring Geospatial Data with Ontologies</strong></p>
+<p>To build truly reliable enterprise applications, we need to merge neural networks and spatial processing with structured logic. This is where ontologies and knowledge graphs become essential.</p>
+<p>An ontology serves as a semantic backbone. By establishing explicit concepts, typed relationships, and logical rules, an ontology anchors raw data into a structured taxonomy of a specific business or scientific domain. Instead of treating a database as isolated rows of text or geometry, a knowledge graph maps data as a network of nodes and edges.</p>
+<p>When you layer GraphRAG architectures over spatial data, the capability of the system changes entirely. The pipeline no longer treats an environmental hazard as an isolated event. Instead, it can natively navigate multi-hop relationships:<br>
+<code>[Burn Scar Polygon] -&gt; intersects -&gt; [Parcel ID] -&gt; managed by -&gt; [Vendor A] -&gt; bound by -&gt; [Climate Directive 2026]</code><br>
+By traversing these conceptual and spatial relationships, AI models can synthesize comprehensive answers across multiple document types while drastically minimizing the risk of hallucination.</p>
+<p><strong>The Human-in-the-Loop Sweet Spot</strong></p>
+<p>The historic obstacle to this architecture has been the sheer effort required to build and maintain high-quality ontologies. Curation has traditionally demanded hundreds of hours of manual labor from data stewards and domain experts.</p>
+<p>Fortunately, the relationship between AI and ontologies is becoming symbiotic. While structured graphs provide the guardrails that keep AI grounded, autonomous agents are proving highly capable of parsing unstructured text to propose new taxonomies, extract hidden entities, and detect structural gaps in existing graphs. Recent frameworks indicate that using generative tools to draft and assess ontologies can cut development times by nearly half.</p>
+<p>This efficiency does not eliminate the need for human governance. The ideal architecture relies on a Human-in-the-Loop (HITL) workflow. Autonomous systems perform the heavy lifting of reading documents, running spatial joins, and proposing metadata relationships. Human experts then step in to validate the structures, audit the logic, and ensure the taxonomy accurately reflects institutional memory.</p>
+<p><strong>True Technical Maturity</strong></p>
+<p>As the velocity of earth observation data increases, true technical maturity will not be found in building larger, unconstrained language models. It will come from selecting the minimum viable architecture that cleanly solves the problem.</p>
+<p>By combining the declarative power of Spatial SQL with the structured clarity of knowledge graphs, organizations can build environmental and industrial analysis pipelines that are scalable, verifiable, and operationally sane.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 20, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Published by David G. Smith</span>
             </div>
             
@@ -720,73 +789,6 @@ This is what “geospatial at scale” actually looks like:</p>
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 10, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Originally published on Linkedin</span>
-            </div>
-            
-        <a href="/thoughts/its-time-to-get-serious-about-ai-risk.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                It&#x27;s Time to Get Serious About AI Risk
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-safety.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety</a><a href="/thoughts-ai-governance.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Governance</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Risk Management</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>I keep seeing headlines like this one: <br>
-<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exitts, Issues Stark AI Warning</a><br>
-Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em></p>
-<p>And yet, the reaction often feels far too small.</p>
-<p>Someone issues a serious warning, and then the next day the conversation just shifts right back to model launches, benchmarks, and how powerful the latest AI system is. It feels like we’re careening at breakneck speed down a treacherous mountain pass with the brakes barely being touched.</p>
-<p>The recent Hugging Face breach should be a wake-up call. If we’re going to keep pushing AI forward at this pace, then safety, security, and safeguards can’t be an afterthought. They have to be part of the core conversation, not something we mention only after something goes wrong.</p>
-<p><strong><em>Progress is important. Innovation matters. But so does responsibility.</em></strong></p>
-<p>We need more serious dialogue about:</p>
-<ul>
-<li>model security</li>
-<li>access controls</li>
-<li>misuse prevention</li>
-<li>red teaming</li>
-<li>governance</li>
-<li>and long-term safety</li>
-</ul>
-<p>If we’re building systems with enormous power, we owe it to society to build them with equal seriousness about risk.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/posts/davidgsmith_aisafety-responsibleai-aiethics-activity-7503560249086238720-xJAp?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAADog4gBuTmYUGqi08VthEb7RL4ohl64_u0" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/its-time-to-get-serious-about-ai-risk.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -824,7 +826,7 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Infrastructure</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
         <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -834,6 +836,11 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Critical Thinking</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Knowledge Graphs</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
@@ -847,8 +854,8 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Knowledge Graphs</span>
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GraphRAG</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -859,6 +866,11 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Governance</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -887,11 +899,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GraphRAG</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
-        </a>
-        
         <a href="/thoughts-human-ai-collaboration.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Human-AI Collaboration</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
@@ -912,6 +919,11 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
+        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Ontologies</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
         <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Responsible AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
@@ -919,6 +931,11 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Semantic Layer</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial SQL</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -959,11 +976,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-chestertons-fence.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Chesterton&#x27;s Fence</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Cloud-Native Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -1072,11 +1084,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ontologies.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Ontologies</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-open-knowledge-format.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Open Knowledge Format</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -1114,11 +1121,6 @@ Notable quote: <em>“10% chance AI could destroy all humanity by 2030.”</em><
         
         <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Risk Management</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Spatial SQL</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
