@@ -679,18 +679,12 @@ Demo App:<br>
 Google recently introduced the <strong>Open Knowledge Format (OKF)</strong>, an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
 <p><strong>How OKF Compares to Existing Standards</strong><br>
 To see where OKF fits into the AI architecture stack, it helps to contrast it with common alternatives:</p>
-<ul>
-<li>
 <p><strong>OKF vs. Model Context Protocol (MCP):</strong> MCP provides the dynamic, client-server protocol layer--the live plumbing that connects an agent to tools, databases, and APIs. OKF operates at the representation layer: it standardizes the static, human-auditable knowledge assets (runbooks, enterprise definitions, domain constraints, schemas) that live inside version control before and during tool execution.   </p>
-</li>
-<li>
 <p><strong>OKF vs. Raw JSON Schema Dumps:</strong> Raw JSON schemas describe low-level data structures, but they completely strip away semantic narrative, operational intent, and edge-case exceptions. OKF bridges that gap by blending human-readable Markdown with structured YAML metadata, providing both machine-parsable boundaries and the contextual nuance an LLM needs to interpret operational intent correctly.   </p>
-</li>
-</ul>
 <p><strong>Why Structured Schemas Matter: The Knowledge Graph Connection</strong><br>
 This development aligns directly with a core architectural reality: neural networks require structured semantic backbones to remain reliable.   </p>
-<p>When agents interact with enterprise data lakes, APIs, or complex databases, letting an LLM infer or guess schema definitions on the fly leads to catastrophic runtime errors: hallucinated columns, malformed SQL queries, and broken API calls. Much like pairing ontologies and knowledge graphs with vector retrieval (GraphRAG), grounding agents in explicit, structured schemas anchors them in verifiable logic. <br>
-By turning institutional knowledge into a git-versioned, structured contract, standards like OKF ensure agents don't guess what your systems look like--they execute against validated boundaries. </p>
+<p>When agents interact with enterprise data lakes, APIs, or complex databases, letting an LLM infer or guess schema definitions on the fly leads to catastrophic runtime errors: hallucinated columns, malformed SQL queries, and broken API calls. Much like pairing ontologies and knowledge graphs with vector retrieval (GraphRAG), grounding agents in explicit, structured schemas anchors them in verifiable logic.   </p>
+<p>By turning institutional knowledge into a git-versioned, structured contract, standards like OKF ensure agents don't guess what your systems look like--they execute against validated boundaries. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf">Github: Google Open Knowledge Format</a></p>]]></content:encoded>
         </item>
