@@ -218,6 +218,110 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 22, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Shift to Cloud-Native Geospatial: Access, Scale, and the Open Source Ecosystem
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades, the standard workflow involved steps like navigating an FTP portal, unzipping gigabytes of shapefiles or multi-band TIFFs, and loading them into desktop software. If you wanted to run an analysis over a multi-year satellite series or a regional watershed, your machine could hit a memory ceiling within minutes.</p>
+<p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
+<p>Through standard file specifications, catalog APIs, and modern Python toolchains, the geospatial ecosystem has evolved into a composable data science stack. Much of this democratization has been catalyzed by open source software, notably through the work of <a target="_blank" rel="noopener noreferrer" href="https://wetlands.io/">Qiusheng Wu</a> and the broader open geospatial community.</p>
+<p>Here is a breakdown of how the modern cloud-native stack fits together, why it matters, and how to build workflows on top of it.</p>
+<h3>1. The Core Formats: COG, STAC, and GeoParquet</h3>
+<p>The foundation of cloud-native geospatial relies on three open standards designed specifically for HTTP range requests and serverless querying.</p>
+<h4><a target="_blank" rel="noopener noreferrer" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a></h4>
+<p>A COG is a standard TIFF file organized internally with internal tiling and downsampled overviews (pyramids). When hosted on an S3 bucket or Google Cloud Storage, a client does not need to download the full 500 MB raster to view or analyze a single bounding box. By using HTTP GET range requests, the client requests only the precise bytes required for the view extent or the analysis resolution.</p>
+<h4><a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a></h4>
+<p>While COGs solve the format problem, discovering millions of scenes across global archives requires standardized metadata. STAC provides a JSON-based specification for indexing geospatial assets across space and time. Instead of maintaining proprietary catalog databases, public archives (USGS Landsat, ESA Sentinel, NOAA, Planet) expose searchable STAC APIs.</p>
+<h4><a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a></h4>
+<p>Vector workflows have historically lagged behind rasters in cloud efficiency, relying on shapefiles, GeoJSON, or bulky database exports. GeoParquet brings Apache Parquet's columnar compression, dictionary encoding, and fast partition pruning to geometries. By storing bounding box metadata in Parquet file footers, engines can skip entire files or chunks that do not intersect a query polygon.</p>
+<hr>
+<h3>2. Bridging the Gap: The Open Source Python Ecosystem</h3>
+<p>Open standards require accessible software to become useful. The open-source geospatial community, with contributors like Qiusheng Wu, has spent recent years building bridges between raw cloud assets and the Python data science environment.</p>
+<h4><a target="_blank" rel="noopener noreferrer" href="https://leafmap.org/">Leafmap</a> and <a target="_blank" rel="noopener noreferrer" href="https://geemap.org/">Geemap</a></h4>
+<p>Qiusheng Wu's development of <code>geemap</code> initially opened Google Earth Engine to the interactive Jupyter environment. His follow-up library, <code>leafmap</code>, acts as a unified, cloud-first interactive mapping package.</p>
+<p><img alt="Leafmap visualization" src="https://davidgsmith.net/thoughts/images/leafmap-mudasu19-833df2a2.png"></p>
+<p>What makes <code>leafmap</code> distinct is its tight integration with cloud-native formats. You can pass a remote COG URL or point to a public STAC item, and <code>leafmap</code> renders it dynamically using client-side rendering or lightweight tile servers like <a target="_blank" rel="noopener noreferrer" href="https://developmentseed.org/titiler/">TiTiler</a> without storing local raster files.</p>
+<pre><code class="language-python">import leafmap
+
+m = leafmap.Map()
+cog_url = &quot;[https://opendata.digitalglobe.com/events/mauritius-oil-spill/post-event/2020-08-12/105001001A085400/105001001A085400.tif](https://opendata.digitalglobe.com/events/mauritius-oil-spill/post-event/2020-08-12/105001001A085400/105001001A085400.tif)&quot;
+m.add_cog_layer(cog_url, name=&quot;Remote Satellite Scene&quot;)
+m
+</code></pre>
+<h4>In-Process Spatial SQL: <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/docs/extensions/spatial/overview">DuckDB Spatial</a></h4>
+<p>One of the most consequential advancements in recent geospatial workflows is the pairing of <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/">DuckDB</a> with its spatial extension.</p>
+<p>You no longer need to spin up a PostGIS instance or configure an enterprise database server just to run spatial joins across vector layers. DuckDB can execute spatial predicates directly against remote Parquet files stored on object storage, streaming only the relevant byte ranges over HTTP.</p>
+<pre><code class="language-sql">INSTALL spatial;
+LOAD spatial;
+
+-- Query remote GeoParquet directly without downloading the file
+SELECT 
+    name, 
+    ST_Area(ST_GeomFromWKB(geometry)) AS footprint_area
+FROM read_parquet('s3://my-spatial-bucket/building_footprints.parquet')
+WHERE ST_Intersects(
+    ST_GeomFromWKB(geometry), 
+    ST_Point(-77.0369, 38.9072)
+);
+</code></pre>
+<h4>High-Performance Vector Visualization: <a target="_blank" rel="noopener noreferrer" href="https://developmentseed.org/lonboard/latest/">Lonboard</a></h4>
+<p>Rendering millions of vector vertices in an interactive web browser used to freeze the DOM. Through libraries like <code>lonboard</code> (built on top of <a target="_blank" rel="noopener noreferrer" href="https://geoarrow.org/">geoarrow</a> and <a target="_blank" rel="noopener noreferrer" href="https://deck.gl/">deck.gl</a>), Python data scientists can now push millions of points, linestrings, and polygons directly to GPU memory inside Jupyter notebooks with near-zero serialization latency.</p>
+<hr>
+<h3>3. Why This Architectural Shift Matters</h3>
+<p>The move toward cloud-native geospatial is not merely a change in tooling; it redefines operational economics and team capabilities:</p>
+<ul>
+<li><strong>Lower Infrastructure Costs:</strong> You eliminate the requirement for persistent, always-on spatial database clusters for exploratory data analysis. Serverless queries and object storage cost pennies compared to running dedicated compute instances.</li>
+<li><strong>Reproducibility:</strong> An analysis script can reference public STAC records and remote COGs directly. Anyone with internet access can execute the code without downloading gigabytes of prerequisite assets.</li>
+<li><strong>Decoupled Compute and Storage:</strong> Teams can run ad-hoc transformations using DuckDB locally, scale up to distributed Dask or <a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/">Apache Sedona</a> clusters when data volumes expand, and write results back to GeoParquet without altering underlying storage schemas.</li>
+</ul>
+<hr>
+<h3>4. The Path Forward</h3>
+<p>The cloud-native geospatial ecosystem is maturing quickly. As standards like GeoParquet reach widespread enterprise adoption and browser engines like WebAssembly and WebGPU allow in-browser spatial processing, the line between data engineering and spatial analysis will continue to blur.</p>
+<p>For practitioners looking to modernize their spatial pipelines, the starting point is straightforward: stop downloading files. Start cataloging assets in STAC, convert raster archives to COG, store vector features in GeoParquet, and use libraries like <code>leafmap</code> and <code>DuckDB</code> to query data where it lives.</p>
+<hr>
+<p>For a hands-on walkthrough showing how these formats function in practice, check out this <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=A6947RSxUxI">Leafmap Tutorial on COG and STAC Integration</a>.</p>
+<p>This video demonstration by Qiusheng Wu illustrates how to query STAC metadata and stream Cloud Optimized GeoTIFFs directly into an interactive map without downloading the raw rasters locally.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 21, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Published by David G. Smith</span>
             </div>
             
@@ -734,61 +838,6 @@ This is what “geospatial at scale” actually looks like:</p>
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 12, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Originally published on Linkedin</span>
-            </div>
-            
-        <a href="/thoughts/tech-layoffs-and-the-loss-of-expertise.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                Tech Layoffs And The Loss Of Expertise
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-tech-layoffs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Layoffs</a><a href="/thoughts-institutional-knowledge.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Institutional Knowledge</a><a href="/thoughts-engineering-leadership.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Engineering Leadership</a><a href="/thoughts-workforce-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Workforce Strategy</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
-<p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren’t just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
-<p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
-<p>Professionals with two decades in the trenches carry the battle scars that help steady teams through volatility. They haven't lost their curiosity or love for learning; they’ve just built the resilience to handle challenges younger teams are still figuring out.</p>
-<p>Tech shouldn’t be a young person's game by default. Curiosity doesn't have an expiration date, and depth can't be automated. When we push out our veterans, the whole ecosystem loses its anchor.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7503924825699250176/" target="_blank" rel="noopener noreferrer"
-           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
-           Read Original &rarr;
-        </a>
-        
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/tech-layoffs-and-the-loss-of-expertise.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -1147,6 +1196,11 @@ This is what “geospatial at scale” actually looks like:</p>
         <a href="/thoughts-writing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Writing</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-untagged.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Untagged</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
                 </div>
