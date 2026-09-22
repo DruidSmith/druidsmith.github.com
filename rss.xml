@@ -660,7 +660,7 @@ Demo App:<br>
             <link>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</link>
             <guid>https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:29:35 +0000</pubDate>
-            <description>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...</description>
+            <description>The real bottleneck in AI agents today isn&#x27;t raw reasoning capability--it&#x27;s access to structured business context. Google recently introduced the Open...</description>
             <category>AI Agents</category>
             <dc:subject>AI Agents</dc:subject>
             <category>Context Window</category>
@@ -669,8 +669,22 @@ Demo App:<br>
             <dc:subject>Enterprise AI</dc:subject>
             <category>Open Knowledge Format</category>
             <dc:subject>Open Knowledge Format</dc:subject>
-            <content:encoded><![CDATA[<p>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. </p>
-<p>Teams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.</p>
+            <category>Knowledge Graphs</category>
+            <dc:subject>Knowledge Graphs</dc:subject>
+            <category>GraphRAG</category>
+            <dc:subject>GraphRAG</dc:subject>
+            <category>Retrieval-Augmented Generation</category>
+            <dc:subject>Retrieval-Augmented Generation</dc:subject>
+            <content:encoded><![CDATA[<p>The real bottleneck in AI agents today isn't raw reasoning capability--it's access to structured business context.   </p>
+<p>Google recently introduced the Open Knowledge Format (OKF), an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
+<p><strong>How OKF Compares to Existing Standards</strong><br>
+To see where OKF fits into the AI architecture stack, it helps to contrast it with common alternatives:<br>
+* OKF vs. Model Context Protocol (MCP): MCP provides the dynamic, client-server protocol layer--the live plumbing that connects an agent to tools, databases, and APIs. OKF operates at the representation layer: it standardizes the static, human-auditable knowledge assets (runbooks, enterprise definitions, domain constraints, schemas) that live inside version control before and during tool execution. <br>
+<em> OKF vs. Raw JSON Schema Dumps: Raw JSON schemas describe low-level data structures, but they completely strip away semantic narrative, operational intent, and edge-case exceptions. OKF bridges that gap by blending human-readable Markdown with structured YAML metadata, providing both machine-parsable boundaries and the contextual nuance an LLM needs to interpret operational intent correctly. <br>
+</em><em>Why Structured Schemas Matter: The Knowledge Graph Connection</em>*<br>
+This development aligns directly with a core architectural reality: neural networks require structured semantic backbones to remain reliable. <br>
+When agents interact with enterprise data lakes, APIs, or complex databases, letting an LLM infer or guess schema definitions on the fly leads to catastrophic runtime errors: hallucinated columns, malformed SQL queries, and broken API calls. Much like pairing ontologies and knowledge graphs with vector retrieval (GraphRAG), grounding agents in explicit, structured schemas anchors them in verifiable logic. <br>
+By turning institutional knowledge into a git-versioned, structured contract, standards like OKF ensure agents don't guess what your systems look like--they execute against validated boundaries. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf">Github: Google Open Knowledge Format</a></p>]]></content:encoded>
         </item>

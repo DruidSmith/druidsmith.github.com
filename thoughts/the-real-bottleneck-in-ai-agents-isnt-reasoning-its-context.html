@@ -12,11 +12,11 @@
     gtag('config', 'G-4T0MRLF4V8');
 </script>
 <title>The Real Bottleneck in AI Agents Isn't Reasoning, it's Context — David G. Smith</title>
-<meta name="description" content="Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...">
+<meta name="description" content="The real bottleneck in AI agents today isn&#x27;t raw reasoning capability—it&#x27;s access to structured business context. Google recently introduced the Open Knowledge...">
 
 <meta property="og:site_name" content="David G. Smith">
 <meta property="og:title" content="The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context">
-<meta property="og:description" content="Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...">
+<meta property="og:description" content="The real bottleneck in AI agents today isn&#x27;t raw reasoning capability—it&#x27;s access to structured business context. Google recently introduced the Open Knowledge...">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://davidgsmith.net/thoughts/the-real-bottleneck-in-ai-agents-isnt-reasoning-its-context.html">
 <meta property="og:image" content="https://davidgsmith.net/images/og-default.jpg">
@@ -25,11 +25,14 @@
 <meta property="article:tag" content="Context Window">
 <meta property="article:tag" content="Enterprise AI">
 <meta property="article:tag" content="Open Knowledge Format">
+<meta property="article:tag" content="Knowledge Graphs">
+<meta property="article:tag" content="GraphRAG">
+<meta property="article:tag" content="Retrieval-Augmented Generation">
 <meta property="article:author" content="David G. Smith">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context">
-<meta name="twitter:description" content="Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...">
+<meta name="twitter:description" content="The real bottleneck in AI agents today isn&#x27;t raw reasoning capability—it&#x27;s access to structured business context. Google recently introduced the Open Knowledge...">
 <meta name="twitter:image" content="https://davidgsmith.net/images/og-default.jpg">
 
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
@@ -146,7 +149,7 @@
     "datePublished": "2026-09-01T16:29:35.217+00:00",
     "dateModified": "2026-09-01T16:29:35.217+00:00",
     "inLanguage": "en-US",
-    "wordCount": 124,
+    "wordCount": 374,
     "author": {
       "@type": "Person",
       "name": "David G. Smith",
@@ -157,8 +160,8 @@
       "name": "David G. Smith",
       "url": "https://davidgsmith.net/"
     },
-    "description": "Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI...",
-    "keywords": "AI Agents, Context Window, Enterprise AI, Open Knowledge Format",
+    "description": "The real bottleneck in AI agents today isn't raw reasoning capability\u2014it's access to structured business context. Google recently introduced the Open Knowledge...",
+    "keywords": "AI Agents, Context Window, Enterprise AI, Open Knowledge Format, Knowledge Graphs, GraphRAG, Retrieval-Augmented Generation",
     "articleSection": "AI Agents"
   },
   {
@@ -275,12 +278,20 @@
     
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 01, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Originally published on Linkedin</span>
+                <span>September 01, 2026 &bull; <span class="text-amber-900 font-semibold">2 min read</span> &bull; Originally published on Linkedin</span>
             </div>
             <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">The Real Bottleneck in AI Agents Isn&#x27;t Reasoning, it&#x27;s Context</h1>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-context-window.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Context Window</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-open-knowledge-format.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Knowledge Format</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Google introduced the Open Knowledge Format OKF, a lightweight markdown and YAML based standard for representing organizational knowledge in a way that any AI agent, tool, or framework can read. The goal is to solve a common agent problem: models are capable, but they lack access to business context like schemas, runbooks, definitions, and decision history. </p>
-<p>Teams currently build custom context pipelines for every project. OKF aims to replace that with a portable, git native, tool agnostic knowledge bundle.</p>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-context-window.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Context Window</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-open-knowledge-format.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Knowledge Format</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GraphRAG</a><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The real bottleneck in AI agents today isn't raw reasoning capability—it's access to structured business context.   </p>
+<p>Google recently introduced the Open Knowledge Format (OKF), an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
+<p><strong>How OKF Compares to Existing Standards</strong><br>
+To see where OKF fits into the AI architecture stack, it helps to contrast it with common alternatives:<br>
+* OKF vs. Model Context Protocol (MCP): MCP provides the dynamic, client-server protocol layer—the live plumbing that connects an agent to tools, databases, and APIs. OKF operates at the representation layer: it standardizes the static, human-auditable knowledge assets (runbooks, enterprise definitions, domain constraints, schemas) that live inside version control before and during tool execution. <br>
+<em> OKF vs. Raw JSON Schema Dumps: Raw JSON schemas describe low-level data structures, but they completely strip away semantic narrative, operational intent, and edge-case exceptions. OKF bridges that gap by blending human-readable Markdown with structured YAML metadata, providing both machine-parsable boundaries and the contextual nuance an LLM needs to interpret operational intent correctly. <br>
+</em><em>Why Structured Schemas Matter: The Knowledge Graph Connection</em>*<br>
+This development aligns directly with a core architectural reality: neural networks require structured semantic backbones to remain reliable. <br>
+When agents interact with enterprise data lakes, APIs, or complex databases, letting an LLM infer or guess schema definitions on the fly leads to catastrophic runtime errors: hallucinated columns, malformed SQL queries, and broken API calls. Much like pairing ontologies and knowledge graphs with vector retrieval (GraphRAG), grounding agents in explicit, structured schemas anchors them in verifiable logic. <br>
+By turning institutional knowledge into a git-versioned, structured contract, standards like OKF ensure agents don't guess what your systems look like—they execute against validated boundaries. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/your-ai-agents-keep-forgetting-everything-google-just-changed-how-they-remember-f46a19a60808">Towards AI:  Yor AI Agents Keep Forgetting Everything. Google Just Changed How They Remember</a></p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf">Github: Google Open Knowledge Format</a></p></div>
             
@@ -348,6 +359,27 @@
         <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
             <div>
                 <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
+                    <span>Sep 18, 2026</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">3 min read</span>
+                </div>
+                <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="block group mb-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                        Demystifying GraphRAG:  How You Can Learn And Get Up And Running For Free
+                    </h3>
+                </a>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI...</p>
+            </div>
+            <div>
+                <div class="flex flex-wrap"><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Infrastructure</a></div>
+                <a href="/thoughts/demystifying-graphrag-how-you-can-learn-and-get-up-and-running-for-free.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
+                    Read Thought &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                     <span>Sep 10, 2026</span>
                     <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">1 min read</span>
                 </div>
@@ -369,40 +401,19 @@
         <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
             <div>
                 <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
-                    <span>Sep 01, 2026</span>
-                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">1 min read</span>
+                    <span>Sep 21, 2026</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">4 min read</span>
                 </div>
-                <a href="/thoughts/capturing-expertise-before-it-walks-out-the-door.html" class="block group mb-2">
+                <a href="/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html" class="block group mb-2">
                     <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
-                        Capturing Expertise Before It Walks Out the Door
+                        The Convergence of Spatial SQL and Ontologies: Building a Semantic Backbone for Earth Observation
                     </h3>
                 </a>
-                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we’re losing institutional...</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">The geospatial industry is undergoing a quiet but profound shift. For decades, the standard workflow for analyzing...</p>
             </div>
             <div>
-                <div class="flex flex-wrap"><a href="/thoughts-institutional-knowledge.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Institutional Knowledge</a><a href="/thoughts-knowledge-management.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Management</a></div>
-                <a href="/thoughts/capturing-expertise-before-it-walks-out-the-door.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
-                    Read Thought &rarr;
-                </a>
-            </div>
-        </div>
-        
-        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
-                    <span>Sep 20, 2026</span>
-                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">1 min read</span>
-                </div>
-                <a href="/thoughts/pixelrag-a-new-way-to-search-the-web.html" class="block group mb-2">
-                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
-                        PixelRAG: A New Way to Search the Web
-                    </h3>
-                </a>
-                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into...</p>
-            </div>
-            <div>
-                <div class="flex flex-wrap"><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation</a></div>
-                <a href="/thoughts/pixelrag-a-new-way-to-search-the-web.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
+                <div class="flex flex-wrap"><a href="/thoughts-spatial-sql.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial SQL</a><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a></div>
+                <a href="/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
                     Read Thought &rarr;
                 </a>
             </div>
@@ -451,6 +462,11 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
+        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Knowledge Graphs</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
         <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Workflows</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
@@ -461,8 +477,13 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Knowledge Graphs</span>
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GraphRAG</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Retrieval-Augmented Generation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
@@ -473,16 +494,6 @@
         
         <a href="/thoughts-context-window.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Context Window</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
-        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GraphRAG</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
-        <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Retrieval-Augmented Generation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
