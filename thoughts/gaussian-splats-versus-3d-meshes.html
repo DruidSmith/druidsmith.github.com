@@ -146,7 +146,7 @@
     "datePublished": "2026-09-01T16:18:33.744+00:00",
     "dateModified": "2026-09-01T16:18:33.744+00:00",
     "inLanguage": "en-US",
-    "wordCount": 62,
+    "wordCount": 140,
     "author": {
       "@type": "Person",
       "name": "David G. Smith",
@@ -279,9 +279,21 @@
             </div>
             <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">Gaussian Splats versus 3D Meshes</h1>
             <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-gaussian-splatting.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Gaussian Splatting</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-3d-visualization.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">3D Visualization</a><a href="/thoughts-reality-capture.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Reality Capture</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p>
-<p><img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.<br>
+<img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p>
+<p>A quick comparison:</p>
+<ul>
+<li>
+<p><strong>Gaussian Splatting:</strong> Radiance fields optimized for photorealistic novel view synthesis; fast rendering of complex soft boundaries (vegetation, reflections); computationally expensive to edit or simulate physics against.</p>
+</li>
+<li>
+<p><strong>3D Meshes:</strong> Precise discrete geometry; native support for collisions, spatial joins, texturing, and CAD/GIS engineering pipelines; struggles with hyper-complex natural geometries without huge polygon counts.</p>
+</li>
+<li>
+<p><strong>The Verdict/Workflow:</strong> Splats for realistic situational awareness/digital twins; meshes for engineering measurements and spatial queries.</p>
+</li>
+</ul>
+<p>More on the ESRI blog:  <a target="_blank" rel="noopener noreferrer" href="https://www.esri.com/arcgis-blog/products/arcgisrealitystudio/3d-gis/meshes-vs-gaussian-splats-which-reality-representation-should-you-choose">ArcGIS Blog</a></p></div>
             
     <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         
