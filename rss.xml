@@ -13,7 +13,24 @@
             <guid>https://davidgsmith.net/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html</guid>
             <pubDate>Tue, 22 Sep 2026 23:25:19 +0000</pubDate>
             <description>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades,...</description>
-            
+            <category>Cloud-Native Geospatial</category>
+            <dc:subject>Cloud-Native Geospatial</dc:subject>
+            <category>STAC</category>
+            <dc:subject>STAC</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
+            <category>GeoParquet</category>
+            <dc:subject>GeoParquet</dc:subject>
+            <category>Python</category>
+            <dc:subject>Python</dc:subject>
+            <category>DuckDB</category>
+            <dc:subject>DuckDB</dc:subject>
+            <category>Leafmap</category>
+            <dc:subject>Leafmap</dc:subject>
+            <category>Remote Sensing</category>
+            <dc:subject>Remote Sensing</dc:subject>
+            <category>Spatial SQL</category>
+            <dc:subject>Spatial SQL</dc:subject>
             <content:encoded><![CDATA[<p>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades, the standard workflow involved steps like navigating an FTP portal, unzipping gigabytes of shapefiles or multi-band TIFFs, and loading them into desktop software. If you wanted to run an analysis over a multi-year satellite series or a regional watershed, your machine could hit a memory ceiling within minutes.</p>
 <p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
 <p>Through standard file specifications, catalog APIs, and modern Python toolchains, the geospatial ecosystem has evolved into a composable data science stack. Much of this democratization has been catalyzed by open source software, notably through the work of <a target="_blank" rel="noopener noreferrer" href="https://wetlands.io/">Qiusheng Wu</a> and the broader open geospatial community.</p>
