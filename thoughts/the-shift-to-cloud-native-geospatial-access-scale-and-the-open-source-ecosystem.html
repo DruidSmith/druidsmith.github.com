@@ -30,6 +30,7 @@
 <meta property="article:tag" content="Leafmap">
 <meta property="article:tag" content="Remote Sensing">
 <meta property="article:tag" content="Spatial SQL">
+<meta property="article:tag" content="Apache Sedona">
 <meta property="article:author" content="David G. Smith">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -163,7 +164,7 @@
       "url": "https://davidgsmith.net/"
     },
     "description": "Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades,...",
-    "keywords": "Cloud-Native Geospatial, STAC, Geospatial, GeoParquet, Python, DuckDB, Leafmap, Remote Sensing, Spatial SQL",
+    "keywords": "Cloud-Native Geospatial, STAC, Geospatial, GeoParquet, Python, DuckDB, Leafmap, Remote Sensing, Spatial SQL, Apache Sedona",
     "articleSection": "Cloud-Native Geospatial"
   },
   {
@@ -283,12 +284,12 @@
                 <span>September 22, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
             </div>
             <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">The Shift to Cloud-Native Geospatial: Access, Scale, and the Open Source Ecosystem</h1>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-stac.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">STAC</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-geoparquet.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GeoParquet</a><a href="/thoughts-python.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Python</a><a href="/thoughts-duckdb.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">DuckDB</a><a href="/thoughts-leafmap.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Leafmap</a><a href="/thoughts-remote-sensing.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Remote Sensing</a><a href="/thoughts-spatial-sql.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial SQL</a></div>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-stac.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">STAC</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-geoparquet.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GeoParquet</a><a href="/thoughts-python.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Python</a><a href="/thoughts-duckdb.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">DuckDB</a><a href="/thoughts-leafmap.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Leafmap</a><a href="/thoughts-remote-sensing.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Remote Sensing</a><a href="/thoughts-spatial-sql.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial SQL</a><a href="/thoughts-apache-sedona.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Apache Sedona</a></div>
             <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades, the standard workflow involved steps like navigating an FTP portal, unzipping gigabytes of shapefiles or multi-band TIFFs, and loading them into desktop software. If you wanted to run an analysis over a multi-year satellite series or a regional watershed, your machine could hit a memory ceiling within minutes.</p>
 <p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
 <p>Through standard file specifications, catalog APIs, and modern Python toolchains, the geospatial ecosystem has evolved into a composable data science stack. Much of this democratization has been catalyzed by open source software, notably through the work of <a target="_blank" rel="noopener noreferrer" href="https://wetlands.io/">Qiusheng Wu</a> and the broader open geospatial community.</p>
 <p>Here is a breakdown of how the modern cloud-native stack fits together, why it matters, and how to build workflows on top of it.</p>
-<p>** 1. The Core Formats: COG, STAC, and GeoParquet**</p>
+<p><strong>1. The Core Formats: COG, STAC, and GeoParquet</strong></p>
 <p>The foundation of cloud-native geospatial relies on three open standards designed specifically for HTTP range requests and serverless querying.</p>
 <p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a></strong><br>
 A COG is a standard TIFF file organized internally with internal tiling and downsampled overviews (pyramids). When hosted on an S3 bucket or Google Cloud Storage, a client does not need to download the full 500 MB raster to view or analyze a single bounding box. By using HTTP GET range requests, the client requests only the precise bytes required for the view extent or the analysis resolution.</p>
@@ -487,7 +488,7 @@ Rendering millions of vector vertices in an interactive web browser used to free
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">70</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">71</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -633,6 +634,11 @@ Rendering millions of vector vertices in an interactive web browser used to free
         
         <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Strategy</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-apache-sedona.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Apache Sedona</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         

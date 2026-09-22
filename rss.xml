@@ -31,11 +31,13 @@
             <dc:subject>Remote Sensing</dc:subject>
             <category>Spatial SQL</category>
             <dc:subject>Spatial SQL</dc:subject>
+            <category>Apache Sedona</category>
+            <dc:subject>Apache Sedona</dc:subject>
             <content:encoded><![CDATA[<p>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades, the standard workflow involved steps like navigating an FTP portal, unzipping gigabytes of shapefiles or multi-band TIFFs, and loading them into desktop software. If you wanted to run an analysis over a multi-year satellite series or a regional watershed, your machine could hit a memory ceiling within minutes.</p>
 <p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
 <p>Through standard file specifications, catalog APIs, and modern Python toolchains, the geospatial ecosystem has evolved into a composable data science stack. Much of this democratization has been catalyzed by open source software, notably through the work of <a target="_blank" rel="noopener noreferrer" href="https://wetlands.io/">Qiusheng Wu</a> and the broader open geospatial community.</p>
 <p>Here is a breakdown of how the modern cloud-native stack fits together, why it matters, and how to build workflows on top of it.</p>
-<p>** 1. The Core Formats: COG, STAC, and GeoParquet**</p>
+<p><strong>1. The Core Formats: COG, STAC, and GeoParquet</strong></p>
 <p>The foundation of cloud-native geospatial relies on three open standards designed specifically for HTTP range requests and serverless querying.</p>
 <p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a></strong><br>
 A COG is a standard TIFF file organized internally with internal tiling and downsampled overviews (pyramids). When hosted on an S3 bucket or Google Cloud Storage, a client does not need to download the full 500 MB raster to view or analyze a single bounding box. By using HTTP GET range requests, the client requests only the precise bytes required for the view extent or the analysis resolution.</p>
