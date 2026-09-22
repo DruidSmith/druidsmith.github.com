@@ -146,7 +146,7 @@
     "datePublished": "2026-09-04T17:10:45.149+00:00",
     "dateModified": "2026-09-04T17:10:45.149+00:00",
     "inLanguage": "en-US",
-    "wordCount": 63,
+    "wordCount": 116,
     "author": {
       "@type": "Person",
       "name": "David G. Smith",
@@ -280,6 +280,11 @@
             <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">Redis:  From Cache to Vector + Semantic + Agent-Memory Layer</h1>
             <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-vector-databases.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Vector Databases</a><a href="/thoughts-redis.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Redis</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Semantic Layer</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Infrastructure</a></div>
             <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
+<p><strong>The problem Redis solves:</strong> <br>
+* Traditional agent architectures require 3 separate persistence layers (ephemeral key-value cache, dedicated vector DB for semantic search, and document store for chat session history).</p>
+<ul>
+<li>Using Redis as a consolidated tier reduces operational complexity, removes multi-hop network latency, and allows single-query hybrid search (metadata filters + vector similarity).</li>
+</ul>
 <p><a target="_blank" rel="noopener noreferrer" href="https://redis.io/docs/latest/develop/ai/">Redis for AI and Search</a></p></div>
             
     <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
