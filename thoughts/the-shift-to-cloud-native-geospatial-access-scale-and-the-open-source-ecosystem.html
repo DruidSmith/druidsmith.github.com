@@ -288,19 +288,19 @@
 <p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
 <p>Through standard file specifications, catalog APIs, and modern Python toolchains, the geospatial ecosystem has evolved into a composable data science stack. Much of this democratization has been catalyzed by open source software, notably through the work of <a target="_blank" rel="noopener noreferrer" href="https://wetlands.io/">Qiusheng Wu</a> and the broader open geospatial community.</p>
 <p>Here is a breakdown of how the modern cloud-native stack fits together, why it matters, and how to build workflows on top of it.</p>
-<h3>1. The Core Formats: COG, STAC, and GeoParquet</h3>
+<p>** 1. The Core Formats: COG, STAC, and GeoParquet**</p>
 <p>The foundation of cloud-native geospatial relies on three open standards designed specifically for HTTP range requests and serverless querying.</p>
-<h4><a target="_blank" rel="noopener noreferrer" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a></h4>
-<p>A COG is a standard TIFF file organized internally with internal tiling and downsampled overviews (pyramids). When hosted on an S3 bucket or Google Cloud Storage, a client does not need to download the full 500 MB raster to view or analyze a single bounding box. By using HTTP GET range requests, the client requests only the precise bytes required for the view extent or the analysis resolution.</p>
-<h4><a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a></h4>
-<p>While COGs solve the format problem, discovering millions of scenes across global archives requires standardized metadata. STAC provides a JSON-based specification for indexing geospatial assets across space and time. Instead of maintaining proprietary catalog databases, public archives (USGS Landsat, ESA Sentinel, NOAA, Planet) expose searchable STAC APIs.</p>
-<h4><a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a></h4>
-<p>Vector workflows have historically lagged behind rasters in cloud efficiency, relying on shapefiles, GeoJSON, or bulky database exports. GeoParquet brings Apache Parquet's columnar compression, dictionary encoding, and fast partition pruning to geometries. By storing bounding box metadata in Parquet file footers, engines can skip entire files or chunks that do not intersect a query polygon.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a></strong><br>
+A COG is a standard TIFF file organized internally with internal tiling and downsampled overviews (pyramids). When hosted on an S3 bucket or Google Cloud Storage, a client does not need to download the full 500 MB raster to view or analyze a single bounding box. By using HTTP GET range requests, the client requests only the precise bytes required for the view extent or the analysis resolution.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a></strong><br>
+While COGs solve the format problem, discovering millions of scenes across global archives requires standardized metadata. STAC provides a JSON-based specification for indexing geospatial assets across space and time. Instead of maintaining proprietary catalog databases, public archives (USGS Landsat, ESA Sentinel, NOAA, Planet) expose searchable STAC APIs.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a></strong><br>
+Vector workflows have historically lagged behind rasters in cloud efficiency, relying on shapefiles, GeoJSON, or bulky database exports. GeoParquet brings Apache Parquet's columnar compression, dictionary encoding, and fast partition pruning to geometries. By storing bounding box metadata in Parquet file footers, engines can skip entire files or chunks that do not intersect a query polygon.</p>
 <hr>
-<h3>2. Bridging the Gap: The Open Source Python Ecosystem</h3>
+<p><strong>2. Bridging the Gap: The Open Source Python Ecosystem</strong></p>
 <p>Open standards require accessible software to become useful. The open-source geospatial community, with contributors like Qiusheng Wu, has spent recent years building bridges between raw cloud assets and the Python data science environment.</p>
-<h4><a target="_blank" rel="noopener noreferrer" href="https://leafmap.org/">Leafmap</a> and <a target="_blank" rel="noopener noreferrer" href="https://geemap.org/">Geemap</a></h4>
-<p>Qiusheng Wu's development of <code>geemap</code> initially opened Google Earth Engine to the interactive Jupyter environment. His follow-up library, <code>leafmap</code>, acts as a unified, cloud-first interactive mapping package.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://leafmap.org/">Leafmap</a> and <a target="_blank" rel="noopener noreferrer" href="https://geemap.org/">Geemap</a></strong><br>
+Qiusheng Wu's development of <code>geemap</code> initially opened Google Earth Engine to the interactive Jupyter environment. His follow-up library, <code>leafmap</code>, acts as a unified, cloud-first interactive mapping package.</p>
 <p><img alt="Leafmap visualization" src="https://davidgsmith.net/thoughts/images/leafmap-mudasu19-833df2a2.png"></p>
 <p>What makes <code>leafmap</code> distinct is its tight integration with cloud-native formats. You can pass a remote COG URL or point to a public STAC item, and <code>leafmap</code> renders it dynamically using client-side rendering or lightweight tile servers like <a target="_blank" rel="noopener noreferrer" href="https://developmentseed.org/titiler/">TiTiler</a> without storing local raster files.</p>
 <pre><code class="language-python">import leafmap
@@ -310,8 +310,8 @@ cog_url = &quot;[https://opendata.digitalglobe.com/events/mauritius-oil-spill/po
 m.add_cog_layer(cog_url, name=&quot;Remote Satellite Scene&quot;)
 m
 </code></pre>
-<h4>In-Process Spatial SQL: <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/docs/extensions/spatial/overview">DuckDB Spatial</a></h4>
-<p>One of the most consequential advancements in recent geospatial workflows is the pairing of <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/">DuckDB</a> with its spatial extension.</p>
+<p><strong>In-Process Spatial SQL: <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/docs/extensions/spatial/overview">DuckDB Spatial</a><br>
+</strong>One of the most consequential advancements in recent geospatial workflows is the pairing of <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/">DuckDB</a> with its spatial extension.</p>
 <p>You no longer need to spin up a PostGIS instance or configure an enterprise database server just to run spatial joins across vector layers. DuckDB can execute spatial predicates directly against remote Parquet files stored on object storage, streaming only the relevant byte ranges over HTTP.</p>
 <pre><code class="language-sql">INSTALL spatial;
 LOAD spatial;
@@ -326,10 +326,10 @@ WHERE ST_Intersects(
     ST_Point(-77.0369, 38.9072)
 );
 </code></pre>
-<h4>High-Performance Vector Visualization: <a target="_blank" rel="noopener noreferrer" href="https://developmentseed.org/lonboard/latest/">Lonboard</a></h4>
-<p>Rendering millions of vector vertices in an interactive web browser used to freeze the DOM. Through libraries like <code>lonboard</code> (built on top of <a target="_blank" rel="noopener noreferrer" href="https://geoarrow.org/">geoarrow</a> and <a target="_blank" rel="noopener noreferrer" href="https://deck.gl/">deck.gl</a>), Python data scientists can now push millions of points, linestrings, and polygons directly to GPU memory inside Jupyter notebooks with near-zero serialization latency.</p>
+<p><strong>High-Performance Vector Visualization: <a target="_blank" rel="noopener noreferrer" href="https://developmentseed.org/lonboard/latest/">Lonboard</a></strong><br>
+Rendering millions of vector vertices in an interactive web browser used to freeze the DOM. Through libraries like <code>lonboard</code> (built on top of <a target="_blank" rel="noopener noreferrer" href="https://geoarrow.org/">geoarrow</a> and <a target="_blank" rel="noopener noreferrer" href="https://deck.gl/">deck.gl</a>), Python data scientists can now push millions of points, linestrings, and polygons directly to GPU memory inside Jupyter notebooks with near-zero serialization latency.</p>
 <hr>
-<h3>3. Why This Architectural Shift Matters</h3>
+<p><strong>3. Why This Architectural Shift Matters</strong></p>
 <p>The move toward cloud-native geospatial is not merely a change in tooling; it redefines operational economics and team capabilities:</p>
 <ul>
 <li><strong>Lower Infrastructure Costs:</strong> You eliminate the requirement for persistent, always-on spatial database clusters for exploratory data analysis. Serverless queries and object storage cost pennies compared to running dedicated compute instances.</li>
@@ -337,7 +337,7 @@ WHERE ST_Intersects(
 <li><strong>Decoupled Compute and Storage:</strong> Teams can run ad-hoc transformations using DuckDB locally, scale up to distributed Dask or <a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/">Apache Sedona</a> clusters when data volumes expand, and write results back to GeoParquet without altering underlying storage schemas.</li>
 </ul>
 <hr>
-<h3>4. The Path Forward</h3>
+<p><strong>4. The Path Forward</strong></p>
 <p>The cloud-native geospatial ecosystem is maturing quickly. As standards like GeoParquet reach widespread enterprise adoption and browser engines like WebAssembly and WebGPU allow in-browser spatial processing, the line between data engineering and spatial analysis will continue to blur.</p>
 <p>For practitioners looking to modernize their spatial pipelines, the starting point is straightforward: stop downloading files. Start cataloging assets in STAC, convert raster archives to COG, store vector features in GeoParquet, and use libraries like <code>leafmap</code> and <code>DuckDB</code> to query data where it lives.</p>
 <hr>
