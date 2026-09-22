@@ -111,6 +111,8 @@ Rendering millions of vector vertices in an interactive web browser used to free
             <dc:subject>Ontologies</dc:subject>
             <category>AI Infrastructure</category>
             <dc:subject>AI Infrastructure</dc:subject>
+            <category>Apache Sedona</category>
+            <dc:subject>Apache Sedona</dc:subject>
             <content:encoded><![CDATA[<p>The geospatial industry is undergoing a quiet but profound shift. For decades, the standard workflow for analyzing satellite imagery was a fragmented process. Analysts had to download massive files, preprocess the imagery, stitch scenes together, and then run localized analysis scripts.</p>
 <p>Recent advancements have started to collapse this pipeline. With the rise of cloud-native geospatial data structures like Cloud Optimized GeoTIFFs (COGs) and STAC-GeoParquet metadata, data can now stay in the cloud. Tools like Apache Sedona demonstrate how an entire remote sensing pipeline can be compressed into declarative Spatial SQL and NumPy operations, drastically reducing the time from raw pixels to actionable insights.</p>
 <p>However, scaling the physical computation of pixels solves only half the problem. As we stream larger volumes of observational data into automated pipelines, we face a new bottleneck: context.</p>
@@ -389,6 +391,8 @@ True technical maturity isn't about choosing the most complex stack; it's about 
             <dc:subject>Remote Sensing</dc:subject>
             <category>GeoParquet</category>
             <dc:subject>GeoParquet</dc:subject>
+            <category>Apache Sedona</category>
+            <dc:subject>Apache Sedona</dc:subject>
             <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
