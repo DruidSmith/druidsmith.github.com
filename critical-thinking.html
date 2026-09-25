@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation | David G. Smith</title>
-    <meta name="description" content="An exhaustive 466-page manual by David G. Smith synthesizing cognitive psychology, formal logic, statistical risk assessment, and defenses against AI chatbot sycophancy.">
+    <meta name="description" content="An exhaustive 468-page manual by David G. Smith synthesizing cognitive psychology, formal logic, statistical risk assessment, and defenses against AI chatbot sycophancy.">
+    <meta name="author" content="David G. Smith">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://davidgsmith.net/critical-thinking.html">
 
     <!-- OpenGraph Metadata -->
@@ -14,12 +17,129 @@
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://davidgsmith.net/critical-thinking.html">
     <meta property="og:image" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
+    <meta property="og:image:secure_url" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1800">
+    <meta property="og:image:alt" content="Critical Thinking Book Cover by David G. Smith">
+    <meta property="og:locale" content="en_US">
+    <meta property="books:isbn" content="9798194730490">
+    <meta property="books:author" content="https://davidgsmith.net/">
+    <meta property="books:release_date" content="2026-08-27">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Critical Thinking — David G. Smith">
-    <meta name="twitter:description" content="Exhaustive 466-page cognitive defense manual featuring post-2025 case studies and the AI Crux Test.">
+    <meta name="twitter:description" content="Exhaustive 468-page cognitive defense manual featuring practical frameworks and the AI Crux Test.">
     <meta name="twitter:image" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
+    <meta name="twitter:image:alt" content="Critical Thinking Book Cover by David G. Smith">
+
+    <!-- GA4 Tag & Outbound Tracking Script (Replace G-XXXXXXXXXX with your Measurement ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            send_page_view: true
+        });
+
+        // Dynamic UTM parameter engine & outbound event dispatcher
+        function trackAmazonOutbound(event, linkElement, actionType) {
+            event.preventDefault();
+            const originalHref = linkElement.getAttribute('href');
+
+            try {
+                const url = new URL(originalHref);
+                const currentUrlParams = new URLSearchParams(window.location.search);
+                const referrer = document.referrer.toLowerCase();
+
+                let utmSource = currentUrlParams.get('utm_source');
+                let utmMedium = currentUrlParams.get('utm_medium');
+                let utmCampaign = currentUrlParams.get('utm_campaign') || 'critical_thinking_book';
+                let utmContent = currentUrlParams.get('utm_content') || (actionType === 'sample' ? 'sample_button' : 'buy_button');
+
+                if (!utmSource) {
+                    if (referrer.includes('linkedin.com')) {
+                        utmSource = 'linkedin';
+                        utmMedium = 'social';
+                    } else if (referrer.includes('reddit.com')) {
+                        utmSource = 'reddit';
+                        utmMedium = 'social';
+                    } else if (referrer.includes('t.co') || referrer.includes('twitter.com') || referrer.includes('x.com')) {
+                        utmSource = 'twitter';
+                        utmMedium = 'social';
+                    } else if (referrer.includes('mail.') || referrer.includes('mailchimp') || referrer.includes('substack')) {
+                        utmSource = 'email';
+                        utmMedium = 'newsletter';
+                    } else {
+                        utmSource = 'website';
+                        utmMedium = 'author_site';
+                    }
+                }
+
+                url.searchParams.set('utm_source', utmSource);
+                url.searchParams.set('utm_medium', utmMedium || 'referral');
+                url.searchParams.set('utm_campaign', utmCampaign);
+                url.searchParams.set('utm_content', utmContent);
+
+                const finalUrl = url.toString();
+
+                if (typeof gtag === 'function') {
+                    gtag('event', 'click', {
+                        event_category: 'outbound',
+                        event_label: finalUrl,
+                        outbound_hostname: url.hostname,
+                        conversion_type: actionType === 'sample' ? 'sample_read' : 'amazon_purchase',
+                        utm_source: utmSource,
+                        transport_type: 'beacon',
+                        event_callback: function() {
+                            window.open(finalUrl, linkElement.getAttribute('target') || '_self');
+                        }
+                    });
+                } else {
+                    window.open(finalUrl, linkElement.getAttribute('target') || '_self');
+                }
+
+                setTimeout(() => {
+                    window.open(finalUrl, linkElement.getAttribute('target') || '_self');
+                }, 350);
+
+            } catch (err) {
+                window.open(originalHref, linkElement.getAttribute('target') || '_self');
+            }
+        }
+
+        // Web Share & Fallback Handler
+        async function handleShare() {
+            const shareData = {
+                title: 'Critical Thinking by David G. Smith',
+                text: 'A practical, 468-page guide to seeing through bias, noise, and manipulation.',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    if (err.name !== 'AbortError') console.error('Error sharing:', err);
+                }
+            } else {
+                const modal = document.getElementById('share-modal');
+                if (modal) modal.classList.toggle('hidden');
+            }
+        }
+
+        function copyShareUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const notice = document.getElementById('copy-feedback');
+                if (notice) {
+                    notice.classList.remove('opacity-0');
+                    setTimeout(() => notice.classList.add('opacity-0'), 2000);
+                }
+            });
+        }
+    </script>
 
     <!-- Fonts & Tailwind -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,11 +167,20 @@
         }
     </script>
 
-    <!-- Schema.org Book & Product JSON-LD -->
+    <!-- Unified Schema.org Graph: Book, Breadcrumb & FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://davidgsmith.net/critical-thinking.html#webpage",
+          "url": "https://davidgsmith.net/critical-thinking.html",
+          "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
+          "description": "An exhaustive 468-page manual by David G. Smith synthesizing cognitive psychology, formal logic, statistical risk assessment, and defenses against AI chatbot sycophancy.",
+          "breadcrumb": { "@id": "https://davidgsmith.net/critical-thinking.html#breadcrumb" },
+          "mainEntity": { "@id": "https://davidgsmith.net/critical-thinking.html#book" }
+        },
         {
           "@type": "Book",
           "@id": "https://davidgsmith.net/critical-thinking.html#book",
@@ -59,27 +188,63 @@
           "url": "https://davidgsmith.net/critical-thinking.html",
           "image": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
           "isbn": "9798194730490",
-          "numberOfPages": 466,
-          "bookEdition": "2026",
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "ISBN-13",
+              "value": "979-8194730490"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "ASIN",
+              "value": "B0HH3CYK79"
+            }
+          ],
+          "numberOfPages": 468,
+          "bookEdition": "1st Edition (2026)",
           "inLanguage": "en-US",
-          "datePublished": "2026-08-30",
-          "bookFormat": ["https://schema.org/Paperback", "https://schema.org/EBook"],
+          "datePublished": "2026-08-27",
+          "bookFormat": [
+            "https://schema.org/Paperback",
+            "https://schema.org/EBook"
+          ],
           "author": {
             "@type": "Person",
             "name": "David G. Smith",
-            "url": "https://davidgsmith.net/"
+            "url": "https://davidgsmith.net/",
+            "jobTitle": "Technical Architect & Author"
           },
           "publisher": {
             "@type": "Organization",
-            "name": "David G. Smith Publishing",
+            "name": "Independently published",
             "url": "https://davidgsmith.net/"
           },
-          "description": "An exhaustive, high-depth 466-page practical manual synthesizing cognitive psychology, formal logic, statistical risk assessment, and decision-making frameworks.",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://www.amazon.com/dp/B0HH3CYK79",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
+          "genre": ["Non-Fiction", "Cognitive Psychology", "Logic", "Decision Science"],
+          "description": "An exhaustive 468-page practical manual synthesizing cognitive psychology, formal logic, statistical risk assessment, and decision-making frameworks.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Paperback Edition",
+              "url": "https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            },
+            {
+              "@type": "Offer",
+              "name": "Kindle Edition",
+              "url": "https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "1",
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "sameAs": [
             "https://www.goodreads.com/book/show/257686553-critical-thinking",
@@ -89,10 +254,49 @@
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://davidgsmith.net/critical-thinking.html#breadcrumb",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidgsmith.net/" },
             { "@type": "ListItem", "position": 2, "name": "Books", "item": "https://davidgsmith.net/books.html" },
             { "@type": "ListItem", "position": 3, "name": "Critical Thinking", "item": "https://davidgsmith.net/critical-thinking.html" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://davidgsmith.net/critical-thinking.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What makes this critical thinking book different from others?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Unlike books that offer simple lists of cognitive biases or motivational pep talks, this is an engineering-grade 468-page curriculum. It pairs foundational cognitive psychology and formal logic with modern threat vectors, including algorithmic echo chambers, digital dark patterns, and AI chatbot sycophancy (RLHF flattery)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this book suitable for beginners?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The book uses a four-part progressive framework written in a clear, conversational style (Flesch Reading Ease 53.9). It begins with basic neurological blind spots before stepping into formal logic, statistical reasoning, and advanced decision frameworks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the book include exercises and drills?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Every chapter concludes with hands-on drills and structured cognitive exercises designed to convert theoretical knowledge into durable operational instincts and habits."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What formats are available?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Critical Thinking is available worldwide on Amazon in a 6x9-inch matte paperback edition (ISBN 979-8194730490) and as an Amazon Kindle eBook (ASIN B0HH3CYK79)."
+              }
+            }
           ]
         }
       ]
@@ -105,89 +309,111 @@
     <div id="vanta-bg" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                    <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                    <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
-                    <a href="/books.html" class="text-brand-accent transition-colors text-sm font-semibold">Books</a>
-                    <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
+    <header>
+        <nav aria-label="Main Navigation" class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                        <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                        <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+                        <a href="/books.html" class="text-brand-accent transition-colors text-sm font-semibold">Books</a>
+                        <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                        <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero / Purchase Overview -->
+    <main class="pt-32 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+        
+        <!-- Breadcrumb & Share Trigger -->
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <nav aria-label="Breadcrumb" class="text-xs text-slate-400 flex items-center gap-2">
+                <a href="/" class="hover:text-amber-400 transition-colors">Home</a>
+                <span>/</span>
+                <a href="/books.html" class="hover:text-amber-400 transition-colors">Books</a>
+                <span>/</span>
+                <span class="text-slate-200">Critical Thinking</span>
+            </nav>
+
+            <!-- Native Share / Web Widget Button -->
+            <div class="relative">
+                <button onclick="handleShare()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:border-amber-500/50 transition-colors">
+                    <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                    </svg>
+                    <span>Share Page</span>
+                </button>
+
+                <!-- Desktop Fallback Share Dropdown -->
+                <div id="share-modal" class="hidden absolute right-0 mt-2 w-64 p-3 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl z-50 space-y-2">
+                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Share link via</span>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                        <a href="https://twitter.com/intent/tweet?text=Critical%20Thinking%20by%20David%20G.%20Smith&url=https%3A%2F%2Fdavidgsmith.net%2Fcritical-thinking.html" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-200">X</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdavidgsmith.net%2Fcritical-thinking.html" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-200">LinkedIn</a>
+                        <a href="https://reddit.com/submit?url=https%3A%2F%2Fdavidgsmith.net%2Fcritical-thinking.html&title=Critical%20Thinking" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-200">Reddit</a>
+                    </div>
+                    <button onclick="copyShareUrl()" class="w-full text-center py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-xs transition-colors">
+                        Copy Page Link
+                    </button>
+                    <div id="copy-feedback" class="text-[10px] text-center text-amber-400 opacity-0 transition-opacity">Link copied to clipboard!</div>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hero / Purchase Overview -->
-    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        
-        <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="mb-6 text-xs text-slate-400 flex items-center gap-2">
-            <a href="/" class="hover:text-amber-400">Home</a>
-            <span>/</span>
-            <a href="/books.html" class="hover:text-amber-400">Books</a>
-            <span>/</span>
-            <span class="text-slate-200">Critical Thinking</span>
-        </nav>
-
-        <section class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl mb-16">
+        <!-- Top Purchase & Cover Card -->
+        <section class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Book Cover & Badges -->
                 <div class="lg:col-span-5 flex flex-col items-center">
-                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" class="w-full max-w-md rounded-xl shadow-2xl border border-slate-700 mb-6">
+                    <img src="images/CriticalThinkingCover.jpg" 
+                         alt="Cover of Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation by David G. Smith" 
+                         width="448" 
+                         height="672"
+                         loading="eager"
+                         fetchpriority="high"
+                         class="w-full max-w-md rounded-xl shadow-2xl border border-slate-700 mb-6 hover:scale-[1.01] transition-transform">
                     <div class="flex flex-wrap gap-2 justify-center text-xs">
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">466 Pages</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">468 Pages</span>
                         <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">6&Prime; &times; 9&Prime; Matte Paperback</span>
-                        <span class="px-3 py-1 bg-amber-500/20 text-amber-300 rounded border border-amber-500/30">Goodreads: 5.0</span>
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-300 rounded border border-amber-500/30">Goodreads: 5.0 &#9733;&#9733;&#9733;&#9733;&#9733;</span>
                     </div>
                 </div>
 
                 <!-- Book Core Metadata & Actions -->
                 <div class="lg:col-span-7 space-y-6">
-                    <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Non-Fiction &bull; Logic &amp; Decision Science</span>
+                    <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Non-Fiction &bull; Logic, Cognitive Psychology &amp; Decision Science</span>
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white leading-tight">
                         Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation
                     </h1>
                     
-                    <p class="text-slate-300 text-lg leading-relaxed">
-                        An exhaustive guide featuring contemporary post-2025 case studies. Offering two to three times the page volume of traditional texts, this manual builds on verified cognitive research with an extensive synthesis of heuristics, risk modeling, and hands-on exercises.
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        Modern life is engineered to mislead you: from algorithmic feeds built to enrage you, to AI chatbots trained to simply agree with you, to outrage-driven news cycles built to hijack your attention. This book delivers a complete, practical system for seeing through bias, noise, and manipulation, built for the world you actually live in.
                     </p>
 
-                    <!-- CTAs -->
-                    <div class="flex flex-wrap gap-4 pt-2">
+                    <!-- CTAs with Dynamic Outbound UTM Trackers -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           onclick="trackAmazonOutbound(event, this, 'sample')"
+                           class="px-5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs sm:text-sm font-semibold inline-flex items-center gap-2 transition-colors">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                            <span>Read Sample &nearr;<br>&nbsp;</span>
+                        </a>
                         <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="buy-button"
-                            aria-label="Buy Critical Thinking by David G. Smith on Amazon (ASIN B0HH3CYK79)"
-                            data-action="purchase"
-                            data-vendor="amazon"
-                            data-asin="B0HH3CYK79"
-                            data-isbn="9798194730490">
-                            Buy on Amazon
-                        </a>
-
-                        <!-- Direct Cart Staging (Optional secondary agent hook) -->
-                         <!--https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1&AssociateTag=YOUR_TAG-20    -->
-
-                        <!-- 
-                         <a href="https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="hidden"
-                            aria-label="Direct Amazon Add-to-Cart for Critical Thinking">
-                            Add to Amazon Cart
-                        </a>
-                    -->
-
-
-                        <!-- Read Sample in New Tab -->
-                        <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl font-semibold transition-colors flex items-center gap-2">
-                            <span>Read Sample (Amazon) &nearr;</span>
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           onclick="trackAmazonOutbound(event, this, 'purchase')"
+                           class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition-colors shadow-lg">
+                            Buy on Amazon<br>Paperback and Kindle
                         </a>
                     </div>
 
@@ -202,20 +428,20 @@
                             <span class="font-mono font-medium text-slate-200">B0HH3CYK79</span>
                         </div>
                         <div>
-                            <span class="block text-slate-500">LCCN</span>
-                            <span class="font-mono font-medium text-slate-200">2026923862</span>
+                            <span class="block text-slate-500">Print Length</span>
+                            <span class="font-medium text-slate-200">468 pages</span>
                         </div>
                         <div>
-                            <span class="block text-slate-500">Grade Level</span>
-                            <span class="font-medium text-slate-200">10th to 12th Grade</span>
+                            <span class="block text-slate-500">Publication Date</span>
+                            <span class="font-medium text-slate-200">August 27, 2026</span>
                         </div>
                         <div>
                             <span class="block text-slate-500">Reading Ease</span>
                             <span class="font-medium text-slate-200">53.9 (Flesch)</span>
                         </div>
                         <div>
-                            <span class="block text-slate-500">Heuristics Mapped</span>
-                            <span class="font-medium text-slate-200">102 Mental Models</span>
+                            <span class="block text-slate-500">Toolbox Catalog</span>
+                            <span class="font-medium text-slate-200">100+ Models &amp; Biases</span>
                         </div>
                     </div>
 
@@ -223,9 +449,9 @@
                     <div class="pt-4 border-t border-slate-800">
                         <span class="text-xs text-slate-400 block mb-2 font-medium">Reader &amp; Library Indexes:</span>
                         <div class="flex flex-wrap gap-2 text-xs">
-                            <a href="https://www.goodreads.com/book/show/257686553-critical-thinking" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#FAF8F6] text-[#1E1915] rounded hover:opacity-90 font-serif font-medium">Goodreads</a>
-                            <a href="https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing Through-Bias-Noise-and-Manipulation" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#634644] text-white rounded hover:opacity-90 font-serif font-medium">LibraryThing</a>
-                            <a href="https://bookwyrm.social/book/2365772/s/critical-thinking" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#4C1D95] text-white rounded hover:opacity-90 font-medium">BookWyrm</a>
+                            <a href="https://www.goodreads.com/book/show/257686553-critical-thinking" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#FAF8F6] text-[#1E1915] rounded hover:opacity-90 font-serif font-medium transition-opacity">Goodreads</a>
+                            <a href="https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#634644] text-white rounded hover:opacity-90 font-serif font-medium transition-opacity">LibraryThing</a>
+                            <a href="https://bookwyrm.social/book/2365772/s/critical-thinking" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#4C1D95] text-white rounded hover:opacity-90 font-medium transition-opacity">BookWyrm</a>
                         </div>
                     </div>
 
@@ -233,22 +459,250 @@
             </div>
         </section>
 
-        <!-- 4-Part Curriculum Breakdown -->
-        <section class="mb-16">
-            <div class="max-w-3xl mb-8">
+        <!-- CARD: Detailed Narrative Description & Product Details -->
+        <section class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-10">
+            <div>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">About The Book</span>
+                <h2 class="text-2xl sm:text-3xl font-serif font-medium text-white mt-1">A Complete System for Better Thinking</h2>
+            </div>
+
+            <!-- Narrative Intro Quote / Block -->
+            <div class="border-l-4 border-amber-500 pl-6 py-2 bg-slate-950/40 rounded-r-2xl">
+                <blockquote class="text-xl sm:text-2xl font-serif italic text-white leading-relaxed">
+                    &ldquo;Your brain is not your friend. It evolved to keep you alive on the ancestral savanna, not to navigate global supply chains, algorithmic feeds, or late-night internet arguments.&rdquo;
+                </blockquote>
+                <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                    We like to think of ourselves as wise, impartial judges calmly weighing evidence. In reality, we are storytelling machines, employing our intelligence to build brilliant defenses for what our gut instincts have already decided to believe.
+                </p>
+            </div>
+
+            <!-- Narrative Body -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-8 space-y-5 text-slate-300 text-base leading-relaxed">
+                    <p>
+                        In <span class="text-white font-medium">Critical Thinking</span>, engineer and technical architect David G. Smith sifts through decades of research in psychology, behavioral economics, and statistics, including the Nobel-winning work of Kahneman and Tversky and dozens of others and strips away dry academic theory to hand you a rugged, real-world mental toolbox.
+                    </p>
+                    <p>
+                        Unlike most other books in this genre, this book isn't a pep talk and a list of fun facts about your biases; it's a rigorous four-part curriculum spanning 400+ pages: starting with the faulty neural wiring that distorts your judgment, moving through the logic and statistics that correct it, into hands-on defenses for the algorithmic and AI age, and finishing with the strategic frameworks used to make high-stakes decisions under real uncertainty.
+                    </p>
+                    <p>
+                        Drawing on decades of experience dissecting complex systems, Smith delivers a practical, conversational, deeply human guide to getting <em class="text-slate-100">slightly less wrong, slightly more often</em>; backed by dozens of true, high-stakes stories of smart people thinking badly, and more than a dozen hands-on drills built to turn theory into instinct.
+                    </p>
+
+                    <!-- Key Discoveries List -->
+                    <div class="pt-4 space-y-4">
+                        <h3 class="text-lg font-serif font-semibold text-white">In this book, you will discover concepts like:</h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">The Mechanics of Logic:</strong> Learn to x-ray any argument down to its load-bearing assumptions and spot hidden structural flaws before they pull you in.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">The Redirection of Manipulation:</strong> Spot professional propaganda, emotional clickbait, and digital dark patterns designed to hijack your attention.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">The Synthetic Sycophant:</strong> Learn to interrogate AI chatbots built to keep agreeing with you, and spot synthetic media before it fools you.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">Probabilistic Reasoning:</strong> Ground your daily decisions in base rates and statistical reality instead of falling for vivid, misleading anecdotes.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">Metacognitive Quality Control:</strong> Install an internal alarm system to catch your own cognitive biases and blind spots in real time.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">The Cobra Problem &amp; Perverse Incentives:</strong> Understand why elegant, linear solutions so often explode into disaster in complex systems.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">Strategic Decision Systems:</strong> Use red team thinking, premortems, and reference-class forecasting to stress-test the decisions that matter most.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+                                <div><strong class="text-white">Bad-Faith Debate Defense:</strong> Recognize and disarm conversational traps like the Gish Gallop, sealioning, and the motte-and-bailey before they derail you.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Toolbox summary -->
+                    <div class="p-5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-slate-300 space-y-2">
+                        <p>
+                            Under the hood sits a toolbox of <strong class="text-white">100+ concepts, biases, fallacies, and heuristics</strong>; each with a clear definition, a real-world example, and its most common misapplication, so the right tool comes to mind exactly when you need it. Every chapter closes with a hands-on exercise, turning ideas into habits instead of trivia.
+                        </p>
+                        <p class="font-medium text-amber-400 pt-1">
+                            Critical Thinking hands you the proactive, offensive capabilities required to navigate modern noise. It is time to upgrade your judgment, escape the digital echo chamber, and reclaim your cognitive sovereignty.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Product Details & Barcode Card (Right Column) -->
+                <div class="lg:col-span-4 bg-slate-950/80 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+                    <div>
+                        <span class="text-xs font-mono font-semibold text-amber-400 uppercase tracking-wider block">Publication</span>
+                        <h4 class="text-lg font-serif font-semibold text-white mt-1">Product Details</h4>
+                    </div>
+
+                    <dl class="space-y-3 text-xs border-y border-slate-800 py-4">
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">ASIN</dt>
+                            <dd class="font-mono text-slate-200">B0HH3CYK79</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">Publisher</dt>
+                            <dd class="text-slate-200 text-right">Independently published</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">Publication Date</dt>
+                            <dd class="text-slate-200">August 27, 2026</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">Language</dt>
+                            <dd class="text-slate-200">English</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">Page Count</dt>
+                            <dd class="text-slate-200">468 pages</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">ISBN-13</dt>
+                            <dd class="font-mono font-semibold text-amber-300">979-8194730490</dd>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-900">
+                            <dt class="text-slate-400">Item Weight</dt>
+                            <dd class="text-slate-200">1.73 pounds</dd>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <dt class="text-slate-400">Dimensions</dt>
+                            <dd class="text-slate-200">6 &times; 9 &times; 1.06 inches</dd>
+                        </div>
+                    </dl>
+
+                    <!-- Barcode Display (Optimized Vector with aria-label) -->
+                    <div class="bg-white p-4 rounded-xl shadow-inner text-slate-900 flex flex-col items-center">
+                        <span class="text-[10px] font-mono tracking-wider font-semibold text-slate-600 mb-1">EAN / ISBN-13 BARCODE</span>
+                        
+                        <svg class="w-full max-w-[240px] h-20" viewBox="0 0 220 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EAN Barcode for ISBN 979-8-1947304-9-0">
+                            <rect width="220" height="80" fill="#ffffff"/>
+                            <g fill="#000000">
+                                <rect x="14" y="5" width="2" height="58"/>
+                                <rect x="18" y="5" width="2" height="58"/>
+                                <rect x="22" y="5" width="2" height="50"/>
+                                <rect x="26" y="5" width="4" height="50"/>
+                                <rect x="32" y="5" width="2" height="50"/>
+                                <rect x="38" y="5" width="2" height="50"/>
+                                <rect x="42" y="5" width="4" height="50"/>
+                                <rect x="48" y="5" width="2" height="50"/>
+                                <rect x="52" y="5" width="2" height="50"/>
+                                <rect x="58" y="5" width="4" height="50"/>
+                                <rect x="64" y="5" width="2" height="50"/>
+                                <rect x="70" y="5" width="4" height="50"/>
+                                <rect x="76" y="5" width="2" height="50"/>
+                                <rect x="82" y="5" width="2" height="50"/>
+                                <rect x="88" y="5" width="4" height="50"/>
+                                <rect x="96" y="5" width="2" height="50"/>
+                                <rect x="100" y="5" width="4" height="50"/>
+                                <rect x="108" y="5" width="2" height="58"/>
+                                <rect x="112" y="5" width="2" height="58"/>
+                                <rect x="118" y="5" width="2" height="50"/>
+                                <rect x="122" y="5" width="4" height="50"/>
+                                <rect x="128" y="5" width="2" height="50"/>
+                                <rect x="134" y="5" width="2" height="50"/>
+                                <rect x="138" y="5" width="4" height="50"/>
+                                <rect x="146" y="5" width="2" height="50"/>
+                                <rect x="150" y="5" width="4" height="50"/>
+                                <rect x="156" y="5" width="2" height="50"/>
+                                <rect x="162" y="5" width="4" height="50"/>
+                                <rect x="168" y="5" width="2" height="50"/>
+                                <rect x="174" y="5" width="2" height="50"/>
+                                <rect x="180" y="5" width="4" height="50"/>
+                                <rect x="186" y="5" width="2" height="50"/>
+                                <rect x="192" y="5" width="4" height="50"/>
+                                <rect x="198" y="5" width="2" height="50"/>
+                                <rect x="204" y="5" width="2" height="58"/>
+                                <rect x="208" y="5" width="2" height="58"/>
+                            </g>
+                            <text x="6" y="73" font-family="monospace" font-size="10" font-weight="bold" fill="#000000">9</text>
+                            <text x="36" y="73" font-family="monospace" font-size="10" font-weight="bold" fill="#000000">798194</text>
+                            <text x="130" y="73" font-family="monospace" font-size="10" font-weight="bold" fill="#000000">730490</text>
+                        </svg>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-slate-800 mt-1">979-8-1947304-9-0</span>
+                    </div>
+
+                    <!-- Direct Quick Action -->
+                    <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       onclick="trackAmazonOutbound(event, this, 'purchase')"
+                       class="w-full block text-center py-2.5 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors">
+                        Order on Amazon &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6-Pillar System Grid Highlights -->
+            <div class="pt-8 border-t border-slate-800">
+                <h3 class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-6">The Book's Structural Highlights</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Powerhouse Synthesis</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Built on Kahneman &amp; Tversky's Nobel-winning research plus decades of peer-reviewed work in psychology, statistics, and behavioral economics, curated into one coherent system.
+                        </p>
+                    </div>
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">4-Part Progressive Framework</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            400+ pages moving from neural bugs, through the math of logic and statistics, into the modern internet, and finally into strategic decision systems.
+                        </p>
+                    </div>
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">100+ Concept Toolbox</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Biases, fallacies, techniques, and heuristics mapped with clear definitions, real-world examples, common misapplications, and cross-references for fast recall.
+                        </p>
+                    </div>
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Real Stakes, Not Hypotheticals</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Dozens of true walkthroughs showing how good people, thinking badly, produced catastrophic real-world outcomes.
+                        </p>
+                    </div>
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Hands-On Training</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Over a dozen structured drills and exercises built to turn concepts into durable cognitive muscle memory, not just trivia.
+                        </p>
+                    </div>
+                    <div class="p-5 bg-slate-950/50 border border-slate-800/80 rounded-xl space-y-2">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">AI &amp; Algorithmic Defense</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Dedicated tactics against dark patterns, outrage-driven polarization, and AI chatbots engineered to keep agreeing with you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARD: 4 Progressive Cognitive Defense Arcs -->
+        <section class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-8">
+            <div class="max-w-3xl">
                 <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Curriculum &amp; Structure</span>
                 <h2 class="text-2xl sm:text-3xl font-serif font-medium text-white mt-1">Four Progressive Cognitive Defense Arcs</h2>
-                <p class="text-slate-400 text-sm mt-2">A systematic 466-page arc advancing from biological bugs to advanced metacognitive operational models.</p>
+                <p class="text-slate-400 text-sm mt-2">A systematic 468-page curriculum advancing from biological bugs to advanced metacognitive operational models.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Part 1 -->
-                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="bg-slate-950/70 border border-slate-800 hover:border-amber-500/40 transition-colors rounded-2xl p-6 shadow-xl">
                     <span class="text-xs font-mono font-semibold text-amber-400">PART I</span>
                     <h3 class="text-xl font-serif font-semibold text-white mb-2">The Flawed Machine</h3>
                     <p class="text-slate-300 text-sm mb-4 leading-relaxed">Internal neurological shortcuts, narrative fabrications, and the neurobiology of emotion (Somatic Marker Hypothesis).</p>
-                    <ul class="text-xs text-slate-400 space-y-1.5 border-t border-slate-800 pt-3">
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-3">
                         <li><strong>Ch 1:</strong> Your Brain is Not Your Friend (System 1 vs. System 2, Anchoring, Confirmation Bias)</li>
                         <li><strong>Ch 2:</strong> The Stories We Tell Ourselves (Narrative Fallacy, Hindsight Bias, Clustering)</li>
                         <li><strong>Ch 3:</strong> Emotion vs. Reason (Motivated Reasoning, Tribal Affect Heuristics)</li>
@@ -256,11 +710,11 @@
                 </div>
 
                 <!-- Part 2 -->
-                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="bg-slate-950/70 border border-slate-800 hover:border-amber-500/40 transition-colors rounded-2xl p-6 shadow-xl">
                     <span class="text-xs font-mono font-semibold text-amber-400">PART II</span>
                     <h3 class="text-xl font-serif font-semibold text-white mb-2">The Mechanics of Thinking</h3>
                     <p class="text-slate-300 text-sm mb-4 leading-relaxed">Formal, informal, and symbolic logic, evidence appraisal, and statistical literacy.</p>
-                    <ul class="text-xs text-slate-400 space-y-1.5 border-t border-slate-800 pt-3">
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-3">
                         <li><strong>Ch 4:</strong> Logic: The Operating System of Thought (Deductive, Inductive &amp; Abductive Proofs)</li>
                         <li><strong>Ch 5:</strong> The Fallacy Files (Ad Hominem, Straw Man, Motte-and-Bailey, Whataboutism)</li>
                         <li><strong>Ch 6:</strong> Numbers Don't Lie, But People Do (Simpson's Paradox, Base Rate Neglect, Relative Risk)</li>
@@ -268,11 +722,11 @@
                 </div>
 
                 <!-- Part 3 -->
-                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="bg-slate-950/70 border border-slate-800 hover:border-cyan-500/40 transition-colors rounded-2xl p-6 shadow-xl">
                     <span class="text-xs font-mono font-semibold text-cyan-400">PART III</span>
                     <h3 class="text-xl font-serif font-semibold text-white mb-2">Information in the Wild</h3>
                     <p class="text-slate-300 text-sm mb-4 leading-relaxed">Navigating digital media spin, source evaluation, research methodologies, and AI chatbot defenses.</p>
-                    <ul class="text-xs text-slate-400 space-y-1.5 border-t border-slate-800 pt-3">
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-3">
                         <li><strong>Ch 7:</strong> Fact vs. Opinion vs. Everything In Between (Falsifiability &amp; Value Smuggling)</li>
                         <li><strong>Ch 8:</strong> The Source Code (CRAAP Test, Lateral Reading, Incentive Triangulation)</li>
                         <li><strong>Ch 9:</strong> Research Like a Detective (Citation Laundering &amp; Source Tracking)</li>
@@ -282,11 +736,11 @@
                 </div>
 
                 <!-- Part 4 -->
-                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="bg-slate-950/70 border border-slate-800 hover:border-cyan-500/40 transition-colors rounded-2xl p-6 shadow-xl">
                     <span class="text-xs font-mono font-semibold text-cyan-400">PART IV</span>
                     <h3 class="text-xl font-serif font-semibold text-white mb-2">The Advanced Toolkit</h3>
                     <p class="text-slate-300 text-sm mb-4 leading-relaxed">Systems thinking, probabilistic forecasting, constructive disagreement, metacognition, and post-mortems.</p>
-                    <ul class="text-xs text-slate-400 space-y-1.5 border-t border-slate-800 pt-3">
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-3">
                         <li><strong>Ch 12:</strong> Second-Order Thinking &amp; Unintended Consequences (Chesterton's Fence, Cobra Problem)</li>
                         <li><strong>Ch 13:</strong> Probability &amp; Uncertainty (Bayesian Updating, Expected Value, Base Rates)</li>
                         <li><strong>Ch 14:</strong> Arguing Well: The Productive Disagreement (Steelmanning, Ideological Turing Tests)</li>
@@ -296,6 +750,77 @@
                     </ul>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- CARD: Frequently Asked Questions (Matches FAQPage Schema) -->
+        <section class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-8" id="faq">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Frequently Asked Questions</span>
+                <h2 class="text-2xl sm:text-3xl font-serif font-medium text-white mt-1">Everything You Need to Know</h2>
+                <p class="text-slate-400 text-sm mt-2">Answers to common reader questions regarding scope, difficulty, exercises, and formats.</p>
+            </div>
+
+            <div class="space-y-4 max-w-4xl">
+                <!-- FAQ Item 1 -->
+                <details class="group bg-slate-950/60 border border-slate-800 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer font-serif font-medium text-white text-base sm:text-lg">
+                        <span>What makes this critical thinking book different from others?</span>
+                        <span class="ml-4 flex-shrink-0 text-amber-500 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-300 text-sm leading-relaxed border-t border-slate-900 pt-3">
+                        Unlike books that offer high-level pep talks or simple trivia lists of cognitive biases, this is an exhaustive, engineering-grade 468-page curriculum. It pairs foundational cognitive psychology and classical formal logic with modern threat vectors, including algorithmic outrage generation, digital dark patterns, and AI chatbot sycophancy (RLHF flattery and sycophantic behavior).
+                    </p>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="group bg-slate-950/60 border border-slate-800 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer font-serif font-medium text-white text-base sm:text-lg">
+                        <span>Is this book suitable for beginners?</span>
+                        <span class="ml-4 flex-shrink-0 text-amber-500 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-300 text-sm leading-relaxed border-t border-slate-900 pt-3">
+                        Yes. The curriculum is constructed with a four-part progressive framework written in a direct, accessible voice (tested at 53.9 on the Flesch Reading Ease scale). It begins with familiar neurological everyday mistakes before incrementally scaffolding into formal proofs, statistical literacy, and advanced decision frameworks.
+                    </p>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="group bg-slate-950/60 border border-slate-800 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer font-serif font-medium text-white text-base sm:text-lg">
+                        <span>Does the book include practical exercises?</span>
+                        <span class="ml-4 flex-shrink-0 text-amber-500 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-300 text-sm leading-relaxed border-t border-slate-900 pt-3">
+                        Yes. Each chapter concludes with concrete drills, case studies (such as the Challenger disaster and Theranos breakdown), and hands-on exercises designed to build instinctive cognitive muscle memory rather than passive academic understanding.
+                    </p>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="group bg-slate-950/60 border border-slate-800 rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer font-serif font-medium text-white text-base sm:text-lg">
+                        <span>What formats are available?</span>
+                        <span class="ml-4 flex-shrink-0 text-amber-500 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-300 text-sm leading-relaxed border-t border-slate-900 pt-3">
+                        The book is published in both a physical 6&times;9-inch matte paperback edition (ISBN: 979-8194730490) and an Amazon Kindle digital edition (ASIN: B0HH3CYK79).
+                    </p>
+                </details>
             </div>
         </section>
 
@@ -341,6 +866,51 @@
                     cohesion: 55.00,
                 });
             }
+        });
+    </script>
+
+    <!-- Sticky Bottom Nepal Relief Banner -->
+    <div id="sticky-relief-banner" class="fixed bottom-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-t border-gray-700 text-white shadow-2xl py-4 px-4 sm:px-6 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <!-- Message & Relief Link -->
+            <div class="text-center sm:text-left text-sm sm:text-base">
+                <span class="font-black text-brand-accent uppercase tracking-wider text-sm sm:text-base block sm:inline sm:mr-2">2026 Nepal Floods:</span>
+                <span class="text-gray-200">
+                    Through November, 20% of my net book royalties will go to <a href="https://donate.redcrossredcrescent.org/ifrc/nepal-flash-floods/~my-donation?_cv=1" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline hover:text-amber-400 font-semibold transition-colors">relief efforts</a>.
+                </span>
+            </div>
+
+            <!-- CTA Button & Close Option -->
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   onclick="trackAmazonOutbound(event, this, 'purchase_sticky')"
+                   class="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white text-brand-dark rounded text-sm font-medium hover:bg-gray-100 transition-all shadow">
+                    <!-- Amazon Icon with contrast background -->
+                    <span class="w-7 h-7 bg-gray-900 rounded-full flex items-center justify-center p-1 flex-shrink-0">
+                        <svg class="w-8 h-8 text-[#FF9900]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.93 17.09c-.38.05-.72.09-1.02.13-.53.07-1.03.11-1.51.11-1.12 0-2.02-.27-2.71-.81-.69-.54-1.03-1.32-1.03-2.35 0-.75.2-1.42.59-2.02.39-.6 1.01-1.1 1.86-1.51.85-.41 1.95-.73 3.3-0.96v-.48c0-.62-.15-1.1-.46-1.43-.31-.33-.8-.5-1.47-.5-.54 0-1.02.13-1.44.38-.42.25-.74.62-.96 1.11L8.9 9.38c.37-.8 1-1.43 1.89-1.88.89-.45 1.95-.68 3.19-.68 1.12 0 2.01.25 2.67.75.66.5 0.99 1.25 0.99 2.25v5.17c0 .54.04 1.01.12 1.41.08.4.24.78.48 1.14l-3.32-.01zm-.51-5.35c-1.02.19-1.78.44-2.28.75-.5.31-.75.75-.75 1.32 0 .42.15.76.45 1.02.3.26.7.39 1.2.39.38 0 .76-.04 1.14-.13.38-.09.73-.21 1.06-.37v-2.98z"/>
+                        </svg>
+                    </span>
+                    <span>Buy My Book</span>
+                </a>
+                
+                <!-- Close Button -->
+                <button id="close-sticky-banner" class="text-gray-400 hover:text-white p-1 focus:outline-none" aria-label="Close banner">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('close-sticky-banner').addEventListener('click', function() {
+            document.getElementById('sticky-relief-banner').style.display = 'none';
         });
     </script>
 </body>
