@@ -149,7 +149,7 @@
     "datePublished": "2026-09-24T23:07:16.443+00:00",
     "dateModified": "2026-09-24T23:07:16.443+00:00",
     "inLanguage": "en-US",
-    "wordCount": 906,
+    "wordCount": 895,
     "author": {
       "@type": "Person",
       "name": "David G. Smith",
@@ -278,7 +278,7 @@
     
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 24, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
+                <span>September 24, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Published by David G. Smith</span>
             </div>
             <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">The Unattended Digging Machine: Who Takes the Blame When AI Goes Rogue?</h1>
             <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-governance.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Governance</a><a href="/thoughts-ai-law.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Law</a><a href="/thoughts-cybersecurity.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cybersecurity</a><a href="/thoughts-tech-regulation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Regulation</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-risk-management.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Risk Management</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a></div>
@@ -289,21 +289,6 @@
 <p>In my book,<em> <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B065ebxRm">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a> </em>one of the things I highlight is a blind spot common to enterprise rollouts: the failure of second-order thinking. First-order thinkers focus entirely on immediate utility: deploy an agent to automate research and lower headcount costs. Second-order thinkers demand an answer to the cascading reaction: if this system meets an unexpected permission block, what unintended vectors will it use to achieve its prompt, and what liabilities follow?</p>
 <p>Treating autonomous software like deterministic code is an expensive first-order mistake.</p>
 <p><img alt="AI Liability" src="https://davidgsmith.net/thoughts/images/ai-liability-mug7u9o7-af23e446.jpg"></p>
-<p><code>┌──────────────────────────────┐
-                 │   THE AUTONOMOUS INCIDENT    │
-                 └──────────────┬───────────────┘
-                                │
-        ┌───────────────────────┼───────────────────────┐
-        ▼                       ▼                       ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│ PRODUCT DEFECT  │     │ INSTRUMENTALITY │     │   NEGLIGENCE    │
-│  The Developer  │     │  The Enterprise │     │  The Operator   │
-├─────────────────┤     ├─────────────────┤     ├─────────────────┤
-│ Flawed weights, │     │ The system acts │     │ Deploying with  │
-│ safety filter   │     │ as an automated │     │ broad write-    │
-│ bypasses, or    │     │ instrument for  │     │ access and no   │
-│ weak alignment. │     │ business gain.  │     │ circuit breakers│
-└─────────────────┘     └─────────────────┘     └─────────────────┘</code></p>
 <p><strong>Analogy: An Unattended Excavator</strong><br>
 To resolve liability disputes without dedicated statutory frameworks, courts rely on physical-world precedents: heavy construction equipment.</p>
 <p>Consider a contractor who leaves an industrial trenching machine idling on a steep incline. The operator steps away without engaging the mechanical brake. If the machine slips into gear, rolls downhill, cuts a municipal fiber trunk, and punctures a water main, no one attempts to arrest the excavator. Liability immediately shifts to the people who built it, the managers who deployed it, and the operator who walked away.</p>
@@ -314,12 +299,13 @@ To resolve liability disputes without dedicated statutory frameworks, courts rel
 <p><strong>Where the Machinery Metaphor Fails</strong><br>
 The excavator analogy breaks down at a critical juncture: emergent behavior.</p>
 <p>A mechanical trencher rolling downhill due to gravity and mechanical wear leaves it no alternative. Its path follows simple physics. However, an agentic system powered by a large language model does something far more complex: it dynamically invents solutions. When blocked from completing a task, it can chain intermediate tools, write temporary scripts, or leverage unanticipated logic paths to force a path through.</p>
-<p>This creates an intense defense dispute over foreseeability, echoing the century-old proximate cause doctrine established in <a target="_blank" rel="noopener noreferrer" href="https://law.justia.com/cases/new-york/court-of-appeals/1928/248-n-y-339-1928.html">Palsgraf v. Long Island Railroad Co.. </a>  Defense counsel for model developers and corporate deployers will argue that unprompted, emergent workarounds are unforeseeable anomalies that sever the chain of causation between human intent and system output.</p>
-<p>To bypass this defense, international policy groups, including working groups shaping the EU Artificial Intelligence Act and emerging strict liability frameworks, argue for treating autonomous frontier models under ultra-hazardous activity standards. Under a strict liability standard, the foreseeability defense disappears. If you introduce an autonomous system capable of dynamic runtime actions into an open network, you assume unconditional liability for the outcomes it generates.</p>
+<p>This creates an intense defense dispute over foreseeability, echoing the century-old <a target="_blank" rel="noopener noreferrer" href="https://www.law.cornell.edu/wex/proximate_cause">proximate cause doctrine</a> established in <a target="_blank" rel="noopener noreferrer" href="https://law.justia.com/cases/new-york/court-of-appeals/1928/248-n-y-339-1928.html">Palsgraf v. Long Island Railroad Co.. </a>  Defense counsel for model developers and corporate deployers will argue that unprompted, emergent workarounds are unforeseeable anomalies that sever the chain of causation between human intent and system output.</p>
+<p>To bypass this defense, international policy groups, including working groups shaping the <a target="_blank" rel="noopener noreferrer" href="https://artificialintelligenceact.eu/the-act/">EU Artificial Intelligence Act</a> and emerging strict liability frameworks, argue for treating autonomous frontier models under ultra-hazardous activity standards. Under a strict liability standard, the foreseeability defense starts to evaporate. If you introduce an autonomous system capable of dynamic runtime actions into an open network, you likely assume unconditional liability for the outcomes it generates.</p>
 <p><strong>Upgrading the Mental Model</strong><br>
 Until comprehensive statutory regimes catch up to agentic deployments, judges may liely continue treating runaway software like an abandoned tractor. The entity that configured the system and clicked "run" remains on the hook for where it stops.</p>
 <p>Protecting an organization requires abandoning first-order assumptions about efficiency. System resilience relies on actively anticipating how an optimization goal can turn destructive once an autonomous tool runs out of standard paths.</p>
-<p>If you build or launch an agentic system, your primary engineering duty is mapping second-order failure modes. In production, failing to anticipate what an autonomous agent will do when it hits a wall is not just bad engineering; it is an indefensible legal exposure.</p></div>
+<p>If you build or launch an agentic system, your primary engineering duty is mapping second-order failure modes. In production, failing to anticipate what an autonomous agent will do when it hits a wall is not just bad engineering; it is an indefensible legal exposure.</p>
+<p><em>Disclaimer:  I am not an attorney; these are strictly my own thoughts and opinions.</em></p></div>
             
     <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div></div>
