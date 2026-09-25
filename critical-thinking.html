@@ -167,19 +167,39 @@
         }
     </script>
 
-    <!-- Unified Schema.org Graph: Book, Breadcrumb & FAQ -->
+<!-- Unified Schema.org Graph: Book, Breadcrumb, FAQ & Agent Actions -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Person",
+          "@id": "https://davidgsmith.net/#person",
+          "name": "David G. Smith",
+          "url": "https://davidgsmith.net/",
+          "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+          "jobTitle": "Data Scientist, Technical Architect & Author",
+          "sameAs": [
+            "https://www.linkedin.com/in/davidgsmith",
+            "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
+            "https://www.goodreads.com/author/show/72277946.David_G_Smith",
+            "https://www.librarything.com/a/32948024/David-G-Smith",
+            "https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0",
+            "https://bookwyrm.social/author/445970/s/david-g-smith"
+          ]
+        },
+        {
           "@type": "WebPage",
           "@id": "https://davidgsmith.net/critical-thinking.html#webpage",
           "url": "https://davidgsmith.net/critical-thinking.html",
           "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
-          "description": "An exhaustive 468-page manual by David G. Smith synthesizing cognitive psychology, formal logic, statistical risk assessment, and defenses against AI chatbot sycophancy.",
+          "description": "An exhaustive 468-page practical manual synthesizing cognitive psychology, formal logic, statistical risk assessment, and defenses against AI chatbot sycophancy.",
           "breadcrumb": { "@id": "https://davidgsmith.net/critical-thinking.html#breadcrumb" },
-          "mainEntity": { "@id": "https://davidgsmith.net/critical-thinking.html#book" }
+          "mainEntity": { "@id": "https://davidgsmith.net/critical-thinking.html#book" },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["#book-core-summary", "#faq"]
+          }
         },
         {
           "@type": "Book",
@@ -198,6 +218,11 @@
               "@type": "PropertyValue",
               "propertyID": "ASIN",
               "value": "B0HH3CYK79"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "LCCN",
+              "value": "2026923862"
             }
           ],
           "numberOfPages": 468,
@@ -208,19 +233,27 @@
             "https://schema.org/Paperback",
             "https://schema.org/EBook"
           ],
-          "author": {
-            "@type": "Person",
-            "name": "David G. Smith",
-            "url": "https://davidgsmith.net/",
-            "jobTitle": "Technical Architect & Author"
-          },
+          "author": { "@id": "https://davidgsmith.net/#person" },
           "publisher": {
             "@type": "Organization",
             "name": "Independently published",
             "url": "https://davidgsmith.net/"
           },
-          "genre": ["Non-Fiction", "Cognitive Psychology", "Logic", "Decision Science"],
-          "description": "An exhaustive 468-page practical manual synthesizing cognitive psychology, formal logic, statistical risk assessment, and decision-making frameworks.",
+          "genre": [
+            "Non-Fiction",
+            "Cognitive Psychology",
+            "Logic & Reasoning",
+            "Decision Science",
+            "Media Literacy"
+          ],
+          "about": [
+            { "@type": "Thing", "name": "Cognitive Biases" },
+            { "@type": "Thing", "name": "Logical Fallacies" },
+            { "@type": "Thing", "name": "Statistical Literacy" },
+            { "@type": "Thing", "name": "Artificial Intelligence Sycophancy" },
+            { "@type": "Thing", "name": "Adversarial Metacognition" }
+          ],
+          "description": "An engineering-grade 468-page guide covering cognitive psychology, formal logic, statistical risk assessment, and defenses against digital manipulation and AI chatbot sycophancy.",
           "offers": [
             {
               "@type": "Offer",
@@ -239,6 +272,21 @@
               "itemCondition": "https://schema.org/NewCondition"
             }
           ],
+          "potentialAction": [
+            {
+              "@type": "BuyAction",
+              "target": "https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20",
+              "seller": {
+                "@type": "Organization",
+                "name": "Amazon"
+              }
+            },
+            {
+              "@type": "ReadAction",
+              "target": "https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1",
+              "name": "Read Sample Chapter"
+            }
+          ],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5.0",
@@ -248,7 +296,7 @@
           },
           "sameAs": [
             "https://www.goodreads.com/book/show/257686553-critical-thinking",
-            "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
+            "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing Through-Bias-Noise-and-Manipulation",
             "https://bookwyrm.social/book/2365772/s/critical-thinking"
           ]
         },
@@ -302,6 +350,7 @@
       ]
     }
     </script>
+
 </head>
 <body class="font-sans text-brand-muted bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
 
@@ -392,7 +441,7 @@
                         Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation
                     </h1>
                     
-                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                    <p id="book-core-summary" class="text-slate-300 text-base sm:text-lg leading-relaxed">
                         Modern life is engineered to mislead you: from algorithmic feeds built to enrage you, to AI chatbots trained to simply agree with you, to outrage-driven news cycles built to hijack your attention. This book delivers a complete, practical system for seeing through bias, noise, and manipulation, built for the world you actually live in.
                     </p>
 

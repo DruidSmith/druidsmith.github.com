@@ -1006,10 +1006,38 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     <priority>1.0</priority>
   </url>""",
         f"""  <url>
+    <loc>https://davidgsmith.net/books.html</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>""",
+        f"""  <url>
+    <loc>https://davidgsmith.net/critical-thinking.html</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <image:loc>https://davidgsmith.net/images/CriticalThinkingCover.jpg</image:loc>
+      <image:title>Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</image:title>
+    </image:image>
+  </url>""",
+        f"""  <url>
     <loc>https://davidgsmith.net/thoughts.html</loc>
     <lastmod>{now_iso}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>""",
+        f"""  <url>
+    <loc>https://davidgsmith.net/llms.txt</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""",
+        f"""  <url>
+    <loc>https://davidgsmith.net/book-manifest.json</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>"""
     ]
     
@@ -1041,12 +1069,13 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
   </url>""")
 
     sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 {chr(10).join(entries)}
 </urlset>"""
     with open("sitemap.xml", "w", encoding="utf-8") as f:
         f.write(sitemap_xml.strip())
-    print("✓ Generated sitemap.xml for Google search indexing.")
+    print("✓ Generated sitemap.xml for search and AI crawler indexing.")
 
 def generate_html():
     posts = load_posts()

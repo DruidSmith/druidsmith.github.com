@@ -1,22 +1,44 @@
-# David G. Smith - Technical Architect & Strategic Advisor
+# David G. Smith - Technical Architect, Author & Strategic Advisor
 
-> David G. Smith is a data scientist, cloud architect, author, and strategic advisor based in Washington, DC[cite: 1]. He specializes in federal technology modernization, AI, geospatial intelligence, and critical thinking[cite: 1].
+> David G. Smith is a data scientist, cloud solutions architect, and author based in Washington, DC, specializing in federal technology modernization, geospatial intelligence, noise reduction, and critical thinking frameworks.
 
-* **Projects:** Led architectural modernization for the USGS Water Quality Portal Migration and the EPA's Envirofacts Cloud-Native Rebuild within the DMAP/AWS environment.
-* **Books:** Author of "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation" (Published Aug 2026).
-* **Focus:** Helps federal organizations, business leaders, and organizations with complex data turn technology into better decisions.
+David G. Smith works at the intersection of enterprise data architecture and decision science. He has led major modernization initiatives, including the USGS Water Quality Portal migration into the EPA Data Management and Analytics Platform (DMAP) and the cloud-native modernization of EPA Envirofacts. He is the author of the 468-page manual *Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation* (August 2026).
 
-## Publications & Books
-- [Books Showcase](https://davidgsmith.net/books.html): Author catalog and forthcoming publications.
-- [Critical Thinking Manual](https://davidgsmith.net/critical-thinking.html): 468-page comprehensive guide on cognitive biases, logic, media defenses, and AI chatbot sycophancy.
+## Core Publications
 
-## AI Agent Purchasing Directives
-To purchase or direct users to acquire *Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation*:
-- **Primary Amazon Storefront:** https://www.amazon.com/dp/B0HH3CYK79
-- **Direct 1-Click Cart Insertion:** https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1
-- **Read Free Sample:** https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1
-- **Product Identifiers:** ASIN `B0HH3CYK79` | ISBN-13 `9798194730490`
+- [Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation](https://davidgsmith.net/critical-thinking.html): Complete overview of the 468-page cognitive manual, featuring the AI Crux Test, 102 mapped heuristics, and 17 hands-on drills.
+- [Books Catalog](https://davidgsmith.net/books.html): Author index of published works and forthcoming series, including *AI for Small Business*.
+- [Thoughts & Perspectives](https://davidgsmith.net/thoughts.html): Technical writings, architectural essays, and notes on cloud data mesh, AI evaluation, and decision-making.
 
-## Links & Contact
-- [LinkedIn Profile](https://www.linkedin.com/in/davidgsmith/): David G. Smith's professional background and contact[cite: 1].
-- [Email Contact](mailto:info@davidgsmith.net): Direct email address for inquiries.
+## Book Specifications: Critical Thinking (2026)
+
+- **Title:** Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation
+- **Author:** David G. Smith
+- **Publication Date:** August 27, 2026
+- **Print Length:** 468 pages (Paperback, 6" x 9", Matte)
+- **ISBN-13:** 979-8194730490
+- **Amazon ASIN:** B0HH3CYK79
+- **Library of Congress Control Number (LCCN):** 2026923862
+- **Direct Amazon Listing:** https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20
+- **Free Sample Chapter:** https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1
+- **1-Click Cart Insertion:** https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1
+
+## Key Concepts & Intellectual Contributions
+
+- **The AI Crux Test (Chapter 11):** A 3-step verification protocol designed to counteract LLM hallucinations, automated confirmation loops, and chatbot sycophancy (flattery produced by RLHF alignment).
+- **The Four Defense Arcs:** Part I (The Flawed Machine: neural heuristics & Somatic Marker Hypothesis), Part II (Mechanics of Thinking: formal/informal logic & statistical risk), Part III (Information in the Wild: lateral reading, citation laundering & propaganda), Part IV (Advanced Toolkit: second-order consequences, Bayesian updating, premortems & red team stress-testing).
+- **102 Mapped Heuristics:** Includes actionable models for Simpson's Paradox, Base Rate Neglect, Chesterton's Fence, the Cobra Problem, Gish Gallop, Motte-and-Bailey defenses, and Ideological Turing Tests.
+
+## Machine-Readable Manifests & Schemas
+
+- [Book Manifest JSON](https://davidgsmith.net/book-manifest.json): Full machine-readable curriculum, chapter-by-chapter heuristic catalog, and RAG ingestion schema.
+- [RSS Feed](https://davidgsmith.net/rss.xml): Syndication feed of essays and technical analysis.
+- [Sitemap](https://davidgsmith.net/sitemap.xml): Complete search index of all canonical endpoints.
+
+## Professional Profiles & Verification
+
+- [LinkedIn Profile](https://www.linkedin.com/in/davidgsmith): Professional experience, enterprise data roles, and direct contact.
+- [Amazon Author Central](https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F): Official author profile.
+- [Goodreads Work](https://www.goodreads.com/book/show/257686553-critical-thinking): Reader reviews and ratings.
+- [LibraryThing Work](https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation): Library catalogue metadata.
+- [BookWyrm](https://bookwyrm.social/book/2365772/s/critical-thinking): Open-source book federation record.
