@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Publications | David G. Smith</title>
+    <meta name="description" content="Explore books by David G. Smith, including 'Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation' and the upcoming 'AI for Small Business' series.">
+    <link rel="canonical" href="https://davidgsmith.net/books.html">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:site_name" content="David G. Smith">
+    <meta property="og:title" content="Books & Publications — David G. Smith">
+    <meta property="og:description" content="Practical frameworks for critical thinking, noise reduction, and artificial intelligence adoption.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davidgsmith.net/books.html">
+    <meta property="og:image" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Books & Publications — David G. Smith">
+    <meta name="twitter:description" content="Practical frameworks for critical thinking, noise reduction, and artificial intelligence adoption.">
+    <meta name="twitter:image" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            muted: '#334155',
+                            accent: '#b45309',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- JSON-LD: CollectionPage & Author Catalog Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://davidgsmith.net/#person",
+          "name": "David G. Smith",
+          "url": "https://davidgsmith.net/",
+          "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+          "jobTitle": "Author, Data Scientist & Strategic Advisor",
+          "sameAs": [
+            "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
+            "https://www.goodreads.com/author/show/72277946.David_G_Smith",
+            "https://www.librarything.com/a/32948024/David-G-Smith",
+            "https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0",
+            "https://bookwyrm.social/author/445970/s/david-g-smith",
+            "https://www.linkedin.com/in/davidgsmith"
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://davidgsmith.net/books.html#webpage",
+          "url": "https://davidgsmith.net/books.html",
+          "name": "Books by David G. Smith",
+          "description": "Catalog of published works and forthcoming series on critical reasoning, noise mitigation, and applied artificial intelligence.",
+          "author": { "@id": "https://davidgsmith.net/#person" },
+          "hasPart": [
+            {
+              "@type": "Book",
+              "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
+              "url": "https://davidgsmith.net/critical-thinking.html",
+              "isbn": "9798194730490",
+              "numberOfPages": 466,
+              "datePublished": "2026-08-30",
+              "author": { "@id": "https://davidgsmith.net/#person" }
+            },
+            {
+              "@type": "BookSeries",
+              "name": "AI for Small Business",
+              "description": "Actionable roadmaps for integrating AI tools into SME workflows to optimize operations and scale efficiently.",
+              "author": { "@id": "https://davidgsmith.net/#person" }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-muted bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
+
+    <!-- Vanta.js Birds Canvas Layer -->
+    <div id="vanta-bg" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">
+                        David G. Smith
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                    <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                    <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+                    <a href="/books.html" class="text-brand-accent transition-colors text-sm font-semibold">Books</a>
+                    <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none" aria-label="Toggle Navigation">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-300">About</a>
+                <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-300">Work</a>
+                <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Thoughts</a>
+                <a href="/books.html" class="mobile-link block py-2 text-base font-medium text-brand-accent font-semibold">Books</a>
+                <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-300">Advisory</a>
+                <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        
+        <!-- Author Profile Header -->
+        <header class="mb-16 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-4 lg:col-span-3 flex justify-center">
+                    <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith" class="w-44 h-44 object-cover rounded-xl shadow-lg border border-slate-700">
+                </div>
+                <div class="md:col-span-8 lg:col-span-9 text-center md:text-left">
+                    <span class="text-xs font-bold text-amber-500 tracking-widest uppercase mb-2 inline-block">Author &amp; Systems Architect</span>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-medium text-white mb-4">David G. Smith</h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 max-w-3xl">
+                        Writing at the intersection of cognitive psychology, data engineering, and modern technology. My publications provide rigorous, field-tested mental models designed to navigate noise, counter disinformation, and make sound decisions in an information-dense world.
+                    </p>
+                    
+                    <!-- Platform Profiles -->
+                    <div class="flex flex-wrap gap-2.5 justify-center md:justify-start">
+                        <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-[#FF9900] border border-slate-700 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            Amazon Author Page
+                        </a>
+                        <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-[#FAF8F6] hover:bg-[#F0ECE6] text-[#1E1915] rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
+                            Goodreads
+                        </a>
+                        <a href="https://www.librarything.com/a/32948024/David-G-Smith" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-[#634644] hover:bg-[#523937] text-white rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
+                            LibraryThing
+                        </a>
+                        <a href="https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-[#333333] hover:bg-[#262626] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            StoryGraph
+                        </a>
+                        <a href="https://bookwyrm.social/author/445970/s/david-g-smith" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-[#4C1D95] hover:bg-[#3b1578] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            BookWyrm
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Book Catalog Section -->
+        <section aria-labelledby="catalog-heading" class="space-y-12">
+            <div>
+                <h2 id="catalog-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white mb-2">Featured Works</h2>
+                <p class="text-slate-400 text-sm">Published volumes and forthcoming multi-part series.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- CARD 1: Current Book (Critical Thinking) -->
+                <article class="bg-slate-900/90 backdrop-blur-md border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded text-xs font-semibold tracking-wide uppercase">
+                                Available Now &bull; 2026 Edition
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">466 Pages</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 mb-6">
+                            <div class="sm:col-span-5 flex justify-center">
+                                <a href="critical-thinking.html" class="block group">
+                                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking book cover by David G. Smith" class="w-full max-w-[200px] h-auto object-cover rounded shadow-lg group-hover:scale-[1.02] transition-transform">
+                                </a>
+                            </div>
+                            <div class="sm:col-span-7 space-y-3">
+                                <h3 class="text-xl sm:text-2xl font-serif font-semibold text-white leading-snug">
+                                    <a href="critical-thinking.html" class="hover:text-amber-400 transition-colors">
+                                        Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation
+                                    </a>
+                                </h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    A high-depth operational manual featuring contemporary post-2025 case studies, a dedicated chapter on surviving AI chatbot sycophancy, and 102 mapped heuristics for objective decision-making.
+                                </p>
+                                <div class="text-xs text-slate-400 space-y-1 pt-1">
+                                    <p><strong>ISBN-13:</strong> 979-8194730490</p>
+                                    <p><strong>Goodreads Rating:</strong> 5.0 &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <!-- Read Sample New Window Button -->
+                            <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition-colors">
+                                <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                Read Sample &nearr;
+                            </a>
+                            <a href="https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation/dp/B0HH3CYK79" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                        <a href="critical-thinking.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1">
+                            Explore Full Overview &rarr;
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CARD 2: Forthcoming Series (AI for Small Business) -->
+                <article class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded text-xs font-semibold tracking-wide uppercase">
+                                Forthcoming Series &bull; In Development
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Multi-Part Release</span>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <h3 class="text-xl sm:text-2xl font-serif font-semibold text-white leading-snug">
+                                AI for Small Business (Series)
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Demystifying practical artificial intelligence for SMEs. This comprehensive series skips the hype and provides battle-tested blueprints for integrating automated pipelines, local AI models, and cognitive tools to optimize operations without requiring enterprise budgets.
+                            </p>
+                            
+                            <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-2 text-xs text-slate-300">
+                                <p class="font-semibold text-slate-200 uppercase tracking-wider text-[11px]">Core Architecture Covered:</p>
+                                <ul class="list-disc list-inside space-y-1 text-slate-400">
+                                    <li>Pragmatic AI Tool Audits: What to buy vs. what to build</li>
+                                    <li>Automating Operational Bottlenecks with RAG and LLMs</li>
+                                    <li>Data Governance &amp; Security on Small Business Budgets</li>
+                                    <li>Defending Against Synthetic Phishing and AI-Driven Social Engineering</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-800 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 italic">Early preview chapters publishing late 2026.</span>
+                        <a href="/#contact" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
+                            Inquire for Updates
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm">
+                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
+
+    <!-- Vanta.js & Three.js (Birds Animation) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.VANTA && window.VANTA.BIRDS) {
+                VANTA.BIRDS({
+                    el: "#vanta-bg",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 1.0,
+                    backgroundColor: 0x090e1a,
+                    color1: 0xb45309, // amber accent
+                    color2: 0x38bdf8, // sky cyan accent
+                    colorMode: "variance",
+                    birdSize: 1.1,
+                    wingSpan: 22.0,
+                    speedLimit: 3.5,
+                    separation: 30.0,
+                    alignment: 20.0,
+                    cohesion: 20.0,
+                    quantity: 3.0
+                });
+            }
+        });
+    </script>
+</body>
+</html>
