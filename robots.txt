@@ -5,19 +5,61 @@ Sitemap: https://davidgsmith.net/sitemap.xml
 
 # Explicit AI Crawler Stance
 User-agent: GPTBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: OAI-SearchBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: ChatGPT-User
+Allow: /
+Disallow: /posting.html
+
 User-agent: ClaudeBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: Claude-SearchBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: Claude-User
+Allow: /
+Disallow: /posting.html
+
 User-agent: PerplexityBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: Perplexity-User
+Allow: /
+Disallow: /posting.html
+
 User-agent: Google-Extended
+Allow: /
+Disallow: /posting.html
+
 User-agent: Applebot
+Allow: /
+Disallow: /posting.html
+
 User-agent: Applebot-Extended
+Allow: /
+Disallow: /posting.html
+
 User-agent: Amazonbot
+Allow: /
+Disallow: /posting.html
+
 User-agent: meta-externalagent
+Allow: /
+Disallow: /posting.html
+
 User-agent: CCBot
+Allow: /
+Disallow: /posting.html
+
 User-agent: Bytespider
 Allow: /
 Disallow: /posting.html

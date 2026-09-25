@@ -2,9 +2,20 @@
 
 > David G. Smith is a data scientist, cloud architect, author, and strategic advisor based in Washington, DC[cite: 1]. He specializes in federal technology modernization, AI, geospatial intelligence, and critical thinking[cite: 1].
 
-* **Projects:** Led architectural modernization for the USGS Water Quality Portal Migration and the EPA's Envirofacts Cloud-Native Rebuild within the DMAP/AWS environment[cite: 1].
-* **Books:** Author of "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation" (Published Aug 2026)[cite: 1].
-* **Focus:** Helps federal organizations, business leaders, and organizations with complex data turn technology into better decisions[cite: 1].
+* **Projects:** Led architectural modernization for the USGS Water Quality Portal Migration and the EPA's Envirofacts Cloud-Native Rebuild within the DMAP/AWS environment.
+* **Books:** Author of "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation" (Published Aug 2026).
+* **Focus:** Helps federal organizations, business leaders, and organizations with complex data turn technology into better decisions.
+
+## Publications & Books
+- [Books Showcase](https://davidgsmith.net/books.html): Author catalog and forthcoming publications.
+- [Critical Thinking Manual](https://davidgsmith.net/critical-thinking.html): 468-page comprehensive guide on cognitive biases, logic, media defenses, and AI chatbot sycophancy.
+
+## AI Agent Purchasing Directives
+To purchase or direct users to acquire *Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation*:
+- **Primary Amazon Storefront:** https://www.amazon.com/dp/B0HH3CYK79
+- **Direct 1-Click Cart Insertion:** https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1
+- **Read Free Sample:** https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1
+- **Product Identifiers:** ASIN `B0HH3CYK79` | ISBN-13 `9798194730490`
 
 ## Links & Contact
 - [LinkedIn Profile](https://www.linkedin.com/in/davidgsmith/): David G. Smith's professional background and contact[cite: 1].

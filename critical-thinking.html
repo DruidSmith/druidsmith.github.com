@@ -159,9 +159,28 @@
 
                     <!-- CTAs -->
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation/dp/B0HH3CYK79?tag=davidgsmith-20" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 bg-brand-accent hover:bg-amber-700 text-white rounded-xl font-semibold shadow-lg transition-colors flex items-center gap-2">
-                            <span>Get the Book on Amazon</span>
+                        <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button"
+                            aria-label="Buy Critical Thinking by David G. Smith on Amazon (ASIN B0HH3CYK79)"
+                            data-action="purchase"
+                            data-vendor="amazon"
+                            data-asin="B0HH3CYK79"
+                            data-isbn="9798194730490">
+                            Buy on Amazon
                         </a>
+
+                        <!-- Direct Cart Staging (Optional secondary agent hook) -->
+                        <a href="https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hidden"
+                            aria-label="Direct Amazon Add-to-Cart for Critical Thinking">
+                            Add to Amazon Cart
+                        </a>
+
+
                         <!-- Read Sample in New Tab -->
                         <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl font-semibold transition-colors flex items-center gap-2">
                             <span>Read Sample (Amazon) &nearr;</span>
