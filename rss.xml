@@ -8,6 +8,54 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>Building GeoAI Systems That People Can Trust</title>
+            <link>https://davidgsmith.net/thoughts/building-geoai-systems-that-people-can-trust.html</link>
+            <guid>https://davidgsmith.net/thoughts/building-geoai-systems-that-people-can-trust.html</guid>
+            <pubDate>Sat, 26 Sep 2026 16:31:15 +0000</pubDate>
+            <description>The latest edition of GeoAI and the Law Newsletter lays out a clear message for anyone working at the intersection of geospatial data and artificial...</description>
+            <category>AI Agents</category>
+            <dc:subject>AI Agents</dc:subject>
+            <category>AI Governance</category>
+            <dc:subject>AI Governance</dc:subject>
+            <category>AI Law</category>
+            <dc:subject>AI Law</dc:subject>
+            <category>AI Safety</category>
+            <dc:subject>AI Safety</dc:subject>
+            <category>AI Strategy</category>
+            <dc:subject>AI Strategy</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>Decision Making</category>
+            <dc:subject>Decision Making</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
+            <category>GeoAI</category>
+            <dc:subject>GeoAI</dc:subject>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
+            <category>Risk Management</category>
+            <dc:subject>Risk Management</dc:subject>
+            <category>Tech Regulation</category>
+            <dc:subject>Tech Regulation</dc:subject>
+            <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/p/geoai-and-the-law-newsletter-ed0">latest edition</a> of <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/">GeoAI and the Law Newsletter</a> lays out a clear message for anyone working at the intersection of geospatial data and artificial intelligence. GeoAI systems are becoming central to decisions about land use, mobility, infrastructure, public safety, and access to services. These systems do more than classify pixels or detect objects. They influence how institutions understand people and places. That influence carries real consequences.</p>
+<p>In his latest article, <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kevinpomfret/">Kevin Pomfret</a> points to several recent events that illustrate this shift. Sony Music Publishing and Warner Chappell <a target="_blank" rel="noopener noreferrer" href="https://www.msn.com/en-ca/news/other/sony-warner-music-sue-anthropic-over-songs-used-in-ai-training/ar-AA2bhUry?ocid=BingNewsSerp">have sued Anthropic</a> over training data. Flock Safety is <a target="_blank" rel="noopener noreferrer" href="https://techcrunch.com/2026/08/23/flock-ceo-calls-for-compromise-as-surveillance-company-faces-growing-backlash/?mkt_tok=MTM4LUVaTS0wNDIAAAGj2NbaRdvb9wuXIXCJxPcwqFH6PLrlRRvf6P7h0mKtk2aHZ1ri5s9E_lGHRS1yEOVPQQ6fBMkYmHoefijWOnVdjOro6GG-c7RTm41ZKF43BVsl">facing scrutiny</a> for how its license plate readers and drones are used. Governments are advancing risk based AI laws that directly affect geospatial tools. These examples are not isolated. They show that GeoAI is now entangled with intellectual property, civil liberties, and regulatory compliance.</p>
+<p>I've always said that in many ways the technology is the easy part.  Governance is the hard part.  The field is entering a phase where technical capability is no longer the limiting factor. The limiting factor is trust. A GeoAI system can be accurate and still cause harm if its data sources are incomplete, if its intended purpose is unclear, or if its deployment context changes without oversight. The newsletter's emphasis on governance is not a bureaucratic exercise. It is a recognition that geospatial data has a unique ability to shape how institutions understand people and places.</p>
+<p><strong>The Need for Clear Definitions</strong><br>
+One point that stood out in Pomfret's article is the call for organizations to define what GeoAI means within their own operations. This is more important than it sounds. Without a definition, teams cannot agree on which systems fall under governance, which risks matter, or which safeguards apply. A land use classifier, a mobility model, and a mapping tool may seem unrelated, but they all influence decisions about physical space. That influence creates shared responsibilities.</p>
+<p><strong>Risk Classification Is Not a Checkbox</strong><br>
+His article explains how the <a target="_blank" rel="noopener noreferrer" href="https://artificialintelligenceact.eu/the-act/">EU AI Act</a> and the <a target="_blank" rel="noopener noreferrer" href="https://content.leg.colorado.gov/sites/default/files/images/fpf_policy_brief_co_ai_act.pdf">Colorado AI Act</a> use risk based approaches. My own view is that risk classification is where many organizations will struggle. It is easy to label a system as low risk because it appears informational. The problem is that informational systems often become inputs to higher stakes decisions. A mapping tool that highlights environmental hazards can be used in permitting. A mobility model can be used in enforcement. A satellite analysis can be used in eligibility decisions. The risk profile changes when the use case changes.</p>
+<p>This is why Pomfret's advice to track intended purpose, deployment geography, affected populations, and downstream decisions is so important. GeoAI systems do not exist in isolation. They exist within workflows.</p>
+<p><strong>Lifecycle Governance Is the Best Sustainable Approach</strong><br>
+The article outlines a lifecycle model that covers concept review, design, deployment, oversight, vendor management, documentation, and monitoring. My reaction is that this model reflects how geospatial systems actually behave in the real world. They drift. They expand. They get repurposed. They inherit biases from data coverage, sampling, and proxy variables. They perform differently across regions and demographic groups. A one time review cannot catch these issues.</p>
+<p>Continuous monitoring is the only realistic way to maintain trust. This includes monitoring for model drift, data drift, geographic performance gaps, misuse, security events, and changes in law. It also includes monitoring for changes in intended purpose. A system that begins as a visualization tool can become a decision tool without anyone noticing.</p>
+<p><strong>Vendor Oversight Is Becoming a Core Competency</strong><br>
+The article's section on vendor oversight also deserves more attention. Many organizations rely on external GeoAI providers. This creates dependencies on training data rights, geospatial data provenance, model limitations, subcontractors, audit rights, incident reporting, and liability allocation. My own experience is that these issues are often overlooked until something goes wrong. A strong vendor oversight process is not about distrust. It is about clarity.</p>
+<p><strong>Documentation Is a Trust Signal</strong><br>
+The article lists inventories, impact assessments, model cards, dataset records, data lineage, validation results, approvals, change logs, user notices, and incident response plans. These documents are not just compliance artifacts. They are trust signals. They show that an organization understands its systems and is prepared to explain them. In a field where decisions affect real communities, documentation is part of accountability.</p>
+<p><strong>Final Thoughts</strong><br>
+The article makes a compelling case that GeoAI governance is not a barrier to innovation. It is a foundation for responsible innovation. GeoAI systems can deliver enormous value, but only if they are accurate, lawful, explainable, and worthy of public trust. The examples in the newsletter show that the stakes are rising. The organizations that succeed will be the ones that treat governance as a strategic capability rather than a regulatory burden.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>When Tradition Tries to Overrule Demography</title>
             <link>https://davidgsmith.net/thoughts/when-tradition-tries-to-overrule-demography.html</link>
             <guid>https://davidgsmith.net/thoughts/when-tradition-tries-to-overrule-demography.html</guid>
