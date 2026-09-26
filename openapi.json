@@ -1,0 +1,28 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "David G. Smith API",
+    "version": "1.0.0",
+    "description": "Public API exposing book metadata."
+  },
+  "paths": {
+    "/api/v1/book-manifest.json": {
+      "get": {
+        "summary": "Retrieve the book manifest",
+        "description": "Returns the static JSON metadata describing the book.",
+        "responses": {
+          "200": {
+            "description": "Book manifest JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
