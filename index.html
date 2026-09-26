@@ -24,13 +24,18 @@
 <!-- Canonical -->
   <link rel="canonical" href="https://davidgsmith.net/">
 
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="David G. Smith — Data Science, Author & Strategic Advisor">
-  <meta property="og:description"
-        content="Data scientist, cloud architect, author, and strategic advisor helping organizations turn complex data and technology into better decisions.">
-  <meta property="og:url" content="https://davidgsmith.net/">
-  <meta property="og:image" content="https://davidgsmith.net/assets/img/david-smith-og.jpg">
+    <!-- OpenGraph (Social & Messaging Platform Previews) -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="David G. Smith">
+    <meta property="og:title" content="David G. Smith — Author of Critical Thinking & Data Scientist">
+    <meta property="og:description" content="Discover 'Critical Thinking'—the definitive 466-page manual on navigating bias, algorithmic manipulation, and noise by technologist David G. Smith. Explore strategic cloud advisory and data analytics frameworks.">
+    <meta property="og:url" content="https://davidgsmith.net/">
+    <meta property="og:image" content="https://davidgsmith.net">
+    <meta property="og:image:secure_url" content="https://davidgsmith.net">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Book Cover: Critical Thinking by David G. Smith">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -68,41 +73,40 @@
     </script>
     <!-- JSON-LD schema -->
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": "https://davidgsmith.net/#webpage",
-    "url": "https://davidgsmith.net/",
-    "name": "David G. Smith — Technical Strategist",
-    "isPartOf": {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "WebSite",
       "@id": "https://davidgsmith.net/#website",
       "url": "https://davidgsmith.net/",
       "name": "David G. Smith",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://davidgsmith.net/?s={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
+      "description": "Professional hub for data science, cloud architecture, and critical thinking methodology.",
+      "publisher": {
+        "@id": "https://davidgsmith.net/#person"
       }
     },
-    "mainEntity": {
+    {
+      "@type": "ProfilePage",
+      "@id": "https://davidgsmith.net/#webpage",
+      "url": "https://davidgsmith.net/",
+      "name": "David G. Smith — Technical Strategist & Author",
+      "isPartOf": {
+        "@id": "https://davidgsmith.net/#website"
+      },
+      "mainEntity": {
+        "@id": "https://davidgsmith.net/#person"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://davidgsmith.net/#person",
       "name": "David G. Smith",
       "url": "https://davidgsmith.net/",
       "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-      "jobTitle": "Data Scientist, Technical Architect & Strategic Advisor",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "David G. Smith Advisory",
-        "url": "https://davidgsmith.net/",
-        "logo": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-        "description": "Independent strategic advisory specializing in federal technology modernization, cloud architecture, and data science."
-      },
+      "jobTitle": "Data Scientist, Technical Architect & Author",
+      "description": "Data scientist and solutions architect specializing in federal technology modernization, cloud architecture, geospatial intelligence, and critical thinking.",
+      "gender": "http://schema.org",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Washington",
@@ -124,58 +128,45 @@
         "Critical Thinking",
         "Artificial Intelligence",
         "AI",
-        "Federal Technology Modernization"
+        "Federal Technology Modernization",
+        "Data Mesh"
+      ],
+      "creativeWork": [
+        {
+          "@id": "https://davidgsmith.net/#book"
+        }
       ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "@id": "https://davidgsmith.net/#book",
-    "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
-    "author": {
-      "@id": "https://davidgsmith.net/#person"
     },
-    "url": "https://www.amazon.com/dp/B0HH3CYK79",
-    "sameAs": [
-      "https://www.goodreads.com/book/show/257686553-critical-thinking",
-      "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
-      "https://bookwyrm.social/book/2365772/s/critical-thinking"
-    ],
-    "image": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
-    "numberOfPages": 466,
-    "datePublished": "2026-08-30",
-    "bookEdition": "2026",
-    "inLanguage": "en",
-    "publisher": {
-      "@type": "Organization",
-      "name": "David G. Smith Publishing",
-      "url": "https://davidgsmith.net/",
-      "logo": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
-      "description": "Independent publisher of non-fiction works focusing on critical thinking and technology."
-    },
-    "abstract": "An exhaustive, high-depth guide featuring contemporary critical thinking case studies updated through 2026. Offering 2x to 3x the page volume of many other critical thinking texts available, this work builds on respected and recognized foundational research with an extensive synhesis of heuristics and techniques and modern, real-world case studies, examples and noise-filtering applications.",
-    "disambiguatingDescription": "A high-depth critical thinking manual published in 2026, distinguished from traditional shorter texts by its multidisciplinary approach, its depth and breadth and inclusion of recent research and case studies.",
-    "review": {
-      "@type": "Review",
-      "itemReviewed": {
-        "@id": "https://davidgsmith.net/#book"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
-      },
+    {
+      "@type": "Book",
+      "@id": "https://davidgsmith.net/#book",
+      "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
       "author": {
-        "@type": "Organization",
-        "name": "Technical Architecture & Strategy Review",
-        "url": "https://davidgsmith.net/",
-        "logo": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-        "description": "Review publication for technical strategy and architecture."
+        "@id": "https://davidgsmith.net/#person"
       },
-      "reviewBody": "Unlike comparable critical thinking books in this space that rely on cognitive research from a decade ago, Smith's volume provides triple the content depth and critical case studies trailing up to 2026."
+      "creator": {
+        "@id": "https://davidgsmith.net/#person"
+      },
+      "url": "https://davidgsmith.net/",
+      "isbn": "9798194730490",
+      "asin": "B0HH3CYK79",
+      "bookFormat": "http://schema.org",
+      "numberOfPages": 466,
+      "datePublished": "2026-08-30",
+      "inLanguage": "en",
+      "literaryGenre": "Non-fiction, Cognitive Psychology, Logic, Decision Making",
+      "image": "https://davidgsmith.net/images/CriticalThinkingCover.jpg",
+      "sameAs": [
+        "https://www.amazon.com/dp/B0HH3CYK79",
+        "https://www.goodreads.com/book/show/257686553-critical-thinking",
+        "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
+        "https://bookwyrm.social/book/2365772/s/critical-thinking"
+      ],
+      "abstract": "A comprehensive 466-page operational manual and curriculum mapping over 100 logical heuristics, cognitive biases, and practical frameworks for filtering noise, identifying manipulation, and executing objective decisions under uncertainty.",
+      "disambiguatingDescription": "A high-depth 2026 non-fiction textbook and practical guide on critical thinking frameworks, cloud-age information filters, and cognitive heuristics, written by data scientist David G. Smith."
     }
-  }
-]
+  ]
+}
 </script>
 
 <style>
