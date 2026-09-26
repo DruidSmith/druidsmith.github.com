@@ -271,7 +271,7 @@ def get_json_ld(post=None):
     if post:
         title = post.get("title", "Untitled")
         slug = slugify(title)
-        canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
+        canonical_url = f"https://davidgsmith.net{slug}.html"
         
         raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
         if not raw_date.endswith("Z") and "+" not in raw_date:
@@ -284,10 +284,32 @@ def get_json_ld(post=None):
         post_image = extract_post_image(post)
         word_count = len(re.findall(r'\w+', body_text))
 
+        # Dynamic Schema Elevation based on context tags
+        tech_keywords = {"data mesh", "cloud architecture", "graphrag", "semantic layer", "ai", "machine learning"}
+        is_tech = any(t.lower() in tech_keywords for t in tags)
+        article_type = "TechArticle" if is_tech else "BlogPosting"
+
+        # Programmatically map tags to authoritative Wikidata entities for AI indexing
+        wikidata_mapping = {
+            "Data Mesh": "https://wikidata.org",
+            "Critical Thinking": "https://wikidata.org",
+            "Artificial Intelligence": "https://wikidata.org",
+            "Cloud Architecture": "https://wikidata.org"
+        }
+        
+        about_entities = []
+        for tag in tags:
+            if tag in wikidata_mapping:
+                about_entities.append({
+                    "@type": "Thing",
+                    "name": tag,
+                    "sameAs": wikidata_mapping[tag]
+                })
+
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": "BlogPosting",
+                "@type": article_type,
                 "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -300,19 +322,23 @@ def get_json_ld(post=None):
                 "dateModified": date_iso,
                 "inLanguage": "en-US",
                 "wordCount": word_count,
+                # Force precise link back to your primary central homepage identity node
                 "author": {
                     "@type": "Person",
+                    "@id": "https://davidgsmith.net",
                     "name": "David G. Smith",
-                    "url": "https://davidgsmith.net/"
+                    "url": "https://davidgsmith.net"
                 },
                 "publisher": {
                     "@type": "Person",
+                    "@id": "https://davidgsmith.net",
                     "name": "David G. Smith",
-                    "url": "https://davidgsmith.net/"
+                    "url": "https://davidgsmith.net"
                 },
                 "description": description,
                 "keywords": ", ".join(tags) if tags else "",
-                "articleSection": tags[0] if tags else "Technology"
+                "articleSection": tags[0] if tags else "Technology",
+                "about": about_entities if about_entities else None
             },
             {
                 "@context": "https://schema.org",
@@ -323,13 +349,13 @@ def get_json_ld(post=None):
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Home",
-                        "item": "https://davidgsmith.net/"
+                        "item": "https://davidgsmith.net"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
                         "name": "Thoughts",
-                        "item": "https://davidgsmith.net/thoughts.html"
+                        "item": "https://davidgsmith.netthoughts.html"
                     },
                     {
                         "@type": "ListItem",
@@ -344,16 +370,18 @@ def get_json_ld(post=None):
         schema = {
             "@context": "https://schema.org",
             "@type": "Blog",
+            "@id": "https://davidgsmith.netthoughts.html#blog",
             "name": "Thoughts & Insights — David G. Smith",
-            "url": "https://davidgsmith.net/thoughts.html",
+            "url": "https://davidgsmith.netthoughts.html",
             "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
             "author": {
                 "@type": "Person",
+                "@id": "https://davidgsmith.net",
                 "name": "David G. Smith",
-                "url": "https://davidgsmith.net/"
+                "url": "https://davidgsmith.net"
             }
         }
-    return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2)}\n</script>'
+    return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2, ensure_ascii=False)}\n</script>'
 
 def generate_nav_rail(posts, current_type=None, current_value=None):
     tag_counts = {}
