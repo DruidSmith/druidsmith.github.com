@@ -13,15 +13,32 @@
             <guid>https://davidgsmith.net/thoughts/building-geoai-systems-that-people-can-trust.html</guid>
             <pubDate>Sat, 26 Sep 2026 16:31:15 +0000</pubDate>
             <description>The latest edition of GeoAI and the Law Newsletter lays out a clear message for anyone working at the intersection of geospatial data and artificial...</description>
+            <category>AI Agents</category>
+            <dc:subject>AI Agents</dc:subject>
+            <category>AI Governance</category>
+            <dc:subject>AI Governance</dc:subject>
+            <category>AI Law</category>
+            <dc:subject>AI Law</dc:subject>
+            <category>AI Safety</category>
+            <dc:subject>AI Safety</dc:subject>
+            <category>AI Strategy</category>
+            <dc:subject>AI Strategy</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>Decision Making</category>
+            <dc:subject>Decision Making</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <category>GeoAI</category>
             <dc:subject>GeoAI</dc:subject>
-            <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
-            <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
-            <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/p/geoai-and-the-law-newsletter-ed0">latest edition</a> of <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/">GeoAI and the Law Newsletter</a> lays out a clear message for anyone working at the intersection of geospatial data and artificial intelligence. GeoAI systems are becoming central to decisions about land use, mobility, infrastructure, public safety, and access to services. These systems do more than classify pixels or detect objects. They influence how institutions understand people and places. That influence carries real consequences.</p>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
+            <category>Risk Management</category>
+            <dc:subject>Risk Management</dc:subject>
+            <category>Tech Regulation</category>
+            <dc:subject>Tech Regulation</dc:subject>
+            <content:encoded><![CDATA[<p><img alt="ailaw muinjeil 9d10bf0f" src="https://davidgsmith.net/thoughts/images/ailaw-muinjeil-9d10bf0f.jpg"><br>
+The <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/p/geoai-and-the-law-newsletter-ed0">latest edition</a> of <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/">GeoAI and the Law Newsletter</a> lays out a clear message for anyone working at the intersection of geospatial data and artificial intelligence. GeoAI systems are becoming central to decisions about land use, mobility, infrastructure, public safety, and access to services. These systems do more than classify pixels or detect objects. They influence how institutions understand people and places. That influence carries real consequences.</p>
 <p>In his latest article, <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kevinpomfret/">Kevin Pomfret</a> points to several recent events that illustrate this shift. Sony Music Publishing and Warner Chappell <a target="_blank" rel="noopener noreferrer" href="https://www.msn.com/en-ca/news/other/sony-warner-music-sue-anthropic-over-songs-used-in-ai-training/ar-AA2bhUry?ocid=BingNewsSerp">have sued Anthropic</a> over training data. Flock Safety is <a target="_blank" rel="noopener noreferrer" href="https://techcrunch.com/2026/08/23/flock-ceo-calls-for-compromise-as-surveillance-company-faces-growing-backlash/?mkt_tok=MTM4LUVaTS0wNDIAAAGj2NbaRdvb9wuXIXCJxPcwqFH6PLrlRRvf6P7h0mKtk2aHZ1ri5s9E_lGHRS1yEOVPQQ6fBMkYmHoefijWOnVdjOro6GG-c7RTm41ZKF43BVsl">facing scrutiny</a> for how its license plate readers and drones are used. Governments are advancing risk based AI laws that directly affect geospatial tools. These examples are not isolated. They show that GeoAI is now entangled with intellectual property, civil liberties, and regulatory compliance.</p>
 <p>I've always said that in many ways the technology is the easy part.  Governance is the hard part.  The field is entering a phase where technical capability is no longer the limiting factor. The limiting factor is trust. A GeoAI system can be accurate and still cause harm if its data sources are incomplete, if its intended purpose is unclear, or if its deployment context changes without oversight. The newsletter's emphasis on governance is not a bureaucratic exercise. It is a recognition that geospatial data has a unique ability to shape how institutions understand people and places.</p>
 <p><strong>The Need for Clear Definitions</strong><br>
