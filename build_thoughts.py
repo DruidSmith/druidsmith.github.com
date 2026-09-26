@@ -1023,10 +1023,12 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     print("✓ Generated sitemap.xml for search and AI crawler indexing.")
 
 def cleanup_stale_pages():
-    # Remove thoughts directory completely and recreate it
-    shutil.rmtree(THOUGHTS_DIR, ignore_errors=True)
     THOUGHTS_DIR.mkdir(exist_ok=True)
     
+    # Safely remove ONLY generated HTML files, preserving thoughts/images/
+    for filepath in THOUGHTS_DIR.glob("*.html"):
+        filepath.unlink()
+        
     # Remove dynamically generated taxonomy/date root HTML files
     for filepath in BASE_DIR.glob("thoughts-*.html"):
         filepath.unlink()

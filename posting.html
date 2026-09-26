@@ -297,8 +297,8 @@ function renderImages() {
         button.type = 'button';
         button.className = 'overflow-hidden rounded border border-slate-200 bg-white text-left hover:border-amber-600 transition group';
         
-        // Cascading fallback: local session blob > raw GitHub file > production URL
-        const imgSrc = image.previewUrl || image.raw_url || image.url;
+        // Use local memory for immediate uploads, otherwise safely use the production URL
+        const imgSrc = image.previewUrl || image.url;
         
         button.innerHTML = `
             <img src="${imgSrc}" alt="${escapeHtml(image.name)}" loading="lazy" class="aspect-square w-full object-cover">
