@@ -58,13 +58,6 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://davidgsmith.net/book-manifest.json</loc>
-    <lastmod>2026-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- AI Agent Knowledge Graph Manifest -->
   <url>
     <loc>https://davidgsmith.net/api/v1/book-manifest.json</loc>
