@@ -65,7 +65,7 @@ function imageExtension(contentType) {
 }
 
 function safeImageName(name, extension) {
-  const stem = name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'image';
+  const stem = name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+\vert{}-+$/g, '').slice(0, 80) || 'image';
   return `${stem}-${Date.now().toString(36)}-${crypto.randomUUID().slice(0, 8)}.${extension}`;
 }
 
@@ -84,7 +84,6 @@ export default {
     }
     
     try {
-      // Expose a quick GET endpoint to read tags/posts for the picklist safely
       if (request.method === 'GET' && new URL(request.url).pathname === '/posts') {
          const fileResponse = await githubRequest(env, 'GET', 'posts.json');
          if (!fileResponse.ok) return response([], 200);
@@ -98,7 +97,8 @@ export default {
         const files = await fileResponse.json();
         return response(files.filter(file => file.type === 'file').map(file => ({
           name: file.name,
-          url: `https://davidgsmith.net/thoughts/images/${encodeURIComponent(file.name)}`
+          url: `https://davidgsmith.net/thoughts/images/${encodeURIComponent(file.name)}`,
+          raw_url: file.download_url // Expose raw GitHub file URL to fix editor thumbnails
         })).sort((a, b) => a.name.localeCompare(b.name)));
       }
 
@@ -151,9 +151,9 @@ export default {
           return response({ error: 'A valid HTTP(S) URL is required.' }, 400);
       }
 
-      // Parse tags
       const tags = Array.isArray(input.tags) ? input.tags : [];
-      const originalDate = input.original_date; // Check for edits
+      const originalDate = input.original_date; 
+      const postType = input.type === 'BlogPosting' ? 'BlogPosting' : 'TechArticle';
 
       const fileResponse = await githubRequest(env, 'GET', 'posts.json');
       if (!fileResponse.ok) return response({ error: 'Could not read posts.json.' }, 502);
@@ -163,25 +163,24 @@ export default {
       let message = '';
 
       if (originalDate) {
-        // EDIT MODE: Find the post by its original timestamp
         const index = posts.findIndex(p => p.date === originalDate);
         if (index !== -1) {
           posts[index].title = input.title.trim();
           posts[index].body = input.body.trim();
           posts[index].tags = tags;
+          posts[index].type = postType;
           posts[index].url = url.href;
           posts[index].platform = platformForUrl(url.href);
-          // We keep the original date to preserve feed order and URL slugs
           message = `Update thought: ${input.title.trim()}`;
         } else {
           return response({ error: 'Original post not found for editing.' }, 404);
         }
       } else {
-        // NEW POST MODE
         posts.push({ 
           title: input.title.trim(), 
           body: input.body.trim(), 
           tags: tags,
+          type: postType,
           format: 'markdown', 
           url: url.href, 
           date: new Date().toISOString(), 

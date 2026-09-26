@@ -54,6 +54,13 @@
             <label class="block text-sm font-medium" for="title">Title<input id="title" name="title" required maxlength="200" class="mt-2 w-full rounded border border-slate-300 px-3 py-3 outline-none focus:border-amber-700 focus:ring-2 focus:ring-amber-100"></label>
             <input type="hidden" id="original_date" name="original_date" value="">
             
+            <label class="block text-sm font-medium">
+                <div class="flex items-center gap-2 mt-2">
+                    <input type="checkbox" id="post-type-tech" checked class="h-4 w-4 rounded border-slate-300 text-amber-700 focus:ring-amber-700 focus:ring-2">
+                    <span>Classify as Technical Article (TechArticle schema)</span>
+                </div>
+            </label>
+
             <!-- Interactive Tagging Section -->
             <div>
                 <label class="block text-sm font-medium mb-2">Tags</label>
@@ -241,6 +248,7 @@ function selectPost(date) {
         form.reset();
         bodyEditor.value('');
         document.getElementById('original_date').value = '';
+        document.getElementById('post-type-tech').checked = true; // Default to Technical Article
         platformPreview.textContent = '';
         selectedTags.clear();
         renderTags();
@@ -252,6 +260,7 @@ function selectPost(date) {
         document.getElementById('title').value = post.title || '';
         document.getElementById('url').value = post.url || '';
         document.getElementById('original_date').value = post.date;
+        document.getElementById('post-type-tech').checked = (post.type === 'TechArticle') || (!post.type);
         bodyEditor.value(post.body || '');
 
         selectedTags.clear();
@@ -287,8 +296,12 @@ function renderImages() {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'overflow-hidden rounded border border-slate-200 bg-white text-left hover:border-amber-600 transition group';
+        
+        // Cascading fallback: local session blob > raw GitHub file > production URL
+        const imgSrc = image.previewUrl || image.raw_url || image.url;
+        
         button.innerHTML = `
-            <img src="${image.url}" alt="${escapeHtml(image.name)}" loading="lazy" class="aspect-square w-full object-cover">
+            <img src="${imgSrc}" alt="${escapeHtml(image.name)}" loading="lazy" class="aspect-square w-full object-cover">
             <span class="block truncate px-2 py-1 text-[11px] text-slate-700 group-hover:text-amber-800">${escapeHtml(image.name)}</span>
         `;
         
@@ -302,6 +315,7 @@ function renderImages() {
                 chosenAlt = promptVal !== null && promptVal.trim() !== '' ? promptVal.trim() : fallbackAlt;
             }
 
+            // Always write the final production URL to Markdown
             const markdown = `![${chosenAlt}](${image.url})`;
             bodyEditor.codemirror.replaceSelection(markdown);
             
@@ -321,6 +335,9 @@ document.getElementById('upload-image-btn').addEventListener('click', async () =
     if (!file) { setStatus('Choose an image first.', true); return; }
     if (file.size > 10 * 1024 * 1024) { setStatus('Image must be smaller than 10 MB.', true); return; }
     
+    // Create an immediate local preview URL to bypass the GitHub Actions deployment delay
+    const localPreviewUrl = URL.createObjectURL(file);
+    
     setStatus('Uploading image to GitHub repository...');
     try {
         const data = await new Promise((resolve, reject) => {
@@ -332,7 +349,7 @@ document.getElementById('upload-image-btn').addEventListener('click', async () =
         
         const result = await send('/images', { name: file.name, type: file.type, data }, sessionToken);
         
-        allImages.unshift({ name: result.name, url: result.url });
+        allImages.unshift({ name: result.name, url: result.url, previewUrl: localPreviewUrl });
         renderImages();
         
         const fallbackAlt = result.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
@@ -346,12 +363,7 @@ document.getElementById('upload-image-btn').addEventListener('click', async () =
         document.getElementById('image-file').value = '';
         altInput.value = '';
         
-        setStatus('Image uploaded and inserted. Re-syncing repository in 4 seconds...');
-
-        setTimeout(async () => {
-            await loadImages();
-            setStatus('Image gallery verified and up to date.');
-        }, 4000);
+        setStatus('Image uploaded and inserted to editor.');
 
     } catch (error) { setStatus(error.message, true); }
 });
@@ -420,6 +432,7 @@ document.querySelector('#post-form').addEventListener('submit', async event => {
     const bodyVal = bodyEditor.value().trim();
     const urlVal = document.getElementById('url').value.trim();
     const originalDateVal = document.getElementById('original_date').value;
+    const typeVal = document.getElementById('post-type-tech').checked ? 'TechArticle' : 'BlogPosting';
     const tagsArray = Array.from(selectedTags);
 
     if (!titleVal || !bodyVal) {
@@ -433,6 +446,7 @@ document.querySelector('#post-form').addEventListener('submit', async event => {
             body: bodyVal, 
             url: urlVal,
             tags: tagsArray,
+            type: typeVal,
             original_date: originalDateVal 
         }, sessionToken);
         
