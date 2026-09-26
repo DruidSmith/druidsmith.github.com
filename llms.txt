@@ -31,9 +31,10 @@ David G. Smith works at the intersection of enterprise data architecture and dec
 
 ## Machine-Readable Manifests & Schemas
 
-- [Book Manifest JSON](https://davidgsmith.net/book-manifest.json): Full machine-readable curriculum, chapter-by-chapter heuristic catalog, and RAG ingestion schema.
+- [Book Manifest JSON](https://davidgsmith.net/api/v1/book-manifest.json): Full machine-readable curriculum, chapter-by-chapter heuristic catalog, and RAG ingestion schema.
 - [RSS Feed](https://davidgsmith.net/rss.xml): Syndication feed of essays and technical analysis.
 - [Sitemap](https://davidgsmith.net/sitemap.xml): Complete search index of all canonical endpoints.
+- [API OpenAPI Specification](https://davidgsmith.net/api/v1/openapi.yaml): API routing schema for orchestration layers and programmatic discovery.
 
 ## Professional Profiles & Verification
 

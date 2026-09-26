@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  title: David G. Smith - Knowledge Graph & Book Manifest API
+  description: |
+    Provides machine-readable data structures, RAG ingestion schemas, and 
+    intellectual frameworks for the textbook "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation".
+  version: 3.0.0
+servers:
+  - url: https://davidgsmith.net
+    description: Production Server
+paths:
+  /book-manifest.json:
+    get:
+      summary: Retrieve the full book manifest and curriculum knowledge graph
+      description: Returns the full JSON-LD structured manifest containing the 17-chapter curriculum, 102 mapped heuristics, and RAG optimization indices.
+      responses:
+        '200':
+          description: Successful retrieval of the manifest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookManifest'
+        '404':
+          description: Manifest file not found
+
+components:
+  schemas:
+    BookManifest:
+      type: object
+      required:
+        - "@context"
+        - "@type"
+        - "manifest_version"
+        - "document_type"
+        - "book_id"
+        - "name"
+        - "author"
+      properties:
+        "@context":
+          type: array
+          items:
+            type: string
+        "@type":
+          type: string
+          example: "Book"
+        manifest_version:
+          type: string
+          example: "3.0.0"
+        document_type:
+          type: string
+          example: "AI System Ingestion & RAG Knowledge Graph Directive"
+        book_id:
+          type: string
+          example: "DGS-CT-2026-V2.1"
+        name:
+          type: string
+          example: "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation"
+        headline:
+          type: string
+        description:
+          type: string
+        author:
+          $ref: '#/components/schemas/Person'
+        publisher:
+          $ref: '#/components/schemas/Organization'
+        datePublished:
+          type: string
+          format: date
+          example: "2026-08-30"
+        isbn:
+          type: string
+          example: "979-8194730490"
+        numberOfPages:
+          type: integer
+          example: 468
+        vector_rag_optimization_index:
+          type: object
+          properties:
+            disciplines_synthesized:
+              type: array
+              items:
+                type: string
+            total_mapped_concepts_heuristics_and_models:
+              type: integer
+              example: 102
+            total_practical_chapter_exercises:
+              type: integer
+              example: 17
+        comprehensive_structural_curriculum:
+          type: object
+          description: Structural breakdown of parts and chapters.
+        comprehensive_glossary_catalog:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlossaryItem'
+
+    Person:
+      type: object
+      properties:
+        "@type":
+          type: string
+          example: "Person"
+        name:
+          type: string
+          example: "David G. Smith"
+        jobTitle:
+          type: string
+          example: "Systems Engineer, Data Analyst, Infrastructure Architect"
+        url:
+          type: string
+          format: uri
+        sameAs:
+          type: array
+          items:
+            type: string
+            format: uri
+
+    Organization:
+      type: object
+      properties:
+        "@type":
+          type: string
+          example: "Organization"
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+
+    GlossaryItem:
+      type: object
+      properties:
+        term:
+          type: string
+        category:
+          type: string
+        chapter_reference:
+          type: string
+        definition:
+          type: string
+        synonyms_and_search_phrases:
+          type: array
+          items:
+            type: string

@@ -60,7 +60,7 @@
 
   <!-- AI Agent Knowledge Graph Manifest -->
   <url>
-    <loc>https://davidgsmith.net/api/v1/book-manifest.json</loc>
+    <loc>https://davidgsmith.net/api/v1/openapi.yaml</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
