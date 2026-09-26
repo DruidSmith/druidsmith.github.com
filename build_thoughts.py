@@ -3,6 +3,7 @@ import json
 import re
 import bleach
 import markdown
+import shutil
 from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import urlparse
@@ -11,8 +12,10 @@ import urllib.request
 import urllib.parse
 import os
 
-POSTS_FILE = Path("posts.json")
-THOUGHTS_DIR = Path("thoughts")
+# Anchor paths to the script's directory
+BASE_DIR = Path(__file__).resolve().parent
+POSTS_FILE = BASE_DIR / "posts.json"
+THOUGHTS_DIR = BASE_DIR / "thoughts"
 DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/og-default.jpg"
 
 PLATFORM_ICONS = {
@@ -60,11 +63,45 @@ def platform_for_url(url):
         if platform in hostname: return platform
     return "post"
 
+def parse_and_normalize_date(date_str):
+    if not date_str:
+        return datetime.now(timezone.utc)
+    if not date_str.endswith("Z") and "+" not in date_str:
+        date_str += "Z"
+    return datetime.fromisoformat(date_str.replace("Z", "+00:00")).astimezone(timezone.utc)
+
 def load_posts():
     if not POSTS_FILE.exists(): return []
     with POSTS_FILE.open(encoding="utf-8") as posts_file:
-        posts = json.load(posts_file)
-    return sorted(posts, key=lambda post: post.get("date", ""), reverse=True)
+        raw_posts = json.load(posts_file)
+        
+    seen_slugs = set()
+    normalized_posts = []
+    
+    for post in raw_posts:
+        # Standardize required & optional fields
+        post.setdefault("type", "BlogPosting")
+        if not post.get("url") or "davidgsmith.net" in post.get("url", ""):
+            post["url"] = ""
+            
+        # Parse and anchor UTC dates
+        dt = parse_and_normalize_date(post.get("date"))
+        post["_dt"] = dt
+        post["date"] = dt.isoformat()
+        
+        # Check slugs for collisions
+        base_slug = slugify(post.get("title", "Untitled"))
+        slug = base_slug
+        counter = 1
+        while slug in seen_slugs:
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        seen_slugs.add(slug)
+        post["_slug"] = slug
+        
+        normalized_posts.append(post)
+        
+    return sorted(normalized_posts, key=lambda p: p["_dt"], reverse=True)
 
 def render_markdown(text):
     rendered = markdown.markdown(
@@ -107,7 +144,6 @@ def render_tag_badges(tags, size="normal"):
     badges = []
     for t in tags:
         t_slug = slugify(t)
-        # Distinct high-contrast sky badge on white card backgrounds, hover transitions to brand orange (rgb 180 83 9)
         badges.append(
             f'<a href="/thoughts-{t_slug}.html" '
             f'class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 '
@@ -137,7 +173,7 @@ def render_breadcrumbs(post):
 def render_share_bar(share_url, original_url):
     share_escaped = html.escape(share_url, quote=True)
     read_original_html = "<div></div>" 
-    if original_url and "davidgsmith.net" not in original_url:
+    if original_url:
         orig_escaped = html.escape(original_url, quote=True)
         read_original_html = f"""
         <a href="{orig_escaped}" target="_blank" rel="noopener noreferrer"
@@ -196,19 +232,18 @@ def create_text_excerpt(html_content, max_length=160):
 
 def get_related_posts(current_post, all_posts, limit=3):
     current_tags = set(current_post.get("tags", []))
-    current_slug = slugify(current_post.get("title", ""))
+    current_slug = current_post["_slug"]
     candidates = []
     
     for p in all_posts:
-        p_slug = slugify(p.get("title", ""))
-        if p_slug == current_slug:
+        if p["_slug"] == current_slug:
             continue
         p_tags = set(p.get("tags", []))
         shared = current_tags.intersection(p_tags)
         candidates.append({
             "post": p,
             "shared_count": len(shared),
-            "date": p.get("date", "")
+            "date": p["_dt"]
         })
     
     candidates.sort(key=lambda x: (x["shared_count"], x["date"]), reverse=True)
@@ -218,10 +253,9 @@ def render_related_posts_section(related_posts):
     if not related_posts: return ""
     cards = []
     for p in related_posts:
-        slug = slugify(p.get("title", "Untitled"))
+        slug = p["_slug"]
         title = html.escape(p.get("title", "Untitled"))
-        date_iso = p.get("date", "")
-        date_str = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%b %d, %Y")
+        date_str = p["_dt"].strftime("%b %d, %Y")
         body_html = render_markdown(p.get("body", ""))
         excerpt = html.escape(create_text_excerpt(body_html, max_length=120))
         reading_time = calculate_reading_time(p.get("body", ""))
@@ -270,13 +304,11 @@ def render_related_posts_section(related_posts):
 def get_json_ld(post=None):
     if post:
         title = post.get("title", "Untitled")
-        slug = slugify(title)
-        canonical_url = f"https://davidgsmith.net{slug}.html"
+        slug = post["_slug"]
+        canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
         
-        raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
-        if not raw_date.endswith("Z") and "+" not in raw_date:
-            raw_date += "Z"
-        date_iso = raw_date.replace("Z", "+00:00")
+        date_iso = post["_dt"].isoformat()
+        modified_iso = post.get("last_modified", date_iso)
         
         tags = post.get("tags", [])
         body_text = post.get("body", "")
@@ -284,32 +316,10 @@ def get_json_ld(post=None):
         post_image = extract_post_image(post)
         word_count = len(re.findall(r'\w+', body_text))
 
-        # Dynamic Schema Elevation based on context tags
-        tech_keywords = {"data mesh", "cloud architecture", "graphrag", "semantic layer", "ai", "machine learning"}
-        is_tech = any(t.lower() in tech_keywords for t in tags)
-        article_type = "TechArticle" if is_tech else "BlogPosting"
-
-        # Programmatically map tags to authoritative Wikidata entities for AI indexing
-        wikidata_mapping = {
-            "Data Mesh": "https://wikidata.org",
-            "Critical Thinking": "https://wikidata.org",
-            "Artificial Intelligence": "https://wikidata.org",
-            "Cloud Architecture": "https://wikidata.org"
-        }
-        
-        about_entities = []
-        for tag in tags:
-            if tag in wikidata_mapping:
-                about_entities.append({
-                    "@type": "Thing",
-                    "name": tag,
-                    "sameAs": wikidata_mapping[tag]
-                })
-
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": article_type,
+                "@type": post.get("type", "BlogPosting"),
                 "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -319,10 +329,9 @@ def get_json_ld(post=None):
                 "image": [post_image],
                 "url": canonical_url,
                 "datePublished": date_iso,
-                "dateModified": date_iso,
+                "dateModified": modified_iso,
                 "inLanguage": "en-US",
                 "wordCount": word_count,
-                # Force precise link back to your primary central homepage identity node
                 "author": {
                     "@type": "Person",
                     "@id": "https://davidgsmith.net",
@@ -337,8 +346,7 @@ def get_json_ld(post=None):
                 },
                 "description": description,
                 "keywords": ", ".join(tags) if tags else "",
-                "articleSection": tags[0] if tags else "Technology",
-                "about": about_entities if about_entities else None
+                "articleSection": tags[0] if tags else "Technology"
             },
             {
                 "@context": "https://schema.org",
@@ -355,7 +363,7 @@ def get_json_ld(post=None):
                         "@type": "ListItem",
                         "position": 2,
                         "name": "Thoughts",
-                        "item": "https://davidgsmith.netthoughts.html"
+                        "item": "https://davidgsmith.net/thoughts.html"
                     },
                     {
                         "@type": "ListItem",
@@ -370,9 +378,9 @@ def get_json_ld(post=None):
         schema = {
             "@context": "https://schema.org",
             "@type": "Blog",
-            "@id": "https://davidgsmith.netthoughts.html#blog",
+            "@id": "https://davidgsmith.net/thoughts.html#blog",
             "name": "Thoughts & Insights — David G. Smith",
-            "url": "https://davidgsmith.netthoughts.html",
+            "url": "https://davidgsmith.net/thoughts.html",
             "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
             "author": {
                 "@type": "Person",
@@ -381,7 +389,10 @@ def get_json_ld(post=None):
                 "url": "https://davidgsmith.net"
             }
         }
-    return f'<script type="application/ld+json">\n{json.dumps(schema, indent=2, ensure_ascii=False)}\n</script>'
+    
+    # Serialize safely to prevent breaking out of the script block
+    serialized = json.dumps(schema, indent=2, ensure_ascii=False).replace("<", "\\u003c")
+    return f'<script type="application/ld+json">\n{serialized}\n</script>'
 
 def generate_nav_rail(posts, current_type=None, current_value=None):
     tag_counts = {}
@@ -395,7 +406,6 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     sorted_tags = sorted(tag_counts.items(), key=lambda x: (-x[1], x[0].lower()))
 
-    # Topics tags inside dark container: clean slate badges, hovering into brand accent
     tags_html = ""
     for tag, count in sorted_tags:
         t_slug = slugify(tag)
@@ -427,9 +437,8 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     year_months = {}
     for post in posts:
-        dt = datetime.fromisoformat(post["date"].replace("Z", "+00:00"))
-        year = dt.strftime("%Y")
-        month_abbr = dt.strftime("%b").upper()
+        year = post["_dt"].strftime("%Y")
+        month_abbr = post["_dt"].strftime("%b").upper()
         if year not in year_months:
             year_months[year] = set()
         year_months[year].add(month_abbr)
@@ -470,7 +479,6 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
-        <!-- Mobile Nav Toggle (Darkened) -->
         <div class="lg:hidden bg-slate-900 p-4 rounded-lg border border-slate-800 shadow-sm text-slate-100">
             <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-100 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
@@ -481,7 +489,6 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
         </div>
 
         <div id="nav-rail-content" class="space-y-6 hidden lg:block">
-            <!-- Topics Container (Darkened with text-sm/base Header) -->
             <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
                     <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
@@ -495,7 +502,6 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
                 </div>
             </div>
 
-            <!-- Archive Container (Darkened with text-sm/base Header) -->
             <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
                     <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
@@ -511,12 +517,11 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
 def render_post(post, is_standalone=False, prev_post=None, next_post=None, related_posts=None):
     title = html.escape(post.get("title", "Untitled"))
-    slug = slugify(post.get("title", ""))
+    slug = post["_slug"]
     body = render_markdown(post.get("body", ""))
     url = post.get("url", "")
     canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
-    date_iso = post["date"]
-    date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
+    date = post["_dt"].strftime("%B %d, %Y")
     reading_time = calculate_reading_time(post.get("body", ""))
     
     platform = post.get("platform") or platform_for_url(url)
@@ -547,14 +552,14 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     prev_next_html = ""
     if is_standalone and (prev_post or next_post):
         prev_link = f'''
-        <a href="/thoughts/{slugify(prev_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all">
+        <a href="/thoughts/{prev_post["_slug"]}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all">
             <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">&larr; Older Thought</span>
             <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(prev_post.get("title", ""))}</span>
         </a>
         ''' if prev_post else '<div class="flex-1"></div>'
 
         next_link = f'''
-        <a href="/thoughts/{slugify(next_post.get("title", ""))}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all text-right">
+        <a href="/thoughts/{next_post["_slug"]}.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all text-right">
             <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Newer Thought &rarr;</span>
             <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">{html.escape(next_post.get("title", ""))}</span>
         </a>
@@ -587,9 +592,8 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
 
 def render_aggregator_card(post):
     title = html.escape(post.get("title", "Untitled"))
-    slug = slugify(post.get("title", ""))
-    date_iso = post["date"]
-    date = datetime.fromisoformat(date_iso.replace("Z", "+00:00")).strftime("%B %d, %Y")
+    slug = post["_slug"]
+    date = post["_dt"].strftime("%B %d, %Y")
     reading_time = calculate_reading_time(post.get("body", ""))
     
     body_html = render_markdown(post.get("body", ""))
@@ -622,7 +626,8 @@ def render_aggregator_card(post):
     """
 
 def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canonical="", description="", og_meta=None, is_post=False, banner_title=None, banner_subtitle=None):
-    canonical_tag = f'<link rel="canonical" href="{canonical}">' if canonical else ''
+    canonical_escaped = html.escape(canonical, quote=True)
+    canonical_tag = f'<link rel="canonical" href="{canonical_escaped}">' if canonical else ''
     meta_description = f'<meta name="description" content="{html.escape(description, quote=True)}">' if description else ''
     
     og_html = ""
@@ -630,7 +635,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         extra_article_tags = ""
         if og_meta.get("type") == "article":
             if og_meta.get("published_time"):
-                extra_article_tags += f'\n<meta property="article:published_time" content="{og_meta["published_time"]}">'
+                extra_article_tags += f'\n<meta property="article:published_time" content="{html.escape(og_meta["published_time"], quote=True)}">'
             if og_meta.get("tags"):
                 for tag in og_meta["tags"]:
                     extra_article_tags += f'\n<meta property="article:tag" content="{html.escape(tag, quote=True)}">'
@@ -640,14 +645,14 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 <meta property="og:site_name" content="David G. Smith">
 <meta property="og:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
 <meta property="og:description" content="{html.escape(og_meta.get('description', description), quote=True)}">
-<meta property="og:type" content="{og_meta.get('type', 'website')}">
-<meta property="og:url" content="{og_meta.get('url', canonical)}">
-<meta property="og:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">{extra_article_tags}
+<meta property="og:type" content="{html.escape(og_meta.get('type', 'website'), quote=True)}">
+<meta property="og:url" content="{html.escape(og_meta.get('url', canonical), quote=True)}">
+<meta property="og:image" content="{html.escape(og_meta.get('image', DEFAULT_OG_IMAGE), quote=True)}">{extra_article_tags}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(og_meta.get('title', title), quote=True)}">
 <meta name="twitter:description" content="{html.escape(og_meta.get('description', description), quote=True)}">
-<meta name="twitter:image" content="{og_meta.get('image', DEFAULT_OG_IMAGE)}">
+<meta name="twitter:image" content="{html.escape(og_meta.get('image', DEFAULT_OG_IMAGE), quote=True)}">
 """
 
     if is_post:
@@ -697,7 +702,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     gtag('js', new Date());
     gtag('config', 'G-4T0MRLF4V8');
 </script>
-<title>{title}</title>
+<title>{html.escape(title)}</title>
 {meta_description}
 {og_html}
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
@@ -715,7 +720,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
                     brand: {{ 
                         dark: '#0f172a', 
                         muted: '#334155', 
-                        accent: '#b45309', /* rgb(180, 83, 9) warm rich orange */
+                        accent: '#b45309',
                         light: '#f8fafc' 
                     }} 
                 }} 
@@ -724,7 +729,6 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     }}
 </script>
 <style>
-    /* Dark Midnight Blue Canvas */
     body {{ background-color: #0a1128; }}
     .glass-nav {{ background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }}
     .markdown-content p {{ margin-bottom: 1rem; }}
@@ -732,88 +736,27 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {{ color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }}
     .markdown-content a {{ color: #b45309; text-decoration: underline; }}
     .markdown-content a:hover {{ color: #78350f; }}
-
-    /* List Styles */
-    .markdown-content ul {{
-        list-style-type: disc;
-        margin-top: 0.75rem;
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-    }}
-    .markdown-content ol {{
-        list-style-type: decimal;
-        margin-top: 0.75rem;
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-    }}
-    .markdown-content li {{
-        margin-bottom: 0.35rem;
-        line-height: 1.6;
-    }}
-    .markdown-content li > ul {{
-        list-style-type: circle;
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
-        padding-left: 1.25rem;
-    }}
-    .markdown-content li > ol {{
-        list-style-type: lower-alpha;
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
-        padding-left: 1.25rem;
-    }}
-
-    /* Table Styles */
-    .markdown-content table {{
-        display: block;
-        max-width: 100%;
-        overflow-x: auto;
-        border-collapse: collapse;
-        margin: 1.5rem 0;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        background-color: #ffffff;
-    }}
-    .markdown-content th {{
-        background-color: #f8fafc;
-        color: #0f172a;
-        font-weight: 600;
-        text-align: left;
-        padding: 0.75rem 1rem;
-        border-bottom: 2px solid #cbd5e1;
-    }}
-    .markdown-content td {{
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid #e2e8f0;
-        color: #334155;
-    }}
-    .markdown-content tr:nth-child(even) {{
-        background-color: #fcfbf9;
-    }}
-    .markdown-content tr:last-child td {{
-        border-bottom: none;
-    }}
+    .markdown-content ul {{ list-style-type: disc; margin-top: 0.75rem; margin-bottom: 1rem; padding-left: 1.5rem; }}
+    .markdown-content ol {{ list-style-type: decimal; margin-top: 0.75rem; margin-bottom: 1rem; padding-left: 1.5rem; }}
+    .markdown-content li {{ margin-bottom: 0.35rem; line-height: 1.6; }}
+    .markdown-content li > ul {{ list-style-type: circle; margin-top: 0.25rem; margin-bottom: 0.25rem; padding-left: 1.25rem; }}
+    .markdown-content li > ol {{ list-style-type: lower-alpha; margin-top: 0.25rem; margin-bottom: 0.25rem; padding-left: 1.25rem; }}
+    .markdown-content table {{ display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; line-height: 1.5; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #ffffff; }}
+    .markdown-content th {{ background-color: #f8fafc; color: #0f172a; font-weight: 600; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid #cbd5e1; }}
+    .markdown-content td {{ padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; color: #334155; }}
+    .markdown-content tr:nth-child(even) {{ background-color: #fcfbf9; }}
+    .markdown-content tr:last-child td {{ border-bottom: none; }}
 </style>
 {json_ld}
 </head>
 <body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
-
-<!-- Full-Page Vanta Canvas Layer -->
 <div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
-
-<!-- Navigation -->
 <nav class="fixed w-full z-50 glass-nav border-b border-slate-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex-shrink-0">
-                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">
-                    David G. Smith
-                </a>
+                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">David G. Smith</a>
             </div>
-            
-            <!-- Desktop Menu (Updated Books Route to /books.html) -->
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="https://davidgsmith.net/#about" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
                 <a href="https://davidgsmith.net/#work" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
@@ -822,7 +765,6 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
                 <a href="https://davidgsmith.net/#advisory" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
                 <a href="https://davidgsmith.net/#contact" class="px-5 py-2 rounded border border-slate-300 text-slate-900 hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
             </div>
-
             <div class="md:hidden flex items-center">
                 <button id="mobile-menu-btn" class="text-slate-900 focus:outline-none" aria-label="Toggle menu">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -832,7 +774,6 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             </div>
         </div>
     </div>
-
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
         <div class="px-4 pt-2 pb-4 space-y-1">
             <a href="https://davidgsmith.net/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
@@ -852,12 +793,9 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 <main id="main-content" class="py-12 bg-transparent min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <!-- Main Content Pane -->
             <div class="lg:col-span-8 space-y-8">
                 {main_content_html}
             </div>
-            
-            <!-- Navigation Rail -->
             <div class="lg:col-span-4 lg:sticky lg:top-28">
                 {nav_rail_html}
             </div>
@@ -865,41 +803,26 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     </div>
 </main>
 
-<!-- Footer -->
 <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-            <span class="text-lg font-serif font-semibold text-white tracking-tight">
-                David G. Smith
-            </span>
+            <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
         </div>
-        <div class="mt-4 md:mt-0 text-sm">
-            &copy; <span id="year"></span> David G. Smith. All rights reserved.
-        </div>
+        <div class="mt-4 md:mt-0 text-sm">&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
     </div>
 </footer>
 
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-
     if(btn && menu) {{
-        btn.addEventListener('click', () => {{
-            menu.classList.toggle('hidden');
-        }});
-
-        mobileLinks.forEach(link => {{
-            link.addEventListener('click', () => {{
-                menu.classList.add('hidden');
-            }});
-        }});
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
     }}
 </script>
 
-<!-- Return to Top Button -->
 <button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -916,9 +839,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             returnToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
         }}
     }});
-    returnToTopBtn.addEventListener('click', () => {{
-        window.scrollTo({{ top: 0, behavior: 'smooth' }});
-    }});
+    returnToTopBtn.addEventListener('click', () => window.scrollTo({{ top: 0, behavior: 'smooth' }}));
 
     const navToggle = document.getElementById('nav-rail-toggle');
     const navContent = document.getElementById('nav-rail-content');
@@ -930,8 +851,6 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         }});
     }}
 </script>
-
-<!-- Vanta.js & Three.js (Deep Navy Blue Canvas + Cyan Neural Nodes) -->
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
 <script>
@@ -939,22 +858,12 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         if (window.VANTA && window.VANTA.NET) {{
             VANTA.NET({{
                 el: "#vanta-canvas",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x38bdf8,            /* Electric Cyan / Sky Blue network lines */
-                backgroundColor: 0x0a1128,  /* Deep Midnight Navy Canvas */
-                points: 10.00,
-                maxDistance: 20.00,
-                spacing: 18.00
+                mouseControls: true, touchControls: true, gyroControls: false,
+                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+                color: 0x38bdf8, backgroundColor: 0x0a1128, points: 10.00, maxDistance: 20.00, spacing: 18.00
             }});
         }}
     }}
-
     if (!window.THREE) {{
         const s1 = document.createElement('script');
         s1.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
@@ -965,9 +874,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             document.body.appendChild(s2);
         }};
         document.body.appendChild(s1);
-    }} else {{
-        initVanta();
-    }}
+    }} else {{ initVanta(); }}
 </script>
 </body>
 </html>"""
@@ -986,11 +893,15 @@ def sanitize_feed_text(text):
 def generate_rss(posts):
     rss_items = []
     for post in posts:
-        slug = slugify(post.get("title", ""))
-        pub_date = datetime.fromisoformat(post["date"].replace("Z", "+00:00")).strftime("%a, %d %b %Y %H:%M:%S +0000")
+        slug = post["_slug"]
+        pub_date = post["_dt"].strftime("%a, %d %b %Y %H:%M:%S +0000")
         
         html_body = render_markdown(post.get("body", ""))
         html_body = sanitize_feed_text(html_body)
+        
+        # Guard against breaking out of CDATA sequence
+        html_body = html_body.replace("]]>", "]]]]><![CDATA[>")
+        
         excerpt = html.escape(create_text_excerpt(html_body))
         safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
         
@@ -1021,61 +932,68 @@ def generate_rss(posts):
         {''.join(rss_items)}
     </channel>
     </rss>"""
-    with open("rss.xml", "w", encoding="utf-8") as f:
+    
+    with open(BASE_DIR / "rss.xml", "w", encoding="utf-8") as f:
         f.write(rss_feed.strip())
 
 def generate_sitemap(posts, tag_slugs, month_slugs):
-    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Align structural assets precisely with the defined sitemap.xml rules
     entries = [
-        f"""  <url>
+        """  <url>
     <loc>https://davidgsmith.net/</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://davidgsmith.net/images/DaveSmithrPortrait.jpg</image:loc>
+      <image:title>David G. Smith - Systems Architect and Author</image:title>
+    </image:image>
   </url>""",
-        f"""  <url>
+        """  <url>
     <loc>https://davidgsmith.net/books.html</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>""",
-        f"""  <url>
+        """  <url>
     <loc>https://davidgsmith.net/critical-thinking.html</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <image:image>
       <image:loc>https://davidgsmith.net/images/CriticalThinkingCover.jpg</image:loc>
       <image:title>Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</image:title>
     </image:image>
   </url>""",
-        f"""  <url>
+        """  <url>
     <loc>https://davidgsmith.net/thoughts.html</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>""",
-        f"""  <url>
+        """  <url>
+    <loc>https://davidgsmith.net/rss.xml</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>""",
+        """  <url>
     <loc>https://davidgsmith.net/llms.txt</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>""",
-        f"""  <url>
+        """  <url>
     <loc>https://davidgsmith.net/book-manifest.json</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>""",
+        """  <url>
+    <loc>https://davidgsmith.net/api/v1/book-manifest.json</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>"""
     ]
     
+    # Do not set lastmod for dynamically generated pages without true modification dates
     for post in posts:
-        slug = slugify(post.get("title", "Untitled"))
-        raw_date = post.get("date", now_iso)
-        date_clean = raw_date[:10] if len(raw_date) >= 10 else now_iso
+        slug = post["_slug"]
         entries.append(f"""  <url>
     <loc>https://davidgsmith.net/thoughts/{slug}.html</loc>
-    <lastmod>{date_clean}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>""")
@@ -1083,7 +1001,6 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     for t in sorted(tag_slugs):
         entries.append(f"""  <url>
     <loc>https://davidgsmith.net/thoughts-{t}.html</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>""")
@@ -1091,7 +1008,6 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     for m in sorted(month_slugs):
         entries.append(f"""  <url>
     <loc>https://davidgsmith.net/thoughts-{m}.html</loc>
-    <lastmod>{now_iso}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>""")
@@ -1101,13 +1017,25 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 {chr(10).join(entries)}
 </urlset>"""
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
+    
+    with open(BASE_DIR / "sitemap.xml", "w", encoding="utf-8") as f:
         f.write(sitemap_xml.strip())
     print("✓ Generated sitemap.xml for search and AI crawler indexing.")
 
-def generate_html():
-    posts = load_posts()
+def cleanup_stale_pages():
+    # Remove thoughts directory completely and recreate it
+    shutil.rmtree(THOUGHTS_DIR, ignore_errors=True)
     THOUGHTS_DIR.mkdir(exist_ok=True)
+    
+    # Remove dynamically generated taxonomy/date root HTML files
+    for filepath in BASE_DIR.glob("thoughts-*.html"):
+        filepath.unlink()
+
+def generate_html():
+    # Purge old generated pages to prevent stale records from surviving
+    cleanup_stale_pages()
+    
+    posts = load_posts()
     all_tags = set()
     generated_urls = ["https://davidgsmith.net/thoughts.html", "https://davidgsmith.net/rss.xml"]
     
@@ -1121,7 +1049,7 @@ def generate_html():
     # 1. Generate individual post pages
     total_posts = len(posts)
     for index, post in enumerate(posts):
-        slug = slugify(post.get("title", "Untitled"))
+        slug = post["_slug"]
         canonical = f"https://davidgsmith.net/thoughts/{slug}.html"
         generated_urls.append(canonical)
 
@@ -1140,11 +1068,6 @@ def generate_html():
         description = create_text_excerpt(render_markdown(post.get("body", "")), max_length=160)
         nav_rail = generate_nav_rail(posts)
         post_img = extract_post_image(post)
-        
-        raw_date = post.get("date", datetime.now(timezone.utc).isoformat())
-        if not raw_date.endswith("Z") and "+" not in raw_date:
-            raw_date += "Z"
-        date_iso = raw_date.replace("Z", "+00:00")
 
         og_metadata = {
             "title": post.get("title", "Thoughts & Insights"),
@@ -1152,7 +1075,7 @@ def generate_html():
             "url": canonical,
             "image": post_img,
             "type": "article",
-            "published_time": date_iso,
+            "published_time": post["_dt"].isoformat(),
             "tags": post.get("tags", [])
         }
         
@@ -1207,7 +1130,7 @@ def generate_html():
             banner_title=f"Topic: {tag}",
             banner_subtitle=f"Perspectives and architecture notes relating to {tag}."
         )
-        with open(f"thoughts-{t_slug}.html", "w", encoding="utf-8") as f:
+        with open(BASE_DIR / f"thoughts-{t_slug}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
     # Untagged aggregator page if untagged posts exist
@@ -1248,15 +1171,14 @@ def generate_html():
             banner_title="Untagged Perspectives",
             banner_subtitle="Archived notes without specific category tags."
         )
-        with open("thoughts-untagged.html", "w", encoding="utf-8") as f:
+        with open(BASE_DIR / "thoughts-untagged.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
     # 3. Generate Month Aggregator Pages
     year_month_posts = {}
     for post in posts:
-        dt = datetime.fromisoformat(post["date"].replace("Z", "+00:00"))
-        year = dt.strftime("%Y")
-        m_abbr = dt.strftime("%b").upper()
+        year = post["_dt"].strftime("%Y")
+        m_abbr = post["_dt"].strftime("%b").upper()
         key = (year, m_abbr)
         if key not in year_month_posts:
             year_month_posts[key] = []
@@ -1307,10 +1229,10 @@ def generate_html():
             banner_title=f"{m_full} {year} Archive",
             banner_subtitle=f"Published writings and analysis from {m_full} {year}."
         )
-        with open(f"thoughts-{m_slug_suffix}.html", "w", encoding="utf-8") as f:
+        with open(BASE_DIR / f"thoughts-{m_slug_suffix}.html", "w", encoding="utf-8") as f:
             f.write(page_html)
 
-    # 4. Generate Main thoughts.html Index Page (Recent 8 posts in full)
+    # 4. Generate Main thoughts.html Index Page
     recent_posts = posts[:8]
     index_posts_html = "".join(render_post(p, is_standalone=False) for p in recent_posts)
     main_content_index = f"""
@@ -1346,7 +1268,7 @@ def generate_html():
         og_meta=og_metadata_index,
         is_post=False
     )
-    with open("thoughts.html", "w", encoding="utf-8") as f:
+    with open(BASE_DIR / "thoughts.html", "w", encoding="utf-8") as f:
         f.write(main_html)
 
     # Generate Feeds and Sitemaps
