@@ -978,11 +978,6 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     <priority>0.8</priority>
   </url>""",
         """  <url>
-    <loc>https://davidgsmith.net/book-manifest.json</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>""",
-        """  <url>
     <loc>https://davidgsmith.net/api/v1/book-manifest.json</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

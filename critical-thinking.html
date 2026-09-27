@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" prefix="og: https://ogp.me/ns# book: https://ogp.me/ns/book#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@
     <meta property="og:image:height" content="2700">
     <meta property="og:image:alt" content="Critical Thinking Book Cover by David G. Smith">
     <meta property="og:locale" content="en_US">
-    <meta property="books:isbn" content="9798194730490">
-    <meta property="books:author" content="https://davidgsmith.net/">
-    <meta property="books:release_date" content="2026-08-27">
+    <meta property="book:isbn" content="979-8194730490">
+    <meta property="book:author" content="https://davidgsmith.net/">
+    <meta property="book:release_date" content="2026-08-27">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -179,7 +179,10 @@
           "url": "https://davidgsmith.net/",
           "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
           "jobTitle": "Data Scientist, Technical Architect & Author",
-          "disambiguatingDescription": "Data scientist, cloud architect and author of 'Critical Thinking' (2026). Washington, DC. Not the musician nor the PhD of the same name.",
+          "description": "David G. Smith is a Washington, D.C.-based data scientist, cloud/geospatial systems architect, and author of the nonfiction book Critical Thinking.",
+          "disambiguatingDescription": "Not to be confused with David G. Smith the Nashville singer-songwriter, or the late David Gilbert Smith, Professor Emeritus of Political Science at Swarthmore College.",
+          "address": { "@type": "PostalAddress", "addressLocality": "Washington", "addressRegion": "DC", "addressCountry": "US" },
+          "knowsAbout": ["Data Science", "Cloud Architecture", "Geospatial Intelligence", "Critical Thinking", "Artificial Intelligence Governance", "Federal Technology Modernization"],
           "sameAs": [
             "https://www.linkedin.com/in/davidgsmith",
             "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
@@ -218,8 +221,13 @@
             },
             {
               "@type": "PropertyValue",
-              "propertyID": "ASIN",
+              "propertyID": "ASIN-Paperback",
               "value": "B0HH3CYK79"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "ASIN-Kindle",
+              "value": "B0HH8DV2K4"
             },
             {
               "@type": "PropertyValue",
@@ -260,22 +268,25 @@
             {
                 "@type": "Offer",
                 "name": "Paperback Edition",
-                "url": "https://www.amazon.com/dp/B0HH3CYK79",
+                "sku": "B0HH3CYK79",
+                "url": "https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20",
                 "price": "17.99",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "itemCondition": "https://schema.org/NewCondition"
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": { "@type": "Organization", "name": "Amazon" }
             },
             {
                 "@type": "Offer",
                 "name": "Kindle Edition",
-                "url": "https://www.amazon.com/dp/B0HH8DV2K4",
+                "sku": "B0HH8DV2K4",
+                "url": "https://www.amazon.com/dp/B0HH8DV2K4?tag=davidgsmith-20",
                 "price": "7.99",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "itemCondition": "https://schema.org/NewCondition"
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": { "@type": "Organization", "name": "Amazon" }
             }
-            ]
           ],
           "potentialAction": [
             {
@@ -288,7 +299,7 @@
             },
             {
               "@type": "ReadAction",
-              "target": "https://www.amazon.com/dp/B0HH8DV2K4?asin=B0HH8DV2K4&revisionId=&format=4&depth=1",
+              "target": "https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1",
               "name": "Read Sample Chapter"
             }
           ],
@@ -323,7 +334,7 @@
               "name": "What makes this critical thinking book different from others?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Unlike books that offer simple lists of cognitive biases or motivational pep talks, this is an engineering-grade 468-page curriculum. It pairs foundational cognitive psychology and formal logic with modern threat vectors, including algorithmic echo chambers, digital dark patterns, and AI chatbot sycophancy (RLHF flattery)."
+                "text": "Unlike books that offer high-level pep talks or simple trivia lists of cognitive biases, this is an exhaustive, engineering-grade 468-page curriculum. It pairs foundational cognitive psychology and classical formal logic with modern threat vectors, including algorithmic outrage generation, digital dark patterns, and AI chatbot sycophancy (RLHF flattery and sycophantic behavior)."
               }
             },
             {
@@ -331,15 +342,15 @@
               "name": "Is this book suitable for beginners?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. The book uses a four-part progressive framework written in a clear, conversational style (Flesch Reading Ease 53.9). It begins with basic neurological blind spots before stepping into formal logic, statistical reasoning, and advanced decision frameworks."
+                "text": "Yes. The curriculum is constructed with a four-part progressive framework written in a direct, accessible voice (tested at 53.9 on the Flesch Reading Ease scale). It begins with familiar neurological everyday mistakes before incrementally scaffolding into formal proofs, statistical literacy, and advanced decision frameworks."
               }
             },
             {
               "@type": "Question",
-              "name": "Does the book include exercises and drills?",
+              "name": "Does the book include practical exercises?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. Every chapter concludes with hands-on drills and structured cognitive exercises designed to convert theoretical knowledge into durable operational instincts and habits."
+                "text": "Yes. Each chapter concludes with concrete drills, case studies (such as the Challenger disaster and Theranos breakdown), and hands-on exercises designed to build instinctive cognitive muscle memory rather than passive academic understanding."
               }
             },
             {
@@ -347,7 +358,7 @@
               "name": "What formats are available?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Critical Thinking is available worldwide on Amazon in a 6x9-inch matte paperback edition (ISBN 979-8194730490) and as an Amazon Kindle eBook (ASIN B0HH3CYK79)."
+                "text": "The book is published in both a physical 6x9-inch matte paperback edition (ISBN: 979-8194730490, ASIN: B0HH3CYK79) and an Amazon Kindle digital edition (ASIN: B0HH8DV2K4)."
               }
             }
           ]
@@ -478,6 +489,13 @@
                            class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition-colors shadow-lg">
                             Buy on Amazon<br>Paperback and Kindle
                         </a>
+                        <a href="https://www.amazon.com/dp/B0HH8DV2K4?tag=davidgsmith-20"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           onclick="gtag('event', 'click', { 'event_category': 'Book Sales', 'event_label': 'Amazon Kindle Purchase' });"
+                           class="px-5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs sm:text-sm font-semibold transition-colors">
+                            Get it on Kindle<br>$7.99
+                        </a>
                     </div>
 
                     <!-- Catalog Specs Box -->
@@ -487,7 +505,7 @@
                             <span class="font-mono font-medium text-slate-200">979-8194730490</span>
                         </div>
                         <div>
-                            <span class="block text-slate-500">ASIN</span>
+                            <span class="block text-slate-500">ASIN (Paperback)</span>
                             <span class="font-mono font-medium text-slate-200">B0HH3CYK79</span>
                         </div>
                         <div>
@@ -504,7 +522,7 @@
                         </div>
                         <div>
                             <span class="block text-slate-500">Toolbox Catalog</span>
-                            <span class="font-medium text-slate-200">100+ Models &amp; Biases</span>
+                            <span class="font-medium text-slate-200">102 Models &amp; Biases</span>
                         </div>
                     </div>
 
@@ -611,7 +629,7 @@
 
                     <dl class="space-y-3 text-xs border-y border-slate-800 py-4">
                         <div class="flex justify-between py-1 border-b border-slate-900">
-                            <dt class="text-slate-400">ASIN</dt>
+                            <dt class="text-slate-400">ASIN (Paperback)</dt>
                             <dd class="font-mono text-slate-200">B0HH3CYK79</dd>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-900">
@@ -881,7 +899,7 @@
                         </span>
                     </summary>
                     <p class="mt-4 text-slate-300 text-sm leading-relaxed border-t border-slate-900 pt-3">
-                        The book is published in both a physical 6&times;9-inch matte paperback edition (ISBN: 979-8194730490) and an Amazon Kindle digital edition (ASIN: B0HH3CYK79).
+                        The book is published in both a physical 6&times;9-inch matte paperback edition (ISBN: 979-8194730490, ASIN: B0HH3CYK79) and an Amazon Kindle digital edition (ASIN: B0HH8DV2K4).
                     </p>
                 </details>
             </div>
@@ -907,7 +925,7 @@
 
     <!-- Vanta Birds JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             if (window.VANTA && window.VANTA.BIRDS) {
@@ -920,7 +938,7 @@
                     minWidth: 200.0,
                     scale: 1.0,
                     scaleMobile: 1.0,
-                    backgroundColor: 0x31c43,
+                    backgroundColor: 0x031c43,
                     color1: 0xb45309,
                     color2: 0x38bdf8,
                     birdSize: 1.4,

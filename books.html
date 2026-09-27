@@ -48,54 +48,77 @@
     </script>
 
     <!-- JSON-LD: CollectionPage & Author Catalog Schema -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
+      "url": "https://davidgsmith.net/",
+      "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+      "jobTitle": "Data Scientist, Technical Architect & Author",
+      "description": "David G. Smith is a Washington, D.C.-based data scientist, cloud/geospatial systems architect, and author of the nonfiction book Critical Thinking.",
+      "disambiguatingDescription": "Not to be confused with David G. Smith the Nashville singer-songwriter, or the late David Gilbert Smith, Professor Emeritus of Political Science at Swarthmore College.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "addressCountry": "US"
+      },
+      "knowsAbout": [
+        "Data Science",
+        "Cloud Architecture",
+        "Geospatial Intelligence",
+        "Critical Thinking",
+        "Artificial Intelligence Governance",
+        "Federal Technology Modernization"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/davidgsmith",
+        "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
+        "https://www.goodreads.com/author/show/72277946.David_G_Smith",
+        "https://www.librarything.com/a/32948024/David-G-Smith",
+        "https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0",
+        "https://bookwyrm.social/author/445970/s/david-g-smith",
+        "https://orcid.org/0000-0001-6320-7533",
+        "https://druidsmith.github.io"
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://davidgsmith.net/books.html#webpage",
+      "url": "https://davidgsmith.net/books.html",
+      "name": "Books by David G. Smith",
+      "description": "Catalog of published works and forthcoming series on critical reasoning, noise mitigation, and applied artificial intelligence.",
+      "author": {
+        "@id": "https://davidgsmith.net/#person"
+      },
+      "hasPart": [
         {
-          "@type": "Person",
-          "@id": "https://davidgsmith.net/#person",
-          "name": "David G. Smith",
-          "url": "https://davidgsmith.net/",
-          "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
-          "jobTitle": "Author, Data Scientist & Strategic Advisor",
-          "sameAs": [
-            "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
-            "https://www.goodreads.com/author/show/72277946.David_G_Smith",
-            "https://www.librarything.com/a/32948024/David-G-Smith",
-            "https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0",
-            "https://bookwyrm.social/author/445970/s/david-g-smith",
-            "https://www.linkedin.com/in/davidgsmith"
-          ]
+          "@type": "Book",
+          "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
+          "url": "https://davidgsmith.net/critical-thinking.html",
+          "isbn": "9798194730490",
+          "numberOfPages": 468,
+          "datePublished": "2026-08-30",
+          "author": {
+            "@id": "https://davidgsmith.net/#person"
+          },
+          "@id": "https://davidgsmith.net/critical-thinking.html#book"
         },
         {
-          "@type": "CollectionPage",
-          "@id": "https://davidgsmith.net/books.html#webpage",
-          "url": "https://davidgsmith.net/books.html",
-          "name": "Books by David G. Smith",
-          "description": "Catalog of published works and forthcoming series on critical reasoning, noise mitigation, and applied artificial intelligence.",
-          "author": { "@id": "https://davidgsmith.net/#person" },
-          "hasPart": [
-            {
-              "@type": "Book",
-              "name": "Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation",
-              "url": "https://davidgsmith.net/critical-thinking.html",
-              "isbn": "9798194730490",
-              "numberOfPages": 466,
-              "datePublished": "2026-08-30",
-              "author": { "@id": "https://davidgsmith.net/#person" }
-            },
-            {
-              "@type": "BookSeries",
-              "name": "AI for Small Business",
-              "description": "Actionable roadmaps for integrating AI tools into SME workflows to optimize operations and scale efficiently.",
-              "author": { "@id": "https://davidgsmith.net/#person" }
-            }
-          ]
+          "@type": "BookSeries",
+          "name": "AI for Small Business",
+          "description": "Actionable roadmaps for integrating AI tools into SME workflows to optimize operations and scale efficiently.",
+          "author": {
+            "@id": "https://davidgsmith.net/#person"
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <style>
         .glass-nav {
@@ -214,7 +237,7 @@
                             <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded text-xs font-semibold tracking-wide uppercase">
                                 Available Now &bull; 2026 Edition
                             </span>
-                            <span class="text-xs font-mono text-slate-400">466 Pages</span>
+                            <span class="text-xs font-mono text-slate-400">468 Pages</span>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 mb-6">

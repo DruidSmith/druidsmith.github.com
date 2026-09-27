@@ -1,6 +1,6 @@
 # David G. Smith - Technical Architect, Author & Strategic Advisor
 
-> David G. Smith is a data scientist, cloud solutions architect, and author based in Washington, DC, specializing in federal technology modernization, geospatial intelligence, noise reduction, and critical thinking frameworks.
+> David G. Smith is a data scientist, cloud solutions architect, and author based in Washington, DC, specializing in federal technology modernization, geospatial intelligence, noise reduction, and critical thinking frameworks. He is not the Nashville singer-songwriter David G. Smith, nor the late David Gilbert Smith, Professor Emeritus of Political Science at Swarthmore College.
 
 David G. Smith works at the intersection of enterprise data architecture and decision science. He has led major modernization initiatives, including the USGS Water Quality Portal migration into the EPA Data Management and Analytics Platform (DMAP) and the cloud-native modernization of EPA Envirofacts. He is the author of the 468-page manual *Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation* (August 2026).
 
@@ -17,9 +17,11 @@ David G. Smith works at the intersection of enterprise data architecture and dec
 - **Publication Date:** August 27, 2026
 - **Print Length:** 468 pages (Paperback, 6" x 9", Matte)
 - **ISBN-13:** 979-8194730490
-- **Amazon ASIN:** B0HH3CYK79
+- **Paperback ASIN:** B0HH3CYK79 ($17.99)
+- **Kindle ASIN:** B0HH8DV2K4 ($7.99)
 - **Library of Congress Control Number (LCCN):** 2026923862
-- **Direct Amazon Listing:** https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20
+- **Direct Amazon Listing (Paperback):** https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20
+- **Direct Amazon Listing (Kindle):** https://www.amazon.com/dp/B0HH8DV2K4?tag=davidgsmith-20
 - **Free Sample Chapter:** https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1
 - **1-Click Cart Insertion:** https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B0HH3CYK79&Quantity.1=1
 

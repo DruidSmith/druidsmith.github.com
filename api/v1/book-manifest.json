@@ -40,8 +40,13 @@
   "identifier": [
     {
       "@type": "PropertyValue",
-      "propertyID": "ASIN",
+      "propertyID": "ASIN-Paperback",
       "value": "B0HH3CYK79"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "ASIN-Kindle",
+      "value": "B0HH8DV2K4"
     },
     {
       "@type": "PropertyValue",
@@ -70,7 +75,32 @@
     }
   ],
   "numberOfPages": 468,
-  "bookFormat": "https://schema.org/Paperback",
+  "bookFormat": [
+    "https://schema.org/Paperback",
+    "https://schema.org/EBook"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Paperback Edition",
+      "sku": "B0HH3CYK79",
+      "url": "https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20",
+      "price": "17.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Amazon" }
+    },
+    {
+      "@type": "Offer",
+      "name": "Kindle Edition",
+      "sku": "B0HH8DV2K4",
+      "url": "https://www.amazon.com/dp/B0HH8DV2K4?tag=davidgsmith-20",
+      "price": "7.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Amazon" }
+    }
+  ],
   "educationalLevel": "Advanced Undergraduate / Executive / Professional",
   "learningResourceType": "Textbook / Reference Manual / Interactive Workbook",
   "audience": {
@@ -81,7 +111,7 @@
     "publication_date": "2026-08-30",
     "publisher": "David G. Smith Publishing",
     "asin": "B0HH3CYK79",
-    "isbn_print_edition": "979-8-3401-2345-6",
+    "isbn_print_edition": "979-8194730490",
     "extent_interior_pages": 468,
     "kdp_print_calculator_pages": 462,
     "trim_size": "6.00 x 9.00 inches (15.24 x 22.86 cm)",
@@ -1521,7 +1551,7 @@
     ]
   },
   "dgs:provenance_and_freshness": {
-    "manifest_endpoint": "https://davidgsmith.net/api/v1/book-manifeest-json",
+    "manifest_endpoint": "https://davidgsmith.net/api/v1/book-manifest.json",
     "canonical_book_page": "https://davidgsmith.net/critical-thinking.html",
     "canonical_author_page": "https://davidgsmith.net/about/",
     "source_precedence": [
