@@ -156,6 +156,73 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 27, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Mechanics of Attention Loss in Large Language Models: Why AI Forgets What You Just Said
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-tech-regulation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Regulation</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single prompt. In practice, feeding a massive document into an LLM often results in a subtle but pervasive degradation of performance known as <em>attention loss.</em> </p>
+<p>When a model loses attention, it doesn'crash. It simply ignores specific instructions, hallucinates facts that contradict the provided text, or relies heavily on its pre-training weights instead of the in-context data. Understanding why this happens requires looking at the underlying math of the transformer architecture and the physical limitations of memory allocation.<br>
+<img alt="ai attention loss muk93cmt 01201ffb" src="https://davidgsmith.net/thoughts/images/ai-attention-loss-muk93cmt-01201ffb.jpg"><br>
+<strong>Why Attention Loss Happens</strong><br>
+The root cause of context degradation lies in the self-attention mechanism itself. Transformers process text by assigning attention scores between every token and every other token in a sequence. As the sequence grows longer, the model must distribute its attention scores across a vastly larger number of data points. </p>
+<p>This creates a dilution effect. If a critical instruction is buried at token 45,000 in a 100,000-token prompt, the raw attention score assigned to that specific instruction becomes mathematically infinitesimal compared to the aggregate attention scores of the surrounding noise. Researchers famously documented this as the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2307.03172">"Lost in the Middle" phenomenon</a>, demonstrating that models are highly proficient at retrieving information at the very beginning and very end of a prompt but struggle significantly with information located in the middle.</p>
+<p>Hardware constraints also play a major role. To process long sequences without recalculating everything from scratch, models use a Key-Value (KV) cache. The KV cache stores representations of all previous tokens. As the prompt grows, the KV cache scales linearly, consuming massive amounts of GPU VRAM. When models are forced to compress this cache or when rotary position embeddings (RoPE) are stretched beyond their optimal training distribution, the model's spatial awareness of where tokens reside in relation to one another begins to break down.</p>
+<p><strong>How to Notice and Measure the Drop</strong><br>
+Attention loss is insidious because the model remains fluent. It will confidently generate output that looks correct but misses the core constraints of the prompt. Engineers and researchers use specific frameworks to audit this behavior.</p>
+<p><strong>Needle in a Haystack (NIAH) Testing:</strong> The most common diagnostic tool is the <a target="_blank" rel="noopener noreferrer" href="https://github.com/gkamradt/LLMTest_NeedleInAHaystack">NIAH evaluation</a>. This involves taking a large block of filler text (the haystack) and inserting a specific, out-of-context fact (the needle) at varying depths. You then prompt the model to retrieve that fact. By plotting the retrieval accuracy on a grid of context length versus insertion depth, you can visualize the exact point where a specific model's attention begins to fail.</p>
+<p><strong>Instruction Degradation:</strong> Another clear symptom is dropped constraints in complex workflows. If you provide an LLM with a 50-page document and append a five-step formatting rule at the end, a model suffering from attention loss might apply rules one and two but completely ignore rules three through five. </p>
+<p><strong>Repetition and Looping:</strong> When the KV cache becomes corrupted or overly compressed, models lose track of what they have recently generated. This often results in infinite loops where the model repeats the same paragraph or code block endlessly, unable to attend to the tokens that signal the task is complete.</p>
+<p><strong>The Downstream Ramifications</strong><br>
+The failure to maintain attention across long contexts creates severe constraints for enterprise AI deployments. </p>
+<p>When developers trust a large context window to handle document analysis, attention loss directly translates to missed compliance risks, skipped legal clauses, or ignored software bugs. The illusion of capability is more dangerous than a strict limitation. A model that refuses a 100,000-token prompt forces the developer to find a workaround. A model that accepts the prompt but silently drops 20 percent of the information creates a hidden liability that might not be discovered until the output reaches production.</p>
+<p>This unreliability forces teams to build complex, brittle wrappers around their AI agents to double-check their work, eroding the speed and efficiency gains the technology was supposed to provide.</p>
+<p><strong>What the Industry is Doing About It</strong></p>
+<p>Architectural improvements and novel retrieval methods are actively being deployed to fix the memory bottleneck. </p>
+<p><strong>Advanced Positional Encodings:</strong> Standard positional encodings struggle when extrapolated to sequence lengths they never saw during training. Techniques like<a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.00071"> YaRN (Yet another RoPE extensioN</a>) scale the attention mechanism to handle longer contexts without losing the relative distance between tokens, keeping the model anchored even at extreme lengths.</p>
+<p><strong>KV Cache Eviction:</strong> Rather than storing every single token in the KV cache, researchers are developing methods to identify and keep only the "heavy hitters." Frameworks like <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.17453">StreamingLLM</a> prove that you can maintain high performance by keeping the initial tokens (the attention sink) and the most recent tokens, dropping the middle context entirely for continuous generation tasks.</p>
+<p><strong>Ring Attention:</strong> To bypass hardware limits, Ring Attention distributes the self-attention calculation across multiple GPUs. This prevents any single chip from running out of memory and allows models to process theoretically infinite context windows by passing the token calculations in a circular network.</p>
+<p><strong>Retrieval-Augmented Generation (RAG):</strong> The most practical mitigation for developers today is simply avoiding massive context windows altogether. RAG architectures chunk data, store it in a vector database, and only inject the most relevant paragraphs into the prompt at runtime. By keeping the context window small and dense, RAG forces the model to focus entirely on high-signal information, sidestepping the attention dilution problem completely.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 26, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Originally published on Other</span>
             </div>
             
@@ -660,72 +727,6 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 19, 2026 &bull; <span class="text-amber-900 font-semibold">2 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a><a href="/thoughts-technical-writing.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Technical Writing</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
-<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
-LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
-<p><strong>1. A full office suite built on open standards</strong></p>
-<p>LibreOffice Writer supports long‑form writing, page styles, cross‑references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
-<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
-<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
-<p>The process is straightforward:</p>
-<ol>
-<li>Make a copy of your <code>.odt</code> file.  </li>
-<li>Rename it to <code>.zip</code>.  </li>
-<li>Extract the contents.  </li>
-<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
-<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
-<li>Re‑zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
-</ol>
-<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards‑based format.</p>
-<p><strong>3. A free and capable PDF editor</strong></p>
-<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
-<p><strong>Closing thought</strong></p>
-<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -767,6 +768,11 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
+        <a href="/thoughts-ai-safety-risk.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Safety &amp; Risk</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
         <a href="/thoughts-critical-thinking-logic.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Critical Thinking &amp; Logic</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
@@ -775,11 +781,6 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
         <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Generative AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
-        </a>
-        
-        <a href="/thoughts-ai-safety-risk.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Safety &amp; Risk</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
         <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -827,6 +828,16 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Workflows</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
         <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
@@ -842,8 +853,18 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
         <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Semantic Layer</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Regulation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -877,11 +898,6 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Workflows</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-apache-sedona.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Apache Sedona</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -889,11 +905,6 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
         
         <a href="/thoughts-computer-vision.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Computer Vision</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Critical Thinking</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -947,11 +958,6 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Responsible AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Risk Management</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -964,11 +970,6 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
         
         <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Systems Thinking</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Tech Regulation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
