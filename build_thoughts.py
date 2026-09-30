@@ -1275,13 +1275,15 @@ def ping_websub_hub(feed_url="https://davidgsmith.net/rss.xml"):
         print(f"✗ Failed to complete publish notification: {error}")
 
 def inject_homepage_posts(posts):
-    # Ensure this matches your actual file name!
+    # Auto-detect index.html or alternative filenames in root
     index_path = BASE_DIR / "index.html"
-    
-    # 1. Provide a visible warning if the file is missing or misnamed
     if not index_path.exists():
-        print(f"⚠ Warning: Could not find '{index_path.name}' to inject posts. Check your filename.")
-        return
+        alt_path = BASE_DIR / "index_2.html"
+        if alt_path.exists():
+            index_path = alt_path
+        else:
+            print(f"⚠ Warning: Neither 'index.html' nor 'index_2.html' was found in {BASE_DIR}.")
+            return
         
     recent_posts = posts[:3]
     cards_html = ""
@@ -1294,30 +1296,27 @@ def inject_homepage_posts(posts):
         excerpt = html.escape(create_text_excerpt(body_html, max_length=120))
         
         cards_html += f"""
-            <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
-                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{date_str}</span>
-                <h3 class="text-lg font-serif font-medium text-white mb-3 leading-snug">
-                    <a href="thoughts/{slug}.html" class="hover:text-brand-accent transition-colors">{title}</a>
-                </h3>
-                <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">{excerpt}</p>
-                <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read Essay &rarr;</a>
-            </article>
-        """
+                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{date_str}</span>
+                    <h3 class="text-lg font-serif font-medium text-white mb-3 leading-snug">
+                        <a href="thoughts/{slug}.html" class="hover:text-brand-accent transition-colors">{title}</a>
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">{excerpt}</p>
+                    <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read Essay &rarr;</a>
+                </article>"""
 
     with open(index_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     pattern = r"(<!-- LATEST_POSTS_INJECT_START -->).*?(<!-- LATEST_POSTS_INJECT_END -->)"
     
-    # 2. Provide a warning if the HTML markers were accidentally deleted
     if not re.search(pattern, content, flags=re.DOTALL):
         print("⚠ Warning: Could not find the <!-- LATEST_POSTS_INJECT_START --> markers in the HTML.")
         return
         
-    # 3. Use a lambda replacement to completely prevent regex escape sequence errors
     updated_content = re.sub(
         pattern, 
-        lambda match: f"{match.group(1)}\n{cards_html}\n{match.group(2)}", 
+        lambda match: f"{match.group(1)}\n{cards_html}\n                {match.group(2)}", 
         content, 
         flags=re.DOTALL
     )
