@@ -29,7 +29,21 @@
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  
+  <url>
+    <loc>https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://davidgsmith.net/thoughts/building-geoai-systems-that-people-can-trust.html</loc>
     <changefreq>monthly</changefreq>
@@ -236,6 +250,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-civic-technology.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-cloud-native-geospatial.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -252,6 +271,11 @@
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-critical-thinking-logic.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-data-standards.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -387,6 +411,11 @@
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-systems-thinking.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-tech-modernization.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
