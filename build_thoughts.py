@@ -301,15 +301,24 @@ def render_related_posts_section(related_posts):
     </section>
     """
 
-def get_json_ld(post=None):
+# -------------------------------------------------------------
+# 1. Standardize Author @id & Add CollectionPage Schema to Tag Hubs
+# -------------------------------------------------------------
+
+def get_json_ld(post=None, tag=None):
+    author_entity = {
+        "@type": "Person",
+        "@id": "https://davidgsmith.net/#person",
+        "name": "David G. Smith",
+        "url": "https://davidgsmith.net/"
+    }
+
     if post:
         title = post.get("title", "Untitled")
         slug = post["_slug"]
         canonical_url = f"https://davidgsmith.net/thoughts/{slug}.html"
-        
         date_iso = post["_dt"].isoformat()
         modified_iso = post.get("last_modified", date_iso)
-        
         tags = post.get("tags", [])
         body_text = post.get("body", "")
         description = create_text_excerpt(render_markdown(body_text), max_length=160)
@@ -319,7 +328,7 @@ def get_json_ld(post=None):
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": post.get("type", "BlogPosting"),
+                "@type": post.get("type", "TechArticle"), # TechArticle is better weighted for technical AI grounding
                 "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -332,18 +341,8 @@ def get_json_ld(post=None):
                 "dateModified": modified_iso,
                 "inLanguage": "en-US",
                 "wordCount": word_count,
-                "author": {
-                    "@type": "Person",
-                    "@id": "https://davidgsmith.net",
-                    "name": "David G. Smith",
-                    "url": "https://davidgsmith.net"
-                },
-                "publisher": {
-                    "@type": "Person",
-                    "@id": "https://davidgsmith.net",
-                    "name": "David G. Smith",
-                    "url": "https://davidgsmith.net"
-                },
+                "author": author_entity,
+                "publisher": author_entity,
                 "description": description,
                 "keywords": ", ".join(tags) if tags else "",
                 "articleSection": tags[0] if tags else "Technology"
@@ -353,27 +352,24 @@ def get_json_ld(post=None):
                 "@type": "BreadcrumbList",
                 "@id": f"{canonical_url}#breadcrumb",
                 "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://davidgsmith.net"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Thoughts",
-                        "item": "https://davidgsmith.net/thoughts.html"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "name": title,
-                        "item": canonical_url
-                    }
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidgsmith.net/"},
+                    {"@type": "ListItem", "position": 2, "name": "Thoughts", "item": "https://davidgsmith.net/thoughts.html"},
+                    {"@type": "ListItem", "position": 3, "name": title, "item": canonical_url}
                 ]
             }
         ]
+    elif tag:
+        # Schema for Tag Hub Pages to establish topic clustering
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": f"https://davidgsmith.net/thoughts-{slugify(tag)}.html#webpage",
+            "url": f"https://davidgsmith.net/thoughts-{slugify(tag)}.html",
+            "name": f"Articles on {tag} — David G. Smith",
+            "description": f"Perspectives and architecture notes relating to {tag}.",
+            "about": {"@type": "Thing", "name": tag},
+            "author": author_entity
+        }
     else:
         schema = {
             "@context": "https://schema.org",
@@ -382,15 +378,9 @@ def get_json_ld(post=None):
             "name": "Thoughts & Insights — David G. Smith",
             "url": "https://davidgsmith.net/thoughts.html",
             "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
-            "author": {
-                "@type": "Person",
-                "@id": "https://davidgsmith.net",
-                "name": "David G. Smith",
-                "url": "https://davidgsmith.net"
-            }
+            "author": author_entity
         }
     
-    # Serialize safely to prevent breaking out of the script block
     serialized = json.dumps(schema, indent=2, ensure_ascii=False).replace("<", "\\u003c")
     return f'<script type="application/ld+json">\n{serialized}\n</script>'
 
@@ -936,8 +926,12 @@ def generate_rss(posts):
     with open(BASE_DIR / "rss.xml", "w", encoding="utf-8") as f:
         f.write(rss_feed.strip())
 
+# -------------------------------------------------------------
+# 2. Exclude Non-HTML Files from Sitemap (Fixes Bing Exclusion Errors)
+# -------------------------------------------------------------
+
 def generate_sitemap(posts, tag_slugs, month_slugs):
-    # Align structural assets precisely with the defined sitemap.xml rules
+    # Only indexable HTML endpoints
     entries = [
         """  <url>
     <loc>https://davidgsmith.net/</loc>
@@ -966,25 +960,9 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     <loc>https://davidgsmith.net/thoughts.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-  </url>""",
-        """  <url>
-    <loc>https://davidgsmith.net/rss.xml</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>""",
-        """  <url>
-    <loc>https://davidgsmith.net/llms.txt</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>""",
-        """  <url>
-    <loc>https://davidgsmith.net/api/v1/book-manifest.json</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>"""
     ]
     
-    # Do not set lastmod for dynamically generated pages without true modification dates
     for post in posts:
         slug = post["_slug"]
         entries.append(f"""  <url>
@@ -1015,7 +993,6 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     
     with open(BASE_DIR / "sitemap.xml", "w", encoding="utf-8") as f:
         f.write(sitemap_xml.strip())
-    print("✓ Generated sitemap.xml for search and AI crawler indexing.")
 
 def cleanup_stale_pages():
     THOUGHTS_DIR.mkdir(exist_ok=True)
