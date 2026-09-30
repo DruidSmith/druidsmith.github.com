@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add thoughts.html thoughts-*.html rss.xml thoughts/
+          git add index.html thoughts/ thoughts.html thoughts-*.html rss.xml sitemap.xml
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
