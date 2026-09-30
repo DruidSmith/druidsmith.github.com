@@ -1010,6 +1010,7 @@ def generate_html():
     cleanup_stale_pages()
     
     posts = load_posts()
+    inject_homepage_posts(posts)
     all_tags = set()
     generated_urls = ["https://davidgsmith.net/thoughts.html", "https://davidgsmith.net/rss.xml"]
     
@@ -1272,6 +1273,48 @@ def ping_websub_hub(feed_url="https://davidgsmith.net/rss.xml"):
                 print(f"⚠ Hub responded with an unexpected status: {response.status}")
     except Exception as error:
         print(f"✗ Failed to complete publish notification: {error}")
+
+def inject_homepage_posts(posts):
+    index_path = BASE_DIR / "index.html"
+    if not index_path.exists():
+        return
+        
+    # Get the 3 most recent posts
+    recent_posts = posts[:3]
+    cards_html = ""
+    
+    for p in recent_posts:
+        slug = p["_slug"]
+        title = html.escape(p.get("title", "Untitled"))
+        date_str = p["_dt"].strftime("%b %d, %Y")
+        body_html = render_markdown(p.get("body", ""))
+        excerpt = html.escape(create_text_excerpt(body_html, max_length=120))
+        
+        cards_html += f"""
+            <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{date_str}</span>
+                <h3 class="text-lg font-serif font-medium text-white mb-3 leading-snug">
+                    <a href="thoughts/{slug}.html" class="hover:text-brand-accent transition-colors">{title}</a>
+                </h3>
+                <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">{excerpt}</p>
+                <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read Essay &rarr;</a>
+            </article>
+        """
+
+    # Read current index.html
+    with open(index_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # Regex to replace everything between the injection markers
+    pattern = r"(<!-- LATEST_POSTS_INJECT_START -->).*?(<!-- LATEST_POSTS_INJECT_END -->)"
+    replacement = f"\\1\n{cards_html}\n\\2"
+    
+    updated_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+    # Write back to index.html
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(updated_content)
+
 
 def notify_indexnow(urls=None):
     key = os.environ.get("INDEXNOW_KEY")
