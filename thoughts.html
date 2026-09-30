@@ -155,6 +155,210 @@
         <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 30, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Originally published on Linkedin</span>
+            </div>
+            
+        <a href="/thoughts/americagov-apis-and-the-future-of-public-information.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                America.gov, APIs, and the Future of Public Information
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-data-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Data Standards</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Semantic Layer</a><a href="/thoughts-tech-modernization.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Modernization</a><a href="/thoughts-civic-technology.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Civic Technology</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GraphRAG</a><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/">recent conversation</a> around <a target="_blank" rel="noopener noreferrer" href="America.gov">America.gov</a> highlights something that has been building for years. Something I've been trying to raise awareness of for years.  People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools that help them understand the world rather than confuse it. The launch of America.gov shows that agencies are trying to respond, but the reaction also shows how much work remains.</p>
+<p>The public sector is entering an era shaped by artificial intelligence, machine readable data, and composable architectures. Agencies will need to rethink how they publish information. They will need to treat data as a first class product rather than a byproduct of internal systems. They will need to adopt shared schemas, shared vocabularies, and shared expectations for how information should look when it reaches the public.</p>
+<p>This is not a technical problem alone. It is a trust problem. It is a clarity problem. It is a consistency problem. And it is a problem that can be solved.</p>
+<p><strong>What agencies should work toward</strong></p>
+<p><em>Consistent schemas across agencies</em><br>
+Right now every agency publishes data in its own shape. Field names differ. Definitions differ. Formats differ. Even basic concepts like facility identifiers, geographic boundaries, or program codes vary from one dataset to the next. Agencies should work toward shared schemas that can be reused across programs. This would make public data easier to combine, easier to analyze, and easier to validate. It would also reduce the burden on developers who want to build tools on top of government information.</p>
+<p><em>Shared ontologies and controlled vocabularies</em><br>
+Agencies should adopt shared semantic models. SKOS, OWL, and RDF are mature technologies that allow concepts to be defined once and reused everywhere. A shared vocabulary for things like facility types, company identifiers, geographic units, and regulatory concepts would make it easier for the public to understand how different datasets relate to each other. It would also help agencies avoid duplication and inconsistency. This aligns with themes I write about at https://davidgsmith.net, especially around semantic clarity and the value of well structured knowledge.</p>
+<p><em>APIs that are predictable and well documented</em><br>
+The era of AI and machine learning depends on predictable APIs. Agencies should publish data through stable endpoints with clear documentation. They should support pagination, filtering, and metadata that explains how the data was collected. They should avoid one‑off formats and instead adopt standards like JSON‑LD or other machine friendly structures. This would make it easier for developers, researchers, and journalists to build tools that help the public understand government information.</p>
+<p><em>Machine readable metadata and validation rules</em><br>
+Agencies should publish SHACL shapes, schema definitions, and validation rules alongside their data. This would allow tools to automatically check whether a dataset is complete, consistent, and aligned with expectations. It would also help AI systems avoid misinterpretation. When data is self describing, it becomes easier to trust.</p>
+<p><em>Modern publishing pipelines</em><br>
+Agencies should adopt cloud native pipelines that allow data to be ingested, validated, standardized, enriched, and published in a consistent way. This is the same pattern used in modern private sector architectures. It ensures that data is clean, traceable, and ready for public use. It also makes it easier to update datasets regularly without breaking downstream tools.</p>
+<p><em>Transparency about provenance</em><br>
+People want to know where information comes from. Agencies should publish lineage metadata that explains how each dataset was produced. This includes source systems, transformation steps, and quality checks. Provenance builds trust, and trust is essential for public information systems.</p>
+<p><strong>Why this matters now more than ever</strong></p>
+<p>AI systems are only as good as the data they consume. If agencies want AI tools to help the public understand government information, they need to publish data that is structured, consistent, and semantically rich. They need to adopt standards that make it easy for machines to interpret meaning. They need to think about how APIs, schemas, and ontologies shape the future of civic understanding.</p>
+<p>This is not about technology for its own sake. It is about building a foundation for public trust. It is about giving people tools that help them make sense of the world. It is about ensuring that government information is accessible, reliable, and ready for the next generation of applications.</p>
+<p>The launch of America.gov is a step. The reaction shows that people care deeply about how information is presented. Agencies should take this moment as an opportunity to modernize their data practices and work toward a future where public information is not only available, but genuinely useful.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 28, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Originally published on Linkedin</span>
+            </div>
+            
+        <a href="/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Illusion of Autonomy: Why AI Breakthroughs Still Require Human Oversight
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-safety.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-risk-management.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Risk Management</a><a href="/thoughts-ai-governance.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Governance</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-ai-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Strategy</a><a href="/thoughts-decision-making.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Decision Making</a><a href="/thoughts-generative-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Generative AI</a><a href="/thoughts-retrieval-augmented-generation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>A <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7508647862893887488/">fascinating debate</a> recently broke out on LinkedIn<br>
+ that cuts right to the heart of how we evaluate technological progress versus corporate storytelling. Anthropic <a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">published a high profile announcement</a> claiming that its Claude models had autonomously discovered a completely new, CRISPR like enzyme system hidden inside bacteriophage DNA. </p>
+<p>According to their press release, this was the milestone product of their new molecular biology wet lab, achieved by deploying an army of 950 AI agents working over 21 hours.</p>
+<p>It sounded like a massive leap forward for autonomous science, until researchers in the field began pulling back the curtain.</p>
+<p>As it turns out, human scientists had mapped out this exact genetic sequence five years ago without any AI assistance. A <a target="_blank" rel="noopener noreferrer" href="https://journals.asm.org/doi/full/10.1128/jvi.02391-20">2021 paper by Korn et al</a>. documented the exact same stretch of DNA, described the reverse transcriptase, and even hypothesized the presence of an associated non coding RNA. </p>
+<p>While Anthropic properly cited these scientists in their technical preprint paper, they completely scrubbed them from the public facing marketing campaign. </p>
+<p>To make matters more complicated, critics pointed out that when Anthropic reran the identical prompt campaign ten more times, the AI missed the genetic structure entirely every single time.</p>
+<p>This isn’t a story about a useless tool, but it is a textbook example of a dangerous corporate trend. Tech labs are increasingly willing to bypass established norms of academic citation to spin a sci fi narrative about autonomous breakthroughs.</p>
+<p><strong>The Danger of First Order Thinking in AI Rollouts</strong></p>
+<p>When we look at this situation, it is easy to fall into first order thinking. A first order thinker looks at Anthropic's announcement and focuses entirely on immediate utility: we can deploy an army of software agents to automate biological research, lower human headcount, and speed up discovery.</p>
+<p>Second order thinking forces us to ask a much harder set of questions. What happens when an enterprise relies on an autonomous system that hallucinates baseline facts, or completely misses a target on a rerun? If a company brands a genomic pattern matching tool as an independent inventor, what hidden liabilities are we introducing into our workflows when that system encounters an unexpected edge case?</p>
+<p>Treating probabilistic pattern matching engines as deterministic, flawless inventors is an expensive mistake. The AI didn't independently deduce a biological truth from first principles. It navigated a massive dataset of existing human knowledge, found a structural pattern, and mapped it across related families. That is an incredibly useful capability, but it is a optimization step, not an immaculate conception.</p>
+<p><strong>Why Human judgment is the Ultimate Technical Skill</strong></p>
+<p>The real lesson here has less to do with biology and everything to do with how we interact with generative models. Software can now generate an infinite volume of plausible text, code, and hypotheses. Because the output sounds authoritative and is beautifully constructed, our natural instinct is to accept it without friction.</p>
+<p>This is exactly where mental passivity becomes incredibly expensive. When we hand over the responsibility of verification to the machine, we inherit a massive blind spot. In production environments, failing to map these second order failure modes is an indefensible exposure.</p>
+<p>The professionals who derive the most value from these new toolchains won't be the ones copy pasting trendy prompt templates. </p>
+<p>They will be the experts who maintain strong domain knowledge, deep structural discipline, and the willingness to trace every single synthetic claim back to a primary source. AI can supercharge our research workflows, but it can't replace or supply human judgment.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7508647862893887488/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 27, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Mechanics of Attention Loss in Large Language Models: Why AI Forgets What You Just Said
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-tech-regulation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Regulation</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single prompt. In practice, feeding a massive document into an LLM often results in a subtle but pervasive degradation of performance known as <em>attention loss.</em> </p>
+<p>When a model loses attention, it doesn'crash. It simply ignores specific instructions, hallucinates facts that contradict the provided text, or relies heavily on its pre-training weights instead of the in-context data. Understanding why this happens requires looking at the underlying math of the transformer architecture and the physical limitations of memory allocation.<br>
+<img alt="ai attention loss muk93cmt 01201ffb" src="https://davidgsmith.net/thoughts/images/ai-attention-loss-muk93cmt-01201ffb.jpg"><br>
+<strong>Why Attention Loss Happens</strong><br>
+The root cause of context degradation lies in the self-attention mechanism itself. Transformers process text by assigning attention scores between every token and every other token in a sequence. As the sequence grows longer, the model must distribute its attention scores across a vastly larger number of data points. </p>
+<p>This creates a dilution effect. If a critical instruction is buried at token 45,000 in a 100,000-token prompt, the raw attention score assigned to that specific instruction becomes mathematically infinitesimal compared to the aggregate attention scores of the surrounding noise. Researchers famously documented this as the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2307.03172">"Lost in the Middle" phenomenon</a>, demonstrating that models are highly proficient at retrieving information at the very beginning and very end of a prompt but struggle significantly with information located in the middle.</p>
+<p>Hardware constraints also play a major role. To process long sequences without recalculating everything from scratch, models use a Key-Value (KV) cache. The KV cache stores representations of all previous tokens. As the prompt grows, the KV cache scales linearly, consuming massive amounts of GPU VRAM. When models are forced to compress this cache or when rotary position embeddings (RoPE) are stretched beyond their optimal training distribution, the model's spatial awareness of where tokens reside in relation to one another begins to break down.</p>
+<p><strong>How to Notice and Measure the Drop</strong><br>
+Attention loss is insidious because the model remains fluent. It will confidently generate output that looks correct but misses the core constraints of the prompt. Engineers and researchers use specific frameworks to audit this behavior.</p>
+<p><strong>Needle in a Haystack (NIAH) Testing:</strong> The most common diagnostic tool is the <a target="_blank" rel="noopener noreferrer" href="https://github.com/gkamradt/LLMTest_NeedleInAHaystack">NIAH evaluation</a>. This involves taking a large block of filler text (the haystack) and inserting a specific, out-of-context fact (the needle) at varying depths. You then prompt the model to retrieve that fact. By plotting the retrieval accuracy on a grid of context length versus insertion depth, you can visualize the exact point where a specific model's attention begins to fail.</p>
+<p><strong>Instruction Degradation:</strong> Another clear symptom is dropped constraints in complex workflows. If you provide an LLM with a 50-page document and append a five-step formatting rule at the end, a model suffering from attention loss might apply rules one and two but completely ignore rules three through five. </p>
+<p><strong>Repetition and Looping:</strong> When the KV cache becomes corrupted or overly compressed, models lose track of what they have recently generated. This often results in infinite loops where the model repeats the same paragraph or code block endlessly, unable to attend to the tokens that signal the task is complete.</p>
+<p><strong>The Downstream Ramifications</strong><br>
+The failure to maintain attention across long contexts creates severe constraints for enterprise AI deployments. </p>
+<p>When developers trust a large context window to handle document analysis, attention loss directly translates to missed compliance risks, skipped legal clauses, or ignored software bugs. The illusion of capability is more dangerous than a strict limitation. A model that refuses a 100,000-token prompt forces the developer to find a workaround. A model that accepts the prompt but silently drops 20 percent of the information creates a hidden liability that might not be discovered until the output reaches production.</p>
+<p>This unreliability forces teams to build complex, brittle wrappers around their AI agents to double-check their work, eroding the speed and efficiency gains the technology was supposed to provide.</p>
+<p><strong>What the Industry is Doing About It</strong></p>
+<p>Architectural improvements and novel retrieval methods are actively being deployed to fix the memory bottleneck. </p>
+<p><strong>Advanced Positional Encodings:</strong> Standard positional encodings struggle when extrapolated to sequence lengths they never saw during training. Techniques like<a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.00071"> YaRN (Yet another RoPE extensioN</a>) scale the attention mechanism to handle longer contexts without losing the relative distance between tokens, keeping the model anchored even at extreme lengths.</p>
+<p><strong>KV Cache Eviction:</strong> Rather than storing every single token in the KV cache, researchers are developing methods to identify and keep only the "heavy hitters." Frameworks like <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.17453">StreamingLLM</a> prove that you can maintain high performance by keeping the initial tokens (the attention sink) and the most recent tokens, dropping the middle context entirely for continuous generation tasks.</p>
+<p><strong>Ring Attention:</strong> To bypass hardware limits, Ring Attention distributes the self-attention calculation across multiple GPUs. This prevents any single chip from running out of memory and allows models to process theoretically infinite context windows by passing the token calculations in a circular network.</p>
+<p><strong>Retrieval-Augmented Generation (RAG):</strong> The most practical mitigation for developers today is simply avoiding massive context windows altogether. RAG architectures chunk data, store it in a vector database, and only inject the most relevant paragraphs into the prompt at runtime. By keeping the context window small and dense, RAG forces the model to focus entirely on high-signal information, sidestepping the attention dilution problem completely.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 26, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Originally published on Other</span>
             </div>
@@ -516,216 +720,6 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 20, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/pixelrag-a-new-way-to-search-the-web.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                PixelRAG: A New Way to Search the Web
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-retrieval-augmented-generation-rag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation (RAG)</a><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-computer-vision.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Computer Vision</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots and searches the images directly. This keeps tables, charts, diagrams, layout and visual structure intact. Traditional RAG pipelines lose these details when they strip a page down to text.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/StarTrail-org/PixelRAG">PixelRAG</a> uses a vision‑language embedding model fine‑tuned on screenshots. It breaks a page into tiles, embeds each tile and builds a visual index. You can query the hosted index of more than eight million Wikipedia pages with text or images. The system returns the tiles that contain the answer, even when the answer is inside a table or chart.</p>
-<p>PixelRAG also ships a screenshot tool called pixelshot. Claude can use it through the pixelbrowse plugin to read pages visually. Instead of fetching HTML, Claude looks at the rendered page and interprets the content the way a person would.<br>
-<img alt="PixelRAG Infographic" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/pipeline.png"></p>
-<p>The project includes tools for rendering, embedding, indexing and serving your own visual search pipeline. You can build a local index, serve it through a FastAPI service or use Qdrant for large‑scale vector storage.</p>
-<p>PixelRAG shows what happens when retrieval stops relying on text and starts using the full visual structure of a document. It is a practical step toward search systems that understand pages the way humans see them.</p>
-<p><img alt="PixelRAG Logo" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/banner.png"></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 19, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                The Irony of Artificial Intelligence: Why Critical Thinking Is Now a Hard Technical Skill
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-critical-thinking-logic.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking &amp; Logic</a><a href="/thoughts-human-ai-interaction.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Human-AI Interaction</a><a href="/thoughts-future-of-work.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Future of Work</a><a href="/thoughts-generative-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Generative AI</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
-<p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
-<p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
-<p><img alt="AI and the Risk of Cognitive Offloading" src="https://davidgsmith.net/thoughts/images/criticalthinkingandai-mu8hzvle-47002032.jpg"></p>
-<p><strong>1. The Cost of Cognitive Offloading</strong></p>
-<p>Cognitive offloading, or using external tools to reduce mental effort, has been around for centuries. Writing helped with memory, calculators replaced manual arithmetic, and digital maps replaced printed road atlases. </p>
-<p>However, as research covered by the <a target="_blank" rel="noopener noreferrer" href="https://www.apa.org/monitor/2026/07-08/ai-job-skills-thinking">American Psychological Association</a> explains, generative AI differs in a fundamental way. It offloads the organization of ideas, the structure of arguments, and creative synthesis itself.</p>
-<p>Bypassing the friction of writing, outlining, and editing brings risks. When you skip the work of structuring messy ideas into a clear line of thought, you hand over control of your own reasoning.</p>
-<p>The practical response is not to abandon these tools. It is to keep from accepting their answers uncritically. The objective is to stop using AI to decide what to think, and instead use it to test how you think.</p>
-<p><strong>2. Plausibility vs. Accuracy</strong></p>
-<p>Language models are probabilistic systems designed for coherent syntax, not objective fact. As outlined in <a target="_blank" rel="noopener noreferrer" href="https://policycommons.net/artifacts/6942367/guidance-for-generative-ai-in-education-and-research/7852269/">UNESCO's Guidance for Generative AI in Education and Research</a>, generative tools build likely sequences of words without any direct comprehension of physical or social reality.</p>
-<p>This creates a common trap: superficial plausibility. Because an answer sounds authoritative and well-constructed, people tend to accept it without verification.</p>
-<p>Avoiding this error requires a few clear practices:</p>
-<ul>
-<li>
-<p><strong>Verify primary sources:</strong> Never rely on synthetic citations or summaries for critical claims. Follow assertions back to source papers, raw data, or verifiable documents.</p>
-</li>
-<li>
-<p><strong>Seek disconfirming evidence:</strong> Instead of prompting a tool to support an idea, ask it for counterexamples, alternative explanations, and historical cases where the logic failed.</p>
-</li>
-<li>
-<p><strong>Separate noise from bias:</strong> Watch for both systemic bias in training datasets and hallucinations caused by leading prompts.</p>
-</li>
-</ul>
-<p>This can be built upon, leveraging the heuristics and tools I lay out in my <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B00KxwQsW">book</a>, and adapting them for AI.</p>
-<p><strong>3. Moving Beyond Basic Prompts</strong></p>
-<p>Early discussions about AI often focused on prompt syntax, treating specific phrases as the key to getting good answers on the first try. In practice, effective work looks more like an editorial review.</p>
-<p>Experienced operators treat an LLM like a junior researcher. The process moves in stages:</p>
-<pre><code>[ Human: Define parameters, context, and core hypothesis ]
-                           |
-                           v
-[ AI: Synthesize research, outline options, identify counterarguments ]
-                           |
-                           v
-[ Human: Fact-check sources, challenge assumptions, evaluate edge cases ]
-                           |
-                           v
-[ Final Decision or Output ]
-</code></pre>
-<p>Instead of asking, "What should my market entry strategy be?", an experienced user provides the ground rules:</p>
-<blockquote>
-<p>"Here is my market entry hypothesis and its core assumptions. Challenge each assumption with historical examples where similar approaches failed."</p>
-</blockquote>
-<p>This keeps the human responsible for judgment while using the model for broad research and stress-testing.</p>
-<p><strong>4. The Value of Human Judgment</strong></p>
-<p>The professionals who get the most value from language models will not be the people collecting prompt templates. They will be the ones with strong domain knowledge, clear mental models, and the discipline to double-check convenient answers.</p>
-<p>Software can produce infinite volume. Critical thinking determines what is worth keeping, what is accurate, and what to ignore.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 19, 2026 &bull; <span class="text-amber-900 font-semibold">2 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a><a href="/thoughts-technical-writing.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Technical Writing</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
-<p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
-LibreOffice is often described as a free alternative to Microsoft Office, but that description misses its real strengths. It is a capable tool for writers, editors, and anyone who works with structured documents. I'd like to highlight a few areas to show why it deserves more attention.</p>
-<p><strong>1. A full office suite built on open standards</strong></p>
-<p>LibreOffice Writer supports long‑form writing, page styles, cross‑references, footnotes, and professional layout features. It uses the OpenDocument Format, which stores your work as readable XML inside a simple archive. This means your files are not locked inside a proprietary binary format. You can inspect and modify them with any text editor, automate changes, and keep full control over your documents.</p>
-<p><strong>2. Direct XML editing when the interface becomes unpredictable</strong></p>
-<p>A LibreOffice <code>.odt</code> file is a ZIP archive. If you ever run into cascading style changes in the LibreOffice interface, you can bypass the UI and edit the underlying XML directly.</p>
-<p>The process is straightforward:</p>
-<ol>
-<li>Make a copy of your <code>.odt</code> file.  </li>
-<li>Rename it to <code>.zip</code>.  </li>
-<li>Extract the contents.  </li>
-<li>Open <code>styles.xml</code> or <code>content.xml</code> in a text editor such as VS Code.  </li>
-<li>Adjust the specific attributes you want to change, such as font color or spacing.  </li>
-<li>Re‑zip the extracted contents and rename the archive back to <code>.odt</code>.</li>
-</ol>
-<p>This approach gives you precise control over styles without triggering unwanted inheritance or automatic updates. It is one of the advantages of using an open, standards‑based format.</p>
-<p><strong>3. A free and capable PDF editor</strong></p>
-<p>LibreOffice includes a PDF editing mode through its Draw component. When you open a PDF, you can modify text blocks, replace images, add annotations, rearrange pages, and export a new PDF. It is not a full replacement for commercial PDF editors, but it handles everyday corrections and layout adjustments without cost or online services.</p>
-<p><strong>Closing thought</strong></p>
-<p>LibreOffice offers more than a free word processor. It gives you a transparent file format, a way to edit documents at the XML level, and a practical tool for working with PDFs. These features make it a strong choice for anyone who values control, flexibility, and open standards.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -748,7 +742,7 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">46</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">50</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -759,6 +753,11 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
         
         <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Knowledge Graphs</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+        </a>
+        
+        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Generative AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
@@ -767,23 +766,23 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
+        <a href="/thoughts-ai-safety-risk.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Safety &amp; Risk</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
         <a href="/thoughts-critical-thinking-logic.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Critical Thinking &amp; Logic</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
-        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Generative AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
-        </a>
-        
-        <a href="/thoughts-ai-safety-risk.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Safety &amp; Risk</span>
+        <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Future of Work</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Future of Work</span>
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GraphRAG</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
@@ -792,8 +791,18 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Workflows</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
         <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Cloud-Native Geospatial</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Critical Thinking</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -807,13 +816,13 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GraphRAG</span>
+        <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>LLM Architecture</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>LLM Architecture</span>
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Responsible AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -822,9 +831,34 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Semantic Layer</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
         <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Spatial SQL</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Governance</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Safety</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Strategy</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Decision Making</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
         <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -842,8 +876,18 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Semantic Layer</span>
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Open Standards</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Risk Management</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Regulation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -857,28 +901,8 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-ai-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Governance</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-ai-law.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Law</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-ai-safety.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Safety</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Strategy</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Workflows</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -887,23 +911,23 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
+        <a href="/thoughts-civic-technology.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Civic Technology</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
         <a href="/thoughts-computer-vision.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Computer Vision</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Critical Thinking</span>
+        <a href="/thoughts-data-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Standards</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
         <a href="/thoughts-data-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Data Visualization</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Decision Making</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -937,23 +961,13 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Open Standards</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-python.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Python</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Responsible AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
-        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Risk Management</span>
+        <a href="/thoughts-retrieval-augmented-generation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Retrieval-Augmented Generation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -967,8 +981,8 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Tech Regulation</span>
+        <a href="/thoughts-tech-modernization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Modernization</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
