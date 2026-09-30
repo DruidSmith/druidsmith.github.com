@@ -1295,12 +1295,23 @@ def inject_homepage_posts(posts):
         body_html = render_markdown(p.get("body", ""))
         excerpt = html.escape(create_text_excerpt(body_html, max_length=220))
         
+        # --- NEW: Generate Dark-Mode Tag Badges ---
+        tags_html = ""
+        # Limiting to 2 tags prevents the card from getting too tall
+        for tag in p.get("tags", [])[:2]:
+            t_slug = slugify(tag)
+            tags_html += f'<a href="/thoughts-{t_slug}.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">{html.escape(tag)}</a>'
+        
+        tags_container = f'<div class="flex flex-wrap">{tags_html}</div>' if tags_html else ""
+        # ------------------------------------------
+        
         cards_html += f"""
                 <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{date_str}</span>
-                    <h3 class="text-lg font-serif font-medium text-white mb-3 leading-snug">
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
                         <a href="thoughts/{slug}.html" class="hover:text-brand-accent transition-colors">{title}</a>
                     </h3>
+                    {tags_container}
                     <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">{excerpt}</p>
                     <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
                 </article>"""
@@ -1324,7 +1335,7 @@ def inject_homepage_posts(posts):
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(updated_content)
         
-    print(f"✓ Successfully injected {len(recent_posts)} recent posts into {index_path.name}")
+    print(f"✓ Successfully injected {len(recent_posts)} recent posts with tags into {index_path.name}")
 
 
 def notify_indexnow(urls=None):
