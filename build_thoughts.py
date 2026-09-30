@@ -1293,7 +1293,7 @@ def inject_homepage_posts(posts):
         title = html.escape(p.get("title", "Untitled"))
         date_str = p["_dt"].strftime("%b %d, %Y")
         body_html = render_markdown(p.get("body", ""))
-        excerpt = html.escape(create_text_excerpt(body_html, max_length=120))
+        excerpt = html.escape(create_text_excerpt(body_html, max_length=220))
         
         cards_html += f"""
                 <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
@@ -1302,7 +1302,7 @@ def inject_homepage_posts(posts):
                         <a href="thoughts/{slug}.html" class="hover:text-brand-accent transition-colors">{title}</a>
                     </h3>
                     <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">{excerpt}</p>
-                    <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read Essay &rarr;</a>
+                    <a href="thoughts/{slug}.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
                 </article>"""
 
     with open(index_path, "r", encoding="utf-8") as f:
