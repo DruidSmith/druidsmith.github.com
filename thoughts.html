@@ -156,6 +156,76 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>September 30, 2026 &bull; <span class="text-amber-900 font-semibold">4 min read</span> &bull; Originally published on Linkedin</span>
+            </div>
+            
+        <a href="/thoughts/americagov-apis-and-the-future-of-public-information.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                America.gov, APIs, and the Future of Public Information
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-data-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Data Standards</a><a href="/thoughts-semantic-layer.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Semantic Layer</a><a href="/thoughts-tech-modernization.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Modernization</a><a href="/thoughts-civic-technology.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Civic Technology</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GraphRAG</a><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/">recent conversation</a> around <a target="_blank" rel="noopener noreferrer" href="America.gov">America.gov</a> highlights something that has been building for years. Something I've been trying to raise awareness of for years.  People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools that help them understand the world rather than confuse it. The launch of America.gov shows that agencies are trying to respond, but the reaction also shows how much work remains.</p>
+<p>The public sector is entering an era shaped by artificial intelligence, machine readable data, and composable architectures. Agencies will need to rethink how they publish information. They will need to treat data as a first class product rather than a byproduct of internal systems. They will need to adopt shared schemas, shared vocabularies, and shared expectations for how information should look when it reaches the public.</p>
+<p>This is not a technical problem alone. It is a trust problem. It is a clarity problem. It is a consistency problem. And it is a problem that can be solved.</p>
+<p><strong>What agencies should work toward</strong></p>
+<p><em>Consistent schemas across agencies</em><br>
+Right now every agency publishes data in its own shape. Field names differ. Definitions differ. Formats differ. Even basic concepts like facility identifiers, geographic boundaries, or program codes vary from one dataset to the next. Agencies should work toward shared schemas that can be reused across programs. This would make public data easier to combine, easier to analyze, and easier to validate. It would also reduce the burden on developers who want to build tools on top of government information.</p>
+<p><em>Shared ontologies and controlled vocabularies</em><br>
+Agencies should adopt shared semantic models. SKOS, OWL, and RDF are mature technologies that allow concepts to be defined once and reused everywhere. A shared vocabulary for things like facility types, company identifiers, geographic units, and regulatory concepts would make it easier for the public to understand how different datasets relate to each other. It would also help agencies avoid duplication and inconsistency. This aligns with themes I write about at https://davidgsmith.net, especially around semantic clarity and the value of well structured knowledge.</p>
+<p><em>APIs that are predictable and well documented</em><br>
+The era of AI and machine learning depends on predictable APIs. Agencies should publish data through stable endpoints with clear documentation. They should support pagination, filtering, and metadata that explains how the data was collected. They should avoid one‑off formats and instead adopt standards like JSON‑LD or other machine friendly structures. This would make it easier for developers, researchers, and journalists to build tools that help the public understand government information.</p>
+<p><em>Machine readable metadata and validation rules</em><br>
+Agencies should publish SHACL shapes, schema definitions, and validation rules alongside their data. This would allow tools to automatically check whether a dataset is complete, consistent, and aligned with expectations. It would also help AI systems avoid misinterpretation. When data is self describing, it becomes easier to trust.</p>
+<p><em>Modern publishing pipelines</em><br>
+Agencies should adopt cloud native pipelines that allow data to be ingested, validated, standardized, enriched, and published in a consistent way. This is the same pattern used in modern private sector architectures. It ensures that data is clean, traceable, and ready for public use. It also makes it easier to update datasets regularly without breaking downstream tools.</p>
+<p><em>Transparency about provenance</em><br>
+People want to know where information comes from. Agencies should publish lineage metadata that explains how each dataset was produced. This includes source systems, transformation steps, and quality checks. Provenance builds trust, and trust is essential for public information systems.</p>
+<p><strong>Why this matters now more than ever</strong></p>
+<p>AI systems are only as good as the data they consume. If agencies want AI tools to help the public understand government information, they need to publish data that is structured, consistent, and semantically rich. They need to adopt standards that make it easy for machines to interpret meaning. They need to think about how APIs, schemas, and ontologies shape the future of civic understanding.</p>
+<p>This is not about technology for its own sake. It is about building a foundation for public trust. It is about giving people tools that help them make sense of the world. It is about ensuring that government information is accessible, reliable, and ready for the next generation of applications.</p>
+<p>The launch of America.gov is a step. The reaction shows that people care deeply about how information is presented. Agencies should take this moment as an opportunity to modernize their data practices and work toward a future where public information is not only available, but genuinely useful.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="/images/InBug-Black.png" alt="LinkedIn icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>September 28, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Originally published on Linkedin</span>
             </div>
             
@@ -650,58 +720,6 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 20, 2026 &bull; <span class="text-amber-900 font-semibold">1 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/pixelrag-a-new-way-to-search-the-web.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                PixelRAG: A New Way to Search the Web
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-retrieval-augmented-generation-rag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation (RAG)</a><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-computer-vision.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Computer Vision</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots and searches the images directly. This keeps tables, charts, diagrams, layout and visual structure intact. Traditional RAG pipelines lose these details when they strip a page down to text.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/StarTrail-org/PixelRAG">PixelRAG</a> uses a vision‑language embedding model fine‑tuned on screenshots. It breaks a page into tiles, embeds each tile and builds a visual index. You can query the hosted index of more than eight million Wikipedia pages with text or images. The system returns the tiles that contain the answer, even when the answer is inside a table or chart.</p>
-<p>PixelRAG also ships a screenshot tool called pixelshot. Claude can use it through the pixelbrowse plugin to read pages visually. Instead of fetching HTML, Claude looks at the rendered page and interprets the content the way a person would.<br>
-<img alt="PixelRAG Infographic" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/pipeline.png"></p>
-<p>The project includes tools for rendering, embedding, indexing and serving your own visual search pipeline. You can build a local index, serve it through a FastAPI service or use Qdrant for large‑scale vector storage.</p>
-<p>PixelRAG shows what happens when retrieval stops relying on text and starts using the full visual structure of a document. It is a practical step toward search systems that understand pages the way humans see them.</p>
-<p><img alt="PixelRAG Logo" src="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/banner.png"></p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/pixelrag-a-new-way-to-search-the-web.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -724,7 +742,7 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">47</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">50</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -733,13 +751,13 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
-        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Generative AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
-        </a>
-        
         <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Knowledge Graphs</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+        </a>
+        
+        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Generative AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
@@ -760,6 +778,11 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
         
         <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Future of Work</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GraphRAG</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
@@ -793,11 +816,6 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GraphRAG</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
         <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>LLM Architecture</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
@@ -810,6 +828,11 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
         
         <a href="/thoughts-retrieval-augmented-generation-rag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Retrieval-Augmented Generation (RAG)</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Semantic Layer</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -853,13 +876,13 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Risk Management</span>
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Open Standards</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Semantic Layer</span>
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Risk Management</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -888,8 +911,18 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
+        <a href="/thoughts-civic-technology.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Civic Technology</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
         <a href="/thoughts-computer-vision.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Computer Vision</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-data-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Standards</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -928,11 +961,6 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Open Standards</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-python.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Python</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -950,6 +978,11 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
         
         <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Systems Thinking</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-tech-modernization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Modernization</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         

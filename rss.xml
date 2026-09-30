@@ -8,6 +8,47 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>America.gov, APIs, and the Future of Public Information</title>
+            <link>https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html</link>
+            <guid>https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html</guid>
+            <pubDate>Wed, 30 Sep 2026 13:43:29 +0000</pubDate>
+            <description>The recent conversation around America.gov highlights something that has been building for years. Something I&#x27;ve been trying to raise awareness of for years....</description>
+            <category>Data Standards</category>
+            <dc:subject>Data Standards</dc:subject>
+            <category>Semantic Layer</category>
+            <dc:subject>Semantic Layer</dc:subject>
+            <category>Tech Modernization</category>
+            <dc:subject>Tech Modernization</dc:subject>
+            <category>Civic Technology</category>
+            <dc:subject>Civic Technology</dc:subject>
+            <category>Knowledge Graphs</category>
+            <dc:subject>Knowledge Graphs</dc:subject>
+            <category>GraphRAG</category>
+            <dc:subject>GraphRAG</dc:subject>
+            <category>Open Standards</category>
+            <dc:subject>Open Standards</dc:subject>
+            <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/">recent conversation</a> around <a target="_blank" rel="noopener noreferrer" href="America.gov">America.gov</a> highlights something that has been building for years. Something I've been trying to raise awareness of for years.  People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools that help them understand the world rather than confuse it. The launch of America.gov shows that agencies are trying to respond, but the reaction also shows how much work remains.</p>
+<p>The public sector is entering an era shaped by artificial intelligence, machine readable data, and composable architectures. Agencies will need to rethink how they publish information. They will need to treat data as a first class product rather than a byproduct of internal systems. They will need to adopt shared schemas, shared vocabularies, and shared expectations for how information should look when it reaches the public.</p>
+<p>This is not a technical problem alone. It is a trust problem. It is a clarity problem. It is a consistency problem. And it is a problem that can be solved.</p>
+<p><strong>What agencies should work toward</strong></p>
+<p><em>Consistent schemas across agencies</em><br>
+Right now every agency publishes data in its own shape. Field names differ. Definitions differ. Formats differ. Even basic concepts like facility identifiers, geographic boundaries, or program codes vary from one dataset to the next. Agencies should work toward shared schemas that can be reused across programs. This would make public data easier to combine, easier to analyze, and easier to validate. It would also reduce the burden on developers who want to build tools on top of government information.</p>
+<p><em>Shared ontologies and controlled vocabularies</em><br>
+Agencies should adopt shared semantic models. SKOS, OWL, and RDF are mature technologies that allow concepts to be defined once and reused everywhere. A shared vocabulary for things like facility types, company identifiers, geographic units, and regulatory concepts would make it easier for the public to understand how different datasets relate to each other. It would also help agencies avoid duplication and inconsistency. This aligns with themes I write about at https://davidgsmith.net, especially around semantic clarity and the value of well structured knowledge.</p>
+<p><em>APIs that are predictable and well documented</em><br>
+The era of AI and machine learning depends on predictable APIs. Agencies should publish data through stable endpoints with clear documentation. They should support pagination, filtering, and metadata that explains how the data was collected. They should avoid one&#8208;off formats and instead adopt standards like JSON&#8208;LD or other machine friendly structures. This would make it easier for developers, researchers, and journalists to build tools that help the public understand government information.</p>
+<p><em>Machine readable metadata and validation rules</em><br>
+Agencies should publish SHACL shapes, schema definitions, and validation rules alongside their data. This would allow tools to automatically check whether a dataset is complete, consistent, and aligned with expectations. It would also help AI systems avoid misinterpretation. When data is self describing, it becomes easier to trust.</p>
+<p><em>Modern publishing pipelines</em><br>
+Agencies should adopt cloud native pipelines that allow data to be ingested, validated, standardized, enriched, and published in a consistent way. This is the same pattern used in modern private sector architectures. It ensures that data is clean, traceable, and ready for public use. It also makes it easier to update datasets regularly without breaking downstream tools.</p>
+<p><em>Transparency about provenance</em><br>
+People want to know where information comes from. Agencies should publish lineage metadata that explains how each dataset was produced. This includes source systems, transformation steps, and quality checks. Provenance builds trust, and trust is essential for public information systems.</p>
+<p><strong>Why this matters now more than ever</strong></p>
+<p>AI systems are only as good as the data they consume. If agencies want AI tools to help the public understand government information, they need to publish data that is structured, consistent, and semantically rich. They need to adopt standards that make it easy for machines to interpret meaning. They need to think about how APIs, schemas, and ontologies shape the future of civic understanding.</p>
+<p>This is not about technology for its own sake. It is about building a foundation for public trust. It is about giving people tools that help them make sense of the world. It is about ensuring that government information is accessible, reliable, and ready for the next generation of applications.</p>
+<p>The launch of America.gov is a step. The reaction shows that people care deeply about how information is presented. Agencies should take this moment as an opportunity to modernize their data practices and work toward a future where public information is not only available, but genuinely useful.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>The Illusion of Autonomy: Why AI Breakthroughs Still Require Human Oversight</title>
             <link>https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html</link>
             <guid>https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html</guid>
