@@ -1275,11 +1275,14 @@ def ping_websub_hub(feed_url="https://davidgsmith.net/rss.xml"):
         print(f"✗ Failed to complete publish notification: {error}")
 
 def inject_homepage_posts(posts):
+    # Ensure this matches your actual file name!
     index_path = BASE_DIR / "index.html"
+    
+    # 1. Provide a visible warning if the file is missing or misnamed
     if not index_path.exists():
+        print(f"⚠ Warning: Could not find '{index_path.name}' to inject posts. Check your filename.")
         return
         
-    # Get the 3 most recent posts
     recent_posts = posts[:3]
     cards_html = ""
     
@@ -1301,19 +1304,28 @@ def inject_homepage_posts(posts):
             </article>
         """
 
-    # Read current index.html
     with open(index_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Regex to replace everything between the injection markers
     pattern = r"(<!-- LATEST_POSTS_INJECT_START -->).*?(<!-- LATEST_POSTS_INJECT_END -->)"
-    replacement = f"\\1\n{cards_html}\n\\2"
     
-    updated_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+    # 2. Provide a warning if the HTML markers were accidentally deleted
+    if not re.search(pattern, content, flags=re.DOTALL):
+        print("⚠ Warning: Could not find the <!-- LATEST_POSTS_INJECT_START --> markers in the HTML.")
+        return
+        
+    # 3. Use a lambda replacement to completely prevent regex escape sequence errors
+    updated_content = re.sub(
+        pattern, 
+        lambda match: f"{match.group(1)}\n{cards_html}\n{match.group(2)}", 
+        content, 
+        flags=re.DOTALL
+    )
 
-    # Write back to index.html
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(updated_content)
+        
+    print(f"✓ Successfully injected {len(recent_posts)} recent posts into {index_path.name}")
 
 
 def notify_indexnow(urls=None):
