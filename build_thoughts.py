@@ -1293,7 +1293,7 @@ def inject_homepage_posts(posts):
         title = html.escape(p.get("title", "Untitled"))
         date_str = p["_dt"].strftime("%b %d, %Y")
         body_html = render_markdown(p.get("body", ""))
-        excerpt = html.escape(create_text_excerpt(body_html, max_length=220))
+        excerpt = html.escape(create_text_excerpt(body_html, max_length=350))
         
         # --- NEW: Generate Dark-Mode Tag Badges ---
         tags_html = ""
