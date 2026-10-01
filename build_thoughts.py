@@ -305,7 +305,7 @@ def render_related_posts_section(related_posts):
 # 1. Standardize Author @id & Add CollectionPage Schema to Tag Hubs
 # -------------------------------------------------------------
 
-def get_json_ld(post=None, tag=None):
+def get_json_ld(post=None, collection_url=None, collection_name=None, collection_desc=None, topic_name=None):
     author_entity = {
         "@type": "Person",
         "@id": "https://davidgsmith.net/#person",
@@ -328,7 +328,7 @@ def get_json_ld(post=None, tag=None):
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": post.get("type", "TechArticle"), # TechArticle is better weighted for technical AI grounding
+                "@type": post.get("type", "TechArticle"),
                 "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -358,18 +358,19 @@ def get_json_ld(post=None, tag=None):
                 ]
             }
         ]
-    elif tag:
-        # Schema for Tag Hub Pages to establish topic clustering
+    elif collection_url:
+        # Dynamic Schema for Collection Pages (Tags, Untagged, Months)
         schema = {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "@id": f"https://davidgsmith.net/thoughts-{slugify(tag)}.html#webpage",
-            "url": f"https://davidgsmith.net/thoughts-{slugify(tag)}.html",
-            "name": f"Articles on {tag} — David G. Smith",
-            "description": f"Perspectives and architecture notes relating to {tag}.",
-            "about": {"@type": "Thing", "name": tag},
+            "@id": f"{collection_url}#webpage",
+            "url": collection_url,
+            "name": collection_name,
+            "description": collection_desc,
             "author": author_entity
         }
+        if topic_name:
+            schema["about"] = {"@type": "Thing", "name": topic_name}
     else:
         schema = {
             "@context": "https://schema.org",
@@ -1094,10 +1095,19 @@ def generate_html():
             "type": "website"
         }
 
+        # Generate the JSON-LD for the tag collection
+        json_ld_script = get_json_ld(
+            collection_url=canonical,
+            collection_name=f"Articles on {tag} — David G. Smith",
+            collection_desc=description,
+            topic_name=tag
+        )
+
         page_html = wrap_with_layout(
             f"Posts tagged '{tag}' — David G. Smith",
             main_content,
             nav_rail,
+            json_ld=json_ld_script,
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
@@ -1135,10 +1145,18 @@ def generate_html():
             "type": "website"
         }
 
+        # Generate the JSON-LD for the untagged collection
+        json_ld_script = get_json_ld(
+            collection_url=canonical,
+            collection_name="Untagged Posts — David G. Smith",
+            collection_desc=description
+        )
+
         page_html = wrap_with_layout(
             "Untagged Posts — David G. Smith",
             main_content,
             nav_rail,
+            json_ld=json_ld_script,
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
@@ -1193,10 +1211,18 @@ def generate_html():
             "type": "website"
         }
 
+        # Generate the JSON-LD for the month collection
+        json_ld_script = get_json_ld(
+            collection_url=canonical,
+            collection_name=f"Posts from {m_full} {year} — David G. Smith",
+            collection_desc=description
+        )
+
         page_html = wrap_with_layout(
             f"Posts from {m_full} {year} — David G. Smith",
             main_content,
             nav_rail,
+            json_ld=json_ld_script,
             canonical=canonical,
             description=description,
             og_meta=og_metadata,
