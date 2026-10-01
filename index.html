@@ -19,8 +19,12 @@
         
     <link rel="alternate" type="application/rss+xml" href="/rss.xml">
     <link rel="service-desc" type="application/openapi+json" href="/openapi.json">
+    
+    <!-- Preconnects for Fonts and CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <!-- Canonical -->
   <link rel="canonical" href="https://davidgsmith.net/">
@@ -339,7 +343,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                    <button id="mobile-menu-btn" aria-label="Toggle mobile menu" class="text-brand-dark focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -361,219 +365,228 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="home" class="pt-40 pb-24 lg:pt-52 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-brand-dark mb-6 leading-tight">
-            Turning Complex Data & Technology Into Better Decisions
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-500 mb-10 leading-relaxed max-w-3xl mx-auto">
-            Data scientist, solutions architect, author, and strategic advisor specializing in federal technology modernization, cloud architecture, geospatial intelligence, and critical thinking.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#work" class="px-8 py-3 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors">
-                Explore My Work
-            </a>
-            <a href="#books" class="px-8 py-3 bg-transparent border border-gray-300 text-brand-dark hover:border-brand-dark rounded font-medium transition-colors">
-                My Books
-            </a>
-        </div>
-    </header>
+    <!-- Main Content Wrapper for Landmark Accessibility -->
+    <main>
+        <!-- Hero Section -->
+        <header id="home" class="pt-40 pb-24 lg:pt-52 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-brand-dark mb-6 leading-tight">
+                Turning Complex Data & Technology Into Better Decisions
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-500 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Data scientist, solutions architect, author, and strategic advisor specializing in federal technology modernization, cloud architecture, geospatial intelligence, and critical thinking.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#work" class="px-8 py-3 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors">
+                    Explore My Work
+                </a>
+                <a href="#books" class="px-8 py-3 bg-transparent border border-gray-300 text-brand-dark hover:border-brand-dark rounded font-medium transition-colors">
+                    My Books
+                </a>
+            </div>
+        </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-5">
-                    <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith, Data Scientist and Technical Architect" width="800" height="800" loading="lazy" class="w-full h-auto object-cover rounded shadow-md">
-                </div>
-                <div class="lg:col-span-7">
-                    <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">About David</p>
-                    <h2 class="text-3xl font-serif font-medium text-brand-dark mb-6">Making complex information useful.</h2>
-                    <div class="prose prose-lg text-gray-600 leading-relaxed space-y-4">
-                        <p>
-                            I am an engineer, technical architect, data scientist, and author based in Washington, D.C. With extensive experience in the private sector and as a federal IT professional, I specialize in navigating the complex intersection of enterprise data, cloud architecture, and geospatial technology.
-                        </p>
-                        <p>
-                            While my technical expertise spans AI and machine learning, cloud architecture, data science and data engineering, geospatial and other technologies, my core focus is always on the human element: helping leaders and organizations improve strategic direction and understand complex information. Whether I'm designing a data mesh for environmental quality tracking or writing about cognitive biases, the unifying theme of my work is <strong>equipping people with the tools to make better, more rational decisions</strong>.
-                        </p>
-                        <p>
-                            I am passionate about translating technical possibilities into practical realities, and I bring a disciplined, critical-thinking approach to both technology modernization and everyday problem-solving.
-                        </p>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white border-y border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-5">
+                        <picture>
+                            <source srcset="images/DaveSmithrPortrait.avif" type="image/avif">
+                            <source srcset="images/DaveSmithrPortrait.webp" type="image/webp">
+                            <img src="images/DaveSmithrPortrait.jpg" alt="David G. Smith, Data Scientist and Technical Architect" width="800" height="800" loading="lazy" class="w-full h-auto object-cover rounded shadow-md">
+                        </picture>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <p class="text-xs font-bold text-gray-500 tracking-widest uppercase mb-3">About David</p>
+                        <h2 class="text-3xl font-serif font-medium text-brand-dark mb-6">Making complex information useful.</h2>
+                        <div class="prose prose-lg text-gray-600 leading-relaxed space-y-4">
+                            <p>
+                                I am an engineer, technical architect, data scientist, and author based in Washington, D.C. With extensive experience in the private sector and as a federal IT professional, I specialize in navigating the complex intersection of enterprise data, cloud architecture, and geospatial technology.
+                            </p>
+                            <p>
+                                While my technical expertise spans AI and machine learning, cloud architecture, data science and data engineering, geospatial and other technologies, my core focus is always on the human element: helping leaders and organizations improve strategic direction and understand complex information. Whether I'm designing a data mesh for environmental quality tracking or writing about cognitive biases, the unifying theme of my work is <strong>equipping people with the tools to make better, more rational decisions</strong>.
+                            </p>
+                            <p>
+                                I am passionate about translating technical possibilities into practical realities, and I bring a disciplined, critical-thinking approach to both technology modernization and everyday problem-solving.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Selected Work -->
-    <section id="work" class="py-24 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Selected Work</p>
-                <h2 class="text-3xl font-serif font-medium text-brand-dark">Enterprise Architecture & Data Modernization</h2>
+        <!-- Selected Work -->
+        <section id="work" class="py-24 bg-brand-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-16">
+                    <p class="text-xs font-bold text-gray-500 tracking-widest uppercase mb-3">Selected Work</p>
+                    <h2 class="text-3xl font-serif font-medium text-brand-dark">Enterprise Architecture & Data Modernization</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brand-accent text-sm font-semibold mb-2">Cloud Architecture & Data Mesh</div>
+                        <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">USGS Water Quality Portal Migration</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Led the architectural migration of the USGS Water Quality Portal data mesh into the US EPA Data Management and Analytics Platform (DMAP). This modernization effort securely federated massive environmental datasets for improved accessibility and scalable cloud performance.
+                        </p>
+                        <a href="https://www.waterqualitydata.us/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Portal &rarr;</a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brand-accent text-sm font-semibold mb-2">Federal IT Modernization</div>
+                        <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">Envirofacts Cloud-Native Rebuild</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Architected the rebuild of the EPA's Envirofacts system as a cloud-native application within the DMAP environment. Replaced legacy monolithic structures with resilient, AWS-backed data pipelines to ensure reliable public access to critical environmental records.
+                        </p>
+                        <a href="https://enviro.epa.gov/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Envirofacts &rarr;</a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence</div>
+                        <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">MyEnvironment Spatial Integration</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Provided geospatial data integration and systems engineering for the EPA MyEnvironment mapping platform, enabling users to effortlessly visualize cross-media environmental data in their immediate geographic location.
+                        </p>
+                        <a href="https://geopub.epa.gov/myem/envmap/find.html" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View MyEnvironment &rarr;</a>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence & Policy</div>
+                        <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">NEPAssist</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Supported advanced spatial analysis capabilities for NEPAssist, an application facilitating the environmental review process. The tool leverages complex GIS web services to support critical infrastructure and regulatory decision-making.
+                        </p>
+                        <a href="https://nepassisttool.epa.gov/nepassist/nepamap.aspx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View NEPAssist &rarr;</a>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-brand-accent text-sm font-semibold mb-2">Cloud Architecture & Data Mesh</div>
-                    <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">USGS Water Quality Portal Migration</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Led the architectural migration of the USGS Water Quality Portal data mesh into the US EPA Data Management and Analytics Platform (DMAP). This modernization effort securely federated massive environmental datasets for improved accessibility and scalable cloud performance.
-                    </p>
-                    <a href="https://www.waterqualitydata.us/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Portal &rarr;</a>
+
+        <!-- Selected Writing & Books Section -->
+        <section id="writing" class="py-24 bg-brand-dark text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <p class="text-xs font-bold text-gray-500 tracking-widest uppercase mb-3">Featured & Recent</p>
+                    <h2 class="text-3xl font-serif font-medium text-white">Books & Latest Thoughts</h2>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-brand-accent text-sm font-semibold mb-2">Federal IT Modernization</div>
-                    <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">Envirofacts Cloud-Native Rebuild</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Architected the rebuild of the EPA's Envirofacts system as a cloud-native application within the DMAP environment. Replaced legacy monolithic structures with resilient, AWS-backed data pipelines to ensure reliable public access to critical environmental records.
-                    </p>
-                    <a href="https://enviro.epa.gov/" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Envirofacts &rarr;</a>
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+                    
+                    <!-- Static Book Card (Always First) -->
+                    <article class="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col shadow-xl">
+                        <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-3">Available Now</span>
+                        <picture>
+                            <source srcset="images/CriticalThinkingCover.avif" type="image/avif">
+                            <source srcset="images/CriticalThinkingCover.webp" type="image/webp">
+                            <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" width="600" height="900" class="w-full h-auto rounded shadow-md mb-5" loading="lazy">
+                        </picture>
+                        <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                            <a href="critical-thinking.html" class="hover:text-amber-400 transition-colors">Critical Thinking: A Practical Guide</a>
+                        </h3>
+                        <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-3">A comprehensive 468-page manual mapping over 100 logical heuristics, cognitive biases, and practical frameworks.</p>
+                        <a href="critical-thinking.html" class="text-xs font-semibold text-amber-500 hover:text-amber-400 mt-auto uppercase tracking-wide">Explore Book &rarr;</a>
+                    </article>
 
-                <!-- Project 3 -->
-                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence</div>
-                    <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">MyEnvironment Spatial Integration</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Provided geospatial data integration and systems engineering for the EPA MyEnvironment mapping platform, enabling users to effortlessly visualize cross-media environmental data in their immediate geographic location.
-                    </p>
-                    <a href="https://geopub.epa.gov/myem/envmap/find.html" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Application &rarr;</a>
-                </div>
+                    <!-- LATEST_POSTS_INJECT_START -->
 
-                <!-- Project 4 -->
-                <div class="bg-white p-8 border border-gray-200 rounded shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-brand-accent text-sm font-semibold mb-2">Geospatial Intelligence & Policy</div>
-                    <h3 class="text-xl font-serif font-medium text-brand-dark mb-3">NEPAssist</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Supported advanced spatial analysis capabilities for NEPAssist, an application facilitating the environmental review process. The tool leverages complex GIS web services to support critical infrastructure and regulatory decision-making.
-                    </p>
-                    <a href="https://nepassisttool.epa.gov/nepassist/nepamap.aspx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-brand-dark border-b border-gray-300 hover:border-brand-dark transition-colors pb-1">View Application &rarr;</a>
+                    <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Sep 30, 2026</span>
+                        <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                            <a href="thoughts/americagov-apis-and-the-future-of-public-information.html" class="hover:text-brand-accent transition-colors">America.gov, APIs, and the Future of Public Information</a>
+                        </h3>
+                        <div class="flex flex-wrap"><a href="/thoughts-data-standards.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Data Standards</a><a href="/thoughts-semantic-layer.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Semantic Layer</a></div>
+                        <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">The recent conversation around America.gov highlights something that has been building for years. Something I&#x27;ve been trying to raise awareness of for years. People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools...</p>
+                        <a href="thoughts/americagov-apis-and-the-future-of-public-information.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
+                    </article>
+                    <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Sep 28, 2026</span>
+                        <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                            <a href="thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html" class="hover:text-brand-accent transition-colors">The Illusion of Autonomy: Why AI Breakthroughs Still Require Human Oversight</a>
+                        </h3>
+                        <div class="flex flex-wrap"><a href="/thoughts-ai-safety.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Safety</a><a href="/thoughts-critical-thinking.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Critical Thinking</a></div>
+                        <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">A fascinating debate recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling. Anthropic published a high profile announcement claiming that its Claude models had autonomously discovered a completely new, CRISPR like enzyme system hidden inside bacteriophage DNA. According...</p>
+                        <a href="thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
+                    </article>
+                    <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Sep 27, 2026</span>
+                        <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                            <a href="thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="hover:text-brand-accent transition-colors">The Mechanics of Attention Loss in Large Language Models: Why AI Forgets What You Just Said</a>
+                        </h3>
+                        <div class="flex flex-wrap"><a href="/thoughts-ai-safety-risk.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Safety &amp; Risk</a><a href="/thoughts-ai-workflows.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Workflows</a></div>
+                        <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single...</p>
+                        <a href="thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
+                    </article>
+                    <!-- LATEST_POSTS_INJECT_END -->
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Advising & Who I Help -->
+        <section id="advisory" class="py-24 bg-brand-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <p class="text-xs font-bold text-gray-500 tracking-widest uppercase mb-3">Advisory</p>
+                    <h2 class="text-3xl font-serif font-medium text-brand-dark mb-6">I help organizations make better use of data and technology.</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        My work spans data science, cloud architecture, geospatial systems, data governance, and technology modernization. I particularly enjoy problems where the technical solution has to work within complex organizational, regulatory, and operational constraints.
+                    </p>
+                </div>
 
-    <!-- Books / Author Platform -->
-    <!-- Selected Writing & Books Section -->
-<!-- Selected Writing & Books Section -->
-    <section id="writing" class="py-24 bg-brand-dark text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Featured & Recent</p>
-                <h2 class="text-3xl font-serif font-medium text-white">Books & Latest Thoughts</h2>
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 border border-gray-200 rounded">
+                        <h3 class="text-lg font-bold text-brand-dark mb-3">Federal & Public-Sector Organizations</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Modernizing legacy data environments, navigating compliance, and architecting secure, resilient cloud solutions (AWS) for massive datasets.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 border border-gray-200 rounded">
+                        <h3 class="text-lg font-bold text-brand-dark mb-3">Organizations With Complex Data</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Building data pipelines, mesh architectures, and geospatial intelligence systems that make information easier to find, understand, and use.</p>
+                    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+                    <div class="bg-white p-8 border border-gray-200 rounded">
+                        <h3 class="text-lg font-bold text-brand-dark mb-3">Business Leaders</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Translating technical possibilities into practical, executive-level decisions. Advisory guidance on data strategy, engineering leadership, and innovation.</p>
+                    </div>
+
+                    <div class="bg-white p-8 border border-gray-200 rounded">
+                        <h3 class="text-lg font-bold text-brand-dark mb-3">Authors & Educators</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Collaborating on topics related to critical thinking, information literacy, and the practical impacts of artificial intelligence on small business.</p>
+                    </div>
+                </div>
                 
-                <!-- Static Book Card (Always First) -->
-                <article class="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col shadow-xl">
-                    <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-3">Available Now</span>
-                    <img src="images/CriticalThinkingCover.jpg" alt="Critical Thinking Book Cover" class="w-full h-auto rounded shadow-md mb-5" loading="lazy">
-                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
-                        <a href="critical-thinking.html" class="hover:text-amber-400 transition-colors">Critical Thinking: A Practical Guide</a>
-                    </h3>
-                    <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-3">A comprehensive 468-page manual mapping over 100 logical heuristics, cognitive biases, and practical frameworks.</p>
-                    <a href="critical-thinking.html" class="text-xs font-semibold text-amber-500 hover:text-amber-400 mt-auto uppercase tracking-wide">Explore Book &rarr;</a>
-                </article>
-
-                <!-- LATEST_POSTS_INJECT_START -->
-
-                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Sep 30, 2026</span>
-                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
-                        <a href="thoughts/americagov-apis-and-the-future-of-public-information.html" class="hover:text-brand-accent transition-colors">America.gov, APIs, and the Future of Public Information</a>
-                    </h3>
-                    <div class="flex flex-wrap"><a href="/thoughts-data-standards.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Data Standards</a><a href="/thoughts-semantic-layer.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Semantic Layer</a></div>
-                    <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">The recent conversation around America.gov highlights something that has been building for years. Something I&#x27;ve been trying to raise awareness of for years. People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools...</p>
-                    <a href="thoughts/americagov-apis-and-the-future-of-public-information.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
-                </article>
-                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Sep 28, 2026</span>
-                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
-                        <a href="thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html" class="hover:text-brand-accent transition-colors">The Illusion of Autonomy: Why AI Breakthroughs Still Require Human Oversight</a>
-                    </h3>
-                    <div class="flex flex-wrap"><a href="/thoughts-ai-safety.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Safety</a><a href="/thoughts-critical-thinking.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Critical Thinking</a></div>
-                    <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">A fascinating debate recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling. Anthropic published a high profile announcement claiming that its Claude models had autonomously discovered a completely new, CRISPR like enzyme system hidden inside bacteriophage DNA. According...</p>
-                    <a href="thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
-                </article>
-                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Sep 27, 2026</span>
-                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
-                        <a href="thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="hover:text-brand-accent transition-colors">The Mechanics of Attention Loss in Large Language Models: Why AI Forgets What You Just Said</a>
-                    </h3>
-                    <div class="flex flex-wrap"><a href="/thoughts-ai-safety-risk.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Safety &amp; Risk</a><a href="/thoughts-ai-workflows.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Workflows</a></div>
-                    <p class="text-sm text-gray-400 mb-5 flex-grow line-clamp-4">The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single...</p>
-                    <a href="thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="text-xs font-semibold text-brand-accent hover:text-amber-500 mt-auto uppercase tracking-wide">Read More &rarr;</a>
-                </article>
-                <!-- LATEST_POSTS_INJECT_END -->
-
+                <div class="mt-12 text-center">
+                    <p class="text-sm font-semibold text-brand-accent uppercase tracking-widest">Available for selected advisory engagements.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Advising & Who I Help -->
-    <section id="advisory" class="py-24 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-16">
-                <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Advisory</p>
-                <h2 class="text-3xl font-serif font-medium text-brand-dark mb-6">I help organizations make better use of data and technology.</h2>
-                <p class="text-gray-600 leading-relaxed text-lg">
-                    My work spans data science, cloud architecture, geospatial systems, data governance, and technology modernization. I particularly enjoy problems where the technical solution has to work within complex organizational, regulatory, and operational constraints.
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-brand-light border-t border-gray-100">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xs font-bold text-gray-500 tracking-widest uppercase mb-3">Let's Talk</p>
+                <h2 class="text-3xl font-serif font-medium text-brand-dark mb-8">Get In Touch</h2>
+                <p class="text-gray-600 mb-10 leading-relaxed">
+                    Interested in discussing advisory board roles, technology strategy discussions, speaking engagements, or my writing? Reach out directly via email or connect with me on LinkedIn.
                 </p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 border border-gray-200 rounded">
-                    <h3 class="text-lg font-bold text-brand-dark mb-3">Federal & Public-Sector Organizations</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Modernizing legacy data environments, navigating compliance, and architecting secure, resilient cloud solutions (AWS) for massive datasets.</p>
-                </div>
-                
-                <div class="bg-white p-8 border border-gray-200 rounded">
-                    <h3 class="text-lg font-bold text-brand-dark mb-3">Organizations With Complex Data</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Building data pipelines, mesh architectures, and geospatial intelligence systems that make information easier to find, understand, and use.</p>
-                </div>
-
-                <div class="bg-white p-8 border border-gray-200 rounded">
-                    <h3 class="text-lg font-bold text-brand-dark mb-3">Business Leaders</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Translating technical possibilities into practical, executive-level decisions. Advisory guidance on data strategy, engineering leadership, and innovation.</p>
-                </div>
-
-                <div class="bg-white p-8 border border-gray-200 rounded">
-                    <h3 class="text-lg font-bold text-brand-dark mb-3">Authors & Educators</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Collaborating on topics related to critical thinking, information literacy, and the practical impacts of artificial intelligence on small business.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="mailto:info@davidgsmith.net" class="px-8 py-4 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors w-full sm:w-auto shadow-sm">
+                        Email: info@davidgsmith.net
+                    </a>
+                    <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-transparent border border-gray-300 text-brand-dark rounded font-medium hover:border-gray-400 transition-colors w-full sm:w-auto">
+                        Connect on LinkedIn
+                    </a>
                 </div>
             </div>
-            
-            <div class="mt-12 text-center">
-                <p class="text-sm font-semibold text-brand-accent uppercase tracking-widest">Available for selected advisory engagements.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-brand-light border-t border-gray-100">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">Let's Talk</p>
-            <h2 class="text-3xl font-serif font-medium text-brand-dark mb-8">Get In Touch</h2>
-            <p class="text-gray-600 mb-10 leading-relaxed">
-                Interested in discussing advisory board roles, technology strategy discussions, speaking engagements, or my writing? Reach out directly via email or connect with me on LinkedIn.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="mailto:info@davidgsmith.net" class="px-8 py-4 bg-brand-dark text-white rounded font-medium hover:bg-gray-800 transition-colors w-full sm:w-auto shadow-sm">
-                    Email: info@davidgsmith.net
-                </a>
-                <a href="https://www.linkedin.com/in/davidgsmith/" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-transparent border border-gray-300 text-brand-dark rounded font-medium hover:border-gray-400 transition-colors w-full sm:w-auto">
-                    Connect on LinkedIn
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-brand-dark text-gray-400 py-12 border-t border-gray-800">
