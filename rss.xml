@@ -8,6 +8,27 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>Everyone&#x27;s Thinking Spatially Even If They Don&#x27;t Call It Geography</title>
+            <link>https://davidgsmith.net/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html</link>
+            <guid>https://davidgsmith.net/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html</guid>
+            <pubDate>Thu, 01 Oct 2026 22:52:21 +0000</pubDate>
+            <description>Matt Forrest shared a story that struck a chord with me. He talked about winning an atlas in a third grade contest and not realizing that it could become a...</description>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
+            <category>Future of Work</category>
+            <dc:subject>Future of Work</dc:subject>
+            <content:encoded><![CDATA[<p><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mbforr">Matt Forrest</a> shared a <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:share:7511401119257083906/">story</a> that struck a chord with me. He talked about winning an atlas in a third grade contest and not realizing that it could become a career. He didn't know <em>geography</em> was even a department until an advisor pointed him toward it. That moment changed the direction of his life. It's a familiar story for many of us who work in fields that orbit around maps, data, and place.</p>
+<p>Matt mentioned a number that surprised me. About 4.5 million people in the United States have taken AP Human Geography. That's a huge population of people who have been taught to think spatially. Yet very few of them have job titles that include GIS or geography. <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/christopher-t-5595689">Chris Tucker</a> put it simply. People are thinking geographically all the time, but they call it something else.</p>
+<p>This is something I have seen throughout my own career. Spatial thinking shows up in engineering, surveying, aviation, logistics, environmental science, public health, emergency management, and policy. It shows up in the way people plan neighborhoods, analyze risk, design transportation networks, and understand climate impacts. It shows up in the way we make sense of the world. Most of the time, nobody uses the word geography. The thinking is there. The label is not.</p>
+<p>In his <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=UQlBNp_xNn8">podcast</a>, Matt asks Tucker to name five careers that do not sound geographic but rely heavily on spatial skills. Surveying. CAD and the built environment. Aviation. Marine navigation. Conservation. I could add many more. Hydrology. Urban planning. Forestry. Infrastructure design. Environmental compliance. Even software architecture has spatial elements when you think about systems as landscapes.  I myself started out with summers working for a land surveyor in high school, long before I switched majors to study GIS and remote sensing.</p>
+<p>The point is simple. Spatial thinking is not a niche skill. It is a foundational way of understanding relationships, patterns, and context. It helps people see how things connect. It helps them understand how decisions ripple across space and time. It helps them avoid narrow thinking and blind spots. It is one of the most practical forms of critical thinking we have.</p>
+<p>Many people struggle to explain what they do for a living. I've been there myself. When your work sits at the intersection of disciplines, the usual labels do not fit. Matt's conversation offers a better way to frame it. If your work involves understanding how things relate across space, you are part of a much larger community of spatial thinkers. You do not need the title to belong to the discipline.</p>
+<p>Geography has always been more than maps. It is a way of seeing. It is a way of organizing information. It is a way of understanding systems. It is a way of thinking that shows up everywhere, even when people do not recognize it.</p>
+<p>If you have ever felt like your work is hard to describe, consider the possibility that you are doing geography without calling it that. You are part of a tradition that is older than any job title and more relevant than ever in a world shaped by data, movement, and change.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>America.gov, APIs, and the Future of Public Information</title>
             <link>https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html</link>
             <guid>https://davidgsmith.net/thoughts/americagov-apis-and-the-future-of-public-information.html</guid>
