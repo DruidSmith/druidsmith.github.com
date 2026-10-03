@@ -254,12 +254,12 @@ The article makes a compelling case that GeoAI governance is a foundation for re
             <guid>https://davidgsmith.net/thoughts/when-tradition-tries-to-overrule-demography.html</guid>
             <pubDate>Fri, 25 Sep 2026 20:37:18 +0000</pubDate>
             <description>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that Andrew Gelman...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Demographics</category>
             <dc:subject>Demographics</dc:subject>
             <category>AI Governance &amp; Policy</category>
             <dc:subject>AI Governance &amp; Policy</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/09/25/53011/">Andrew Gelman recently wrote about a museum exhibit in France that included a set of pronatalist posters from the 1920s</a>. The material was produced by the <em><a target="_blank" rel="noopener noreferrer" href="https://fr.wikipedia.org/wiki/Alliance_nationale_pour_l%27accroissement_de_la_population_fran%C3%A7aise">Alliance nationale pour l'accroissement de la population franc&#807;aise</a></em>, a group that spanned the political spectrum at the time. Their message was simple: a "normal" family should have three children. The posters framed this as a national necessity.</p>
 <p>The exhibit highlights a recurring pattern in demographic reasoning. Once a society reaches low infant and child mortality, the long&#8208;term replacement level is about 2.1 children per woman. The posters didn't reference this. Instead, they promoted a target that was higher than what stable population dynamics require. The intent was not stability. It was growth. France had just come out of the First World War and was concerned about falling behind Germany in population and industrial capacity.</p>
 <p>Gelman points out that the "ideal number of children" is not the same as the number people actually have. Ideals often reflect cultural narratives rather than lived behavior. The posters treated the ideal as a factual requirement. They also ignored the distribution of family sizes. Some households have no children or only one. Policymakers may have assumed that others needed to compensate by having three.</p>
@@ -446,14 +446,14 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <guid>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</guid>
             <pubDate>Sat, 19 Sep 2026 14:44:56 +0000</pubDate>
             <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Human-AI Interaction</category>
             <dc:subject>Human-AI Interaction</dc:subject>
             <category>Future of Work</category>
             <dc:subject>Future of Work</dc:subject>
             <category>Generative AI</category>
             <dc:subject>Generative AI</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
 <p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
 <p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
@@ -872,10 +872,10 @@ What evidence would make us reconsider our position?</p>
             <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them,...</description>
             <category>Human-AI Interaction</category>
             <dc:subject>Human-AI Interaction</dc:subject>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Generative AI</category>
             <dc:subject>Generative AI</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
@@ -954,10 +954,10 @@ Demo App:<br>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
             <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Updates</category>
             <dc:subject>Updates</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
 <p>It's not your typical book on critical thinking, which just hands you a list of cognitive biases and some motivational talk, it's an extensive, organized and curated framework with over 100 concepts, techniques, heuristics and real world case studies and examples, laid out in over 400 pages, building on the work of Nobel laureate Daniel Kahneman along with the peer reviewed research of dozens of researchers and experts in cognitive psychology, behavioral economics and other fields.</p>
