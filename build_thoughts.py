@@ -328,7 +328,7 @@ def get_json_ld(post=None, collection_url=None, collection_name=None, collection
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": post.get("type", "TechArticle"),
+                "@type": post.get("type", "BlogPosting"),
                 "@id": f"{canonical_url}#article",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -359,8 +359,8 @@ def get_json_ld(post=None, collection_url=None, collection_name=None, collection
             }
         ]
     elif collection_url:
-        # Dynamic Schema for Collection Pages (Tags, Untagged, Months)
-        schema = {
+        # Dynamic Schema for Collection Pages (Tags, Untagged, Months) with Breadcrumbs
+        collection_schema = {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             "@id": f"{collection_url}#webpage",
@@ -370,17 +370,44 @@ def get_json_ld(post=None, collection_url=None, collection_name=None, collection
             "author": author_entity
         }
         if topic_name:
-            schema["about"] = {"@type": "Thing", "name": topic_name}
+            collection_schema["about"] = {"@type": "Thing", "name": topic_name}
+            
+        schema = [
+            collection_schema,
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "@id": f"{collection_url}#breadcrumb",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidgsmith.net/"},
+                    {"@type": "ListItem", "position": 2, "name": "Thoughts", "item": "https://davidgsmith.net/thoughts.html"},
+                    {"@type": "ListItem", "position": 3, "name": collection_name, "item": collection_url}
+                ]
+            }
+        ]
     else:
-        schema = {
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            "@id": "https://davidgsmith.net/thoughts.html#blog",
-            "name": "Thoughts & Insights — David G. Smith",
-            "url": "https://davidgsmith.net/thoughts.html",
-            "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
-            "author": author_entity
-        }
+        # Main thoughts.html Blog Index with Breadcrumbs
+        blog_url = "https://davidgsmith.net/thoughts.html"
+        schema = [
+            {
+                "@context": "https://schema.org",
+                "@type": "Blog",
+                "@id": f"{blog_url}#blog",
+                "name": "Thoughts & Insights — David G. Smith",
+                "url": blog_url,
+                "description": "Latest perspectives on technical architecture, enterprise data, and critical thinking.",
+                "author": author_entity
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "@id": f"{blog_url}#breadcrumb",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidgsmith.net/"},
+                    {"@type": "ListItem", "position": 2, "name": "Thoughts", "item": blog_url}
+                ]
+            }
+        ]
     
     serialized = json.dumps(schema, indent=2, ensure_ascii=False).replace("<", "\\u003c")
     return f'<script type="application/ld+json">\n{serialized}\n</script>'
@@ -698,6 +725,8 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 {og_html}
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
 {canonical_tag}
+<link rel="icon">
+<link rel="apple-touch-icon">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {{ 
