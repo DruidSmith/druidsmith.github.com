@@ -60,13 +60,13 @@
       "Critical Thinking",
       "Responsible AI",
       "Risk Management",
-      "AI Governance",
       "AI Workflows",
       "AI Strategy",
       "Decision Making",
       "Generative AI",
       "Retrieval-Augmented Generation (RAG)",
-      "AI Safety & Risk"
+      "AI Safety & Risk",
+      "AI Governance & Policy"
     ],
     "type": "TechArticle",
     "format": "markdown",
