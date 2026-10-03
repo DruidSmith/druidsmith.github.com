@@ -235,11 +235,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://davidgsmith.net/thoughts-ai-safety.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://davidgsmith.net/thoughts-ai-safety-risk.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
