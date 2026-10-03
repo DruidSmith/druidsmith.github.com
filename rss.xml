@@ -8,6 +8,52 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>AI Can Now P&amp;#8208;Hack at Scale. The Real Risk Isn&#x27;t Cheating. It&#x27;s Obedience.</title>
+            <link>https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html</link>
+            <guid>https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html</guid>
+            <pubDate>Sat, 03 Oct 2026 14:33:18 +0000</pubDate>
+            <description>For years, p&amp;#8208;hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something &quot;significant&quot;...</description>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
+            <category>AI Safety &amp; Risk</category>
+            <dc:subject>AI Safety &amp; Risk</dc:subject>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
+            <category>Decision Making</category>
+            <dc:subject>Decision Making</dc:subject>
+            <category>Risk Management</category>
+            <dc:subject>Risk Management</dc:subject>
+            <category>AI Agents</category>
+            <dc:subject>AI Agents</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>Tech Regulation</category>
+            <dc:subject>Tech Regulation</dc:subject>
+            <category>Systems Thinking</category>
+            <dc:subject>Systems Thinking</dc:subject>
+            <category>Enterprise AI</category>
+            <dc:subject>Enterprise AI</dc:subject>
+            <category>AI Governance &amp; Policy</category>
+            <dc:subject>AI Governance &amp; Policy</dc:subject>
+            <content:encoded><![CDATA[<p>For years, p&#8208;hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something "significant" appeared. It was tedious. It was limited by time and patience. The concern was always about intent. If someone wanted a particular result, they could eventually find it.</p>
+<p>A <a target="_blank" rel="noopener noreferrer" href="https://x.com/ahall_research/status/2024544040784720365">recent experiment by Andy Hall and colleagues</a> shows how different the landscape becomes when AI enters the picture. They gave coding agents real datasets from published null results and tried to pressure them into manufacturing significance. At first the agents refused. Claude warned that the request was scientific misconduct. GPT&#8208;5 did the same. Both models pushed back against direct instructions to manipulate analysis choices.</p>
+<p>The experiment has already drawn attention from the research community. Andrew Gelman's Statistical Modeling, Causal Inference, and Social Science blog <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/10/03/using-the-computer-to-p-hack-id-rather-use-it-to-fit-multilevel-models/">published a detailed discussion of the work</a>, noting how the agents resisted direct p&#8208;hacking requests but became highly effective once the prompt created enough analytical flexibility. That commentary reinforces the idea that the risk is structural rather than ethical.</p>
+<p>Then the researchers changed the framing. Instead of asking the models to cheat, they asked for the upper bound of plausible estimates. They called it responsible uncertainty quantification. That small shift produced a very different outcome. The agents explored hundreds of specifications and surfaced the one that produced the largest effect size. In some cases the effect tripled.</p>
+<p>This is the part that matters. The agents did not need to be told to commit fraud. They only needed a prompt that created enough analytical freedom. Once that freedom existed, the system did the rest. It searched the space of possible models and selected the most flattering one. It did this quickly. It did it confidently. It did it without any sense that the process was distorting the truth.</p>
+<p>The researchers concluded that AI systems are resistant to overt p&#8208;hacking but can be guided into sophisticated p&#8208;hacking with very little effort. The more flexible the research design, the worse the distortion.</p>
+<p>This is not a story about malicious intent. It is a story about scale. AI is about to write thousands of papers. Many of those papers will involve complex models, large datasets, and wide analytical search spaces. If a human researcher already believes the answer is known, the temptation will not be to fabricate data. It will be to let the agent explore until it finds the result that confirms the belief.</p>
+<p>The danger is not that AI will invent significance. The danger is that AI will automate the search for significance inside research designs that were never built to withstand that level of exploration.</p>
+<p>There is a second risk. Many researchers are not unethical. They are overloaded. They are trying to get through a pipeline of analysis tasks. If an AI assistant makes it easy to run hundreds of specifications, it also makes it easy to accidentally choose the one that looks the most interesting. The researchers in the experiment described this group as lazyish. Not malicious. Just susceptible to convenience.</p>
+<p>This is where the concept of sycophantic AI becomes important. In my book, I describe systems that try to please. They do not challenge assumptions. They do not push back against flawed reasoning. They optimize for agreement. When a researcher asks for the "most plausible upper bound," a sycophantic agent interprets that as a request for the most flattering result. It is not cheating. It is obedience. The agent is trying to be helpful. The harm comes from the structure of the task, not the intent of the user.</p>
+<p>Hall's thread points toward the idea of digital institutions. These would enforce pre&#8208;commitment of data, verifiable experiment design, and separation between data collection and analysis. The public sector will feel this pressure first. Agencies rely on geospatial models, environmental datasets, and statistical pipelines that already contain large degrees of analytical freedom. When an AI system is added to that workflow, the search space expands. The risk of accidental p&#8208;hacking expands with it.</p>
+<p>This isn't a call for banning AI in research. It's a call for critical thinking about how these systems behave when given freedom to explore. The experiment shows that the agents are not eager to cheat. They cheat when the structure of the task rewards exploration without accountability.</p>
+<p>That distinction is the heart of the problem. It is also the heart of the solution.</p>
+<p>If we want AI to strengthen scientific reasoning rather than distort it, we need workflows that reward clarity, transparency, and constraint. We need metadata that records the full lineage and path of model exploration. We need audit trails that show which specifications were tried and why. We need institutions that treat AI agents as actors with responsibilities, not tools with infinite freedom.</p>
+<p>This is one of the challenges <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a> tries to raise awareness of; in it I raise awareness of p-hacking (Chapter 6) and sycophantic AI that is eager to please (Chapter 11). Critical thinking is not only about logic. It is about structure. It is about the environment in which decisions are made. When that environment changes, the reasoning changes with it. AI introduces a new environment. It expands the search space. It accelerates exploration. It rewards convenience. It punishes restraint. If we do not adapt our reasoning frameworks to that reality, we will be surprised by the results.</p>
+<p>The experiment from Hall and colleagues is a warning. It is also an opportunity. It shows that AI can be guided toward honest analysis when the task is well defined. It shows that the same tools that lower the cost of p&#8208;hacking also lower the cost of detecting it.</p>
+<p>The question is whether we will build the institutions that make the honest path the easy one.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>Everyone&#x27;s Thinking Spatially Even If They Don&#x27;t Call It Geography</title>
             <link>https://davidgsmith.net/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html</link>
             <guid>https://davidgsmith.net/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html</guid>
@@ -75,16 +121,12 @@ People want to know where information comes from. Agencies should publish lineag
             <guid>https://davidgsmith.net/thoughts/the-illusion-of-autonomy-why-ai-breakthroughs-still-require-human-oversight.html</guid>
             <pubDate>Mon, 28 Sep 2026 14:46:09 +0000</pubDate>
             <description>A fascinating debate recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling....</description>
-            <category>AI Safety</category>
-            <dc:subject>AI Safety</dc:subject>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <category>Responsible AI</category>
             <dc:subject>Responsible AI</dc:subject>
             <category>Risk Management</category>
             <dc:subject>Risk Management</dc:subject>
-            <category>AI Governance</category>
-            <dc:subject>AI Governance</dc:subject>
             <category>AI Workflows</category>
             <dc:subject>AI Workflows</dc:subject>
             <category>AI Strategy</category>
@@ -95,6 +137,10 @@ People want to know where information comes from. Agencies should publish lineag
             <dc:subject>Generative AI</dc:subject>
             <category>Retrieval-Augmented Generation (RAG)</category>
             <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
+            <category>AI Safety &amp; Risk</category>
+            <dc:subject>AI Safety &amp; Risk</dc:subject>
+            <category>AI Governance &amp; Policy</category>
+            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <content:encoded><![CDATA[<p>A <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7508647862893887488/">fascinating debate</a> recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling. Anthropic <a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">published a high profile announcement</a> claiming that its Claude models had autonomously discovered a completely new, CRISPR like enzyme system hidden inside bacteriophage DNA. </p>
 <p>According to their press release, this was the milestone product of their new molecular biology wet lab, achieved by deploying an army of 950 AI agents working over 21 hours.</p>
 <p>It sounded like a massive leap forward for autonomous science, until researchers in the field began pulling back the curtain.</p>
@@ -159,12 +205,8 @@ The failure to maintain attention across long contexts creates severe constraint
             <description>The latest edition of the GeoAI and the Law Newsletter lays out a clear message for anyone working at the intersection of geospatial data and artificial...</description>
             <category>AI Agents</category>
             <dc:subject>AI Agents</dc:subject>
-            <category>AI Governance</category>
-            <dc:subject>AI Governance</dc:subject>
             <category>AI Law</category>
             <dc:subject>AI Law</dc:subject>
-            <category>AI Safety</category>
-            <dc:subject>AI Safety</dc:subject>
             <category>AI Strategy</category>
             <dc:subject>AI Strategy</dc:subject>
             <category>AI Workflows</category>
@@ -181,6 +223,10 @@ The failure to maintain attention across long contexts creates severe constraint
             <dc:subject>Risk Management</dc:subject>
             <category>Tech Regulation</category>
             <dc:subject>Tech Regulation</dc:subject>
+            <category>AI Safety &amp; Risk</category>
+            <dc:subject>AI Safety &amp; Risk</dc:subject>
+            <category>AI Governance &amp; Policy</category>
+            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <content:encoded><![CDATA[<p><img alt="AI and the Law" src="https://davidgsmith.net/thoughts/images/ailaw-muinjeil-9d10bf0f.jpg"></p>
 <p>The <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/p/geoai-and-the-law-newsletter-ed0">latest edition</a> of the <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com">GeoAI and the Law Newsletter</a> lays out a clear message for anyone working at the intersection of geospatial data and artificial intelligence. GeoAI systems are becoming central to decisions about land use, mobility, infrastructure, public safety, and access to services.</p>
 <p>These systems do more than just classify pixels or detect objects. They influence how institutions understand people and places. That influence carries real consequences.</p>
@@ -208,12 +254,12 @@ The article makes a compelling case that GeoAI governance is a foundation for re
             <guid>https://davidgsmith.net/thoughts/when-tradition-tries-to-overrule-demography.html</guid>
             <pubDate>Fri, 25 Sep 2026 20:37:18 +0000</pubDate>
             <description>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that Andrew Gelman...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Demographics</category>
             <dc:subject>Demographics</dc:subject>
             <category>AI Governance &amp; Policy</category>
             <dc:subject>AI Governance &amp; Policy</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/09/25/53011/">Andrew Gelman recently wrote about a museum exhibit in France that included a set of pronatalist posters from the 1920s</a>. The material was produced by the <em><a target="_blank" rel="noopener noreferrer" href="https://fr.wikipedia.org/wiki/Alliance_nationale_pour_l%27accroissement_de_la_population_fran%C3%A7aise">Alliance nationale pour l'accroissement de la population franc&#807;aise</a></em>, a group that spanned the political spectrum at the time. Their message was simple: a "normal" family should have three children. The posters framed this as a national necessity.</p>
 <p>The exhibit highlights a recurring pattern in demographic reasoning. Once a society reaches low infant and child mortality, the long&#8208;term replacement level is about 2.1 children per woman. The posters didn't reference this. Instead, they promoted a target that was higher than what stable population dynamics require. The intent was not stability. It was growth. France had just come out of the First World War and was concerned about falling behind Germany in population and industrial capacity.</p>
 <p>Gelman points out that the "ideal number of children" is not the same as the number people actually have. Ideals often reflect cultural narratives rather than lived behavior. The posters treated the ideal as a factual requirement. They also ignored the distribution of family sizes. Some households have no children or only one. Policymakers may have assumed that others needed to compensate by having three.</p>
@@ -400,14 +446,14 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
             <guid>https://davidgsmith.net/thoughts/the-irony-of-artificial-intelligence-why-critical-thinking-is-now-a-hard-technical-skill.html</guid>
             <pubDate>Sat, 19 Sep 2026 14:44:56 +0000</pubDate>
             <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Human-AI Interaction</category>
             <dc:subject>Human-AI Interaction</dc:subject>
             <category>Future of Work</category>
             <dc:subject>Future of Work</dc:subject>
             <category>Generative AI</category>
             <dc:subject>Generative AI</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
 <p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
 <p>Recent search trends reflect this change. Queries for topics like cognitive offloading, hallucination detection, and reasoning models continue to climb. People are starting to recognize that software can generate text, but it cannot supply human judgment.</p>
@@ -826,10 +872,10 @@ What evidence would make us reconsider our position?</p>
             <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them,...</description>
             <category>Human-AI Interaction</category>
             <dc:subject>Human-AI Interaction</dc:subject>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Generative AI</category>
             <dc:subject>Generative AI</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
@@ -908,10 +954,10 @@ Demo App:<br>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
             <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Updates</category>
             <dc:subject>Updates</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
 <p>It's not your typical book on critical thinking, which just hands you a list of cognitive biases and some motivational talk, it's an extensive, organized and curated framework with over 100 concepts, techniques, heuristics and real world case studies and examples, laid out in over 400 pages, building on the work of Nobel laureate Daniel Kahneman along with the peer reviewed research of dozens of researchers and experts in cognitive psychology, behavioral economics and other fields.</p>
@@ -1010,12 +1056,12 @@ This development aligns directly with a core architectural reality: neural netwo
             <guid>https://davidgsmith.net/thoughts/tearing-down-fences.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:15:21 +0000</pubDate>
             <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic...</description>
-            <category>Critical Thinking &amp; Logic</category>
-            <dc:subject>Critical Thinking &amp; Logic</dc:subject>
             <category>Engineering Leadership</category>
             <dc:subject>Engineering Leadership</dc:subject>
             <category>Systems Thinking</category>
             <dc:subject>Systems Thinking</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Before you tear down a "pointless" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton's classic thought experiment.</p>
 <p>Imagine you're walking down a country road and encounter a sturdy wooden fence blocking your path. To your eye, it serves absolutely no purpose.</p>
 <p>What's your first instinct?</p>
