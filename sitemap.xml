@@ -30,6 +30,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/llms-arent-reasoning-theyre-predicting-and-why-that-matters-more-than-people-think.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
