@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Tue, 06 Oct 2026 00:44:17 +0000</lastBuildDate>
+            <lastBuildDate>Tue, 06 Oct 2026 00:44:55 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -1132,8 +1132,8 @@ Demo App:<br>
             <category>LLM Architecture</category>
             <dc:subject>LLM Architecture</dc:subject>
             <media:content url="https://davidgsmith.net/images/DaveSmithrPortrait.jpg" medium="image" />
-            <content:encoded><![CDATA[<p>The real bottleneck in AI agents today isn't raw reasoning capability; it's access to structured business context. <br>
-Google recently introduced the <strong>Open Knowledge Format (OKF)</strong>, an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
+            <content:encoded><![CDATA[<p>The real bottleneck in AI agents today isn't raw reasoning capability; it's access to structured business context.   </p>
+<p>Google recently introduced the <strong>Open Knowledge Format (OKF)</strong>, an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
 <p><strong>How OKF Compares to Existing Standards</strong><br>
 To see where OKF fits into the AI architecture stack, it helps to contrast it with common alternatives:</p>
 <p><strong>OKF vs. Model Context Protocol (MCP):</strong> MCP provides the dynamic, client-server protocol layer--the live plumbing that connects an agent to tools, databases, and APIs. OKF operates at the representation layer: it standardizes the static, human-auditable knowledge assets (runbooks, enterprise definitions, domain constraints, schemas) that live inside version control before and during tool execution.   </p>
