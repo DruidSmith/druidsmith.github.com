@@ -915,35 +915,46 @@ def generate_rss(posts):
     rss_items = []
     
     for post in posts:
-        slug = post["_slug"]
-        pub_date = post["_dt"].strftime("%a, %d %b %Y %H:%M:%S +0000")
-        
-        html_body = render_markdown(post.get("body", ""))
-        html_body = sanitize_feed_text(html_body)
-        html_body = html_body.replace("]]>", "]]]]><![CDATA[>")
-        
-        excerpt = html.escape(create_text_excerpt(html_body))
-        safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
-        post_img = html.escape(extract_post_image(post))
-        
-        categories = "\n            ".join([
-            f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
-            for tag in post.get("tags", [])
-        ])
+            slug = post["_slug"]
+            pub_date = post["_dt"].strftime("%a, %d %b %Y %H:%M:%S +0000")
+            
+            html_body = render_markdown(post.get("body", ""))
+            html_body = sanitize_feed_text(html_body)
+            html_body = html_body.replace("]]>", "]]]]><![CDATA[>")
+            
+            excerpt = html.escape(create_text_excerpt(html_body))
+            safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
+            
+            # Identify true post image to avoid using the OG default portrait in the RSS feed
+            media_tag = ""
+            img_src = post.get("image")
+            if not img_src:
+                match = re.search(r'!\[.*?\]\((https?://[^\s\)]+|/[^\s\)]+)\)', post.get("body", ""))
+                if match:
+                    img_src = match.group(1)
+                    
+            if img_src:
+                full_img_url = img_src if img_src.startswith("http") else f"https://davidgsmith.net{img_src}"
+                # Use media:thumbnail instead of media:content to prevent inline duplication
+                media_tag = f'\n            <media:thumbnail url="{html.escape(full_img_url)}" />'
+            
+            categories = "\n            ".join([
+                f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
+                for tag in post.get("tags", [])
+            ])
 
-        rss_items.append(f"""
-        <item>
-            <title>{safe_title}</title>
-            <link>https://davidgsmith.net/thoughts/{slug}.html</link>
-            <guid>https://davidgsmith.net/thoughts/{slug}.html</guid>
-            <pubDate>{pub_date}</pubDate>
-            <dc:creator>David G. Smith</dc:creator>
-            <description>{excerpt}</description>
-            {categories}
-            <media:content url="{post_img}" medium="image" />
-            <content:encoded><![CDATA[{html_body}]]></content:encoded>
-        </item>""")
-
+            rss_items.append(f"""
+            <item>
+                <title>{safe_title}</title>
+                <link>https://davidgsmith.net/thoughts/{slug}.html</link>
+                <guid>https://davidgsmith.net/thoughts/{slug}.html</guid>
+                <pubDate>{pub_date}</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>{excerpt}</description>
+                {categories}{media_tag}
+                <content:encoded><![CDATA[{html_body}]]></content:encoded>
+            </item>""")
+        
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
         <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
         <channel>
