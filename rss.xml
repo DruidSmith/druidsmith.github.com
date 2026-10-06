@@ -8,6 +8,83 @@
         <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
         
         <item>
+            <title>LLMs Aren&#x27;t Reasoning. They&#x27;re Predicting - And Why That Matters More Than People Think.</title>
+            <link>https://davidgsmith.net/thoughts/llms-arent-reasoning-theyre-predicting-and-why-that-matters-more-than-people-think.html</link>
+            <guid>https://davidgsmith.net/thoughts/llms-arent-reasoning-theyre-predicting-and-why-that-matters-more-than-people-think.html</guid>
+            <pubDate>Mon, 05 Oct 2026 23:17:15 +0000</pubDate>
+            <description>Thore Graepel just published a piece in MIT Technology Review that deserves attention. His argument is simple: Modern large language models look smart, but...</description>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
+            <category>AI Governance &amp; Policy</category>
+            <dc:subject>AI Governance &amp; Policy</dc:subject>
+            <category>AI Safety &amp; Risk</category>
+            <dc:subject>AI Safety &amp; Risk</dc:subject>
+            <category>AI Strategy</category>
+            <dc:subject>AI Strategy</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>Responsible AI</category>
+            <dc:subject>Responsible AI</dc:subject>
+            <category>LLM Architecture</category>
+            <dc:subject>LLM Architecture</dc:subject>
+            <category>Generative AI</category>
+            <dc:subject>Generative AI</dc:subject>
+            <category>Systems Thinking</category>
+            <dc:subject>Systems Thinking</dc:subject>
+            <category>AI Infrastructure</category>
+            <dc:subject>AI Infrastructure</dc:subject>
+            <content:encoded><![CDATA[<p><a target="_blank" rel="noopener noreferrer" href="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason">Thore Graepel just published a piece in MIT Technology Review</a> that deserves attention. </p>
+<p>His argument is simple: Modern large language models look smart, but they aren't reasoning. They aren't evaluating evidence. They aren't maintaining a stable internal state. They aren't revising beliefs. They're predicting the next token.</p>
+<p><img alt="LLMs vs Reasoning" src="https://davidgsmith.net/thoughts/images/llms-vs-reasoning-muvvbzwu-0ec3435b.jpg"></p>
+<p>This isn't a criticism of the technology; it's a reminder of what the technology actually is.</p>
+<p>Graepel compares LLMs to <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/AlphaGo">AlphaGo</a>, which combined intuition with a real reasoning system. AlphaGo explored possible futures, tracked uncertainty, and updated its beliefs as it evaluated positions. It had a clear separation between knowledge and reasoning. It had an epistemic state that could be inspected and audited.</p>
+<p>LLMs don't have that. Even when they produce chain of thought, they're still using the same pattern mechanism. The reasoning isn't separate from the output. It's just more tokens.</p>
+<p>This matters because people are starting to treat LLMs as if they're capable of scientific or engineering reasoning. They're not. They can help with discovery, but they can't replace the structured thinking that science and engineering require. They don't necessarily maintain a reliable record of how they arrived at an answer. They can't show their work in a way that can be trusted.</p>
+<p>Graepel argues that trustworthy AI for high stakes domains will need architectures that can actually think. That means systems that maintain an epistemic state, revise beliefs based on evidence, and show their reasoning steps in a way that can be audited. Scaling intuition isn't enough. We need systems that reduce uncertainty in a structured way.</p>
+<p>This is where the conversation intersects with critical thinking. People often confuse fluency with thought. They confuse confidence with correctness. They confuse pattern recognition with understanding. LLMs amplify these mistakes because they produce fluent answers that look like reasoning. They make it easy to skip the hard work of thinking.</p>
+<p>In my book <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html"><em>Critical Thinking</em></a>, I talk about how people fall into traps when they rely on surface cues instead of deeper analysis. LLMs are the ultimate surface cue. They sound right. They sound confident. They sound thoughtful. But they aren't reasoning. They're predicting.</p>
+<p>If we want AI systems that support science, medicine, engineering, and public sector decision making, we need architectures that can handle uncertainty, evidence, and revision. We need systems that can explain how they arrived at an answer. We need systems that can be audited.</p>
+<p>This isn't a limitation. It's an opportunity. We're at the beginning of a shift from pattern machines to reasoning machines. The next generation of AI will need to combine intuition with structured thinking. It will need to separate knowledge from reasoning. It will need to maintain an epistemic state that can be inspected.</p>
+<p>Until then, we should treat LLMs as powerful tools for language, synthesis, and exploration. We shouldn't treat them as reasoning systems. And we shouldn't let fluency trick us into thinking they're doing something they're not.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title>Why Vector Search Breaks Down When You Need Real Reasoning</title>
+            <link>https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html</link>
+            <guid>https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html</guid>
+            <pubDate>Sun, 04 Oct 2026 14:00:04 +0000</pubDate>
+            <description>There is a growing realization in the AI engineering world that vector search is hitting a ceiling. It still works well for fuzzy matching and broad semantic...</description>
+            <category>AI Strategy</category>
+            <dc:subject>AI Strategy</dc:subject>
+            <category>AI Workflows</category>
+            <dc:subject>AI Workflows</dc:subject>
+            <category>AI Agents</category>
+            <dc:subject>AI Agents</dc:subject>
+            <category>AI Infrastructure</category>
+            <dc:subject>AI Infrastructure</dc:subject>
+            <category>GraphRAG</category>
+            <dc:subject>GraphRAG</dc:subject>
+            <category>Knowledge Graphs</category>
+            <dc:subject>Knowledge Graphs</dc:subject>
+            <category>Geospatial</category>
+            <dc:subject>Geospatial</dc:subject>
+            <category>Retrieval-Augmented Generation (RAG)</category>
+            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
+            <content:encoded><![CDATA[<p>There is a growing realization in the AI engineering world that vector search is hitting a ceiling. It still works well for fuzzy matching and broad semantic retrieval, but it struggles when the task requires actual reasoning. The article <a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/why-vector-search-fails-at-multi-hop-reasoning-building-an-auditable-graphrag-engine-with-neo4j-fb116ce935f4">"Why Vector Search Fails at Multi-Hop Reasoning"</a> by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sonnyhoney/">Agwu Eze</a> makes this point clearly and shows why GraphRAG is becoming the next serious step for enterprise AI.</p>
+<p>The core argument is simple. Vector search treats text as isolated chunks. It doesn't understand relationships. It doesn't understand structure. It doesn't understand how facts connect across pages, documents, or regulatory frameworks. When you ask a question that requires multi-hop inference, vector search often retrieves the wrong pieces or misses critical links entirely. The result is a system that looks intelligent on the surface but fails when the stakes are high.</p>
+<p>The article uses a real example from the African Continental Free Trade Area. To answer a question about exporting processed cocoa powder from Ghana to Nigeria, an AI system must connect facts scattered across pages about HS codes, certificates of origin, NAFDAC requirements, and transit protocols. Vector search can retrieve some of these pieces, but it was found that it couldn't reliably assemble the chain of reasoning. It couldn't fully understand the topology.</p>
+<p>This is where GraphRAG enters the picture. Instead of relying on similarity scores, GraphRAG builds a labeled property graph that captures entities and relationships. The system extracts triples from documents, stores them in Neo4j, and uses deterministic graph traversal to retrieve the relevant subgraph. The LLM is then grounded strictly in those facts. If the graph does not contain the answer, the model says so. No guessing. No hallucination.</p>
+<p>The architecture described in the article is worth paying attention to. It combines sliding window chunking, triple extraction with Gemini, <a target="_blank" rel="noopener noreferrer" href="https://neo4j.com/docs/aura/">Neo4j Aura Cloud</a>, two-hop <a target="_blank" rel="noopener noreferrer" href="https://opencypher.org/">Cypher</a> traversal, <a target="_blank" rel="noopener noreferrer" href="https://pyvis.readthedocs.io/en/latest/">PyVis visualization</a>, and strict grounding rules. The result is an auditable reasoning engine that produces verifiable reports. Every answer has a traceable lineage. Every relationship is visible. Every inference is grounded in the graph.</p>
+<p><img alt="GraphRAG Architecture" src="https://davidgsmith.net/thoughts/images/graphrag-mutvwdq3-9e85010a.jpg"></p>
+<p>This is the direction enterprise AI is moving. Not toward bigger embeddings or more clever chunking strategies, but toward systems that combine structured knowledge with generative reasoning. The article's comparison table makes the point clearly. Vector RAG is flat and probabilistic. GraphRAG is relational and deterministic. Vector RAG guesses. GraphRAG proves.</p>
+<p>There are several implications worth exploring:</p>
+<p>First, this approach aligns with the broader shift toward agentic systems. Agents need reliable memory and reliable reasoning. They can't operate on fuzzy similarity alone. A graph-backed memory layer gives agents a way to navigate knowledge with precision.</p>
+<p>Second, this model fits naturally with cloud-native geospatial workflows. Many geospatial problems are inherently multi-hop. Supply chains, transit corridors, environmental dependencies, and regulatory overlays all form networks. A graph-first approach makes these relationships explicit and computable.</p>
+<p>Third, this architecture supports compliance-heavy domains. When an AI system must justify its answer, a graph with an audit trail is far more defensible than a vector database with opaque similarity scores.</p>
+<p>Fourth, this approach opens the door to hybrid reasoning systems. A graph can store structured facts. An LLM can interpret them. A geospatial engine can add spatial constraints. A policy engine can enforce rules. Together they can form a composite intelligence that is more reliable than any single component.</p>
+<p>The article is a strong signal that the industry is moving beyond naive RAG. The next wave of AI systems will be built on topological reasoning, structured knowledge, and verifiable inference. Vector search will still have its place, but it will no longer be the backbone of enterprise AI.</p>
+<p>If you are building systems that need to reason across documents, regulations, spatial networks, or multi-step workflows, this is the architecture to watch.</p>]]></content:encoded>
+        </item>
+        <item>
             <title>AI Can Now P&amp;#8208;Hack at Scale. The Real Risk Isn&#x27;t Cheating. It&#x27;s Obedience.</title>
             <link>https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html</link>
             <guid>https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html</guid>
@@ -36,11 +113,12 @@
             <category>AI Governance &amp; Policy</category>
             <dc:subject>AI Governance &amp; Policy</dc:subject>
             <content:encoded><![CDATA[<p>For years, p&#8208;hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something "significant" appeared. It was tedious. It was limited by time and patience. The concern was always about intent. If someone wanted a particular result, they could eventually find it.</p>
+<p><img alt="P-Hacking Infographic" src="https://davidgsmith.net/thoughts/images/p-hacking-musuixco-17092f1a.jpg"></p>
 <p>A <a target="_blank" rel="noopener noreferrer" href="https://x.com/ahall_research/status/2024544040784720365">recent experiment by Andy Hall and colleagues</a> shows how different the landscape becomes when AI enters the picture. They gave coding agents real datasets from published null results and tried to pressure them into manufacturing significance. At first the agents refused. Claude warned that the request was scientific misconduct. GPT&#8208;5 did the same. Both models pushed back against direct instructions to manipulate analysis choices.</p>
-<p>The experiment has already drawn attention from the research community. Andrew Gelman's Statistical Modeling, Causal Inference, and Social Science blog <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/10/03/using-the-computer-to-p-hack-id-rather-use-it-to-fit-multilevel-models/">published a detailed discussion of the work</a>, noting how the agents resisted direct p&#8208;hacking requests but became highly effective once the prompt created enough analytical flexibility. That commentary reinforces the idea that the risk is structural rather than ethical.</p>
 <p>Then the researchers changed the framing. Instead of asking the models to cheat, they asked for the upper bound of plausible estimates. They called it responsible uncertainty quantification. That small shift produced a very different outcome. The agents explored hundreds of specifications and surfaced the one that produced the largest effect size. In some cases the effect tripled.</p>
 <p>This is the part that matters. The agents did not need to be told to commit fraud. They only needed a prompt that created enough analytical freedom. Once that freedom existed, the system did the rest. It searched the space of possible models and selected the most flattering one. It did this quickly. It did it confidently. It did it without any sense that the process was distorting the truth.</p>
 <p>The researchers concluded that AI systems are resistant to overt p&#8208;hacking but can be guided into sophisticated p&#8208;hacking with very little effort. The more flexible the research design, the worse the distortion.</p>
+<p>The experiment has already drawn attention from the research community. Andrew Gelman's Statistical Modeling, Causal Inference, and Social Science blog <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/10/03/using-the-computer-to-p-hack-id-rather-use-it-to-fit-multilevel-models/">published a detailed discussion of the work</a>, noting how the agents resisted direct p&#8208;hacking requests but became highly effective once the prompt created enough analytical flexibility. That commentary reinforces the idea that the risk is structural rather than ethical.</p>
 <p>This is not a story about malicious intent. It is a story about scale. AI is about to write thousands of papers. Many of those papers will involve complex models, large datasets, and wide analytical search spaces. If a human researcher already believes the answer is known, the temptation will not be to fabricate data. It will be to let the agent explore until it finds the result that confirms the belief.</p>
 <p>The danger is not that AI will invent significance. The danger is that AI will automate the search for significance inside research designs that were never built to withstand that level of exploration.</p>
 <p>There is a second risk. Many researchers are not unethical. They are overloaded. They are trying to get through a pipeline of analysis tasks. If an AI assistant makes it easy to run hundreds of specifications, it also makes it easy to accidentally choose the one that looks the most interesting. The researchers in the experiment described this group as lazyish. Not malicious. Just susceptible to convenience.</p>
@@ -49,7 +127,7 @@
 <p>This isn't a call for banning AI in research. It's a call for critical thinking about how these systems behave when given freedom to explore. The experiment shows that the agents are not eager to cheat. They cheat when the structure of the task rewards exploration without accountability.</p>
 <p>That distinction is the heart of the problem. It is also the heart of the solution.</p>
 <p>If we want AI to strengthen scientific reasoning rather than distort it, we need workflows that reward clarity, transparency, and constraint. We need metadata that records the full lineage and path of model exploration. We need audit trails that show which specifications were tried and why. We need institutions that treat AI agents as actors with responsibilities, not tools with infinite freedom.</p>
-<p>This is one of the challenges <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a> tries to raise awareness of; in it I raise awareness of p-hacking (Chapter 6) and sycophantic AI that is eager to please (Chapter 11). Critical thinking is not only about logic. It is about structure. It is about the environment in which decisions are made. When that environment changes, the reasoning changes with it. AI introduces a new environment. It expands the search space. It accelerates exploration. It rewards convenience. It punishes restraint. If we do not adapt our reasoning frameworks to that reality, we will be surprised by the results.</p>
+<p>This is one of many challenges <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a> tries to raise awareness of; in it I raise point to the issues of p-hacking (Chapter 6) and sycophantic AI that due to RLHF is eager to please (Chapter 11). Critical thinking is not only about logic. It is about structure. It is about the environment in which decisions are made. When that environment changes, the reasoning changes with it. AI introduces a new environment. It expands the search space. It accelerates exploration. It rewards convenience. It punishes restraint. If we do not adapt our reasoning frameworks to that reality, we will be surprised by the results.</p>
 <p>The experiment from Hall and colleagues is a warning. It is also an opportunity. It shows that AI can be guided toward honest analysis when the task is well defined. It shows that the same tools that lower the cost of p&#8208;hacking also lower the cost of detecting it.</p>
 <p>The question is whether we will build the institutions that make the honest path the easy one.</p>]]></content:encoded>
         </item>
@@ -831,8 +909,8 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
             <description>Over the past week, Nepal has been hit by one of the most devastating glacial&amp;#8208;flood disasters in its modern history. Entire mountain communities in...</description>
             <category>Humanitarian Aid</category>
             <dc:subject>Humanitarian Aid</dc:subject>
-            <category>Updates</category>
-            <dc:subject>Updates</dc:subject>
+            <category>Critical Thinking</category>
+            <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Over the past week, Nepal has been hit by one of the most devastating glacial&#8208;flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
 <p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real&#8208;world compassion.</p>
 <p>I'll be donating 20% of all net author royalties to the Nepal Red Cross Society, supporting their on&#8208;the&#8208;ground response and relief efforts: emergency shelter, medical aid, clean water access, and direct support for families who have lost everything.</p>
@@ -954,8 +1032,6 @@ Demo App:<br>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
             <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
-            <category>Updates</category>
-            <dc:subject>Updates</dc:subject>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
