@@ -16,7 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent
 POSTS_FILE = BASE_DIR / "posts.json"
 THOUGHTS_DIR = BASE_DIR / "thoughts"
-DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/og-default.jpg"
+DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/DaveSmithrPortrait.jpg"
 
 PLATFORM_ICONS = {
     "linkedin": "/images/InBug-Black.png",
@@ -911,19 +911,20 @@ def sanitize_feed_text(text):
     return normalized.encode('ascii', 'xmlcharrefreplace').decode('ascii')
 
 def generate_rss(posts):
+    last_build_date = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     rss_items = []
+    
     for post in posts:
         slug = post["_slug"]
         pub_date = post["_dt"].strftime("%a, %d %b %Y %H:%M:%S +0000")
         
         html_body = render_markdown(post.get("body", ""))
         html_body = sanitize_feed_text(html_body)
-        
-        # Guard against breaking out of CDATA sequence
         html_body = html_body.replace("]]>", "]]]]><![CDATA[>")
         
         excerpt = html.escape(create_text_excerpt(html_body))
         safe_title = html.escape(sanitize_feed_text(post.get("title", "")))
+        post_img = html.escape(extract_post_image(post))
         
         categories = "\n            ".join([
             f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
@@ -936,22 +937,33 @@ def generate_rss(posts):
             <link>https://davidgsmith.net/thoughts/{slug}.html</link>
             <guid>https://davidgsmith.net/thoughts/{slug}.html</guid>
             <pubDate>{pub_date}</pubDate>
+            <dc:creator>David G. Smith</dc:creator>
             <description>{excerpt}</description>
             {categories}
+            <media:content url="{post_img}" medium="image" />
             <content:encoded><![CDATA[{html_body}]]></content:encoded>
         </item>""")
 
     rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
-    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <channel>
-        <title>Thoughts &amp; Insights — David G. Smith</title>
-        <link>https://davidgsmith.net/thoughts.html</link>
-        <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
-        <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
-        <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
-        {''.join(rss_items)}
-    </channel>
-    </rss>"""
+        <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+        <channel>
+            <title>Thoughts &amp; Insights — David G. Smith</title>
+            <link>https://davidgsmith.net/thoughts.html</link>
+            <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
+            <language>en-US</language>
+            <lastBuildDate>{last_build_date}</lastBuildDate>
+            <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
+            <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
+            <atom:author>
+                <atom:name>David G. Smith</atom:name>
+                <atom:email>d.smith.publishing@gmail.com</atom:email>
+                <atom:uri>https://davidgsmith.net/</atom:uri>
+            </atom:author>
+            <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
+            {''.join(rss_items)}
+        </channel>
+        </rss>"""
     
     with open(BASE_DIR / "rss.xml", "w", encoding="utf-8") as f:
         f.write(rss_feed.strip())
