@@ -1032,8 +1032,6 @@ Demo App:<br>
             <guid>https://davidgsmith.net/thoughts/my-book-has-been-published.html</guid>
             <pubDate>Tue, 01 Sep 2026 16:34:00 +0000</pubDate>
             <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
-            <category>Updates</category>
-            <dc:subject>Updates</dc:subject>
             <category>Critical Thinking</category>
             <dc:subject>Critical Thinking</dc:subject>
             <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
