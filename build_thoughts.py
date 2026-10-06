@@ -939,7 +939,7 @@ def generate_rss(posts):
                 media_tag = f'\n            <media:thumbnail url="{html.escape(full_img_url)}" />'
             
             categories = "\n            ".join([
-                f"<category>{html.escape(tag)}</category>\n            <dc:subject>{html.escape(tag)}</dc:subject>" 
+                f"<category>{html.escape(tag)}</category>" 
                 for tag in post.get("tags", [])
             ])
 
