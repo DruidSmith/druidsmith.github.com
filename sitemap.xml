@@ -260,6 +260,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-books.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-civic-technology.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
