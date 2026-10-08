@@ -1,0 +1,51 @@
+name: Build Stored Thoughts
+on:  
+  push:    
+    paths:      
+      - 'posts-*.json'      
+      - 'build_thoughts.py'      
+      - '.github/workflows/linkedin.yml'  
+  schedule:    
+    - cron: '0 12 * * *'  
+  workflow_dispatch:
+jobs:  
+  build:    
+    runs-on: ubuntu-latest    
+    env:      
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}        
+    # Allows the action to commit files back to the repo    
+    permissions:      
+      contents: write          
+    steps:      
+      - name: Checkout Repo        
+        uses: actions/checkout@v4      
+      - name: Setup Python        
+        uses: actions/setup-python@v5        
+        with:          
+          python-version: '3.11'      
+      - name: Install renderer dependencies        
+        run: python -m pip install markdown bleach      
+      - name: Build thoughts page        
+        env:          
+          INDEXNOW_NOTIFY: 'false'        
+        run: python build_thoughts.py      
+      - name: Commit and Push Changes        
+        id: publish        
+        run: |          
+          git config --global user.name 'github-actions[bot]'          
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
+          git add index.html thoughts/ thoughts.html thoughts-*.html rss.xml sitemap.xml post-index.json images-index.json          
+          if git diff --cached --quiet; then            
+            echo "changed=false" >> "$GITHUB_OUTPUT"            
+            exit 0          
+          fi          
+          git commit -m "Auto-generate thoughts, tag aggregators, and month pages"          
+          git pull --rebase origin master          
+          git push          
+          echo "changed=true" >> "$GITHUB_OUTPUT"      
+      - name: Submit updated page to Bing IndexNow        
+        if: steps.publish.outputs.changed == 'true' && env.INDEXNOW_KEY != ''        
+        run: |          
+          curl --fail-with-body --retry 3 --retry-delay 5 -X POST https://api.indexnow.org/indexnow \            
+            -H 'Content-Type: application/json; charset=utf-8' \            
+            --data "{\"host\":\"davidgsmith.net\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://davidgsmith.net/$INDEXNOW_KEY.txt\",\"urlList\":[\"https://davidgsmith.net/thoughts.html\",\"https://davidgsmith.net/rss.xml\"]}"
