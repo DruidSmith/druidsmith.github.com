@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Thu, 08 Oct 2026 02:05:12 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 08 Oct 2026 02:09:17 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -28,7 +28,7 @@
             <category>Data Engineering</category>
             <category>Cloud-Native</category>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/duckdb-view-only-muyvr1d0-c1486e98.jpg" />
-                <content:encoded><![CDATA[<p>The DuckDB team recently highlighted <a target="_blank" rel="noopener noreferrer" href="https://www.nikolasgoebel.com/2024/05/28/duckdb-doesnt-need-data">a post by Nikolas Go&#776;bel</a> on DuckDB, and it's one of those ideas that sticks because it quietly rewrites how we think about data systems. For years, databases were the place where data lived. They were the center of gravity. That's not how analytical work happens anymore. Data sits in cloud buckets, object stores, and distributed filesystems. The database has started to become something else. DuckDB's own write&#8208;up: https://duckdb.org/2026/10/07/view-only-mode</p>
+                <content:encoded><![CDATA[<p>The DuckDB team recently highlighted <a target="_blank" rel="noopener noreferrer" href="https://www.nikolasgoebel.com/2024/05/28/duckdb-doesnt-need-data">a post by Nikolas Go&#776;bel</a> on DuckDB, and it's one of those ideas that sticks because it quietly rewrites how we think about data systems. For years, databases were the place where data lived. They were the center of gravity. That's not how analytical work happens anymore. Data sits in cloud buckets, object stores, and distributed filesystems. The database has started to become something else. DuckDB's own write&#8208;up on Go&#776;bel's article is <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/2026/10/07/view-only-mode">here</a>. </p>
 <p>Go&#776;bel's example is straightforward. Picture a robotaxi company with daily Parquet files piling up in blob storage. An analyst wants to explore patterns in high&#8208;fare, short&#8208;distance rides. You don't want to ship gigabytes of files, and you don't want to stand up a full warehouse just to give them a clean view. So you create a tiny DuckDB file that holds nothing but instructions. It's a map, not a container. The analyst attaches to it and starts querying as if the data were local. Only the columns they need are fetched. Filters cut down the transfer even more. The whole thing feels like opening a hyperlink.<br>
 <img alt="DuckDB View-Only" src="https://davidgsmith.net/thoughts/images/duckdb-view-only-muyvr1d0-c1486e98.jpg"><br>
 This framing treats relational datasets the same way we treat documents on the web. A database file becomes a pointer to structure, not storage. It's a description of how to see the world, not a place where the world is kept.</p>
