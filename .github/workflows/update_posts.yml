@@ -40,7 +40,7 @@ jobs:
             exit 0          
           fi          
           git commit -m "Auto-generate thoughts, tag aggregators, and month pages"          
-          git pull --rebase origin master          
+          git pull --rebase-X theirs origin master          
           git push          
           echo "changed=true" >> "$GITHUB_OUTPUT"      
       - name: Submit updated page to Bing IndexNow        
