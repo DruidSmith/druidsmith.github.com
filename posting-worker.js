@@ -1,4 +1,5 @@
 // posting-worker.js
+// posting-worker.js
 const encoder = new TextEncoder();
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -67,7 +68,8 @@ function decodeContent(value) {
 }
 
 function encodeContent(value) {
-  return btoa(String.fromCharCode(...encoder.encode(value)));
+  const bytes = encoder.encode(value);
+  return encodeBytes(bytes);
 }
 
 function encodeBytes(bytes) {
@@ -116,26 +118,7 @@ export default {
     try {
       const urlPath = new URL(request.url).pathname;
 
-      if (request.method === "GET" && urlPath === "/posts") {
-        const fileResponse = await githubRequest(env, "GET", "posts.json");
-        if (!fileResponse.ok) return response([], 200);
-        const file = await fileResponse.json();
-        return response(JSON.parse(decodeContent(file.content)));
-      }
-
-      if (request.method === "GET" && urlPath === "/images") {
-        const fileResponse = await githubRequest(env, "GET", "thoughts/images");
-        if (!fileResponse.ok) return response([]);
-        const files = await fileResponse.json();
-        return response(files.filter((f) => f.type === "file").map((f) => ({
-          name: f.name,
-          url: `https://davidgsmith.net/thoughts/images/${encodeURIComponent(f.name)}`
-        })).sort((a, b) => a.name.localeCompare(b.name)));
-      }
-
-      if (request.method !== "POST") return response({ error: "Method not allowed." }, 405);
-
-      if (urlPath === "/login") {
+      if (urlPath === "/login" && request.method === "POST") {
         const { password } = await request.json();
         if (!password || password !== env.POSTING_PASSWORD) {
           return response({ error: "Invalid password." }, 401);
@@ -146,6 +129,28 @@ export default {
       if (!(await validSession(request, env))) {
         return response({ error: "Unauthorized session or token expired." }, 401);
       }
+
+      if (request.method === "GET" && urlPath === "/posts") {
+        const url = new URL(request.url);
+        const dateParam = url.searchParams.get("date");
+        
+        if (!dateParam) return response({ error: "Date parameter required." }, 400);
+
+        const year = dateParam.substring(0, 4);
+        const filename = `posts-${year}.json`;
+
+        const fileResponse = await githubRequest(env, "GET", filename);
+        if (!fileResponse.ok) return response({ error: "Shard not found." }, 404);
+        
+        const file = await fileResponse.json();
+        const posts = JSON.parse(decodeContent(file.content));
+        const post = posts.find((p) => p.date === dateParam);
+        
+        if (!post) return response({ error: "Post not found in shard." }, 404);
+        return response(post);
+      }
+
+      if (request.method !== "POST") return response({ error: "Method not allowed." }, 405);
 
       const targetBranch = env.GITHUB_BRANCH || "main";
 
@@ -205,16 +210,21 @@ export default {
         const tags = Array.isArray(input.tags) ? input.tags : [];
         const originalDate = input.original_date;
         const postType = input.type === "BlogPosting" ? "BlogPosting" : "TechArticle";
+        
+        const targetDate = originalDate || new Date().toISOString();
+        const year = targetDate.substring(0, 4);
+        const filename = `posts-${year}.json`;
 
-        const fileResponse = await githubRequest(env, "GET", "posts.json");
-        if (!fileResponse.ok) {
-          const detail = await fileResponse.text();
-          console.error("GitHub GET posts.json error:", fileResponse.status, detail);
-          return response({ error: "Could not read posts.json from GitHub.", detail }, 502);
+        const fileResponse = await githubRequest(env, "GET", filename);
+        let posts = [];
+        let sha = undefined;
+        
+        if (fileResponse.ok) {
+          const file = await fileResponse.json();
+          posts = JSON.parse(decodeContent(file.content));
+          sha = file.sha;
         }
 
-        const file = await fileResponse.json();
-        const posts = JSON.parse(decodeContent(file.content));
         let message = "";
 
         if (originalDate) {
@@ -228,7 +238,7 @@ export default {
             posts[index].platform = detectedPlatform;
             message = `Update thought: ${input.title.trim()}`;
           } else {
-            return response({ error: "Original post not found for editing." }, 404);
+            return response({ error: `Original post not found for editing in ${filename}.` }, 404);
           }
         } else {
           posts.unshift({
@@ -238,23 +248,25 @@ export default {
             type: postType,
             format: "markdown",
             url: targetUrl,
-            date: new Date().toISOString(),
+            date: targetDate,
             platform: detectedPlatform
           });
           message = `Add thought: ${input.title.trim()}`;
         }
 
-        const update = await githubRequest(env, "PUT", "posts.json", {
+        const updatePayload = {
           message,
           content: encodeContent(JSON.stringify(posts, null, 2) + "\n"),
-          sha: file.sha,
           branch: targetBranch
-        });
+        };
+        if (sha) updatePayload.sha = sha;
+
+        const update = await githubRequest(env, "PUT", filename, updatePayload);
 
         if (!update.ok) {
           const detail = await update.text();
-          console.error("GitHub PUT posts.json error:", update.status, detail);
-          return response({ error: "GitHub rejected posts.json update.", detail }, 502);
+          console.error(`GitHub PUT ${filename} error:`, update.status, detail);
+          return response({ error: `GitHub rejected ${filename} update.`, detail }, 502);
         }
 
         return response({ saved: true });

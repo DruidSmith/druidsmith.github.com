@@ -181,13 +181,21 @@ function formatMonth(date) {
 }
 
 function renderPostPicker() {
+    if (!allPosts || allPosts.length === 0) {
+        document.getElementById('post-picker').innerHTML = '<p class="p-3 text-sm text-slate-500 text-center border border-dashed border-slate-300 rounded bg-slate-50">No posts found or index failed to load.</p>';
+        document.getElementById('post-count').textContent = '0 posts';
+        return;
+    }
+
     const query = document.getElementById('post-search').value.trim().toLowerCase();
     const topic = document.getElementById('post-topic').value;
-    const month = document.getElementById('post-month').value;
+    const month = document.getElementById('post-month').value; // <-- Added missing declaration
+
     const matches = allPosts.filter(post => {
         const haystack = `${post.title || ''} ${post.body || ''}`.toLowerCase();
         return (!query || haystack.includes(query)) && (!topic || (post.tags || []).includes(topic)) && (!month || formatMonth(post.date) === month);
     });
+    
     const picker = document.getElementById('post-picker');
     picker.innerHTML = '';
     document.getElementById('post-count').textContent = `${matches.length} matching post${matches.length === 1 ? '' : 's'}`;
@@ -221,8 +229,9 @@ function populatePostFilters() {
 
 async function loadData() {
     try {
-        const response = await fetch(`${config.endpoint.replace(/\/$/, '')}/posts`);
-        if(response.ok) {
+        // Fetch directly from live static site, bypassing the Worker API limits
+        const response = await fetch('https://davidgsmith.net/post-index.json');
+        if (response.ok) {
             let fetchedPosts = await response.json();
             allPosts = fetchedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
             allPosts.forEach(p => {
@@ -235,13 +244,13 @@ async function loadData() {
             renderTags();
         }
     } catch (e) {
-        console.warn('Could not load posts', e);
+        console.warn('Could not load post index', e);
     }
 }
 loadData();
 loadImages();
 
-function selectPost(date) {
+async function selectPost(date) {
     const form = document.getElementById('post-form');
     
     if (!date) {
@@ -255,8 +264,24 @@ function selectPost(date) {
         return;
     }
     
-    const post = allPosts.find(p => p.date === date);
-    if (post) {
+    setStatus('Loading post content...');
+    
+    try {
+        // Fetch full post body from the worker
+        const response = await fetch(`${config.endpoint.replace(/\/$/, '')}/posts?date=${encodeURIComponent(date)}`, {
+            headers: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}
+        });
+        
+        if (response.status === 401) {
+            document.querySelector('#login-panel').classList.remove('hidden');
+            document.querySelector('#editor-panel').classList.add('hidden');
+            throw new Error('Your session expired. Please sign in again.');
+        }
+        
+        if (!response.ok) throw new Error('Could not fetch full post content.');
+        
+        const post = await response.json();
+        
         document.getElementById('title').value = post.title || '';
         document.getElementById('url').value = post.url || '';
         document.getElementById('original_date').value = post.date;
@@ -272,15 +297,22 @@ function selectPost(date) {
         const platform = platformFromUrl(post.url);
         platformPreview.textContent = platform ? `Platform detected: ${platform}` : '';
         window.scrollTo({ top: form.offsetTop - 50, behavior: 'smooth' });
+        setStatus('Post loaded.', false);
+        
+    } catch (e) {
+        setStatus(e.message, true);
     }
 }
 
 ['post-search', 'post-topic', 'post-month'].forEach(id => document.getElementById(id).addEventListener('input', renderPostPicker));
 document.getElementById('new-post-btn').addEventListener('click', () => selectPost(''));
 
+let imageDisplayLimit = 20;
+
 async function loadImages() {
     try {
-        const response = await fetch(`${config.endpoint.replace(/\/$/, '')}/images`);
+        // Fetch directly from your live static site, bypassing the Worker
+        const response = await fetch('https://davidgsmith.net/images-index.json');
         if (!response.ok) throw new Error('Could not load image library.');
         allImages = await response.json();
         renderImages();
@@ -292,12 +324,14 @@ function renderImages() {
     const library = document.getElementById('image-library');
     library.innerHTML = '';
     
-    allImages.filter(image => image.name.toLowerCase().includes(query)).forEach(image => {
+    const filteredImages = allImages.filter(image => image.name.toLowerCase().includes(query));
+    const imagesToShow = filteredImages.slice(0, imageDisplayLimit);
+    
+    imagesToShow.forEach(image => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'overflow-hidden rounded border border-slate-200 bg-white text-left hover:border-amber-600 transition group';
         
-        // Use local memory for immediate uploads, otherwise safely use the production URL
         const imgSrc = image.previewUrl || image.url;
         
         button.innerHTML = `
@@ -311,11 +345,10 @@ function renderImages() {
             let chosenAlt = altInput.value.trim();
 
             if (!chosenAlt) {
-                const promptVal = prompt('Enter Alt text for this image (recommended for SEO & accessibility):', fallbackAlt);
+                const promptVal = prompt('Enter Alt text for this image:', fallbackAlt);
                 chosenAlt = promptVal !== null && promptVal.trim() !== '' ? promptVal.trim() : fallbackAlt;
             }
 
-            // Always write the final production URL to Markdown
             const markdown = `![${chosenAlt}](${image.url})`;
             bodyEditor.codemirror.replaceSelection(markdown);
             
@@ -326,7 +359,26 @@ function renderImages() {
         });
         library.appendChild(button);
     });
+
+    // Add a "Load More" button if there are undisplayed images
+    if (filteredImages.length > imageDisplayLimit) {
+        const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.type = 'button';
+        loadMoreBtn.className = 'col-span-full mt-2 rounded bg-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-300';
+        loadMoreBtn.textContent = `Load more (Showing ${imageDisplayLimit} of ${filteredImages.length})`;
+        loadMoreBtn.addEventListener('click', () => {
+            imageDisplayLimit += 20;
+            renderImages();
+        });
+        library.appendChild(loadMoreBtn);
+    }
 }
+
+// Reset limit when searching so you don't stay paginated deep in a new search
+document.getElementById('image-search').addEventListener('input', () => {
+    imageDisplayLimit = 20;
+    renderImages();
+});
 
 document.getElementById('image-search').addEventListener('input', renderImages);
 

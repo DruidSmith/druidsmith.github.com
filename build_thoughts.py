@@ -71,36 +71,40 @@ def parse_and_normalize_date(date_str):
     return datetime.fromisoformat(date_str.replace("Z", "+00:00")).astimezone(timezone.utc)
 
 def load_posts():
-    if not POSTS_FILE.exists(): return []
-    with POSTS_FILE.open(encoding="utf-8") as posts_file:
-        raw_posts = json.load(posts_file)
-        
     seen_slugs = set()
     normalized_posts = []
     
-    for post in raw_posts:
-        # Standardize required & optional fields
-        post.setdefault("type", "BlogPosting")
-        if not post.get("url") or "davidgsmith.net" in post.get("url", ""):
-            post["url"] = ""
+    # Iterate over all yearly sharded files instead of a single posts.json[cite: 6]
+    for filepath in BASE_DIR.glob("posts-*.json"):
+        with filepath.open(encoding="utf-8") as posts_file:
+            try:
+                raw_posts = json.load(posts_file)
+            except json.JSONDecodeError:
+                continue # Skip empty or malformed files
             
-        # Parse and anchor UTC dates
-        dt = parse_and_normalize_date(post.get("date"))
-        post["_dt"] = dt
-        post["date"] = dt.isoformat()
-        
-        # Check slugs for collisions
-        base_slug = slugify(post.get("title", "Untitled"))
-        slug = base_slug
-        counter = 1
-        while slug in seen_slugs:
-            slug = f"{base_slug}-{counter}"
-            counter += 1
-        seen_slugs.add(slug)
-        post["_slug"] = slug
-        
-        normalized_posts.append(post)
-        
+        for post in raw_posts:
+            # Standardize required & optional fields[cite: 6]
+            post.setdefault("type", "BlogPosting")
+            if not post.get("url") or "davidgsmith.net" in post.get("url", ""):
+                post["url"] = ""
+                
+            # Parse and anchor UTC dates[cite: 6]
+            dt = parse_and_normalize_date(post.get("date"))
+            post["_dt"] = dt
+            post["date"] = dt.isoformat()
+            
+            # Check slugs for collisions[cite: 6]
+            base_slug = slugify(post.get("title", "Untitled"))
+            slug = base_slug
+            counter = 1
+            while slug in seen_slugs:
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            seen_slugs.add(slug)
+            post["_slug"] = slug
+            
+            normalized_posts.append(post)
+            
     return sorted(normalized_posts, key=lambda p: p["_dt"], reverse=True)
 
 def render_markdown(text):
@@ -910,6 +914,24 @@ def sanitize_feed_text(text):
         normalized = normalized.replace(old, new)
     return normalized.encode('ascii', 'xmlcharrefreplace').decode('ascii')
 
+def generate_image_index():
+    images_dir = THOUGHTS_DIR / "images"
+    if not images_dir.exists():
+        return
+    
+    images = []
+    # Sort files by modified time (newest first)
+    for filepath in sorted(images_dir.glob("*.*"), key=os.path.getmtime, reverse=True):
+        if filepath.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif']:
+            images.append({
+                "name": filepath.name,
+                "url": f"https://davidgsmith.net/thoughts/images/{urllib.parse.quote(filepath.name)}"
+            })
+            
+    with open(BASE_DIR / "images-index.json", "w", encoding="utf-8") as f:
+        json.dump(images, f)
+
+
 def generate_rss(posts):
     last_build_date = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     rss_items = []
@@ -1058,12 +1080,31 @@ def cleanup_stale_pages():
     for filepath in BASE_DIR.glob("thoughts-*.html"):
         filepath.unlink()
 
+def generate_post_index(posts):
+    index_data = []
+    for post in posts:
+        index_data.append({
+            "title": post.get("title", "Untitled"),
+            "date": post.get("date"),
+            "tags": post.get("tags", []),
+            "type": post.get("type"),
+            "url": post.get("url", "")
+            # Body is intentionally excluded to keep the index tiny
+        })
+    with open(BASE_DIR / "post-index.json", "w", encoding="utf-8") as f:
+        json.dump(index_data, f)
+
+
 def generate_html():
     # Purge old generated pages to prevent stale records from surviving
     cleanup_stale_pages()
     
     posts = load_posts()
     inject_homepage_posts(posts)
+    
+    # Generate the new static post index for the editor
+    generate_post_index(posts)
+    
     all_tags = set()
     generated_urls = ["https://davidgsmith.net/thoughts.html", "https://davidgsmith.net/rss.xml"]
     
@@ -1450,6 +1491,7 @@ def notify_indexnow(urls=None):
 
 if __name__ == "__main__":
     urls = generate_html()
+    generate_image_index()
     ping_websub_hub()
     notify_indexnow(urls)
     print("Successfully built thoughts, aggregators, sitemap.xml, and RSS feed.")
