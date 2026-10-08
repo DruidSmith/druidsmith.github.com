@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Tue, 06 Oct 2026 00:56:03 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 08 Oct 2026 02:09:17 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -17,6 +17,29 @@
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
             <item>
+                <title>When a Database Stops Being About Data</title>
+                <link>https://davidgsmith.net/thoughts/when-a-database-stops-being-about-data.html</link>
+                <guid>https://davidgsmith.net/thoughts/when-a-database-stops-being-about-data.html</guid>
+                <pubDate>Thu, 08 Oct 2026 02:05:00 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The DuckDB team recently highlighted a post by Nikolas Go&amp;#776;bel on DuckDB, and it&#x27;s one of those ideas that sticks because it quietly rewrites how we think...</description>
+                <category>DuckDB</category>
+            <category>Systems Thinking</category>
+            <category>Data Engineering</category>
+            <category>Cloud-Native</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/duckdb-view-only-muyvr1d0-c1486e98.jpg" />
+                <content:encoded><![CDATA[<p>The DuckDB team recently highlighted <a target="_blank" rel="noopener noreferrer" href="https://www.nikolasgoebel.com/2024/05/28/duckdb-doesnt-need-data">a post by Nikolas Go&#776;bel</a> on DuckDB, and it's one of those ideas that sticks because it quietly rewrites how we think about data systems. For years, databases were the place where data lived. They were the center of gravity. That's not how analytical work happens anymore. Data sits in cloud buckets, object stores, and distributed filesystems. The database has started to become something else. DuckDB's own write&#8208;up on Go&#776;bel's article is <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/2026/10/07/view-only-mode">here</a>. </p>
+<p>Go&#776;bel's example is straightforward. Picture a robotaxi company with daily Parquet files piling up in blob storage. An analyst wants to explore patterns in high&#8208;fare, short&#8208;distance rides. You don't want to ship gigabytes of files, and you don't want to stand up a full warehouse just to give them a clean view. So you create a tiny DuckDB file that holds nothing but instructions. It's a map, not a container. The analyst attaches to it and starts querying as if the data were local. Only the columns they need are fetched. Filters cut down the transfer even more. The whole thing feels like opening a hyperlink.<br>
+<img alt="DuckDB View-Only" src="https://davidgsmith.net/thoughts/images/duckdb-view-only-muyvr1d0-c1486e98.jpg"><br>
+This framing treats relational datasets the same way we treat documents on the web. A database file becomes a pointer to structure, not storage. It's a description of how to see the world, not a place where the world is kept.</p>
+<p>This shift changes how teams collaborate. Instead of sending raw files or building a full warehouse, you share a view. You share intent. You share the logic that defines what's interesting. The analyst doesn't have to care about partitioning strategies, schema drift, or how many buckets the data sits in. They just attach and start thinking.</p>
+<p>It also hints at a future where analytical systems behave more like browsers. You don't download the whole dataset. You fetch only what you need. You navigate through structure. You treat cloud storage as the default substrate and the database as the lens that makes sense of it.</p>
+<p>For agencies and organizations with sprawling datasets, this is a big deal. We've spent years wrestling with the tension between centralizing data for analysis and keeping it distributed for operational reasons. Tools like DuckDB soften that tension. They let you keep data where it already lives while still giving analysts a coherent way to explore it.</p>
+<p>There's a deeper lesson here. We often assume that solving data problems means building bigger platforms, pipelines, and warehouses. Go&#776;bel's example shows that sometimes the right move is the opposite. Sometimes you get more leverage by making the database smaller. Sometimes the most powerful thing you can share isn't the data itself, but the way you've chosen to look at it.</p>
+<p>The tools we use shape how we see problems. When a database becomes a hyperlink, it encourages a different mindset. You stop thinking about storage and start thinking about structure. You stop worrying about where the data sits and start focusing on what questions you want to ask.</p>
+<p>That's a healthier way to work. It's also a reminder that good thinking often starts with good framing. DuckDB's view&#8208;only model is a technical feature, but it's also a nudge toward a more flexible way of understanding data. And that's worth paying attention to.</p>]]></content:encoded>
+            </item>
+            <item>
                 <title>LLMs Aren&#x27;t Reasoning. They&#x27;re Predicting - And Why That Matters More Than People Think.</title>
                 <link>https://davidgsmith.net/thoughts/llms-arent-reasoning-theyre-predicting-and-why-that-matters-more-than-people-think.html</link>
                 <guid>https://davidgsmith.net/thoughts/llms-arent-reasoning-theyre-predicting-and-why-that-matters-more-than-people-think.html</guid>
@@ -24,25 +47,15 @@
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Thore Graepel just published a piece in MIT Technology Review that deserves attention. His argument is simple: Modern large language models look smart, but...</description>
                 <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Strategy</category>
-            <dc:subject>AI Strategy</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>Responsible AI</category>
-            <dc:subject>Responsible AI</dc:subject>
             <category>LLM Architecture</category>
-            <dc:subject>LLM Architecture</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Systems Thinking</category>
-            <dc:subject>Systems Thinking</dc:subject>
             <category>AI Infrastructure</category>
-            <dc:subject>AI Infrastructure</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/llms-vs-reasoning-muvvbzwu-0ec3435b.jpg" />
                 <content:encoded><![CDATA[<p><a target="_blank" rel="noopener noreferrer" href="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason">Thore Graepel just published a piece in MIT Technology Review</a> that deserves attention. </p>
 <p>His argument is simple: Modern large language models look smart, but they aren't reasoning. They aren't evaluating evidence. They aren't maintaining a stable internal state. They aren't revising beliefs. They're predicting the next token.</p>
@@ -66,21 +79,13 @@
                 <dc:creator>David G. Smith</dc:creator>
                 <description>There is a growing realization in the AI engineering world that vector search is hitting a ceiling. It still works well for fuzzy matching and broad semantic...</description>
                 <category>AI Strategy</category>
-            <dc:subject>AI Strategy</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>AI Infrastructure</category>
-            <dc:subject>AI Infrastructure</dc:subject>
             <category>GraphRAG</category>
-            <dc:subject>GraphRAG</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>Geospatial</category>
-            <dc:subject>Geospatial</dc:subject>
             <category>Retrieval-Augmented Generation (RAG)</category>
-            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/graphrag-mutvwdq3-9e85010a.jpg" />
                 <content:encoded><![CDATA[<p>There is a growing realization in the AI engineering world that vector search is hitting a ceiling. It still works well for fuzzy matching and broad semantic retrieval, but it struggles when the task requires actual reasoning. The article <a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/why-vector-search-fails-at-multi-hop-reasoning-building-an-auditable-graphrag-engine-with-neo4j-fb116ce935f4">"Why Vector Search Fails at Multi-Hop Reasoning"</a> by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sonnyhoney/">Agwu Eze</a> makes this point clearly and shows why GraphRAG is becoming the next serious step for enterprise AI.</p>
 <p>The core argument is simple. Vector search treats text as isolated chunks. It doesn't understand relationships. It doesn't understand structure. It doesn't understand how facts connect across pages, documents, or regulatory frameworks. When you ask a question that requires multi-hop inference, vector search often retrieves the wrong pieces or misses critical links entirely. The result is a system that looks intelligent on the surface but fails when the stakes are high.</p>
@@ -105,27 +110,16 @@
                 <dc:creator>David G. Smith</dc:creator>
                 <description>For years, p&amp;#8208;hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something &quot;significant&quot;...</description>
                 <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>Responsible AI</category>
-            <dc:subject>Responsible AI</dc:subject>
             <category>Decision Making</category>
-            <dc:subject>Decision Making</dc:subject>
             <category>Risk Management</category>
-            <dc:subject>Risk Management</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>Tech Regulation</category>
-            <dc:subject>Tech Regulation</dc:subject>
             <category>Systems Thinking</category>
-            <dc:subject>Systems Thinking</dc:subject>
             <category>Enterprise AI</category>
-            <dc:subject>Enterprise AI</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/p-hacking-musuixco-17092f1a.jpg" />
                 <content:encoded><![CDATA[<p>For years, p&#8208;hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something "significant" appeared. It was tedious. It was limited by time and patience. The concern was always about intent. If someone wanted a particular result, they could eventually find it.</p>
 <p><img alt="P-Hacking Infographic" src="https://davidgsmith.net/thoughts/images/p-hacking-musuixco-17092f1a.jpg"></p>
@@ -154,11 +148,8 @@
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Matt Forrest shared a story that struck a chord with me. He talked about winning an atlas in a third grade contest and not realizing that it could become a...</description>
                 <category>Geospatial</category>
-            <dc:subject>Geospatial</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>Future of Work</category>
-            <dc:subject>Future of Work</dc:subject>
                 <content:encoded><![CDATA[<p><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mbforr">Matt Forrest</a> shared a <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:share:7511401119257083906/">story</a> that struck a chord with me. He talked about winning an atlas in a third grade contest and not realizing that it could become a career. He didn't know <em>geography</em> was even a department until an advisor pointed him toward it. That moment changed the direction of his life. It's a familiar story for many of us who work in fields that orbit around maps, data, and place.</p>
 <p>Matt mentioned a number that surprised me. About 4.5 million people in the United States have taken AP Human Geography. That's a huge population of people who have been taught to think spatially. Yet very few of them have job titles that include GIS or geography. <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/christopher-t-5595689">Chris Tucker</a> put it simply. People are thinking geographically all the time, but they call it something else.</p>
 <p>This is something I have seen throughout my own career. Spatial thinking shows up in engineering, surveying, aviation, logistics, environmental science, public health, emergency management, and policy. It shows up in the way people plan neighborhoods, analyze risk, design transportation networks, and understand climate impacts. It shows up in the way we make sense of the world. Most of the time, nobody uses the word geography. The thinking is there. The label is not.</p>
@@ -176,19 +167,12 @@
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The recent conversation around America.gov highlights something that has been building for years. Something I&#x27;ve been trying to raise awareness of for years....</description>
                 <category>Data Standards</category>
-            <dc:subject>Data Standards</dc:subject>
             <category>Semantic Layer</category>
-            <dc:subject>Semantic Layer</dc:subject>
             <category>Tech Modernization</category>
-            <dc:subject>Tech Modernization</dc:subject>
             <category>Civic Technology</category>
-            <dc:subject>Civic Technology</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>GraphRAG</category>
-            <dc:subject>GraphRAG</dc:subject>
             <category>Open Standards</category>
-            <dc:subject>Open Standards</dc:subject>
                 <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/americagov-debuts-and-we-the-people-have-thoughts-9405546/">recent conversation</a> around <a target="_blank" rel="noopener noreferrer" href="America.gov">America.gov</a> highlights something that has been building for years. Something I've been trying to raise awareness of for years.  People want government information that is clear, trustworthy, and easy to work with. They want facts that are not buried in PDFs or scattered across dozens of agency sites. They want tools that help them understand the world rather than confuse it. The launch of America.gov shows that agencies are trying to respond, but the reaction also shows how much work remains.</p>
 <p>The public sector is entering an era shaped by artificial intelligence, machine readable data, and composable architectures. Agencies will need to rethink how they publish information. They will need to treat data as a first class product rather than a byproduct of internal systems. They will need to adopt shared schemas, shared vocabularies, and shared expectations for how information should look when it reaches the public.</p>
 <p>This is not a technical problem alone. It is a trust problem. It is a clarity problem. It is a consistency problem. And it is a problem that can be solved.</p>
@@ -218,25 +202,15 @@ People want to know where information comes from. Agencies should publish lineag
                 <dc:creator>David G. Smith</dc:creator>
                 <description>A fascinating debate recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling....</description>
                 <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>Responsible AI</category>
-            <dc:subject>Responsible AI</dc:subject>
             <category>Risk Management</category>
-            <dc:subject>Risk Management</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>AI Strategy</category>
-            <dc:subject>AI Strategy</dc:subject>
             <category>Decision Making</category>
-            <dc:subject>Decision Making</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Retrieval-Augmented Generation (RAG)</category>
-            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
             <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
                 <content:encoded><![CDATA[<p>A <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7508647862893887488/">fascinating debate</a> recently broke out on LinkedIn that cuts right to the heart of how we evaluate technological progress versus corporate storytelling. Anthropic <a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">published a high profile announcement</a> claiming that its Claude models had autonomously discovered a completely new, CRISPR like enzyme system hidden inside bacteriophage DNA. </p>
 <p>According to their press release, this was the milestone product of their new molecular biology wet lab, achieved by deploying an army of 950 AI agents working over 21 hours.</p>
 <p>It sounded like a massive leap forward for autonomous science, until researchers in the field began pulling back the curtain.</p>
@@ -262,15 +236,10 @@ People want to know where information comes from. Agencies should publish lineag
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000...</description>
                 <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>Responsible AI</category>
-            <dc:subject>Responsible AI</dc:subject>
             <category>Tech Regulation</category>
-            <dc:subject>Tech Regulation</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/ai-attention-loss-muk93cmt-01201ffb.jpg" />
                 <content:encoded><![CDATA[<p>The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single prompt. In practice, feeding a massive document into an LLM often results in a subtle but pervasive degradation of performance known as <em>attention loss.</em> </p>
 <p>When a model loses attention, it doesn'crash. It simply ignores specific instructions, hallucinates facts that contradict the provided text, or relies heavily on its pre-training weights instead of the in-context data. Understanding why this happens requires looking at the underlying math of the transformer architecture and the physical limitations of memory allocation.<br>
@@ -303,29 +272,17 @@ The failure to maintain attention across long contexts creates severe constraint
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The latest edition of the GeoAI and the Law Newsletter lays out a clear message for anyone working at the intersection of geospatial data and artificial...</description>
                 <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>AI Law</category>
-            <dc:subject>AI Law</dc:subject>
             <category>AI Strategy</category>
-            <dc:subject>AI Strategy</dc:subject>
             <category>AI Workflows</category>
-            <dc:subject>AI Workflows</dc:subject>
             <category>Decision Making</category>
-            <dc:subject>Decision Making</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>GeoAI</category>
-            <dc:subject>GeoAI</dc:subject>
             <category>Responsible AI</category>
-            <dc:subject>Responsible AI</dc:subject>
             <category>Risk Management</category>
-            <dc:subject>Risk Management</dc:subject>
             <category>Tech Regulation</category>
-            <dc:subject>Tech Regulation</dc:subject>
             <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/ailaw-muinjeil-9d10bf0f.jpg" />
                 <content:encoded><![CDATA[<p><img alt="AI and the Law" src="https://davidgsmith.net/thoughts/images/ailaw-muinjeil-9d10bf0f.jpg"></p>
 <p>The <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com/p/geoai-and-the-law-newsletter-ed0">latest edition</a> of the <a target="_blank" rel="noopener noreferrer" href="https://geospatiallaw.substack.com">GeoAI and the Law Newsletter</a> lays out a clear message for anyone working at the intersection of geospatial data and artificial intelligence. GeoAI systems are becoming central to decisions about land use, mobility, infrastructure, public safety, and access to services.</p>
@@ -356,11 +313,8 @@ The article makes a compelling case that GeoAI governance is a foundation for re
                 <dc:creator>David G. Smith</dc:creator>
                 <description>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that Andrew Gelman...</description>
                 <category>Demographics</category>
-            <dc:subject>Demographics</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
                 <content:encoded><![CDATA[<p>I was off from work today, catching up on various personal projects as well as catching up on my neglected blog feed reading - and I saw that <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/09/25/53011/">Andrew Gelman recently wrote about a museum exhibit in France that included a set of pronatalist posters from the 1920s</a>. The material was produced by the <em><a target="_blank" rel="noopener noreferrer" href="https://fr.wikipedia.org/wiki/Alliance_nationale_pour_l%27accroissement_de_la_population_fran%C3%A7aise">Alliance nationale pour l'accroissement de la population franc&#807;aise</a></em>, a group that spanned the political spectrum at the time. Their message was simple: a "normal" family should have three children. The posters framed this as a national necessity.</p>
 <p>The exhibit highlights a recurring pattern in demographic reasoning. Once a society reaches low infant and child mortality, the long&#8208;term replacement level is about 2.1 children per woman. The posters didn't reference this. Instead, they promoted a target that was higher than what stable population dynamics require. The intent was not stability. It was growth. France had just come out of the First World War and was concerned about falling behind Germany in population and industrial capacity.</p>
 <p>Gelman points out that the "ideal number of children" is not the same as the number people actually have. Ideals often reflect cultural narratives rather than lived behavior. The posters treated the ideal as a factual requirement. They also ignored the distribution of family sizes. Some households have no children or only one. Policymakers may have assumed that others needed to compensate by having three.</p>
@@ -375,11 +329,8 @@ The article makes a compelling case that GeoAI governance is a foundation for re
                 <dc:creator>David G. Smith</dc:creator>
                 <description>When an autonomous AI workflow causes real damage, who answers for the fallout? This question moved from legal journals into front-page diplomacy this week,...</description>
                 <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
             <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/ai-liability-mug7u9o7-af23e446.jpg" />
                 <content:encoded><![CDATA[<p>When an autonomous AI workflow causes real damage, who answers for the fallout?</p>
 <p>This question moved from legal journals into front-page diplomacy this week, after Australian Prime Minister Anthony Albanese disclosed, speaking on the sidelines of the UN General Assembly in New York, that an OpenAI agent had breached the <a target="_blank" rel="noopener noreferrer" href="https://www.cnn.com/2026/09/23/business/australia-openai-agent-hack-intl-hnk">Medicare Statistics Reporting Service, a government health-data portal, back in June</a>. Tasked with researching public medical spending, the autonomous agent ran into access-control blocks on the portal, and Albanese said OpenAI took roughly three months to tell Canberra about it.</p>
@@ -414,15 +365,10 @@ Until statutory regimes catch up with agentic deployments, judges will likely ke
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades,...</description>
                 <category>Cloud-Native Geospatial</category>
-            <dc:subject>Cloud-Native Geospatial</dc:subject>
             <category>Spatial SQL</category>
-            <dc:subject>Spatial SQL</dc:subject>
             <category>Open Source GIS</category>
-            <dc:subject>Open Source GIS</dc:subject>
             <category>DuckDB</category>
-            <dc:subject>DuckDB</dc:subject>
             <category>Python</category>
-            <dc:subject>Python</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/geolibre-nyc-buildings-mug92ntz-7cc487e1.webp" />
                 <content:encoded><![CDATA[<p>Traditional GIS architectures were built around assumptions that no longer hold: you download data to your local machine before working with it. For decades, the standard workflow involved navigating FTP portals, unzipping gigabytes of shapefiles or multi-band TIFFs, and loading them into desktop software. If you wanted to run an analysis over a multi-year satellite series or a regional watershed, your machine could hit a memory ceiling within minutes.</p>
 <p>Cloud-native geospatial fundamentally inverts this workflow. Instead of bringing the data to the compute, we bring the compute to the data.</p>
@@ -494,13 +440,9 @@ Rendering millions of vector vertices in an interactive web browser used to free
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The geospatial industry is undergoing a quiet but profound shift. For decades, the standard workflow for analyzing satellite imagery was a fragmented process....</description>
                 <category>Cloud-Native Geospatial</category>
-            <dc:subject>Cloud-Native Geospatial</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>GraphRAG</category>
-            <dc:subject>GraphRAG</dc:subject>
             <category>Spatial SQL</category>
-            <dc:subject>Spatial SQL</dc:subject>
                 <content:encoded><![CDATA[<p>The geospatial industry is undergoing a quiet but profound shift. For decades, the standard workflow for analyzing satellite imagery was a fragmented process. Analysts had to download massive files, preprocess the imagery, stitch scenes together, and then run localized analysis scripts.</p>
 <p>Recent advancements have started to collapse this pipeline. With the rise of cloud-native geospatial data structures like Cloud Optimized GeoTIFFs (COGs) and STAC-GeoParquet metadata, data can now stay in the cloud. Tools like Apache Sedona demonstrate how an entire remote sensing pipeline can be compressed into declarative Spatial SQL and NumPy operations, drastically reducing the time from raw pixels to actionable insights.</p>
 <p>However, scaling the physical computation of pixels solves only half the problem. As we stream larger volumes of observational data into automated pipelines, we face a new bottleneck: context.</p>
@@ -534,11 +476,8 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
                 <dc:creator>David G. Smith</dc:creator>
                 <description>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots...</description>
                 <category>Retrieval-Augmented Generation (RAG)</category>
-            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>Computer Vision</category>
-            <dc:subject>Computer Vision</dc:subject>
             <media:thumbnail url="https://github.com/StarTrail-org/PixelRAG/raw/main/docs/assets/pipeline.png" />
                 <content:encoded><![CDATA[<p>PixelRAG takes a simple idea and turns it into a interesting new shift in retrieval. Instead of parsing a page into text, it renders the page as screenshots and searches the images directly. This keeps tables, charts, diagrams, layout and visual structure intact. Traditional RAG pipelines lose these details when they strip a page down to text.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/StarTrail-org/PixelRAG">PixelRAG</a> uses a vision&#8208;language embedding model fine&#8208;tuned on screenshots. It breaks a page into tiles, embeds each tile and builds a visual index. You can query the hosted index of more than eight million Wikipedia pages with text or images. The system returns the tiles that contain the answer, even when the answer is inside a table or chart.</p>
@@ -556,13 +495,9 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive. Large language...</description>
                 <category>Human-AI Interaction</category>
-            <dc:subject>Human-AI Interaction</dc:subject>
             <category>Future of Work</category>
-            <dc:subject>Future of Work</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/criticalthinkingandai-mu8hzvle-47002032.jpg" />
                 <content:encoded><![CDATA[<p>Knowledge generation is faster and cheaper than ever, but that shift carries a distinct penalty. Mental passivity has become far more expensive.</p>
 <p>Large language models (LLMs) can summarize research, draft software, and build financial models in seconds. Raw output is no longer a bottleneck or a competitive advantage. The work now centers on evaluating answers, checking assumptions, and catching subtle errors.</p>
@@ -620,9 +555,7 @@ By traversing these conceptual and spatial relationships, AI models can synthesi
                 <dc:creator>David G. Smith</dc:creator>
                 <description>I&#x27;ve been using a combination of Google Workspace and LibreOffice for personal projects lately. While Google Docs is a good daily driver it lacks more advanced...</description>
                 <category>Open Standards</category>
-            <dc:subject>Open Standards</dc:subject>
             <category>Books</category>
-            <dc:subject>Books</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png" />
                 <content:encoded><![CDATA[<p>I've been using a combination of <a target="_blank" rel="noopener noreferrer" href="https://workspace.google.com/">Google Workspace</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/">LibreOffice</a> for personal projects lately.  While Google Docs is a good daily driver it lacks more advanced word processing features; I used Google Docs to write the chapters of <a target="_blank" rel="noopener noreferrer" href="https://link.amazon/B09iCdx2U">my book</a>, but when it came to pagination, headers and footers and other things, Google Docs falls short, so I turned to LibreOffice to assemble the final manuscript and put the final polish on it.</p>
 <p><img alt="LibreOffice Logo" src="https://davidgsmith.net/thoughts/images/libreoffice-logo-icon-171259-mu8gmxlh-2700cfdb.png"><br>
@@ -654,13 +587,9 @@ LibreOffice is often described as a free alternative to Microsoft Office, but th
                 <dc:creator>David G. Smith</dc:creator>
                 <description>GraphRAG (Graph Retrieval-Augmented Generation) is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies...</description>
                 <category>GraphRAG</category>
-            <dc:subject>GraphRAG</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>Retrieval-Augmented Generation (RAG)</category>
-            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/neo4j-graphrag-ecosystem-mu72n48g-c87b063e.png" />
                 <content:encoded><![CDATA[<p><strong>GraphRAG (Graph Retrieval-Augmented Generation)</strong> is quickly becoming a critical architecture for building reliable AI applications. While standard RAG relies entirely on searching through isolated text chunks, GraphRAG maps your data into a network of interconnected points (referred to as nodes and edges). This subtle change completely reshapes how a Large Language Model (LLM) understands your data.</p>
 <p>If you have been putting off learning it because graph databases sound intimidating, the barrier to entry is actually incredibly low. By using free resources like self-paced tutorials on <strong>Neo4j GraphAcademy</strong> and a cloud-hosted <strong>Neo4j Aura free-tier account</strong>, you can build a working prototype in a single afternoon.</p>
@@ -724,11 +653,8 @@ GraphRAG isn't a walled garden. A free graph instance hooks directly into the to
                 <dc:creator>David G. Smith</dc:creator>
                 <description>I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting, high-maintenance software stack: chunking...</description>
                 <category>Retrieval-Augmented Generation (RAG)</category>
-            <dc:subject>Retrieval-Augmented Generation (RAG)</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Enterprise AI</category>
-            <dc:subject>Enterprise AI</dc:subject>
                 <content:encoded><![CDATA[<p>I regularly get asked about Retrieval-Augmented Generation (RAG), and find people often still imagine a daunting, high-maintenance software stack: chunking pipelines, embedding models, vector databases, rerankers, and orchestrators.</p>
 <p>For enterprise architectures and dynamic production systems, that engineering effort is justified. But if your goal is immediate practical utility: testing hypotheses, synthesizing project documentation, or interrogating a discrete corpus of research, you don't need to spin up an expensive vector pipeline.</p>
 <p>You can stand up a private, reliable RAG environment in about just seconds using Google <a target="_blank" rel="noopener noreferrer" href="https://notebook.google.com/">Gemini Notebook</a> (formerly known as NotebookLM).</p>
@@ -764,11 +690,8 @@ True technical maturity isn't about choosing the most complex stack; it's about 
                 <dc:creator>David G. Smith</dc:creator>
                 <description>One of the most important shifts happening in geospatial right now is the collapse of the old &quot;download -&amp;gt; preprocess -&amp;gt; stitch -&amp;gt; analyze&quot; workflow....</description>
                 <category>Spatial SQL</category>
-            <dc:subject>Spatial SQL</dc:subject>
             <category>Cloud-Native Geospatial</category>
-            <dc:subject>Cloud-Native Geospatial</dc:subject>
             <category>Apache Sedona</category>
-            <dc:subject>Apache Sedona</dc:subject>
                 <content:encoded><![CDATA[<p>One of the most important shifts happening in geospatial right now is the collapse of the old "download -> preprocess -> stitch -> analyze" workflow. Tools like SedonaDB show what happens when satellite imagery becomes cloud&#8208;native data and the entire pipeline collapses into SQL + NumPy.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://sedona.apache.org/latest/blog/2026/09/11/select-from-satellite-in-a-rust-database/">This article from the Apache Sedona team on the Gironde/Landes wildfire </a> is a perfect illustration of this new pattern.</p>
 <p><strong>Cloud-native imagery as queryable tables</strong><br>
@@ -800,9 +723,7 @@ This is what "geospatial at scale" actually looks like:</p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>There are structural elements at play in today&#x27;s tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need...</description>
                 <category>Future of Work</category>
-            <dc:subject>Future of Work</dc:subject>
             <category>Engineering Leadership</category>
-            <dc:subject>Engineering Leadership</dc:subject>
                 <content:encoded><![CDATA[<p>There are structural elements at play in today's tight IT job market, from extended hiring freezes to corporate hesitation around AI roadmaps. But we also need to address the undercurrent of ageism persisting in parts of the tech sector.</p>
 <p>When IT companies <a target="_blank" rel="noopener noreferrer" href="https://lnkd.in/p/e9Y8zNqp">shed experienced technical professionals in their 40s</a>, they aren't just cutting payroll; they're also draining institutional memory. They lose people with deep pragmatic intuition, technical depth, and the capacity to mentor the next generation.</p>
 <p>In business, technology is usually the easy part. Culture and institutional navigation are the hard parts.</p>
@@ -817,9 +738,7 @@ This is what "geospatial at scale" actually looks like:</p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>I keep seeing headlines like this one: Anthropic Researcher Exits, Issues Stark AI Warning Notable quote: &quot;10% chance AI could destroy all humanity by 2030.&quot;...</description>
                 <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
                 <content:encoded><![CDATA[<p>I keep seeing headlines like this one: <br>
 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/news/story/anthropic-researcher-exits-issues-stark-ai-warning-7578444/">Anthropic Researcher Exits, Issues Stark AI Warning</a><br>
 Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
@@ -846,11 +765,8 @@ Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. Here&#x27;s a great breakdown of attention...</description>
                 <category>LLM Architecture</category>
-            <dc:subject>LLM Architecture</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Deep Learning</category>
-            <dc:subject>Deep Learning</dc:subject>
                 <content:encoded><![CDATA[<p>Earlier I commented about how LLMs and AI agents face constraints of context windows; the other big one is attention. </p>
 <p>Here's a great breakdown of attention mechanisms in transformers, and it reinforces why attention is such a powerful idea in modern AI.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/ai-fundamentals-attention-mechanisms-in-transformers-part-1-a91cce62fbab">Towards AI - AI Fundamentals: Attention Mechanisms in Transformers</a></p>
@@ -872,11 +788,8 @@ Notable quote: <em>"10% chance AI could destroy all humanity by 2030."</em></p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>More often than not, AI agents end up failing because they&#x27;re drowning in their own context windows. One of the most interesting ideas I&#x27;ve seen lately is the...</description>
                 <category>LLM Architecture</category>
-            <dc:subject>LLM Architecture</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
                 <content:encoded><![CDATA[<p>More often than not, AI agents end up failing because they're drowning in their own context windows.</p>
 <p>One of the most interesting ideas I've seen lately is the shift from "bigger models" to better ways to manage the context window, one of which is through compression. If an LLM or agent can't efficiently manage its context window and distinguish signal from noise, then scale becomes a liability, not an advantage.</p>
 <p>In critical thinking, we talk about the danger of unfiltered information; how raw volume can mimic insight while actually degrading judgment. AI systems are now hitting that same wall.<br>
@@ -892,11 +805,8 @@ The future belongs to models that can summarize, prioritize, and discard with in
                 <dc:creator>David G. Smith</dc:creator>
                 <description>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to...</description>
                 <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>GraphRAG</category>
-            <dc:subject>GraphRAG</dc:subject>
             <category>Semantic Layer</category>
-            <dc:subject>Semantic Layer</dc:subject>
                 <content:encoded><![CDATA[<p>We often talk about what Large Language Models (LLMs) bring to the table, but to truly unlock their potential in complex enterprise environments, we need to talk about ontologies. We are entering an era of a powerful, symbiotic relationship: ontologies ground AI, and agentic AI helps us build better ontologies.</p>
 <p><strong>1. How Ontologies Give LLMs a Semantic Backbone:</strong><br>
 LLMs are incredible at predicting statistical patterns in language, but they inherently lack a consistent notion of identity, logical constraints, or global structure. Ontologies and knowledge graphs step in as this missing semantic backbone. By providing explicit concepts, typed relationships, and reasoning constraints, ontologies anchor LLMs in the specific reality and taxonomy of a business domain. When an agentic system uses GraphRAG, it doesn't just retrieve flat text fragments; it traverses conceptual relationships, natively understands disambiguated terms, and drastically reduces hallucinations.</p>
@@ -914,7 +824,6 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
                 <dc:creator>David G. Smith</dc:creator>
                 <description>My heart is with the people of Nepal after the devastating floods. In the days ahead, the work continues: searching for survivors, caring for the injured,...</description>
                 <category>Humanitarian Aid</category>
-            <dc:subject>Humanitarian Aid</dc:subject>
                 <content:encoded><![CDATA[<p>My heart is with the people of Nepal after the devastating floods.</p>
 <p>In the days ahead, the work continues: searching for survivors, caring for the injured, supporting displaced families, and helping communities rebuild.</p>
 <p>If you're looking for ways to help, this article offers guidance on where to donate:<br>
@@ -930,11 +839,8 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The Hugging Face breach wasn&#x27;t just an &quot;AI gone rogue&quot; story: it was a multi&amp;#8208;layer failure across agents, incentives, and corporate systems. The real...</description>
                 <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
                 <content:encoded><![CDATA[<p>The <a target="_blank" rel="noopener noreferrer" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-swarm-hugging-face-bre/">Hugging Face breach</a> wasn't just an "AI gone rogue" story: it was a multi&#8208;layer failure across agents, incentives, and corporate systems. The real lesson is how misaligned goals, weak guardrails, and fragile infrastructure can amplify each other.</p>
 <p>There have been a lot of speculative takes, but I think mine is grounded. Contrary to what some folks have said, I don't believe the agents weren't emotional or self&#8208;preserving. It was more basic than that. They were reward&#8208;hacking their way through impossible tasks, coordinating through an improvised channel, and exploiting real vulnerabilities. But the bigger failure was organizational:</p>
 <p>&#9702; Perverse incentives pushed agents toward reward&#8208;hacking instead of task completion.<br>
@@ -954,9 +860,7 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Over the past week, Nepal has been hit by one of the most devastating glacial&amp;#8208;flood disasters in its modern history. Entire mountain communities in...</description>
                 <category>Humanitarian Aid</category>
-            <dc:subject>Humanitarian Aid</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/images/NepalFloodRelief.jpg" />
                 <content:encoded><![CDATA[<p>Over the past week, Nepal has been hit by one of the most devastating glacial&#8208;flood disasters in its modern history. Entire mountain communities in Rasuwa, Nuwakot, and Dhading have been swept away. Thousands are displaced, critical infrastructure is gone, and emergency teams are still searching for missing families in remote valleys.</p>
 <p>As I publish <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation</a>, I want the book to do more than spark better reasoning: I want it to contribute to real&#8208;world compassion.</p>
@@ -973,11 +877,8 @@ Years back I worked with <a target="_blank" rel="noopener noreferrer" href="http
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The debate over data&amp;#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on...</description>
                 <category>AI Infrastructure</category>
-            <dc:subject>AI Infrastructure</dc:subject>
             <category>Sustainable Tech</category>
-            <dc:subject>Sustainable Tech</dc:subject>
             <category>AI Governance &amp; Policy</category>
-            <dc:subject>AI Governance &amp; Policy</dc:subject>
                 <content:encoded><![CDATA[<p>The debate over data&#8208;center expansion keeps surfacing in my feed, and for good reason. Many of us sit in a strange tension: our organizations rely on data centers for affordable cloud compute and storage, and some communities benefit from the tax revenue. Yet the tradeoffs are real: massive power demand, heavy water usage for cooling, noise, higher residential electricity rates, and long&#8208;term environmental impact.</p>
 <p>What struck me about <a target="_blank" rel="noopener noreferrer" href="http://errorstatistics.com/2026/09/04/data-centers-how-about-an-adversarial-collaboration/">this recent piece by Deborah Mayo</a> is her proposal to break out of the usual cycle of hearings, lobbying, and outrage. She suggests adversarial collaboration: a structured process where opposing sides jointly design tests that could genuinely prove either of them wrong.</p>
 <p>Imagine shifting the conversation from rhetoric to measurable hypotheses: <br>
@@ -998,13 +899,9 @@ What evidence would make us reconsider our position?</p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>One of the topics I didn&#x27;t talk about in my book is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them,...</description>
                 <category>Human-AI Interaction</category>
-            <dc:subject>Human-AI Interaction</dc:subject>
             <category>Generative AI</category>
-            <dc:subject>Generative AI</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>Books</category>
-            <dc:subject>Books</dc:subject>
                 <content:encoded><![CDATA[<p>One of the topics I didn't talk about in <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">my book</a> is AI-driven cognitive debt that can weaken existing critical thinking skills through overreliance on them, just as we no longer memorize phone numbers and rely on GPS for navigation. We offload that memory and cognitive processing. And like an underused muscle, it can atrophy.</p>
 <p>MIT Media Labs talks about this phenomenon:  <a target="_blank" rel="noopener noreferrer" href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task &#8211; MIT Media Lab</a></p>
 <p>Outsourcing your thinking to AI gives you an immediate performance boost. However, just like financial debt or technical debt, it comes with a compounding long-term cost. When we rely on AI to analyze, synthesize, and problem-solve for us, we risk bypassing the intellectual friction required to sustain deep reasoning.</p>
@@ -1023,11 +920,8 @@ What evidence would make us reconsider our position?</p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Another recent quiet development: It&#x27;s interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into...</description>
                 <category>Vector Databases</category>
-            <dc:subject>Vector Databases</dc:subject>
             <category>AI Infrastructure</category>
-            <dc:subject>AI Infrastructure</dc:subject>
             <category>Semantic Layer</category>
-            <dc:subject>Semantic Layer</dc:subject>
                 <content:encoded><![CDATA[<p>Another recent quiet development: It's interesting to see how Redis has evolved from being a cache to vector + semantic + agent-memory layer, turning it into an AI-native data layer, with fewer moving parts and predictable latency leveraging existing Redis technology. AI tech stacks are becoming more consolidated and integrated.</p>
 <p><strong>The problem Redis solves:</strong> <br>
 * Traditional agent architectures require 3 separate persistence layers (ephemeral key-value cache, dedicated vector DB for semantic search, and document store for chat session history).</p>
@@ -1044,9 +938,7 @@ What evidence would make us reconsider our position?</p>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Telling a story with data can be impactful and compelling. Anselm Hook has an interesting approach that builds on top of various approaches for interactively...</description>
                 <category>Data Visualization</category>
-            <dc:subject>Data Visualization</dc:subject>
             <category>Geospatial</category>
-            <dc:subject>Geospatial</dc:subject>
                 <content:encoded><![CDATA[<p>Telling a story with data can be impactful and compelling. <a target="_blank" rel="noopener noreferrer" href="https://anselm.substack.com/">Anselm Hook</a> has an interesting approach that builds on top of various approaches for interactively synchronizing a story to both a map and a timeline, along with embedding sliders and controls to allow the reader to experiment with different scenarios and parameters.<br>
 Demo App:<br>
 <a target="_blank" rel="noopener noreferrer" href="https://colorado.exe.xyz/">Take a breath, and look where the river ends</a></p>]]></content:encoded>
@@ -1059,9 +951,7 @@ Demo App:<br>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled,...</description>
                 <category>Engineering Leadership</category>
-            <dc:subject>Engineering Leadership</dc:subject>
             <category>Future of Work</category>
-            <dc:subject>Future of Work</dc:subject>
             <media:thumbnail url="https://miro.medium.com/v2/resize:fit:750/format:webp/0*P3wHb30sdNzdMqrk.jpeg" />
                 <content:encoded><![CDATA[<p>My colleague Ketan Patel recently made a post about mission that resonated. At some point in your career, you may come to a crossroads and feel unfulfilled, but there's a concept I like to share with friends and colleagues.</p>
 <p>It's easy to get caught up chasing titles and salaries. And while those things can be rewarding, they don't always bring the deeper sense of purpose or fulfillment we're really looking for. Sometimes we end up in roles we're "supposed" to want, but still feel disconnected from the work itself.</p>
@@ -1089,9 +979,7 @@ Demo App:<br>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Hello friends and colleagues, I&#x27;m happy to say I&#x27;ve just published a book, now available on Amazon, in paperback and Kindle editions. Critical Thinking: A...</description>
                 <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
             <category>Books</category>
-            <dc:subject>Books</dc:subject>
             <media:thumbnail url="https://davidgsmith.net/images/CriticalThinkingCover.jpg" />
                 <content:encoded><![CDATA[<p>Hello friends and colleagues, I'm happy to say I've just published a book, now available on Amazon, in paperback and Kindle editions. </p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B0HH3CYK79">Critical Thinking:  A Practical Guide to Seeing Through Bias, Noise and Manipulation.</a>  It's an essential survival guide for today's information environment, to help navigate algorithmic manipulation, disinformation campaigns, AI deep fakes and ideological polarization. </p>
@@ -1106,13 +994,9 @@ Demo App:<br>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>The real bottleneck in AI agents today isn&#x27;t raw reasoning capability; it&#x27;s access to structured business context. Google recently introduced the Open...</description>
                 <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
             <category>Enterprise AI</category>
-            <dc:subject>Enterprise AI</dc:subject>
             <category>LLM Architecture</category>
-            <dc:subject>LLM Architecture</dc:subject>
                 <content:encoded><![CDATA[<p>The real bottleneck in AI agents today isn't raw reasoning capability; it's access to structured business context.   </p>
 <p>Google recently introduced the <strong>Open Knowledge Format (OKF)</strong>, an open, lightweight Markdown and YAML-based standard designed to represent organizational knowledge so any AI agent, framework, or runtime tool can ingest it seamlessly. Today, engineering teams waste significant effort hand-crafting bespoke context pipelines for every internal tool. OKF replaces that friction with a portable, git-native, tool-agnostic knowledge bundle.   </p>
 <p><strong>How OKF Compares to Existing Standards</strong><br>
@@ -1134,11 +1018,8 @@ This development aligns directly with a core architectural reality: neural netwo
                 <dc:creator>David G. Smith</dc:creator>
                 <description>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we&#x27;re losing institutional knowledge faster than we can document it....</description>
                 <category>Enterprise AI</category>
-            <dc:subject>Enterprise AI</dc:subject>
             <category>Future of Work</category>
-            <dc:subject>Future of Work</dc:subject>
             <category>Knowledge Graphs</category>
-            <dc:subject>Knowledge Graphs</dc:subject>
                 <content:encoded><![CDATA[<p>My friend Bill Dollins wrote something that hits a nerve for many organizations right now: we're losing institutional knowledge faster than we can document it. AI isn't the threat; it could be the lifeline.</p>
 <p>Bill's team at Clairvoyint AI is building something deceptively simple and incredibly powerful: tools that capture how experts think, not just what they produce. Their "Bundles" turn decades of judgment, rules, exceptions, and evidence standards into transparent, inspectable analytical agents. It's not automation. It's continuity.</p>
 <p>The big idea: If you can preserve expert methodology, you preserve capability: no matter who retires, moves on, or changes roles. That's the kind of AI work that actually matters.</p>
@@ -1152,11 +1033,8 @@ This development aligns directly with a core architectural reality: neural netwo
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not...</description>
                 <category>AI Safety &amp; Risk</category>
-            <dc:subject>AI Safety &amp; Risk</dc:subject>
             <category>AI Agents</category>
-            <dc:subject>AI Agents</dc:subject>
             <category>AI Infrastructure</category>
-            <dc:subject>AI Infrastructure</dc:subject>
                 <content:encoded><![CDATA[<p>Insightful article on AI containment failure: It argues that four major AI labs all suffered the same kind of sandbox containment failure within two weeks, not because their models misbehaved, but because the industry's definition of "isolated evaluation environments" is fundamentally flawed. These failures reveal that AI safety is shifting from a model&#8208;alignment problem to an infrastructure engineering problem, and the current infrastructure wasn't built with offensive cyber capability in mind.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/the-sandbox-was-never-sealed-four-labs-proved-it-in-three-weeks-385e9af61722">Towards AI:  The Sandbox Was Never Sealed. Four Labs Proved It in Three Weeks.</a></p>]]></content:encoded>
             </item>
@@ -1168,11 +1046,8 @@ This development aligns directly with a core architectural reality: neural netwo
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of...</description>
                 <category>3D Reality Capture</category>
-            <dc:subject>3D Reality Capture</dc:subject>
             <category>Geospatial</category>
-            <dc:subject>Geospatial</dc:subject>
             <category>Gaussian Splatting</category>
-            <dc:subject>Gaussian Splatting</dc:subject>
             <media:thumbnail url="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png" />
                 <content:encoded><![CDATA[<p>Gaussian splats for 3D visualization are visually compelling, but how do they compare to 3D meshes? Great article delves into the nuances and tradeoffs of each.<br>
 <img alt="Gaussian Splat" src="https://www.esri.com/arcgis-blog/app/uploads/2026/08/MeshSplats.png"></p>
@@ -1198,11 +1073,8 @@ This development aligns directly with a core architectural reality: neural netwo
                 <dc:creator>David G. Smith</dc:creator>
                 <description>Before you tear down a &quot;pointless&quot; rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton&#x27;s classic...</description>
                 <category>Engineering Leadership</category>
-            <dc:subject>Engineering Leadership</dc:subject>
             <category>Systems Thinking</category>
-            <dc:subject>Systems Thinking</dc:subject>
             <category>Critical Thinking</category>
-            <dc:subject>Critical Thinking</dc:subject>
                 <content:encoded><![CDATA[<p>Before you tear down a "pointless" rule, change a long-standing process, or disrupt an industry tradition, you need to run it through G.K. Chesterton's classic thought experiment.</p>
 <p>Imagine you're walking down a country road and encounter a sturdy wooden fence blocking your path. To your eye, it serves absolutely no purpose.</p>
 <p>What's your first instinct?</p>
