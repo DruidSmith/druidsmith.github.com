@@ -1,5 +1,4 @@
 // posting-worker.js
-// posting-worker.js
 const encoder = new TextEncoder();
 const cors = {
   "Access-Control-Allow-Origin": "*",
