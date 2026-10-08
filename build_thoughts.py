@@ -91,7 +91,6 @@ def load_posts():
             # Parse and anchor UTC dates[cite: 6]
             dt = parse_and_normalize_date(post.get("date"))
             post["_dt"] = dt
-            post["date"] = dt.isoformat()
             
             # Check slugs for collisions[cite: 6]
             base_slug = slugify(post.get("title", "Untitled"))
