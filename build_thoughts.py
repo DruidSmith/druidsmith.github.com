@@ -202,7 +202,7 @@ def render_share_bar(share_url, original_url):
                target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
                 <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
             </a>
-            <a href="https://bsky.app/intent/share?url={share_escaped}"
+            <a href="https://bsky.app/intent/compose?text={share_escaped}"
                target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
                 <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
             </a>
