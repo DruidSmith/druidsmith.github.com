@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 10 Oct 2026 16:27:35 +0000</lastBuildDate>
+            <lastBuildDate>Sat, 10 Oct 2026 16:30:49 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -28,9 +28,11 @@
             <category>Geospatial</category>
             <category>Open Standards</category>
             <category>Spatial SQL</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/portolan-mv2m0t6g-9e4c83e1.jpg" />
                 <content:encoded><![CDATA[<p>For years, anyone who worked with geospatial data learned to live with a certain amount of pain. Publishing a dataset meant standing up servers, maintaining databases, babysitting APIs, and hoping the whole thing held together when traffic spiked. Using that data meant navigating portals, dealing with pagination limits, and wrestling with tools that never quite agreed on how spatial files should behave. It was the cost of doing business in a world where spatial data could not be queried efficiently over the network.</p>
 <p>That world is fading. The <a target="_blank" rel="noopener noreferrer" href="https://cloudnativegeo.org/">cloud&#8208;native geospatial community</a> has spent the last several years proving that spatial data doesn't need to be served through heavy infrastructure. It can simply live in object storage. It can be organized with open metadata. It can be accessed directly by standard tools. It can be used by people and by generative models without a middle layer that slows everything down.</p>
-<p>This is the context in which <a target="_blank" rel="noopener noreferrer" href="https://www.portolan-sdi.org/">Portolan</a> arrives. It's an open&#8208;source specification and toolkit for building a serverless spatial data infrastructure (SDI). It is not a new file format or a new portal. It is a set of clear, opinionated rules for how to publish geospatial data in a way that is fast, predictable, and easy to use. It is also a validator, a CLI, and a set of skills that help publishers create catalogs that follow the specification.</p>
+<p>This is the context in which <a target="_blank" rel="noopener noreferrer" href="https://www.portolan-sdi.org/">Portolan</a> arrives. It's an open&#8208;source specification and toolkit for building a serverless spatial data infrastructure (SDI). It is not a new file format or a new portal. It is a set of clear, opinionated rules for how to publish geospatial data in a way that is fast, predictable, and easy to use. It is also a validator, a CLI, and a set of skills that help publishers create catalogs that follow the specification.<br>
+<img alt="Introducing Portolan" src="https://davidgsmith.net/thoughts/images/portolan-mv2m0t6g-9e4c83e1.jpg"></p>
 <p>Portolan is an open&#8208;source community project supported by Radiant Earth, CARTO, Planet, Taylor Geospatial, Source Cooperative, and walkthru.earth, with contributions from PDOK, Madrid, Barcelona, and Pergamino.</p>
 <p>The <a target="_blank" rel="noopener noreferrer" href="https://www.portolan-sdi.org/blog/introducing-portolan">Portolan announcement</a> makes one thing very clear. A modern SDI can be nothing more than files in S3&#8208;compatible storage. No servers. No databases. No custom APIs. Just cloud&#8208;optimized formats, <a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/en/">STAC</a> metadata, and documentation that helps people and generative models understand how to work with the data.</p>
 <p><strong>What Portolan actually standardizes</strong><br>
