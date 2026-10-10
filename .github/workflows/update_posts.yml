@@ -40,9 +40,12 @@ jobs:
             exit 0          
           fi          
           git commit -m "Auto-generate thoughts, tag aggregators, and month pages"          
-          git pull --rebase origin master          
+          
+          # ADD '-X theirs' TO THIS LINE
+          git pull --rebase -X theirs origin master          
+          
           git push          
-          echo "changed=true" >> "$GITHUB_OUTPUT"      
+          echo "changed=true" >> "$GITHUB_OUTPUT"  
       - name: Submit updated page to Bing IndexNow        
         if: steps.publish.outputs.changed == 'true' && env.INDEXNOW_KEY != ''        
         run: |          

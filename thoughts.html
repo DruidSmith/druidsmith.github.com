@@ -179,6 +179,81 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>October 10, 2026 &bull; <span class="text-amber-900 font-semibold">6 min read</span> &bull; Originally published on Other</span>
+            </div>
+            
+        <a href="/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                Portolan and the Quiet Reinvention of Spatial Data Infrastructure
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-duckdb.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">DuckDB</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-open-standards.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Open Standards</a><a href="/thoughts-spatial-sql.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial SQL</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>For years, anyone who worked with geospatial data learned to live with a certain amount of pain. Publishing a dataset meant standing up servers, maintaining databases, babysitting APIs, and hoping the whole thing held together when traffic spiked. Using that data meant navigating portals, dealing with pagination limits, and wrestling with tools that never quite agreed on how spatial files should behave. It was the cost of doing business in a world where spatial data could not be queried efficiently over the network.</p>
+<p>That world is fading. The <a target="_blank" rel="noopener noreferrer" href="https://cloudnativegeo.org/">cloud‑native geospatial community</a> has spent the last several years proving that spatial data doesn't need to be served through heavy infrastructure. It can simply live in object storage. It can be organized with open metadata. It can be accessed directly by standard tools. It can be used by people and by generative models without a middle layer that slows everything down.</p>
+<p>This is the context in which <a target="_blank" rel="noopener noreferrer" href="https://www.portolan-sdi.org/">Portolan</a> arrives. It's an open‑source specification and toolkit for building a serverless spatial data infrastructure (SDI). It is not a new file format or a new portal. It is a set of clear, opinionated rules for how to publish geospatial data in a way that is fast, predictable, and easy to use. It is also a validator, a CLI, and a set of skills that help publishers create catalogs that follow the specification.</p>
+<p>Portolan is an open‑source community project supported by Radiant Earth, CARTO, Planet, Taylor Geospatial, Source Cooperative, and walkthru.earth, with contributions from PDOK, Madrid, Barcelona, and Pergamino.</p>
+<p>The <a target="_blank" rel="noopener noreferrer" href="https://www.portolan-sdi.org/blog/introducing-portolan">Portolan announcement</a> makes one thing very clear. A modern SDI can be nothing more than files in S3‑compatible storage. No servers. No databases. No custom APIs. Just cloud‑optimized formats, <a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/en/">STAC</a> metadata, and documentation that helps people and generative models understand how to work with the data.</p>
+<p><strong>What Portolan actually standardizes</strong><br>
+Portolan builds on existing standards rather than inventing new ones. <a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a> and <a target="_blank" rel="noopener noreferrer" href="https://docs.protomaps.com/pmtiles/">PMTiles</a> handle vector data. <a target="_blank" rel="noopener noreferrer" href="https://cogeo.org/">COG</a> handles raster. Future support is planned for Zarr and <a target="_blank" rel="noopener noreferrer" href="https://copc.io/">COPC</a>. STAC provides the organizational backbone. Every catalog must include a README and an AGENTS.md file so that both humans and generative models can understand what the data contains and how it should be used.</p>
+<p>This is not a loose suggestion. Portolan is deliberately opinionated. It tells publishers how to structure bounding boxes, how to order spatial data, how to configure CORS, and how to avoid the subtle mistakes that make cloud‑optimized formats slow or unusable. The validator, rashid, checks catalogs against the specification and produces JSON that makes it easy to identify and fix problems.</p>
+<p>The result is a consistent experience. If you open a Portolan catalog, you know what you are getting. You know how the metadata is organized. You know how to query the data. You know that the publisher followed best practices. You know that the catalog will work with QGIS, ArcGIS, DuckDB, Python, and any other tool that understands cloud‑optimized formats.</p>
+<p><strong>Why this matters for publishers</strong><br>
+The traditional SDI model forces publishers to maintain infrastructure that exists only to stand between users and the data. Portolan removes that layer. If a dataset is read‑heavy and public, there is no reason to maintain a server whose only job is to serve bytes that object storage can serve directly.</p>
+<p>This shift changes the economics of geospatial publishing. National geoportals and planetary archives can rely on object storage rather than maintaining a serving layer sized for peak demand. That cuts recurring costs down to storage and transfer. It also makes it practical to host terabytes or even petabytes of data without running a dedicated geospatial service. The <a target="_blank" rel="noopener noreferrer" href="https://fieldsofthe.world/">Fields of the World</a> dataset is a good example. It is published as a Portolan catalog containing 369 TB of data and served more than 100 TB in a single month. There is no serving layer in front of it.</p>
+<p>At the other end of the spectrum, small organizations finally get a way to publish spatial data without standing up GeoServer or Esri infrastructure. A Portolan catalog is just files in a bucket. That lowers the barrier for city governments, NGOs, researchers, and anyone who wants to share useful geospatial data without becoming a systems administrator. It also gives publishers flexibility to meet sovereignty requirements because the data can live in any S3‑compatible storage in any jurisdiction.</p>
+<p><strong>Why this matters for users</strong><br>
+Portolan catalogs use formats that already work with common tools. They also include the metadata and documentation needed to understand the data. The registry provides a single place to discover public catalogs. Because the catalogs are built from existing standards, users do not need Portolan‑specific tools. They can explore the data in the Portolan browser, query it from QGIS or ArcGIS, load it into DuckDB, or hand it to a generative model.</p>
+<p>The experience is faster and more consistent than navigating multiple portals or dealing with API pagination. It also reduces the expertise required to get started. Users can focus on asking questions rather than learning the quirks of several systems. Generative models can take on the intermediate work, which broadens access for new users and lets experienced practitioners work across far more data than they could manage manually.</p>
+<p><strong>A federated future</strong><br>
+The long‑term vision is a federated network of interoperable catalogs published by national mapping agencies, cities, NGOs, researchers, and global data providers. The Portolan registry is the first step. It is nothing more than a catalog of catalogs. The underlying bytes never leave the publisher’s storage. If the registry disappeared, every catalog would keep working.</p>
+<p>This is a quiet but profound shift. Discovery becomes easier. Interoperability becomes normal. People and generative models can begin with nothing more than the registry URL and find relevant datasets across many publishers. They can understand how the data is structured and query it directly from the source. The network has already started to take shape with catalogs spanning global datasets, national government data, and community mirrors.</p>
+<p><strong>Where Portolan goes next</strong><br>
+Portolan is still early stage. The team is focused on polishing the specification, building out the core tooling, and learning from real‑world catalogs. Breaking changes are expected in the short term, so the project is best suited to early adopters. The roadmap outlines the work ahead. The registry will continue to grow. Stability in the specification and tooling will become a key milestone. Eventually, the ecosystem will expand beyond the tools built by the Portolan team.</p>
+<p>I will be exploring parts of this framework in some of my own upcoming data pipeline work.  Anyone can get involved, to publish data as Portolan catalogs, test the tooling, or contribute to the specification. Portolan has a <a target="_blank" rel="noopener noreferrer" href="https://cloudnativegeo.slack.com/archives/C0A1JBH9529">Slack channel</a> and a <a target="_blank" rel="noopener noreferrer" href="https://groups.google.com/g/portolan">Google Group</a>. The specification, documentation, examples, registry, and catalogs are at:</p>
+<p>https://portolan-sdi.org<br>
+https://github.com/portolan-sdi </p>
+<p>It is rare to see a project that simplifies geospatial publishing this much while staying grounded in open standards. Portolan does not try to replace the tools people already use. It tries to make those tools work better by giving them a consistent, cloud‑native foundation. If it succeeds, it will quietly reshape how spatial data is published, discovered, and used.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://cloudnativegeo.org/blog/2026/09/introducing-portolan" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>October 08, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
             </div>
             
@@ -609,73 +684,6 @@ People want to know where information comes from. Agencies should publish lineag
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>September 27, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                The Mechanics of Attention Loss in Large Language Models: Why AI Forgets What You Just Said
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-tech-regulation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Regulation</a><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>The race to build models with massive context windows has dominated the generative AI landscape over the past year. We moved rapidly from limits of 4,000 tokens to figures exceeding one million. In theory, a one-million-token context window allows a model to ingest entire codebases, multiple novels, or years of financial records in a single prompt. In practice, feeding a massive document into an LLM often results in a subtle but pervasive degradation of performance known as <em>attention loss.</em> </p>
-<p>When a model loses attention, it doesn'crash. It simply ignores specific instructions, hallucinates facts that contradict the provided text, or relies heavily on its pre-training weights instead of the in-context data. Understanding why this happens requires looking at the underlying math of the transformer architecture and the physical limitations of memory allocation.<br>
-<img alt="ai attention loss muk93cmt 01201ffb" src="https://davidgsmith.net/thoughts/images/ai-attention-loss-muk93cmt-01201ffb.jpg"><br>
-<strong>Why Attention Loss Happens</strong><br>
-The root cause of context degradation lies in the self-attention mechanism itself. Transformers process text by assigning attention scores between every token and every other token in a sequence. As the sequence grows longer, the model must distribute its attention scores across a vastly larger number of data points. </p>
-<p>This creates a dilution effect. If a critical instruction is buried at token 45,000 in a 100,000-token prompt, the raw attention score assigned to that specific instruction becomes mathematically infinitesimal compared to the aggregate attention scores of the surrounding noise. Researchers famously documented this as the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2307.03172">"Lost in the Middle" phenomenon</a>, demonstrating that models are highly proficient at retrieving information at the very beginning and very end of a prompt but struggle significantly with information located in the middle.</p>
-<p>Hardware constraints also play a major role. To process long sequences without recalculating everything from scratch, models use a Key-Value (KV) cache. The KV cache stores representations of all previous tokens. As the prompt grows, the KV cache scales linearly, consuming massive amounts of GPU VRAM. When models are forced to compress this cache or when rotary position embeddings (RoPE) are stretched beyond their optimal training distribution, the model's spatial awareness of where tokens reside in relation to one another begins to break down.</p>
-<p><strong>How to Notice and Measure the Drop</strong><br>
-Attention loss is insidious because the model remains fluent. It will confidently generate output that looks correct but misses the core constraints of the prompt. Engineers and researchers use specific frameworks to audit this behavior.</p>
-<p><strong>Needle in a Haystack (NIAH) Testing:</strong> The most common diagnostic tool is the <a target="_blank" rel="noopener noreferrer" href="https://github.com/gkamradt/LLMTest_NeedleInAHaystack">NIAH evaluation</a>. This involves taking a large block of filler text (the haystack) and inserting a specific, out-of-context fact (the needle) at varying depths. You then prompt the model to retrieve that fact. By plotting the retrieval accuracy on a grid of context length versus insertion depth, you can visualize the exact point where a specific model's attention begins to fail.</p>
-<p><strong>Instruction Degradation:</strong> Another clear symptom is dropped constraints in complex workflows. If you provide an LLM with a 50-page document and append a five-step formatting rule at the end, a model suffering from attention loss might apply rules one and two but completely ignore rules three through five. </p>
-<p><strong>Repetition and Looping:</strong> When the KV cache becomes corrupted or overly compressed, models lose track of what they have recently generated. This often results in infinite loops where the model repeats the same paragraph or code block endlessly, unable to attend to the tokens that signal the task is complete.</p>
-<p><strong>The Downstream Ramifications</strong><br>
-The failure to maintain attention across long contexts creates severe constraints for enterprise AI deployments. </p>
-<p>When developers trust a large context window to handle document analysis, attention loss directly translates to missed compliance risks, skipped legal clauses, or ignored software bugs. The illusion of capability is more dangerous than a strict limitation. A model that refuses a 100,000-token prompt forces the developer to find a workaround. A model that accepts the prompt but silently drops 20 percent of the information creates a hidden liability that might not be discovered until the output reaches production.</p>
-<p>This unreliability forces teams to build complex, brittle wrappers around their AI agents to double-check their work, eroding the speed and efficiency gains the technology was supposed to provide.</p>
-<p><strong>What the Industry is Doing About It</strong></p>
-<p>Architectural improvements and novel retrieval methods are actively being deployed to fix the memory bottleneck. </p>
-<p><strong>Advanced Positional Encodings:</strong> Standard positional encodings struggle when extrapolated to sequence lengths they never saw during training. Techniques like<a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.00071"> YaRN (Yet another RoPE extensioN</a>) scale the attention mechanism to handle longer contexts without losing the relative distance between tokens, keeping the model anchored even at extreme lengths.</p>
-<p><strong>KV Cache Eviction:</strong> Rather than storing every single token in the KV cache, researchers are developing methods to identify and keep only the "heavy hitters." Frameworks like <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2309.17453">StreamingLLM</a> prove that you can maintain high performance by keeping the initial tokens (the attention sink) and the most recent tokens, dropping the middle context entirely for continuous generation tasks.</p>
-<p><strong>Ring Attention:</strong> To bypass hardware limits, Ring Attention distributes the self-attention calculation across multiple GPUs. This prevents any single chip from running out of memory and allows models to process theoretically infinite context windows by passing the token calculations in a circular network.</p>
-<p><strong>Retrieval-Augmented Generation (RAG):</strong> The most practical mitigation for developers today is simply avoiding massive context windows altogether. RAG architectures chunk data, store it in a vector database, and only inject the most relevant paragraphs into the prompt at runtime. By keeping the context window small and dense, RAG forces the model to focus entirely on high-signal information, sidestepping the attention dilution problem completely.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/share?url=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-mechanics-of-attention-loss-in-large-language-models-why-ai-forgets-what-you-just-said.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -747,6 +755,11 @@ The failure to maintain attention across long contexts creates severe constraint
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
+        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Geospatial</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
         <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>GraphRAG</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
@@ -767,18 +780,23 @@ The failure to maintain attention across long contexts creates severe constraint
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native Geospatial</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
         <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Enterprise AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Geospatial</span>
+        <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>LLM Architecture</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
-        <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>LLM Architecture</span>
+        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial SQL</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
@@ -792,18 +810,23 @@ The failure to maintain attention across long contexts creates severe constraint
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Cloud-Native Geospatial</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
         <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Decision Making</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-duckdb.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>DuckDB</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
         <a href="/thoughts-engineering-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Engineering Leadership</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Open Standards</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -817,19 +840,9 @@ The failure to maintain attention across long contexts creates severe constraint
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
-        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Spatial SQL</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
         <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Tech Regulation</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
-        </a>
-        
-        <a href="/thoughts-duckdb.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>DuckDB</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
         <a href="/thoughts-human-ai-interaction.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -839,11 +852,6 @@ The failure to maintain attention across long contexts creates severe constraint
         
         <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Humanitarian Aid</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
-        </a>
-        
-        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Open Standards</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
