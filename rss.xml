@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 10 Oct 2026 16:51:40 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 11 Oct 2026 15:12:34 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,78 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model</title>
+                <link>https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html</link>
+                <guid>https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html</guid>
+                <pubDate>Sun, 11 Oct 2026 15:12:23 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the...</description>
+                <category>Critical Thinking</category>
+            <category>AI Governance &amp; Policy</category>
+            <category>Systems Thinking</category>
+            <category>Decision Making</category>
+            <category>AI Safety &amp; Risk</category>
+            <category>AI Strategy</category>
+            <category>Engineering Leadership</category>
+            <category>Enterprise AI</category>
+            <category>Responsible AI</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg" />
+                <content:encoded><![CDATA[<p>Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the structures meant to guide it. This <a target="_blank" rel="noopener noreferrer" href="https://www.informationweek.com/machine-learning-ai/how-cios-can-climb-out-of-the-ai-governance-chasm">recent InformationWeek article</a> captures this tension well. CIOs are watching AI agents, tools, and workflows appear across their companies at a pace that outstrips their ability to govern them. They reference a DataIku survey that found 84% of CIOs say employees are building AI applications faster than IT can review or control them. Less than half of organizations have clear governance controls in place. That's not a small gap. It's a chasm.<br>
+<img alt="AI Governance Gap" src="https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg"><br>
+The article focuses on the operational and financial challenges this creates. But underneath those challenges is something deeper. AI governance isn't just a policy problem. It's a thinking problem. When a technology accelerates faster than the mental models used to manage it, leaders start losing visibility, control, and confidence. They're forced into reactive mode. They're stuck cleaning up AI slop, chasing down shadow systems, and trying to explain decisions made by models they didn't approve.</p>
+<p>This is exactly the kind of environment where cognitive discipline matters.</p>
+<p><strong>The speed mismatch problem</strong><br>
+AI systems operate at machine speed. Humans don't. CIOs quoted in the article describe a growing fatigue among reviewers who are asked to keep up with automated agents that never slow down. When people get tired, they rubber&#8208;stamp. When they rubber&#8208;stamp, governance collapses.</p>
+<p>This is a classic speed mismatch. You see it in aviation, finance, cybersecurity, and now AI. When a system moves faster than the human responsible for oversight, the human becomes the bottleneck. The bottleneck becomes the risk. And the risk becomes the headline.</p>
+<p>The solution isn't to make humans faster. It's to redesign the oversight loop so humans only intervene where their judgment is actually needed. That requires a shift from "review everything" to "review the right things."</p>
+<p><strong>The inventory illusion</strong><br>
+One CIO in the article describes an effort to inventory all approved data sources. It's a smart move, but it's also a trap. Inventories create a sense of control, but they're snapshots of a moving target. AI systems generate new data, new artifacts, and new workflows constantly. The moment you finish the inventory, it's already outdated.</p>
+<p>This is where organizations need to adopt a systems&#8208;thinking approach. Instead of trying to catalog everything, they need to understand the flows. Where does data enter? Where does it move? Where does it get transformed? Where does it get stored? Who touches it? Which agents have access to it?</p>
+<p>Flows matter more than lists.</p>
+<p><strong>Shadow AI isn't a technology problem</strong><br>
+The article highlights shadow AI as a major governance threat. Employees spin up agents, MCP servers, and tools without approval. But shadow AI isn't really about technology. It's about incentives.</p>
+<p>People use unapproved tools when:</p>
+<ul>
+<li>approved tools are slow</li>
+<li>approved tools are hard to access</li>
+<li>approved tools don't solve their problem</li>
+<li>governance feels like friction instead of support</li>
+</ul>
+<p>Shadow AI is a symptom of a mismatch between what employees need and what the organization provides. If governance is seen as a barrier, people will route around it. If governance is seen as a guide, people will follow it.</p>
+<p>This is where behavioral design becomes essential. Governance must be easy, obvious, and helpful. Reporting an AI error should be as simple as clicking a button. Requesting approval should take minutes, not weeks. Access to safe tools should be frictionless.</p>
+<p>People don't rebel when the safe path is the easy path.</p>
+<p><strong>The accountability paradox</strong><br>
+The article states that two&#8208;thirds of CIOs say they couldn't produce an end&#8208;to&#8208;end audit trail for an AI agent's decision if regulators asked. And I suspect the real number is actually higher.  That's a serious gap. But it also reveals a deeper paradox.</p>
+<p>Organizations say humans are ultimately accountable for AI outcomes. But humans are at a loss to be accountable for decisions they can't trace, explain, or even observe. Accountability without visibility is theater and a huge liability.</p>
+<p>To fix this, enterprises need to adopt a principle from cognitive psychology: explainability isn't optional for trust. If a system can't show its reasoning, it can't be trusted. If it can't be trusted, it can't be scaled. If it can't be scaled, it can't deliver value.</p>
+<p>AI governance must include mechanisms that make decisions inspectable. Not perfect transparency, but enough clarity that a human can understand what happened and why.</p>
+<p><strong>The real governance gap: curiosity</strong><br>
+One of the leaders quoted in the article says his biggest long&#8208;term concern is over&#8208;reliance on AI. He warns that people may forget the skills they've built over the years. That's a valid fear. When a tool becomes too convenient, people stop questioning it.</p>
+<p>The antidote is curiosity.</p>
+<p>Curiosity is the cognitive habit that keeps humans from outsourcing their judgment. It's the habit that pushes people to ask:</p>
+<ul>
+<li>Why did the model choose this answer?</li>
+<li>What assumptions is it making?</li>
+<li>What data did it rely on?</li>
+<li>What's missing?</li>
+<li>What would happen if we changed the input?</li>
+</ul>
+<p>Curiosity is the governance layer that can't be automated. It's the human safeguard against complacency.</p>
+<p><strong>Where CIOs go from here</strong><br>
+The article ends with a call for collaboration and simplification. Governance committees, clear pathways for reporting issues, and better tools will help. But the deeper shift is mental.</p>
+<p>CIOs need to adopt governance models that assume:</p>
+<ul>
+<li>AI will move faster than policy</li>
+<li>employees will experiment</li>
+<li>data will multiply</li>
+<li>agents will behave unexpectedly</li>
+<li>oversight will fatigue</li>
+<li>accountability will blur</li>
+</ul>
+<p>Governance must be designed for a world where uncertainty is the default, not the exception.</p>
+<p>The organizations that succeed won't be the ones with the thickest policy documents. They'll be the ones with the clearest thinking.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Portolan and the Quiet Reinvention of Spatial Data Infrastructure</title>
                 <link>https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html</link>
