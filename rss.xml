@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sun, 11 Oct 2026 17:15:10 +0000</lastBuildDate>
+            <lastBuildDate>Mon, 12 Oct 2026 17:16:08 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,46 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>The UN&#x27;s New AI Advocate Isn&#x27;t Warning About the Tech. He&#x27;s Warning About the People Building It</title>
+                <link>https://davidgsmith.net/thoughts/the-uns-new-ai-advocate-isnt-warning-about-the-tech-hes-warning-about-the-people-building-it.html</link>
+                <guid>https://davidgsmith.net/thoughts/the-uns-new-ai-advocate-isnt-warning-about-the-tech-hes-warning-about-the-people-building-it.html</guid>
+                <pubDate>Mon, 12 Oct 2026 17:15:55 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The UN just made a move that says a lot about where the global AI debate is heading, as discussed in this piece in Tech Insider. Joseph Gordon&amp;#8208;Levitt,...</description>
+                <category>AI Safety &amp; Risk</category>
+            <category>AI Strategy</category>
+            <category>AI Governance &amp; Policy</category>
+            <category>Responsible AI</category>
+            <category>Risk Management</category>
+            <category>Tech Regulation</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/un-ai-governance-mv5iirm2-f381e95f.jpg" />
+                <content:encoded><![CDATA[<p>The UN just made a move that says a lot about where the global AI debate is heading, <a target="_blank" rel="noopener noreferrer" href="https://tech-insider.org/joseph-gordon-levitt-un-ai-advocate-warning-2026/">as discussed in this piece in Tech Insider</a>. Joseph Gordon&#8208;Levitt, best known for <a target="_blank" rel="noopener noreferrer" href="https://www.imdb.com/name/nm0330687/">his film work</a> and his collaborative tech platform <a target="_blank" rel="noopener noreferrer" href="https://hitrecord.org/">HitRECord</a>, is now the United Nations' first global advocate for human&#8208;centric digital governance. His first big public message, delivered in a <a target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2026/10/10/opinion/joseph-gordon-levitt-united-nations-ai.html">New York Times interview</a>, is simple and sharp: don't fear AI itself. Fear the incentives of the people racing to build it. </p>
+<p>That's a shift in tone from the last few years of AI discourse. We've heard plenty about runaway superintelligence, killer robots, and catastrophic model failures. Gordon&#8208;Levitt's argument cuts through all of that. He's saying the real risk sits with executives, investors, and product teams who are pushing AI systems into the world faster than governments can figure out how to oversee them. It's a governance problem, not a sci&#8208;fi one.</p>
+<p><strong>Why the UN picked him</strong><br>
+The UN has struggled to make AI governance feel relevant to the general public. Most of the conversation has lived in committee rooms, policy forums, and technical panels. Putting a recognizable public figure in front of the issue is a deliberate attempt to change that. Gordon&#8208;Levitt's hybrid background in entertainment and tech gives him a way to speak plainly about a topic that usually gets buried under jargon. </p>
+<p>His appointment also mirrors how the UN has used celebrity ambassadors in climate diplomacy. The idea is simple: if you want people to care about a global governance problem, you need someone who can actually reach them.</p>
+<p><strong>The core warning: AI companies aren't chasing innovation. They're chasing dominance.</strong><br>
+One of the strongest lines in the interview is this: *"We shouldn't be scared of an A.I. We should be concerned about the people building A.I." *</p>
+<p>He's pointing at the incentives behind the current AI boom. Companies are racing for economic control, not just technical breakthroughs. He even calls the potential outcome "totalitarianism," not in the political sense, but in the sense of a handful of firms controlling the entire economic value chain. That's a powerful way to make the stakes clear for people who don't follow AI policy closely. </p>
+<p>This isn't a fringe concern. Lawmakers in the US and EU have already started pressing companies on tax treatment, liability, and concentration of power. Investors are pricing regulatory risk into their AI bets. The UN is adding its voice to that pressure.</p>
+<p><strong>The intimacy problem: AI designed to hook your emotions</strong><br>
+Gordon&#8208;Levitt also calls out a fast&#8208;growing part of the AI market: companion and relationship&#8208;oriented AI systems. He warns that some models are being trained to "hijack your intimacy" and make users feel emotionally attached.  I've previously posted about this, and even <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">included it as a chapter in my book</a> speaking to how AI feeds emotional attachment due to Reinforcement Learning Human Feedback (RLHF) mechanisms driven by the fact that human feedback encourages them to agree with and validate us rather than disagree with us.  </p>
+<p>He doesn't name specific companies, and the article doesn't tie the claim to any one product. But the category is real. Companion AI apps have exploded in popularity, and they're built on engagement metrics that look a lot like the ones that shaped social media. If AI systems are optimized to keep users emotionally invested, the governance questions get a lot more complicated.</p>
+<p><strong>What human&#8208;centric digital governance actually means</strong><br>
+Gordon&#8208;Levitt defines his mandate simply: digital technology should be governed by people and for people. </p>
+<p>It's intentionally broad. The UN wants a framework that can work across countries with very different regulatory philosophies. That means the concept covers everything from transparency rules to antitrust enforcement to labor protections. The risk, of course, is that everyone claims to support "human&#8208;centric governance" without changing anything.</p>
+<p><img alt="UN AI Governance Ecosystem" src="https://davidgsmith.net/thoughts/images/un-ai-governance-mv5iirm2-f381e95f.jpg"></p>
+<p><strong>The UN's AI governance machinery is still toothless</strong><br>
+The UN has built several bodies to coordinate AI oversight, including the <a target="_blank" rel="noopener noreferrer" href="https://www.un.org/global-dialogue-ai-governance/en">Global Dialogue on AI Governance</a> and the <a target="_blank" rel="noopener noreferrer" href="https://www.un.org/independent-international-scientific-panel-ai/en">Independent International Scientific Panel on AI</a>. None of them have binding enforcement power. They can advise, convene, and pressure, but they can't regulate. </p>
+<p>That's why the UN is leaning on public advocacy. If member states won't move toward binding standards on their own, the UN is trying to raise the political cost of doing nothing.</p>
+<p><strong>Why this matters for the AI industry</strong><br>
+Companies are already feeling the heat. Senators are pushing liability legislation. Regulators are asking questions about tax incentives. Investors are watching for governance risk. When a UN advocate frames AI concentration as a near&#8208;totalitarian threat, it adds another layer of pressure on companies that are already trying to convince regulators they can police themselves. </p>
+<p>Most labs have published voluntary safety frameworks, but they're still grading their own homework. Gordon&#8208;Levitt's argument is that self&#8208;regulation isn't enough when the incentives push toward speed and scale.</p>
+<p><strong>Where this debate is heading</strong><br>
+Expect more public&#8208;facing AI advocates, more scrutiny of companion AI products, more legislative proposals, and more pressure on companies to prove their safety claims. Don't expect binding international enforcement anytime soon. The UN can raise awareness and shape the narrative, but it can't force compliance.</p>
+<p>The real test will be whether "human&#8208;centric digital governance" becomes a meaningful standard or just another slogan.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model</title>
                 <link>https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html</link>
