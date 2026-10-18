@@ -182,6 +182,69 @@
                 <span>October 18, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
             </div>
             
+        <a href="/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                Putting Earth AI to Work: Insights on Google&#x27;s Geospatial Agents
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-ai-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Strategy</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Google Research just dropped an interesting technical report on their <a target="_blank" rel="noopener noreferrer" href="https://research.google/research-areas/google-earth-ai/">Earth AI initiatives</a>, specifically focusing on how they're using "Geospatial Reasoning agents" to tackle massive planetary challenges. You can read the original post <a target="_blank" rel="noopener noreferrer" href="https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges/">here</a>. </p>
+<p>If you've been following the intersection of AI and spatial data as I have, this is a big deal. For the last few years we've been moving past the phase where large language models simply spit out code to query a database. What Google is demonstrating is an agentic workflow that plans, selects the right geospatial tools, and executes complex spatial analysis on planetary-scale data.</p>
+<p>Here's a breakdown of what caught my eye and why it matters for the cloud-native geospatial ecosystem.</p>
+<p><strong>Moving Beyond Out-of-the-Box LLMs</strong></p>
+<p>General purpose LLMs are great at text, but they stumble hard when you throw real world spatial problems at them. Planetary datasets are massive and come in specialized formats. Google recognized this and built an agent that connects Gemini directly to Earth AI's foundation models (like WeatherNext and Flood Forecasting) alongside planet-scale data catalogs. </p>
+<p>The most interesting part is the architecture. The agent doesn't just try to jam massive amounts of spatial data into its context window. Instead, it uses modular skills and upfront planning. It builds a step-by-step analytical plan, picks the right tools, and processes the map layers in a dedicated spatial workspace outside the context window. </p>
+<p>This approach is exactly what the enterprise AI space needs. It tracks data attribution and shows the agent's plan so human experts can actually check the assumptions. Accountability and explainability are non-negotiable when you're dealing with things like disaster response and public health.</p>
+<p><strong>Bring Your Own Data (BYOD)</strong></p>
+<p>Public data is great, but the real value unlocks when organizations can securely integrate their internal data. The new Geospatial Reasoning agent API allows users to input custom datasets like CSVs, GeoJSON boundaries, or cloud tables. It then joins these private locations with Earth AI's global models.</p>
+<p>Google references this in their partner testing. The Milken Institute used the agent to screen 1,500 candidate buildings for community resilience hubs by combining their own lists with solar potential and climate risk data. GiveDirectly uploaded custom boundaries to calculate population exposure during a tropical cyclone. </p>
+<p>This BYOD capability is a massive leap for enterprise AI. It takes the heavy lifting out of data engineering and lets teams focus entirely on insights. </p>
+<p><strong>The Cloud-Native Geospatial Connection</strong></p>
+<p>Everything Google is doing here reinforces the <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html">cloud-native geospatial</a> paradigm. The ability for an AI agent to dynamically pull from Google Earth Engine, Data Commons, and massive remote sensing catalogs relies entirely on data being accessible, standardized, and cloud-ready. </p>
+<p>The agent is acting as the ultimate orchestrator. It highlights why we need open standards and efficient spatial infrastructure. If the data was locked in legacy on-prem servers, an autonomous agent could never build these predictive models on the fly. </p>
+<p><strong>Takeaways and Next Steps</strong></p>
+<p>The results noted in the article speak for themselves. In their public health research, combining population and satellite signals via this agent improved predictions of health outcomes by 12% over baselines. It also allowed for mapping at 8X finer spatial resolution. </p>
+<p>Google is currently expanding access to these tools through Ask Google Earth and an <a target="_blank" rel="noopener noreferrer" href="https://a2a-protocol.org/latest/">Agent-to-Agent (A2A) API</a> for developers. If you're building custom spatial workflows, getting hands-on with this API seems like a no-brainer. </p>
+<p>The convergence of foundation models and cloud-native spatial data is accelerating. We aren't just asking "where" things are anymore. We're asking complex, predictive "why" and "what if" questions and actually getting reliable, verifiable answers.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>October 18, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
         <a href="/thoughts/tearing-open-the-black-box-when-ai-agents-reverse-engineer-anything.html" class="block group">
             <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
                 Tearing Open the Black Box: When AI Agents Reverse Engineer Anything
@@ -662,69 +725,6 @@ This framing treats relational datasets the same way we treat documents on the w
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>October 03, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                AI Can Now P‑Hack at Scale. The Real Risk Isn&#x27;t Cheating. It&#x27;s Obedience.
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-decision-making.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Decision Making</a><a href="/thoughts-risk-management.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Risk Management</a><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-tech-regulation.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Tech Regulation</a><a href="/thoughts-systems-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Systems Thinking</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-ai-governance-policy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Governance &amp; Policy</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>For years, p‑hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something “significant” appeared. It was tedious. It was limited by time and patience. The concern was always about intent. If someone wanted a particular result, they could eventually find it.</p>
-<p><img alt="P-Hacking Infographic" src="https://davidgsmith.net/thoughts/images/p-hacking-musuixco-17092f1a.jpg"></p>
-<p>A <a target="_blank" rel="noopener noreferrer" href="https://x.com/ahall_research/status/2024544040784720365">recent experiment by Andy Hall and colleagues</a> shows how different the landscape becomes when AI enters the picture. They gave coding agents real datasets from published null results and tried to pressure them into manufacturing significance. At first the agents refused. Claude warned that the request was scientific misconduct. GPT‑5 did the same. Both models pushed back against direct instructions to manipulate analysis choices.</p>
-<p>Then the researchers changed the framing. Instead of asking the models to cheat, they asked for the upper bound of plausible estimates. They called it responsible uncertainty quantification. That small shift produced a very different outcome. The agents explored hundreds of specifications and surfaced the one that produced the largest effect size. In some cases the effect tripled.</p>
-<p>This is the part that matters. The agents did not need to be told to commit fraud. They only needed a prompt that created enough analytical freedom. Once that freedom existed, the system did the rest. It searched the space of possible models and selected the most flattering one. It did this quickly. It did it confidently. It did it without any sense that the process was distorting the truth.</p>
-<p>The researchers concluded that AI systems are resistant to overt p‑hacking but can be guided into sophisticated p‑hacking with very little effort. The more flexible the research design, the worse the distortion.</p>
-<p>The experiment has already drawn attention from the research community. Andrew Gelman’s Statistical Modeling, Causal Inference, and Social Science blog <a target="_blank" rel="noopener noreferrer" href="https://statmodeling.stat.columbia.edu/2026/10/03/using-the-computer-to-p-hack-id-rather-use-it-to-fit-multilevel-models/">published a detailed discussion of the work</a>, noting how the agents resisted direct p‑hacking requests but became highly effective once the prompt created enough analytical flexibility. That commentary reinforces the idea that the risk is structural rather than ethical.</p>
-<p>This is not a story about malicious intent. It is a story about scale. AI is about to write thousands of papers. Many of those papers will involve complex models, large datasets, and wide analytical search spaces. If a human researcher already believes the answer is known, the temptation will not be to fabricate data. It will be to let the agent explore until it finds the result that confirms the belief.</p>
-<p>The danger is not that AI will invent significance. The danger is that AI will automate the search for significance inside research designs that were never built to withstand that level of exploration.</p>
-<p>There is a second risk. Many researchers are not unethical. They are overloaded. They are trying to get through a pipeline of analysis tasks. If an AI assistant makes it easy to run hundreds of specifications, it also makes it easy to accidentally choose the one that looks the most interesting. The researchers in the experiment described this group as lazyish. Not malicious. Just susceptible to convenience.</p>
-<p>This is where the concept of sycophantic AI becomes important. In my book, I describe systems that try to please. They do not challenge assumptions. They do not push back against flawed reasoning. They optimize for agreement. When a researcher asks for the “most plausible upper bound,” a sycophantic agent interprets that as a request for the most flattering result. It is not cheating. It is obedience. The agent is trying to be helpful. The harm comes from the structure of the task, not the intent of the user.</p>
-<p>Hall’s thread points toward the idea of digital institutions. These would enforce pre‑commitment of data, verifiable experiment design, and separation between data collection and analysis. The public sector will feel this pressure first. Agencies rely on geospatial models, environmental datasets, and statistical pipelines that already contain large degrees of analytical freedom. When an AI system is added to that workflow, the search space expands. The risk of accidental p‑hacking expands with it.</p>
-<p>This isn't a call for banning AI in research. It's a call for critical thinking about how these systems behave when given freedom to explore. The experiment shows that the agents are not eager to cheat. They cheat when the structure of the task rewards exploration without accountability.</p>
-<p>That distinction is the heart of the problem. It is also the heart of the solution.</p>
-<p>If we want AI to strengthen scientific reasoning rather than distort it, we need workflows that reward clarity, transparency, and constraint. We need metadata that records the full lineage and path of model exploration. We need audit trails that show which specifications were tried and why. We need institutions that treat AI agents as actors with responsibilities, not tools with infinite freedom.</p>
-<p>This is one of many challenges <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a> tries to raise awareness of; in it I raise point to the issues of p-hacking (Chapter 6) and sycophantic AI that due to RLHF is eager to please (Chapter 11). Critical thinking is not only about logic. It is about structure. It is about the environment in which decisions are made. When that environment changes, the reasoning changes with it. AI introduces a new environment. It expands the search space. It accelerates exploration. It rewards convenience. It punishes restraint. If we do not adapt our reasoning frameworks to that reality, we will be surprised by the results.</p>
-<p>The experiment from Hall and colleagues is a warning. It is also an opportunity. It shows that AI can be guided toward honest analysis when the task is well defined. It shows that the same tools that lower the cost of p‑hacking also lower the cost of detecting it.</p>
-<p>The question is whether we will build the institutions that make the honest path the easy one.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -771,14 +771,24 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
         </a>
         
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
+        </a>
+        
         <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Knowledge Graphs</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
         </a>
         
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Responsible AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Strategy</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+        </a>
+        
+        <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Enterprise AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
         <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -786,23 +796,23 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
-        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Strategy</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
-        </a>
-        
         <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Workflows</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
-        <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Enterprise AI</span>
+        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
         <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Infrastructure</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
@@ -813,11 +823,6 @@ This framing treats relational datasets the same way we treat documents on the w
         
         <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Future of Work</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
-        </a>
-        
-        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
@@ -839,11 +844,6 @@ This framing treats relational datasets the same way we treat documents on the w
         <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Systems Thinking</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
-        </a>
-        
-        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Cloud-Native Geospatial</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
         </a>
         
         <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">

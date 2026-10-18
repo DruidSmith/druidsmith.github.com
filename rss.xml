@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sun, 18 Oct 2026 15:17:25 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 18 Oct 2026 21:54:38 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,37 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Putting Earth AI to Work: Insights on Google&#x27;s Geospatial Agents</title>
+                <link>https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html</link>
+                <guid>https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html</guid>
+                <pubDate>Sun, 18 Oct 2026 21:54:23 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Google Research just dropped an interesting technical report on their Earth AI initiatives, specifically focusing on how they&#x27;re using &quot;Geospatial Reasoning...</description>
+                <category>Cloud-Native Geospatial</category>
+            <category>AI Strategy</category>
+            <category>Enterprise AI</category>
+            <category>Geospatial</category>
+            <category>Responsible AI</category>
+                <content:encoded><![CDATA[<p>Google Research just dropped an interesting technical report on their <a target="_blank" rel="noopener noreferrer" href="https://research.google/research-areas/google-earth-ai/">Earth AI initiatives</a>, specifically focusing on how they're using "Geospatial Reasoning agents" to tackle massive planetary challenges. You can read the original post <a target="_blank" rel="noopener noreferrer" href="https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges/">here</a>. </p>
+<p>If you've been following the intersection of AI and spatial data as I have, this is a big deal. For the last few years we've been moving past the phase where large language models simply spit out code to query a database. What Google is demonstrating is an agentic workflow that plans, selects the right geospatial tools, and executes complex spatial analysis on planetary-scale data.</p>
+<p>Here's a breakdown of what caught my eye and why it matters for the cloud-native geospatial ecosystem.</p>
+<p><strong>Moving Beyond Out-of-the-Box LLMs</strong></p>
+<p>General purpose LLMs are great at text, but they stumble hard when you throw real world spatial problems at them. Planetary datasets are massive and come in specialized formats. Google recognized this and built an agent that connects Gemini directly to Earth AI's foundation models (like WeatherNext and Flood Forecasting) alongside planet-scale data catalogs. </p>
+<p>The most interesting part is the architecture. The agent doesn't just try to jam massive amounts of spatial data into its context window. Instead, it uses modular skills and upfront planning. It builds a step-by-step analytical plan, picks the right tools, and processes the map layers in a dedicated spatial workspace outside the context window. </p>
+<p>This approach is exactly what the enterprise AI space needs. It tracks data attribution and shows the agent's plan so human experts can actually check the assumptions. Accountability and explainability are non-negotiable when you're dealing with things like disaster response and public health.</p>
+<p><strong>Bring Your Own Data (BYOD)</strong></p>
+<p>Public data is great, but the real value unlocks when organizations can securely integrate their internal data. The new Geospatial Reasoning agent API allows users to input custom datasets like CSVs, GeoJSON boundaries, or cloud tables. It then joins these private locations with Earth AI's global models.</p>
+<p>Google references this in their partner testing. The Milken Institute used the agent to screen 1,500 candidate buildings for community resilience hubs by combining their own lists with solar potential and climate risk data. GiveDirectly uploaded custom boundaries to calculate population exposure during a tropical cyclone. </p>
+<p>This BYOD capability is a massive leap for enterprise AI. It takes the heavy lifting out of data engineering and lets teams focus entirely on insights. </p>
+<p><strong>The Cloud-Native Geospatial Connection</strong></p>
+<p>Everything Google is doing here reinforces the <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html">cloud-native geospatial</a> paradigm. The ability for an AI agent to dynamically pull from Google Earth Engine, Data Commons, and massive remote sensing catalogs relies entirely on data being accessible, standardized, and cloud-ready. </p>
+<p>The agent is acting as the ultimate orchestrator. It highlights why we need open standards and efficient spatial infrastructure. If the data was locked in legacy on-prem servers, an autonomous agent could never build these predictive models on the fly. </p>
+<p><strong>Takeaways and Next Steps</strong></p>
+<p>The results noted in the article speak for themselves. In their public health research, combining population and satellite signals via this agent improved predictions of health outcomes by 12% over baselines. It also allowed for mapping at 8X finer spatial resolution. </p>
+<p>Google is currently expanding access to these tools through Ask Google Earth and an <a target="_blank" rel="noopener noreferrer" href="https://a2a-protocol.org/latest/">Agent-to-Agent (A2A) API</a> for developers. If you're building custom spatial workflows, getting hands-on with this API seems like a no-brainer. </p>
+<p>The convergence of foundation models and cloud-native spatial data is accelerating. We aren't just asking "where" things are anymore. We're asking complex, predictive "why" and "what if" questions and actually getting reliable, verifiable answers.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Tearing Open the Black Box: When AI Agents Reverse Engineer Anything</title>
                 <link>https://davidgsmith.net/thoughts/tearing-open-the-black-box-when-ai-agents-reverse-engineer-anything.html</link>
