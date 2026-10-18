@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 17 Oct 2026 14:52:01 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 18 Oct 2026 13:25:46 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,36 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Tearing Open the Black Box: When AI Agents Reverse Engineer Anything</title>
+                <link>https://davidgsmith.net/thoughts/tearing-open-the-black-box-when-ai-agents-reverse-engineer-anything.html</link>
+                <guid>https://davidgsmith.net/thoughts/tearing-open-the-black-box-when-ai-agents-reverse-engineer-anything.html</guid>
+                <pubDate>Sun, 18 Oct 2026 13:25:34 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Every developer knows the frustration of hitting a wall with closed code. A feature behaves in an unexpected way, but the source code is locked up tight in a...</description>
+                <category>Critical Thinking</category>
+            <category>AI Governance &amp; Policy</category>
+            <category>Responsible AI</category>
+            <category>Risk Management</category>
+            <category>Enterprise AI</category>
+            <category>Engineering Leadership</category>
+            <category>Model Context Protocol</category>
+                <content:encoded><![CDATA[<p>Every developer knows the frustration of hitting a wall with closed code. A feature behaves in an unexpected way, but the source code is locked up tight in a compiled binary or minified JavaScript file. Unless you have the time and specialized skills to wrestle with a disassembler like Ghidra, you are usually stuck guessing or looking for a messy workaround.</p>
+<p>But that barrier is dropping fast. A recent <a target="_blank" rel="noopener noreferrer" href="https://www.analyticsvidhya.com/blog/2026/10/rea-ai-agent-reverse-engineer-anything/">piece in Analytics Vidhya</a> highlighted a fascinating open-source project called REA (Reverse Engineer Anything). It's an <a target="_blank" rel="noopener noreferrer" href="https://modelcontextprotocol.io/">MCP (Model Context Protocol)</a> server that connects your favorite coding agent directly to reverse engineering tools. You just ask your AI agent how a specific app works in plain English, and it digs into native binaries, Electron apps, or APKs to find the answer.</p>
+<p>The author of the article tested REA by predicting how Obsidian ranks its search results by hand, then turned the AI loose on the actual application binary to verify. The agent successfully traced minified JavaScript, located the scoring function, and provided the exact mathematical penalties the application applies to search queries.</p>
+<p>This is a massive leap forward for troubleshooting, but it also opens up some intense questions about governance, security, and the way we evaluate AI outputs.</p>
+<p><strong>The Good: Evidence Over Guesswork</strong><br>
+What makes REA so interesting is that it doesn't just act like a magic 8-ball. It acts as a coordinator. It drives tools like JADX locally on your machine and forces the agent to provide byte offsets and source locations along with its answers.</p>
+<p>If you've read <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book on critical thinking</a>, you know I'm always warning against taking AI outputs at face value. Large language models love to confidently improvise when they lack data. REA counters this by pushing the agent to state its unknowns. If it can't find the code, it tells you, rather than hallucinating a plausible-sounding algorithm. That baked-in demand for verifiable evidence is exactly the kind of cognitive discipline we need to build into more enterprise AI workflows.</p>
+<p><strong>The Risks: Governance and the Illusion of Privacy</strong><br>
+Before you point an agent at a competitor's app, we need to talk about the downsides.</p>
+<p>First, there's the data privacy illusion. REA runs the analysis tools locally, so the application binary never leaves your machine. However, the agent's model provider still sees the tool results. Your prompts, the extracted code snippets, and the analysis all get beamed up to whoever hosts your LLM. For an enterprise trying to maintain tight data governance, that's a serious data leakage risk.</p>
+<p>Then there's the legal reality. Reverse engineering explicitly violates the terms of service for almost every piece of commercial software on the planet. Tools like REA democratize troubleshooting, but they also lower the barrier to entry for intellectual property theft and vulnerability hunting.</p>
+<p>When AI agents can crack open closed code in minutes, the concept of "security by obscurity" completely evaporates.</p>
+<p><strong>A New Reality for Software</strong><br>
+We're entering an era where software transparency is no longer optional. If someone wants to know how an application works under the hood, an AI agent will soon be able to tell them with terrifying accuracy.</p>
+<p>This shifts the burden back onto engineering leadership and policymakers. We can no longer assume that compiled code is safe from casual scrutiny. It forces us to ask harder questions about what we're building, how we're securing it, and whether our enterprise governance models are ready for agents that can effortlessly reverse engineer the digital world around them.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>The UN&#x27;s New AI Advocate Isn&#x27;t Warning About the Tech. He&#x27;s Warning About the People Building It</title>
                 <link>https://davidgsmith.net/thoughts/the-uns-new-ai-advocate-isnt-warning-about-the-tech-hes-warning-about-the-people-building-it.html</link>
