@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Mon, 19 Oct 2026 18:15:09 +0000</lastBuildDate>
+            <lastBuildDate>Tue, 20 Oct 2026 01:38:47 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,37 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>The Case for Neurosymbolic AI in Geospatial Workloads</title>
+                <link>https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html</link>
+                <guid>https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html</guid>
+                <pubDate>Tue, 20 Oct 2026 01:38:34 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>My friend Bill Dollins recently published an excellent piece on neuro-symbolic AI and the geospatial workload over at his geoMusings blog. He unpacks where...</description>
+                <category>Cloud-Native Geospatial</category>
+            <category>Knowledge Graphs</category>
+            <category>AI Strategy</category>
+            <category>AI Workflows</category>
+            <category>Enterprise AI</category>
+            <category>GeoAI</category>
+            <category>Responsible AI</category>
+            <category>Spatial Data Infrastructure</category>
+            <media:thumbnail url="https://athenafusionsol.com/wp-content/uploads/2026/04/NEURO-SYMBOLIC-ARCHITECTURE.jpg" />
+                <content:encoded><![CDATA[<p>My friend Bill Dollins recently published an excellent piece on <a target="_blank" rel="noopener noreferrer" href="https://blog.geomusings.com/2026/10/19/neuro-symbolic-ai-and-the-geospatial-workload/">neuro-symbolic AI and the geospatial workload</a> over at his geoMusings blog. He unpacks where purely neural approaches fall short and how symbolic logic can act as a necessary guardrail for spatial data.<br>
+<img alt="Neurosymbolic AI Architecture" src="https://athenafusionsol.com/wp-content/uploads/2026/04/NEURO-SYMBOLIC-ARCHITECTURE.jpg"><br>
+His framing really resonated with me because it gets right at a problem I've been wrestling with. The core issue I keep coming back to is that machine learning alone is likely not enough when the problem requires both pattern recognition and deeper domain understanding. </p>
+<p>That's had me thinking there are two threads that converge on neurosymbolic AI: <br>
+1. Combining ML with explicit business rules for reasoning and constraint enforcement, and <br>
+2. Combining ML with ontologies that encode the meaning and structure of the domain.</p>
+<p><strong>The Guardrails of Business Rules</strong></p>
+<p>When we look at business rules, Bill rightly points out that geospatial data has hard constraints. A planar distance calculated on unprojected longitude and latitude is mathematically invalid. Machine learning models are incredibly prone to making these exact types of category errors. They're predicting the next right token without actually understanding the geometric reality underneath. </p>
+<p>As we wire up agents to execute spatial SQL via DuckDB or query a STAC catalog, we can't just trust the model to know when a buffer should precede an intersection. We need a symbolic reasoning layer to enforce those constraints. If an agent proposes a workflow that violates topology rules, the symbolic engine should catch it and reject the plan before execution. This is about establishing a hard boundary where the neural network isn't allowed to override basic math.</p>
+<p><strong>Ontologies and Help Against Hallucinations</strong></p>
+<p>The second thread is where we solve the hallucination problem. I've posted a few times here at <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/thoughts.html">davidgsmith.net</a> about comparing the Open Knowledge Format (OKF) with the Model Context Protocol (MCP), and the takeaway is, for me, clear. Structured knowledge is the most reliable way to prevent runtime schema hallucinations.</p>
+<p>Geospatial data is rich with established relationships. A census tract contains blocks, and a hazard footprint intersects specific property parcels. When we feed this data to a neural model without an ontology, the model has to guess the relationships based on statistical weights. But if we ground the model using a geospatial knowledge graph, we explicitly encode the domain semantics. The model no longer has to guess how a cloud-optimized GeoTIFF relates to a STAC item because the graph provides a definitive map of the domain.</p>
+<p><strong>A Practical Path Forward</strong></p>
+<p>We're building out the next generation of spatial data infrastructure (SDI) with tools like GeoParquet, DuckDB-WASM, and GeoLibre. If we want AI agents to interact reliably with these cloud-native stacks, we've got to stop treating them as magic. We need to surround them with the rigorous, rule-based systems that geospatial science has relied on for decades. Neurosymbolic AI provides the practical architecture for building spatial systems we can actually trust.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Putting Earth AI to Work: Insights on Google&#x27;s Geospatial Agents</title>
                 <link>https://davidgsmith.net/thoughts/putting-earth-ai-to-work-insights-on-googles-geospatial-agents.html</link>

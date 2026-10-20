@@ -179,6 +179,65 @@
             
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
                 <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>October 20, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
+            </div>
+            
+        <a href="/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html" class="block group">
+            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
+                The Case for Neurosymbolic AI in Geospatial Workloads
+            </h2>
+        </a>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Cloud-Native Geospatial</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-ai-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Strategy</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-geoai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GeoAI</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a><a href="/thoughts-spatial-data-infrastructure.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Spatial Data Infrastructure</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>My friend Bill Dollins recently published an excellent piece on <a target="_blank" rel="noopener noreferrer" href="https://blog.geomusings.com/2026/10/19/neuro-symbolic-ai-and-the-geospatial-workload/">neuro-symbolic AI and the geospatial workload</a> over at his geoMusings blog. He unpacks where purely neural approaches fall short and how symbolic logic can act as a necessary guardrail for spatial data.<br>
+<img alt="Neurosymbolic AI Architecture" src="https://athenafusionsol.com/wp-content/uploads/2026/04/NEURO-SYMBOLIC-ARCHITECTURE.jpg"><br>
+His framing really resonated with me because it gets right at a problem I've been wrestling with. The core issue I keep coming back to is that machine learning alone is likely not enough when the problem requires both pattern recognition and deeper domain understanding. </p>
+<p>That's had me thinking there are two threads that converge on neurosymbolic AI: <br>
+1. Combining ML with explicit business rules for reasoning and constraint enforcement, and <br>
+2. Combining ML with ontologies that encode the meaning and structure of the domain.</p>
+<p><strong>The Guardrails of Business Rules</strong></p>
+<p>When we look at business rules, Bill rightly points out that geospatial data has hard constraints. A planar distance calculated on unprojected longitude and latitude is mathematically invalid. Machine learning models are incredibly prone to making these exact types of category errors. They're predicting the next right token without actually understanding the geometric reality underneath. </p>
+<p>As we wire up agents to execute spatial SQL via DuckDB or query a STAC catalog, we can't just trust the model to know when a buffer should precede an intersection. We need a symbolic reasoning layer to enforce those constraints. If an agent proposes a workflow that violates topology rules, the symbolic engine should catch it and reject the plan before execution. This is about establishing a hard boundary where the neural network isn't allowed to override basic math.</p>
+<p><strong>Ontologies and Help Against Hallucinations</strong></p>
+<p>The second thread is where we solve the hallucination problem. I've posted a few times here at <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/thoughts.html">davidgsmith.net</a> about comparing the Open Knowledge Format (OKF) with the Model Context Protocol (MCP), and the takeaway is, for me, clear. Structured knowledge is the most reliable way to prevent runtime schema hallucinations.</p>
+<p>Geospatial data is rich with established relationships. A census tract contains blocks, and a hazard footprint intersects specific property parcels. When we feed this data to a neural model without an ontology, the model has to guess the relationships based on statistical weights. But if we ground the model using a geospatial knowledge graph, we explicitly encode the domain semantics. The model no longer has to guess how a cloud-optimized GeoTIFF relates to a STAC item because the graph provides a definitive map of the domain.</p>
+<p><strong>A Practical Path Forward</strong></p>
+<p>We're building out the next generation of spatial data infrastructure (SDI) with tools like GeoParquet, DuckDB-WASM, and GeoLibre. If we want AI agents to interact reliably with these cloud-native stacks, we've got to stop treating them as magic. We need to surround them with the rigorous, rule-based systems that geospatial science has relied on for decades. Neurosymbolic AI provides the practical architecture for building spatial systems we can actually trust.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div></div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/the-case-for-neurosymbolic-ai-in-geospatial-workloads.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+            
+        </article>
+    
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>October 18, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
             </div>
             
@@ -667,65 +726,6 @@ This framing treats relational datasets the same way we treat documents on the w
             
         </article>
     
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
-            
-            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
-                <span>October 04, 2026 &bull; <span class="text-amber-900 font-semibold">3 min read</span> &bull; Published by David G. Smith</span>
-            </div>
-            
-        <a href="/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html" class="block group">
-            <h2 class="text-2xl sm:text-3xl font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors tracking-tight leading-snug mb-3">
-                Why Vector Search Breaks Down When You Need Real Reasoning
-            </h2>
-        </a>
-            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-ai-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Strategy</a><a href="/thoughts-ai-workflows.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Workflows</a><a href="/thoughts-ai-agents.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Agents</a><a href="/thoughts-ai-infrastructure.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Infrastructure</a><a href="/thoughts-graphrag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">GraphRAG</a><a href="/thoughts-knowledge-graphs.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Knowledge Graphs</a><a href="/thoughts-geospatial.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Geospatial</a><a href="/thoughts-retrieval-augmented-generation-rag.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Retrieval-Augmented Generation (RAG)</a></div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>There is a growing realization in the AI engineering world that vector search is hitting a ceiling. It still works well for fuzzy matching and broad semantic retrieval, but it struggles when the task requires actual reasoning. The article <a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/why-vector-search-fails-at-multi-hop-reasoning-building-an-auditable-graphrag-engine-with-neo4j-fb116ce935f4">“Why Vector Search Fails at Multi-Hop Reasoning”</a> by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sonnyhoney/">Agwu Eze</a> makes this point clearly and shows why GraphRAG is becoming the next serious step for enterprise AI.</p>
-<p>The core argument is simple. Vector search treats text as isolated chunks. It doesn't understand relationships. It doesn't understand structure. It doesn't understand how facts connect across pages, documents, or regulatory frameworks. When you ask a question that requires multi-hop inference, vector search often retrieves the wrong pieces or misses critical links entirely. The result is a system that looks intelligent on the surface but fails when the stakes are high.</p>
-<p>The article uses a real example from the African Continental Free Trade Area. To answer a question about exporting processed cocoa powder from Ghana to Nigeria, an AI system must connect facts scattered across pages about HS codes, certificates of origin, NAFDAC requirements, and transit protocols. Vector search can retrieve some of these pieces, but it was found that it couldn't reliably assemble the chain of reasoning. It couldn't fully understand the topology.</p>
-<p>This is where GraphRAG enters the picture. Instead of relying on similarity scores, GraphRAG builds a labeled property graph that captures entities and relationships. The system extracts triples from documents, stores them in Neo4j, and uses deterministic graph traversal to retrieve the relevant subgraph. The LLM is then grounded strictly in those facts. If the graph does not contain the answer, the model says so. No guessing. No hallucination.</p>
-<p>The architecture described in the article is worth paying attention to. It combines sliding window chunking, triple extraction with Gemini, <a target="_blank" rel="noopener noreferrer" href="https://neo4j.com/docs/aura/">Neo4j Aura Cloud</a>, two-hop <a target="_blank" rel="noopener noreferrer" href="https://opencypher.org/">Cypher</a> traversal, <a target="_blank" rel="noopener noreferrer" href="https://pyvis.readthedocs.io/en/latest/">PyVis visualization</a>, and strict grounding rules. The result is an auditable reasoning engine that produces verifiable reports. Every answer has a traceable lineage. Every relationship is visible. Every inference is grounded in the graph.</p>
-<p><img alt="GraphRAG Architecture" src="https://davidgsmith.net/thoughts/images/graphrag-mutvwdq3-9e85010a.jpg"></p>
-<p>This is the direction enterprise AI is moving. Not toward bigger embeddings or more clever chunking strategies, but toward systems that combine structured knowledge with generative reasoning. The article’s comparison table makes the point clearly. Vector RAG is flat and probabilistic. GraphRAG is relational and deterministic. Vector RAG guesses. GraphRAG proves.</p>
-<p>There are several implications worth exploring:</p>
-<p>First, this approach aligns with the broader shift toward agentic systems. Agents need reliable memory and reliable reasoning. They can't operate on fuzzy similarity alone. A graph-backed memory layer gives agents a way to navigate knowledge with precision.</p>
-<p>Second, this model fits naturally with cloud-native geospatial workflows. Many geospatial problems are inherently multi-hop. Supply chains, transit corridors, environmental dependencies, and regulatory overlays all form networks. A graph-first approach makes these relationships explicit and computable.</p>
-<p>Third, this architecture supports compliance-heavy domains. When an AI system must justify its answer, a graph with an audit trail is far more defensible than a vector database with opaque similarity scores.</p>
-<p>Fourth, this approach opens the door to hybrid reasoning systems. A graph can store structured facts. An LLM can interpret them. A geospatial engine can add spatial constraints. A policy engine can enforce rules. Together they can form a composite intelligence that is more reliable than any single component.</p>
-<p>The article is a strong signal that the industry is moving beyond naive RAG. The next wave of AI systems will be built on topological reasoning, structured knowledge, and verifiable inference. Vector search will still have its place, but it will no longer be the backbone of enterprise AI.</p>
-<p>If you are building systems that need to reason across documents, regulations, spatial networks, or multi-step workflows, this is the architecture to watch.</p></div>
-            
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div></div>
-        <div class="flex items-center gap-3">
-            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
-                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
-                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
-                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
-            </a>
-            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
-                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
-            </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
-                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
-            </a>
-        </div>
-    </div>
-    
-            
-            
-        </article>
-    
     </div>
     
             </div>
@@ -748,7 +748,7 @@ This framing treats relational datasets the same way we treat documents on the w
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">48</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">49</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -767,28 +767,33 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">11</span>
         </a>
         
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">10</span>
+        </a>
+        
         <a href="/thoughts-ai-agents.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Agents</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
         </a>
         
-        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Responsible AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
-        </a>
-        
         <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Knowledge Graphs</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
         </a>
         
         <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Strategy</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
         </a>
         
         <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Enterprise AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
+        </a>
+        
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Workflows</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
@@ -797,8 +802,8 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Workflows</span>
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
@@ -809,11 +814,6 @@ This framing treats relational datasets the same way we treat documents on the w
         
         <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>AI Infrastructure</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
-        </a>
-        
-        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Cloud-Native Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
         </a>
         
@@ -887,6 +887,11 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-geoai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GeoAI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
         <a href="/thoughts-human-ai-interaction.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Human-AI Interaction</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
@@ -957,11 +962,6 @@ This framing treats relational datasets the same way we treat documents on the w
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
-        <a href="/thoughts-geoai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GeoAI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
-        </a>
-        
         <a href="/thoughts-model-context-protocol.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Model Context Protocol</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -974,6 +974,11 @@ This framing treats relational datasets the same way we treat documents on the w
         
         <a href="/thoughts-python.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Python</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-spatial-data-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial Data Infrastructure</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
