@@ -1,46 +1,11 @@
-name: Build Stored Thoughts
-
-on:
-  push:
-    paths:
-      - 'posts-*.json'
-      - 'build_thoughts.py'
-      - '.github/workflows/linkedin.yml'
-  schedule:
-    - cron: '0 12 * * *'
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install renderer dependencies
-        run: python -m pip install markdown bleach
-
-      - name: Build thoughts page
-        env:
-          INDEXNOW_NOTIFY: 'false'
-        run: python build_thoughts.py
-
-      - name: Commit and Push Changes
+- name: Commit and Push Changes
         id: publish
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add index.html thoughts/ thoughts.html thoughts-*.html rss.xml sitemap.xml post-index.json images-index.json
+          
+          # Stage everything generated or modified by python build_thoughts.py
+          git add -A
           
           if git diff --cached --quiet; then
               echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -48,7 +13,10 @@ jobs:
           fi
           
           git commit -m "Auto-generate thoughts, tag aggregators, and month pages"
+          
+          # Pull and rebase safely now that all files are staged
           git pull --rebase -X theirs origin master
+          
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
