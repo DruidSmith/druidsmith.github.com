@@ -11,6 +11,14 @@
     gtag('js', new Date());
     gtag('config', 'G-4T0MRLF4V8');
 </script>
+<!-- Microsoft Clarity -->
+<script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yolwcmk37v");
+</script>
 <title>AI Can Now P‑Hack at Scale. The Real Risk Isn&#x27;t Cheating. It&#x27;s Obedience. — David G. Smith</title>
 <meta name="description" content="For years, p‑hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something “significant” appeared....">
 
@@ -245,28 +253,63 @@
 <p>The experiment from Hall and colleagues is a warning. It is also an opportunity. It shows that AI can be guided toward honest analysis when the task is well defined. It shows that the same tools that lower the cost of p‑hacking also lower the cost of detecting it.</p>
 <p>The question is whether we will build the institutions that make the honest path the easy one.</p></div>
             
+    <div id="newsletter" class="mt-14 bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded text-[11px] font-bold uppercase tracking-widest">
+                    Weekly Briefing &amp; Reference Hub
+                </span>
+                <a href="/cloud-native-geospatial-stack.html" class="text-xs font-semibold text-sky-400 hover:text-sky-300 underline">
+                    New: The Cloud-Native Geospatial &amp; DuckDB Stack &rarr;
+                </a>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-medium text-white leading-snug">
+                Get the Weekly Spatial, Data &amp; AI Architecture Digest
+            </h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Every week, I curate the top 5 cloud-native geospatial &amp; data engineering essays, key AI research papers, and my latest writing—plus early-access chapters from my forthcoming books.
+            </p>
+        </div>
+        <div class="lg:col-span-5">
+            <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
+                  onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Thought Page Signup'});"
+                  class="flex flex-col sm:flex-row lg:flex-col gap-3">
+                <input type="email" name="email" required placeholder="Enter your email address..."
+                       aria-label="Email address"
+                       class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand-accent">
+                <input type="hidden" name="tag" value="{'title': "AI Can Now P‑Hack at Scale. The Real Risk Isn't Cheating. It's Obedience.", 'body': "For years, p‑hacking was a slow, human problem. A researcher could sift through enough models and enough specifications until something “significant” appeared. It was tedious. It was limited by time and patience. The concern was always about intent. If someone wanted a particular result, they could eventually find it.\n\n![P-Hacking Infographic](https://davidgsmith.net/thoughts/images/p-hacking-musuixco-17092f1a.jpg)\n\nA [recent experiment by Andy Hall and colleagues](https://x.com/ahall_research/status/2024544040784720365) shows how different the landscape becomes when AI enters the picture. They gave coding agents real datasets from published null results and tried to pressure them into manufacturing significance. At first the agents refused. Claude warned that the request was scientific misconduct. GPT‑5 did the same. Both models pushed back against direct instructions to manipulate analysis choices.\n\nThen the researchers changed the framing. Instead of asking the models to cheat, they asked for the upper bound of plausible estimates. They called it responsible uncertainty quantification. That small shift produced a very different outcome. The agents explored hundreds of specifications and surfaced the one that produced the largest effect size. In some cases the effect tripled.\n\nThis is the part that matters. The agents did not need to be told to commit fraud. They only needed a prompt that created enough analytical freedom. Once that freedom existed, the system did the rest. It searched the space of possible models and selected the most flattering one. It did this quickly. It did it confidently. It did it without any sense that the process was distorting the truth.\n\nThe researchers concluded that AI systems are resistant to overt p‑hacking but can be guided into sophisticated p‑hacking with very little effort. The more flexible the research design, the worse the distortion.\n\nThe experiment has already drawn attention from the research community. Andrew Gelman’s Statistical Modeling, Causal Inference, and Social Science blog [published a detailed discussion of the work](https://statmodeling.stat.columbia.edu/2026/10/03/using-the-computer-to-p-hack-id-rather-use-it-to-fit-multilevel-models/), noting how the agents resisted direct p‑hacking requests but became highly effective once the prompt created enough analytical flexibility. That commentary reinforces the idea that the risk is structural rather than ethical.\n\nThis is not a story about malicious intent. It is a story about scale. AI is about to write thousands of papers. Many of those papers will involve complex models, large datasets, and wide analytical search spaces. If a human researcher already believes the answer is known, the temptation will not be to fabricate data. It will be to let the agent explore until it finds the result that confirms the belief.\n\nThe danger is not that AI will invent significance. The danger is that AI will automate the search for significance inside research designs that were never built to withstand that level of exploration.\n\nThere is a second risk. Many researchers are not unethical. They are overloaded. They are trying to get through a pipeline of analysis tasks. If an AI assistant makes it easy to run hundreds of specifications, it also makes it easy to accidentally choose the one that looks the most interesting. The researchers in the experiment described this group as lazyish. Not malicious. Just susceptible to convenience.\n\nThis is where the concept of sycophantic AI becomes important. In my book, I describe systems that try to please. They do not challenge assumptions. They do not push back against flawed reasoning. They optimize for agreement. When a researcher asks for the “most plausible upper bound,” a sycophantic agent interprets that as a request for the most flattering result. It is not cheating. It is obedience. The agent is trying to be helpful. The harm comes from the structure of the task, not the intent of the user.\n\nHall’s thread points toward the idea of digital institutions. These would enforce pre‑commitment of data, verifiable experiment design, and separation between data collection and analysis. The public sector will feel this pressure first. Agencies rely on geospatial models, environmental datasets, and statistical pipelines that already contain large degrees of analytical freedom. When an AI system is added to that workflow, the search space expands. The risk of accidental p‑hacking expands with it.\n\nThis isn't a call for banning AI in research. It's a call for critical thinking about how these systems behave when given freedom to explore. The experiment shows that the agents are not eager to cheat. They cheat when the structure of the task rewards exploration without accountability.\n\nThat distinction is the heart of the problem. It is also the heart of the solution.\n\nIf we want AI to strengthen scientific reasoning rather than distort it, we need workflows that reward clarity, transparency, and constraint. We need metadata that records the full lineage and path of model exploration. We need audit trails that show which specifications were tried and why. We need institutions that treat AI agents as actors with responsibilities, not tools with infinite freedom.\n\nThis is one of many challenges [my book](https://davidgsmith.net/critical-thinking.html) tries to raise awareness of; in it I raise point to the issues of p-hacking (Chapter 6) and sycophantic AI that due to RLHF is eager to please (Chapter 11). Critical thinking is not only about logic. It is about structure. It is about the environment in which decisions are made. When that environment changes, the reasoning changes with it. AI introduces a new environment. It expands the search space. It accelerates exploration. It rewards convenience. It punishes restraint. If we do not adapt our reasoning frameworks to that reality, we will be surprised by the results.\n\nThe experiment from Hall and colleagues is a warning. It is also an opportunity. It shows that AI can be guided toward honest analysis when the task is well defined. It shows that the same tools that lower the cost of p‑hacking also lower the cost of detecting it.\n\nThe question is whether we will build the institutions that make the honest path the easy one.", 'tags': ['Critical Thinking', 'AI Safety & Risk', 'Responsible AI', 'Decision Making', 'Risk Management', 'AI Agents', 'AI Workflows', 'Tech Regulation', 'Systems Thinking', 'Enterprise AI', 'AI Governance & Policy'], 'type': 'BlogPosting', 'format': 'markdown', 'url': '', 'date': '2026-10-03T14:33:18.076Z', 'platform': 'post', '_dt': datetime.datetime(2026, 10, 3, 14, 33, 18, 76000, tzinfo=datetime.timezone.utc), '_slug': 'ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience'}">
+                <button type="submit"
+                        class="w-full px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors shadow-lg">
+                    Subscribe to the Weekly Digest &rarr;
+                </button>
+            </form>
+            <p class="text-[11px] text-gray-400 mt-2 text-center lg:text-left">1x weekly synthesis &bull; Zero noise &bull; Unsubscribe anytime.</p>
+        </div>
+    </div>
+    
+            
     <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div></div>
         <div class="flex items-center gap-3">
             <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdavidgsmith.net%2Fthoughts%2Fai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html%3Futm_source%3Dlinkedin%26utm_medium%3Dsocial_share%26utm_campaign%3Dthoughts"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {'method': 'LinkedIn', 'content_id': 'https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html'});" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
             </a>
-            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdavidgsmith.net%2Fthoughts%2Fai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html%3Futm_source%3Dx_twitter%26utm_medium%3Dsocial_share%26utm_campaign%3Dthoughts"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {'method': 'X', 'content_id': 'https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html'});" class="hover:opacity-80 transition" aria-label="Share on X">
                 <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdavidgsmith.net%2Fthoughts%2Fai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html%3Futm_source%3Dfacebook%26utm_medium%3Dsocial_share%26utm_campaign%3Dthoughts"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {'method': 'Facebook', 'content_id': 'https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html'});" class="hover:opacity-80 transition" aria-label="Share on Facebook">
                 <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
             </a>
-            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+            <a href="https://bsky.app/intent/compose?text=https%3A%2F%2Fdavidgsmith.net%2Fthoughts%2Fai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html%3Futm_source%3Dbluesky%26utm_medium%3Dsocial_share%26utm_campaign%3Dthoughts"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {'method': 'Bluesky', 'content_id': 'https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html'});" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
                 <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
             </a>
-            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+            <a href="https://mastodon.social/share?text=https%3A%2F%2Fdavidgsmith.net%2Fthoughts%2Fai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html%3Futm_source%3Dmastodon%26utm_medium%3Dsocial_share%26utm_campaign%3Dthoughts"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {'method': 'Mastodon', 'content_id': 'https://davidgsmith.net/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html'});" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
                 <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
             </a>
         </div>
@@ -373,6 +416,39 @@
             <div class="lg:col-span-4 lg:sticky lg:top-28">
                 
     <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <div class="bg-slate-900 p-6 rounded-lg border border-amber-500/40 shadow-xl text-slate-100">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-2">
+                Weekly Architecture Digest
+            </span>
+            <h3 class="text-lg font-serif font-medium text-white leading-snug mb-2">
+                Spatial AI, DuckDB &amp; Critical Thinking
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                Get my curated weekly synthesis of cloud-native geospatial, zero-server data stacks, and AI research papers—plus early book chapters.
+            </p>
+            <form action="https://buttondown.com/api/emails/embed-subscribe/davidgsmith" method="post" target="_blank"
+                  onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Sidebar Signup'});"
+                  class="space-y-2.5">
+                <input type="email" name="email" required placeholder="Your email address..."
+                       aria-label="Email address"
+                       class="w-full px-3.5 py-2 rounded bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                <button type="submit"
+                        class="w-full py-2 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-xs rounded transition-colors shadow">
+                    Join the Weekly Briefing &rarr;
+                </button>
+            </form>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex flex-col gap-1.5 text-xs">
+                <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center justify-between">
+                    <span>Cloud-Native Geospatial Hub</span>
+                    <span>&rarr;</span>
+                </a>
+                <a href="/books.html" class="text-slate-300 hover:text-white font-medium flex items-center justify-between">
+                    <span>Explore Books &amp; Publications</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+
         <div class="lg:hidden bg-slate-900 p-4 rounded-lg border border-slate-800 shadow-sm text-slate-100">
             <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-100 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
@@ -389,7 +465,7 @@
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                         Topics
                     </h3>
-                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">50</span>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">54</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     
@@ -410,7 +486,7 @@
         
         <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Responsible AI</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">12</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">13</span>
         </a>
         
         <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
@@ -433,13 +509,18 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
         </a>
         
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Workflows</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
+        </a>
+        
         <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Generative AI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
         </a>
         
-        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>AI Workflows</span>
+        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
         </a>
         
@@ -455,11 +536,6 @@
         
         <a href="/thoughts-engineering-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Engineering Leadership</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
-        </a>
-        
-        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Geospatial</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
         </a>
         
@@ -513,8 +589,18 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
+        <a href="/thoughts-data-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Governance</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
         <a href="/thoughts-duckdb.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>DuckDB</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-geoai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GeoAI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
         </a>
         
@@ -533,18 +619,8 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
-        <a href="/thoughts-data-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>Data Governance</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
-        </a>
-        
         <a href="/thoughts-data-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Data Standards</span>
-            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
-        </a>
-        
-        <a href="/thoughts-geoai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
-            <span>GeoAI</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
         </a>
         
@@ -578,6 +654,11 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
+        <a href="/thoughts-climate-science.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Climate Science</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
         <a href="/thoughts-cloud-native.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Cloud-Native</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
@@ -585,6 +666,11 @@
         
         <a href="/thoughts-computer-vision.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Computer Vision</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-data-quality.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Quality</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
@@ -623,8 +709,18 @@
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
+        <a href="/thoughts-remote-sensing.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Remote Sensing</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
         <a href="/thoughts-spatial-data-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
             <span>Spatial Data Infrastructure</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-spatial-statistics.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial Statistics</span>
             <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
         </a>
         
