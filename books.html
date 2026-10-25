@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4T0MRLF4V8');
+    </script>
     <title>Books & Publications | David G. Smith</title>
     <meta name="description" content="Explore books by David G. Smith, including 'Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation' and the upcoming 'AI for Small Business' series.">
     <link rel="canonical" href="https://davidgsmith.net/books.html">
@@ -108,6 +116,15 @@
           "@id": "https://davidgsmith.net/critical-thinking.html#book"
         },
         {
+          "@type": "Book",
+          "name": "The Cloud-Native Spatial & Earth AI Stack: Serverless Geospatial, DuckDB, GeoParquet, STAC & Remote Sensing at Scale",
+          "url": "https://davidgsmith.net/cloud-native-geospatial-stack.html",
+          "description": "Practitioner guide to zero-server spatial data infrastructure using DuckDB Spatial, GeoParquet, COGs, STAC, Portolan, Apache Sedona, and grounded Earth AI.",
+          "author": {
+            "@id": "https://davidgsmith.net/#person"
+          }
+        },
+        {
           "@type": "BookSeries",
           "name": "AI for Small Business",
           "description": "Actionable roadmaps for integrating AI tools into SME workflows to optimize operations and scale efficiently.",
@@ -155,6 +172,7 @@
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
                     <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
                     <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
                     <a href="/books.html" class="text-brand-accent transition-colors text-sm font-semibold">Books</a>
                     <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
@@ -371,14 +389,86 @@
 
                     <div class="pt-6 border-t border-slate-800 flex items-center justify-between">
                         <span class="text-xs text-slate-400 italic">Early preview chapters publishing late 2026.</span>
-                        <a href="/#contact" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
-                            Inquire for Updates
+                        <a href="#newsletter" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
+                            Join Early-Access List &rarr;
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CARD 3: Flagship Technical Guide (The Cloud-Native Spatial & Earth AI Stack) -->
+                <article class="lg:col-span-2 bg-slate-900/95 backdrop-blur-md border border-amber-500/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded text-xs font-semibold tracking-wide uppercase">
+                                Flagship Technical Guide &bull; Early-Access Waitlist Open
+                            </span>
+                            <span class="text-xs font-mono text-amber-400">Hub-and-Spoke Practitioner Series</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-6">
+                            <div class="lg:col-span-7 space-y-4">
+                                <h3 class="text-2xl sm:text-3xl font-serif font-semibold text-white leading-snug">
+                                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">
+                                        The Cloud-Native Spatial &amp; Earth AI Stack: GeoParquet, STAC, COGs, &amp; Serverless Analytics with DuckDB
+                                    </a>
+                                </h3>
+                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                    Born from the viral architectural essays read and bookmarked by over 160,000 geospatial and data engineering practitioners. This hands-on technical guide demonstrates how to replace expensive, server-heavy GIS infrastructure with range-readable open standards on object storage, ephemeral DuckDB compute, and ontology-grounded Earth AI.
+                                </p>
+                            </div>
+                            <div class="lg:col-span-5 bg-slate-950/70 border border-slate-800 rounded-xl p-5 space-y-2.5 text-xs text-slate-300">
+                                <p class="font-semibold text-amber-400 uppercase tracking-wider text-[11px]">Modular Architecture Covered:</p>
+                                <ul class="list-disc list-inside space-y-1.5 text-slate-300">
+                                    <li><strong>Part I:</strong> When a Database Stops Being About Data (DuckDB, Arrow &amp; WASM)</li>
+                                    <li><strong>Part II:</strong> Cloud-Native Formats &amp; Catalogs (GeoParquet, COGs, STAC, Portolan)</li>
+                                    <li><strong>Part III:</strong> Putting Earth AI &amp; Remote Sensing to Work at Scale (Apache Sedona)</li>
+                                    <li><strong>Part IV:</strong> Spatial Ontologies, GraphRAG &amp; Governance for High-Stakes Decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                        <a href="/cloud-native-geospatial-stack.html" class="text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5">
+                            Explore the Live Reference Architecture Hub &rarr;
+                        </a>
+                        <a href="#newsletter" class="px-5 py-2.5 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors shadow">
+                            Get Early Chapters &amp; Weekly Digest &rarr;
                         </a>
                     </div>
                 </article>
 
             </div>
         </section>
+
+        <!-- Weekly Intelligence Briefing & Book Waitlist Signup -->
+        <section id="newsletter" aria-labelledby="newsletter-heading" class="mt-16 bg-slate-900/95 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
+                    Weekly Curated Briefing
+                </span>
+                <h2 id="newsletter-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white">
+                    Subscribe to the Spatial, Data &amp; AI Architecture Digest
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Every week, I synthesize the top 5 technical articles from across the cloud-native geospatial and data engineering community, standout Google Research papers, my latest essays, and early-access book chapters.
+                </p>
+                <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
+                      onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Books Page Signup'});"
+                      class="pt-2 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                    <input type="email" name="email" required placeholder="Enter your email address..."
+                           aria-label="Email address"
+                           class="flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                    <input type="hidden" name="tag" value="books-page-digest">
+                    <button type="submit"
+                            class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg">
+                        Subscribe Free &rarr;
+                    </button>
+                </form>
+                <p class="text-xs text-slate-400">Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->

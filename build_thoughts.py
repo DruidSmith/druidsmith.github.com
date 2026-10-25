@@ -18,6 +18,16 @@ POSTS_FILE = BASE_DIR / "posts.json"
 THOUGHTS_DIR = BASE_DIR / "thoughts"
 DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/DaveSmithrPortrait.jpg"
 
+# Central configuration for newsletter / waitlist signup endpoint
+# Swap this action URL with your Buttondown, Cloudflare Worker, or n8n Webhook URL
+NEWSLETTER_FORM_ACTION = "https://buttondown.com/api/emails/embed-subscribe/davidgsmith"
+
+GEOSPATIAL_CLUSTER_TAGS = {
+    "Cloud-Native Geospatial", "DuckDB", "Geospatial", "Spatial SQL",
+    "GeoAI", "Apache Sedona", "Open Source GIS", "3D Reality Capture",
+    "Gaussian Splatting", "Cloud-Native", "Data Engineering", "Open Standards"
+}
+
 PLATFORM_ICONS = {
     "linkedin": "/images/InBug-Black.png",
     "twitter": "https://unpkg.com/simple-icons/icons/x.svg",
@@ -74,7 +84,7 @@ def load_posts():
     seen_slugs = set()
     normalized_posts = []
     
-    # Iterate over all yearly sharded files instead of a single posts.json[cite: 6]
+    # Iterate over all yearly sharded files instead of a single posts.json
     for filepath in BASE_DIR.glob("posts-*.json"):
         with filepath.open(encoding="utf-8") as posts_file:
             try:
@@ -83,16 +93,16 @@ def load_posts():
                 continue # Skip empty or malformed files
             
         for post in raw_posts:
-            # Standardize required & optional fields[cite: 6]
+            # Standardize required & optional fields
             post.setdefault("type", "BlogPosting")
             if not post.get("url") or "davidgsmith.net" in post.get("url", ""):
                 post["url"] = ""
                 
-            # Parse and anchor UTC dates[cite: 6]
+            # Parse and anchor UTC dates
             dt = parse_and_normalize_date(post.get("date"))
             post["_dt"] = dt
             
-            # Check slugs for collisions[cite: 6]
+            # Check slugs for collisions
             base_slug = slugify(post.get("title", "Untitled"))
             slug = base_slug
             counter = 1
@@ -174,7 +184,13 @@ def render_breadcrumbs(post):
     """
 
 def render_share_bar(share_url, original_url):
-    share_escaped = html.escape(share_url, quote=True)
+    sep = "&" if "?" in share_url else "?"
+    li_url = urllib.parse.quote(f"{share_url}{sep}utm_source=linkedin&utm_medium=social_share&utm_campaign=thoughts", safe="")
+    tw_url = urllib.parse.quote(f"{share_url}{sep}utm_source=x_twitter&utm_medium=social_share&utm_campaign=thoughts", safe="")
+    fb_url = urllib.parse.quote(f"{share_url}{sep}utm_source=facebook&utm_medium=social_share&utm_campaign=thoughts", safe="")
+    bsky_url = urllib.parse.quote(f"{share_url}{sep}utm_source=bluesky&utm_medium=social_share&utm_campaign=thoughts", safe="")
+    masto_url = urllib.parse.quote(f"{share_url}{sep}utm_source=mastodon&utm_medium=social_share&utm_campaign=thoughts", safe="")
+
     read_original_html = "<div></div>" 
     if original_url:
         orig_escaped = html.escape(original_url, quote=True)
@@ -190,26 +206,63 @@ def render_share_bar(share_url, original_url):
         {read_original_html}
         <div class="flex items-center gap-3">
             <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_escaped}"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={li_url}"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'LinkedIn', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
             </a>
-            <a href="https://twitter.com/intent/tweet?url={share_escaped}"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+            <a href="https://twitter.com/intent/tweet?url={tw_url}"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'X', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on X">
                 <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={share_escaped}"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={fb_url}"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Facebook', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Facebook">
                 <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
             </a>
-            <a href="https://bsky.app/intent/compose?text={share_escaped}"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+            <a href="https://bsky.app/intent/compose?text={bsky_url}"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Bluesky', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
                 <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
             </a>
-            <a href="https://mastodon.social/share?text={share_escaped}"
-               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+            <a href="https://mastodon.social/share?text={masto_url}"
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Mastodon', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
                 <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
             </a>
+        </div>
+    </div>
+    """
+
+def render_in_article_cta(tag_val="geospatial-stack"):
+    return f"""
+    <div id="newsletter" class="mt-14 bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded text-[11px] font-bold uppercase tracking-widest">
+                    Weekly Briefing &amp; Reference Hub
+                </span>
+                <a href="/cloud-native-geospatial-stack.html" class="text-xs font-semibold text-sky-400 hover:text-sky-300 underline">
+                    New: The Cloud-Native Geospatial &amp; DuckDB Stack &rarr;
+                </a>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-medium text-white leading-snug">
+                Get the Weekly Spatial, Data &amp; AI Architecture Digest
+            </h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Every week, I curate the top 5 cloud-native geospatial &amp; data engineering essays, key AI research papers, and my latest writing—plus early-access chapters from my forthcoming books.
+            </p>
+        </div>
+        <div class="lg:col-span-5">
+            <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
+                  onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Thought Page Signup'});"
+                  class="flex flex-col sm:flex-row lg:flex-col gap-3">
+                <input type="email" name="email" required placeholder="Enter your email address..."
+                       aria-label="Email address"
+                       class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand-accent">
+                <input type="hidden" name="tag" value="{tag_val}">
+                <button type="submit"
+                        class="w-full px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors shadow-lg">
+                    Subscribe to the Weekly Digest &rarr;
+                </button>
+            </form>
+            <p class="text-[11px] text-gray-400 mt-2 text-center lg:text-left">1x weekly synthesis &bull; Zero noise &bull; Unsubscribe anytime.</p>
         </div>
     </div>
     """
@@ -500,6 +553,39 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
 
     return f"""
     <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <div class="bg-slate-900 p-6 rounded-lg border border-amber-500/40 shadow-xl text-slate-100">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-2">
+                Weekly Architecture Digest
+            </span>
+            <h3 class="text-lg font-serif font-medium text-white leading-snug mb-2">
+                Spatial AI, DuckDB &amp; Critical Thinking
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                Get my curated weekly synthesis of cloud-native geospatial, zero-server data stacks, and AI research papers—plus early book chapters.
+            </p>
+            <form action="{NEWSLETTER_FORM_ACTION}" method="post" target="_blank"
+                  onsubmit="gtag('event', 'generate_lead', {{'event_category': 'Newsletter', 'event_label': 'Sidebar Signup'}});"
+                  class="space-y-2.5">
+                <input type="email" name="email" required placeholder="Your email address..."
+                       aria-label="Email address"
+                       class="w-full px-3.5 py-2 rounded bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                <button type="submit"
+                        class="w-full py-2 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-xs rounded transition-colors shadow">
+                    Join the Weekly Briefing &rarr;
+                </button>
+            </form>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex flex-col gap-1.5 text-xs">
+                <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center justify-between">
+                    <span>Cloud-Native Geospatial Hub</span>
+                    <span>&rarr;</span>
+                </a>
+                <a href="/books.html" class="text-slate-300 hover:text-white font-medium flex items-center justify-between">
+                    <span>Explore Books &amp; Publications</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+
         <div class="lg:hidden bg-slate-900 p-4 rounded-lg border border-slate-800 shadow-sm text-slate-100">
             <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-100 font-serif font-bold text-sm focus:outline-none">
                 <span>Filter by Tag &amp; Archive</span>
@@ -561,6 +647,8 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     if is_standalone:
         breadcrumbs_html = render_breadcrumbs(post)
         title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">{title}</h1>'
+        content_html = f'<div class="markdown-content text-slate-700 leading-relaxed text-[15px]">{body}</div>'
+        cta_html = render_in_article_cta(post)
     else:
         breadcrumbs_html = ""
         title_html = f'''
@@ -569,6 +657,14 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
                 {title}
             </h2>
         </a>'''
+        excerpt_text = html.escape(create_text_excerpt(body, max_length=340))
+        content_html = f'''
+        <p class="text-slate-600 leading-relaxed text-[15px] mb-4">{excerpt_text}</p>
+        <a href="/thoughts/{slug}.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors">
+            Read Full Essay ({reading_time}) &rarr;
+        </a>
+        '''
+        cta_html = ""
 
     prev_next_html = ""
     if is_standalone and (prev_post or next_post):
@@ -604,7 +700,8 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
             </div>
             {title_html}
             <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
-            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]">{body}</div>
+            {content_html}
+            {cta_html}
             {render_share_bar(share_url=canonical_url, original_url=url)}
             {prev_next_html}
             {related_posts_html}
@@ -722,6 +819,14 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'G-4T0MRLF4V8');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+    (function(c,l,a,r,i,t,y){{
+        c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    }})(window, document, "clarity", "script", "yolwcmk37v");
 </script>
 <title>{html.escape(title)}</title>
 {meta_description}
@@ -1017,6 +1122,11 @@ def generate_sitemap(posts, tag_slugs, month_slugs):
     </image:image>
   </url>""",
         """  <url>
+    <loc>https://davidgsmith.net/cloud-native-geospatial-stack.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""",
+        """  <url>
     <loc>https://davidgsmith.net/books.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -1094,18 +1204,77 @@ def generate_post_index(posts):
         json.dump(index_data, f)
 
 
+def inject_geospatial_pillar_posts(posts):
+    pillar_path = BASE_DIR / "cloud-native-geospatial-stack.html"
+    if not pillar_path.exists():
+        return
+
+    geo_posts = [
+        p for p in posts
+        if set(p.get("tags", [])).intersection(GEOSPATIAL_CLUSTER_TAGS)
+    ][:9]
+
+    cards_html = ""
+    for p in geo_posts:
+        slug = p["_slug"]
+        title = html.escape(p.get("title", "Untitled"))
+        date_str = p["_dt"].strftime("%b %d, %Y")
+        body_html = render_markdown(p.get("body", ""))
+        excerpt = html.escape(create_text_excerpt(body_html, max_length=220))
+        reading_time = calculate_reading_time(p.get("body", ""))
+
+        tags_html = ""
+        for tag in p.get("tags", [])[:3]:
+            t_slug = slugify(tag)
+            tags_html += f'<a href="/thoughts-{t_slug}.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">{html.escape(tag)}</a>'
+
+        cards_html += f"""
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>{date_str}</span>
+                        <span class="text-amber-400 font-mono">{reading_time}</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/{slug}.html" class="hover:text-amber-400 transition-colors">{title}</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-2">{tags_html}</div>
+                    <p class="text-sm text-slate-300 mb-5 flex-grow line-clamp-3">{excerpt}</p>
+                    <a href="/thoughts/{slug}.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>"""
+
+    with open(pillar_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    pattern = r"(<!-- GEOSPATIAL_POSTS_INJECT_START -->).*?(<!-- GEOSPATIAL_POSTS_INJECT_END -->)"
+    if re.search(pattern, content, flags=re.DOTALL):
+        updated_content = re.sub(
+            pattern,
+            lambda match: f"{match.group(1)}\n{cards_html}\n                {match.group(2)}",
+            content,
+            flags=re.DOTALL
+        )
+        with open(pillar_path, "w", encoding="utf-8") as f:
+            f.write(updated_content)
+        print(f"✓ Successfully injected {len(geo_posts)} geospatial/DuckDB posts into {pillar_path.name}")
+
 def generate_html():
     # Purge old generated pages to prevent stale records from surviving
     cleanup_stale_pages()
     
     posts = load_posts()
     inject_homepage_posts(posts)
+    inject_geospatial_pillar_posts(posts)
     
     # Generate the new static post index for the editor
     generate_post_index(posts)
     
     all_tags = set()
-    generated_urls = ["https://davidgsmith.net/thoughts.html", "https://davidgsmith.net/rss.xml"]
+    # Ensure the root homepage is included since latest posts are injected into it
+    generated_urls = [
+        "https://davidgsmith.net/",
+        "https://davidgsmith.net/thoughts.html",
+        "https://davidgsmith.net/rss.xml"
+    ]
     
     for post in posts:
         for t in post.get("tags", []):
@@ -1367,8 +1536,16 @@ def generate_html():
     # Generate Feeds and Sitemaps
     generate_rss(posts)
     generate_sitemap(posts, tag_slugs, month_slugs)
-    return generated_urls
-        
+    # Submit only recently changed/injected pages to IndexNow instead of the entire archive
+    recent_slugs = [p["_slug"] for p in posts[:3]]
+    targeted_urls = [
+        "https://davidgsmith.net/",
+        "https://davidgsmith.net/thoughts.html",
+        "https://davidgsmith.net/rss.xml",
+    ] + [f"https://davidgsmith.net/thoughts/{s}.html" for s in recent_slugs]
+
+    return targeted_urls
+            
 def ping_websub_hub(feed_url="https://davidgsmith.net/rss.xml"):
     hub_url = "https://pubsubhubbub.appspot.com/publish"
     payload = {

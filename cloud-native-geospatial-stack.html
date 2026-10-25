@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4T0MRLF4V8');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yolwcmk37v");
+    </script>
+
+    <title>The Cloud-Native Geospatial Software &amp; DuckDB Stack | David G. Smith</title>
+    <meta name="description" content="A comprehensive architectural reference on cloud-native geospatial software, serverless spatial SQL with DuckDB, GeoParquet, STAC, COGs, Portolan, Apache Sedona, and Earth AI.">
+    <link rel="canonical" href="https://davidgsmith.net/cloud-native-geospatial-stack.html">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:site_name" content="David G. Smith">
+    <meta property="og:title" content="The Cloud-Native Geospatial Software &amp; DuckDB Stack — David G. Smith">
+    <meta property="og:description" content="How modern engineering teams replace legacy GIS servers with GeoParquet, STAC, COGs, Portolan, Apache Sedona, and in-process DuckDB spatial analytics.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://davidgsmith.net/cloud-native-geospatial-stack.html">
+    <meta property="og:image" content="https://davidgsmith.net/images/DaveSmithrPortrait.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Cloud-Native Geospatial Software &amp; DuckDB Stack">
+    <meta name="twitter:description" content="Architectural reference and forthcoming book hub for GeoParquet, DuckDB Spatial, STAC, COGs, and Earth AI.">
+    <meta name="twitter:image" content="https://davidgsmith.net/images/DaveSmithrPortrait.jpg">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            muted: '#334155',
+                            accent: '#b45309',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- JSON-LD: TechArticle + FAQPage + Forthcoming Book Schema -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://davidgsmith.net/cloud-native-geospatial-stack.html#article",
+      "headline": "The Cloud-Native Geospatial Software & DuckDB Reference Architecture",
+      "description": "Architectural guide to cloud-native geospatial software, GeoParquet, Cloud Optimized GeoTIFF (COG), STAC, Portolan, Apache Sedona, and serverless spatial SQL with DuckDB.",
+      "url": "https://davidgsmith.net/cloud-native-geospatial-stack.html",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "author": {
+        "@type": "Person",
+        "@id": "https://davidgsmith.net/#person",
+        "name": "David G. Smith",
+        "url": "https://davidgsmith.net/"
+      },
+      "keywords": "cloud native geospatial, cloud native geospatial software, cloud native gis, duckdb spatial, geoparquet, stac, portolan, apache sedona, earth ai, remote sensing"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://davidgsmith.net/cloud-native-geospatial-stack.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is cloud-native geospatial software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cloud-native geospatial software decouples spatial storage from compute. Instead of loading data into monolithic database servers, spatial vectors and imagery sit directly on object storage (S3, GCS, Azure Blob) in range-readable formats like GeoParquet, Cloud Optimized GeoTIFF (COG), and PMTiles, queried on demand via HTTP range requests using serverless engines like DuckDB, Apache Sedona, and STAC catalogs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should engineering teams use DuckDB Spatial vs. Apache Sedona or PostGIS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DuckDB Spatial excels at single-node, zero-server, in-process analytical queries over local or S3-hosted GeoParquet files (from megabytes up to hundreds of gigabytes) as well as client-side browser analytics via DuckDB-WASM. Apache Sedona is designed for distributed multi-node cluster compute across multi-terabyte vector and raster lakes, while PostGIS remains optimal for transactional OLTP spatial workloads requiring concurrent row-level locking."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <style>
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-300 bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                    <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 transition-colors text-sm font-semibold">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
+                    <a href="/books.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                    <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none" aria-label="Toggle Navigation">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-300">About</a>
+                <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-300">Work</a>
+                <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Geo &amp; DuckDB Hub</a>
+                <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Thoughts</a>
+                <a href="/books.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Books</a>
+                <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-300">Advisory</a>
+                <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-16">
+        
+        <!-- Hero & Book Early-Access Waitlist -->
+        <header class="bg-slate-900/90 border border-slate-800 rounded-2xl p-8 sm:p-12 shadow-2xl">
+            <div class="max-w-4xl">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-4">
+                    Reference Architecture &amp; Forthcoming Book Hub
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-serif font-medium text-white leading-tight mb-6">
+                    The Cloud-Native Geospatial Software &amp; Zero-Server DuckDB Stack
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+                    For decades, working with spatial and Earth observation data meant standing up heavy database servers, managing complex tile caches, and paying steep licensing taxes. Today, spatial data infrastructure has been quietly reinvented around <strong>HTTP range requests, columnar storage (GeoParquet), STAC/Portolan catalogs, Cloud Optimized GeoTIFFs (COGs), and ephemeral in-process compute engines like DuckDB</strong>.
+                </p>
+
+                <!-- Waitlist & Weekly Briefing Box -->
+                <div id="waitlist" class="bg-slate-950/90 border border-amber-500/40 rounded-xl p-6 sm:p-8">
+                    <h2 class="text-xl sm:text-2xl font-serif font-medium text-white mb-2">
+                        Join the Early-Access List: <em>The Cloud-Native Spatial &amp; Earth AI Stack</em>
+                    </h2>
+                    <p class="text-sm text-slate-300 mb-5 leading-relaxed">
+                        I am expanding my viral architecture essays into a comprehensive practitioner handbook—and sending out a curated <strong>Weekly Spatial, DuckDB &amp; AI Intelligence Briefing</strong> featuring the top 5 community essays, news developments, and Google Research papers.
+                    </p>
+                    <form action="https://buttondown.com/api/emails/embed-subscribe/davidgsmith" method="post" target="_blank"
+                          onsubmit="gtag('event', 'generate_lead', {'event_category': 'Book Waitlist', 'event_label': 'Geospatial Pillar Hero'});"
+                          class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" name="email" required placeholder="Enter your email for weekly briefings &amp; sample chapters..."
+                               aria-label="Email address"
+                               class="flex-1 px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                        <input type="hidden" name="tag" value="geospatial-book-waitlist">
+                        <button type="submit"
+                                class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg">
+                            Join Waitlist &amp; Weekly Digest &rarr;
+                        </button>
+                    </form>
+                    <p class="text-xs text-slate-400 mt-3">1x weekly curated intelligence &bull; Zero fluff &bull; Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Reference Comparison Matrix (Targets Search Console Queries Directly) -->
+        <section aria-labelledby="matrix-heading" class="space-y-6">
+            <div>
+                <h2 id="matrix-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white mb-2">
+                    Cloud-Native Geospatial Software Stack vs. Legacy GIS
+                </h2>
+                <p class="text-slate-400 text-sm">
+                    How engineering teams replace monolithic GIS servers and expensive cloud warehouse queries with open standards on object storage.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto bg-slate-900 border border-slate-800 rounded-xl shadow-xl">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 bg-slate-950 text-slate-200">
+                            <th class="py-4 px-5 font-semibold">Architectural Layer</th>
+                            <th class="py-4 px-5 font-semibold text-slate-400">Legacy / Server-Centric GIS</th>
+                            <th class="py-4 px-5 font-semibold text-amber-400">Cloud-Native Geospatial Stack</th>
+                            <th class="py-4 px-5 font-semibold">Primary Engineering Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/80 text-slate-300">
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">Vector Storage</td>
+                            <td class="py-4 px-5 text-slate-400">Shapefiles, GeoJSON, File Geodatabases</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">GeoParquet / FlatGeobuf / Iceberg</td>
+                            <td class="py-4 px-5">Columnar compression, spatial bounding-box predicate pushdown over S3/HTTP.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">Raster &amp; Earth Observation</td>
+                            <td class="py-4 px-5 text-slate-400">Monolithic GeoTIFFs, proprietary mosaic servers</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">Cloud Optimized GeoTIFF (COG) / Zarr</td>
+                            <td class="py-4 px-5">Stream only the pixels and overviews needed via HTTP byte-range requests.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">Discovery &amp; Metadata Catalogs</td>
+                            <td class="py-4 px-5 text-slate-400">Heavy CSW portals, siloed SQL catalogs</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">STAC &amp; Portolan</td>
+                            <td class="py-4 px-5">Static, crawlable JSON/Parquet catalogs that unify discovery and data distribution.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">In-Process / Serverless Spatial SQL</td>
+                            <td class="py-4 px-5 text-slate-400">Always-on PostGIS instances or high-cost Cloud Warehouses</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">DuckDB Spatial &amp; DuckDB-WASM</td>
+                            <td class="py-4 px-5">Ephemeral compute: spin up in milliseconds in Python, CLI, or browser; zero idle cost.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">Distributed Cluster Compute</td>
+                            <td class="py-4 px-5 text-slate-400">Custom multi-machine GIS server clusters</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">Apache Sedona (Spark / Rust)</td>
+                            <td class="py-4 px-5">Petabyte-scale spatial joins and satellite raster algebra across cloud lakes.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">Web Map Tile Delivery</td>
+                            <td class="py-4 px-5 text-slate-400">GeoServer / MapServer / TileServer VMs</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">PMTiles + MapLibre GL</td>
+                            <td class="py-4 px-5">Single-archive vector/raster tiles hosted on S3/Cloudflare CDN with zero tile servers.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/40">
+                            <td class="py-4 px-5 font-semibold text-white">AI &amp; Semantic Reasoning</td>
+                            <td class="py-4 px-5 text-slate-400">Unstructured vector RAG without spatial topology</td>
+                            <td class="py-4 px-5 font-mono text-sky-300">Spatial Ontologies + GraphRAG + Earth AI</td>
+                            <td class="py-4 px-5">Deterministic topological grounding that prevents LLM hallucinations in high-stakes decisions.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Dynamically Injected Geospatial & DuckDB Essays -->
+        <section aria-labelledby="essays-heading" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <h2 id="essays-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white mb-2">
+                        Core Architecture Essays &amp; Field Notes
+                    </h2>
+                    <p class="text-slate-400 text-sm">
+                        Deep dives into DuckDB framing, Portolan, Spatial SQL, Apache Sedona, Earth AI, and GraphRAG.
+                    </p>
+                </div>
+                <a href="/thoughts-cloud-native-geospatial.html" class="text-xs font-semibold uppercase tracking-wider text-amber-400 hover:text-amber-300">
+                    View All Geospatial Posts &rarr;
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- GEOSPATIAL_POSTS_INJECT_START -->
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-10-10</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html" class="hover:text-amber-400 transition-colors">Portolan and the Quiet Reinvention of Spatial Data Infrastructure</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Cloud-Native Geospatial</a><a href="/thoughts-duckdb.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">DuckDB</a><a href="/thoughts-geospatial.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Geospatial</a></div>
+                    <a href="/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-10-08</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/when-a-database-stops-being-about-data.html" class="hover:text-amber-400 transition-colors">When a Database Stops Being About Data</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-duckdb.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">DuckDB</a><a href="/thoughts-systems-thinking.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Systems Thinking</a><a href="/thoughts-data-engineering.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Data Engineering</a></div>
+                    <a href="/thoughts/when-a-database-stops-being-about-data.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-10-04</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html" class="hover:text-amber-400 transition-colors">Why Vector Search Breaks Down When You Need Real Reasoning</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-ai-strategy.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Strategy</a><a href="/thoughts-ai-workflows.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Workflows</a><a href="/thoughts-ai-agents.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Agents</a></div>
+                    <a href="/thoughts/why-vector-search-breaks-down-when-you-need-real-reasoning.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-10-01</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html" class="hover:text-amber-400 transition-colors">Everyone&#x27;s Thinking Spatially Even If They Don&#x27;t Call It Geography</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-geospatial.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Geospatial</a><a href="/thoughts-critical-thinking.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Critical Thinking</a><a href="/thoughts-future-of-work.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Future of Work</a></div>
+                    <a href="/thoughts/everyones-thinking-spatially-even-if-they-dont-call-it-geography.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-09-30</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/americagov-apis-and-the-future-of-public-information.html" class="hover:text-amber-400 transition-colors">America.gov, APIs, and the Future of Public Information</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-data-standards.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Data Standards</a><a href="/thoughts-semantic-layer.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Semantic Layer</a><a href="/thoughts-tech-modernization.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Tech Modernization</a></div>
+                    <a href="/thoughts/americagov-apis-and-the-future-of-public-information.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-09-26</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/building-geoai-systems-that-people-can-trust.html" class="hover:text-amber-400 transition-colors">Building GeoAI Systems That People Can Trust</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-ai-agents.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Agents</a><a href="/thoughts-ai-law.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Law</a><a href="/thoughts-ai-strategy.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">AI Strategy</a></div>
+                    <a href="/thoughts/building-geoai-systems-that-people-can-trust.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-09-22</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html" class="hover:text-amber-400 transition-colors">The Shift to Cloud-Native Geospatial: Access, Scale, and the Open Source Ecosystem</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Cloud-Native Geospatial</a><a href="/thoughts-spatial-sql.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Spatial SQL</a><a href="/thoughts-open-source-gis.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Open Source GIS</a></div>
+                    <a href="/thoughts/the-shift-to-cloud-native-geospatial-access-scale-and-the-open-source-ecosystem.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-09-21</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html" class="hover:text-amber-400 transition-colors">The Convergence of Spatial SQL and Ontologies: Building a Semantic Backbone for Earth Observation</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-cloud-native-geospatial.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Cloud-Native Geospatial</a><a href="/thoughts-knowledge-graphs.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Knowledge Graphs</a><a href="/thoughts-graphrag.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">GraphRAG</a></div>
+                    <a href="/thoughts/the-convergence-of-spatial-sql-and-ontologies-building-a-semantic-backbone-for-earth-observation.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+
+                <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-amber-500/50 transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                        <span>2026-09-19</span>
+                        <span class="text-amber-400 font-mono">Architecture Note</span>
+                    </div>
+                    <h3 class="text-lg font-serif font-medium text-white mb-2 leading-snug">
+                        <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="hover:text-amber-400 transition-colors">LibreOffice Tips and Tricks:  Circumnavigating Style Issues and Editing PDFs</a>
+                    </h3>
+                    <div class="flex flex-wrap mb-4"><a href="/thoughts-open-standards.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Open Standards</a><a href="/thoughts-books.html" class="inline-block px-2 py-0.5 mr-1.5 mb-2 text-[10px] font-semibold text-sky-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">Books</a></div>
+                    <a href="/thoughts/libreoffice-tips-and-tricks-circumnavigating-style-issues-and-editing-pdfs.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-auto uppercase tracking-wide">Read Architecture Note &rarr;</a>
+                </article>
+                <!-- GEOSPATIAL_POSTS_INJECT_END -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm">
+                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+    </script>
+</body>
+</html>
