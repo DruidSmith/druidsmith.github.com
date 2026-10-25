@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4T0MRLF4V8');
+</script>
+<title>Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model — David G. Smith</title>
+<meta name="description" content="Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the...">
+
+<meta property="og:site_name" content="David G. Smith">
+<meta property="og:title" content="Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model">
+<meta property="og:description" content="Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the...">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html">
+<meta property="og:image" content="https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg">
+<meta property="article:published_time" content="2026-10-11T15:12:23.273000+00:00">
+<meta property="article:tag" content="Critical Thinking">
+<meta property="article:tag" content="AI Governance &amp; Policy">
+<meta property="article:tag" content="Systems Thinking">
+<meta property="article:tag" content="Decision Making">
+<meta property="article:tag" content="AI Safety &amp; Risk">
+<meta property="article:tag" content="AI Strategy">
+<meta property="article:tag" content="Engineering Leadership">
+<meta property="article:tag" content="Enterprise AI">
+<meta property="article:tag" content="Responsible AI">
+<meta property="article:author" content="David G. Smith">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model">
+<meta name="twitter:description" content="Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the...">
+<meta name="twitter:image" content="https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg">
+
+<link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
+<link rel="canonical" href="https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html">
+<link rel="icon">
+<link rel="apple-touch-icon">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { 
+        theme: { 
+            extend: { 
+                fontFamily: { 
+                    sans: ['Inter', 'sans-serif'], 
+                    serif: ['Lora', 'serif'] 
+                }, 
+                colors: { 
+                    brand: { 
+                        dark: '#0f172a', 
+                        muted: '#334155', 
+                        accent: '#b45309',
+                        light: '#f8fafc' 
+                    } 
+                } 
+            } 
+        } 
+    }
+</script>
+<style>
+    body { background-color: #0a1128; }
+    .glass-nav { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }
+    .markdown-content p { margin-bottom: 1rem; }
+    .markdown-content p:empty { display: none; }
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 { color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }
+    .markdown-content a { color: #b45309; text-decoration: underline; }
+    .markdown-content a:hover { color: #78350f; }
+    .markdown-content ul { list-style-type: disc; margin-top: 0.75rem; margin-bottom: 1rem; padding-left: 1.5rem; }
+    .markdown-content ol { list-style-type: decimal; margin-top: 0.75rem; margin-bottom: 1rem; padding-left: 1.5rem; }
+    .markdown-content li { margin-bottom: 0.35rem; line-height: 1.6; }
+    .markdown-content li > ul { list-style-type: circle; margin-top: 0.25rem; margin-bottom: 0.25rem; padding-left: 1.25rem; }
+    .markdown-content li > ol { list-style-type: lower-alpha; margin-top: 0.25rem; margin-bottom: 0.25rem; padding-left: 1.25rem; }
+    .markdown-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; line-height: 1.5; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #ffffff; }
+    .markdown-content th { background-color: #f8fafc; color: #0f172a; font-weight: 600; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid #cbd5e1; }
+    .markdown-content td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; color: #334155; }
+    .markdown-content tr:nth-child(even) { background-color: #fcfbf9; }
+    .markdown-content tr:last-child td { border-bottom: none; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html#article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+    },
+    "headline": "Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model",
+    "image": [
+      "https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg"
+    ],
+    "url": "https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html",
+    "datePublished": "2026-10-11T15:12:23.273000+00:00",
+    "dateModified": "2026-10-11T15:12:23.273000+00:00",
+    "inLanguage": "en-US",
+    "wordCount": 1022,
+    "author": {
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
+      "url": "https://davidgsmith.net/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
+      "url": "https://davidgsmith.net/"
+    },
+    "description": "Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the...",
+    "keywords": "Critical Thinking, AI Governance & Policy, Systems Thinking, Decision Making, AI Safety & Risk, AI Strategy, Engineering Leadership, Enterprise AI, Responsible AI",
+    "articleSection": "Critical Thinking"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html#breadcrumb",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://davidgsmith.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Thoughts",
+        "item": "https://davidgsmith.net/thoughts.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model",
+        "item": "https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
+<div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
+<nav class="fixed w-full z-50 glass-nav border-b border-slate-200 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0">
+                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">David G. Smith</a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="https://davidgsmith.net/#about" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
+                <a href="https://davidgsmith.net/#work" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
+                <a href="https://davidgsmith.net/thoughts.html" class="text-brand-accent transition-colors text-sm font-semibold">Thoughts</a>
+                <a href="https://davidgsmith.net/books.html" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
+                <a href="https://davidgsmith.net/#advisory" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
+                <a href="https://davidgsmith.net/#contact" class="px-5 py-2 rounded border border-slate-300 text-slate-900 hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-slate-900 focus:outline-none" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="https://davidgsmith.net/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
+            <a href="https://davidgsmith.net/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
+            <a href="https://davidgsmith.net/thoughts.html" class="mobile-link block py-2 text-base font-medium text-gray-600">Thoughts</a>
+            <a href="https://davidgsmith.net/books.html" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
+            <a href="https://davidgsmith.net/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
+            <a href="https://davidgsmith.net/#contact" class="mobile-link block py-2 text-base font-medium text-brand-accent">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<header class="pt-28 pb-6 px-4 w-full bg-slate-950 text-white border-b border-slate-800">
+    
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-brand-accent transition-colors font-medium">
+                &larr; Back to all Thoughts
+            </a>
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-brand-accent transition-colors">
+                <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
+                </svg>
+                RSS Feed
+            </a>
+        </div>
+        
+</header>
+
+<main id="main-content" class="py-12 bg-transparent min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-8 space-y-8">
+                
+        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+            
+    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-slate-500">
+        <ol class="flex items-center flex-wrap gap-1.5">
+            <li>
+                <a href="/" class="hover:text-brand-accent text-slate-500 transition-colors">Home</a>
+            </li>
+            <li class="text-slate-400">/</li>
+            <li>
+                <a href="/thoughts.html" class="hover:text-brand-accent text-slate-500 transition-colors">Thoughts</a>
+            </li>
+            <li class="text-slate-400">/</li>
+            <li class="text-slate-900 font-semibold truncate max-w-[240px] sm:max-w-md" aria-current="page">Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model</li>
+        </ol>
+    </nav>
+    
+            <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+                <img src="https://unpkg.com/feather-icons/dist/icons/link.svg" alt="Blog post icon" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <span>October 11, 2026 &bull; <span class="text-amber-900 font-semibold">5 min read</span> &bull; Originally published on Other</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">Climbing Out of the AI Governance Chasm: Why CIOs Need a New Mental Model</h1>
+            <div class="mb-6 flex flex-wrap items-center"><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-governance-policy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Governance &amp; Policy</a><a href="/thoughts-systems-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Systems Thinking</a><a href="/thoughts-decision-making.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Decision Making</a><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a><a href="/thoughts-ai-strategy.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Strategy</a><a href="/thoughts-engineering-leadership.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Engineering Leadership</a><a href="/thoughts-enterprise-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Enterprise AI</a><a href="/thoughts-responsible-ai.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-xs px-2.5 py-1 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Responsible AI</a></div>
+            <div class="markdown-content text-slate-700 leading-relaxed text-[15px]"><p>Enterprise leaders are discovering something uncomfortable about the AI wave sweeping through their organizations. The technology is moving faster than the structures meant to guide it. This <a target="_blank" rel="noopener noreferrer" href="https://www.informationweek.com/machine-learning-ai/how-cios-can-climb-out-of-the-ai-governance-chasm">recent InformationWeek article</a> captures this tension well. CIOs are watching AI agents, tools, and workflows appear across their companies at a pace that outstrips their ability to govern them. They reference a DataIku survey that found 84% of CIOs say employees are building AI applications faster than IT can review or control them. Less than half of organizations have clear governance controls in place. That’s not a small gap. It’s a chasm.<br>
+<img alt="AI Governance Gap" src="https://davidgsmith.net/thoughts/images/ai-governance-gap-mv3yljpf-8b55e5d1.jpg"><br>
+The article focuses on the operational and financial challenges this creates. But underneath those challenges is something deeper. AI governance isn’t just a policy problem. It’s a thinking problem. When a technology accelerates faster than the mental models used to manage it, leaders start losing visibility, control, and confidence. They’re forced into reactive mode. They’re stuck cleaning up AI slop, chasing down shadow systems, and trying to explain decisions made by models they didn’t approve.</p>
+<p>This is exactly the kind of environment where cognitive discipline matters.</p>
+<p><strong>The speed mismatch problem</strong><br>
+AI systems operate at machine speed. Humans don’t. CIOs quoted in the article describe a growing fatigue among reviewers who are asked to keep up with automated agents that never slow down. When people get tired, they rubber‑stamp. When they rubber‑stamp, governance collapses.</p>
+<p>This is a classic speed mismatch. You see it in aviation, finance, cybersecurity, and now AI. When a system moves faster than the human responsible for oversight, the human becomes the bottleneck. The bottleneck becomes the risk. And the risk becomes the headline.</p>
+<p>The solution isn’t to make humans faster. It’s to redesign the oversight loop so humans only intervene where their judgment is actually needed. That requires a shift from “review everything” to “review the right things.”</p>
+<p><strong>The inventory illusion</strong><br>
+One CIO in the article describes an effort to inventory all approved data sources. It’s a smart move, but it’s also a trap. Inventories create a sense of control, but they’re snapshots of a moving target. AI systems generate new data, new artifacts, and new workflows constantly. The moment you finish the inventory, it’s already outdated.</p>
+<p>This is where organizations need to adopt a systems‑thinking approach. Instead of trying to catalog everything, they need to understand the flows. Where does data enter? Where does it move? Where does it get transformed? Where does it get stored? Who touches it? Which agents have access to it?</p>
+<p>Flows matter more than lists.</p>
+<p><strong>Shadow AI isn’t a technology problem</strong><br>
+The article highlights shadow AI as a major governance threat. Employees spin up agents, MCP servers, and tools without approval. But shadow AI isn’t really about technology. It’s about incentives.</p>
+<p>People use unapproved tools when:</p>
+<ul>
+<li>approved tools are slow</li>
+<li>approved tools are hard to access</li>
+<li>approved tools don’t solve their problem</li>
+<li>governance feels like friction instead of support</li>
+</ul>
+<p>Shadow AI is a symptom of a mismatch between what employees need and what the organization provides. If governance is seen as a barrier, people will route around it. If governance is seen as a guide, people will follow it.</p>
+<p>This is where behavioral design becomes essential. Governance must be easy, obvious, and helpful. Reporting an AI error should be as simple as clicking a button. Requesting approval should take minutes, not weeks. Access to safe tools should be frictionless.</p>
+<p>People don’t rebel when the safe path is the easy path.</p>
+<p><strong>The accountability paradox</strong><br>
+The article states that two‑thirds of CIOs say they couldn’t produce an end‑to‑end audit trail for an AI agent’s decision if regulators asked. And I suspect the real number is actually higher.  That’s a serious gap. But it also reveals a deeper paradox.</p>
+<p>Organizations say humans are ultimately accountable for AI outcomes. But humans are at a loss to be accountable for decisions they can’t trace, explain, or even observe. Accountability without visibility is theater and a huge liability.</p>
+<p>To fix this, enterprises need to adopt a principle from cognitive psychology: explainability isn’t optional for trust. If a system can’t show its reasoning, it can’t be trusted. If it can’t be trusted, it can’t be scaled. If it can’t be scaled, it can’t deliver value.</p>
+<p>AI governance must include mechanisms that make decisions inspectable. Not perfect transparency, but enough clarity that a human can understand what happened and why.</p>
+<p><strong>The real governance gap: curiosity</strong><br>
+One of the leaders quoted in the article says his biggest long‑term concern is over‑reliance on AI. He warns that people may forget the skills they’ve built over the years. That’s a valid fear. When a tool becomes too convenient, people stop questioning it.</p>
+<p>The antidote is curiosity.</p>
+<p>Curiosity is the cognitive habit that keeps humans from outsourcing their judgment. It’s the habit that pushes people to ask:</p>
+<ul>
+<li>Why did the model choose this answer?</li>
+<li>What assumptions is it making?</li>
+<li>What data did it rely on?</li>
+<li>What’s missing?</li>
+<li>What would happen if we changed the input?</li>
+</ul>
+<p>Curiosity is the governance layer that can’t be automated. It’s the human safeguard against complacency.</p>
+<p><strong>Where CIOs go from here</strong><br>
+The article ends with a call for collaboration and simplification. Governance committees, clear pathways for reporting issues, and better tools will help. But the deeper shift is mental.</p>
+<p>CIOs need to adopt governance models that assume:</p>
+<ul>
+<li>AI will move faster than policy</li>
+<li>employees will experiment</li>
+<li>data will multiply</li>
+<li>agents will behave unexpectedly</li>
+<li>oversight will fatigue</li>
+<li>accountability will blur</li>
+</ul>
+<p>Governance must be designed for a world where uncertainty is the default, not the exception.</p>
+<p>The organizations that succeed won’t be the ones with the thickest policy documents. They’ll be the ones with the clearest thinking.</p></div>
+            
+    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        
+        <a href="https://www.informationweek.com/machine-learning-ai/how-cios-can-climb-out-of-the-ai-governance-chasm" target="_blank" rel="noopener noreferrer"
+           class="text-sm font-semibold text-brand-accent hover:text-amber-900 transition-colors inline-flex items-center gap-1">
+           Read Original &rarr;
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+                <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on X">
+                <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+                <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
+            </a>
+            <a href="https://bsky.app/intent/compose?text=https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+                <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
+            </a>
+            <a href="https://mastodon.social/share?text=https://davidgsmith.net/thoughts/climbing-out-of-the-ai-governance-chasm-why-cios-need-a-new-mental-model.html"
+               target="_blank" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+                <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
+            </a>
+        </div>
+    </div>
+    
+            
+        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 justify-between">
+            
+        <a href="/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">&larr; Older Thought</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">Portolan and the Quiet Reinvention of Spatial Data Infrastructure</span>
+        </a>
+        
+            
+        <a href="/thoughts/the-uns-new-ai-advocate-isnt-warning-about-the-tech-hes-warning-about-the-people-building-it.html" class="flex-1 p-4 rounded-lg border border-slate-200 hover:border-brand-accent group transition-all text-right">
+            <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Newer Thought &rarr;</span>
+            <span class="text-sm font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">The UN’s New AI Advocate Isn’t Warning About the Tech. He’s Warning About the People Building It</span>
+        </a>
+        
+        </nav>
+        
+            
+    <section class="mt-10 pt-8 border-t border-slate-200" aria-label="Related Thoughts">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h2 class="text-xl sm:text-2xl font-serif font-medium text-slate-900">Related Thoughts</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Perspectives sharing related architectures, models, and domain context.</p>
+            </div>
+            <a href="/thoughts.html" class="text-xs font-semibold uppercase tracking-wider text-brand-accent hover:text-amber-900 transition-colors">
+                All Thoughts &rarr;
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
+                    <span>Oct 23, 2026</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">7 min read</span>
+                </div>
+                <a href="/thoughts/data-governance-the-strategic-asset-most-organizations-treat-as-an-afterthought.html" class="block group mb-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                        Data Governance: The Strategic Asset Most Organizations Treat as an Afterthought
+                    </h3>
+                </a>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">The conversation around corporate data has never been louder. Executives routinely describe information as their most...</p>
+            </div>
+            <div>
+                <div class="flex flex-wrap"><a href="/thoughts-data-governance.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Data Governance</a><a href="/thoughts-engineering-leadership.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Engineering Leadership</a></div>
+                <a href="/thoughts/data-governance-the-strategic-asset-most-organizations-treat-as-an-afterthought.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
+                    Read Thought &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
+                    <span>Oct 03, 2026</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">5 min read</span>
+                </div>
+                <a href="/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html" class="block group mb-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                        AI Can Now P‑Hack at Scale. The Real Risk Isn&#x27;t Cheating. It&#x27;s Obedience.
+                    </h3>
+                </a>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">For years, p‑hacking was a slow, human problem. A researcher could sift through enough models and enough specifications...</p>
+            </div>
+            <div>
+                <div class="flex flex-wrap"><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a></div>
+                <a href="/thoughts/ai-can-now-phack-at-scale-the-real-risk-isnt-cheating-its-obedience.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
+                    Read Thought &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white p-5 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
+                    <span>Oct 23, 2026</span>
+                    <span class="text-amber-900 bg-amber-50 px-2 py-0.5 rounded text-[11px] font-semibold">11 min read</span>
+                </div>
+                <a href="/thoughts/ai-doomerism-and-the-marketing-of-importance.html" class="block group mb-2">
+                    <h3 class="text-base font-serif font-medium text-slate-900 group-hover:text-brand-accent transition-colors leading-snug line-clamp-2">
+                        AI Doomerism and the Marketing of Importance
+                    </h3>
+                </a>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">If your AI can destroy civilization, does that also make it easier to sell? One of the most interesting questions in...</p>
+            </div>
+            <div>
+                <div class="flex flex-wrap"><a href="/thoughts-critical-thinking.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">Critical Thinking</a><a href="/thoughts-ai-safety-risk.html" class="inline-block bg-sky-50 text-sky-950 font-semibold border border-sky-200/90 text-[11px] px-2 py-0.5 rounded-md mr-1.5 mb-1.5 hover:bg-brand-accent hover:border-brand-accent hover:text-white transition-all shadow-xs">AI Safety &amp; Risk</a></div>
+                <a href="/thoughts/ai-doomerism-and-the-marketing-of-importance.html" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-accent hover:text-amber-900 transition-colors mt-2">
+                    Read Thought &rarr;
+                </a>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+    
+        </article>
+    
+            </div>
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                
+    <aside aria-label="Sidebar Navigation" class="space-y-6">
+        <div class="lg:hidden bg-slate-900 p-4 rounded-lg border border-slate-800 shadow-sm text-slate-100">
+            <button id="nav-rail-toggle" class="w-full flex justify-between items-center text-slate-100 font-serif font-bold text-sm focus:outline-none">
+                <span>Filter by Tag &amp; Archive</span>
+                <svg id="nav-toggle-icon" class="w-5 h-5 transform transition-transform text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-rail-content" class="space-y-6 hidden lg:block">
+            <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+                    <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                        Topics
+                    </h3>
+                    <span class="text-xs font-mono font-semibold text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full">50</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    
+        <a href="/thoughts-ai-governance-policy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Governance &amp; Policy</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">15</span>
+        </a>
+        
+        <a href="/thoughts-critical-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Critical Thinking</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">15</span>
+        </a>
+        
+        <a href="/thoughts-ai-safety-risk.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Safety &amp; Risk</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">14</span>
+        </a>
+        
+        <a href="/thoughts-responsible-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Responsible AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">12</span>
+        </a>
+        
+        <a href="/thoughts-ai-strategy.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Strategy</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">10</span>
+        </a>
+        
+        <a href="/thoughts-enterprise-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Enterprise AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">10</span>
+        </a>
+        
+        <a href="/thoughts-ai-agents.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Agents</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
+        </a>
+        
+        <a href="/thoughts-knowledge-graphs.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Knowledge Graphs</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">9</span>
+        </a>
+        
+        <a href="/thoughts-generative-ai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Generative AI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">8</span>
+        </a>
+        
+        <a href="/thoughts-ai-workflows.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Workflows</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+        </a>
+        
+        <a href="/thoughts-risk-management.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Risk Management</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">7</span>
+        </a>
+        
+        <a href="/thoughts-cloud-native-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native Geospatial</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
+        </a>
+        
+        <a href="/thoughts-engineering-leadership.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Engineering Leadership</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
+        </a>
+        
+        <a href="/thoughts-geospatial.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Geospatial</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
+        </a>
+        
+        <a href="/thoughts-retrieval-augmented-generation-rag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Retrieval-Augmented Generation (RAG)</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
+        </a>
+        
+        <a href="/thoughts-systems-thinking.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Systems Thinking</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">6</span>
+        </a>
+        
+        <a href="/thoughts-ai-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Infrastructure</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
+        <a href="/thoughts-decision-making.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Decision Making</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
+        <a href="/thoughts-future-of-work.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Future of Work</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
+        <a href="/thoughts-graphrag.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GraphRAG</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">5</span>
+        </a>
+        
+        <a href="/thoughts-llm-architecture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>LLM Architecture</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-spatial-sql.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial SQL</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-tech-regulation.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Regulation</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">4</span>
+        </a>
+        
+        <a href="/thoughts-books.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Books</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-duckdb.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>DuckDB</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-open-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Open Standards</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-semantic-layer.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Semantic Layer</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">3</span>
+        </a>
+        
+        <a href="/thoughts-data-engineering.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Engineering</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-data-governance.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Governance</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-data-standards.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Standards</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-geoai.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>GeoAI</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-human-ai-interaction.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Human-AI Interaction</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-humanitarian-aid.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Humanitarian Aid</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">2</span>
+        </a>
+        
+        <a href="/thoughts-3d-reality-capture.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>3D Reality Capture</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-ai-law.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>AI Law</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-apache-sedona.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Apache Sedona</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-civic-technology.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Civic Technology</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-cloud-native.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Cloud-Native</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-computer-vision.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Computer Vision</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-data-visualization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Data Visualization</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-deep-learning.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Deep Learning</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-demographics.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Demographics</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-gaussian-splatting.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Gaussian Splatting</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-model-context-protocol.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Model Context Protocol</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-open-source-gis.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Open Source GIS</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-python.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Python</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-spatial-data-infrastructure.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Spatial Data Infrastructure</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-sustainable-tech.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Sustainable Tech</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-tech-modernization.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Tech Modernization</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+        <a href="/thoughts-vector-databases.html" class="inline-flex items-center justify-between px-2.5 py-1 rounded-md border text-xs transition-all border-slate-700 bg-slate-800/90 text-slate-200 hover:border-brand-accent hover:text-white hover:bg-slate-700">
+            <span>Vector Databases</span>
+            <span class="ml-2 bg-slate-950 text-slate-400 group-hover:bg-slate-900 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-medium">1</span>
+        </a>
+        
+                </div>
+            </div>
+
+            <div class="bg-slate-900 p-6 rounded-lg border border-slate-800 shadow-lg text-slate-100">
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+                    <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                        Archive
+                    </h3>
+                </div>
+                
+        <div class="mb-4 last:mb-0">
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">2026</div>
+            <div class="grid grid-cols-4 gap-1.5">
+                <span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">JAN</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">FEB</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">MAR</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">APR</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">MAY</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">JUN</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">JUL</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">AUG</span><a href="/thoughts-2026-sep.html" class="block py-1.5 text-center text-xs rounded transition-all bg-slate-800 text-slate-200 hover:bg-brand-accent hover:text-white font-medium border border-slate-700">SEP</a><a href="/thoughts-2026-oct.html" class="block py-1.5 text-center text-xs rounded transition-all bg-slate-800 text-slate-200 hover:bg-brand-accent hover:text-white font-medium border border-slate-700">OCT</a><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">NOV</span><span class="block py-1.5 text-center text-xs text-slate-500 bg-slate-950/60 border border-slate-800/80 rounded cursor-not-allowed select-none">DEC</span>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </aside>
+    
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+            <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+        </div>
+        <div class="mt-4 md:mt-0 text-sm">&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    if(btn && menu) {
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+    }
+</script>
+
+<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
+<script>
+    const returnToTopBtn = document.getElementById('return-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            returnToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            returnToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            returnToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+    });
+    returnToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const navToggle = document.getElementById('nav-rail-toggle');
+    const navContent = document.getElementById('nav-rail-content');
+    const navIcon = document.getElementById('nav-toggle-icon');
+    if (navToggle && navContent) {
+        navToggle.addEventListener('click', () => {
+            navContent.classList.toggle('hidden');
+            navIcon.classList.toggle('rotate-180');
+        });
+    }
+</script>
+<script src="/js/three.r134.min.js"></script>
+<script src="/js/vanta.net.min.js"></script>
+<script>
+    function initVanta() {
+        if (window.VANTA && window.VANTA.NET) {
+            VANTA.NET({
+                el: "#vanta-canvas",
+                mouseControls: true, touchControls: true, gyroControls: false,
+                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+                color: 0x38bdf8, backgroundColor: 0x0a1128, points: 10.00, maxDistance: 20.00, spacing: 18.00
+            });
+        }
+    }
+    if (!window.THREE) {
+        const s1 = document.createElement('script');
+        s1.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
+        s1.onload = () => {
+            const s2 = document.createElement('script');
+            s2.src = "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js";
+            s2.onload = initVanta;
+            document.body.appendChild(s2);
+        };
+        document.body.appendChild(s1);
+    } else { initVanta(); }
+</script>
+</body>
+</html>
