@@ -251,7 +251,7 @@ def render_in_article_cta(tag_val="geospatial-stack"):
         </div>
         <div class="lg:col-span-5">
             <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
-                  onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Thought Page Signup'});"
+                  onsubmit="gtag('event', 'generate_lead', {{'event_category': 'Newsletter', 'event_label': 'Thought Page Signup'}});"
                   class="flex flex-col sm:flex-row lg:flex-col gap-3">
                 <input type="email" name="email" required placeholder="Enter your email address..."
                        aria-label="Email address"
