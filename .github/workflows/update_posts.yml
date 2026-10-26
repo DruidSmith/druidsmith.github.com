@@ -40,21 +40,25 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add index.html thoughts/ thoughts.html thoughts-*.html rss.xml sitemap.xml post-index.json images-index.json
+          
+          # Stage everything generated or modified
+          git add -A
           
           if git diff --cached --quiet; then
-              echo "changed=false" >> "$GITHUB_OUTPUT"
-              exit 0
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Auto-generate thoughts, tag aggregators, and month pages"
+            
+            # Pull and rebase safely now that all files are staged
+            git pull --rebase -X theirs origin master
+            
+            git push origin master
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-          
-          git commit -m "Auto-generate thoughts, tag aggregators, and month pages"
-          git pull --rebase -X theirs origin master
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Submit updated page to Bing IndexNow
         if: steps.publish.outputs.changed == 'true' && env.INDEXNOW_KEY != ''
         run: |
           curl --fail-with-body --retry 3 --retry-delay 5 -X POST https://api.indexnow.org/indexnow \
             -H 'Content-Type: application/json; charset=utf-8' \
-            --data "{\"host\":\"davidgsmith.net\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://davidgsmith.net/$INDEXNOW_KEY.txt\",\"urlList\":[\"https://davidgsmith.net/thoughts.html\",\"https://davidgsmith.net/rss.xml\"]}"
+            --data "{\"host\":\"davidgsmith.net\",\"key\":\"${{ env.INDEXNOW_KEY }}\",\"keyLocation\":\"https://davidgsmith.net/${{ env.INDEXNOW_KEY }}.txt\",\"urlList\":[\"https://davidgsmith.net/thoughts.html\",\"https://davidgsmith.net/rss.xml\"]}"

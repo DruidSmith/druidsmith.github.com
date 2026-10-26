@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sun, 25 Oct 2026 17:29:47 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 25 Oct 2026 23:56:53 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,95 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Climate and GeoAI:  Addressing data gaps</title>
+                <link>https://davidgsmith.net/thoughts/climate-and-geoai-addressing-data-gaps.html</link>
+                <guid>https://davidgsmith.net/thoughts/climate-and-geoai-addressing-data-gaps.html</guid>
+                <pubDate>Sun, 25 Oct 2026 22:34:12 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>When people think about climate science and AI, they usually think about prediction. Forecasting temperatures decades into the future. Estimating sea level...</description>
+                <category>GeoAI</category>
+            <category>Climate Science</category>
+            <category>Remote Sensing</category>
+            <category>Data Governance</category>
+            <category>Data Quality</category>
+            <category>Spatial Statistics</category>
+            <category>Geospatial</category>
+            <category>Responsible AI</category>
+            <category>AI Workflows</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/climate-data-imputation-mvoegjvk-2d92d87b.jpg" />
+                <content:encoded><![CDATA[<p>When people think about climate science and AI, they usually think about prediction. Forecasting temperatures decades into the future. Estimating sea level rise. Identifying regions at risk from drought, wildfire, or flooding.</p>
+<p>What often gets overlooked is a more fundamental challenge: what happens when the underlying data is incomplete?</p>
+<p>A <a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/imputation-of-missing-climate-data-and-vulnerability-analysis-a-survey-c04ad7314248">recent survey on climate-data imputation</a> explores a surprisingly important topic sitting beneath much of modern climate science, GIS, and GeoAI. Before we can build trustworthy models, vulnerability assessments, or decision-support systems, we first have to deal with a reality that every environmental scientist eventually encounters: environmental data is messy.</p>
+<p>Sensors fail. Weather stations go offline. Satellites can't see through cloud cover. Records are lost during transmission. Equipment drifts out of calibration. The result is that many environmental datasets contain gaps.</p>
+<p>That immediately raises an uncomfortable question.</p>
+<p>If data is missing and researchers estimate what should have been there, are they still doing science, or are they simply making things up?</p>
+<p><strong>The Question Skeptics Will Ask</strong></p>
+<p>It's not a frivolous concern.</p>
+<p>Many people hear the phrase <em>imputed data</em> and assume scientists are manufacturing observations that never existed. Climate skeptics sometimes characterize this process as creating "fake data" to support a preferred conclusion.</p>
+<p>At first glance, that criticism sounds reasonable.</p>
+<p>After all, science is supposed to be based on observation. If an observation doesn't exist, how can anyone legitimately fill in the blank?</p>
+<p>The answer is that scientists are rarely choosing between estimated data and perfect data. They're choosing between estimated data and incomplete data. Those are very different things.</p>
+<p><strong>Estimation Is Not Fabrication</strong></p>
+<p>Suppose a weather station goes offline for twelve hours during a storm.</p>
+<p>Researchers don't randomly invent measurements for those missing observations.</p>
+<p>Instead, they examine nearby stations, historical weather patterns, atmospheric conditions, satellite observations, and other available information. Statistical and machine learning techniques are then used to estimate the most likely values while quantifying uncertainty.</p>
+<p>That distinction matters. Science routinely relies on estimation. Astronomers estimate characteristics of distant objects they can't directly observe. Doctors estimate missing values in clinical studies. Economists estimate gaps in historical records. Remote sensing specialists reconstruct portions of satellite imagery obscured by clouds.</p>
+<p>The key question isn't whether estimation occurs.</p>
+<p>The key question is whether the estimation process is transparent, validated, and honest about uncertainty.<br>
+<img alt="Climate data imputation infographic" src="https://davidgsmith.net/thoughts/images/climate-data-imputation-mvoegjvk-2d92d87b.jpg"></p>
+<p><strong>What I Found Encouraging About The Imputation Survey</strong></p>
+<p>One aspect of the survey stood out immediately. It doesn't read like a paper trying to prove a predetermined conclusion. In fact, it repeatedly acknowledges that no single technique works best in every situation.</p>
+<p>Some datasets respond well to geostatistical methods such as <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Kriging">kriging</a>. Others perform better with machine learning techniques like random forests. In some cases, relatively mature methods such as <a target="_blank" rel="noopener noreferrer" href="https://www.jstatsoft.org/article/view/v045i03">MICE</a> or <a target="_blank" rel="noopener noreferrer" href="https://academic.oup.com/bioinformatics/article/28/1/112/219101">missForest</a> outperform more sophisticated deep learning approaches.</p>
+<p>That's exactly what I'd expect from a field that is grappling honestly with a difficult problem.</p>
+<p>If every study concluded that the newest AI model dramatically outperformed every alternative, my skepticism would increase. Instead, the picture that emerges is far messier and therefore more believable.</p>
+<p>Researchers appear to be wrestling with the reality that different datasets have different characteristics and that methodological choices matter.</p>
+<p><strong>The Real Risk Isn't "Fake Data"</strong></p>
+<p>The survey actually highlights a more interesting concern than the one usually raised by critics. The risk isn't necessarily that researchers are inventing observations. The risk is that different methods can produce different answers.</p>
+<p>A drought assessment might look slightly different depending on how missing rainfall measurements are reconstructed. A flood-vulnerability analysis may change depending on how sparse observations are handled.</p>
+<p>Those aren't signs of scientific failure. They're reminders that uncertainty never disappears. It merely changes form.</p>
+<p>One of the lessons GeoAI practitioners should take seriously is that data reconstruction shouldn't be hidden behind the curtain.</p>
+<p>Users deserve to know:</p>
+<ul>
+<li>Which values were directly observed.</li>
+<li>Which values were estimated.</li>
+<li>Which methodology produced those estimates.</li>
+<li>How confident researchers were in the result.</li>
+</ul>
+<p>Transparency often matters more than obtaining a slightly lower error rate.</p>
+<p><strong>Why This Matters for GeoAI</strong></p>
+<p>The implications extend well beyond climate science.</p>
+<p>Modern GeoAI increasingly combines information from satellites, remote sensors, weather stations, land-cover datasets, infrastructure inventories, demographic information, and predictive models.</p>
+<p>Each source contains gaps. Each source carries uncertainty.</p>
+<p>As geospatial systems become more automated, there is a temptation to treat missing-data handling as a preprocessing step that occurs before the "real" analysis begins.</p>
+<p>That would be a mistake.</p>
+<p>The quality of an AI system is constrained by the quality of the information flowing into it. A sophisticated foundation model trained on poorly understood data does not become trustworthy simply because the architecture is advanced.</p>
+<p>In many cases, understanding where the data is weak may be more valuable than improving predictive accuracy by a few percentage points.</p>
+<p><strong>A Recommendation for Researchers</strong></p>
+<p>One takeaway from this survey is that the geospatial community should begin treating imputation outputs much like we treat model outputs.</p>
+<p>We don't simply display flood-risk predictions.</p>
+<p>We display confidence intervals, uncertainty measures, and model assumptions.</p>
+<p>Missing-data reconstruction deserves the same treatment.</p>
+<p>Imagine future GIS platforms where every layer includes:</p>
+<ul>
+<li>Observed values.</li>
+<li>Imputed values.</li>
+<li>Confidence estimates.</li>
+<li>Provenance information describing how reconstruction occurred.</li>
+</ul>
+<p>That would help analysts understand not only what the data says, but also how much trust should be placed in each portion of the dataset.</p>
+<p>Ironically, that level of transparency would address many of the objections raised by skeptics.</p>
+<p><strong>The Bigger Lesson</strong></p>
+<p>The most interesting insight from the survey may be that missing data is not a technical nuisance. It's a foundational geospatial problem.</p>
+<p>Every map, risk model, climate forecast, and GeoAI application ultimately depends on observations collected at specific places and times. Whenever observations are missing, uncertainty enters the system.</p>
+<p>The challenge isn't eliminating that uncertainty. The challenge is understanding it, measuring it, and communicating it honestly.</p>
+<p>Perhaps the most important question for any climate or GeoAI system isn't whether it can predict the future. It's whether we fully understand the limits of what we know about the past.</p>
+<p><strong>Relevant Links</strong><br>
+* Original post on the imputation survey: https://pub.towardsai.net/imputation-of-missing-climate-data-and-vulnerability-analysis-a-survey-c04ad7314248<br>
+* NASA GISS Surface Temperature Analysis: https://data.giss.nasa.gov/gistemp/<br>
+* MICE (Multivariate Imputation by Chained Equations): https://www.jstatsoft.org/article/view/v045i03<br>
+* GAIN: Missing Data Imputation Using Generative Adversarial Nets: https://proceedings.mlr.press/v80/yoon18a.html</p>]]></content:encoded>
+            </item>
             <item>
                 <title>AI Safety&#x27;s New Reality: The Governance Gap Is No Longer Theoretical</title>
                 <link>https://davidgsmith.net/thoughts/ai-safetys-new-reality-the-governance-gap-is-no-longer-theoretical.html</link>
