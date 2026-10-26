@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Mon, 26 Oct 2026 01:26:56 +0000</lastBuildDate>
+            <lastBuildDate>Mon, 26 Oct 2026 01:45:43 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -33,7 +33,7 @@
             <category>Responsible AI</category>
             <category>AI Workflows</category>
             <media:thumbnail url="https://davidgsmith.net/thoughts/images/climate-data-imputation-mvoegjvk-2d92d87b.jpg" />
-                <content:encoded><![CDATA[<p>When people think about climate science and AI, they usually think about prediction. Forecasting temperatures decades into the future. Estimating sea level rise. Identifying regions at risk from drought, wildfire, or flooding.</p>
+                <content:encoded><![CDATA[<p>When people think about climate science and AI, they usually think about prediction. Forecasting temperatures decades into the future. Estimating sea level rise. Identifying regions at risk from drought, wildfire, or flooding. </p>
 <p>What often gets overlooked is a more fundamental challenge: what happens when the underlying data is incomplete?</p>
 <p>A <a target="_blank" rel="noopener noreferrer" href="https://pub.towardsai.net/imputation-of-missing-climate-data-and-vulnerability-analysis-a-survey-c04ad7314248">recent survey on climate-data imputation</a> explores a surprisingly important topic sitting beneath much of modern climate science, GIS, and GeoAI. Before we can build trustworthy models, vulnerability assessments, or decision-support systems, we first have to deal with a reality that every environmental scientist eventually encounters: environmental data is messy.</p>
 <p>Sensors fail. Weather stations go offline. Satellites can't see through cloud cover. Records are lost during transmission. Equipment drifts out of calibration. The result is that many environmental datasets contain gaps.</p>
