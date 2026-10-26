@@ -239,7 +239,7 @@ def render_in_article_cta(tag_val="geospatial-stack"):
                     Weekly Briefing &amp; Reference Hub
                 </span>
                 <a href="/cloud-native-geospatial-stack.html" class="text-xs font-semibold text-sky-400 hover:text-sky-300 underline">
-                    New: The Cloud-Native Geospatial &amp; DuckDB Stack &rarr;
+                    New: The Cloud-Native Geospatial & GeoAI Stack &rarr;
                 </a>
             </div>
             <h3 class="text-2xl sm:text-3xl font-serif font-medium text-white leading-snug">
