@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Mon, 26 Oct 2026 01:45:43 +0000</lastBuildDate>
+            <lastBuildDate>Tue, 27 Oct 2026 16:57:34 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,29 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Upskilling Data Teams with Posit Academy</title>
+                <link>https://davidgsmith.net/thoughts/upskilling-data-teams-with-posit-academy.html</link>
+                <guid>https://davidgsmith.net/thoughts/upskilling-data-teams-with-posit-academy.html</guid>
+                <pubDate>Mon, 26 Oct 2026 23:19:52 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Earlier today our Posit rep pointed us toward the training options at Posit Academy, and it&#x27;s worth checking out if you need to update your technical skills...</description>
+                <category>AI Workflows</category>
+            <category>Engineering Leadership</category>
+            <category>Enterprise AI</category>
+            <category>Learning Resources</category>
+            <category>Data Visualization</category>
+            <category>Python</category>
+            <category>R</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/posit-academy-mvpvo1tj-f9e1563f.png" />
+                <content:encoded><![CDATA[<p>Earlier today our Posit rep pointed us toward the training options at <a target="_blank" rel="noopener noreferrer" href="https://academy.posit.co/">Posit Academy</a>, and it's worth checking out if you need to update your technical skills without committing to a expensive courses or a rigid bootcamp.<br>
+<img alt="Posit Academy" src="https://davidgsmith.net/thoughts/images/posit-academy-mvpvo1tj-f9e1563f.png"></p>
+<p>When you're managing data projects or trying to stay current, finding training often feels like a chore. You usually end up with overly academic theory or vendor pitches disguised as education. What stood out to me with Posit Academy's offerings is how rooted they are in practical, day-to-day data work. You can browse the full catalog of self-paced options at <a target="_blank" rel="noopener noreferrer" href="https://academy.posit.co/page/all-courses">https://academy.posit.co/page/all-courses</a>. The core focus remains tight, aiming directly at building real competence in R and Python.</p>
+<p>The setup relies heavily on structured learning tracks and apprenticeships. Instead of just throwing a bunch of disconnected videos at you, the platform guides you through paths that reflect how modern data teams actually operate. If you're starting to move workflows into Positron, their new data science IDE, the courses provide a concrete way to see how R and Python can coexist in a single environment. It's less about memorizing syntax and more about establishing a reliable development process.</p>
+<p>The most useful piece of the catalog deals with integrating large language models into science workflows. We're all dealing with the pressure to add AI capabilities to our enterprise stacks, but doing it responsibly in a scientific context is difficult. The training focuses on the mechanics of making LLMs work for real data analysis. It sidesteps the usual hype to show you how to maintain reproducibility and rigor when applying these models to your datasets.</p>
+<p>The site also gives a shoutout to the <a target="_blank" rel="noopener noreferrer" href="https://posit.co/data-science-hangout?utm_source=outreach&amp;utm_medium=display&amp;utm_campaign=701Qg00000XUHOcIAP&amp;utm_term=hangout&amp;utm_content=academy-product-banner">Data Science Hangout</a>, which is a weekly online meetup with a great community of data science practitioners happening every Thursday at noon eastern.</p>
+<p>If you're trying to figure out how to upskill your data folks or just want to refine your own approach, take a look at their tracks. I'd be curious to hear if anyone has gone through the apprenticeship model and how well it translates to your daily engineering workflows.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Climate and GeoAI:  Addressing data gaps</title>
                 <link>https://davidgsmith.net/thoughts/climate-and-geoai-addressing-data-gaps.html</link>
