@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Wed, 28 Oct 2026 02:35:14 +0000</lastBuildDate>
+            <lastBuildDate>Wed, 28 Oct 2026 03:02:50 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -32,15 +32,15 @@
 <p>I'll be honest, it makes me tilt my head. Some of the people saying it are younger than me.</p>
 <p>I don't think they're being dramatic, and I don't think they're fishing for reassurance. I think they genuinely believe it. Somewhere along the way, a lot of us picked up the idea that understanding technology is something you either have by a certain age or you don't, like a window that quietly closed while we weren't looking. I'd like to gently push back on that, because it isn't true, and believing it costs people far more than any gadget ever will.<br>
 <img alt="You're Not Too Old And It's Not Too Late" src="https://davidgsmith.net/thoughts/images/not-too-old-mvri1yrs-b358bbd3.jpg"></p>
-<p><strong>Curiosity doesn't have an expiration date</strong></p>
+<p><strong>Curiosity Doesn't Have An Expiration Date</strong></p>
 <p>Nobody is born knowing how any of this works. The people you think of as "tech people" got there by poking at things, breaking them, searching for the error message, and trying again. That's the whole secret. It was never talent that set them apart. It was a willingness to be a beginner over and over without feeling embarrassed about it.</p>
 <p>Psychologist Carol Dweck (I give her shoutouts in <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a>) has spent decades studying exactly this, and her work on the <a target="_blank" rel="noopener noreferrer" href="https://www.mindsetworks.com/science/">Growth Mindset</a> boils down to something I find deeply comforting. Ability isn't a fixed quantity you're handed at birth. It stretches when you stretch it. Your brain at 45 or 60 is still perfectly capable of picking up something new. It just needs you to give it permission to be bad at the thing for a while.</p>
 <p>And there's no shortage of ways in. <a target="_blank" rel="noopener noreferrer" href="https://cs50.harvard.edu/x/">CS50</a> from Harvard is free and wonderfully welcoming to people who have never written a line of code. <a target="_blank" rel="noopener noreferrer" href="https://ocw.mit.edu/">MIT OpenCourseWare</a> has a whole universe of material you can wander through at your own pace. If you like your learning a little more playful, Julia Evans makes delightful little <a target="_blank" rel="noopener noreferrer" href="https://wizardzines.com/">zines</a> that explain scary-sounding topics in a way that feels like a friend sitting next to you.</p>
-<p><strong>The danger of the shiny button</strong></p>
+<p><strong>The Danger Of The Shiny Button</strong></p>
 <p>Here's the part I really care about, and it's the thing that keeps me banging this drum.</p>
 <p>Modern tools are getting extraordinarily good at hiding complexity. That's mostly wonderful. I wouldn't want to go back. But there's a quiet trade hiding in there. When everything is a friendly button inside some polished piece of proprietary software, it gets very easy to stop asking what's underneath. You click, it works, and you move on. Then one day it doesn't work, or the company changes the rules, or the price doubles, or the product disappears, and you realize you never understood the thing you'd built your work around.</p>
 <p>I'm not asking anyone to give up convenience. I'm asking you not to get complacent. Stay a little curious about what's happening behind the curtain. Open the settings you've never opened. Ask why it works that way. Read the error message instead of closing the window. You don't need to become an expert in all of it. You just need to keep the question alive, because the question is what keeps you capable.</p>
-<p><strong>Why I keep talking about it</strong></p>
+<p><strong>Why I Keep Talking About It</strong></p>
 <p>I try to teach and explain and, yes, evangelize, probably more than some people would like. I'm not doing it to show off whatever I happen to know. I do it because I remember those times when somebody did it for me, patiently, more than once, when I didn't understand something and felt a little foolish asking.</p>
 <p>That's how this has always worked. Knowledge gets passed hand to hand, from the person who figured it out last week to the person who's about to. No one gets all the way there alone, and honestly, nobody ever really arrives. The ground keeps moving for all of us, including the folks who do this for a living. I still hit things I don't understand every single week, and I've made my peace with it. It's part of the fun.</p>
 <p>So if you've caught yourself saying you're too old, too behind, or too far gone, I'd invite you to try saying something different. Try "I haven't learned this yet." That small change matters more than it looks, because "yet" leaves the door open.</p>
