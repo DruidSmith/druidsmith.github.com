@@ -9,7 +9,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-4T0MRLF4V8');
+        gtag('config', 'G-4T0MRLF4V8', { send_page_view: true });
     </script>
     <!-- Microsoft Clarity -->
     <script>
@@ -22,7 +22,10 @@
 
     <title>The Cloud-Native Geospatial Software &amp; DuckDB Stack | David G. Smith</title>
     <meta name="description" content="A comprehensive architectural reference on cloud-native geospatial software, serverless spatial SQL with DuckDB, GeoParquet, STAC, COGs, Portolan, Apache Sedona, and Earth AI.">
+    <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://davidgsmith.net/cloud-native-geospatial-stack.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- OpenGraph Metadata -->
     <meta property="og:site_name" content="David G. Smith">
@@ -75,7 +78,7 @@
       "description": "Architectural guide to cloud-native geospatial software, GeoParquet, Cloud Optimized GeoTIFF (COG), STAC, Portolan, Apache Sedona, and serverless spatial SQL with DuckDB.",
       "url": "https://davidgsmith.net/cloud-native-geospatial-stack.html",
       "datePublished": "2026-10-25",
-      "dateModified": "2026-10-25",
+      "dateModified": "2026-10-27",
       "author": {
         "@type": "Person",
         "@id": "https://davidgsmith.net/#person",
@@ -111,50 +114,55 @@
 
     <style>
         .glass-nav {
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(15, 23, 42, 0.94);
             backdrop-filter: blur(12px);
         }
     </style>
+
+    <!-- Shared Site Core Telemetry & Subscription Engine -->
+    <script src="/js/site-core.js" defer></script>
 </head>
 <body class="font-sans text-slate-300 bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                    <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                    <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 transition-colors text-sm font-semibold">Geo Hub</a>
-                    <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
-                    <a href="/books.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
-                    <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white focus:outline-none" aria-label="Toggle Navigation">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
+    <!-- Standardized High-Contrast Dark Glass Header -->
+    <header>
+        <nav aria-label="Main Navigation" class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0">
+                        <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    </div>
+                    <div class="hidden md:flex space-x-7 items-center">
+                        <a href="/#about" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">About</a>
+                        <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
+                        <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 transition-colors text-sm font-semibold" aria-current="page">Geo &amp; DuckDB Hub</a>
+                        <a href="/thoughts.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Thoughts</a>
+                        <a href="/books.html" data-book-funnel="geo_hub_nav_books" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Books</a>
+                        <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
+                        <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" type="button" class="text-white focus:outline-none p-2" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-300">About</a>
-                <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-300">Work</a>
-                <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Geo Hub</a>
-                <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Thoughts</a>
-                <a href="/books.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Books</a>
-                <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-300">Advisory</a>
-                <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-300">Contact</a>
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 shadow-xl">
+                <div class="px-4 pt-2 pb-5 space-y-1.5">
+                    <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">About</a>
+                    <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-semibold text-amber-400" aria-current="page">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Thoughts</a>
+                    <a href="/books.html" data-book-funnel="geo_hub_mobile_nav_books" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Books</a>
+                    <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
+                    <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-16">
         
@@ -171,32 +179,34 @@
                     For decades, working with spatial and Earth observation data meant standing up heavy database servers, managing complex tile caches, and paying steep licensing taxes. Today, spatial data infrastructure has been quietly reinvented around <strong>HTTP range requests, columnar storage (GeoParquet), STAC/Portolan catalogs, Cloud Optimized GeoTIFFs (COGs), and ephemeral in-process compute engines like DuckDB</strong>.
                 </p>
 
-                <!-- Waitlist & Weekly Briefing Box -->
+                <!-- Waitlist & Weekly Briefing Box (Webhook + Coming Soon) -->
                 <div id="waitlist" class="bg-slate-950/90 border border-amber-500/40 rounded-xl p-6 sm:p-8">
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-3">
+                        Coming Soon &bull; Weekly Architecture Briefing &amp; Book Waitlist
+                    </span>
                     <h2 class="text-xl sm:text-2xl font-serif font-medium text-white mb-2">
-                        Join the Early-Access List: <em>The Cloud-Native Spatial &amp; Geo AI Stack</em>
+                        Coming Soon: <em>The Cloud-Native Spatial &amp; GeoAI Stack</em> + Weekly Digest
                     </h2>
                     <p class="text-sm text-slate-300 mb-5 leading-relaxed">
-                        I am expanding my viral architecture essays into a comprehensive practitioner handbook—and sending out a curated <strong>Weekly Geopatial &amp; AI Intelligence Briefing</strong> featuring a curated collection of the top community essays, news developments, and research papers.
+                        Launching soon: I am expanding my architecture essays into a comprehensive practitioner handbook—and sending out a curated <strong>Weekly Geospatial, Data &amp; AI Intelligence Briefing</strong> featuring the top community essays, news developments, and research papers. Join the early-access list below.
                     </p>
-                    <form action="https://buttondown.com/api/emails/embed-subscribe/davidgsmith" method="post" target="_blank"
-                          onsubmit="gtag('event', 'generate_lead', {'event_category': 'Book Waitlist', 'event_label': 'Geospatial Pillar Hero'});"
+                    <form data-newsletter-form data-source-page="geo_hub_hero" action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post"
                           class="flex flex-col sm:flex-row gap-3">
                         <input type="email" name="email" required placeholder="Enter your email for weekly briefings &amp; sample chapters..."
                                aria-label="Email address"
                                class="flex-1 px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
                         <input type="hidden" name="tag" value="geospatial-book-waitlist">
-                        <button type="submit"
-                                class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg">
-                            Join Waitlist &amp; Weekly Digest &rarr;
+                        <button type="submit" data-submit-btn
+                                class="px-6 py-3 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg inline-flex items-center justify-center">
+                            <span>Join Waitlist (Coming Soon) &rarr;</span>
                         </button>
                     </form>
-                    <p class="text-xs text-slate-400 mt-3">1x weekly curated intelligence &bull; Zero fluff &bull; Unsubscribe anytime.</p>
+                    <p class="text-xs text-slate-400 mt-3">Coming soon &bull; 1x weekly curated intelligence &bull; Zero fluff &bull; Unsubscribe anytime.</p>
                 </div>
             </div>
         </header>
 
-        <!-- Reference Comparison Matrix (Targets Search Console Queries Directly) -->
+        <!-- Reference Comparison Matrix -->
         <section aria-labelledby="matrix-heading" class="space-y-6">
             <div>
                 <h2 id="matrix-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white mb-2">
@@ -398,24 +408,80 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+    <!-- Dismissible Subscription Feedback Toast & Modal -->
+    <div id="sub-toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 hidden max-w-sm bg-slate-900 border border-slate-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 transition-all duration-300">
+        <span id="sub-toast-icon" class="mt-0.5 text-emerald-400 shrink-0"></span>
+        <div class="text-xs sm:text-sm flex-1">
+            <p id="sub-toast-title" class="font-semibold text-white">Subscription Update</p>
+            <p id="sub-toast-msg" class="text-slate-300 mt-0.5"></p>
+        </div>
+        <button type="button" onclick="closeSubFeedback()" class="text-slate-400 hover:text-white p-1" aria-label="Close notification">&times;</button>
+    </div>
+
+    <div id="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center space-y-4 relative">
+            <button type="button" onclick="closeSubFeedback()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" aria-label="Dismiss modal">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div id="sub-modal-badge" class="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"></div>
+            <h3 id="sub-modal-title" class="text-xl font-serif font-semibold text-white"></h3>
+            <p id="sub-modal-message" class="text-sm text-slate-300 leading-relaxed"></p>
+            <p class="text-xs text-amber-400/90 font-medium">The Spatial, Data &amp; AI Architecture Digest is coming soon — you are locked in for the inaugural issue.</p>
+            <div class="pt-2">
+                <button type="button" onclick="closeSubFeedback()" class="w-full py-2.5 px-5 bg-brand-accent hover:bg-amber-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors">
+                    Got It
+                </button>
             </div>
-            <div class="mt-4 md:mt-0 text-sm">
-                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+        </div>
+    </div>
+
+    <!-- Standardized Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <a href="/" class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    <p class="text-xs text-slate-500 mt-1">Data Scientist, Technical Architect &amp; Author &bull; Washington, DC</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-slate-300">
+                    <a href="/#about" class="hover:text-amber-400 transition-colors">About</a>
+                    <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                    <a href="/books.html" data-book-funnel="geo_hub_footer_books" class="hover:text-amber-400 transition-colors">Books</a>
+                    <a href="/critical-thinking.html" data-book-funnel="geo_hub_footer_ct" class="hover:text-amber-400 transition-colors">Critical Thinking</a>
+                    <a href="/rss.xml" class="hover:text-amber-400 transition-colors">RSS</a>
+                    <a href="/#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/davidgsmith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                    <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Amazon Author</a>
+                    <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Goodreads</a>
+                    <a href="https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">BookBub</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Fallback Init Script -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        if (btn && menu) {
-            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        if (btn && menu && !btn.dataset.navBound) {
+            btn.dataset.navBound = 'true';
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(!isHidden));
+            });
+            mobileLinks.forEach(link => link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }));
         }
     </script>
 </body>

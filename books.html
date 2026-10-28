@@ -9,15 +9,28 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-4T0MRLF4V8');
+        gtag('config', 'G-4T0MRLF4V8', { send_page_view: true });
     </script>
-    <title>Books & Publications | David G. Smith</title>
+
+    <!-- Clarity tracking code for https://davidgsmith.net/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yolwcmk37v");
+    </script>
+
+    <title>Books &amp; Publications | David G. Smith</title>
     <meta name="description" content="Explore books by David G. Smith, including 'Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation' and the upcoming 'AI for Small Business' series.">
+    <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://davidgsmith.net/books.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- OpenGraph Metadata -->
     <meta property="og:site_name" content="David G. Smith">
-    <meta property="og:title" content="Books & Publications — David G. Smith">
+    <meta property="og:title" content="Books &amp; Publications — David G. Smith">
     <meta property="og:description" content="Practical frameworks for critical thinking, noise reduction, and artificial intelligence adoption.">
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://davidgsmith.net/books.html">
@@ -25,7 +38,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Books & Publications — David G. Smith">
+    <meta name="twitter:title" content="Books &amp; Publications — David G. Smith">
     <meta name="twitter:description" content="Practical frameworks for critical thinking, noise reduction, and artificial intelligence adoption.">
     <meta name="twitter:image" content="https://davidgsmith.net/images/CriticalThinkingCover.jpg">
 
@@ -86,6 +99,7 @@
         "https://www.linkedin.com/in/davidgsmith",
         "https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F",
         "https://www.goodreads.com/author/show/72277946.David_G_Smith",
+        "https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887",
         "https://www.librarything.com/a/32948024/David-G-Smith",
         "https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0",
         "https://bookwyrm.social/author/445970/s/david-g-smith",
@@ -109,10 +123,17 @@
           "url": "https://davidgsmith.net/critical-thinking.html",
           "isbn": "9798194730490",
           "numberOfPages": 468,
-          "datePublished": "2026-08-30",
+          "datePublished": "2026-08-27",
           "author": {
             "@id": "https://davidgsmith.net/#person"
           },
+          "sameAs": [
+            "https://www.amazon.com/dp/B0HH3CYK79",
+            "https://www.goodreads.com/book/show/257686553-critical-thinking",
+            "https://www.bookbub.com/books/critical-thinking-a-practical-guide-to-seeing-through-bias-noise-and-manipulation-by-david-g-smith",
+            "https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation",
+            "https://bookwyrm.social/book/2365772/s/critical-thinking"
+          ],
           "@id": "https://davidgsmith.net/critical-thinking.html#book"
         },
         {
@@ -139,67 +160,63 @@
 
     <style>
         .glass-nav {
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(15, 23, 42, 0.94);
             backdrop-filter: blur(12px);
         }
     </style>
 
-    <!-- Clarity tracking code for https://davidgsmith.net/ -->
-<script>
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yolwcmk37v");
-</script>
-
+    <!-- Shared Site Core Telemetry & Subscription Engine -->
+    <script src="/js/site-core.js" defer></script>
 </head>
 <body class="font-sans text-brand-muted bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
 
     <!-- Vanta.js Birds Canvas Layer -->
     <div id="vanta-bg" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">
-                        David G. Smith
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/#about" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                    <a href="/#work" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                    <a href="/cloud-native-geospatial-stack.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
-                    <a href="/thoughts.html" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Thoughts</a>
-                    <a href="/books.html" class="text-brand-accent transition-colors text-sm font-semibold">Books</a>
-                    <a href="/#advisory" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-700 text-white hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
-                </div>
+    <!-- Standardized High-Contrast Dark Glass Header -->
+    <header>
+        <nav aria-label="Main Navigation" class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0">
+                        <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">
+                            David G. Smith
+                        </a>
+                    </div>
+                    
+                    <div class="hidden md:flex space-x-7 items-center">
+                        <a href="/#about" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">About</a>
+                        <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
+                        <a href="/cloud-native-geospatial-stack.html" data-prior-action="books_to_geo_hub_nav" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
+                        <a href="/thoughts.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Thoughts</a>
+                        <a href="/books.html" class="text-amber-400 transition-colors text-sm font-semibold" aria-current="page">Books</a>
+                        <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
+                        <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
+                    </div>
 
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white focus:outline-none" aria-label="Toggle Navigation">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" type="button" class="text-white focus:outline-none p-2" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-300">About</a>
-                <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-300">Work</a>
-                <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-300">Thoughts</a>
-                <a href="/books.html" class="mobile-link block py-2 text-base font-medium text-brand-accent font-semibold">Books</a>
-                <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-300">Advisory</a>
-                <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-slate-300">Contact</a>
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 shadow-xl">
+                <div class="px-4 pt-2 pb-5 space-y-1.5">
+                    <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">About</a>
+                    <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" data-prior-action="books_to_geo_hub_mobile_nav" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Thoughts</a>
+                    <a href="/books.html" class="mobile-link block py-2 text-base font-semibold text-amber-400" aria-current="page">Books</a>
+                    <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
+                    <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Main Content Container -->
     <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
@@ -217,75 +234,83 @@
                         Writing at the intersection of cognitive psychology, data engineering, and modern technology. My publications provide rigorous, field-tested mental models designed to navigate noise, counter disinformation, and make sound decisions in an information-dense world.
                     </p>
                     
-                    <!-- Platform Profiles -->
+                    <!-- Platform Profiles (Tracked via DGSAnalytics) -->
                     <div class="flex flex-wrap gap-2.5 justify-center md:justify-start">
 
-                        <!-- Amazon -->
+                        <!-- Amazon Author Page -->
                         <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-[#FF9900] border border-slate-700 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'Amazon Author Page', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-[#FF9900] border border-slate-700 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
                             Amazon Author Page
                         </a>
 
-                        <!-- Goodreads -->
+                        <!-- Goodreads Author -->
                         <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-[#FAF8F6] hover:bg-[#F0ECE6] text-[#1E1915] rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'Goodreads', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-[#FAF8F6] hover:bg-[#F0ECE6] text-[#1E1915] rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
                             Goodreads
+                        </a>
+
+                        <!-- BookBub Author Profile -->
+                        <a href="https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887"
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'BookBub', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-[#E63946] hover:bg-[#D62828] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm">
+                            BookBub
                         </a>
 
                         <!-- LibraryThing -->
                         <a href="https://www.librarything.com/a/32948024/David-G-Smith"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-[#634644] hover:bg-[#523937] text-white rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'LibraryThing', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-[#634644] hover:bg-[#523937] text-white rounded-md text-xs font-serif font-semibold flex items-center gap-1.5 transition-colors">
                             LibraryThing
                         </a>
 
                         <!-- StoryGraph -->
                         <a href="https://app.thestorygraph.com/authors/a8ece357-87c0-4efd-b656-e09f471ed1a0"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-[#333333] hover:bg-[#262626] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'StoryGraph', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-[#333333] hover:bg-[#262626] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
                             StoryGraph
                         </a>
 
                         <!-- BookWyrm -->
                         <a href="https://bookwyrm.social/author/445970/s/david-g-smith"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-[#4C1D95] hover:bg-[#3b1578] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'BookWyrm', 'author_profile');}"
+                           class="px-3.5 py-1.5 bg-[#4C1D95] hover:bg-[#3b1578] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
                             BookWyrm
                         </a>
 
-                        <!-- LinkedIn -->
+                        <!-- LinkedIn (Inline SVG) -->
                         <a href="https://www.linkedin.com/in/davidgsmith"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#0A66C2] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
-                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/linkedin-app-icon.svg"
-                                alt="LinkedIn"
-                                class="w-4 h-4">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'LinkedIn', 'social_profile');}"
+                           class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#0A66C2] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                             LinkedIn
                         </a>
 
-                        <!-- Bluesky -->
+                        <!-- Bluesky (Inline SVG) -->
                         <a href="https://bsky.app/profile/druidsmith.bsky.social"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#0285FF] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
-                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/bluesky-icon.svg"
-                                alt="Bluesky"
-                                class="w-4 h-4">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'Bluesky', 'social_profile');}"
+                           class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#0285FF] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
                             @DruidSmith
                         </a>
 
-                        <!-- Mastodon -->
+                        <!-- Mastodon (Inline SVG) -->
                         <a href="https://mastodon.social/@DruidSmith"
-                        target="_blank" rel="noopener noreferrer"
-                        class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#6364FF] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
-                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/mastodon-icon.svg"
-                                alt="Mastodon"
-                                class="w-4 h-4">
+                           target="_blank" rel="noopener noreferrer"
+                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'author_profile_click', 'Mastodon', 'social_profile');}"
+                           class="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-[#6364FF] border border-slate-300 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.433 4.014.536c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-1.075-.452-1.62-1.357-1.62-1 0-1.501.647-1.501 1.927v2.791h-2.069V9.364c0-1.28-.501-1.927-1.502-1.927-.905 0-1.357.546-1.357 1.62v5.099H6.026V8.903c0-1.074.273-1.927.823-2.558.566-.631 1.307-.955 2.228-.955 1.065 0 1.872.409 2.405 1.228l.518.869.519-.869c.533-.819 1.34-1.228 2.405-1.228.92 0 1.662.324 2.228.955.55.631.822 1.484.822 2.558v5.253z"/></svg>
                             @DruidSmith
                         </a>
-
-
                     </div>
                 </div>
             </div>
@@ -312,7 +337,10 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 mb-6">
                             <div class="sm:col-span-5 flex justify-center">
-                                <a href="critical-thinking.html" class="block group">
+                                <a href="/critical-thinking.html"
+                                   data-book-funnel="books_card_cover_image"
+                                   onclick="trackToCriticalThinking(this, 'books_card_cover_image')"
+                                   class="block group">
                                     <picture>
                                         <source srcset="images/CriticalThinkingCover.avif" type="image/avif">
                                         <source srcset="images/CriticalThinkingCover.webp" type="image/webp">
@@ -322,7 +350,10 @@
                             </div>
                             <div class="sm:col-span-7 space-y-3">
                                 <h3 class="text-xl sm:text-2xl font-serif font-semibold text-white leading-snug">
-                                    <a href="critical-thinking.html" class="hover:text-amber-400 transition-colors">
+                                    <a href="/critical-thinking.html"
+                                       data-book-funnel="books_card_title_link"
+                                       onclick="trackToCriticalThinking(this, 'books_card_title_link')"
+                                       class="hover:text-amber-400 transition-colors">
                                         Critical Thinking: A Practical Guide to Seeing Through Bias, Noise and Manipulation
                                     </a>
                                 </h3>
@@ -333,25 +364,73 @@
                                     <p><strong>ISBN-13:</strong> 979-8194730490</p>
                                     <p><strong>Goodreads Rating:</strong> 5.0 &#9733;&#9733;&#9733;&#9733;&#9733;</p>
                                 </div>
+
+                                <!-- Book Edition Review & Index Badges (Goodreads, BookBub, LibraryThing, BookWyrm) -->
+                                <div class="pt-2">
+                                    <span class="text-[11px] text-slate-400 block mb-1.5 font-medium">View Book on Review Platforms:</span>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <a href="https://www.goodreads.com/book/show/257686553-critical-thinking"
+                                           target="_blank" rel="noopener noreferrer"
+                                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_review_site_click', 'Goodreads', 'book_page');}"
+                                           class="px-2.5 py-1 bg-[#FAF8F6] text-[#1E1915] rounded text-[11px] font-serif font-semibold hover:opacity-90 transition-opacity">
+                                            Goodreads
+                                        </a>
+                                        <a href="https://www.bookbub.com/books/critical-thinking-a-practical-guide-to-seeing-through-bias-noise-and-manipulation-by-david-g-smith"
+                                           target="_blank" rel="noopener noreferrer"
+                                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_review_site_click', 'BookBub', 'book_page');}"
+                                           class="px-2.5 py-1 bg-[#E63946] hover:bg-[#D62828] text-white rounded text-[11px] font-semibold transition-colors shadow-sm">
+                                            BookBub
+                                        </a>
+                                        <a href="https://www.librarything.com/work/37224901/t/Critical-Thinking-A-Practical-Guide-to-Seeing-Through-Bias-Noise-and-Manipulation"
+                                           target="_blank" rel="noopener noreferrer"
+                                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_review_site_click', 'LibraryThing', 'book_page');}"
+                                           class="px-2.5 py-1 bg-[#634644] text-white rounded text-[11px] font-serif font-semibold hover:opacity-90 transition-opacity">
+                                            LibraryThing
+                                        </a>
+                                        <a href="https://bookwyrm.social/book/2365772/s/critical-thinking"
+                                           target="_blank" rel="noopener noreferrer"
+                                           onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_review_site_click', 'BookWyrm', 'book_page');}"
+                                           class="px-2.5 py-1 bg-[#4C1D95] text-white rounded text-[11px] font-semibold hover:opacity-90 transition-opacity">
+                                            BookWyrm
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Action Bar -->
                     <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-                        <div class="flex items-center gap-2">
-                            <!-- Read Sample New Window Button -->
-                            <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'click', { 'event_category': 'Book Sales', 'event_label': 'Amazon Paperback Purchase' });" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition-colors">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Read Sample Button (Distinct Sample Event) -->
+                            <a href="https://www.amazon.com/dp/B0HH3CYK79?asin=B0HH3CYK79&revisionId=&format=4&depth=1"
+                               target="_blank" rel="noopener noreferrer"
+                               onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_sample_click', 'Amazon Sample', 'sample');}"
+                               class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition-colors">
                                 <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                                 </svg>
                                 Read Sample &nearr;
                             </a>
-                            <a href="https://www.amazon.com/Critical-Thinking-Practical-Through-Manipulation/dp/B0HH3CYK79" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'click', { 'event_category': 'Book Sales', 'event_label': 'Amazon Paperback Purchase' });" class="px-4 py-2 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors">
+                            <!-- Buy Paperback on Amazon -->
+                            <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20"
+                               target="_blank" rel="noopener noreferrer"
+                               onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_purchase_click', 'Amazon', 'paperback_books_page');}"
+                               class="px-4 py-2 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors shadow">
                                 Buy on Amazon
                             </a>
+                            <!-- Buy Kindle on Amazon -->
+                            <a href="https://www.amazon.com/dp/B0HH8DV2K4?tag=davidgsmith-20"
+                               target="_blank" rel="noopener noreferrer"
+                               onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_purchase_click', 'Amazon', 'kindle_books_page');}"
+                               class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
+                                Kindle ($7.99)
+                            </a>
                         </div>
-                        <a href="critical-thinking.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1">
+                        <a href="/critical-thinking.html"
+                           data-book-funnel="books_card_explore_overview_cta"
+                           onclick="trackToCriticalThinking(this, 'books_card_explore_overview_cta')"
+                           class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1">
                             Explore Full Overview &rarr;
                         </a>
                     </div>
@@ -389,8 +468,10 @@
 
                     <div class="pt-6 border-t border-slate-800 flex items-center justify-between">
                         <span class="text-xs text-slate-400 italic">Early preview chapters publishing late 2026.</span>
-                        <a href="#newsletter" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
-                            Join Early-Access List &rarr;
+                        <a href="#newsletter"
+                           data-prior-action="ai_smb_card_waitlist_anchor"
+                           class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-colors">
+                            Join Early-Access List (Coming Soon) &rarr;
                         </a>
                     </div>
                 </article>
@@ -408,7 +489,9 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-6">
                             <div class="lg:col-span-7 space-y-4">
                                 <h3 class="text-2xl sm:text-3xl font-serif font-semibold text-white leading-snug">
-                                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">
+                                    <a href="/cloud-native-geospatial-stack.html"
+                                       data-prior-action="books_card3_title_to_geo_hub"
+                                       class="hover:text-amber-400 transition-colors">
                                         The Cloud-Native Spatial &amp; Earth AI Stack: GeoParquet, STAC, COGs, &amp; Serverless Analytics with DuckDB
                                     </a>
                                 </h3>
@@ -429,11 +512,15 @@
                     </div>
 
                     <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                        <a href="/cloud-native-geospatial-stack.html" class="text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5">
+                        <a href="/cloud-native-geospatial-stack.html"
+                           data-prior-action="books_card3_cta_to_geo_hub"
+                           class="text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5">
                             Explore the Live Reference Architecture Hub &rarr;
                         </a>
-                        <a href="#newsletter" class="px-5 py-2.5 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors shadow">
-                            Get Early Chapters &amp; Weekly Digest &rarr;
+                        <a href="#newsletter"
+                           data-prior-action="geo_book_card_waitlist_anchor"
+                           class="px-5 py-2.5 bg-brand-accent hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition-colors shadow">
+                            Get Early Chapters &amp; Weekly Digest (Coming Soon) &rarr;
                         </a>
                     </div>
                 </article>
@@ -441,58 +528,163 @@
             </div>
         </section>
 
-        <!-- Weekly Intelligence Briefing & Book Waitlist Signup -->
+        <!-- Weekly Intelligence Briefing & Book Waitlist Signup (Webhook + Coming Soon) -->
         <section id="newsletter" aria-labelledby="newsletter-heading" class="mt-16 bg-slate-900/95 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl">
             <div class="max-w-3xl mx-auto text-center space-y-4">
                 <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
-                    Weekly Curated Briefing
+                    Coming Soon &bull; Weekly Curated Briefing
                 </span>
                 <h2 id="newsletter-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white">
-                    Subscribe to the Spatial, Data &amp; AI Architecture Digest
+                    Coming Soon: Subscribe to the Spatial, Data &amp; AI Architecture Digest
                 </h2>
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Every week, I synthesize the top 5 technical articles from across the cloud-native geospatial and data engineering community, standout Google Research papers, my latest essays, and early-access book chapters.
+                    Launching soon: Every week, I will synthesize the top 5 technical articles from across the cloud-native geospatial and data engineering community, standout Google Research papers, my latest essays, and early-access book chapters. Join the early-access list now to receive Issue #1.
                 </p>
-                <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
-                      onsubmit="gtag('event', 'generate_lead', {'event_category': 'Newsletter', 'event_label': 'Books Page Signup'});"
+                <form data-newsletter-form data-source-page="books_page" action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post"
                       class="pt-2 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
                     <input type="email" name="email" required placeholder="Enter your email address..."
                            aria-label="Email address"
                            class="flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
                     <input type="hidden" name="tag" value="books-page-digest">
-                    <button type="submit"
-                            class="px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg">
-                        Subscribe Free &rarr;
+                    <button type="submit" data-submit-btn
+                            class="px-6 py-3 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg inline-flex items-center justify-center">
+                        <span>Join Waitlist (Coming Soon) &rarr;</span>
                     </button>
                 </form>
-                <p class="text-xs text-slate-400">Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
+                <p class="text-xs text-slate-400">Coming soon &bull; Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+    <!-- Dismissible Subscription Feedback Toast & Modal -->
+    <div id="sub-toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 hidden max-w-sm bg-slate-900 border border-slate-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 transition-all duration-300">
+        <span id="sub-toast-icon" class="mt-0.5 text-emerald-400 shrink-0"></span>
+        <div class="text-xs sm:text-sm flex-1">
+            <p id="sub-toast-title" class="font-semibold text-white">Subscription Update</p>
+            <p id="sub-toast-msg" class="text-slate-300 mt-0.5"></p>
+        </div>
+        <button type="button" onclick="closeSubFeedback()" class="text-slate-400 hover:text-white p-1" aria-label="Close notification">&times;</button>
+    </div>
+
+    <div id="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center space-y-4 relative">
+            <button type="button" onclick="closeSubFeedback()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" aria-label="Dismiss modal">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div id="sub-modal-badge" class="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"></div>
+            <h3 id="sub-modal-title" class="text-xl font-serif font-semibold text-white"></h3>
+            <p id="sub-modal-message" class="text-sm text-slate-300 leading-relaxed"></p>
+            <p class="text-xs text-amber-400/90 font-medium">The Spatial, Data &amp; AI Architecture Digest is coming soon — you are locked in for the inaugural issue.</p>
+            <div class="pt-2">
+                <button type="button" onclick="closeSubFeedback()" class="w-full py-2.5 px-5 bg-brand-accent hover:bg-amber-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors">
+                    Got It
+                </button>
             </div>
-            <div class="mt-4 md:mt-0 text-sm">
-                &copy; <span id="year"></span> David G. Smith. All rights reserved.
+        </div>
+    </div>
+
+    <!-- Standardized Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <a href="/" class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    <p class="text-xs text-slate-500 mt-1">Data Scientist, Technical Architect &amp; Author &bull; Washington, DC</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-slate-300">
+                    <a href="/#about" class="hover:text-amber-400 transition-colors">About</a>
+                    <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                    <a href="/books.html" class="hover:text-amber-400 transition-colors">Books</a>
+                    <a href="/critical-thinking.html" data-book-funnel="books_footer_critical_thinking" onclick="trackToCriticalThinking(this, 'books_footer_critical_thinking')" class="hover:text-amber-400 transition-colors">Critical Thinking</a>
+                    <a href="/rss.xml" class="hover:text-amber-400 transition-colors">RSS</a>
+                    <a href="/#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/davidgsmith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                    <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Amazon Author</a>
+                    <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Goodreads</a>
+                    <a href="https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">BookBub</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Specialized Books Catalog -> Critical Thinking Funnel Tracker & Fallback Nav Script -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        if (btn && menu && !btn.dataset.navBound) {
+            btn.dataset.navBound = 'true';
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(!isHidden));
+            });
+            mobileLinks.forEach(link => link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }));
+        }
+
+        // Dedicated step-through tracker for Books Catalog -> Critical Thinking Book Page
+        function trackToCriticalThinking(linkEl, uiElementLabel) {
+            const STORAGE_KEY = 'dgs_user_journey_v1';
+            let state = {
+                landing_page: window.location.pathname,
+                initial_referrer: document.referrer || 'direct',
+                path_sequence: ['/books.html'],
+                prior_actions: []
+            };
+            try {
+                const raw = sessionStorage.getItem(STORAGE_KEY);
+                if (raw) state = Object.assign(state, JSON.parse(raw));
+            } catch (e) {}
+
+            state.prior_actions = state.prior_actions || [];
+            state.prior_actions.push('books_to_ct_via:' + uiElementLabel);
+            if (state.prior_actions.length > 15) state.prior_actions.shift();
+            try {
+                sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch (e) {}
+
+            const journeyStr = (state.path_sequence || []).join(' -> ');
+            const prevPage = state.path_sequence.length > 1
+                ? state.path_sequence[state.path_sequence.length - 2]
+                : (state.initial_referrer || 'direct');
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'critical_thinking_detail_click', {
+                    event_category: 'Book Funnel',
+                    source_page: '/books.html',
+                    target_page: '/critical-thinking.html',
+                    ui_element: uiElementLabel,
+                    previous_page_before_books: prevPage,
+                    landing_page: state.landing_page,
+                    initial_referrer: state.initial_referrer,
+                    journey_path: journeyStr + ' -> /critical-thinking.html',
+                    journey_steps: (state.path_sequence || []).length,
+                    transport_type: 'beacon'
+                });
+            }
+
+            if (typeof window.clarity === 'function') {
+                window.clarity('set', 'funnel_stage', 'books_to_critical_thinking');
+                window.clarity('set', 'ct_entry_trigger', uiElementLabel);
+                window.clarity('event', 'critical_thinking_detail_click');
+            }
+        }
     </script>
 
     <!-- Vanta.js & Three.js (Birds Animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             if (window.VANTA && window.VANTA.BIRDS) {
@@ -505,7 +697,7 @@
                     minWidth: 200.0,
                     scale: 1.0,
                     scaleMobile: 1.0,
-                    backgroundColor: 0x31c43,
+                    backgroundColor: 0x031c43,
                     color1: 0xb45309,
                     color2: 0x38bdf8,
                     birdSize: 1.4,

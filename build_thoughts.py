@@ -19,8 +19,7 @@ THOUGHTS_DIR = BASE_DIR / "thoughts"
 DEFAULT_OG_IMAGE = "https://davidgsmith.net/images/DaveSmithrPortrait.jpg"
 
 # Central configuration for newsletter / waitlist signup endpoint
-# Swap this action URL with your Buttondown, Cloudflare Worker, or n8n Webhook URL
-NEWSLETTER_FORM_ACTION = "https://buttondown.com/api/emails/embed-subscribe/davidgsmith"
+NEWSLETTER_FORM_ACTION = "https://webhook.davidgsmith.net/webhook/subscriber-capture"
 
 GEOSPATIAL_CLUSTER_TAGS = {
     "Cloud-Native Geospatial", "DuckDB", "Geospatial", "Spatial SQL",
@@ -168,7 +167,7 @@ def render_tag_badges(tags, size="normal"):
 def render_breadcrumbs(post):
     title = html.escape(post.get("title", "Untitled"))
     return f"""
-    <nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-slate-500">
+    <nav aria-label="Breadcrumb" class="no-print mb-4 text-xs font-medium text-slate-500">
         <ol class="flex items-center flex-wrap gap-1.5">
             <li>
                 <a href="/" class="hover:text-brand-accent text-slate-500 transition-colors">Home</a>
@@ -183,13 +182,17 @@ def render_breadcrumbs(post):
     </nav>
     """
 
-def render_share_bar(share_url, original_url):
+def render_share_bar(share_url, original_url, post_title="Thought by David G. Smith", is_standalone=False):
     sep = "&" if "?" in share_url else "?"
     li_url = urllib.parse.quote(f"{share_url}{sep}utm_source=linkedin&utm_medium=social_share&utm_campaign=thoughts", safe="")
     tw_url = urllib.parse.quote(f"{share_url}{sep}utm_source=x_twitter&utm_medium=social_share&utm_campaign=thoughts", safe="")
     fb_url = urllib.parse.quote(f"{share_url}{sep}utm_source=facebook&utm_medium=social_share&utm_campaign=thoughts", safe="")
     bsky_url = urllib.parse.quote(f"{share_url}{sep}utm_source=bluesky&utm_medium=social_share&utm_campaign=thoughts", safe="")
     masto_url = urllib.parse.quote(f"{share_url}{sep}utm_source=mastodon&utm_medium=social_share&utm_campaign=thoughts", safe="")
+    
+    email_share_link = f"{share_url}{sep}utm_source=email_share&utm_medium=social_share&utm_campaign=thoughts"
+    email_subject = urllib.parse.quote(f"{post_title} — David G. Smith", safe="")
+    email_body = urllib.parse.quote(f"I thought you might find this article by David G. Smith interesting:\n\n{post_title}\n{email_share_link}", safe="")
 
     read_original_html = "<div></div>" 
     if original_url:
@@ -201,68 +204,109 @@ def render_share_bar(share_url, original_url):
         </a>
         """
 
+    if is_standalone:
+        print_button_html = f"""
+            <button type="button"
+                    onclick="gtag('event', 'share', {{'method': 'Print', 'content_id': '{html.escape(share_url)}'}}); window.print();"
+                    class="inline-flex items-center gap-1 text-slate-600 hover:text-brand-accent transition cursor-pointer ml-1 pl-2 border-l border-slate-200 text-xs font-medium"
+                    title="Print clean article"
+                    aria-label="Print clean article">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                <span class="hidden sm:inline">Print</span>
+            </button>
+        """
+    else:
+        print_arg = f"{share_url}{sep}print=1"
+        print_button_html = f"""
+            <a href="{html.escape(print_arg)}"
+               target="_blank" rel="noopener noreferrer"
+               onclick="gtag('event', 'share', {{'method': 'Print', 'content_id': '{html.escape(share_url)}'}});"
+               class="inline-flex items-center gap-1 text-slate-600 hover:text-brand-accent transition ml-1 pl-2 border-l border-slate-200 text-xs font-medium"
+               title="Print clean article"
+               aria-label="Print clean article">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                <span class="hidden sm:inline">Print</span>
+            </a>
+        """
+
     return f"""
-    <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="no-print mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         {read_original_html}
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
             <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Share:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={li_url}"
-               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'LinkedIn', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on LinkedIn">
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'LinkedIn', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" title="Share on LinkedIn" aria-label="Share on LinkedIn">
                 <img src="/images/InBug-Black.png" class="h-4 w-4" alt="LinkedIn icon">
             </a>
             <a href="https://twitter.com/intent/tweet?url={tw_url}"
-               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'X', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on X">
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'X', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" title="Share on X" aria-label="Share on X">
                 <img src="https://unpkg.com/simple-icons/icons/x.svg" class="h-4 w-4" alt="X / Twitter icon">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u={fb_url}"
-               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Facebook', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Facebook">
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Facebook', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" title="Share on Facebook" aria-label="Share on Facebook">
                 <img src="https://unpkg.com/simple-icons/icons/facebook.svg" class="h-4 w-4" alt="Facebook icon">
             </a>
             <a href="https://bsky.app/intent/compose?text={bsky_url}"
-               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Bluesky', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Bluesky">
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Bluesky', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" title="Share on Bluesky" aria-label="Share on Bluesky">
                 <img src="https://unpkg.com/simple-icons/icons/bluesky.svg" class="h-4 w-4" alt="Bluesky icon">
             </a>
             <a href="https://mastodon.social/share?text={masto_url}"
-               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Mastodon', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" aria-label="Share on Mastodon">
+               target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'share', {{'method': 'Mastodon', 'content_id': '{html.escape(share_url)}'}});" class="hover:opacity-80 transition" title="Share on Mastodon" aria-label="Share on Mastodon">
                 <img src="https://unpkg.com/simple-icons/icons/mastodon.svg" class="h-4 w-4" alt="Mastodon icon">
             </a>
+            <a href="mailto:?subject={email_subject}&body={email_body}"
+               onclick="gtag('event', 'share', {{'method': 'Email', 'content_id': '{html.escape(share_url)}'}});"
+               class="inline-flex items-center gap-1 text-slate-600 hover:text-brand-accent transition ml-1 pl-2 border-l border-slate-200 text-xs font-medium"
+               title="Send copy via Email"
+               aria-label="Send copy via Email">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="hidden sm:inline">Email</span>
+            </a>
+            {print_button_html}
         </div>
     </div>
     """
 
-def render_in_article_cta(tag_val="geospatial-stack"):
+def render_in_article_cta(post=None):
+    slug = post.get("_slug", "thought-post") if isinstance(post, dict) else str(post or "geospatial-stack")
+    safe_slug = html.escape(slug, quote=True)
     return f"""
-    <div id="newsletter" class="mt-14 bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div id="newsletter" class="no-print mt-14 bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 space-y-3">
             <div class="flex flex-wrap items-center gap-2">
                 <span class="px-2.5 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded text-[11px] font-bold uppercase tracking-widest">
-                    Weekly Briefing &amp; Reference Hub
+                    Coming Soon &bull; Weekly Briefing &amp; Reference Hub
                 </span>
                 <a href="/cloud-native-geospatial-stack.html" class="text-xs font-semibold text-sky-400 hover:text-sky-300 underline">
-                    New: The Cloud-Native Geospatial & GeoAI Stack &rarr;
+                    New: The Cloud-Native Geospatial &amp; GeoAI Stack &rarr;
                 </a>
             </div>
             <h3 class="text-2xl sm:text-3xl font-serif font-medium text-white leading-snug">
-                Get the Weekly Spatial, Data &amp; AI Architecture Digest
+                Coming Soon: Get the Weekly Spatial, Data &amp; AI Architecture Digest
             </h3>
             <p class="text-sm text-gray-300 leading-relaxed">
-                Every week, I curate the top 5 cloud-native geospatial &amp; data engineering essays, key AI research papers, and my latest writing—plus early-access chapters from my forthcoming books.
+                Launching soon: Every week, I will curate the top 5 cloud-native geospatial &amp; data engineering essays, key AI research papers, and my latest writing—plus early-access chapters from my forthcoming books.
             </p>
         </div>
         <div class="lg:col-span-5">
-            <form action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post" target="_blank"
-                  onsubmit="gtag('event', 'generate_lead', {{'event_category': 'Newsletter', 'event_label': 'Thought Page Signup'}});"
+            <form data-newsletter-form data-source-page="thought_article_{safe_slug}" action="{NEWSLETTER_FORM_ACTION}" method="post"
                   class="flex flex-col sm:flex-row lg:flex-col gap-3">
                 <input type="email" name="email" required placeholder="Enter your email address..."
                        aria-label="Email address"
                        class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand-accent">
-                <input type="hidden" name="tag" value="{tag_val}">
-                <button type="submit"
-                        class="w-full px-6 py-3 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors shadow-lg">
-                    Subscribe to the Weekly Digest &rarr;
+                <input type="hidden" name="tag" value="thought-{safe_slug}">
+                <button type="submit" data-submit-btn
+                        class="w-full px-6 py-3 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-sm rounded-lg transition-colors shadow-lg">
+                    Join Waitlist (Coming Soon) &rarr;
                 </button>
             </form>
-            <p class="text-[11px] text-gray-400 mt-2 text-center lg:text-left">1x weekly synthesis &bull; Zero noise &bull; Unsubscribe anytime.</p>
+            <p class="text-[11px] text-gray-400 mt-2 text-center lg:text-left">Coming soon &bull; 1x weekly synthesis &bull; Zero noise &bull; Unsubscribe anytime.</p>
         </div>
     </div>
     """
@@ -341,7 +385,7 @@ def render_related_posts_section(related_posts):
         """)
 
     return f"""
-    <section class="mt-10 pt-8 border-t border-slate-200" aria-label="Related Thoughts">
+    <section class="no-print mt-10 pt-8 border-t border-slate-200" aria-label="Related Thoughts">
         <div class="flex items-center justify-between mb-6">
             <div>
                 <h2 class="text-xl sm:text-2xl font-serif font-medium text-slate-900">Related Thoughts</h2>
@@ -356,10 +400,6 @@ def render_related_posts_section(related_posts):
         </div>
     </section>
     """
-
-# -------------------------------------------------------------
-# 1. Standardize Author @id & Add CollectionPage Schema to Tag Hubs
-# -------------------------------------------------------------
 
 def get_json_ld(post=None, collection_url=None, collection_name=None, collection_desc=None, topic_name=None):
     author_entity = {
@@ -415,7 +455,6 @@ def get_json_ld(post=None, collection_url=None, collection_name=None, collection
             }
         ]
     elif collection_url:
-        # Dynamic Schema for Collection Pages (Tags, Untagged, Months) with Breadcrumbs
         collection_schema = {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
@@ -442,7 +481,6 @@ def get_json_ld(post=None, collection_url=None, collection_name=None, collection
             }
         ]
     else:
-        # Main thoughts.html Blog Index with Breadcrumbs
         blog_url = "https://davidgsmith.net/thoughts.html"
         schema = [
             {
@@ -552,34 +590,35 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
         """
 
     return f"""
-    <aside aria-label="Sidebar Navigation" class="space-y-6">
+    <aside aria-label="Sidebar Navigation" class="no-print space-y-6">
         <div class="bg-slate-900 p-6 rounded-lg border border-amber-500/40 shadow-xl text-slate-100">
             <span class="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-2">
-                Weekly Architecture Digest
+                Coming Soon &bull; Weekly Digest
             </span>
             <h3 class="text-lg font-serif font-medium text-white leading-snug mb-2">
-                Coming Soon:  Newsletter on GeoAI, Cloud Native Geo and Innovative Data
+                Coming Soon: Newsletter on GeoAI, Cloud-Native Geo &amp; Innovative Data
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                Get my curated weekly synthesis of news, research, and articles on cloud-native geospatial, data pipelines and serverless data stacks—plus early book chapters.
+                Launching soon: Get my curated weekly synthesis of news, research, and articles on cloud-native geospatial, data pipelines, and serverless data stacks—plus early book chapters.
             </p>
-            <form action="{NEWSLETTER_FORM_ACTION}" method="post" target="_blank"
-                  onsubmit="gtag('event', 'generate_lead', {{'event_category': 'Newsletter', 'event_label': 'Sidebar Signup'}});"
+            <form data-newsletter-form data-source-page="thoughts_sidebar" action="{NEWSLETTER_FORM_ACTION}" method="post"
                   class="space-y-2.5">
                 <input type="email" name="email" required placeholder="Your email address..."
                        aria-label="Email address"
                        class="w-full px-3.5 py-2 rounded bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
-                <button type="submit"
-                        class="w-full py-2 bg-brand-accent hover:bg-amber-700 text-white font-semibold text-xs rounded transition-colors shadow">
-                    Join the Weekly Briefing &rarr;
+                <input type="hidden" name="tag" value="thoughts-sidebar-digest">
+                <button type="submit" data-submit-btn
+                        class="w-full py-2 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-xs rounded transition-colors shadow">
+                    Join Waitlist (Coming Soon) &rarr;
                 </button>
             </form>
+            <p class="text-[10px] text-slate-400 mt-2">Coming soon &bull; Weekly synthesis &bull; Zero spam.</p>
             <div class="mt-4 pt-3 border-t border-slate-800 flex flex-col gap-1.5 text-xs">
                 <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center justify-between">
                     <span>Cloud-Native Geospatial Hub</span>
                     <span>&rarr;</span>
                 </a>
-                <a href="/books.html" class="text-slate-300 hover:text-white font-medium flex items-center justify-between">
+                <a href="/books.html" data-book-funnel="sidebar_books_link" class="text-slate-300 hover:text-white font-medium flex items-center justify-between">
                     <span>Explore Books &amp; Publications</span>
                     <span>&rarr;</span>
                 </a>
@@ -623,7 +662,8 @@ def generate_nav_rail(posts, current_type=None, current_value=None):
     """
 
 def render_post(post, is_standalone=False, prev_post=None, next_post=None, related_posts=None):
-    title = html.escape(post.get("title", "Untitled"))
+    raw_title = post.get("title", "Untitled")
+    title = html.escape(raw_title)
     slug = post["_slug"]
     body = render_markdown(post.get("body", ""))
     url = post.get("url", "")
@@ -649,6 +689,11 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
         title_html = f'<h1 class="text-3xl sm:text-4xl font-serif font-medium text-slate-900 tracking-tight leading-tight mb-4">{title}</h1>'
         content_html = f'<div class="markdown-content text-slate-700 leading-relaxed text-[15px]">{body}</div>'
         cta_html = render_in_article_cta(post)
+        print_footer_html = f"""
+        <div class="hidden print-only mt-8 pt-4 border-t border-slate-300 text-xs text-slate-600">
+            <p><strong>Author:</strong> David G. Smith &bull; <strong>Source:</strong> {html.escape(canonical_url)}</p>
+        </div>
+        """
     else:
         breadcrumbs_html = ""
         title_html = f'''
@@ -665,6 +710,7 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
         </a>
         '''
         cta_html = ""
+        print_footer_html = ""
 
     prev_next_html = ""
     if is_standalone and (prev_post or next_post):
@@ -683,7 +729,7 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
         ''' if next_post else '<div class="flex-1"></div>'
 
         prev_next_html = f'''
-        <nav aria-label="Adjacent Thoughts" class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 justify-between">
+        <nav aria-label="Adjacent Thoughts" class="no-print mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 justify-between">
             {prev_link}
             {next_link}
         </nav>
@@ -692,17 +738,18 @@ def render_post(post, is_standalone=False, prev_post=None, next_post=None, relat
     related_posts_html = render_related_posts_section(related_posts) if is_standalone and related_posts else ""
 
     return f"""
-        <article class="bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
+        <article class="print-article bg-white p-7 sm:p-9 border border-slate-200/90 rounded-lg shadow-md hover:shadow-xl hover:border-slate-300 transition-all">
             {breadcrumbs_html}
             <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
-                <img src="{icon}" alt="{icon_alt}" class="h-3.5 w-3.5 opacity-70" loading="lazy">
+                <img src="{icon}" alt="{icon_alt}" class="no-print h-3.5 w-3.5 opacity-70" loading="lazy">
                 <span>{date} &bull; <span class="text-amber-900 font-semibold">{reading_time}</span> &bull; {origin_text}</span>
             </div>
             {title_html}
-            <div class="mb-6 flex flex-wrap items-center">{tags_html}</div>
+            <div class="no-print mb-6 flex flex-wrap items-center">{tags_html}</div>
             {content_html}
+            {print_footer_html}
             {cta_html}
-            {render_share_bar(share_url=canonical_url, original_url=url)}
+            {render_share_bar(share_url=canonical_url, original_url=url, post_title=raw_title, is_standalone=is_standalone)}
             {prev_next_html}
             {related_posts_html}
         </article>
@@ -776,10 +823,10 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     if is_post:
         header_content = """
         <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
-            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-brand-accent transition-colors font-medium">
+            <a href="/thoughts.html" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors font-medium">
                 &larr; Back to all Thoughts
             </a>
-            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-brand-accent transition-colors">
+            <a href="/rss.xml" target="_blank" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors">
                 <svg class="w-3.5 h-3.5 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M4 11a9 9 0 0 1 9 9H9c0-2.76-2.24-5-5-5v-4zm0-7a16 16 0 0 1 16 16h-4a12 12 0 0 0-12-12V4zm2 13a2 2 0 1 1-2 2c0-1.11.89-2 2-2z"></path>
                 </svg>
@@ -787,7 +834,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             </a>
         </div>
         """
-        header_classes = "pt-28 pb-6 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
+        header_classes = "no-print pt-28 pb-6 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
     else:
         h1_text = banner_title if banner_title else "Thoughts & Insights"
         sub_text = f'<p class="text-sm text-slate-400 max-w-xl mx-auto mt-2 mb-4">{html.escape(banner_subtitle)}</p>' if banner_subtitle else ''
@@ -805,7 +852,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             </div>
         </div>
         """
-        header_classes = "pt-32 pb-12 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
+        header_classes = "no-print pt-32 pb-12 px-4 w-full bg-slate-950 text-white border-b border-slate-800"
 
     return f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -818,7 +865,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     window.dataLayer = window.dataLayer || [];
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
-    gtag('config', 'G-4T0MRLF4V8');
+    gtag('config', 'G-4T0MRLF4V8', {{ send_page_view: true }});
 </script>
 <!-- Microsoft Clarity -->
 <script>
@@ -830,11 +877,15 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 </script>
 <title>{html.escape(title)}</title>
 {meta_description}
+<meta name="theme-color" content="#0f172a">
 {og_html}
 <link rel="alternate" type="application/rss+xml" href="https://davidgsmith.net/rss.xml" title="Thoughts & Insights — David G. Smith" />
 {canonical_tag}
-<link rel="icon">
-<link rel="apple-touch-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {{ 
@@ -858,7 +909,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
 </script>
 <style>
     body {{ background-color: #0a1128; }}
-    .glass-nav {{ background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }}
+    .glass-nav {{ background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(12px); }}
     .markdown-content p {{ margin-bottom: 1rem; }}
     .markdown-content p:empty {{ display: none; }}
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {{ color: #0f172a; font-family: Lora, serif; font-weight: 500; margin: 1.25rem 0 0.5rem; }}
@@ -874,51 +925,69 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     .markdown-content td {{ padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; color: #334155; }}
     .markdown-content tr:nth-child(even) {{ background-color: #fcfbf9; }}
     .markdown-content tr:last-child td {{ border-bottom: none; }}
+
+    @media print {{
+        body {{ background: #ffffff !important; color: #000000 !important; }}
+        .no-print, #vanta-canvas, header, nav, footer, aside, #return-to-top, #sub-toast, #sub-modal {{ display: none !important; }}
+        .print-only {{ display: block !important; }}
+        #main-content {{ padding: 0 !important; margin: 0 !important; min-height: auto !important; }}
+        #main-content .grid {{ display: block !important; }}
+        .print-article {{ border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }}
+        .markdown-content {{ color: #000000 !important; font-size: 11pt !important; line-height: 1.55 !important; }}
+        .markdown-content a {{ color: #000000 !important; text-decoration: underline !important; }}
+    }}
 </style>
 {json_ld}
+<script src="/js/site-core.js" defer></script>
 </head>
-<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
-<div id="vanta-canvas" class="fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
-<nav class="fixed w-full z-50 glass-nav border-b border-slate-200 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0">
-                <a href="/" class="text-xl font-serif font-semibold text-slate-900 tracking-tight">David G. Smith</a>
-            </div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="https://davidgsmith.net/#about" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">About</a>
-                <a href="https://davidgsmith.net/#work" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Work</a>
-                <a href="https://davidgsmith.net/thoughts.html" class="text-brand-accent transition-colors text-sm font-semibold">Thoughts</a>
-                <a href="https://davidgsmith.net/books.html" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Books</a>
-                <a href="https://davidgsmith.net/#advisory" class="text-slate-600 hover:text-brand-accent transition-colors text-sm font-medium">Advisory</a>
-                <a href="https://davidgsmith.net/#contact" class="px-5 py-2 rounded border border-slate-300 text-slate-900 hover:border-brand-accent hover:text-brand-accent transition-all text-sm font-medium">Contact</a>
-            </div>
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-slate-900 focus:outline-none" aria-label="Toggle menu">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
-        <div class="px-4 pt-2 pb-4 space-y-1">
-            <a href="https://davidgsmith.net/#about" class="mobile-link block py-2 text-base font-medium text-gray-600">About</a>
-            <a href="https://davidgsmith.net/#work" class="mobile-link block py-2 text-base font-medium text-gray-600">Work</a>
-            <a href="https://davidgsmith.net/thoughts.html" class="mobile-link block py-2 text-base font-medium text-gray-600">Thoughts</a>
-            <a href="https://davidgsmith.net/books.html" class="mobile-link block py-2 text-base font-medium text-gray-600">Books</a>
-            <a href="https://davidgsmith.net/#advisory" class="mobile-link block py-2 text-base font-medium text-gray-600">Advisory</a>
-            <a href="https://davidgsmith.net/#contact" class="mobile-link block py-2 text-base font-medium text-brand-accent">Contact</a>
-        </div>
-    </div>
-</nav>
+<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
+<div id="vanta-canvas" class="no-print fixed inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
 
-<header class="{header_classes}">
-    {header_content}
+<!-- Standardized High-Contrast Dark Glass Header -->
+<header class="no-print">
+    <nav aria-label="Main Navigation" class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                </div>
+                <div class="hidden md:flex space-x-7 items-center">
+                    <a href="/#about" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">About</a>
+                    <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="text-amber-400 transition-colors text-sm font-semibold" aria-current="page">Thoughts</a>
+                    <a href="/books.html" data-book-funnel="thoughts_nav_books" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Books</a>
+                    <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
+                    <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-white focus:outline-none p-2" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 shadow-xl">
+            <div class="px-4 pt-2 pb-5 space-y-1.5">
+                <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">About</a>
+                <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
+                <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Geo &amp; DuckDB Hub</a>
+                <a href="/thoughts.html" class="mobile-link block py-2 text-base font-semibold text-amber-400" aria-current="page">Thoughts</a>
+                <a href="/books.html" data-book-funnel="thoughts_mobile_nav_books" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Books</a>
+                <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
+                <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<main id="main-content" class="py-12 bg-transparent min-h-screen">
+<div class="{header_classes}">
+    {header_content}
+</div>
+
+<main id="main-content" class="py-12 bg-transparent min-h-screen flex-grow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-8 space-y-8">
@@ -931,32 +1000,87 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
     </div>
 </main>
 
-<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-            <span class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</span>
+<!-- Dismissible Subscription Feedback Toast & Modal -->
+<div id="sub-toast" role="status" aria-live="polite" class="no-print fixed bottom-20 right-6 z-50 hidden max-w-sm bg-slate-900 border border-slate-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 transition-all duration-300">
+    <span id="sub-toast-icon" class="mt-0.5 text-emerald-400 shrink-0"></span>
+    <div class="text-xs sm:text-sm flex-1">
+        <p id="sub-toast-title" class="font-semibold text-white">Subscription Update</p>
+        <p id="sub-toast-msg" class="text-slate-300 mt-0.5"></p>
+    </div>
+    <button type="button" onclick="closeSubFeedback()" class="text-slate-400 hover:text-white p-1" aria-label="Close notification">&times;</button>
+</div>
+
+<div id="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title" class="no-print fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center space-y-4 relative">
+        <button type="button" onclick="closeSubFeedback()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" aria-label="Dismiss modal">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div id="sub-modal-badge" class="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"></div>
+        <h3 id="sub-modal-title" class="text-xl font-serif font-semibold text-white"></h3>
+        <p id="sub-modal-message" class="text-sm text-slate-300 leading-relaxed"></p>
+        <p class="text-xs text-amber-400/90 font-medium">The Spatial, Data &amp; AI Architecture Digest is coming soon — you are locked in for the inaugural issue.</p>
+        <div class="pt-2">
+            <button type="button" onclick="closeSubFeedback()" class="w-full py-2.5 px-5 bg-brand-accent hover:bg-amber-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors">
+                Got It
+            </button>
         </div>
-        <div class="mt-4 md:mt-0 text-sm">&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+    </div>
+</div>
+
+<!-- Standardized Footer -->
+<footer class="no-print bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <a href="/" class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                <p class="text-xs text-slate-500 mt-1">Data Scientist, Technical Architect &amp; Author &bull; Washington, DC</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-slate-300">
+                <a href="/#about" class="hover:text-amber-400 transition-colors">About</a>
+                <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
+                <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo &amp; DuckDB Hub</a>
+                <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                <a href="/books.html" data-book-funnel="thoughts_footer_books" class="hover:text-amber-400 transition-colors">Books</a>
+                <a href="/critical-thinking.html" data-book-funnel="thoughts_footer_ct" class="hover:text-amber-400 transition-colors">Critical Thinking</a>
+                <a href="/rss.xml" class="hover:text-amber-400 transition-colors">RSS</a>
+                <a href="/#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+            </div>
+        </div>
+        <div class="pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+            <div>&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.linkedin.com/in/davidgsmith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Amazon Author</a>
+                <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Goodreads</a>
+                <a href="https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">BookBub</a>
+            </div>
+        </div>
     </div>
 </footer>
+
+<button id="return-to-top" aria-label="Return to top" class="no-print fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
 
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-    if(btn && menu) {{
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-        mobileLinks.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+    if (btn && menu && !btn.dataset.navBound) {{
+        btn.dataset.navBound = 'true';
+        btn.addEventListener('click', () => {{
+            const isHidden = menu.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!isHidden));
+        }});
+        mobileLinks.forEach(link => link.addEventListener('click', () => {{
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+        }}));
     }}
-</script>
 
-<button id="return-to-top" aria-label="Return to top" class="fixed bottom-6 right-6 z-40 bg-slate-900 border border-slate-700 text-white p-3 rounded-full shadow-lg hover:bg-brand-accent hover:border-brand-accent transition-all opacity-0 pointer-events-none focus:outline-none">
-    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-    </svg>
-</button>
-<script>
     const returnToTopBtn = document.getElementById('return-to-top');
     window.addEventListener('scroll', () => {{
         if (window.scrollY > 300) {{
@@ -978,6 +1102,11 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
             navIcon.classList.toggle('rotate-180');
         }});
     }}
+
+    // Auto-trigger clean print dialog if opened from the feed with ?print=1
+    if (new URLSearchParams(window.location.search).get('print') === '1') {{
+        window.addEventListener('load', () => setTimeout(() => window.print(), 350));
+    }}
 </script>
 <script src="/js/three.r134.min.js"></script>
 <script src="/js/vanta.net.min.js"></script>
@@ -997,7 +1126,7 @@ def wrap_with_layout(title, main_content_html, nav_rail_html, json_ld="", canoni
         s1.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
         s1.onload = () => {{
             const s2 = document.createElement('script');
-            s2.src = "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js";
+            s2.src = "https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js";
             s2.onload = initVanta;
             document.body.appendChild(s2);
         }};
@@ -1104,10 +1233,6 @@ def generate_rss(posts):
     
     with open(BASE_DIR / "rss.xml", "w", encoding="utf-8") as f:
         f.write(rss_feed.strip())
-
-# -------------------------------------------------------------
-# 2. Exclude Non-HTML Files from Sitemap (Fixes Bing Exclusion Errors)
-# -------------------------------------------------------------
 
 def generate_sitemap(posts, tag_slugs, month_slugs):
     # Only indexable HTML endpoints
@@ -1356,7 +1481,6 @@ def generate_html():
             "type": "website"
         }
 
-        # Generate the JSON-LD for the tag collection
         json_ld_script = get_json_ld(
             collection_url=canonical,
             collection_name=f"Articles on {tag} — David G. Smith",
@@ -1406,7 +1530,6 @@ def generate_html():
             "type": "website"
         }
 
-        # Generate the JSON-LD for the untagged collection
         json_ld_script = get_json_ld(
             collection_url=canonical,
             collection_name="Untagged Posts — David G. Smith",
@@ -1472,7 +1595,6 @@ def generate_html():
             "type": "website"
         }
 
-        # Generate the JSON-LD for the month collection
         json_ld_script = get_json_ld(
             collection_url=canonical,
             collection_name=f"Posts from {m_full} {year} — David G. Smith",
@@ -1590,15 +1712,12 @@ def inject_homepage_posts(posts):
         body_html = render_markdown(p.get("body", ""))
         excerpt = html.escape(create_text_excerpt(body_html, max_length=350))
         
-        # --- NEW: Generate Dark-Mode Tag Badges ---
         tags_html = ""
-        # Limiting to 2 tags prevents the card from getting too tall
         for tag in p.get("tags", [])[:2]:
             t_slug = slugify(tag)
             tags_html += f'<a href="/thoughts-{t_slug}.html" class="inline-block px-2 py-0.5 mr-1.5 mb-3 text-[10px] font-semibold text-slate-300 bg-slate-800 border border-slate-700 rounded hover:text-white hover:border-brand-accent transition-colors">{html.escape(tag)}</a>'
         
         tags_container = f'<div class="flex flex-wrap">{tags_html}</div>' if tags_html else ""
-        # ------------------------------------------
         
         cards_html += f"""
                 <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col shadow-xl hover:border-slate-700 transition-colors">
