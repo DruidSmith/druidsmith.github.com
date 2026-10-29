@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Wed, 28 Oct 2026 17:32:22 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 29 Oct 2026 15:15:50 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,46 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>From Shutdown Risk to a Stronger National Service</title>
+                <link>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</link>
+                <guid>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</guid>
+                <pubDate>Thu, 29 Oct 2026 15:15:33 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Here&#x27;s where I celebrate one of my team&#x27;s recent successes: The Water Quality Portal is easy to take for granted. You search, download data, and move on with...</description>
+                <category>Water Data</category>
+            <category>Cloud-Native</category>
+            <category>Data Engineering</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/wqx-3-map-mvtop47f-cd8d4987.png" />
+                <content:encoded><![CDATA[<p><em>Here's where I celebrate one of my team's recent successes:</em></p>
+<p>The <a target="_blank" rel="noopener noreferrer" href="https://www.waterqualitydata.us/">Water Quality Portal</a> is easy to take for granted. You search, download data, and move on with your work. Behind that straightforward experience sits a national resource containing more than 440 million water-quality records from over 1,700 data providers and 2 million monitoring locations.  Some of the data goes all the way back to the 1940s. Researchers, government agencies, application developers, and the public rely on it every day.<br>
+<img alt="WQP Map" src="https://davidgsmith.net/thoughts/images/wqx-3-map-mvtop47f-cd8d4987.png"></p>
+<p>Earlier this year, its future wasn't guaranteed.</p>
+<p>At USGS, aging infrastructure, deteriorating data flows, reduced staffing, and a hard September 30 fiscal year deadline created a real risk to the Portal's continued operation. EPA's Office of Water stepped in to take ownership without interrupting public access, losing data, breaking existing URLs, or disrupting the applications built on its services. </p>
+<p><strong>A deadline that focused the work</strong><br>
+EPA's Office of Water asked OCIO and my team to help in the spring. What followed was an intense, three-month effort involving a small focused team of EPA, USGS, contractors, security, network, web and program staff, and others.</p>
+<p>The job called for more than moving servers. We had to understand a complex inherited system, stand up a new cloud environment, recover and validate data, rebuild operational processes, test real-world integrations, coordinate security and DNS changes, and prepare EPA to operate the service for the long term.</p>
+<p>On September 8, the team completed the public cutover. That was more than three weeks ahead of the deadline. The Water Quality Portal remained available, its familiar URL continued to work, and operational ownership moved successfully to EPA. </p>
+<p>That alone would've been worth celebrating. The team accomplished considerably more.</p>
+<p><strong>Modernization happened during the move</strong><br>
+The migration gave us an opportunity to improve the service rather than reproduce its existing limitations.</p>
+<p>The team deployed the Portal's user interface, APIs, and supporting services using containerized cloud infrastructure. Terraform made the environment repeatable. Managed PostgreSQL provided the data foundation, while Step Functions, Glue, and Database Migration Service helped create a more automated data pipeline. CloudWatch dashboards, alerts, cost tracking, load testing, and web application firewall protections gave operators much better visibility and control.</p>
+<p>One of the most meaningful improvements was the data refresh process. A workflow that had taken roughly two days now completes in about two hours, leveraging AWS services like DMS and Glue. </p>
+<p>Migration work also exposed problems that couldn't simply be carried forward. The team repaired broken map layers, corrected missing navigation options, updated stale API references, addressed accessibility findings, removed unsupported behavior, and documented obsolete components. On-the-fly security remediation addressed almost 600 critical and high vulnerability findings. </p>
+<p>By late September, the team had completed 313 distinct Jira work items while still delivering ahead of schedule and under budget. </p>
+<p><strong>Partnership made the difference</strong><br>
+This outcome belongs to a broad group of people who shared a clear mission.<br>
+EPA's Office of Water brought program knowledge, requirements, and product ownership. USGS provided essential expertise, artifacts, testing, and knowledge transfer. OCIO and the DMAP Fusion Team coordinated architecture, engineering, security, governance, infrastructure, testing, and the final transition. Contractor partners turned plans into working systems, often under tight time constraints. </p>
+<p>The project worked because it never became a simple handoff between organizations. People stayed engaged, surfaced risks early, tested together, and kept public continuity at the center of each decision.</p>
+<p>USGS has published its own perspective in <a target="_blank" rel="noopener noreferrer" href="https://waterdata.usgs.gov/blog/wqp-modernization/">WQP modernization: Evolving the nation's water-quality data infrastructure</a>. It's a valuable companion to this story and reflects the collaborative work required to sustain a resource of this scale.</p>
+<p><strong>From rescue to resilience</strong><br>
+I'm proud of what this team accomplished.</p>
+<p>We preserved access to an irreplaceable national data resource, improved its security and accessibility, automated critical operations, and gave EPA a stronger foundation for its continued stewardship. The experience also produced a practical model for future transitions involving distressed or aging public systems.<br>
+<img alt="WQP UI" src="https://davidgsmith.net/thoughts/images/water-quality-portal-new-mvtoq1hp-345f7485.jpg"></p>
+<p>Most visitors to the Water Quality Portal won't see the architecture, deployment pipelines, monitoring, security controls, or interagency coordination behind it. That's fine. They'll see a dependable public service that continues to provide open access to water-quality data.<br>
+That's the result that matters, and it's one worth celebrating.</p>
+<p>For more information, visit the <a target="_blank" rel="noopener noreferrer" href="https://www.waterqualitydata.us/">Water Quality Portal</a>, review its web services documentation, learn about EPA's <a target="_blank" rel="noopener noreferrer" href="https://www.epa.gov/waterdata/water-quality-data">Water Quality Exchange</a>, or explore the data through <a target="_blank" rel="noopener noreferrer" href="https://mywaterway.epa.gov/">How's My Waterway.</a></p>]]></content:encoded>
+            </item>
             <item>
                 <title>You&#x27;re Not Too Old For This</title>
                 <link>https://davidgsmith.net/thoughts/youre-not-too-old-for-this.html</link>
