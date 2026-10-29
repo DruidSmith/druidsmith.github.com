@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Thu, 29 Oct 2026 15:15:50 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 29 Oct 2026 15:39:48 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -33,8 +33,8 @@
 <p>Earlier this year, its future wasn't guaranteed.</p>
 <p>At USGS, aging infrastructure, deteriorating data flows, reduced staffing, and a hard September 30 fiscal year deadline created a real risk to the Portal's continued operation. EPA's Office of Water stepped in to take ownership without interrupting public access, losing data, breaking existing URLs, or disrupting the applications built on its services. </p>
 <p><strong>A deadline that focused the work</strong><br>
-EPA's Office of Water asked OCIO and my team to help in the spring. What followed was an intense, three-month effort involving a small focused team of EPA, USGS, contractors, security, network, web and program staff, and others.</p>
-<p>The job called for more than moving servers. We had to understand a complex inherited system, stand up a new cloud environment, recover and validate data, rebuild operational processes, test real-world integrations, coordinate security and DNS changes, and prepare EPA to operate the service for the long term.</p>
+EPA's Office of Water asked OCIO and my team to help in the spring. What followed was an intense, three-month effort involving a small but focused team of EPA, USGS, contractors, security, network, web and program staff, and others.</p>
+<p>The job called for more than moving servers. We had to understand a complex inherited system, stand up a new cloud infrastructure, recover and validate data, rebuild operational processes, test real-world integrations, coordinate security and DNS changes, and prepare EPA to operate the service for the long term.</p>
 <p>On September 8, the team completed the public cutover. That was more than three weeks ahead of the deadline. The Water Quality Portal remained available, its familiar URL continued to work, and operational ownership moved successfully to EPA. </p>
 <p>That alone would've been worth celebrating. The team accomplished considerably more.</p>
 <p><strong>Modernization happened during the move</strong><br>
