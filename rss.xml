@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 30 Oct 2026 17:22:35 +0000</lastBuildDate>
+            <lastBuildDate>Sat, 31 Oct 2026 02:00:29 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,27 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>PostGIS 3.7 Is Out And It Doubles Down on Topology</title>
+                <link>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</link>
+                <guid>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</guid>
+                <pubDate>Sat, 31 Oct 2026 02:00:14 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The headline features in a PostGIS release don&#x27;t always tell the full story. Looking through the PostGIS 3.7 release notes, what stands out isn&#x27;t a flashy new...</description>
+                <category>PostGIS</category>
+            <category>Topology</category>
+            <category>Spatial SQL</category>
+            <category>Open Source GIS</category>
+            <category>Data Engineering</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/postgis-mvvr4oop-291353a4.jpg" />
+                <content:encoded><![CDATA[<p>The headline features in a PostGIS release don't always tell the full story. Looking through the <a target="_blank" rel="noopener noreferrer" href="https://gitea.osgeo.org/postgis/postgis/raw/tag/3.7.0/NEWS">PostGIS 3.7 release notes</a>, what stands out isn't a flashy new geometry function. It's the amount of attention devoted to topology, one of the platform's most powerful but often overlooked capabilities.<br>
+<img alt="PostGIS Logo" src="https://davidgsmith.net/thoughts/images/postgis-mvvr4oop-291353a4.jpg"><br>
+For organizations maintaining authoritative boundaries, utility networks, cadastral parcels, transportation systems, and other datasets where spatial relationships matter as much as the geometries themselves, topology remains one of PostGIS's biggest differentiators. PostGIS 3.7 makes that part of the platform noticeably stronger.</p>
+<p>The release introduces new topology functionality, including <code>FindVertexSegmentPairsBelowDistance</code>, enhancements to topology indexing, and additional parameters that provide more flexibility when managing topological datasets. These additions are accompanied by performance improvements and fixes aimed at making topology operations more practical at scale.</p>
+<p>Outside the topology subsystem, there are a few notable additions. New functions such as <code>ST_MinimumSpanningTree</code> and <code>ST_CoverageEdges</code> expand analytical capabilities within the database itself, while data-loading tools gain several quality-of-life improvements that make automation and repeatable workflows easier to manage.</p>
+<p>The release also reflects a project continuing to modernize. Support for older PostgreSQL versions has been retired, dependencies have been updated, and considerable effort has gone into parser hardening, memory safety, and handling malformed inputs. Those changes may not be visible to end users, but they're essential for organizations running PostGIS in production environments.</p>
+<p>What makes PostGIS 3.7 interesting is that it doesn't chase trends. Instead, it invests in the fundamentals and for this reason has always been a solid product with a strong followin. For teams that rely on topology to preserve spatial integrity and maintain clean, consistent datasets, this release is another sign that topology remains a first-class citizen in the PostGIS ecosystem.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>From Shutdown Risk to a Stronger National Service</title>
                 <link>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</link>

@@ -35,6 +35,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -495,6 +500,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-postgis.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-python.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -561,6 +571,11 @@
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-tech-regulation.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-topology.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
