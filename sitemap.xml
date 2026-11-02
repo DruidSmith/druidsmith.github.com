@@ -35,6 +35,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/neureo-from-prediction-to-better-understanding-in-earth-observation-embeddings.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -588,6 +593,11 @@
     <loc>https://davidgsmith.net/thoughts-water-data.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-2026-nov.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-2026-oct.html</loc>
