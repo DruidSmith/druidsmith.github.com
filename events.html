@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4T0MRLF4V8', { send_page_view: true });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yolwcmk37v");
+    </script>
+
+    <title>Geospatial, GeoAI &amp; Remote Sensing Events Calendar | David G. Smith</title>
+    <meta name="description" content="A curated directory of upcoming global conferences, GeoAI summits, and remote sensing workshops across Cloud-Native Geospatial and Earth observation.">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://davidgsmith.net/events.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:site_name" content="David G. Smith">
+    <meta property="og:title" content="Geospatial, GeoAI &amp; Remote Sensing Events Calendar — David G. Smith">
+    <meta property="og:description" content="Track upcoming Cloud-Native Geospatial, GeoAI, and Remote Sensing conferences with direct calendar integration and open community submissions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davidgsmith.net/events.html">
+    <meta property="og:image" content="https://davidgsmith.net/images/DaveSmithrPortrait.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Geospatial, GeoAI &amp; Remote Sensing Events Calendar">
+    <meta name="twitter:description" content="Curated industry events calendar for Cloud-Native Geospatial, GeoAI, and Remote Sensing practitioners.">
+    <meta name="twitter:image" content="https://davidgsmith.net/images/DaveSmithrPortrait.jpg">
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            muted: '#334155',
+                            accent: '#b45309',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Geospatial, GeoAI & Remote Sensing Events Calendar",
+      "url": "https://davidgsmith.net/events.html",
+      "description": "Curated index of upcoming Cloud-Native Geospatial, GeoAI, and Remote Sensing conferences.",
+      "author": {
+        "@type": "Person",
+        "name": "David G. Smith",
+        "url": "https://davidgsmith.net/"
+      }
+    }</script>
+
+    <style>
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(12px);
+        }
+        #globe-container canvas {
+            outline: none;
+            border-radius: 1rem;
+        }
+    </style>
+    <script src="/js/site-core.js" defer></script>
+</head>
+<body class="font-sans text-slate-300 bg-slate-950 antialiased selection:bg-brand-accent selection:text-white relative min-h-screen flex flex-col justify-between">
+
+    <!-- Vanta.js Clouds Background Container -->
+    <div id="vanta-bg" class="fixed inset-0 pointer-events-none z-0 opacity-40"></div>
+
+    <!-- Header -->
+    <header class="relative z-50">
+        <nav aria-label="Main Navigation" class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0">
+                        <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    </div>
+                    <div class="hidden md:flex space-x-7 items-center">
+                        <a href="/#about" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">About</a>
+                        <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
+                        <a href="/cloud-native-geospatial-stack.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
+                        <a href="/events.html" class="text-amber-400 transition-colors text-sm font-semibold" aria-current="page">Events</a>
+                        <a href="/thoughts.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Thoughts</a>
+                        <a href="/books.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Books</a>
+                        <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
+                        <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" type="button" class="text-white focus:outline-none p-2" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 shadow-xl">
+                <div class="px-4 pt-2 pb-5 space-y-1.5">
+                    <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">About</a>
+                    <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Geo &amp; DuckDB Hub</a>
+                    <a href="/events.html" class="mobile-link block py-2 text-base font-semibold text-amber-400" aria-current="page">Events</a>
+                    <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Thoughts</a>
+                    <a href="/books.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Books</a>
+                    <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
+                    <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full relative z-10 space-y-8">
+        
+        <!-- Header Banner -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-8 shadow-xl">
+            <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3">
+                Curated Industry Calendar
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-serif font-medium text-white mb-3">
+                Geospatial Conferences, GeoAI &amp; Remote Sensing Events
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+                Upcoming community gatherings, symposia, and standards meetings across Cloud-Native Geospatial, GeoAI, and Remote Sensing. Explore upcoming venues on the interactive globe or table below. To submit or update an event, please contact <a href="mailto:info@davidgsmith.net" class="text-amber-400 font-semibold hover:underline">info@davidgsmith.net</a>.
+            </p>
+        </div>
+
+        <!-- Interactive 3D Globe Card -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-xl backdrop-blur-sm">
+            <div class="flex justify-between items-center mb-4 px-2">
+                <h2 class="text-lg font-serif font-medium text-white flex items-center gap-2">
+                    <span>🌍 Global Event Locations</span>
+                </h2>
+                <span class="text-xs text-slate-400">Click a marker to inspect details</span>
+            </div>
+            <div id="globe-container" class="w-full h-[450px] sm:h-[500px] flex justify-center items-center bg-slate-950 rounded-xl overflow-hidden border border-slate-800 relative">
+                <!-- Globe renders here -->
+            </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-900/60 p-4 border border-slate-800 rounded-xl backdrop-blur-sm">
+            <input type="text" id="eventSearch" placeholder="Filter by event name, city, or keyword..." 
+                   class="w-full sm:w-96 px-4 py-2.5 bg-slate-950 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+            <div class="text-xs text-slate-400 text-center sm:text-right">
+                Showing future verified listings &bull; Click table headers to sort
+            </div>
+        </div>
+
+        <!-- Events Table Card -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl overflow-hidden backdrop-blur-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse" id="eventsTable">
+                    <thead>
+                        <tr class="bg-slate-950 border-b border-slate-800 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                            <th class="py-4 px-5 cursor-pointer hover:text-white transition-colors" onclick="sortTable(0)">Event Name ↕</th>
+                            <th class="py-4 px-5 cursor-pointer hover:text-white transition-colors" onclick="sortTable(1)">Date ↕</th>
+                            <th class="py-4 px-5 cursor-pointer hover:text-white transition-colors" onclick="sortTable(2)">Location ↕</th>
+                            <th class="py-4 px-5">Category</th>
+                            <th class="py-4 px-5 text-left">Calendar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/80 text-sm">
+                        
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Cloud-Native Geo">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.foss4gna.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          FOSS4G North America 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-02">
+        2026-11-02 &rarr; 2026-11-04
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Marina Bay Sands, 018956, Singapore
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Cloud-Native Geo
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afoss4gnorthameri-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AFOSS4G%20North%20America%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261102%0D%0ADTEND%3BVALUE%3DDATE%3A20261104%0D%0ALOCATION%3AMarina%20Bay%20Sands%2C%20018956%2C%20Singapore%0D%0ADESCRIPTION%3ACommunity%20tracker%20entry%20from%20Jakub%20Nowosad%20repository.%0D%0AURL%3Ahttps%3A%2F%2Fwww.foss4gna.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="FOSS4G_North_America_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Satellite & Space">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.cybersatsummit.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          CYBERSAT
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-04">
+        2026-11-04 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Chantilly, Virginia, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Satellite & Space
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Acybersathttpswww-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ACYBERSAT%0D%0ADTSTART%3BVALUE%3DDATE%3A20261104%0D%0ADTEND%3BVALUE%3DDATE%3A20261104%0D%0ALOCATION%3AChantilly%2C%20Virginia%2C%20United%20States%0D%0ADESCRIPTION%3ANov%204.2026%0D%0AURL%3Ahttps%3A%2F%2Fwww.cybersatsummit.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="CYBERSAT.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Cloud-Native Geo">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.earthobsforum.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Advancing Earth Observations Forum 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-09">
+        2026-11-09 &rarr; 2026-11-12
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Hobart, Tasmania, Australia
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Cloud-Native Geo
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aadvancingearthob-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAdvancing%20Earth%20Observations%20Forum%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261109%0D%0ADTEND%3BVALUE%3DDATE%3A20261112%0D%0ALOCATION%3AHobart%2C%20Tasmania%2C%20Australia%0D%0ADESCRIPTION%3ACommunity%20tracker%20entry%20from%20Jakub%20Nowosad%20repository.%0D%0AURL%3Ahttps%3A%2F%2Fwww.earthobsforum.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Advancing_Earth_Observations_Forum_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://events.reutersevents.com/space/space-satellites-usa" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Space &amp; Satellites USA 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-09">
+        2026-11-09 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Washington, District of Columbia, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aspaceampsatellit-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASpace%20%26amp%3B%20Satellites%20USA%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261109%0D%0ADTEND%3BVALUE%3DDATE%3A20261109%0D%0ALOCATION%3AWashington%2C%20District%20of%20Columbia%2C%20United%20States%0D%0ADESCRIPTION%3ANov%209.2026%0D%0AURL%3Ahttps%3A%2F%2Fevents.reutersevents.com%2Fspace%2Fspace-satellites-usa%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Space__amp__Satellites_USA_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://igisc.geoint.mx/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          International Conference on Geospatial Information Sciences
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-11">
+        2026-11-11 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Toluca, 50000, México
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ainternationalcon-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AInternational%20Conference%20on%20Geospatial%20Information%20Sciences%0D%0ADTSTART%3BVALUE%3DDATE%3A20261111%0D%0ADTEND%3BVALUE%3DDATE%3A20261111%0D%0ALOCATION%3AToluca%2C%2050000%2C%20M%C3%A9xico%0D%0ADESCRIPTION%3ANov%2011.2026%0D%0AURL%3Ahttps%3A%2F%2Figisc.geoint.mx%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="International_Conference_on_Geospatial_Information_Sciences.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Satellite & Space">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.spacetechexpo-europe.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Space Tech Expo Europe
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-17">
+        2026-11-17 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Bremen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Satellite & Space
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aspacetechexpoeur-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASpace%20Tech%20Expo%20Europe%0D%0ADTSTART%3BVALUE%3DDATE%3A20261117%0D%0ADTEND%3BVALUE%3DDATE%3A20261117%0D%0ALOCATION%3ABremen%2C%20Deutschland%0D%0ADESCRIPTION%3ANov%2017.2026%0D%0AURL%3Ahttps%3A%2F%2Fwww.spacetechexpo-europe.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Space_Tech_Expo_Europe.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Cloud-Native Geo">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://satsummit.io/2026-st-louis" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          SatSummit 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-18">
+        2026-11-18 &rarr; 2026-11-19
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        triton international school, 44703, नेपाल
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Cloud-Native Geo
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Asatsummit2026htt-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASatSummit%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261118%0D%0ADTEND%3BVALUE%3DDATE%3A20261119%0D%0ALOCATION%3Atriton%20international%20school%2C%2044703%2C%20%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%0D%0ADESCRIPTION%3ACommunity%20tracker%20entry%20from%20Jakub%20Nowosad%20repository.%0D%0AURL%3Ahttps%3A%2F%2Fsatsummit.io%2F2026-st-louis%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="SatSummit_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.geoworldevent.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GEO WORLD
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-23">
+        2026-11-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        دبي, الإمارات العربية المتحدة
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoworldhttpswww-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGEO%20WORLD%0D%0ADTSTART%3BVALUE%3DDATE%3A20261123%0D%0ADTEND%3BVALUE%3DDATE%3A20261123%0D%0ALOCATION%3A%D8%AF%D8%A8%D9%8A%2C%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D8%AD%D8%AF%D8%A9%0D%0ADESCRIPTION%3ANov%2023.2026%0D%0AURL%3Ahttps%3A%2F%2Fwww.geoworldevent.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GEO_WORLD.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://pgrsc.org/pacific-gis-rs-users-conference/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          2026 Pacific Islands GIS & Remote Sensing User Conference
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-30">
+        2026-11-30 &rarr; 2026-11-04
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Suva, Central, Viti
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A2026pacificislan-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A2026%20Pacific%20Islands%20GIS%20%26%20Remote%20Sensing%20User%20Conference%0D%0ADTSTART%3BVALUE%3DDATE%3A20261130%0D%0ADTEND%3BVALUE%3DDATE%3A20261104%0D%0ALOCATION%3ASuva%2C%20Central%2C%20Viti%0D%0ADESCRIPTION%3ACommunity%20tracker%20entry%20from%20Jakub%20Nowosad%20repository.%0D%0AURL%3Ahttps%3A%2F%2Fpgrsc.org%2Fpacific-gis-rs-users-conference%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="2026_Pacific_Islands_GIS___Remote_Sensing_User_Conference.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://pgrsc.org/event/2026-pacific-islands-gis-remote-sensing-user-conference/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          2026 Pacific Islands GIS &amp; Remote Sensing User Conference
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-11-30">
+        2026-11-30 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Suva, Central, Viti
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A2026pacificislan-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A2026%20Pacific%20Islands%20GIS%20%26amp%3B%20Remote%20Sensing%20User%20Conference%0D%0ADTSTART%3BVALUE%3DDATE%3A20261130%0D%0ADTEND%3BVALUE%3DDATE%3A20261130%0D%0ALOCATION%3ASuva%2C%20Central%2C%20Viti%0D%0ADESCRIPTION%3ANov%2030.2026%0D%0AURL%3Ahttps%3A%2F%2Fpgrsc.org%2Fevent%2F2026-pacific-islands-gis-remote-sensing-user-conference%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="2026_Pacific_Islands_GIS__amp__Remote_Sensing_User_Conference.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Cloud-Native Geo">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://geoinfobr.github.io/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GEOINFO 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-12-07">
+        2026-12-07 &rarr; 2026-12-09
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        São José dos Campos, Região Sudeste, Brasil
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Cloud-Native Geo
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoinfo2026https-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGEOINFO%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261207%0D%0ADTEND%3BVALUE%3DDATE%3A20261209%0D%0ALOCATION%3AS%C3%A3o%20Jos%C3%A9%20dos%20Campos%2C%20Regi%C3%A3o%20Sudeste%2C%20Brasil%0D%0ADESCRIPTION%3ACommunity%20tracker%20entry%20from%20Jakub%20Nowosad%20repository.%0D%0AURL%3Ahttps%3A%2F%2Fgeoinfobr.github.io%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GEOINFO_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.agu.org/plan-for-a-meeting/agumeetings" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AGU 2026
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2026-12-07">
+        2026-12-07 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        San Francisco, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aagu2026httpswwwa-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAGU%202026%0D%0ADTSTART%3BVALUE%3DDATE%3A20261207%0D%0ADTEND%3BVALUE%3DDATE%3A20261207%0D%0ALOCATION%3ASan%20Francisco%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3ADec%207.2026%0D%0AURL%3Ahttps%3A%2F%2Fwww.agu.org%2Fplan-for-a-meeting%2Fagumeetings%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AGU_2026.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Open Source GIS">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://blog.openstreetmap.org/2026/05/11/state-of-the-map-2027-call-for-venues-is-now-open/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          State of the Map 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-01">
+        2027-01-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Tabuaço, Viseu, Portugal
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Open Source GIS
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Astateofthemap202-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AState%20of%20the%20Map%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270101%0D%0ADTEND%3BVALUE%3DDATE%3A20270101%0D%0ALOCATION%3ATabua%C3%A7o%2C%20Viseu%2C%20Portugal%0D%0ADESCRIPTION%3AJan%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fblog.openstreetmap.org%2F2026%2F05%2F11%2Fstate-of-the-map-2027-call-for-venues-is-now-open%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="State_of_the_Map_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Satellite & Space">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://wsbw.com/media-press/become-a-media-partner/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          World Satellite Business Week 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-01">
+        2027-01-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Tabuaço, Viseu, Portugal
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Satellite & Space
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aworldsatellitebu-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AWorld%20Satellite%20Business%20Week%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270101%0D%0ADTEND%3BVALUE%3DDATE%3A20270101%0D%0ALOCATION%3ATabua%C3%A7o%2C%20Viseu%2C%20Portugal%0D%0ADESCRIPTION%3AJan%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fwsbw.com%2Fmedia-press%2Fbecome-a-media-partner%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="World_Satellite_Business_Week_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://meteorologicaltechnologyworldexpo.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Meteorological Technology World Expo 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-01">
+        2027-01-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Tabuaço, Viseu, Portugal
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ameteorologicalte-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AMeteorological%20Technology%20World%20Expo%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270101%0D%0ADTEND%3BVALUE%3DDATE%3A20270101%0D%0ALOCATION%3ATabua%C3%A7o%2C%20Viseu%2C%20Portugal%0D%0ADESCRIPTION%3AJan%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fmeteorologicaltechnologyworldexpo.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Meteorological_Technology_World_Expo_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GeoAI">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://geoaiconference.org/?page_id=616" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GeoAI 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-01">
+        2027-01-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GeoAI
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoai2027httpsge-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGeoAI%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270101%0D%0ADTEND%3BVALUE%3DDATE%3A20270101%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AJan%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fgeoaiconference.org%2F%3Fpage_id%3D616%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GeoAI_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.ion.org/itm/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          ION ITM &amp; PTTI 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-25">
+        2027-01-25 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Anaheim, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aionitmampptti202-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AION%20ITM%20%26amp%3B%20PTTI%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270125%0D%0ADTEND%3BVALUE%3DDATE%3A20270125%0D%0ALOCATION%3AAnaheim%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3AJan%2025.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.ion.org%2Fitm%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="ION_ITM__amp__PTTI_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GIS & Mapping">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://thegpn.org/page/CalGIS" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          CalGIS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-25">
+        2027-01-25 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        San Luis Obispo County, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GIS & Mapping
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Acalgis2027httpst-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ACalGIS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270125%0D%0ADTEND%3BVALUE%3DDATE%3A20270125%0D%0ALOCATION%3ASan%20Luis%20Obispo%20County%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3AJan%2025.2027%0D%0AURL%3Ahttps%3A%2F%2Fthegpn.org%2Fpage%2FCalGIS%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="CalGIS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://spaceconference.eu/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          19th European Space Conference
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-01-26">
+        2027-01-26 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Bruxelles - Brussel, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, België / Belgique / Belgien
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A19theuropeanspac-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A19th%20European%20Space%20Conference%0D%0ADTSTART%3BVALUE%3DDATE%3A20270126%0D%0ADTEND%3BVALUE%3DDATE%3A20270126%0D%0ALOCATION%3ABruxelles%20-%20Brussel%2C%20R%C3%A9gion%20de%20Bruxelles-Capitale%20-%20Brussels%20Hoofdstedelijk%20Gewest%2C%20Belgi%C3%AB%20%2F%20Belgique%20%2F%20Belgien%0D%0ADESCRIPTION%3AJan%2026.2027%0D%0AURL%3Ahttps%3A%2F%2Fspaceconference.eu%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="19th_European_Space_Conference.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GIS & Mapping">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://ncgisconference.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          NC GIS Conference 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-03">
+        2027-02-03 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Winston-Salem, North Carolina, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GIS & Mapping
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ancgisconference2-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ANC%20GIS%20Conference%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270203%0D%0ADTEND%3BVALUE%3DDATE%3A20270203%0D%0ALOCATION%3AWinston-Salem%2C%20North%20Carolina%2C%20United%20States%0D%0ADESCRIPTION%3AFeb%203.2027%0D%0AURL%3Ahttps%3A%2F%2Fncgisconference.com%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="NC_GIS_Conference_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.aag.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AAG Annual Meeting 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-08">
+        2027-02-08 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        New York, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aaagannualmeeting-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAAG%20Annual%20Meeting%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270208%0D%0ADTEND%3BVALUE%3DDATE%3A20270208%0D%0ALOCATION%3ANew%20York%2C%20United%20States%0D%0ADESCRIPTION%3AFeb%208.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.aag.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AAG_Annual_Meeting_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esri.com/en-us/about/events/fedgis/overview" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri FedGIS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-09">
+        2027-02-09 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Washington, District of Columbia, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesrifedgis2027ht-1793579546577%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20FedGIS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270209%0D%0ADTEND%3BVALUE%3DDATE%3A20270209%0D%0ALOCATION%3AWashington%2C%20District%20of%20Columbia%2C%20United%20States%0D%0ADESCRIPTION%3AFeb%209.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esri.com%2Fen-us%2Fabout%2Fevents%2Ffedgis%2Foverview%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_FedGIS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://dgi.wbresearch.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          DGI 2027 (Defence Geospatial Intelligence)
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-23">
+        2027-02-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Adgi2027defencege-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ADGI%202027%20(Defence%20Geospatial%20Intelligence)%0D%0ADTSTART%3BVALUE%3DDATE%3A20270223%0D%0ADTEND%3BVALUE%3DDATE%3A20270223%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AFeb%2023.2027%0D%0AURL%3Ahttps%3A%2F%2Fdgi.wbresearch.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="DGI_2027__Defence_Geospatial_Intelligence_.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.geo-week.com/salt-lake-city/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Geo Week 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-23">
+        2027-02-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Salt Lake City, Utah, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoweek2027https-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGeo%20Week%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270223%0D%0ADTEND%3BVALUE%3DDATE%3A20270223%0D%0ALOCATION%3ASalt%20Lake%20City%2C%20Utah%2C%20United%20States%0D%0ADESCRIPTION%3AFeb%2023.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.geo-week.com%2Fsalt-lake-city%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Geo_Week_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://space-comm.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Space-Comm Expo Europe 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-02-24">
+        2027-02-24 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aspacecommexpoeur-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASpace-Comm%20Expo%20Europe%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270224%0D%0ADTEND%3BVALUE%3DDATE%3A20270224%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AFeb%2024.2027%0D%0AURL%3Ahttps%3A%2F%2Fspace-comm.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Space_Comm_Expo_Europe_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GeoAI">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esri.de/de-de/esri-konferenz/2027/uebersicht" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri Konferenz 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-03">
+        2027-03-03 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Bonn, Nordrhein-Westfalen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GeoAI
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesrikonferenz202-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20Konferenz%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270303%0D%0ADTEND%3BVALUE%3DDATE%3A20270303%0D%0ALOCATION%3ABonn%2C%20Nordrhein-Westfalen%2C%20Deutschland%0D%0ADESCRIPTION%3AMar%203.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esri.de%2Fde-de%2Fesri-konferenz%2F2027%2Fuebersicht%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_Konferenz_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esri.com/en-us/about/events/partner-conference/overview" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri Partner Conference 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-07">
+        2027-03-07 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Palm Springs, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesripartnerconfe-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20Partner%20Conference%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270307%0D%0ADTEND%3BVALUE%3DDATE%3A20270307%0D%0ALOCATION%3APalm%20Springs%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3AMar%207.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esri.com%2Fen-us%2Fabout%2Fevents%2Fpartner-conference%2Foverview%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_Partner_Conference_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.satshow.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          SATShow Week 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-08">
+        2027-03-08 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Washington, District of Columbia, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Asatshowweek2027h-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASATShow%20Week%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270308%0D%0ADTEND%3BVALUE%3DDATE%3A20270308%0D%0ALOCATION%3AWashington%2C%20District%20of%20Columbia%2C%20United%20States%0D%0ADESCRIPTION%3AMar%208.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.satshow.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="SATShow_Week_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Open Source GIS">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://fossgis-konferenz.de/2027/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          FOSSGIS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-09">
+        2027-03-09 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Heidelberg, Baden-Württemberg, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Open Source GIS
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afossgis2027https-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AFOSSGIS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270309%0D%0ADTEND%3BVALUE%3DDATE%3A20270309%0D%0ALOCATION%3AHeidelberg%2C%20Baden-W%C3%BCrttemberg%2C%20Deutschland%0D%0ADESCRIPTION%3AMar%209.2027%0D%0AURL%3Ahttps%3A%2F%2Ffossgis-konferenz.de%2F2027%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="FOSSGIS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Earth Observation">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://waset.org/geoinformatics-and-earth-observation-conference-in-march-2027-in-london" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          ICGEO 2027: 21. International Conference on Geoinformatics and Earth Observation
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-11">
+        2027-03-11 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Earth Observation
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aicgeo202721inter-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AICGEO%202027%3A%2021.%20International%20Conference%20on%20Geoinformatics%20and%20Earth%20Observation%0D%0ADTSTART%3BVALUE%3DDATE%3A20270311%0D%0ADTEND%3BVALUE%3DDATE%3A20270311%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AMar%2011.2027%0D%0AURL%3Ahttps%3A%2F%2Fwaset.org%2Fgeoinformatics-and-earth-observation-conference-in-march-2027-in-london%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="ICGEO_2027__21__International_Conference_on_Geoinformatics_and_Earth_Observation.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://eudroneforum.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          European Drone Forum 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-15">
+        2027-03-15 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Düsseldorf, Nordrhein-Westfalen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aeuropeandronefor-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEuropean%20Drone%20Forum%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270315%0D%0ADTEND%3BVALUE%3DDATE%3A20270315%0D%0ALOCATION%3AD%C3%BCsseldorf%2C%20Nordrhein-Westfalen%2C%20Deutschland%0D%0ADESCRIPTION%3AMar%2015.2027%0D%0AURL%3Ahttps%3A%2F%2Feudroneforum.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="European_Drone_Forum_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.xponential-europe.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          XPONENTIAL Europe 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-16">
+        2027-03-16 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Düsseldorf, Nordrhein-Westfalen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Axponentialeurope-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AXPONENTIAL%20Europe%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270316%0D%0ADTEND%3BVALUE%3DDATE%3A20270316%0D%0ALOCATION%3AD%C3%BCsseldorf%2C%20Nordrhein-Westfalen%2C%20Deutschland%0D%0ADESCRIPTION%3AMar%2016.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.xponential-europe.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="XPONENTIAL_Europe_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GeoAI">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://sciforum.net/event/IOCGM2027" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          IOCGM 2027 (1st Int’l Online Conference on Geomatics)
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-17">
+        2027-03-17 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Online, France métropolitaine, France
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GeoAI
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aiocgm20271stintl-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AIOCGM%202027%20(1st%20Int%E2%80%99l%20Online%20Conference%20on%20Geomatics)%0D%0ADTSTART%3BVALUE%3DDATE%3A20270317%0D%0ADTEND%3BVALUE%3DDATE%3A20270317%0D%0ALOCATION%3AOnline%2C%20France%20m%C3%A9tropolitaine%2C%20France%0D%0ADESCRIPTION%3AMar%2017.2027%0D%0AURL%3Ahttps%3A%2F%2Fsciforum.net%2Fevent%2FIOCGM2027%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="IOCGM_2027__1st_Int_l_Online_Conference_on_Geomatics_.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.geoconnectasia.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Geo Connect Asia 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-03-17">
+        2027-03-17 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Singapore
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoconnectasia20-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGeo%20Connect%20Asia%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270317%0D%0ADTEND%3BVALUE%3DDATE%3A20270317%0D%0ALOCATION%3ASingapore%0D%0ADESCRIPTION%3AMar%2017.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.geoconnectasia.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Geo_Connect_Asia_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.egu27.eu/about/contact-us.html" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          EGU General Assembly 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-04">
+        2027-04-04 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Wien, Österreich
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aegugeneralassemb-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEGU%20General%20Assembly%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270404%0D%0ADTEND%3BVALUE%3DDATE%3A20270404%0D%0ALOCATION%3AWien%2C%20%C3%96sterreich%0D%0ADESCRIPTION%3AApr%204.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.egu27.eu%2Fabout%2Fcontact-us.html%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="EGU_General_Assembly_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://phowo.ifp.uni-stuttgart.de/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          The 60th Photogrammetric Week
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-06">
+        2027-04-06 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Stuttgart, Baden-Württemberg, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Athe60thphotogram-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AThe%2060th%20Photogrammetric%20Week%0D%0ADTSTART%3BVALUE%3DDATE%3A20270406%0D%0ADTEND%3BVALUE%3DDATE%3A20270406%0D%0ALOCATION%3AStuttgart%2C%20Baden-W%C3%BCrttemberg%2C%20Deutschland%0D%0ADESCRIPTION%3AApr%206.2027%0D%0AURL%3Ahttps%3A%2F%2Fphowo.ifp.uni-stuttgart.de%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="The_60th_Photogrammetric_Week.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://phowo.ifp.uni-stuttgart.de/sitemap.aspx" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          60th Photogrammetric Week
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-06">
+        2027-04-06 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Stuttgart, Baden-Württemberg, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A60thphotogrammet-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A60th%20Photogrammetric%20Week%0D%0ADTSTART%3BVALUE%3DDATE%3A20270406%0D%0ADTEND%3BVALUE%3DDATE%3A20270406%0D%0ALOCATION%3AStuttgart%2C%20Baden-W%C3%BCrttemberg%2C%20Deutschland%0D%0ADESCRIPTION%3AApr%206.2027%0D%0AURL%3Ahttps%3A%2F%2Fphowo.ifp.uni-stuttgart.de%2Fsitemap.aspx%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="60th_Photogrammetric_Week.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.ion.org/plans/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          IEEE/ION PLANS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-12">
+        2027-04-12 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Portland, Oregon, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aieeeionplans2027-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AIEEE%2FION%20PLANS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270412%0D%0ADTEND%3BVALUE%3DDATE%3A20270412%0D%0ALOCATION%3APortland%2C%20Oregon%2C%20United%20States%0D%0ADESCRIPTION%3AApr%2012.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.ion.org%2Fplans%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="IEEE_ION_PLANS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://jisdm2027.tudelft.nl/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          JISDM 2027 | 7th Joint International Symposium on Deformation Monitoring
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-14">
+        2027-04-14 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Delft, Zuid-Holland, Nederland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ajisdm20277thjoin-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AJISDM%202027%20%7C%207th%20Joint%20International%20Symposium%20on%20Deformation%20Monitoring%0D%0ADTSTART%3BVALUE%3DDATE%3A20270414%0D%0ADTEND%3BVALUE%3DDATE%3A20270414%0D%0ALOCATION%3ADelft%2C%20Zuid-Holland%2C%20Nederland%0D%0ADESCRIPTION%3AApr%2014.2027%0D%0AURL%3Ahttps%3A%2F%2Fjisdm2027.tudelft.nl%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="JISDM_2027___7th_Joint_International_Symposium_on_Deformation_Monitoring.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esri.com/en-us/about/events/international-imgis/overview" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri International MGIS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-15">
+        2027-04-15 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Frankfurt am Main, Hessen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesriinternationa-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20International%20MGIS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270415%0D%0ADTEND%3BVALUE%3DDATE%3A20270415%0D%0ALOCATION%3AFrankfurt%20am%20Main%2C%20Hessen%2C%20Deutschland%0D%0ADESCRIPTION%3AApr%2015.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esri.com%2Fen-us%2Fabout%2Fevents%2Finternational-imgis%2Foverview%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_International_MGIS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.iaria.org/conferences2027/GEOProcessing27.html" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GEOProcessing 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-18">
+        2027-04-18 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Lisboa, Portugal
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageoprocessing202-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGEOProcessing%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270418%0D%0ADTEND%3BVALUE%3DDATE%3A20270418%0D%0ALOCATION%3ALisboa%2C%20Portugal%0D%0ADESCRIPTION%3AApr%2018.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.iaria.org%2Fconferences2027%2FGEOProcessing27.html%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GEOProcessing_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://gistam.scitevents.org" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GISTAM 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-20">
+        2027-04-20 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Roma, Lazio, Italia
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Agistam2027httpsg-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGISTAM%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270420%0D%0ADTEND%3BVALUE%3DDATE%3A20270420%0D%0ALOCATION%3ARoma%2C%20Lazio%2C%20Italia%0D%0ADESCRIPTION%3AApr%2020.2027%0D%0AURL%3Ahttps%3A%2F%2Fgistam.scitevents.org%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GISTAM_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GeoAI">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://geospatialworld.net/gwf/2027/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Geospatial World Forum 2027 (GWF)
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-04-20">
+        2027-04-20 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Amsterdam, Noord-Holland, Nederland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GeoAI
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageospatialworldf-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGeospatial%20World%20Forum%202027%20(GWF)%0D%0ADTSTART%3BVALUE%3DDATE%3A20270420%0D%0ADTEND%3BVALUE%3DDATE%3A20270420%0D%0ALOCATION%3AAmsterdam%2C%20Noord-Holland%2C%20Nederland%0D%0ADESCRIPTION%3AApr%2020.2027%0D%0AURL%3Ahttps%3A%2F%2Fgeospatialworld.net%2Fgwf%2F2027%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Geospatial_World_Forum_2027__GWF_.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GIS & Mapping">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.gisbaltic.eu/en-gb/beuc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Baltic Esri User Conference (BEUC) 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-12">
+        2027-05-12 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Rīga, Latvija
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GIS & Mapping
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Abalticesriuserco-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ABaltic%20Esri%20User%20Conference%20(BEUC)%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270512%0D%0ADTEND%3BVALUE%3DDATE%3A20270512%0D%0ALOCATION%3AR%C4%ABga%2C%20Latvija%0D%0ADESCRIPTION%3AMay%2012.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.gisbaltic.eu%2Fen-gb%2Fbeuc%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Baltic_Esri_User_Conference__BEUC__2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://usgif.org/geoint-symposium/2027-symposium/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GEOINT Symposium 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-17">
+        2027-05-17 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        SpringHill Suites Orlando Kissimmee, 34746, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageointsymposium2-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGEOINT%20Symposium%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270517%0D%0ADTEND%3BVALUE%3DDATE%3A20270517%0D%0ALOCATION%3ASpringHill%20Suites%20Orlando%20Kissimmee%2C%2034746%2C%20United%20States%0D%0ADESCRIPTION%3AMay%2017.2027%0D%0AURL%3Ahttps%3A%2F%2Fusgif.org%2Fgeoint-symposium%2F2027-symposium%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GEOINT_Symposium_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://enc-series.org" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          European Navigation Conference (ENC) 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-19">
+        2027-05-19 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Noordwijk, Zuid-Holland, Nederland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aeuropeannavigati-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEuropean%20Navigation%20Conference%20(ENC)%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270519%0D%0ADTEND%3BVALUE%3DDATE%3A20270519%0D%0ALOCATION%3ANoordwijk%2C%20Zuid-Holland%2C%20Nederland%0D%0ADESCRIPTION%3AMay%2019.2027%0D%0AURL%3Ahttps%3A%2F%2Fenc-series.org%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="European_Navigation_Conference__ENC__2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.fig.net/fig2027/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          FIG Working Week 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-23">
+        2027-05-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Stavanger, Rogaland, Norge
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afigworkingweek20-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AFIG%20Working%20Week%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270523%0D%0ADTEND%3BVALUE%3DDATE%3A20270523%0D%0ALOCATION%3AStavanger%2C%20Rogaland%2C%20Norge%0D%0ADESCRIPTION%3AMay%2023.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.fig.net%2Ffig2027%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="FIG_Working_Week_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esriuk.com/en-gb/about/events/ac/overview" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri UK Annual Conference 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-25">
+        2027-05-25 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesriukannualconf-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20UK%20Annual%20Conference%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270525%0D%0ADTEND%3BVALUE%3DDATE%3A20270525%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AMay%2025.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esriuk.com%2Fen-gb%2Fabout%2Fevents%2Fac%2Foverview%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_UK_Annual_Conference_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.georchestra.org/blog/2026/06/23/geocom-2027-save-the-date-en/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          geOcom 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-05-31">
+        2027-05-31 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Montpellier, France métropolitaine, France
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageocom2027httpsw-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AgeOcom%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270531%0D%0ADTEND%3BVALUE%3DDATE%3A20270531%0D%0ALOCATION%3AMontpellier%2C%20France%20m%C3%A9tropolitaine%2C%20France%0D%0ADESCRIPTION%3AMay%2031.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.georchestra.org%2Fblog%2F2026%2F06%2F23%2Fgeocom-2027-save-the-date-en%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="geOcom_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.agi.org.uk/help-us-reach-our-3000th-member-competition-open/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AGI GeoCom 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-01">
+        2027-06-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Northern Ireland (TBC)
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aagigeocom2027htt-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAGI%20GeoCom%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270601%0D%0ADTEND%3BVALUE%3DDATE%3A20270601%0D%0ALOCATION%3ANorthern%20Ireland%20(TBC)%0D%0ADESCRIPTION%3AJun%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.agi.org.uk%2Fhelp-us-reach-our-3000th-member-competition-open%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AGI_GeoCom_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://symposium.earsel.org/46th-symposium-Turin/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          46th EARSeL Symposium 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-01">
+        2027-06-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Torino, Piemonte, Italia
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A46thearselsympos-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A46th%20EARSeL%20Symposium%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270601%0D%0ADTEND%3BVALUE%3DDATE%3A20270601%0D%0ALOCATION%3ATorino%2C%20Piemonte%2C%20Italia%0D%0ADESCRIPTION%3AJun%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fsymposium.earsel.org%2F46th-symposium-Turin%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="46th_EARSeL_Symposium_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Satellite & Space">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://smallsateurope.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          SmallSat Europe 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-01">
+        2027-06-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Amsterdam, Noord-Holland, Nederland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Satellite & Space
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Asmallsateurope20-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASmallSat%20Europe%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270601%0D%0ADTEND%3BVALUE%3DDATE%3A20270601%0D%0ALOCATION%3AAmsterdam%2C%20Noord-Holland%2C%20Nederland%0D%0ADESCRIPTION%3AJun%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fsmallsateurope.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="SmallSat_Europe_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://internationaldroneshow.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          International Drone Show 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-02">
+        2027-06-02 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Odense, 5000, Danmark
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ainternationaldro-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AInternational%20Drone%20Show%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270602%0D%0ADTEND%3BVALUE%3DDATE%3A20270602%0D%0ALOCATION%3AOdense%2C%205000%2C%20Danmark%0D%0ADESCRIPTION%3AJun%202.2027%0D%0AURL%3Ahttps%3A%2F%2Finternationaldroneshow.com%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="International_Drone_Show_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.geobusinessshow.com/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          GEO Business 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-23">
+        2027-06-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Greater London, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ageobusiness2027h-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AGEO%20Business%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270623%0D%0ADTEND%3BVALUE%3DDATE%3A20270623%0D%0ALOCATION%3AGreater%20London%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AJun%2023.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.geobusinessshow.com%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="GEO_Business_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://jurse.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          JURSE 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-06-30">
+        2027-06-30 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Amsterdam, Noord-Holland, Nederland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ajurse2027httpsju-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AJURSE%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270630%0D%0ADTEND%3BVALUE%3DDATE%3A20270630%0D%0ALOCATION%3AAmsterdam%2C%20Noord-Holland%2C%20Nederland%0D%0ADESCRIPTION%3AJun%2030.2027%0D%0AURL%3Ahttps%3A%2F%2Fjurse.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="JURSE_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://agit.at" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AGIT 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-07-07">
+        2027-07-07 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Salzburg, Österreich
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aagit2027httpsagi-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAGIT%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270707%0D%0ADTEND%3BVALUE%3DDATE%3A20270707%0D%0ALOCATION%3ASalzburg%2C%20%C3%96sterreich%0D%0ADESCRIPTION%3AJul%207.2027%0D%0AURL%3Ahttps%3A%2F%2Fagit.at%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AGIT_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.grss-ieee.org/event/2027-ieee-international-geoscience-and-remote-sensing-symposium/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          IEEE IGARSS 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-07-11">
+        2027-07-11 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Reykjavíkurborg, Höfuðborgarsvæðið, Ísland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aieeeigarss2027ht-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AIEEE%20IGARSS%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270711%0D%0ADTEND%3BVALUE%3DDATE%3A20270711%0D%0ALOCATION%3AReykjav%C3%ADkurborg%2C%20H%C3%B6fu%C3%B0borgarsv%C3%A6%C3%B0i%C3%B0%2C%20%C3%8Dsland%0D%0ADESCRIPTION%3AJul%2011.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.grss-ieee.org%2Fevent%2F2027-ieee-international-geoscience-and-remote-sensing-symposium%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="IEEE_IGARSS_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.esri.com/en-us/about/events/uc/overview" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Esri User Conference 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-07-12">
+        2027-07-12 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        San Diego, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aesriuserconferen-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AEsri%20User%20Conference%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270712%0D%0ADTEND%3BVALUE%3DDATE%3A20270712%0D%0ALOCATION%3ASan%20Diego%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3AJul%2012.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.esri.com%2Fen-us%2Fabout%2Fevents%2Fuc%2Foverview%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Esri_User_Conference_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GeoAI">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://geoawesome.com/what-is-a-map-icc-2027-warsaw/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          33rd International Cartographic Conference
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-07-18">
+        2027-07-18 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Warszawa, województwo mazowieckie, Polska
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GeoAI
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A33rdinternationa-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A33rd%20International%20Cartographic%20Conference%0D%0ADTSTART%3BVALUE%3DDATE%3A20270718%0D%0ADTEND%3BVALUE%3DDATE%3A20270718%0D%0ALOCATION%3AWarszawa%2C%20wojew%C3%B3dztwo%20mazowieckie%2C%20Polska%0D%0ADESCRIPTION%3AJul%2018.2027%0D%0AURL%3Ahttps%3A%2F%2Fgeoawesome.com%2Fwhat-is-a-map-icc-2027-warsaw%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="33rd_International_Cartographic_Conference.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.asiaoceania.org/AOGS2027/Home" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AOGS Annual Meeting 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-07-25">
+        2027-07-25 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Marina Bay Sands, Singapore
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aaogsannualmeetin-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAOGS%20Annual%20Meeting%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270725%0D%0ADTEND%3BVALUE%3DDATE%3A20270725%0D%0ALOCATION%3AMarina%20Bay%20Sands%2C%20Singapore%0D%0ADESCRIPTION%3AJul%2025.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.asiaoceania.org%2FAOGS2027%2FHome%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AOGS_Annual_Meeting_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://smallsat.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          41st Small Satellite Conference
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-08-15">
+        2027-08-15 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Salt Lake City, Utah, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A41stsmallsatelli-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A41st%20Small%20Satellite%20Conference%0D%0ADTSTART%3BVALUE%3DDATE%3A20270815%0D%0ADTEND%3BVALUE%3DDATE%3A20270815%0D%0ALOCATION%3ASalt%20Lake%20City%2C%20Utah%2C%20United%20States%0D%0ADESCRIPTION%3AAug%2015.2027%0D%0AURL%3Ahttps%3A%2F%2Fsmallsat.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="41st_Small_Satellite_Conference.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Open Source GIS">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.osgeo.org/events/foss4g-2027/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          FOSS4G 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-08-23">
+        2027-08-23 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        City of Bristol, England, United Kingdom
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Open Source GIS
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afoss4g2027httpsw-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AFOSS4G%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270823%0D%0ADTEND%3BVALUE%3DDATE%3A20270823%0D%0ALOCATION%3ACity%20of%20Bristol%2C%20England%2C%20United%20Kingdom%0D%0ADESCRIPTION%3AAug%2023.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.osgeo.org%2Fevents%2Ffoss4g-2027%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="FOSS4G_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Earth Observation">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://ceos.org/meetings-page/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          CEOS SIT Technical Workshop 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-07">
+        2027-09-07 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Irvine, California, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Earth Observation
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aceossittechnical-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ACEOS%20SIT%20Technical%20Workshop%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270907%0D%0ADTEND%3BVALUE%3DDATE%3A20270907%0D%0ALOCATION%3AIrvine%2C%20California%2C%20United%20States%0D%0ADESCRIPTION%3ASep%207.2027%0D%0AURL%3Ahttps%3A%2F%2Fceos.org%2Fmeetings-page%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="CEOS_SIT_Technical_Workshop_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://spie.org/conferences-and-exhibitions/sensors-and-imaging" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          SPIE Sensors + Imaging 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-12">
+        2027-09-12 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Stockholm, 111 29, Sverige
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aspiesensorsimagi-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASPIE%20Sensors%20%2B%20Imaging%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270912%0D%0ADTEND%3BVALUE%3DDATE%3A20270912%0D%0ALOCATION%3AStockholm%2C%20111%2029%2C%20Sverige%0D%0ADESCRIPTION%3ASep%2012.2027%0D%0AURL%3Ahttps%3A%2F%2Fspie.org%2Fconferences-and-exhibitions%2Fsensors-and-imaging%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="SPIE_Sensors___Imaging_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="http://www.cospar2027sz.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          COSPAR 7th Symposium 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-13">
+        2027-09-13 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        苏州市, 江苏省, 中国
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Acospar7thsymposi-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ACOSPAR%207th%20Symposium%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270913%0D%0ADTEND%3BVALUE%3DDATE%3A20270913%0D%0ALOCATION%3A%E8%8B%8F%E5%B7%9E%E5%B8%82%2C%20%E6%B1%9F%E8%8B%8F%E7%9C%81%2C%20%E4%B8%AD%E5%9B%BD%0D%0ADESCRIPTION%3ASep%2013.2027%0D%0AURL%3Ahttp%3A%2F%2Fwww.cospar2027sz.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="COSPAR_7th_Symposium_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://nsgic.org/events/2027-nsgic-annual-conference/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          NSGIC Annual Conference 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-19">
+        2027-09-19 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Oklahoma City, Oklahoma, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ansgicannualconfe-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ANSGIC%20Annual%20Conference%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270919%0D%0ADTEND%3BVALUE%3DDATE%3A20270919%0D%0ALOCATION%3AOklahoma%20City%2C%20Oklahoma%2C%20United%20States%0D%0ADESCRIPTION%3ASep%2019.2027%0D%0AURL%3Ahttps%3A%2F%2Fnsgic.org%2Fevents%2F2027-nsgic-annual-conference%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="NSGIC_Annual_Conference_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.gsw2027.pl/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          ISPRS Geospatial Week 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-19">
+        2027-09-19 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Warszawa, województwo mazowieckie, Polska
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aisprsgeospatialw-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AISPRS%20Geospatial%20Week%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270919%0D%0ADTEND%3BVALUE%3DDATE%3A20270919%0D%0ALOCATION%3AWarszawa%2C%20wojew%C3%B3dztwo%20mazowieckie%2C%20Polska%0D%0ADESCRIPTION%3ASep%2019.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.gsw2027.pl%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="ISPRS_Geospatial_Week_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.ion.org/gnss/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          ION GNSS+ 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-20">
+        2027-09-20 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Orlando, Florida, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aiongnss2027https-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AION%20GNSS%2B%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20270920%0D%0ADTEND%3BVALUE%3DDATE%3A20270920%0D%0ALOCATION%3AOrlando%2C%20Florida%2C%20United%20States%0D%0ADESCRIPTION%3ASep%2020.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.ion.org%2Fgnss%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="ION_GNSS__2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://iac2027.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          IAC 2027 (78th International Astronautical Congress)
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-09-27">
+        2027-09-27 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Poznań, województwo wielkopolskie, Polska
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aiac202778thinter-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AIAC%202027%20(78th%20International%20Astronautical%20Congress)%0D%0ADTSTART%3BVALUE%3DDATE%3A20270927%0D%0ADTEND%3BVALUE%3DDATE%3A20270927%0D%0ALOCATION%3APozna%C5%84%2C%20wojew%C3%B3dztwo%20wielkopolskie%2C%20Polska%0D%0ADESCRIPTION%3ASep%2027.2027%0D%0AURL%3Ahttps%3A%2F%2Fiac2027.com%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="IAC_2027__78th_International_Astronautical_Congress_.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="GIS & Mapping">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://dvw.de/intergeo/en" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          INTERGEO 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-10-12">
+        2027-10-12 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Frankfurt am Main, Hessen, Deutschland
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          GIS & Mapping
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aintergeo2027http-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AINTERGEO%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20271012%0D%0ADTEND%3BVALUE%3DDATE%3A20271012%0D%0ALOCATION%3AFrankfurt%20am%20Main%2C%20Hessen%2C%20Deutschland%0D%0ADESCRIPTION%3AOct%2012.2027%0D%0AURL%3Ahttps%3A%2F%2Fdvw.de%2Fintergeo%2Fen%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="INTERGEO_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Remote Sensing">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://waset.org/remote-sensing-conference-in-october-2027-in-paris" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          International Conference on Remote Sensing (ICRS) 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-10-28">
+        2027-10-28 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Paris, France métropolitaine, France
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Remote Sensing
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Ainternationalcon-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AInternational%20Conference%20on%20Remote%20Sensing%20(ICRS)%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20271028%0D%0ADTEND%3BVALUE%3DDATE%3A20271028%0D%0ALOCATION%3AParis%2C%20France%20m%C3%A9tropolitaine%2C%20France%0D%0ADESCRIPTION%3AOct%2028.2027%0D%0AURL%3Ahttps%3A%2F%2Fwaset.org%2Fremote-sensing-conference-in-october-2027-in-paris%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="International_Conference_on_Remote_Sensing__ICRS__2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="Earth Observation">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://ceos.org/meetings/41st-ceos-plenary/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          41st CEOS Plenary
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-11-01">
+        2027-11-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Bergen, Vestland, Norge
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Earth Observation
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3A41stceosplenaryh-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3A41st%20CEOS%20Plenary%0D%0ADTSTART%3BVALUE%3DDATE%3A20271101%0D%0ADTEND%3BVALUE%3DDATE%3A20271101%0D%0ALOCATION%3ABergen%2C%20Vestland%2C%20Norge%0D%0ADESCRIPTION%3ANov%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fceos.org%2Fmeetings%2F41st-ceos-plenary%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="41st_CEOS_Plenary.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.smartcityexpo.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          Smart City Expo World Congress 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-11-01">
+        2027-11-01 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Barcelona, Catalunya, España
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Asmartcityexpowor-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3ASmart%20City%20Expo%20World%20Congress%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20271101%0D%0ADTEND%3BVALUE%3DDATE%3A20271101%0D%0ALOCATION%3ABarcelona%2C%20Catalunya%2C%20Espa%C3%B1a%0D%0ADESCRIPTION%3ANov%201.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.smartcityexpo.com%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="Smart_City_Expo_World_Congress_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://sca26.medi-asd.org/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          The 11th International Conference on Smart City Applications
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-11-10">
+        2027-11-10 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Karabük, Karadeniz Bölgesi, Türkiye
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Athe11thinternati-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AThe%2011th%20International%20Conference%20on%20Smart%20City%20Applications%0D%0ADTSTART%3BVALUE%3DDATE%3A20271110%0D%0ADTEND%3BVALUE%3DDATE%3A20271110%0D%0ALOCATION%3AKarab%C3%BCk%2C%20Karadeniz%20B%C3%B6lgesi%2C%20T%C3%BCrkiye%0D%0ADESCRIPTION%3ANov%2010.2027%0D%0AURL%3Ahttps%3A%2F%2Fsca26.medi-asd.org%2F%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="The_11th_International_Conference_on_Smart_City_Applications.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+
+    <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition-colors" data-category="General Geospatial">
+      <td class="py-4 px-5 font-semibold text-white">
+        <a href="https://www.agu.org/meetings/all-meetings/agu27" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-amber-400 transition-colors">
+          AGU Annual Meeting 2027
+        </a>
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-300 font-medium" data-date="2027-12-13">
+        2027-12-13 
+      </td>
+      <td class="py-4 px-5 text-sm text-slate-400">
+        Washington, District of Columbia, United States
+      </td>
+      <td class="py-4 px-5">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          General Geospatial
+        </span>
+      </td>
+      <td class="py-4 px-5 text-left whitespace-nowrap">
+        <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FDavid%20G.%20Smith%20Advisory%2F%2FEvents%20Calendar%2F%2FEN%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Aaguannualmeeting-1793579546578%40davidgsmith.net%0D%0ADTSTAMP%3A20261102T003226Z%0D%0ASUMMARY%3AAGU%20Annual%20Meeting%202027%0D%0ADTSTART%3BVALUE%3DDATE%3A20271213%0D%0ADTEND%3BVALUE%3DDATE%3A20271213%0D%0ALOCATION%3AWashington%2C%20District%20of%20Columbia%2C%20United%20States%0D%0ADESCRIPTION%3ADec%2013.2027%0D%0AURL%3Ahttps%3A%2F%2Fwww.agu.org%2Fmeetings%2Fall-meetings%2Fagu27%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR" download="AGU_Annual_Meeting_2027.ics" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 rounded-md hover:bg-amber-500/20 transition-colors shadow-sm">
+          📅 Add to Calendar
+        </a>
+      </td>
+    </tr>
+  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <a href="/" class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    <p class="text-xs text-slate-500 mt-1">Data Scientist, Technical Architect &amp; Author &bull; Washington, DC</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-slate-300">
+                    <a href="/#about" class="hover:text-amber-400 transition-colors">About</a>
+                    <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo Hub</a>
+                    <a href="/events.html" class="hover:text-amber-400 transition-colors">Events</a>
+                    <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                    <a href="/books.html" class="hover:text-amber-400 transition-colors">Books</a>
+                    <a href="/#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>&copy; <span id="year"></span> David G. Smith. All rights reserved. &bull; To add events: <a href="mailto:info@davidgsmith.net" class="text-amber-400 hover:underline">info@davidgsmith.net</a></div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/davidgsmith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                    <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Amazon Author</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Safe Global Dependency Loader (Fixes the Double Three.js issue) -->
+    <script>
+        if (typeof window.THREE === 'undefined') {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"><\/script>');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    
+    <!-- Pinned Globe.gl to stable v2.28.1 to eliminate the s3.Timer D3 bundle bug -->
+    <script src="https://unpkg.com/globe.gl@2.28.1/dist/globe.gl.min.js"></script>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initialize Vanta Clouds Background
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.VANTA) {
+                VANTA.CLOUDS({
+                    el: "#vanta-bg",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    skyColor: 0x070b19,
+                    cloudColor: 0x1e293b,
+                    cloudShadowColor: 0x0f172a,
+                    sunColor: 0xb45309,
+                    sunGlareColor: 0xd97706,
+                    sunlightColor: 0x0f172a
+                });
+            }
+
+            // Initialize Interactive Globe
+            const globeEvents = [{"name":"FOSS4G North America 2026","url":"https://www.foss4gna.org/","date":"2026-11-02","location":"Marina Bay Sands, 018956, Singapore","category":"Cloud-Native Geo","lat":1.276839723907091,"lng":103.87063606249164},{"name":"CYBERSAT","url":"https://www.cybersatsummit.com/","date":"2026-11-04","location":"Chantilly, Virginia, United States","category":"Satellite & Space","lat":38.878765225198535,"lng":-77.45116359119487},{"name":"Advancing Earth Observations Forum 2026","url":"https://www.earthobsforum.org/","date":"2026-11-09","location":"Hobart, Tasmania, Australia","category":"Cloud-Native Geo","lat":-42.87494073192355,"lng":147.32297308139738},{"name":"Space &amp; Satellites USA 2026","url":"https://events.reutersevents.com/space/space-satellites-usa","date":"2026-11-09","location":"Washington, District of Columbia, United States","category":"General Geospatial","lat":38.8965074202034,"lng":-77.04484114386986},{"name":"International Conference on Geospatial Information Sciences","url":"https://igisc.geoint.mx/","date":"2026-11-11","location":"Toluca, 50000, México","category":"General Geospatial","lat":19.283691105705497,"lng":-99.65791815687479},{"name":"Space Tech Expo Europe","url":"https://www.spacetechexpo-europe.com/","date":"2026-11-17","location":"Bremen, Deutschland","category":"Satellite & Space","lat":53.08234604260527,"lng":8.800709595348769},{"name":"SatSummit 2026","url":"https://satsummit.io/2026-st-louis","date":"2026-11-18","location":"triton international school, 44703, नेपाल","category":"Cloud-Native Geo","lat":27.692401235579123,"lng":85.35015316912893},{"name":"GEO WORLD","url":"https://www.geoworldevent.com/","date":"2026-11-23","location":"دبي, الإمارات العربية المتحدة","category":"General Geospatial","lat":25.06636694673063,"lng":55.195641611254715},{"name":"2026 Pacific Islands GIS & Remote Sensing User Conference","url":"https://pgrsc.org/pacific-gis-rs-users-conference/","date":"2026-11-30","location":"Suva, Central, Viti","category":"Remote Sensing","lat":-18.131709015386743,"lng":178.44547626158635},{"name":"2026 Pacific Islands GIS &amp; Remote Sensing User Conference","url":"https://pgrsc.org/event/2026-pacific-islands-gis-remote-sensing-user-conference/","date":"2026-11-30","location":"Suva, Central, Viti","category":"Remote Sensing","lat":-18.149145052572205,"lng":178.44014088432064},{"name":"GEOINFO 2026","url":"https://geoinfobr.github.io/","date":"2026-12-07","location":"São José dos Campos, Região Sudeste, Brasil","category":"Cloud-Native Geo","lat":-23.048635827343805,"lng":-45.9658371025652},{"name":"AGU 2026","url":"https://www.agu.org/plan-for-a-meeting/agumeetings","date":"2026-12-07","location":"San Francisco, California, United States","category":"General Geospatial","lat":37.784756175698,"lng":-122.40261558073186},{"name":"State of the Map 2027","url":"https://blog.openstreetmap.org/2026/05/11/state-of-the-map-2027-call-for-venues-is-now-open/","date":"2027-01-01","location":"Tabuaço, Viseu, Portugal","category":"Open Source GIS","lat":41.126793581441525,"lng":-7.557415691203511},{"name":"World Satellite Business Week 2027","url":"https://wsbw.com/media-press/become-a-media-partner/","date":"2027-01-01","location":"Tabuaço, Viseu, Portugal","category":"Satellite & Space","lat":41.11125586743458,"lng":-7.567282048115315},{"name":"Meteorological Technology World Expo 2027","url":"https://meteorologicaltechnologyworldexpo.com/","date":"2027-01-01","location":"Tabuaço, Viseu, Portugal","category":"General Geospatial","lat":41.116320466884986,"lng":-7.5688611958724605},{"name":"GeoAI 2027","url":"https://geoaiconference.org/?page_id=616","date":"2027-01-01","location":"Greater London, England, United Kingdom","category":"GeoAI","lat":51.49746054925527,"lng":-0.12185077917594293},{"name":"ION ITM &amp; PTTI 2027","url":"https://www.ion.org/itm/","date":"2027-01-25","location":"Anaheim, California, United States","category":"General Geospatial","lat":33.83996077513486,"lng":-117.91909639635735},{"name":"CalGIS 2027","url":"https://thegpn.org/page/CalGIS","date":"2027-01-25","location":"San Luis Obispo County, California, United States","category":"GIS & Mapping","lat":35.34742605831985,"lng":-120.38532788557477},{"name":"19th European Space Conference","url":"https://spaceconference.eu/","date":"2027-01-26","location":"Bruxelles - Brussel, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, België / Belgique / Belgien","category":"General Geospatial","lat":50.84848022757844,"lng":4.349188649424682},{"name":"NC GIS Conference 2027","url":"https://ncgisconference.com","date":"2027-02-03","location":"Winston-Salem, North Carolina, United States","category":"GIS & Mapping","lat":36.09749674020577,"lng":-80.24363567977275},{"name":"AAG Annual Meeting 2027","url":"https://www.aag.org/","date":"2027-02-08","location":"New York, United States","category":"General Geospatial","lat":40.70941262912163,"lng":-74.00304029204011},{"name":"Esri FedGIS 2027","url":"https://www.esri.com/en-us/about/events/fedgis/overview","date":"2027-02-09","location":"Washington, District of Columbia, United States","category":"General Geospatial","lat":38.886662736649,"lng":-77.04216938452234},{"name":"DGI 2027 (Defence Geospatial Intelligence)","url":"https://dgi.wbresearch.com/","date":"2027-02-23","location":"Greater London, England, United Kingdom","category":"General Geospatial","lat":51.51720428922674,"lng":-0.1313392528126287},{"name":"Geo Week 2027","url":"https://www.geo-week.com/salt-lake-city/","date":"2027-02-23","location":"Salt Lake City, Utah, United States","category":"General Geospatial","lat":40.763977417810025,"lng":-111.87927847611654},{"name":"Space-Comm Expo Europe 2027","url":"https://space-comm.com/","date":"2027-02-24","location":"Greater London, England, United Kingdom","category":"General Geospatial","lat":51.49779948086057,"lng":-0.12948803444563278},{"name":"Esri Konferenz 2027","url":"https://www.esri.de/de-de/esri-konferenz/2027/uebersicht","date":"2027-03-03","location":"Bonn, Nordrhein-Westfalen, Deutschland","category":"GeoAI","lat":50.7325651687129,"lng":7.10018014693711},{"name":"Esri Partner Conference 2027","url":"https://www.esri.com/en-us/about/events/partner-conference/overview","date":"2027-03-07","location":"Palm Springs, California, United States","category":"General Geospatial","lat":33.8196076888452,"lng":-116.54929207825334},{"name":"SATShow Week 2027","url":"https://www.satshow.com/","date":"2027-03-08","location":"Washington, District of Columbia, United States","category":"General Geospatial","lat":38.90255286965523,"lng":-77.04605691754712},{"name":"FOSSGIS 2027","url":"https://fossgis-konferenz.de/2027/","date":"2027-03-09","location":"Heidelberg, Baden-Württemberg, Deutschland","category":"Open Source GIS","lat":49.40466565716041,"lng":8.702353668395832},{"name":"ICGEO 2027: 21. International Conference on Geoinformatics and Earth Observation","url":"https://waset.org/geoinformatics-and-earth-observation-conference-in-march-2027-in-london","date":"2027-03-11","location":"Greater London, England, United Kingdom","category":"Earth Observation","lat":51.50926502941212,"lng":-0.12017609520897857},{"name":"European Drone Forum 2027","url":"https://eudroneforum.org/","date":"2027-03-15","location":"Düsseldorf, Nordrhein-Westfalen, Deutschland","category":"General Geospatial","lat":51.23293196761004,"lng":6.779168481408824},{"name":"XPONENTIAL Europe 2027","url":"https://www.xponential-europe.com/","date":"2027-03-16","location":"Düsseldorf, Nordrhein-Westfalen, Deutschland","category":"General Geospatial","lat":51.23481301344247,"lng":6.77612488119994},{"name":"IOCGM 2027 (1st Int’l Online Conference on Geomatics)","url":"https://sciforum.net/event/IOCGM2027","date":"2027-03-17","location":"Online, France métropolitaine, France","category":"GeoAI","lat":43.58686502163078,"lng":3.868750721598887},{"name":"Geo Connect Asia 2027","url":"https://www.geoconnectasia.com/","date":"2027-03-17","location":"Singapore","category":"Remote Sensing","lat":1.359882862392703,"lng":103.81677166359178},{"name":"EGU General Assembly 2027","url":"https://www.egu27.eu/about/contact-us.html","date":"2027-04-04","location":"Wien, Österreich","category":"Remote Sensing","lat":48.21609079578871,"lng":16.365836341985503},{"name":"The 60th Photogrammetric Week","url":"https://phowo.ifp.uni-stuttgart.de/","date":"2027-04-06","location":"Stuttgart, Baden-Württemberg, Deutschland","category":"Remote Sensing","lat":48.76845940579237,"lng":9.177075853260293},{"name":"60th Photogrammetric Week","url":"https://phowo.ifp.uni-stuttgart.de/sitemap.aspx","date":"2027-04-06","location":"Stuttgart, Baden-Württemberg, Deutschland","category":"Remote Sensing","lat":48.770836028970635,"lng":9.185457736222803},{"name":"IEEE/ION PLANS 2027","url":"https://www.ion.org/plans/","date":"2027-04-12","location":"Portland, Oregon, United States","category":"General Geospatial","lat":45.52989532698726,"lng":-122.67706779293162},{"name":"JISDM 2027 | 7th Joint International Symposium on Deformation Monitoring","url":"https://jisdm2027.tudelft.nl/","date":"2027-04-14","location":"Delft, Zuid-Holland, Nederland","category":"Remote Sensing","lat":51.99558372375167,"lng":4.370927653696811},{"name":"Esri International MGIS 2027","url":"https://www.esri.com/en-us/about/events/international-imgis/overview","date":"2027-04-15","location":"Frankfurt am Main, Hessen, Deutschland","category":"General Geospatial","lat":50.11737798273127,"lng":8.682518282426035},{"name":"GEOProcessing 2027","url":"https://www.iaria.org/conferences2027/GEOProcessing27.html","date":"2027-04-18","location":"Lisboa, Portugal","category":"General Geospatial","lat":38.71176177322192,"lng":-9.133583821751152},{"name":"GISTAM 2027","url":"https://gistam.scitevents.org","date":"2027-04-20","location":"Roma, Lazio, Italia","category":"Remote Sensing","lat":41.88582904322878,"lng":12.473459802450392},{"name":"Geospatial World Forum 2027 (GWF)","url":"https://geospatialworld.net/gwf/2027/","date":"2027-04-20","location":"Amsterdam, Noord-Holland, Nederland","category":"GeoAI","lat":52.36863361234491,"lng":4.896727056808214},{"name":"Baltic Esri User Conference (BEUC) 2027","url":"https://www.gisbaltic.eu/en-gb/beuc","date":"2027-05-12","location":"Rīga, Latvija","category":"GIS & Mapping","lat":56.95290740332802,"lng":24.10000597971071},{"name":"GEOINT Symposium 2027","url":"https://usgif.org/geoint-symposium/2027-symposium/","date":"2027-05-17","location":"SpringHill Suites Orlando Kissimmee, 34746, United States","category":"General Geospatial","lat":28.335731007124156,"lng":-81.48704321234217},{"name":"European Navigation Conference (ENC) 2027","url":"https://enc-series.org","date":"2027-05-19","location":"Noordwijk, Zuid-Holland, Nederland","category":"General Geospatial","lat":52.24945825248118,"lng":4.451114559431488},{"name":"FIG Working Week 2027","url":"https://www.fig.net/fig2027/","date":"2027-05-23","location":"Stavanger, Rogaland, Norge","category":"General Geospatial","lat":58.96759323587093,"lng":5.734570019168251},{"name":"Esri UK Annual Conference 2027","url":"https://www.esriuk.com/en-gb/about/events/ac/overview","date":"2027-05-25","location":"Greater London, England, United Kingdom","category":"General Geospatial","lat":51.51349385842854,"lng":-0.13378526682265565},{"name":"geOcom 2027","url":"https://www.georchestra.org/blog/2026/06/23/geocom-2027-save-the-date-en/","date":"2027-05-31","location":"Montpellier, France métropolitaine, France","category":"General Geospatial","lat":43.6185396924008,"lng":3.87741059387754},{"name":"46th EARSeL Symposium 2027","url":"https://symposium.earsel.org/46th-symposium-Turin/","date":"2027-06-01","location":"Torino, Piemonte, Italia","category":"Remote Sensing","lat":45.0604387884659,"lng":7.674663547678915},{"name":"SmallSat Europe 2027","url":"https://smallsateurope.com/","date":"2027-06-01","location":"Amsterdam, Noord-Holland, Nederland","category":"Satellite & Space","lat":52.36761921193217,"lng":4.889453196039542},{"name":"International Drone Show 2027","url":"https://internationaldroneshow.com","date":"2027-06-02","location":"Odense, 5000, Danmark","category":"General Geospatial","lat":55.4013352192383,"lng":10.391777707943033},{"name":"GEO Business 2027","url":"https://www.geobusinessshow.com/","date":"2027-06-23","location":"Greater London, England, United Kingdom","category":"General Geospatial","lat":51.5019589995849,"lng":-0.12696545615503427},{"name":"JURSE 2027","url":"https://jurse.org/","date":"2027-06-30","location":"Amsterdam, Noord-Holland, Nederland","category":"Remote Sensing","lat":52.38145426322589,"lng":4.900642543162425},{"name":"AGIT 2027","url":"https://agit.at","date":"2027-07-07","location":"Salzburg, Österreich","category":"General Geospatial","lat":47.800821478860975,"lng":13.037332270965667},{"name":"IEEE IGARSS 2027","url":"https://www.grss-ieee.org/event/2027-ieee-international-geoscience-and-remote-sensing-symposium/","date":"2027-07-11","location":"Reykjavíkurborg, Höfuðborgarsvæðið, Ísland","category":"Remote Sensing","lat":64.15477757603662,"lng":-21.9353251982933},{"name":"Esri User Conference 2027","url":"https://www.esri.com/en-us/about/events/uc/overview","date":"2027-07-12","location":"San Diego, California, United States","category":"General Geospatial","lat":32.71630285709894,"lng":-117.17347478863591},{"name":"33rd International Cartographic Conference","url":"https://geoawesome.com/what-is-a-map-icc-2027-warsaw/","date":"2027-07-18","location":"Warszawa, województwo mazowieckie, Polska","category":"GeoAI","lat":52.230534159886126,"lng":21.061968605008648},{"name":"41st Small Satellite Conference","url":"https://smallsat.org/","date":"2027-08-15","location":"Salt Lake City, Utah, United States","category":"General Geospatial","lat":40.751233873265214,"lng":-111.88265596008785},{"name":"FOSS4G 2027","url":"https://www.osgeo.org/events/foss4g-2027/","date":"2027-08-23","location":"City of Bristol, England, United Kingdom","category":"Open Source GIS","lat":51.433329430068746,"lng":-2.5717319703677384},{"name":"CEOS SIT Technical Workshop 2027","url":"https://ceos.org/meetings-page/","date":"2027-09-07","location":"Irvine, California, United States","category":"Earth Observation","lat":33.682036537431465,"lng":-117.8265918302802},{"name":"SPIE Sensors + Imaging 2027","url":"https://spie.org/conferences-and-exhibitions/sensors-and-imaging","date":"2027-09-12","location":"Stockholm, 111 29, Sverige","category":"Remote Sensing","lat":59.331129967198976,"lng":18.074923641087484},{"name":"COSPAR 7th Symposium 2027","url":"http://www.cospar2027sz.org/","date":"2027-09-13","location":"苏州市, 江苏省, 中国","category":"General Geospatial","lat":31.306376590077083,"lng":120.62847997298941},{"name":"NSGIC Annual Conference 2027","url":"https://nsgic.org/events/2027-nsgic-annual-conference/","date":"2027-09-19","location":"Oklahoma City, Oklahoma, United States","category":"General Geospatial","lat":35.465451541345566,"lng":-97.51493269769094},{"name":"ISPRS Geospatial Week 2027","url":"https://www.gsw2027.pl/","date":"2027-09-19","location":"Warszawa, województwo mazowieckie, Polska","category":"Remote Sensing","lat":52.23880388369499,"lng":21.074215701322657},{"name":"ION GNSS+ 2027","url":"https://www.ion.org/gnss/","date":"2027-09-20","location":"Orlando, Florida, United States","category":"General Geospatial","lat":28.53517049840126,"lng":-81.38370798273385},{"name":"IAC 2027 (78th International Astronautical Congress)","url":"https://iac2027.com","date":"2027-09-27","location":"Poznań, województwo wielkopolskie, Polska","category":"General Geospatial","lat":52.3997124727464,"lng":16.921064092946214},{"name":"INTERGEO 2027","url":"https://dvw.de/intergeo/en","date":"2027-10-12","location":"Frankfurt am Main, Hessen, Deutschland","category":"GIS & Mapping","lat":50.105158227873716,"lng":8.691653305694697},{"name":"International Conference on Remote Sensing (ICRS) 2027","url":"https://waset.org/remote-sensing-conference-in-october-2027-in-paris","date":"2027-10-28","location":"Paris, France métropolitaine, France","category":"Remote Sensing","lat":48.84969530026574,"lng":2.3567165445981297},{"name":"41st CEOS Plenary","url":"https://ceos.org/meetings/41st-ceos-plenary/","date":"2027-11-01","location":"Bergen, Vestland, Norge","category":"Earth Observation","lat":60.38633145113559,"lng":5.33298902054628},{"name":"Smart City Expo World Congress 2027","url":"https://www.smartcityexpo.com","date":"2027-11-01","location":"Barcelona, Catalunya, España","category":"General Geospatial","lat":41.38883672208422,"lng":2.179240992830761},{"name":"The 11th International Conference on Smart City Applications","url":"https://sca26.medi-asd.org/","date":"2027-11-10","location":"Karabük, Karadeniz Bölgesi, Türkiye","category":"General Geospatial","lat":41.116493250389276,"lng":32.62744656835846},{"name":"AGU Annual Meeting 2027","url":"https://www.agu.org/meetings/all-meetings/agu27","date":"2027-12-13","location":"Washington, District of Columbia, United States","category":"General Geospatial","lat":38.89454692222666,"lng":-77.0346649507179}];
+            const container = document.getElementById('globe-container');
+
+            if (window.Globe && container) {
+                const myGlobe = Globe()
+                    (container)
+                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+                    .htmlElementsData(globeEvents)
+                    .htmlElement(d => {
+                        const el = document.createElement('div');
+                        el.innerHTML = `
+                            <div style="cursor: pointer; pointer-events: auto; transform: translate(-50%, -100%);" class="group relative">
+                                <div class="w-4 h-4 bg-amber-500 rounded-full border-2 border-white shadow-lg animate-pulse flex items-center justify-center">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                </div>
+                                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-slate-900 border border-slate-700 text-white text-xs rounded-lg py-1.5 px-3 shadow-xl whitespace-nowrap z-50 pointer-events-none">
+                                    <div class="font-semibold text-amber-400">${d.name}</div>
+                                    <div class="text-slate-300">${d.date} &bull; ${d.location}</div>
+                                </div>
+                            </div>
+                        `;
+                        el.onclick = () => {
+                            if (d.url && d.url !== '#') {
+                                window.open(d.url, '_blank');
+                            }
+                        };
+                        return el;
+                    });
+
+                // Set initial viewpoint & auto-rotate gently
+                myGlobe.controls().autoRotate = true;
+                myGlobe.controls().autoRotateSpeed = 0.5;
+                myGlobe.pointOfView({ altitude: 2.2 });
+
+                // Resize handler
+                window.addEventListener('resize', () => {
+                    myGlobe.width(container.clientWidth);
+                    myGlobe.height(container.clientHeight);
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        if (btn && menu && !btn.dataset.navBound) {
+            btn.dataset.navBound = 'true';
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(!isHidden));
+            });
+            mobileLinks.forEach(link => link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }));
+        }
+
+        // Search Filter
+        document.getElementById('eventSearch').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('#eventsTable tbody tr');
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Interactive Table Sorting (Date is column 1, Name is 0, Location is 2)
+        let sortDirections = [false, false, false];
+        function sortTable(n) {
+            let table = document.getElementById("eventsTable");
+            let tbody = table.tBodies[0];
+            let rowsArray = Array.from(tbody.querySelectorAll("tr"));
+            let ascending = sortDirections[n];
+
+            rowsArray.sort((a, b) => {
+                let xCell = a.getElementsByTagName("TD")[n];
+                let yCell = b.getElementsByTagName("TD")[n];
+                
+                let x = n === 1 ? (xCell.getAttribute('data-date') || xCell.innerText) : xCell.innerText.trim();
+                let y = n === 1 ? (yCell.getAttribute('data-date') || yCell.innerText) : yCell.innerText.trim();
+
+                if (x < y) return ascending ? 1 : -1;
+                if (x > y) return ascending ? -1 : 1;
+                return 0;
+            });
+
+            sortDirections[n] = !ascending;
+            rowsArray.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>

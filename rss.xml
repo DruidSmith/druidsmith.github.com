@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Tue, 27 Oct 2026 16:57:34 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 01 Nov 2026 17:20:53 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,98 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>PostGIS 3.7 Is Out And It Doubles Down on Topology</title>
+                <link>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</link>
+                <guid>https://davidgsmith.net/thoughts/postgis-37-is-out-and-it-doubles-down-on-topology.html</guid>
+                <pubDate>Sat, 31 Oct 2026 02:00:14 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The headline features in a PostGIS release don&#x27;t always tell the full story. Looking through the PostGIS 3.7 release notes, what stands out isn&#x27;t a flashy new...</description>
+                <category>PostGIS</category>
+            <category>Topology</category>
+            <category>Spatial SQL</category>
+            <category>Open Source GIS</category>
+            <category>Data Engineering</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/postgis-mvvr4oop-291353a4.jpg" />
+                <content:encoded><![CDATA[<p>The headline features in a PostGIS release don't always tell the full story. Looking through the <a target="_blank" rel="noopener noreferrer" href="https://gitea.osgeo.org/postgis/postgis/raw/tag/3.7.0/NEWS">PostGIS 3.7 release notes</a>, what stands out isn't a flashy new geometry function. It's the amount of attention devoted to topology, one of the platform's most powerful but often overlooked capabilities.<br>
+<img alt="PostGIS Logo" src="https://davidgsmith.net/thoughts/images/postgis-mvvr4oop-291353a4.jpg"><br>
+For organizations maintaining authoritative boundaries, utility networks, cadastral parcels, transportation systems, and other datasets where spatial relationships matter as much as the geometries themselves, topology remains one of PostGIS's biggest differentiators. PostGIS 3.7 makes that part of the platform noticeably stronger.</p>
+<p>The release introduces new topology functionality, including <code>FindVertexSegmentPairsBelowDistance</code>, enhancements to topology indexing, and additional parameters that provide more flexibility when managing topological datasets. These additions are accompanied by performance improvements and fixes aimed at making topology operations more practical at scale.</p>
+<p>Outside the topology subsystem, there are a few notable additions. New functions such as <code>ST_MinimumSpanningTree</code> and <code>ST_CoverageEdges</code> expand analytical capabilities within the database itself, while data-loading tools gain several quality-of-life improvements that make automation and repeatable workflows easier to manage.</p>
+<p>The release also reflects a project continuing to modernize. Support for older PostgreSQL versions has been retired, dependencies have been updated, and considerable effort has gone into parser hardening, memory safety, and handling malformed inputs. Those changes may not be visible to end users, but they're essential for organizations running PostGIS in production environments.</p>
+<p>What makes PostGIS 3.7 interesting is that it doesn't chase trends. Instead, it invests in the fundamentals and for this reason has always been a solid product with a strong followin. For teams that rely on topology to preserve spatial integrity and maintain clean, consistent datasets, this release is another sign that topology remains a first-class citizen in the PostGIS ecosystem.</p>]]></content:encoded>
+            </item>
+            <item>
+                <title>From Shutdown Risk to a Stronger National Service</title>
+                <link>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</link>
+                <guid>https://davidgsmith.net/thoughts/from-shutdown-risk-to-a-stronger-national-service.html</guid>
+                <pubDate>Thu, 29 Oct 2026 15:15:33 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Here&#x27;s where I celebrate one of my team&#x27;s recent successes: The Water Quality Portal is easy to take for granted. You search, download data, and move on with...</description>
+                <category>Water Data</category>
+            <category>Cloud-Native</category>
+            <category>Data Engineering</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/wqx-3-map-mvtop47f-cd8d4987.png" />
+                <content:encoded><![CDATA[<p><em>Here's where I celebrate one of my team's recent successes:</em></p>
+<p>The <a target="_blank" rel="noopener noreferrer" href="https://www.waterqualitydata.us/">Water Quality Portal</a> is easy to take for granted. You search, download data, and move on with your work. Behind that straightforward experience sits a national resource containing more than 440 million water-quality records from over 1,700 data providers and 2 million monitoring locations.  Some of the data goes all the way back to the 1940s. Researchers, government agencies, application developers, and the public rely on it every day.<br>
+<img alt="WQP Map" src="https://davidgsmith.net/thoughts/images/wqx-3-map-mvtop47f-cd8d4987.png"></p>
+<p>Earlier this year, its future wasn't guaranteed.</p>
+<p>At USGS, aging infrastructure, deteriorating data flows, reduced staffing, and a hard September 30 fiscal year deadline created a real risk to the Portal's continued operation. EPA's Office of Water stepped in to take ownership without interrupting public access, losing data, breaking existing URLs, or disrupting the applications built on its services. </p>
+<p><strong>A deadline that focused the work</strong><br>
+EPA's Office of Water asked OCIO and my team to help in the spring. What followed was an intense, three-month effort involving a small but focused team of EPA, USGS, contractors, security, network, web and program staff, and others.</p>
+<p>The job called for more than moving servers. We had to understand a complex inherited system, stand up a new cloud infrastructure, recover and validate data, rebuild operational processes, test real-world integrations, coordinate security and DNS changes, and prepare EPA to operate the service for the long term.</p>
+<p>On September 8, the team completed the public cutover. That was more than three weeks ahead of the deadline. The Water Quality Portal remained available, its familiar URL continued to work, and operational ownership moved successfully to EPA. </p>
+<p>That alone would've been worth celebrating. The team accomplished considerably more.</p>
+<p><strong>Modernization happened during the move</strong><br>
+The migration gave us an opportunity to improve the service rather than reproduce its existing limitations.</p>
+<p>The team deployed the Portal's user interface, APIs, and supporting services using containerized cloud infrastructure. Terraform made the environment repeatable. Managed PostgreSQL provided the data foundation, while Step Functions, Glue, and Database Migration Service helped create a more automated data pipeline. CloudWatch dashboards, alerts, cost tracking, load testing, and web application firewall protections gave operators much better visibility and control.</p>
+<p>One of the most meaningful improvements was the data refresh process. A workflow that had taken roughly two days now completes in about two hours, leveraging AWS services like DMS and Glue. </p>
+<p>Migration work also exposed problems that couldn't simply be carried forward. The team repaired broken map layers, corrected missing navigation options, updated stale API references, addressed accessibility findings, removed unsupported behavior, and documented obsolete components. On-the-fly security remediation addressed almost 600 critical and high vulnerability findings. </p>
+<p>By late September, the team had completed 313 distinct Jira work items while still delivering ahead of schedule and under budget. </p>
+<p><strong>Partnership made the difference</strong><br>
+This outcome belongs to a broad group of people who shared a clear mission.<br>
+EPA's Office of Water brought program knowledge, requirements, and product ownership. USGS provided essential expertise, artifacts, testing, and knowledge transfer. OCIO and the DMAP Fusion Team coordinated architecture, engineering, security, governance, infrastructure, testing, and the final transition. Contractor partners turned plans into working systems, often under tight time constraints. </p>
+<p>The project worked because it never became a simple handoff between organizations. People stayed engaged, surfaced risks early, tested together, and kept public continuity at the center of each decision.</p>
+<p>USGS has published its own perspective in <a target="_blank" rel="noopener noreferrer" href="https://waterdata.usgs.gov/blog/wqp-modernization/">WQP modernization: Evolving the nation's water-quality data infrastructure</a>. It's a valuable companion to this story and reflects the collaborative work required to sustain a resource of this scale.</p>
+<p><strong>From rescue to resilience</strong><br>
+I'm proud of what this team accomplished.</p>
+<p>We preserved access to an irreplaceable national data resource, improved its security and accessibility, automated critical operations, and gave EPA a stronger foundation for its continued stewardship. The experience also produced a practical model for future transitions involving distressed or aging public systems.<br>
+<img alt="WQP UI" src="https://davidgsmith.net/thoughts/images/water-quality-portal-new-mvtoq1hp-345f7485.jpg"></p>
+<p>Most visitors to the Water Quality Portal won't see the architecture, deployment pipelines, monitoring, security controls, or interagency coordination behind it. That's fine. They'll see a dependable public service that continues to provide open access to water-quality data.<br>
+That's the result that matters, and it's one worth celebrating.</p>
+<p>For more information, visit the <a target="_blank" rel="noopener noreferrer" href="https://www.waterqualitydata.us/">Water Quality Portal</a>, review its web services documentation, learn about EPA's <a target="_blank" rel="noopener noreferrer" href="https://www.epa.gov/waterdata/water-quality-data">Water Quality Exchange</a>, or explore the data through <a target="_blank" rel="noopener noreferrer" href="https://mywaterway.epa.gov/">How's My Waterway.</a></p>]]></content:encoded>
+            </item>
+            <item>
+                <title>You&#x27;re Not Too Old For This</title>
+                <link>https://davidgsmith.net/thoughts/youre-not-too-old-for-this.html</link>
+                <guid>https://davidgsmith.net/thoughts/youre-not-too-old-for-this.html</guid>
+                <pubDate>Wed, 28 Oct 2026 02:34:59 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>In just the last few weeks, I&#x27;ve heard more than a handful of people say some version of the same thing. &quot;I don&#x27;t know any of this technology. I&#x27;m getting...</description>
+                <category>Critical Thinking</category>
+            <category>Future of Work</category>
+            <category>Learning Resources</category>
+            <category>Engineering Leadership</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/not-too-old-mvri1yrs-b358bbd3.jpg" />
+                <content:encoded><![CDATA[<p>In just the last few weeks, I've heard more than a handful of people say some version of the same thing. <em>"I don't know any of this technology. I'm getting old."</em></p>
+<p>I'll be honest, it makes me tilt my head. Some of the people saying it are younger than me.</p>
+<p>I don't think they're being dramatic, and I don't think they're fishing for reassurance. I think they genuinely believe it. Somewhere along the way, a lot of us picked up the idea that understanding technology is something you either have by a certain age or you don't, like a window that quietly closed while we weren't looking. I'd like to gently push back on that, because it isn't true, and believing it costs people far more than any gadget ever will.<br>
+<img alt="You're Not Too Old And It's Not Too Late" src="https://davidgsmith.net/thoughts/images/not-too-old-mvri1yrs-b358bbd3.jpg"></p>
+<p><strong>Curiosity Doesn't Have An Expiration Date</strong></p>
+<p>Nobody is born knowing how any of this works. The people you think of as "tech people" got there by poking at things, breaking them, searching for the error message, and trying again. That's the whole secret. It was never talent that set them apart. It was a willingness to be a beginner over and over without feeling embarrassed about it.</p>
+<p>Psychologist Carol Dweck (I give her shoutouts in <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/critical-thinking.html">my book</a>) has spent decades studying exactly this, and her work on the <a target="_blank" rel="noopener noreferrer" href="https://www.mindsetworks.com/science/">Growth Mindset</a> boils down to something I find deeply comforting. Ability isn't a fixed quantity you're handed at birth. It stretches when you stretch it. Your brain at 45 or 60 is still perfectly capable of picking up something new. It just needs you to give it permission to be bad at the thing for a while.</p>
+<p>And there's no shortage of ways in. <a target="_blank" rel="noopener noreferrer" href="https://cs50.harvard.edu/x/">CS50</a> from Harvard is free and wonderfully welcoming to people who have never written a line of code. <a target="_blank" rel="noopener noreferrer" href="https://ocw.mit.edu/">MIT OpenCourseWare</a> has a whole universe of material you can wander through at your own pace. If you like your learning a little more playful, Julia Evans makes delightful little <a target="_blank" rel="noopener noreferrer" href="https://wizardzines.com/">zines</a> that explain scary-sounding topics in a way that feels like a friend sitting next to you.</p>
+<p><strong>The Danger Of The Shiny Button</strong></p>
+<p>Here's the part I really care about, and it's the thing that keeps me banging this drum.</p>
+<p>Modern tools are getting extraordinarily good at hiding complexity. That's mostly wonderful. I wouldn't want to go back. But there's a quiet trade hiding in there. When everything is a friendly button inside some polished piece of proprietary software, it gets very easy to stop asking what's underneath. You click, it works, and you move on. Then one day it doesn't work, or the company changes the rules, or the price doubles, or the product disappears, and you realize you never understood the thing you'd built your work around.</p>
+<p>I'm not asking anyone to give up convenience. I'm asking you not to get complacent. Stay a little curious about what's happening behind the curtain. Open the settings you've never opened. Ask why it works that way. Read the error message instead of closing the window. You don't need to become an expert in all of it. You just need to keep the question alive, because the question is what keeps you capable.</p>
+<p><strong>Why I Keep Talking About It</strong></p>
+<p>I try to teach and explain and, yes, evangelize, probably more than some people would like. I'm not doing it to show off whatever I happen to know. I do it because I remember those times when somebody did it for me, patiently, more than once, when I didn't understand something and felt a little foolish asking.</p>
+<p>That's how this has always worked. Knowledge gets passed hand to hand, from the person who figured it out last week to the person who's about to. No one gets all the way there alone, and honestly, nobody ever really arrives. The ground keeps moving for all of us, including the folks who do this for a living. I still hit things I don't understand every single week, and I've made my peace with it. It's part of the fun.</p>
+<p>So if you've caught yourself saying you're too old, too behind, or too far gone, I'd invite you to try saying something different. Try "I haven't learned this yet." That small change matters more than it looks, because "yet" leaves the door open.</p>
+<p>And if you're stuck on something right now, find me. Ask the question. I promise it isn't a dumb one, and I'd much rather explain it than watch you quietly give up on it.</p>
+<p>We're all in this together. Let's keep learning out loud.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Upskilling Data Teams with Posit Academy</title>
                 <link>https://davidgsmith.net/thoughts/upskilling-data-teams-with-posit-academy.html</link>
