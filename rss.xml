@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 06 Nov 2026 20:09:48 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 06 Nov 2026 20:15:40 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -93,12 +93,14 @@ This paper shares a lot of DNA with the shift toward cloud-native spatial infras
 <p>In that world, the graph stops competing with the data lakehouse. It becomes one of its most powerful outputs.</p>
 <p>The future of complex data systems probably doesn't belong to giant, all-knowing knowledge graphs or stagnant data swamps. It belongs to architectures fluid enough to move between documents, spatial assets, tabular metrics, and relationship edges, generating exactly the view of reality an analyst needs at the exact moment they need it.</p>
 <hr>
-<p><strong>References</strong><br>
-- Knowledge Graph Lakehouse Paper <br>
-    - <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2611.04899v1">arXiv:2611.04899</a> <br>
-    - <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/html/2611.04899v1">HTML</a>: </p>
+<p><strong>References</strong></p>
 <ul>
-<li>Project Documentation: <a target="_blank" rel="noopener noreferrer" href="https://github.com/jku-win-dke/kg-lakehouse-documentation">GitHub Repo</a></li>
+<li>
+<p>Manner, J., Schrefl, M., Kargl, M., Schiefer, J., &amp; Wimmer, H. (2026). <em>Knowledge Graph Lakehouse: A cloud-native architecture for managing enterprise knowledge graphs at scale</em> (arXiv:2611.04899). arXiv. https://arxiv.org/abs/2611.04899 - <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/html/2611.04899v1">HTML Version</a>: </p>
+</li>
+<li>
+<p>Project Documentation: <a target="_blank" rel="noopener noreferrer" href="https://github.com/jku-win-dke/kg-lakehouse-documentation">GitHub Repo</a></p>
+</li>
 </ul>]]></content:encoded>
             </item>
             <item>
