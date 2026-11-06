@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 06 Nov 2026 16:52:31 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 06 Nov 2026 17:02:13 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -29,13 +29,12 @@
             <category>Open Source GIS</category>
             <category>Spatial SQL</category>
             <category>Geospatial</category>
-            <media:thumbnail url="https://www.portolan-sdi.org/og-image.png" />
+            <media:thumbnail url="https://carto.com/cdn.prod.website-files.com/63483ad423421bd16e7a7ae7/introducing-portolan-and-carto-sdi-portolan-browser.webp" />
                 <content:encoded><![CDATA[<p>Lately, I've been having a lot of conversations with colleagues involving Apache Iceberg.</p>
 <p>That's not particularly surprising. Iceberg has steadily moved from being a niche data engineering topic into something that architects, analytics teams, and platform engineers are discussing with increasing seriousness. What surprised me, though, is realizing how naturally Iceberg fits into a much larger transformation that's occurring in geospatial data.</p>
-<p>A few weeks ago, I wrote about that transformation in <strong>"Portolan and the Quiet Reinvention of Spatial Data Infrastructure"</strong>:</p>
-<p>https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html</p>
+<p>A few weeks ago, I wrote about that transformation in <a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/thoughts/portolan-and-the-quiet-reinvention-of-spatial-data-infrastructure.html"><strong>"Portolan and the Quiet Reinvention of Spatial Data Infrastructure"</strong></a>:</p>
 <p>That article focused primarily on how cloud-native formats, object storage, and standards like STAC are quietly replacing layers of traditional GIS infrastructure. Revisiting the topic after reading more about Portolan and the emerging STAC Iceberg Extension, I'm increasingly convinced that we're watching several previously separate trends converge into a single architecture. </p>
-<p><img alt="Portolan Registry and Cloud-Native Geospatial Architecture" src="https://www.portolan-sdi.org/og-image.png"></p>
+<p><img alt="Portolan Registry and Cloud-Native Geospatial Architecture" src="https://carto.com/cdn.prod.website-files.com/63483ad423421bd16e7a7ae7/introducing-portolan-and-carto-sdi-portolan-browser.webp"></p>
 <p><strong>The Old Bargain</strong></p>
 <p>For decades, publishing geospatial data meant building systems around the data rather than around the user.</p>
 <p>A government agency, university, NGO, or private company would acquire datasets, stand up servers, configure databases, publish APIs, manage permissions, maintain uptime, and hope users could successfully navigate everything required to access the information.</p>
