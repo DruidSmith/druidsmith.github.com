@@ -113,7 +113,7 @@
     "datePublished": "2026-11-06T18:16:19.103000+00:00",
     "dateModified": "2026-11-06T18:16:19.103000+00:00",
     "inLanguage": "en-US",
-    "wordCount": 1158,
+    "wordCount": 1163,
     "author": {
       "@type": "Person",
       "@id": "https://davidgsmith.net/#person",
@@ -253,7 +253,7 @@ Knowledge graphs are uniquely powerful because they model reality the way realit
 <p><img alt="Knowledge Graph Example" src="https://dist.neo4j.com/wp-content/uploads/20240722075316/knowledge-graph-example-1-1024x712.png"></p>
 <p>In my case, facilities are typically owned and operated by corporations. Permits are issued to specific sites or facilities for specific activities. Violations occur under defined regulatory codes. Hazardous waste moves continuously between generators, transporters, and treatment facilities. Jurisdictions overlap watersheds, counties, congressional districts, and tribal lands.</p>
 <p>Everything is connected. A knowledge graph captures those edges natively.</p>
-<p>The catch is that enterprise-scale knowledge graphs have a gravity problem. As data volumes swell, new source feeds land, unstructured documents stream in, and organizational relationships mutate, maintaining a single massive graph becomes an exercise in slow-motion failure. The traditional "Three Vs" of big data: volume, velocity, and variety eventually grind graph maintenance to a halt.</p>
+<p>The catch is that enterprise-scale knowledge graphs have a gravity problem. As data volumes swell, new source feeds land, unstructured documents stream in, and organizational relationships mutate, maintaining a single massive graph becomes an exercise in slow-motion failure. The traditional "Three Vs" of big data: <em>volume</em>,* velocity*, and <em>variety</em> eventually grind graph maintenance to a halt.</p>
 <p>The instinctive corporate reflex is always the same: Let's build a bigger graph.</p>
 <p>In practice, bigger graphs just become harder to ingest, harder to govern, harder to query, and chronically out of date.</p>
 <p><strong>What if the Graph Wasn't Permanent?</strong><br>
@@ -261,7 +261,7 @@ One of the core premises of the Knowledge Graph Lakehouse is that source documen
 <p>It's a subtle shift, but it mirrors the evolution of modern data architecture.</p>
 <p>Think about how a lakehouse operates. You don't pre-materialize every possible analytical aggregation or reporting view. You keep authoritative data in object storage, lean on open table formats and metadata indexes, and let query engines materialize precisely the view required for the task at hand.</p>
 <p>The Knowledge Graph Lakehouse applies that exact philosophy to graph topologies. Instead of asking, "What should our one giant enterprise graph look like?" it asks, "What graph does this user need right now?"</p>
-<p>A Familiar Pattern for Lakehouse Practitioners<br>
+<p><strong>A Familiar Pattern for Lakehouse Practitioners</strong><br>
 This framework resonates because it builds directly on habits many data engineers and architects have already adopted. We are entirely comfortable with:</p>
 <ul>
 <li>Object storage as the system of record</li>
@@ -273,14 +273,14 @@ This framework resonates because it builds directly on habits many data engineer
 <p>The Knowledge Graph Lakehouse extends that exact mindset to relationships.</p>
 <p>Instead of materializing a static graph containing decades of environmental inspections, permit actions, facility ownership changes, and enforcement history, the graph can be assembled dynamically from Iceberg-backed tables and metadata indexes.</p>
 <p>The lakehouse remains the source of truth. The graph becomes a specialized, disposable perspective.</p>
-<p><strong>Architectural Progression</strong><br>
-Traditional Enterprise Data Architecture</p>
+<p><strong>Architectural Progression</strong></p>
+<p><strong>Traditional Enterprise Data Architecture</strong></p>
 <pre><code>Source Systems ──&gt; Data Warehouse ──&gt; Enterprise Reports
 </code></pre>
-<p>Monolithic Knowledge Graph Architecture</p>
+<p><strong>Monolithic Knowledge Graph Architecture</strong></p>
 <pre><code>Source Systems ──&gt; Giant Monolithic KG ──&gt; Applications
 </code></pre>
-<p>Knowledge Graph Lakehouse Architecture</p>
+<p><strong>Knowledge Graph Lakehouse Architecture</strong></p>
 <pre><code>Source Systems ──&gt; Object Storage (Tables, Documents, Metadata) 
                       │
                       ▼
@@ -315,7 +315,7 @@ This paper shares a lot of DNA with the shift toward cloud-native spatial infras
 <hr>
 <p><strong>References</strong><br>
 - Knowledge Graph Lakehouse Paper <br>
-    - <a target="_blank" rel="noopener noreferrer" href="https://">arXiv:2611.04899</a> <br>
+    - <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2611.04899v1">arXiv:2611.04899</a> <br>
     - <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/html/2611.04899v1">HTML</a>: </p>
 <ul>
 <li>Project Documentation: <a target="_blank" rel="noopener noreferrer" href="https://github.com/jku-win-dke/kg-lakehouse-documentation">GitHub Repo</a></li>
