@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 06 Nov 2026 20:15:40 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 06 Nov 2026 20:46:50 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -152,7 +152,7 @@ This paper shares a lot of DNA with the shift toward cloud-native spatial infras
 <li>Publish them where anyone can access them.</li>
 <li>Then get out of the way. </li>
 </ul>
-<p>Chris Holmes described the motivation particularly well in discussing Portolan's origins. He argues that traditional spatial data infrastructures never fully achieved their goal of making geospatial information broadly discoverable and usable. Portolan's answer isn't a new generation of complex systems. It's a collection of structured files and metadata that both people and AI agents can navigate. </p>
+<p>Chris Holmes described the motivation particularly well in <a target="_blank" rel="noopener noreferrer" href="https://latlong.blog/2026/09/portolans-origin-story-as-told-by-creator-chris-holmes.html">discussing Portolan's origins</a>. He argues that traditional spatial data infrastructures never fully achieved their goal of making geospatial information broadly discoverable and usable. Portolan's answer isn't a new generation of complex systems. It's a collection of structured files and metadata that both people and AI agents can navigate. </p>
 <p><strong>Why Iceberg Suddenly Feels Even More Relevant</strong></p>
 <p>This is where Apache Iceberg enters the picture.</p>
 <p>For most people, Iceberg is associated with data lakes, analytics platforms, and table versioning. It's often discussed alongside Spark, DuckDB, BigQuery, or cloud warehouse architectures.</p>
