@@ -280,34 +280,21 @@
 <p>Many technology movements respond to complexity by introducing another platform, another server layer, another orchestration framework, or another interface abstraction.</p>
 <p>Portolan's answer is almost the opposite.</p>
 <ul>
-<li>
-<p>Use open formats.</p>
-</li>
-<li>
-<p>Document them clearly.</p>
-</li>
-<li>
-<p>Organize them consistently.</p>
-</li>
-<li>
-<p>Publish them where anyone can access them.</p>
-</li>
-<li>
-<p>Then get out of the way. </p>
-</li>
+<li>Use open formats.</li>
+<li>Document them clearly.</li>
+<li>Organize them consistently.</li>
+<li>Publish them where anyone can access them.</li>
+<li>Then get out of the way. </li>
 </ul>
 <p>Chris Holmes described the motivation particularly well in discussing Portolan's origins. He argues that traditional spatial data infrastructures never fully achieved their goal of making geospatial information broadly discoverable and usable. Portolan's answer isn't a new generation of complex systems. It's a collection of structured files and metadata that both people and AI agents can navigate. </p>
 <p><strong>Why Iceberg Suddenly Feels Even More Relevant</strong></p>
 <p>This is where Apache Iceberg enters the picture.</p>
 <p>For most people, Iceberg is associated with data lakes, analytics platforms, and table versioning. It's often discussed alongside Spark, DuckDB, BigQuery, or cloud warehouse architectures.</p>
 <p>But viewed through a geospatial lens, Iceberg solves another important problem.</p>
-<p>Files are wonderful for distribution.</p>
-<p>Tables are wonderful for evolution.</p>
-<p>Datasets change. Corrections occur. New observations arrive. Schemas evolve. Historical versions need to remain reproducible.</p>
+<p>Files are wonderful for distribution.  Tables are wonderful for evolution.  Datasets change. Corrections occur. New observations arrive. Schemas evolve. Historical versions need to remain reproducible.</p>
 <p>Iceberg provides a mechanism for managing those realities while preserving an elegant, file-oriented architecture.</p>
 <p>What's particularly interesting is the emergence of a <a target="_blank" rel="noopener noreferrer" href="https://github.com/portolan-sdi/stac-iceberg-extension"><strong>STAC Iceberg Extension</strong></a>, which adds Iceberg-specific metadata to STAC Collections and enables clients to discover and connect to Iceberg tables using tools such as DuckDB, BigQuery, Spark, and PyIceberg. </p>
-<p>That may sound like a small technical detail.</p>
-<p>I don't think it is.</p>
+<p>That may sound like a small technical detail.  I don't think it is.</p>
 <p>It represents an attempt to bridge two worlds that have often remained separate:</p>
 <ul>
 <li>the world of discoverable geospatial catalogs</li>
@@ -315,12 +302,19 @@
 </ul>
 <p><strong>Discovery Meets State</strong></p>
 <p>A useful way to think about the relationship is this:</p>
-<p>STAC tells you <em>what exists</em>.</p>
-<p>Portolan helps ensure that what exists is organized and understandable.</p>
-<p>Iceberg helps manage <em>how it changes over time</em>. </p>
+<ul>
+<li>
+<p><strong>STAC</strong> tells you <em>what exists</em>.</p>
+</li>
+<li>
+<p><strong>Portolan</strong> helps ensure that what exists is organized and understandable.</p>
+</li>
+<li>
+<p><strong>Iceberg</strong> helps manage <em>how it changes over time</em>. </p>
+</li>
+</ul>
 <p>Together they begin to form something that looks suspiciously like the next generation of spatial infrastructure.</p>
-<p>Not a monolithic geoportal.  Not a sprawling server farm.  Not an expensive proprietary platform.</p>
-<p>Just catalogs, files, metadata, documentation, and versioned tables operating through open standards.</p>
+<p>Not a monolithic geoportal.  Not a sprawling server farm.  Not an expensive proprietary platform.  Just catalogs, files, metadata, documentation, and versioned tables operating through open standards.</p>
 <p>That architecture also aligns remarkably well with what modern AI systems need.</p>
 <p>Agents don't care what vendor's portal you're running. They care whether they can locate data, understand it, query it efficiently, and reproduce results later.</p>
 <p>A well-documented STAC catalog connected to cloud-native assets and versioned through Iceberg starts to look less like a GIS solution and more like a machine-readable knowledge layer for the physical world. </p>
@@ -331,19 +325,19 @@
 <p>They're complementary pieces of the same puzzle. </p>
 <ul>
 <li>
-<p>GeoParquet makes the data efficient.</p>
+<p><strong>GeoParquet</strong> makes the data efficient.</p>
 </li>
 <li>
-<p>STAC makes it discoverable.</p>
+<p><strong>STAC</strong> makes it discoverable.</p>
 </li>
 <li>
-<p>Portolan makes it publishable.</p>
+<p><strong>Portolan</strong> makes it publishable.</p>
 </li>
 <li>
-<p>DuckDB makes it queryable.</p>
+<p><strong>DuckDB</strong> makes it queryable.</p>
 </li>
 <li>
-<p>Iceberg makes it durable and versioned.</p>
+<p><strong>Iceberg</strong> makes it durable and versioned.</p>
 </li>
 </ul>
 <p>Taken together, they point toward a future where spatial data infrastructure increasingly resembles the modern web itself: distributed, loosely coupled, standards-driven, and accessible to both humans and machines.</p>
