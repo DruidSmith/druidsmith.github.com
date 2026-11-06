@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 06 Nov 2026 17:25:59 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 06 Nov 2026 17:27:41 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -82,15 +82,9 @@
 <p><strong>Discovery Meets State</strong></p>
 <p>A useful way to think about the relationship is this:</p>
 <ul>
-<li>
-<p><strong>STAC</strong> tells you <em>what exists</em>.</p>
-</li>
-<li>
-<p><strong>Portolan</strong> helps ensure that what exists is organized and understandable.</p>
-</li>
-<li>
-<p><strong>Iceberg</strong> helps manage <em>how it changes over time</em>. </p>
-</li>
+<li><strong>STAC</strong> tells you <em>what exists</em>.</li>
+<li><strong>Portolan</strong> helps ensure that what exists is organized and understandable.</li>
+<li><strong>Iceberg</strong> helps manage <em>how it changes over time</em>. </li>
 </ul>
 <p>Together they begin to form something that looks suspiciously like the next generation of spatial infrastructure.</p>
 <p>Not a monolithic geoportal.  Not a sprawling server farm.  Not an expensive proprietary platform.  Just catalogs, files, metadata, documentation, and versioned tables operating through open standards.</p>
@@ -98,26 +92,15 @@
 <p>Agents don't care what vendor's portal you're running. They care whether they can locate data, understand it, query it efficiently, and reproduce results later.</p>
 <p>A well-documented STAC catalog connected to cloud-native assets and versioned through Iceberg starts to look less like a GIS solution and more like a machine-readable knowledge layer for the physical world. </p>
 <p><strong>The Bigger Picture</strong></p>
-<p>In my article on the cloud-native geospatial stack, I described a broader transition away from heavyweight server-centric GIS architectures toward ecosystems built on GeoParquet, COGs, STAC, Portolan, DuckDB, and object storage:</p>
-<p>https://davidgsmith.net/cloud-native-geospatial-stack.html</p>
+<p>In my article on the cloud-native geospatial stack, I described a broader transition away from heavyweight server-centric GIS architectures toward ecosystems built on GeoParquet, COGs, STAC, Portolan, DuckDB, and object storage:  https://davidgsmith.net/cloud-native-geospatial-stack.html</p>
 <p>What I'm beginning to appreciate is that these technologies are not competing innovations.</p>
 <p>They're complementary pieces of the same puzzle. </p>
 <ul>
-<li>
-<p><strong>GeoParquet</strong> makes the data efficient.</p>
-</li>
-<li>
-<p><strong>STAC</strong> makes it discoverable.</p>
-</li>
-<li>
-<p><strong>Portolan</strong> makes it publishable.</p>
-</li>
-<li>
-<p><strong>DuckDB</strong> makes it queryable.</p>
-</li>
-<li>
-<p><strong>Iceberg</strong> makes it durable and versioned.</p>
-</li>
+<li><strong>GeoParquet</strong> makes the data efficient.</li>
+<li><strong>STAC</strong> makes it discoverable.</li>
+<li><strong>Portolan</strong> makes it publishable.</li>
+<li><strong>DuckDB</strong> makes it queryable.</li>
+<li><strong>Iceberg</strong> makes it durable and versioned.</li>
 </ul>
 <p>Taken together, they point toward a future where spatial data infrastructure increasingly resembles the modern web itself: distributed, loosely coupled, standards-driven, and accessible to both humans and machines.</p>
 <p>That's a far cry from the world of proprietary GIS silos and fragile API endpoints many of us grew up with.</p>
