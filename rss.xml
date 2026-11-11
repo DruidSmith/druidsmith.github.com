@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Tue, 10 Nov 2026 18:59:04 +0000</lastBuildDate>
+            <lastBuildDate>Wed, 11 Nov 2026 02:24:58 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,34 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>The Next Disaster Starts Long Before the Storm</title>
+                <link>https://davidgsmith.net/thoughts/the-next-disaster-starts-long-before-the-storm.html</link>
+                <guid>https://davidgsmith.net/thoughts/the-next-disaster-starts-long-before-the-storm.html</guid>
+                <pubDate>Wed, 11 Nov 2026 02:24:41 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>It&#x27;s disheartening seeing discussions as highlighted by Denice Ross and others about federal datasets being discontinued, archived, defunded, or simply allowed...</description>
+                
+            <media:thumbnail url="https://www.nesdis.noaa.gov/s3/styles/webp/s3/migrated/I05_NPP_090219_0703_Dorian_nolabels.png.webp?itok=S2xdeorp" />
+                <content:encoded><![CDATA[<p>It's disheartening seeing <a target="_blank" rel="noopener noreferrer" href="https://fas.org/publication/federal-data-hurricanes-terminations/">discussions</a> as highlighted by <a target="_blank" rel="noopener noreferrer" href="https://fas.org/expert/denice-ross/">Denice Ross</a> and others about federal datasets being discontinued, archived, defunded, or simply allowed to degrade.</p>
+<p>To many people, that sounds like a technical issue.</p>
+<p>It isn't.  It's a life safety issue.</p>
+<p>Although I've been a lifelong map and data geek, in my younger days I was also a volunteer firefighter. Later, I had the privilege of supporting mapping and data efforts connected to disasters and crises including Hurricane Katrina, the Haiti earthquake, Typhoon Haiyan, Deepwater Horizon, and conflict mapping initiatives. Disaster response has been near and dear to me for decades.<br>
+<img alt="Hurricane Dorian 2019" src="https://www.nesdis.noaa.gov/s3/styles/webp/s3/migrated/I05_NPP_090219_0703_Dorian_nolabels.png.webp?itok=S2xdeorp"></p>
+<p>During all of my work in emergency response, one lesson was repeated over and over:</p>
+<p><em>When a disaster happens, responders can't magically create situational awareness.</em></p>
+<p>They inherit it.</p>
+<p>Every evacuation route, shelter plan, vulnerability assessment, flood model, damage estimate, resource allocation decision, and recovery strategy depends on information that already existed before the disaster began.</p>
+<p>The public usually sees weather forecasts and dramatic images from the field. What they don't see are the countless datasets operating quietly in the background: population estimates, critical infrastructure inventories, medical vulnerability data, wetlands inventories, address databases, chemicals and hazmat data, facility data, flood records, elevation models, transportation networks, and hundreds of other sources that help communities prepare, respond, recover, and become more resilient.</p>
+<p>The FAS article above highlights an uncomfortable reality: losing those datasets, degrading their quality, or making them harder to access has real consequences. Communities can't predict, prepare, protect or rebuild without good data. Emergency managers can't plan around risks they cannot measure. Researchers cannot identify emerging vulnerabilities if the underlying information disappears.</p>
+<p>What's especially frustrating is that we now have better tools than ever to keep important public data accessible.</p>
+<p>I've been posting about the quiet data revolution, featuring cloud-native formats like GeoParquet, Cloud Optimized GeoTIFF (COG), and PMTiles which can dramatically reduce hosting costs while making data easier to distribute, replicate, archive, and consume. Instead of downloading massive files and standing up specialized infrastrcture, users can access only the portions they need, when they need them.</p>
+<p>That means preserving critical public data is increasingly becoming an institutional challenge rather than a technical one.</p>
+<p>We should be thinking about resilience in our data infrastructure the same way we think about resilience in our physical infrastructure. We build redundancy into roads, power grids, communications systems, and emergency operations because we know failures will eventually occur.</p>
+<p>The same principle should apply to the information systems that underpin disaster preparedness and recovery.</p>
+<p>Data isn't just a byproduct of government operations.  Data <em>is</em> infrastructure.</p>
+<p>And like any infrastructure, its value becomes most apparent at the exact moment it is no longer there.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Why the Idea of a &quot;Knowledge Graph Lakehouse&quot; Has Me Thinking About Environmental Data</title>
                 <link>https://davidgsmith.net/thoughts/why-the-idea-of-a-knowledge-graph-lakehouse-has-me-thinking-about-environmental-data.html</link>
