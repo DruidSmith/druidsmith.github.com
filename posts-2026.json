@@ -2,7 +2,19 @@
   {
     "title": "The Next Disaster Starts Long Before the Storm",
     "body": "It's disheartening seeing [discussions](https://fas.org/publication/federal-data-hurricanes-terminations/) as highlighted by [Denice Ross](https://fas.org/expert/denice-ross/) and others about federal datasets being discontinued, archived, defunded, or simply allowed to degrade.\n\nTo many people, that sounds like a technical issue.\n\nIt isn't.  It's a life safety issue.\n\nAlthough I've been a lifelong map and data geek, in my younger days I was also a volunteer firefighter. Later, I had the privilege of supporting mapping and data efforts connected to disasters and crises including Hurricane Katrina, the Haiti earthquake, Typhoon Haiyan, Deepwater Horizon, and conflict mapping initiatives. Disaster response has been near and dear to me for decades.\n![Hurricane Dorian 2019](https://www.nesdis.noaa.gov/s3/styles/webp/s3/migrated/I05_NPP_090219_0703_Dorian_nolabels.png.webp?itok=S2xdeorp)\n\nDuring all of my work in emergency response, one lesson was repeated over and over:\n\n*When a disaster happens, responders can't magically create situational awareness.*\n\nThey inherit it.\n\nEvery evacuation route, shelter plan, vulnerability assessment, flood model, damage estimate, resource allocation decision, and recovery strategy depends on information that already existed before the disaster began.\n\nThe public usually sees weather forecasts and dramatic images from the field. What they don't see are the countless datasets operating quietly in the background: population estimates, critical infrastructure inventories, medical vulnerability data, wetlands inventories, address databases, chemicals and hazmat data, facility data, flood records, elevation models, transportation networks, and hundreds of other sources that help communities prepare, respond, recover, and become more resilient.\n\nThe FAS article above highlights an uncomfortable reality: losing those datasets, degrading their quality, or making them harder to access has real consequences. Communities can't predict, prepare, protect or rebuild without good data. Emergency managers can't plan around risks they cannot measure. Researchers cannot identify emerging vulnerabilities if the underlying information disappears.\n\nWhat's especially frustrating is that we now have better tools than ever to keep important public data accessible.\n\nI've been posting about the quiet data revolution, featuring cloud-native formats like GeoParquet, Cloud Optimized GeoTIFF (COG), and PMTiles which can dramatically reduce hosting costs while making data easier to distribute, replicate, archive, and consume. Instead of downloading massive files and standing up specialized infrastrcture, users can access only the portions they need, when they need them.\n\nThat means preserving critical public data is increasingly becoming an institutional challenge rather than a technical one.\n\nWe should be thinking about resilience in our data infrastructure the same way we think about resilience in our physical infrastructure. We build redundancy into roads, power grids, communications systems, and emergency operations because we know failures will eventually occur.\n\nThe same principle should apply to the information systems that underpin disaster preparedness and recovery.\n\nData isn't just a byproduct of government operations.  Data *is* infrastructure.\n\nAnd like any infrastructure, its value becomes most apparent at the exact moment it is no longer there.",
-    "tags": [],
+    "tags": [
+      "Disaster Preparedness",
+      "Emergency Management",
+      "Public Data",
+      "Humanitarian Aid",
+      "Data Infrastructure",
+      "Risk Management",
+      "Data Governance",
+      "Geospatial",
+      "Cloud-Native Geospatial",
+      "Data Engineering",
+      "Open Data"
+    ],
     "type": "TechArticle",
     "format": "markdown",
     "url": "",
