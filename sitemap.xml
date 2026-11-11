@@ -405,6 +405,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-data-infrastructure.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-data-quality.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -435,7 +440,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-disaster-preparedness.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-duckdb.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-emergency-management.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -510,6 +525,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-open-data.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-open-source-gis.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -521,6 +541,11 @@
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-postgis.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-public-data.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
