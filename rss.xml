@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 13 Nov 2026 18:52:21 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 13 Nov 2026 18:58:13 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,38 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Why DuckDB&#x27;s Local-First Analytics Matters More Than It First Appears</title>
+                <link>https://davidgsmith.net/thoughts/why-duckdbs-local-first-analytics-matters-more-than-it-first-appears.html</link>
+                <guid>https://davidgsmith.net/thoughts/why-duckdbs-local-first-analytics-matters-more-than-it-first-appears.html</guid>
+                <pubDate>Fri, 13 Nov 2026 18:57:48 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>DuckDB&#x27;s latest piece on local analytics is compelling because it doesn&#x27;t just argue for a faster query engine. It argues for a different shape of software....</description>
+                <category>DuckDB</category>
+            <category>Cloud-Native</category>
+            <category>Cloud-Native Geospatial</category>
+            <category>Data Visualization</category>
+            <category>Data Infrastructure</category>
+            <category>Spatial SQL</category>
+            <category>Systems Thinking</category>
+            <media:thumbnail url="https://duckdb.org/images/blog/local-analytics/italy-wine-suitability-with-sidebar.webp" />
+                <content:encoded><![CDATA[<p>DuckDB's latest piece on local analytics is compelling because it doesn't just argue for a faster query engine. It argues for a different shape of software.</p>
+<p>That's the deeper point in the article, <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/2026/11/12/local-analytics-without-a-database-server">"Local Analytics Doesn't Need a Database Server."</a> The obvious takeaway is technical: DuckDB can run in the browser, on the desktop, or embedded inside an app, so you don't have to stand up a separate database service for every analytics experience. <strong>But the more interesting implication is architectural.</strong> DuckDB is helping make analytics <em>feel like a property of the application itself rather than a dependency the application talks to over the network.</em></p>
+<p>That shift matters.</p>
+<p>For years, most analytics tooling has been built around the assumption that data lives somewhere else. Even when the workload is exploratory or interactive, the answer has often been to move the computation toward centralized infrastructure. The article pushes back on that instinct. It shows that for a surprising number of use cases, especially spatial analytics and graph exploration, the best place to run the query is right next to the user.</p>
+<p>I think that's why the examples in the article land so well. <a target="_blank" rel="noopener noreferrer" href="https://flowmap.city/">Flowmap City</a>, <a target="_blank" rel="noopener noreferrer" href="https://ilya.boyandin.me/p/fsq-spatial-desktop">Foursquare Spatial Desktop</a>, and <a target="_blank" rel="noopener noreferrer" href="https://cosmograph.app/">Cosmograph</a> aren't contrived demos. They're the kind of applications where latency, interactivity, and user autonomy actually matter. In those contexts, local execution isn't just elegant. It changes what the product can be.<br>
+<img alt="Foursquare Spatial Desktop" src="https://duckdb.org/images/blog/local-analytics/italy-wine-suitability-with-sidebar.webp"></p>
+<p>The Flowmap City example is especially instructive. Storing datasets as Parquet in S3 and loading them into DuckDB-Wasm through presigned URLs gives you a very practical hybrid model. The cloud is still there for distribution and sync, but the actual analysis happens locally. That's a subtle but important distinction. The cloud becomes a delivery mechanism, not the default place where every query must execute. For some teams, that could mean less operational overhead. For others, it could mean better privacy, lower cost, and fewer bottlenecks.</p>
+<p>The article also makes a strong case for <a target="_blank" rel="noopener noreferrer" href="https://sqlrooms.org/">SQLRooms</a>, not because it's a framework for its own sake, but because it turns local analytics into something more durable than an ad hoc experiment. A lot of embedded analytics projects are easy to admire and hard to maintain. SQLRooms looks like an attempt to solve that problem by packaging the workflow around the engine. That matters because the hard part of analytics apps usually isn't the SQL. It's the glue: the datasets, the saved queries, the visualizations, the state, the AI assistant, and the way users return to a project later and keep working where they left off.</p>
+<p>That's where the "room" metaphor is surprisingly effective. It suggests a working environment rather than just a query interface. That feels right for the current moment, when analytics products are increasingly expected to behave less like dashboards and more like collaborative workspaces.</p>
+<p>I also think the AI section deserves more attention than it might get at first glance. The article doesn't present AI as a replacement for SQL. It presents AI as a way to lower the barrier to using SQL well. That's a much healthier framing. The combination of natural language and SQL is powerful precisely because SQL is already a disciplined language with a long explanatory tail. LLMs are good at generating SQL because there's enough structure for them to be useful, but the execution still happens in a controlled, inspectable way.</p>
+<p>That's important for trust. If the data stays local and the generated query is visible, you get the convenience of AI without fully surrendering the analytical process to a black box. In a world where people are rightly worried about data exposure, hallucinated answers, and opaque transformations, that design choice is a real strength.</p>
+<p>The geospatial examples are another place where the article's argument feels especially credible. Spatial workloads often suffer from an awkward mismatch between how users think and how systems are built. Users want to pan, zoom, filter, and explore fluidly. Traditional server-based systems can make that feel heavier than it should. DuckDB's spatial extension, paired with dynamic tiling, changes that equation by making the machine on the user's desk do real work. That's not a minor optimization. It's a product experience advantage.</p>
+<p>What I took from the article overall is that local analytics is becoming a serious answer to a serious question: which analytics workloads actually need a server? The answer is probably fewer than we've assumed.</p>
+<p>That doesn't mean servers go away. It means we should be more deliberate about when we centralize computation and when we don't. For regulated environments, local-first patterns may also open up interesting possibilities around privacy, data sovereignty, and offline or semi-offline analysis. For product teams, it can mean faster UX and simpler deployment. For data teams, it can mean fewer moving parts and more portability.</p>
+<p>The broader trend here is worth watching. We're used to thinking of "modern data stack" as cloud-native by default. DuckDB suggests a parallel path where modern data products can be local-native, embedded, and still highly capable. That doesn't replace the cloud, but it does challenge the assumption that the cloud must sit in the middle of every analytical interaction.</p>
+<p>That's what makes the article valuable. It's not simply saying, "DuckDB is fast." It's showing that when the engine is small, portable, and good enough to live inside the product, the product can become simpler, more private, and more responsive. That's a genuinely useful architectural idea, and I expect we'll keep seeing more teams build around it.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>The Next Disaster Starts Long Before the Storm</title>
                 <link>https://davidgsmith.net/thoughts/the-next-disaster-starts-long-before-the-storm.html</link>
