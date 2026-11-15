@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sun, 15 Nov 2026 20:15:53 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 15 Nov 2026 20:20:35 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,20 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>The latest issue of my weekly Geospatial Technology Briefing is now live.</title>
+                <link>https://davidgsmith.net/thoughts/the-latest-issue-of-my-weekly-geospatial-technology-briefing-is-now-live.html</link>
+                <guid>https://davidgsmith.net/thoughts/the-latest-issue-of-my-weekly-geospatial-technology-briefing-is-now-live.html</guid>
+                <pubDate>Sun, 15 Nov 2026 20:20:21 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>My weekly newsletter is now live and available for subscribing. This week&#x27;s newsletter highlights notable developments, trends, and observations from across...</description>
+                
+                <content:encoded><![CDATA[<p>My weekly newsletter is now live and available for subscribing.</p>
+<p>This week's newsletter highlights notable developments, trends, and observations from across the geospatial technology landscape. If you're interested in GIS, mapping, remote sensing, geospatial AI, or location intelligence, I invite you to take a look.</p>
+<p>Read the latest issue and explore past editions here:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://davidgsmith.net/newsletter/">https://davidgsmith.net/newsletter/</a></p>
+<p>Thanks for reading and sharing with others who may find it valuable.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>GeoAI Imagery Data Pipelines</title>
                 <link>https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html</link>
