@@ -84,7 +84,7 @@
 
     @media print {
         body { background: #ffffff !important; color: #000000 !important; }
-        .no-print, #vanta-canvas, header, nav, footer, aside, #return-to-top, #sub-toast, #sub-modal { display: none !important; }
+        .no-print, #vanta-canvas, header, nav, footer, aside, #return-to-top, #sub-toast { display: none !important; }
         .print-only { display: block !important; }
         #main-content { padding: 0 !important; margin: 0 !important; min-height: auto !important; }
         #main-content .grid { display: block !important; }
@@ -158,6 +158,7 @@
                     <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
                     <a href="/cloud-native-geospatial-stack.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
                     <a href="/thoughts.html" class="text-amber-400 transition-colors text-sm font-semibold" aria-current="page">Thoughts</a>
+                    <a href="/newsletter/" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Newsletter</a>
                     <a href="/books.html" data-book-funnel="thoughts_nav_books" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Books</a>
                     <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
                     <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
@@ -177,6 +178,7 @@
                 <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
                 <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Geo &amp; DuckDB Hub</a>
                 <a href="/thoughts.html" class="mobile-link block py-2 text-base font-semibold text-amber-400" aria-current="page">Thoughts</a>
+                <a href="/newsletter/" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Newsletter</a>
                 <a href="/books.html" data-book-funnel="thoughts_mobile_nav_books" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Books</a>
                 <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
                 <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
@@ -284,13 +286,13 @@
     <aside aria-label="Sidebar Navigation" class="no-print space-y-6">
         <div class="bg-slate-900 p-6 rounded-lg border border-amber-500/40 shadow-xl text-slate-100">
             <span class="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-2">
-                Coming Soon &bull; Weekly Digest
+                Weekly Curated Briefing
             </span>
             <h3 class="text-lg font-serif font-medium text-white leading-snug mb-2">
-                Coming Soon: Newsletter on GeoAI, Cloud-Native Geo &amp; Innovative Data
+                Get the Technical &amp; Geospatial Intelligence Briefing
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                Launching soon: Get my curated weekly synthesis of news, research, and articles on cloud-native geospatial, data pipelines, and serverless data stacks—plus early book chapters.
+                Subscribe to get my curated weekly synthesis of news, research, and articles on cloud-native geospatial, data pipelines, and serverless data stacks.
             </p>
             <form data-newsletter-form data-source-page="thoughts_sidebar" action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post"
                   class="space-y-2.5">
@@ -300,11 +302,15 @@
                 <input type="hidden" name="tag" value="thoughts-sidebar-digest">
                 <button type="submit" data-submit-btn
                         class="w-full py-2 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-xs rounded transition-colors shadow">
-                    Join Waitlist (Coming Soon) &rarr;
+                    Subscribe &rarr;
                 </button>
             </form>
-            <p class="text-[10px] text-slate-400 mt-2">Coming soon &bull; Weekly synthesis &bull; Zero spam.</p>
+            <p class="text-[10px] text-slate-400 mt-2">Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
             <div class="mt-4 pt-3 border-t border-slate-800 flex flex-col gap-1.5 text-xs">
+                <a href="/newsletter/" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center justify-between">
+                    <span>Newsletter Archive</span>
+                    <span>&rarr;</span>
+                </a>
                 <a href="/cloud-native-geospatial-stack.html" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center justify-between">
                     <span>Cloud-Native Geospatial Hub</span>
                     <span>&rarr;</span>
@@ -688,7 +694,7 @@
     </div>
 </main>
 
-<!-- Dismissible Subscription Feedback Toast & Modal -->
+<!-- Dismissible Subscription Feedback Toast -->
 <div id="sub-toast" role="status" aria-live="polite" class="no-print fixed bottom-20 right-6 z-50 hidden max-w-sm bg-slate-900 border border-slate-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 transition-all duration-300">
     <span id="sub-toast-icon" class="mt-0.5 text-emerald-400 shrink-0"></span>
     <div class="text-xs sm:text-sm flex-1">
@@ -696,23 +702,6 @@
         <p id="sub-toast-msg" class="text-slate-300 mt-0.5"></p>
     </div>
     <button type="button" onclick="closeSubFeedback()" class="text-slate-400 hover:text-white p-1" aria-label="Close notification">&times;</button>
-</div>
-
-<div id="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title" class="no-print fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center space-y-4 relative">
-        <button type="button" onclick="closeSubFeedback()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" aria-label="Dismiss modal">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <div id="sub-modal-badge" class="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"></div>
-        <h3 id="sub-modal-title" class="text-xl font-serif font-semibold text-white"></h3>
-        <p id="sub-modal-message" class="text-sm text-slate-300 leading-relaxed"></p>
-        <p class="text-xs text-amber-400/90 font-medium">The Spatial, Data &amp; AI Architecture Digest is coming soon — you are locked in for the inaugural issue.</p>
-        <div class="pt-2">
-            <button type="button" onclick="closeSubFeedback()" class="w-full py-2.5 px-5 bg-brand-accent hover:bg-amber-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors">
-                Got It
-            </button>
-        </div>
-    </div>
 </div>
 
 <!-- Standardized Footer -->
@@ -728,6 +717,7 @@
                 <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
                 <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo &amp; DuckDB Hub</a>
                 <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                <a href="/newsletter/" class="hover:text-amber-400 transition-colors">Newsletter</a>
                 <a href="/books.html" data-book-funnel="thoughts_footer_books" class="hover:text-amber-400 transition-colors">Books</a>
                 <a href="/critical-thinking.html" data-book-funnel="thoughts_footer_ct" class="hover:text-amber-400 transition-colors">Critical Thinking</a>
                 <a href="/rss.xml" class="hover:text-amber-400 transition-colors">RSS</a>
