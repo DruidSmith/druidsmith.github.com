@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Technical &amp; Geospatial Intelligence Briefing - Vol. 1, Issue 1</title>
+  <style>
+  :root { color-scheme: light dark; supported-color-schemes: light dark; }
+  @media (prefers-color-scheme: dark) {
+    .bg-page { background-color:#0d1117 !important; }
+    .card    { background-color:#161b22 !important; border-color:#30363d !important; }
+    .txt     { color:#e6edf3 !important; }
+    .muted   { color:#9da7b3 !important; }
+    .link    { color:#58a6ff !important; }
+    .line-b  { border-color:#30363d !important; }
+    .soft    { background-color:#1c2430 !important; border-color:#30363d !important; }
+    .pill    { background-color:#2a313c !important; color:#c9d1d9 !important; }
+  }
+  @media only screen and (max-width:480px) {
+    .pad      { padding:16px !important; }
+    .outer    { padding:8px !important; }
+    .h1       { font-size:21px !important; }
+    .date-col { width:72px !important; }
+  }
+</style>
+</head>
+<body class="bg-page" style="margin:0;padding:0;background-color:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1f2328;">
+  <div style="display:none;max-height:0px;overflow:hidden;mso-hide:all;">The Next Disaster Starts Long Before the Storm · Why DuckDB&#39;s Local-First Analytics Matters More Than It…&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+  
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:2px solid #0b5cad;margin-bottom:20px;">
+                <tr>
+                  <td style="padding-bottom:14px;">
+                    <div class="link" style="font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:#0b5cad;">David G. Smith</div>
+                    <h1 class="txt h1" style="margin:4px 0 6px 0;font-size:24px;line-height:1.2;color:#1f2328;">Technical &amp; Geospatial Intelligence Briefing</h1>
+                    <div class="muted" style="font-size:13px;color:#57606a;">Washington, DC &middot; Volume 1, Issue 1 &middot; November 15, 2026</div>
+                  </td>
+                </tr>
+              </table>
+
+              <div><p class="txt" style="margin:0 0 12px 0;font-size:15px;line-height:1.6;color:#1f2328;">The latest issue of GeooAwesome showcases a vibrant array of events that underscore significant shifts and developments in the geospatial and GIS sectors. A prominent theme is the increasing integration of GeoAI technologies, as evidenced by the upcoming GeoAI 2027 conference in London. This event highlights the growing importance of artificial intelligence in enhancing geospatial data analysis and decision-making processes. The focus on GeoAI reflects a broader industry trend towards leveraging machine learning and AI to derive more sophisticated insights from spatial data, which is crucial for applications ranging from urban planning to environmental monitoring.</p><p class="txt" style="margin:0 0 12px 0;font-size:15px;line-height:1.6;color:#1f2328;">Another notable development is the emphasis on community-driven initiatives and open-source contributions, as seen in the State of the Map 2027 event. This gathering underscores the collaborative spirit that drives innovation in the open-source geospatial community, fostering an environment where developers and users can share knowledge and tools.</p></div>
+              
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:20px 0;">
+      <tr>
+        <td class="soft" style="background:#f3f7fc;border:1px solid #d8dee4;border-left:4px solid #0b5cad;border-radius:6px;padding:16px;">
+          <div class="link" style="font-size:11px;font-weight:bold;letter-spacing:.05em;text-transform:uppercase;color:#0b5cad;margin-bottom:8px;">Start here</div>
+          
+    <div class="line-b" style="margin-bottom:8px;padding-bottom:4px;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 10 · 2 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:19px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-next-disaster-starts-long-before-the-storm.html" style="color:#0b5cad;text-decoration:none;">The Next Disaster Starts Long Before the Storm</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">It&#39;s disheartening seeing discussions as highlighted by Denice Ross and others about federal datasets being discontinued, archived, defunded, or simply allowed...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-disaster-preparedness.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Disaster Preparedness</a><a class="pill" href="https://davidgsmith.net/thoughts-emergency-management.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Emergency Management</a><a class="pill" href="https://davidgsmith.net/thoughts-public-data.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Public Data</a><a class="pill" href="https://davidgsmith.net/thoughts-humanitarian-aid.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Humanitarian Aid</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-risk-management.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Risk Management</a><a class="pill" href="https://davidgsmith.net/thoughts-data-governance.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Governance</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-open-data.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Data</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>13</strong> views &middot; <strong>9</strong> readers &middot; <strong>0.3</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 15)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-next-disaster-starts-long-before-the-storm.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+        </td>
+      </tr>
+    </table>
+  
+              
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">From Dave Smith&#39;s Desk</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 13 · 4 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/why-duckdbs-local-first-analytics-matters-more-than-it-first-appears.html" style="color:#0b5cad;text-decoration:none;">Why DuckDB&#39;s Local-First Analytics Matters More Than It First Appears</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">DuckDB&#39;s latest piece on local analytics is compelling because it doesn&#39;t just argue for a faster query engine. It argues for a different shape of software....</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-duckdb.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">DuckDB</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-visualization.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Visualization</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-sql.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial SQL</a><a class="pill" href="https://davidgsmith.net/thoughts-systems-thinking.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Systems Thinking</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>8</strong> views &middot; <strong>8</strong> readers &middot; <strong>0.4</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 15)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/why-duckdbs-local-first-analytics-matters-more-than-it-first-appears.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 15 · 3 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html" style="color:#0b5cad;text-decoration:none;">GeoAI Imagery Data Pipelines</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">The Earth observation community is living through a golden age of AI. Today, it&#39;s easier than ever to download a pretrained model, fine tune it on satellite...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-geoai.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">GeoAI</a><a class="pill" href="https://davidgsmith.net/thoughts-earth-observation.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Earth Observation</a><a class="pill" href="https://davidgsmith.net/thoughts-remote-sensing.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Remote Sensing</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-strategy.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Strategy</a><a class="pill" href="https://davidgsmith.net/thoughts-open-source-gis.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Source GIS</a><a class="pill" href="https://davidgsmith.net/thoughts-python.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Python</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-agents.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Agents</a></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">In The News</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 15 · casrai.org</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://casrai.org/news/livegeo-geoworld-benchmark-geographic-ai-agents-2026" style="color:#0b5cad;text-decoration:none;">LiveGeo Benchmark Tests Geographic AI Agents in Evolving Environments</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">LiveGeo introduces a dynamic benchmark for geographic AI agents, testing them in continuously evolving environments. The platform moves beyond static maps, enabling realistic evaluation of spatial reasoning.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://casrai.org/news/livegeo-geoworld-benchmark-geographic-ai-agents-2026" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 13 · BIOENGINEER</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://bioengineer.org/geospatial-artificial-intelligence-reshapes-geographic-methods-and-theory-researchers-conclude/" style="color:#0b5cad;text-decoration:none;">Geospatial Artificial Intelligence Reshapes Geographic Methods and Theory, Researchers Conclude</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Researchers analyze GeoAI&#39;s methodological emergence and conceptual evolution, tracing its intellectual roots from spatial statistics to deep learning. They argue GeoAI represents a paradigm shift requiring new theoretical frameworks for geographic inquiry.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://bioengineer.org/geospatial-artificial-intelligence-reshapes-geographic-methods-and-theory-researchers-conclude/" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 10 · Mirage News</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://www.miragenews.com/unsw-ai-tool-simplifies-complex-spatial-data-1774548/" style="color:#0b5cad;text-decoration:none;">UNSW AI Tool Simplifies Complex Spatial Data</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">MapAI, developed by UNSW researchers, enables natural-language querying of housing and infrastructure data with verifiable evidence. The platform aims to democratize complex geospatial analysis for planners and governments.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://www.miragenews.com/unsw-ai-tool-simplifies-complex-spatial-data-1774548/" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Recent Blog Posts Of Interest</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 13 · DuckDB</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://duckdb.org/2026/11/12/local-analytics-without-a-database-server.html" style="color:#0b5cad;text-decoration:none;">Local Analytics Doesn’t Need a Database Server</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">The post explains how DuckDB&#39;s WebAssembly build enables browser-based analytical queries without a database server, using the example of Flowmap City for geospatial mobility visualization.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://duckdb.org/2026/11/12/local-analytics-without-a-database-server.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 14 · arXiv</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://arxiv.org/abs/2611.13849" style="color:#0b5cad;text-decoration:none;">[2611.13849] Satellite Pretraining Is Not One Thing: A Matched-Pair Study of Generic and Earth-Observation Foundation Models for Scene Classification</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">The paper presents a matched-pair study comparing five Earth-observation foundation models against generic counterparts with shared architecture and objectives, evaluating them on 14 frozen encoders across five RGB scene-classification datasets.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://arxiv.org/abs/2611.13849" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 8 · Planet OSGeo</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://terra-lab.ai/blog/qgis-automation" style="color:#0b5cad;text-decoration:none;">QGIS Automation: One Task, 4 Methods, Timed on 2 Cities</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">The post benchmarks batch processing, Graphical Modeler, PyQGIS scripting, and an AI agent for a multi-step QGIS workflow on two German cities, comparing re-run times.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://terra-lab.ai/blog/qgis-automation" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Research &amp; Deep Dives</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 10 · Raghvendra Yadav et al.</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="http://arxiv.org/abs/2611.11031v1" style="color:#0b5cad;text-decoration:none;">Hybrid Product Search Without the Copy: Lexical, Semantic and Filtered Retrieval Served Directly from a Data Lake</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Demonstrates a production-grade lakehouse architecture using Apache Iceberg and Parquet to serve hybrid lexical/semantic search directly from object storage, eliminating costly data copies and sync pipelines — a blueprint for modern spatial data platforms.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Paper</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="http://arxiv.org/abs/2611.11031v1" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 10 · Walid Elbarz et al.</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="http://arxiv.org/abs/2611.12681v1" style="color:#0b5cad;text-decoration:none;">National-Scale Crop Type Mapping in Morocco Using Google AlphaEarth Foundations Embeddings and the Fields of the World Field Boundary Map</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Demonstrates operational, planetary-scale agricultural monitoring using pre-computed foundation model embeddings (AlphaEarth) and global field boundaries, enabling zero-training, cloud-native crop mapping pipelines directly reusable by data engineers.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Paper</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="http://arxiv.org/abs/2611.12681v1" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+              
+              
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Upcoming Events (Next 3 Months)</h2>
+      </td>
+      <td align="right" style="padding:0 0 6px 0;font-size:12px;white-space:nowrap;"><a class="link" href="https://davidgsmith.net/events.html" style="color:#0b5cad;font-weight:bold;text-decoration:none;">Full calendar &rarr;</a></td>
+    </tr>
+  </table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:13px;margin-top:8px;"><tr><td colspan="2" class="line-b link" style="padding:10px 0 4px 0;font-weight:bold;color:#0b5cad;font-size:13px;text-transform:uppercase;border-bottom:1px solid #d8dee4;">November 2026</td></tr>
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 17</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.spacetechexpo-europe.com/" style="color:#0b5cad;text-decoration:none;font-weight:500;">Space Tech Expo Europe</a><br><span class="muted" style="color:#57606a;font-size:12px;">Bremen, Bremen, Germany</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 18</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://linkly.link/2sv5V" style="color:#0b5cad;text-decoration:none;font-weight:500;">SatSummit 2026</a><br><span class="muted" style="color:#57606a;font-size:12px;">Saint Louis, Missouri, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 18</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.gisday.com" style="color:#0b5cad;text-decoration:none;font-weight:500;">GIS Day (Worldwide)</a><br><span class="muted" style="color:#57606a;font-size:12px;">Washington, District of Columbia, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 18–19</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://satsummit.io" style="color:#0b5cad;text-decoration:none;font-weight:500;">SatSummit</a><br><span class="muted" style="color:#57606a;font-size:12px;">Saint Louis, Missouri, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 18</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.gisday.com/en-us/overview" style="color:#0b5cad;text-decoration:none;font-weight:500;">GIS Day — DMV Local Events</a><br><span class="muted" style="color:#57606a;font-size:12px;">Northern Virginia / Washington, DC / DMV</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 19–20</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.geography2050.org/" style="color:#0b5cad;text-decoration:none;font-weight:500;">Geography 2050</a><br><span class="muted" style="color:#57606a;font-size:12px;">New York, New York, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 23</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.geoworldevent.com/" style="color:#0b5cad;text-decoration:none;font-weight:500;">GEO WORLD</a><br><span class="muted" style="color:#57606a;font-size:12px;">Al Thanyah 2, Dubai Emirate, United Arab Emirates</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 30</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://pgrsc.org/pacific-gis-rs-users-conference/" style="color:#0b5cad;text-decoration:none;font-weight:500;">2026 Pacific Islands GIS &amp; Remote Sensing User Conference</a><br><span class="muted" style="color:#57606a;font-size:12px;">Suva, Central, Fiji</span></td>
+        </tr>
+      <tr><td colspan="2" class="line-b link" style="padding:10px 0 4px 0;font-weight:bold;color:#0b5cad;font-size:13px;text-transform:uppercase;border-bottom:1px solid #d8dee4;">December 2026</td></tr>
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 3</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://usgif.org/event/geogala-2026/" style="color:#0b5cad;text-decoration:none;font-weight:500;">GEOGala</a><br><span class="muted" style="color:#57606a;font-size:12px;">McLean, Virginia, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 7</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.agu.org/plan-for-a-meeting/agumeetings" style="color:#0b5cad;text-decoration:none;font-weight:500;">AGU 2026</a><br><span class="muted" style="color:#57606a;font-size:12px;">San Francisco, California, United States</span></td>
+        </tr>
+      </table><div class="muted" style="margin-top:14px;font-size:12px;line-height:1.5;color:#57606a;"><strong>Dates to be announced:</strong> <a class="link" href="https://geoaiconference.org/?page_id=616" style="color:#0b5cad;text-decoration:none;">GeoAI 2027</a>, <a class="link" href="https://blog.openstreetmap.org/2026/05/11/state-of-the-map-2027-call-for-venues-is-now-open/" style="color:#0b5cad;text-decoration:none;">State of the Map 2027</a>, <a class="link" href="https://wsbw.com/media-press/become-a-media-partner/" style="color:#0b5cad;text-decoration:none;">World Satellite Business Week 2027</a></div><div style="margin-top:12px;font-size:12px;"><a class="link" href="https://davidgsmith.net/events.html" style="color:#0b5cad;font-weight:bold;text-decoration:none;">See all 20 upcoming events &rarr;</a></div>
+
+              <div class="line-b muted" style="margin-top:36px;padding-top:18px;border-top:1px solid #d8dee4;font-size:13px;color:#57606a;line-height:1.5;">
+                <p style="margin:0 0 10px 0;">Got a tip, correction, or something I should cover? Just hit reply. I read every response.</p>
+                <p style="margin:0 0 10px 0;">You're receiving this because you subscribed to David G. Smith's Technical Briefing.</p>
+                <div style="margin-bottom:8px;"><a class="muted" href="https://davidgsmith.net/newsletter/vol-1-issue-1.html" style="color:#57606a;text-decoration:underline;">View in browser</a> &nbsp;·&nbsp; <a class="muted" href="https://davidgsmith.net/newsletter/unsubscribe.html?email=%%EMAIL%%&amp;token=%%TOKEN%%" style="color:#57606a;text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a class="muted" href="https://davidgsmith.net" style="color:#57606a;text-decoration:underline;">davidgsmith.net</a></div>
+                
+              </div>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
