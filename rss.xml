@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 14 Nov 2026 17:25:30 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 15 Nov 2026 15:12:24 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,64 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>GeoAI Imagery Data Pipelines</title>
+                <link>https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html</link>
+                <guid>https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html</guid>
+                <pubDate>Sun, 15 Nov 2026 15:12:08 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The Earth observation community is living through a golden age of AI. Today, it&#x27;s easier than ever to download a pretrained model, fine tune it on satellite...</description>
+                <category>GeoAI</category>
+            <category>Earth Observation</category>
+            <category>Remote Sensing</category>
+            <category>AI Infrastructure</category>
+            <category>Cloud-Native Geospatial</category>
+            <category>Data Engineering</category>
+            <category>AI Strategy</category>
+            <category>Open Source GIS</category>
+            <category>Python</category>
+            <category>Spatial Data Infrastructure</category>
+            <category>Geospatial</category>
+            <category>AI Agents</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/geoai-datacubes-mwhz0rsb-7a6583b8.jpg" />
+                <content:encoded><![CDATA[<p>The Earth observation community is living through a golden age of AI.</p>
+<p>Today, it's easier than ever to download a pretrained model, fine tune it on satellite imagery, and publish impressive results. Foundation models, PyTorch tooling, cloud-hosted imagery, and open geospatial data have dramatically lowered the barrier to entry.</p>
+<p>Yet anyone who's actually tried to build a serious Earth observation workflow knows a frustrating truth:</p>
+<p>The hardest part usually isn't the AI.  It's the data.</p>
+<p>A <a target="_blank" rel="noopener noreferrer" href="https://joss.theoj.org/papers/10.21105/joss.11034.pdf">newly published open-source project</a> called <strong>geoai-datacubes</strong> tackles exactly that problem. Rather than introducing another model architecture, it focuses on turning the chaotic reality of multi-mission satellite data into something machine learning systems can actually consume.</p>
+<p>Most real-world projects don't use a single sensor. A researcher studying urban growth might want Sentinel-2 optical imagery, Sentinel-1 radar, elevation data, land cover products, and historical observations spanning multiple years. A water resources team might combine optical imagery with bathymetry, land cover, and surface temperature layers.</p>
+<p>In theory, all of that data is available.</p>
+<p>In practice, each dataset arrives with different projections, resolutions, metadata conventions, nodata handling rules, cloud masking approaches, and access methods. Before training can even begin, someone has to download it, align it, normalize it, tile it, validate it, and somehow avoid introducing subtle errors along the way.</p>
+<p>That's where many GeoAI projects quietly fail.</p>
+<p>The geoai-datacubes authors make an important observation: modern machine learning research often spends more time engineering data pipelines than developing models. Their software addresses that challenge by automatically fetching, co-registering, fusing, and preparing data from 26 Earth observation missions and derived products through a single configuration-driven workflow.</p>
+<p>What makes this especially compelling is the practical architecture.<br>
+<img alt="GeoAI-Datacubes" src="https://davidgsmith.net/thoughts/images/geoai-datacubes-mwhz0rsb-7a6583b8.jpg"><br>
+The system understands the difference between data types. Spectral reflectance bands are handled differently from elevation data. Elevation data is handled differently from categorical land-cover layers. Quality-assurance bands are treated differently still. This may sound obvious, but many machine learning failures originate when datasets are processed generically rather than according to what the values actually represent. The paper notes that cloud-covered data, inappropriate resampling, and incorrect normalization can silently degrade model performance without producing an obvious error.</p>
+<p>For practitioners, this matters because it reduces the number of hidden assumptions embedded in a workflow.</p>
+<p>Consider a team working on flood mapping. Traditionally, they might spend weeks assembling Sentinel-1 radar data, Sentinel-2 optical imagery, digital elevation models, and water reference datasets. Every step introduces opportunities for mistakes. With a unified datacube pipeline, the effort shifts away from data wrangling and toward experimentation and analysis.</p>
+<p>The same pattern applies across countless domains:</p>
+<ul>
+<li>Coastal scientists mapping bathymetry.</li>
+<li>Agricultural researchers monitoring crop conditions.</li>
+<li>Forestry teams measuring change over time.</li>
+<li>Urban planners tracking land-use transitions.</li>
+<li>Climate researchers integrating multiple remote sensing products into prediction workflows.</li>
+</ul>
+<p>In every case, the value comes from reducing friction.</p>
+<p>Another aspect that deserves attention is the project's emphasis on trustworthy evaluation. The library supports spatially aware train-test splitting strategies designed to reduce data leakage in geographically autocorrelated imagery.</p>
+<p>That might sound like a technical detail, but it's one of the most important issues in Earth observation machine learning.</p>
+<p>Many models appear to perform exceptionally well because training and test samples are geographically close to one another. A model can essentially memorize local conditions while appearing to generalize. When deployed in a different region, performance often collapses.</p>
+<p>The geoai-datacubes approach encourages researchers to test more honestly by supporting regional and block-based splitting strategies rather than relying solely on random tile selection.</p>
+<p>Perhaps the most interesting takeaway from the paper is that it reflects a broader shift happening across GeoAI.</p>
+<p>For years, the community has concentrated on better algorithms. Increasingly, attention is shifting toward better infrastructure.</p>
+<p>The future of geospatial AI may not be decided by who invents the next architecture. It may be decided by who makes multi-source Earth observation data easiest to discover, harmonize, validate, and operationalize.</p>
+<p>That's what makes geoai-datacubes noteworthy.</p>
+<p>It's not trying to replace existing modeling frameworks. Instead, it fills a gap that nearly every Earth observation researcher encounters sooner or later. By standardizing the path from raw satellite imagery to AI-ready training data, it helps transform weeks of engineering effort into a repeatable workflow.</p>
+<p>The result is something that often gets overlooked in AI discussions: less time preparing data and more time answering scientific and operational questions.</p>
+<p>And for many GeoAI teams, that's likely to be the biggest productivity gain of all.</p>
+<p><strong>Paper:</strong> <em>geoai-datacubes: AI-ready multi-mission satellite data cubes for Earth-observation machine learning</em> by Joachim Moortgat and colleagues, published in the Journal of Open Source Software on November 13, 2026.<br>
+<a target="_blank" rel="noopener noreferrer" href="https://joss.theoj.org/papers/10.21105/joss.11034.pdf">https://joss.theoj.org/papers/10.21105/joss.11034.pdf</a></p>]]></content:encoded>
+            </item>
             <item>
                 <title>Why DuckDB&#x27;s Local-First Analytics Matters More Than It First Appears</title>
                 <link>https://davidgsmith.net/thoughts/why-duckdbs-local-first-analytics-matters-more-than-it-first-appears.html</link>
