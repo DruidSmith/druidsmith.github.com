@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sun, 15 Nov 2026 20:14:13 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 15 Nov 2026 20:15:53 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -91,7 +91,7 @@ The system understands the difference between data types. Spectral reflectance b
             <media:thumbnail url="https://duckdb.org/images/blog/local-analytics/italy-wine-suitability-with-sidebar.webp" />
                 <content:encoded><![CDATA[<p>DuckDB's latest piece on local analytics is compelling because it doesn't just argue for a faster query engine. It argues for a different shape of software.</p>
 <p>That's the deeper point in the article, <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/2026/11/12/local-analytics-without-a-database-server">"Local Analytics Doesn't Need a Database Server."</a> The obvious takeaway is technical: DuckDB can run in the browser, on the desktop, or embedded inside an app, so you don't have to stand up a separate database service for every analytics experience. <strong>But the more interesting implication is architectural.</strong> DuckDB is helping make analytics <em>feel like a property of the application itself rather than a dependency the application talks to over the network.</em></p>
-<p>That shift matters.</p>
+<p>That shift matters.  </p>
 <p>For years, most analytics tooling has been built around the assumption that data lives somewhere else. Even when the workload is exploratory or interactive, the answer has often been to move the computation toward centralized infrastructure. The article pushes back on that instinct. It shows that for a surprising number of use cases, especially spatial analytics and graph exploration, the best place to run the query is right next to the user.</p>
 <p>I think that's why the examples in the article land so well. <a target="_blank" rel="noopener noreferrer" href="https://flowmap.city/">Flowmap City</a>, <a target="_blank" rel="noopener noreferrer" href="https://ilya.boyandin.me/p/fsq-spatial-desktop">Foursquare Spatial Desktop</a>, and <a target="_blank" rel="noopener noreferrer" href="https://cosmograph.app/">Cosmograph</a> aren't contrived demos. They're the kind of applications where latency, interactivity, and user autonomy actually matter. In those contexts, local execution isn't just elegant. It changes what the product can be.<br>
 <img alt="Foursquare Spatial Desktop" src="https://duckdb.org/images/blog/local-analytics/italy-wine-suitability-with-sidebar.webp"></p>
