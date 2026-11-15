@@ -434,30 +434,30 @@
 
                 </div>
 
-                <!-- Unified Subscription Section (Coming Soon + Async Webhook) -->
+                <!-- Unified Subscription Section -->
                 <div id="newsletter" aria-labelledby="newsletter-heading" class="mt-16 bg-slate-900/95 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl">
                     <div class="max-w-3xl mx-auto text-center space-y-4">
                         <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
-                            Coming Soon &bull; Weekly Curated Briefing
+                            Weekly Curated Briefing
                         </span>
                         <h3 id="newsletter-heading" class="text-2xl sm:text-3xl font-serif font-medium text-white">
-                            Coming Soon: Subscribe to the Spatial, Data &amp; AI Architecture Digest
+                            Subscribe to the Technical &amp; Geospatial Intelligence Briefing
                         </h3>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Launching soon: Every week, I will synthesize the top 5 technical articles from across the cloud-native geospatial and data engineering community, standout Google Research papers, my latest essays, and early-access book chapters. Join the early-access list now to receive Issue #1.
+                            Every week, I synthesize the top 5 technical articles from across the cloud-native geospatial and data engineering community, standout Google Research papers, my latest essays, and early-access book chapters.
                         </p>
                         <form data-newsletter-form data-source-page="homepage" action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post"
-                              class="pt-2 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                            class="pt-2 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
                             <input type="email" name="email" required placeholder="Enter your email address..."
-                                   aria-label="Email address"
-                                   class="flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
-                            <input type="hidden" name="tag" value="homepage-digest">
+                                aria-label="Email address"
+                                class="flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                            <input type="hidden" name="tag" value="newsletter-homepage">
                             <button type="submit" data-submit-btn
                                     class="px-6 py-3 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg inline-flex items-center justify-center gap-2">
-                                <span>Join Waitlist (Coming Soon) &rarr;</span>
+                                <span>Subscribe &rarr;</span>
                             </button>
                         </form>
-                        <p class="text-xs text-slate-400">Coming soon &bull; Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
+                        <p class="text-xs text-slate-400">Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
                     </div>
                 </div>
 
@@ -594,23 +594,6 @@
             <p id="sub-toast-msg" class="text-slate-300 mt-0.5"></p>
         </div>
         <button type="button" onclick="closeSubFeedback()" class="text-slate-400 hover:text-white p-1" aria-label="Close notification">&times;</button>
-    </div>
-
-    <div id="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center space-y-4 relative">
-            <button type="button" onclick="closeSubFeedback()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" aria-label="Dismiss modal">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            <div id="sub-modal-badge" class="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"></div>
-            <h3 id="sub-modal-title" class="text-xl font-serif font-semibold text-white"></h3>
-            <p id="sub-modal-message" class="text-sm text-slate-300 leading-relaxed"></p>
-            <p class="text-xs text-amber-400/90 font-medium">The Spatial, Data &amp; AI Architecture Digest is coming soon — you are locked in for the inaugural issue.</p>
-            <div class="pt-2">
-                <button type="button" onclick="closeSubFeedback()" class="w-full py-2.5 px-5 bg-brand-accent hover:bg-amber-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors">
-                    Got It
-                </button>
-            </div>
-        </div>
     </div>
 
     <!-- Fallback Inline Init (Safely defers to /js/site-core.js if loaded, or runs standalone) -->
