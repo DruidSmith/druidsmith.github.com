@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Mon, 16 Nov 2026 21:21:48 +0000</lastBuildDate>
+            <lastBuildDate>Mon, 16 Nov 2026 23:00:57 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,55 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Cloud-Native Map Tiles With No Drama</title>
+                <link>https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html</link>
+                <guid>https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html</guid>
+                <pubDate>Mon, 16 Nov 2026 23:00:41 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>For a long time, running your own map service was a real chore. You didn&#x27;t just need map data. You needed tile servers. Databases. Caches. Load balancing....</description>
+                <category>Cloud-Native Geospatial</category>
+            <category>Data Engineering</category>
+            <category>Data Infrastructure</category>
+            <category>Geospatial</category>
+            <category>Open Source GIS</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/pmtiles-mwjv8mdx-1574775e.png" />
+                <content:encoded><![CDATA[<p>For a long time, running your own map service was a real chore.</p>
+<p>You didn't just need map data. You needed tile servers. Databases. Caches. Load balancing. Monitoring. Backups. Documentation that hadn't been updated since someone was listening to dubstep unironically. If your project suddenly got attention, congratulations: now you had infrastructure problems too.</p>
+<p>That's why so many teams ended up on commercial mapping platforms. They worked, they scaled, and they let developers focus on building products instead of running geospatial infrastructure.</p>
+<p>The tradeoff was always cost.</p>
+<p>A map isn't particularly expensive when a few hundred people use it. The challenge comes when success arrives. Suddenly every pan, zoom, and page load is flowing through somebody else's pricing model.</p>
+<p>What's interesting about PMTiles and the broader <a target="_blank" rel="noopener noreferrer" href="https://protomaps.com/">Protomaps ecosystem</a> is that they challenge the assumption that a map service needs to be a service at all.<br>
+<img alt="PMTiles" src="https://davidgsmith.net/thoughts/images/pmtiles-mwjv8mdx-1574775e.png"><br>
+Instead of standing up a dedicated tile server, a PMTiles map can exist as a single file.  That's the part that initially sounds wrong.</p>
+<p>We're conditioned to think modern cloud applications require fleets of containers, databases, message queues, and layers upon layers of abstraction. Then along comes a geospatial format that says: here's one file containing all your tiles. Put it in object storage. Serve it through a CDN. You're done.</p>
+<p>And remarkably, that's not a shortcut or a hack.   Bruce Ro&#776;ttgers lays it out pragmatically in his article Protomaps: <a target="_blank" rel="noopener noreferrer" href="https://bruceroettgers.eu/blog/protomaps/">Self-hosting map tiles has gotten cheap and easy</a></p>
+<p>PMTiles takes advantage of HTTP range requests, allowing clients to retrieve only the portions of the file they actually need. When combined with a CDN that understands and caches those range requests, the result behaves much like a traditional tile service. Except there isn't a tile server in the middle.</p>
+<p>The architecture ends up looking almost absurdly simple:</p>
+<ul>
+<li>Map data becomes a static artifact.</li>
+<li>Object storage becomes the origin.</li>
+<li>The CDN becomes the distribution layer.</li>
+<li>The browser becomes the client.</li>
+</ul>
+<p>No Kubernetes cluster. No EC2 instances. No GIS application server quietly consuming memory somewhere.</p>
+<p>Just a file.</p>
+<p>That's cloud-native geospatial in its most pragmatic form.</p>
+<p>There's a tendency to associate "cloud-native" with complexity. Containers, orchestration platforms, service meshes, and a growing collection of YAML files often dominate the conversation. But the original promise of cloud computing wasn't complexity. It was reducing operational overhead.</p>
+<p>A PMTiles deployment fulfills that promise surprisingly well.</p>
+<p>The infrastructure scales automatically because object storage and CDNs already scale. Availability comes from services that are designed to serve large static assets globally. Costs become predictable because you're paying primarily for storage and bandwidth.</p>
+<p>As Bruce Ro&#776;ttgers points out, hosting a world-scale map can cost only a few dollars per month in storage, while bandwidth costs remain tiny for typical usage. In many scenarios, the economics compare extremely favorably against traditional commercial mapping platforms.</p>
+<p>That's not just a cost optimization story.  It's an architectural one.</p>
+<p>Cloud-native geospatial has spent years moving functionality closer to users. First through distributed tile servers, then through managed platforms, and now increasingly through static assets delivered directly from edge infrastructure.</p>
+<p>The map becomes content.  And content is something the modern web is very, very good at serving.</p>
+<p>What's especially appealing is how this lowers the barrier for small projects. An independent developer, nonprofit, local government, research group, or hobbyist no longer needs significant operational expertise to publish high-quality maps. If you can upload a file to an object store and configure a CDN, you can operate infrastructure that would have seemed impossibly sophisticated not that long ago.</p>
+<p>There will always be use cases that need dynamic rendering, real-time updates, complex spatial analysis, or bespoke server-side processing.</p>
+<p>But not every map is that map.</p>
+<p>A surprising number of applications simply need a reliable basemap that's available everywhere, performs well, and doesn't generate anxiety every time someone checks the monthly bill.</p>
+<p>For those projects, PMTiles represents a refreshing reminder that innovation doesn't always mean adding more layers.</p>
+<p>Sometimes the most cloud-native architecture is the one that deletes half the architecture.</p>
+<p>And there's something deeply satisfying about realizing that your globally distributed map service is, at its core, just a file sitting in a bucket.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>The latest issue of my weekly Geospatial Technology Briefing is now live.</title>
                 <link>https://davidgsmith.net/thoughts/the-latest-issue-of-my-weekly-geospatial-technology-briefing-is-now-live.html</link>
