@@ -40,6 +40,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/happy-gis-day-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

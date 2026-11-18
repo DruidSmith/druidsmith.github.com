@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Tue, 17 Nov 2026 20:09:49 +0000</lastBuildDate>
+            <lastBuildDate>Wed, 18 Nov 2026 14:59:45 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,110 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Happy GIS Day 2026!</title>
+                <link>https://davidgsmith.net/thoughts/happy-gis-day-2026.html</link>
+                <guid>https://davidgsmith.net/thoughts/happy-gis-day-2026.html</guid>
+                <pubDate>Wed, 18 Nov 2026 14:59:29 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Happy GIS Day 2026! Today, November 18, 2026, the global geospatial community is celebrating the people who turn spatial data into real-world action:...</description>
+                <category>Cloud-Native Geospatial</category>
+            <category>Earth Observation</category>
+            <category>GeoAI</category>
+            <category>Geospatial</category>
+            <category>Open Source GIS</category>
+            <category>Spatial Data Infrastructure</category>
+            <category>Spatial SQL</category>
+            <category>Spatial Statistics</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/gisday-mwm8wm4u-635e6ed0.png" />
+                <content:encoded><![CDATA[<p><strong>Happy GIS Day 2026!</strong><br>
+<img alt="GIS Day 2026" src="https://davidgsmith.net/thoughts/images/gisday-mwm8wm4u-635e6ed0.png"></p>
+<p>Today, <strong>November 18, 2026</strong>, the global geospatial community is celebrating the people who turn spatial data into real-world action: cartographers, GIS analysts, remote sensing specialists, developers, data engineers, and the many others who make maps useful.</p>
+<p>If you've spent any time in the geospatial world this year, you know 2026 has felt like more than a routine cycle of software updates. It's been a year where several important trends have continued to converge: cloud-native data formats, GeoAI, higher-frequency Earth observation, and digital twins that are becoming practical operational tools rather than just glossy demonstrations.</p>
+<p>Here are a few of the biggest themes shaping GIS and remote sensing right now.</p>
+<p><strong>1. GeoAI and Earth Observation Embeddings Are Becoming Practical</strong></p>
+<p>AI in GIS has been talked about for years, but the big shift is that it's moving from proof-of-concept to workflow.</p>
+<p>Instead of only running classic tasks like object detection, change detection, or semantic segmentation on a single raster at a time, teams are increasingly using <strong>foundation models</strong>, <strong>multimodal Earth observation models</strong>, and <strong>embeddings</strong> to represent spatial data in a way machines can search, compare, and cluster more efficiently.</p>
+<p>That matters because geospatial data is inherently messy: it's multi-resolution, multi-temporal, and often multi-sensor. A single analysis might combine optical imagery, radar, elevation, vector boundaries, and field observations. Embedding-based approaches help bridge those data types and make large-scale search and classification much faster.</p>
+<p>This is where open geospatial standards are especially important:</p>
+<ul>
+<li><a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a> for vector data in analytical pipelines  </li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://geozarr.org/">GeoZarr</a> for chunked, cloud-friendly multidimensional raster and array data  </li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/">STAC</a> for cataloging and discovering Earth observation assets  </li>
+</ul>
+<p>And for web mapping, <a target="_blank" rel="noopener noreferrer" href="https://protomaps.com/docs/pmtiles/">PMTiles</a> has become an especially useful format for serving tiled basemaps and layers efficiently from object storage. It's a nice example of the broader shift toward formats designed for cheap, fast, scalable delivery without the overhead of traditional tile servers.</p>
+<p>In practice, these tools make it easier to ask questions like:</p>
+<ul>
+<li>Where did land cover change most rapidly over the last five years?</li>
+<li>Which areas look most similar to known flood-prone zones?</li>
+<li>Can we automatically prioritize parcels or assets that match a particular risk profile?</li>
+</ul>
+<p>That's the real value of GeoAI: not replacing GIS work, but making large-scale geospatial analysis more searchable, scalable, and repeatable.</p>
+<p><strong>2. Cloud-Native Geospatial Is No Longer a Niche Pattern</strong></p>
+<p>The old workflow: download huge files, reproject them locally, convert them again, and hope your laptop survives is steadily being replaced by cloud-native methods.</p>
+<p>For imagery, <a target="_blank" rel="noopener noreferrer" href="https://cogeo.org/">Cloud-Optimized GeoTIFFs (COGs)</a> remain one of the most useful formats because they let clients read only the portions of a raster they need. For discovery and delivery, <a target="_blank" rel="noopener noreferrer" href="https://stacspec.org/">STAC</a> has become a foundational standard. For tabular + geometry-rich analytics, <a target="_blank" rel="noopener noreferrer" href="https://geoparquet.org/">GeoParquet</a> is increasingly the format people reach for when they want GIS data to play nicely with modern analytics stacks. And for lightweight, fast web delivery of tiled data, PMTiles is helping simplify how map tiles are stored and shared.</p>
+<p>The bigger shift is architectural. Spatial data is no longer confined to desktop GIS tools. It's being queried in cloud object storage, data lakehouse platforms, and distributed compute environments alongside non-spatial data.</p>
+<p>That's important because geospatial analysis often lives at the intersection of GIS and data engineering:</p>
+<ul>
+<li>GIS teams need speed and scale.</li>
+<li>Data teams need geometry-aware tools.</li>
+<li>Everyone wants fewer conversions and less data duplication.</li>
+</ul>
+<p>Cloud-native geospatial is helping close that gap.</p>
+<p><strong>3. Earth Observation Is Getting More Frequent, More Diverse, and More Operational</strong></p>
+<p>Remote sensing continues to mature in three big ways:</p>
+<ol>
+<li>More revisit opportunities  </li>
+<li>More sensor diversity  </li>
+<li>More operational use  </li>
+</ol>
+<p>Public missions and commercial constellations are both contributing to that growth. Good examples include:</p>
+<ul>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.copernicus.eu/en/about-copernicus/infrastructure/discover-our-satellites">Copernicus Sentinel missions</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://earth.esa.int/eogateway/">ESA Earth observation missions</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.earthdata.nasa.gov/">NASA Earthdata</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.iceye.com/">ICEYE</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.planet.com/">Planet</a></li>
+</ul>
+<p>What's exciting is not just the imagery itself, but the ability to combine optical, SAR, thermal, elevation, and field data into richer analytics. SAR, for example, is especially valuable when cloud cover makes optical imagery unreliable. Optical imagery, meanwhile, remains essential for land cover, vegetation, and visual interpretation.</p>
+<p>The result is a geospatial workflow that's becoming more timely and more resilient:</p>
+<ul>
+<li>disaster response teams can monitor change faster,</li>
+<li>environmental analysts can track conditions more continuously,</li>
+<li>and agencies can make better decisions with fresher data.</li>
+</ul>
+<p><strong>4. Digital Twins Are Moving From Buzzword to Use Case</strong></p>
+<p>Digital twins have been hyped for a while, but in geospatial work they're becoming more concrete.</p>
+<p>At their best, a digital twin is a living spatial model of an asset, system, or environment -- built from GIS layers, sensor feeds, inspection data, operational systems, and sometimes simulation outputs. Instead of just showing where something is, it helps answer what is happening, what changed, and what happens next.</p>
+<p>That's why they're showing up in:</p>
+<ul>
+<li>utilities and infrastructure management</li>
+<li>transportation planning</li>
+<li>urban resilience and climate adaptation</li>
+<li>campus and facility operations</li>
+<li>construction and asset lifecycle management</li>
+</ul>
+<p>The technology stack behind digital twins is also getting stronger:</p>
+<ul>
+<li>drones with LiDAR, thermal, and multispectral sensors</li>
+<li>real-time IoT feeds</li>
+<li>3D web visualization</li>
+<li>cloud-based analytics and simulation</li>
+<li>interoperable geospatial standards</li>
+</ul>
+<p>The best digital twins aren't just beautiful visualizations. They're operational decision tools.</p>
+<p><strong>Why GIS Day Still Matters</strong></p>
+<p>GIS Day has always been about more than maps. It's about spatial thinking: understanding how places, systems, and people are connected.</p>
+<p>That matters even more now. As spatial data gets larger, AI gets more capable, and Earth observation gets more continuous, the human role in GIS becomes even more important:</p>
+<ul>
+<li>asking the right questions,</li>
+<li>validating the outputs,</li>
+<li>understanding uncertainty,</li>
+<li>and making sure the results support real decisions.</li>
+</ul>
+<p>So whether you're hosting a map gallery, teaching someone their first web map, debugging a spatial pipeline, or just celebrating the power of place, take a second to appreciate how far the field has come.</p>
+<p><strong>Happy GIS Day 2026!</strong></p>]]></content:encoded>
+            </item>
             <item>
                 <title>Cloud-Native Map Tiles With No Drama</title>
                 <link>https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html</link>
