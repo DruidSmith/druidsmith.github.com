@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 21 Nov 2026 18:23:20 +0000</lastBuildDate>
+            <lastBuildDate>Sat, 21 Nov 2026 19:51:24 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,89 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>The End of Data Copies? What a Google Cloud Iceberg Demo Reveals About the Future of Analytics</title>
+                <link>https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html</link>
+                <guid>https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html</guid>
+                <pubDate>Sat, 21 Nov 2026 19:51:08 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>For years, the modern data stack has suffered from an oddly accepted inefficiency: everybody gets their own copy of the data. To illustrate an example of it:...</description>
+                <category>Apache Iceberg</category>
+            <category>Data Engineering</category>
+            <category>Data Infrastructure</category>
+            <media:thumbnail url="https://www.kdnuggets.com/wp-content/uploads/kdn-one-table-many-engines-running-bigquery-spark-and-trino-on-a-single-iceberg-copy-01.png" />
+                <content:encoded><![CDATA[<p>For years, the modern data stack has suffered from an oddly accepted inefficiency: everybody gets their own copy of the data.</p>
+<p>To illustrate an example of it: Analytics teams using BigQuery. Data engineers building pipelines in Spark. Platform teams deploying Trino for federated and ad hoc querying. To make it all work together, organizations create synchronization pipelines, maintain duplicate storage locations, and hope those copies stay aligned.</p>
+<p>The result is familiar.</p>
+<p>One system says an order has shipped. Another says it is still pending. Someone launches an investigation, discovers a failed sync job, and several hours disappear into operational troubleshooting.</p>
+<p>However <a target="_blank" rel="noopener noreferrer" href="https://www.kdnuggets.com/one-table-many-engines-running-bigquery-spark-and-trino-on-a-single-iceberg-copy">this KDNuggets article</a> gives a demonstration of Apache Iceberg highlighting it as a compelling alternative: one table, shared by multiple engines, without synchronization jobs or duplicated datasets.</p>
+<p><strong>The Promise of "One Table, Many Engines"</strong></p>
+<p>The architecture demonstrated in the article is deceptively simple.<br>
+<img alt="Iceberg Architecture" src="https://www.kdnuggets.com/wp-content/uploads/kdn-one-table-many-engines-running-bigquery-spark-and-trino-on-a-single-iceberg-copy-01.png"><br>
+Instead of maintaining separate copies of data for BigQuery, Spark, and Trino, all three engines interact with a single Apache Iceberg table stored in Cloud Storage. The engines share not only the same Parquet files but also the same metadata definition and table history.</p>
+<p>The implications are significant:</p>
+<ul>
+<li>No ETL processes solely for synchronization</li>
+<li>No duplicate storage costs</li>
+<li>Fewer consistency problems</li>
+<li>Immediate visibility of changes across engines</li>
+<li>Reduced operational overhead</li>
+</ul>
+<p>In the demo, Spark creates the table and loads data, Trino appends new records, and BigQuery performs updates and merges. Each engine sees the changes made by the others on subsequent queries without any synchronization pipeline running in the background.</p>
+<p>For organizations pursuing a lakehouse architecture, this is remarkably close to the idealized vision the industry has discussed for years.</p>
+<p><strong>The Real Innovation Isn't Storage</strong></p>
+<p>The most interesting part of the article is not that multiple engines can read the same files.</p>
+<p>We have been able to do that for quite some time.</p>
+<p>The truly important capability is <em>coordinated writes.</em></p>
+<p>Multiple engines making concurrent changes to the same dataset is where many architectures become fragile. Data corruption, lost updates, race conditions, and inconsistent views of data have historically forced organizations to create rigid ownership boundaries.</p>
+<p>Apache Iceberg addresses this through snapshot-based metadata management and optimistic concurrency control. Rather than directly overwriting data, writers create new metadata versions and attempt to commit them. If another writer has already modified the table, the competing transaction must reconcile with the latest state before proceeding.</p>
+<p>That mechanism provides something data teams desperately need: <em>Consistency without centralization.</em></p>
+<p><strong>What Happens When Two Engines Collide?</strong></p>
+<p>The most valuable section of the demonstration intentionally creates a conflict.</p>
+<p>A long-running Spark MERGE operation is launched, and before it can complete, Trino inserts new records into the same table. The goal is to see how Iceberg behaves when two engines attempt overlapping modifications.</p>
+<p>The result is reassuring.</p>
+<p>Under serializable isolation, Trino commits successfully. Spark detects that the table changed while its transaction was in progress and aborts rather than risking inconsistent results. No corruption occurs. No data is lost. Readers continue seeing complete snapshots throughout the process.</p>
+<p>This behavior highlights an important principle:</p>
+<p>A modern lakehouse is not merely a collection of files. It is a transactional system.</p>
+<p>The catalog and metadata layer have become just as important as the storage layer itself.</p>
+<p><strong>Isolation Levels Matter More Than Most Teams Realize</strong></p>
+<p>The article also demonstrates a second scenario using snapshot isolation.</p>
+<p>After changing the table's merge isolation level, both the Spark merge and Trino append are able to complete successfully. The tradeoff is that newly inserted rows are not included in the already-running merge operation.</p>
+<p>This exposes a broader lesson for data architects.</p>
+<p>There is no universally correct isolation strategy.</p>
+<ul>
+<li>Financial balances may require strict serializable guarantees.</li>
+<li>Inventory systems may prioritize correctness over throughput.</li>
+<li>Event-driven pipelines may accept snapshot semantics in exchange for higher concurrency.</li>
+<li>Operational analytics often benefit from allowing multiple writers to coexist.</li>
+</ul>
+<p>Choosing isolation levels is increasingly becoming an architectural decision rather than merely a database configuration setting.</p>
+<p><strong>The Hidden Story: Data Platforms Are Becoming Interchangeable</strong></p>
+<p>Perhaps the biggest takeaway is not about Iceberg itself.</p>
+<p>It's about what happens when storage and table formats become the primary abstraction.</p>
+<p>Historically, choosing a query engine often meant choosing where data lived and how it was managed.</p>
+<p>That assumption is weakening.</p>
+<p>When BigQuery, Spark, Trino, DuckDB, Snowflake, and other systems can operate against common open table formats, the competitive landscape changes. Organizations become less dependent on a single processing engine and gain flexibility to select the right tool for each workload.</p>
+<p>The data platform stops being a monolith.</p>
+<p>Instead, it becomes a set of interchangeable compute engines operating on shared data assets.</p>
+<p>That may be one of the most important shifts occurring in data engineering today.</p>
+<p><strong>The Remaining Caveats</strong></p>
+<p>The demonstration is impressive, but it is not without limitations.</p>
+<p>The author points out several practical considerations:</p>
+<ul>
+<li>Long-running writes can repeatedly lose conflicts against fast append workloads.</li>
+<li>Merge operations should be scoped narrowly whenever possible.</li>
+<li>Retry settings matter significantly in high-concurrency environments.</li>
+<li>Some engines still have feature gaps or compatibility limitations.</li>
+<li>Certain write patterns may still require separate data copies.</li>
+</ul>
+<p>In other words, the need for architecture does not disappear simply because the synchronization jobs do.</p>
+<p><strong>Final Thoughts</strong></p>
+<p>Apache Iceberg's value proposition isn't that it stores data differently.</p>
+<p>Its real value is that it allows organizations to treat data as a shared asset instead of a collection of synchronized copies.</p>
+<p>The Google Cloud demonstration shows that the vision is no longer theoretical. BigQuery, Spark, and Trino can operate on the same table, commit transactions safely, and provide consistent views of data without constant synchronization overhead.</p>
+<p>For data teams exhausted by replication pipelines and reconciliation exercises, that may be the most compelling promise of the lakehouse movement yet: <em>One table. One source of truth. Multiple engines.</em></p>]]></content:encoded>
+            </item>
             <item>
                 <title>DuckDB 2.0.1: The Release That Shows DuckDB Is Growing Up</title>
                 <link>https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html</link>
