@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Fri, 20 Nov 2026 19:21:14 +0000</lastBuildDate>
+            <lastBuildDate>Sat, 21 Nov 2026 00:37:33 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,61 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>CNG Forum 2026 Sessions Posted to YouTube</title>
+                <link>https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html</link>
+                <guid>https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html</guid>
+                <pubDate>Sat, 21 Nov 2026 00:37:18 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>If like me you missed the Cloud-Native Geospatial (CNG) Forum 2026 in Snowbird, Utah this October, or if you were there and couldn&#x27;t clone yourself to attend...</description>
+                <category>AI Workflows</category>
+            <category>Cloud-Native Geospatial</category>
+            <category>Data Engineering</category>
+            <category>Data Visualization</category>
+            <category>Data Governance</category>
+            <category>Data Infrastructure</category>
+            <category>Earth Observation</category>
+            <category>GeoAI</category>
+            <category>Geospatial</category>
+            <category>Open Data</category>
+            <category>Open Source GIS</category>
+            <category>Remote Sensing</category>
+            <category>Spatial Data Infrastructure</category>
+            <category>Spatial SQL</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/cng2026-mwpog2rl-fad5fd3f.jpg" />
+                <content:encoded><![CDATA[<p><img alt="CNG 2026" src="https://davidgsmith.net/thoughts/images/cng2026-mwpog2rl-fad5fd3f.jpg"></p>
+<p>If like me you missed the Cloud-Native Geospatial (CNG) Forum 2026 in Snowbird, Utah this October, or if you were there and couldn't clone yourself to attend every track, your weekend watch list just got a major upgrade. The Cloud-Native Geospatial Forum has just published the official session recordings to YouTube, giving practitioners everywhere front-row access to the conversations shaping the next era of spatial data.</p>
+<p>Across the newly released playlists, one overarching theme stands out: cloud-native geospatial is no longer an experimental niche. It is moving into the mainstream, and colliding head-on with AI, agentic workflows, and the urgent need for durable public infrastructure.</p>
+<p>Here is your curated guide to the standout talks and themes to queue up first.</p>
+<p><strong>The Keynotes: AI, Infrastructure, and Keeping Your Soul</strong><br>
+The <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/playlist?list=PLeHDfb_6cSy0">Keynotes &amp; Fireside Chat playlist</a> sets the intellectual tone for the entire forum, balancing high-level technical foresight with grounded human perspective.</p>
+<p><strong>The Great Retooling (Ian Schuler)</strong>: Schuler <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=hjusAsvFs0Y&amp;list=PLHwcNmUwNl9Q&amp;index=1&amp;pp=iAQB">unpacks a two-part shift</a> transforming the industry: cloud-native formats are becoming the dominant way spatial data is managed, while AI and agentic tools are rapidly becoming how users discover, parse, and visualize it. His core argument is that the second shift accelerates the first. Even if we don't yet know which AI tools will win, we know how they access data: scanning massive volumes efficiently and pulling only the bytes they need without overhead, which is exactly what cloud-native formats were built to do. </p>
+<p><strong>Boring at Scale: Consistency as Public Infrastructure (Katie Baynes)</strong>: In a tech landscape obsessed with shiny new tools, Baynes <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=81Zr2fYtl2M&amp;list=PLHwcNmUwNl9Q&amp;index=2&amp;pp=iAQB">makes a compelling case</a> for the quiet, unglamorous work of public data archives. A calibrated, continuously maintained Earth observation record takes fifty years to build, cannot be reconstructed if it lapses, and has no pure market incentive to sustain it. Making that record trusted, durable, and usable is a foundational public obligation.</p>
+<p><strong>Using AI Without Losing Your Soul (Drew Breunig):</strong> Closing out the forum, Breunig <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=qqSw23XQTxc&amp;list=PLHwcNmUwNl9Q&amp;index=3&amp;pp=iAQB">delivers a thoughtful playbook</a> for working alongside AI without flattening your own creativity. Drawing a line from historical creative prompts like the <em>I Ching</em> and Brian Eno's <em>Oblique Strategies</em> to modern models, he advises practitioners to "make the model weird, then prune what comes back," put in real effort when it matters, and remember that some questions are invitations to talk to another person rather than query a machine.</p>
+<p><strong>Fireside Chat with David X. Cohen</strong>: Hosted by Jed Sundwall, this 40-minute <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=dwznJwdShow&amp;list=PLHwcNmUwNl9Q&amp;index=4&amp;pp=iAQB">conversation</a> with Radiant Earth board member David X. Cohen rounds out the mainstage lineup.</p>
+<p><strong>Three Tracks, One Ecosystem</strong><br>
+Before diving into individual sessions, the <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/playlist?list=PLT0Tvdin5q5U">Track Introductions playlist</a> offers a brisk 25-minute roadmap to how the community organized this year's program:</p>
+<p><strong>Track 1 -- <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=kj2l48dakKk&amp;list=PLHwcNmUwNl9Q&amp;index=6&amp;pp=iAQB">On-ramp to Cloud-Native Geospatial</a> (Amy Steiker)</strong>: Designed to lower the barrier to entry for teams modernizing their spatial stacks.</p>
+<p><strong>Track 2 -- <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=HosJMezokdg&amp;list=PLHwcNmUwNl9Q&amp;index=7&amp;pp=iAQB">Cloud-Native Geospatial in Practice</a> (David Bianco)</strong>: Focused on battle-tested production stories and hard-won lessons from teams running cloud-native systems in the wild.</p>
+<p><strong>Track 3 -- <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=wzGCV_Kty4c&amp;list=PLHwcNmUwNl9Q&amp;index=8&amp;pp=iAQB">Building Resilient Data Ecosystems</a> (Alex Leith)</strong>: Looking beyond individual formats to the governance, tooling, and community practices that keep spatial ecosystems thriving.</p>
+<p><strong>Standout Technical &amp; Lightning Talks to Bookmark</strong><br>
+Beyond the mainstage, the newly uploaded sessions are packed with sharp architectural thinking and real-world migrations, some interesting examples:</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=WceQGbvCNqs&amp;list=PLHwcNmUwNl9Q&amp;index=27&amp;pp=iAQB">Introducing Portolan</a> (Nissim Lebovits)</strong>: One of the most buzzed-about efforts at the forum, Portolan proposes a modern, open Spatial Data Infrastructure specification built for cheap object storage and the age of AI. By incorporating READMEs and AGENTS.md files alongside cloud-native data, it is designed to be effortlessly navigable by both humans and autonomous agents.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=gjT0kk6_PVk&amp;list=PLHwcNmUwNl9Q&amp;index=21&amp;pp=iAQB">Anatomy of a File</a> (Jarrett Keifer)</strong>: Why do we treat raster, vector, and point cloud formats as completely separate islands? Keifer strips file formats down to first principles: chunking, indexing, encoding, and metadata, to show that their underlying architectures are remarkably consistent, challenging the community to rethink the walls we've built between our tools.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=lzH4ZnxC_VM&amp;list=PLHwcNmUwNl9Q&amp;index=30&amp;pp=iAQB">Mapping the World as a Digital Public Good</a> (Isaac Corley)</strong>: A fast-paced tour of Fields of the World, Features of the World, and Benchmarks of the World, detailing how planetary-scale open datasets are being built and where they are headed next.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-hQp9QrDsnU&amp;list=PLHwcNmUwNl9Q&amp;index=15&amp;pp=iAQB">From Layer Name Guessing to Cloud-Native Discovery</a> (Giovanni Romero)</strong>: A practical blueprint for untangling legacy GIS bottlenecks by cleanly separating programmatic discovery (STAC), cloud-native raster storage (COGs), and browser map serving (GeoServer).</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=9gMhaHfAqqA&amp;list=PLHwcNmUwNl9Q&amp;index=25&amp;pp=iAQB">Geospatial Technology Radar</a> (Jason Gilman)</strong>: A timely pulse check on the rapidly evolving landscape of open-source tools and community standards in 2026, worth pairing with his companion talk, Towards an Agentic Queryable Earth.</p>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=qG7k6M3ztBs&amp;list=PLHwcNmUwNl9Q&amp;index=31&amp;pp=iAQB">From Uploads to Impact</a> (Brad Andrick)</strong>: A candid look at how adopting cloud-native defaults helps organizations like Earth Genome spend less time wrangling data plumbing and more time driving real-world impact.</p>
+<p>You will also find deep dives into <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=CItTYmyAhxk&amp;list=PLHwcNmUwNl9Q&amp;index=22&amp;pp=iAQB">Zarr for Level 2 data collections</a> (Tom Nicholas &amp; Sean Harkins), <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=XA4r9IGWFDg&amp;list=PLHwcNmUwNl9Q&amp;index=29&amp;pp=iAQB">exploring geospatial embeddings via web apps</a> (Denys Godwin), <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=djrOfhyMuE0&amp;list=PLHwcNmUwNl9Q&amp;index=26&amp;pp=iAQB">accelerating plot-level supply-chain analytics</a> from days to minutes (Jake Wilkins), and <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=FSVpoQ8e8U8&amp;list=PLHwcNmUwNl9Q&amp;index=19&amp;pp=iAQB">cloud-native access to NOAA's VIIRS dataset</a> (Philip Casey).</p>
+<p><strong>Dive Into the Playlists</strong><br>
+Whether you have five minutes for a lightning talk or an afternoon to catch up on the keynotes, you can explore the full set of newly posted playlists here:</p>
+<p>Keynotes &amp; Fireside Chat: https://www.youtube.com/playlist?list=PLeHDfb_6cSy0 <br>
+<img alt="cng2026 mwpog2rl fad5fd3f" src="https://davidgsmith.net/thoughts/images/cng2026-mwpog2rl-fad5fd3f.jpg"><br>
+Track Introductions: https://www.youtube.com/playlist?list=PLT0Tvdin5q5U </p>
+<p>CNG 2026 Lightning Talks Playlist: https://www.youtube.com/playlist?list=PLLSuIKDFNXxU</p>
+<p>Full CNG 2026 Playlist: https://www.youtube.com/playlist?list=PLHwcNmUwNl9Q</p>
+<p>The shift from legacy file silos to open, cloud-native, AI-ready spatial data is happening in real time. Pick a playlist, hit play, and see what the community is building next.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Happy GIS Day 2026!</title>
                 <link>https://davidgsmith.net/thoughts/happy-gis-day-2026.html</link>
