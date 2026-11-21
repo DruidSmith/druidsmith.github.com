@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 21 Nov 2026 00:51:03 +0000</lastBuildDate>
+            <lastBuildDate>Sat, 21 Nov 2026 15:15:57 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,79 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>DuckDB 2.0.1: The Release That Shows DuckDB Is Growing Up</title>
+                <link>https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html</link>
+                <guid>https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html</guid>
+                <pubDate>Sat, 21 Nov 2026 15:15:38 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>Most software projects become popular because of new features. The successful ones become boring. At first glance, the DuckDB 2.0.1 LTS release looks like a...</description>
+                <category>Data Engineering</category>
+            <category>Data Governance</category>
+            <category>Data Infrastructure</category>
+            <category>DuckDB</category>
+            <category>Python</category>
+            <category>Spatial SQL</category>
+            <media:thumbnail url="https://duckdb.org/images/blog/thumbs/duckdb-release-2-0-1.svg" />
+                <content:encoded><![CDATA[<p><img alt="DuckDB_2.01" src="https://duckdb.org/images/blog/thumbs/duckdb-release-2-0-1.svg"></p>
+<p>Most software projects become popular because of new features.</p>
+<p>The successful ones become boring.</p>
+<p>At first glance, the <a target="_blank" rel="noopener noreferrer" href="https://duckdb.org/2026/11/20/announcing-duckdb-201">DuckDB 2.0.1 LTS release</a> looks like a routine maintenance release. There's no revolutionary query engine rewrite, no flashy new storage format, and no feature likely to dominate conference talks. Instead, the release is packed with bug fixes, security improvements, compatibility corrections, and operational hardening.</p>
+<p>And that's exactly why it's interesting.</p>
+<p><strong>The Difference Between a Fast-Moving Project and a Mature Platform</strong></p>
+<p>When a data platform is young, users are excited by capabilities.</p>
+<ul>
+<li>"Can it query Parquet?"</li>
+<li>"Can it read Iceberg?"</li>
+<li>"Can it integrate with Python?"</li>
+<li>"Can it replace my data warehouse for this workload?"</li>
+</ul>
+<p>DuckDB has largely answered those questions already.</p>
+<p>Today, many data engineers, analysts, scientists, and application developers are no longer evaluating whether DuckDB is capable. They're evaluating whether it is trustworthy.</p>
+<p>The concerns change.</p>
+<ul>
+<li>Will it return correct results in every edge case?</li>
+<li>Will upgrades break production workloads?</li>
+<li>How does it handle secrets and security boundaries?</li>
+<li>Can I depend on this version for years rather than months?</li>
+</ul>
+<p>Those are enterprise questions.</p>
+<p><strong>Data Correctness Matters More Than Features</strong></p>
+<p>One of the most noteworthy fixes in the release addresses scenarios where rows containing NULL values could be missed when reading certain databases created by older DuckDB versions.</p>
+<p>That's not a glamorous fix.</p>
+<p>It is, however, the type of issue that real organizations care deeply about.  Nobody gets promoted because the query engine added another optimization.  People get fired when financial reports, dashboards, or machine learning pipelines silently produce incorrect results.</p>
+<p>Mature systems invest heavily in correctness because correctness is ultimately the product.</p>
+<p>The same applies to fixes addressing data-loss risks and storage reliability concerns. These are not the features that generate social media excitement, but they are the features that determine whether organizations trust a platform with critical workloads.</p>
+<p><strong>Security Is Becoming a First-Class Concern</strong></p>
+<p>Another theme visible throughout recent DuckDB releases is increased attention to security and governance.</p>
+<p>Historically, embedded databases have enjoyed a reputation for simplicity. They run locally, often by a single user, and don't require the extensive security models of traditional enterprise database systems.</p>
+<p>That assumption becomes less valid as adoption grows.</p>
+<p>Today DuckDB appears in data applications, notebooks, production pipelines, internal tooling, analytics platforms, and customer-facing products. Organizations increasingly need controls around external access, secrets management, extensions, and execution boundaries.</p>
+<p>Security work is often viewed as overhead.</p>
+<p>In reality, it is one of the clearest indicators that a project is making the transition from developer tool to enterprise platform.</p>
+<p><strong>The Boring Infrastructure Behind Enterprise Adoption</strong></p>
+<p>One of the most overlooked aspects of software maturity is the increasing amount of engineering effort spent on things users rarely notice.</p>
+<ul>
+<li>Backward compatibility.</li>
+<li>Upgrade paths.</li>
+<li>LTS releases.</li>
+<li>Migration support.</li>
+<li>Operational safeguards.</li>
+<li>Documentation improvements.</li>
+<li>Ecosystem stability.</li>
+</ul>
+<p>These investments are often invisible because they are designed to prevent problems rather than create new capabilities.</p>
+<p>But they're precisely what large organizations evaluate when deciding whether a technology belongs in long-term production environments.</p>
+<p>A startup might adopt a tool because it is innovative.  An enterprise adopts a tool because it is predictable.</p>
+<p><strong>What This Means for DuckDB's Future</strong></p>
+<p>The most interesting takeaway from DuckDB 2.0.1 is not any individual fix.</p>
+<p>It's the signal.</p>
+<p>The project appears to be entering a phase where engineering effort is increasingly directed toward reliability, correctness, security, and maintainability. That's a natural evolution for software that has moved beyond experimentation and become part of real production architectures.</p>
+<p>DuckDB's original breakthrough was making analytical databases dramatically easier to use.</p>
+<p>Its next challenge is becoming a platform that organizations trust with increasingly important workloads.</p>
+<p>Releases like 2.0.1 suggest the community understands that challenge.</p>
+<p>And while "more reliable" rarely makes headlines, it's often the strongest sign that a technology is built to last.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>CNG Forum 2026 Sessions Posted to YouTube</title>
                 <link>https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html</link>

@@ -40,6 +40,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
