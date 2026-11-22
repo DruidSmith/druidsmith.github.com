@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Sat, 21 Nov 2026 19:51:24 +0000</lastBuildDate>
+            <lastBuildDate>Sun, 22 Nov 2026 14:51:18 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,142 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Midnight Commander: The Most Underrated Tool in Linux Administration</title>
+                <link>https://davidgsmith.net/thoughts/midnight-commander-the-most-underrated-tool-in-linux-administration.html</link>
+                <guid>https://davidgsmith.net/thoughts/midnight-commander-the-most-underrated-tool-in-linux-administration.html</guid>
+                <pubDate>Sun, 22 Nov 2026 14:51:00 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>This morning I&#x27;ve been making a few updates to my home lab server. Nothing particularly exotic by today&#x27;s standards. A little work on Coolify. Some container...</description>
+                <category>IT Infrastructure</category>
+            <category>Productivity</category>
+            <category>DevOps</category>
+            <category>Docker</category>
+            <category>Homelab</category>
+            <category>Self-Hosting</category>
+            <category>System Administration</category>
+            <category>Developer Tools</category>
+            <media:thumbnail url="https://www.redhat.com/rhdc/managed-files/sysadmin/2022-10/mc.png" />
+                <content:encoded><![CDATA[<p>This morning I've been making a few updates to my home lab server.</p>
+<p>Nothing particularly exotic by today's standards. A little work on Coolify. Some container updates. Updating my floci local-AWS environment. Adjusting configuration for code-server. Updating Ollama models. The usual collection of self-hosted tools that somehow expanded from "one Linux box" into an entire containerized ecosystem.</p>
+<p>As I bounced between config files, Docker volumes, logs, and directories, I realized something.</p>
+<p>For all the excitement around new terminal tools, fancy shells, AI-assisted workflows, and modern Rust-based utilities, I was still doing most of the work with a tool that's been around for decades:</p>
+<p><em>Midnight Commander.</em></p>
+<p>And it remains one of the most underrated pieces of software in the Linux ecosystem.</p>
+<p><strong>From Norton Commander to Midnight Commander</strong></p>
+<p>My appreciation for Midnight Commander probably started long before I ever installed Linux.</p>
+<p>To show my age, as a kid I grew up with PCs in the 1980s and early 1990s, I spent a lot of time in MS-DOS, before Windows 3.1 came along with its UI.  That's when I discovered <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Norton_Commander">Norton Commander</a>. It transformed DOS from a collection of cryptic commands into something that felt approachable and productive.</p>
+<p>Need to copy files? <code>F5</code>.</p>
+<p>Move them? <code>F6</code>.</p>
+<p>Edit a configuration file? <code>F4</code>.</p>
+<p>View a file? <code>F3</code>.</p>
+<p>Two panes. Keyboard-driven. Fast.</p>
+<p><img alt="Midnight Commander" src="https://www.redhat.com/rhdc/managed-files/sysadmin/2022-10/mc.png"></p>
+<p>You always knew where you were, where you were going, and what operation you were about to perform.</p>
+<p>In the '90s I also moved into Linux and discovered Midnight Commander, it felt immediately familiar. It wasn't a clone in the legal sense, but it carried forward nearly everything that made Norton Commander great.</p>
+<p>Three decades later, it is still one of the first packages I install on a new server.</p>
+<p><strong>The Hidden Cost of "Pure Shell"</strong></p>
+<p>Linux culture often celebrates memorization.</p>
+<ul>
+<li>Use <code>cp</code>.</li>
+<li>Use <code>mv</code>.</li>
+<li>Use <code>find</code>.</li>
+<li>Use <code>chmod</code>.</li>
+<li>Use <code>chown</code>.</li>
+<li>Use <code>tar</code>.</li>
+<li>Use <code>less</code>.</li>
+<li>Use <code>grep</code>.</li>
+<li>Use <code>sed</code>.</li>
+<li>Use <code>awk</code>.</li>
+</ul>
+<p>And to be clear, those tools matter. Every person managing a linux system should understand them.</p>
+<p>But understanding a tool and wanting to manually invoke it for every operation are two different things.</p>
+<p>When I'm exploring an unfamiliar directory structure, comparing folders, locating configuration files, adjusting permissions, reviewing logs, and moving files between locations, I don't necessarily want to construct a dozen shell commands and manually type out paths and filenames.</p>
+<p>I just want to get work done.</p>
+<p>Midnight Commander provides a fast visual interface over many of those common administrative tasks without hiding what's actually happening.</p>
+<p>It reduces friction.</p>
+<p>The Linux terminal doesn't stop being powerful. It becomes more efficient.</p>
+<p><strong>What Midnight Commander Actually Does</strong></p>
+<p>Many people think of MC as just a file manager.  That's like calling a Swiss Army knife "a blade."  The file manager is only the beginning.</p>
+<p>A typical administration session might involve:</p>
+<ul>
+<li>Browsing directory structures</li>
+<li>Searching for files</li>
+<li>Viewing logs</li>
+<li>Editing configuration files</li>
+<li>Comparing directories</li>
+<li>Changing ownership</li>
+<li>Adjusting permissions</li>
+<li>Browsing archive files</li>
+<li>Managing symlinks</li>
+<li>Accessing remote systems</li>
+<li>Copying and moving large collections of files</li>
+</ul>
+<p>MC wraps all of these capabilities into a unified interface.</p>
+<p>Need to check a Docker volume mount buried three levels deep?</p>
+<p>Navigate there.</p>
+<p>Need to edit a YAML configuration?</p>
+<p>Hit <code>F4</code>.</p>
+<p>Need to verify a file before changing it?</p>
+<p><code>F3</code>.</p>
+<p>Need to compare two deployment directories side-by-side?</p>
+<p>Open them in opposite panels.</p>
+<p>Need to inspect a tarball?</p>
+<p>Enter it like it's a directory.</p>
+<p>None of this requires remembering a complex sequence of commands.</p>
+<p><strong>Why It Still Matters in 2026</strong></p>
+<p>The modern Linux terminal ecosystem is thriving.</p>
+<p>We have excellent tools for linux these days, in fact, some are objectively better than Midnight Commander at their specific jobs.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://ripgrep.dev/">ripgrep</a> is a superior search tool.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://zoxide.org/">zoxide</a> is a superior navigation tool.  <code>cd</code> on steroids</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/junegumn/fzf">fzf</a> (fuzzy find) is often a superior discovery tool.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://yazi-rs.github.io/docs/installation/">Yazi</a> is arguably a more modern file manager.</p>
+<p>But that's also the point.  Most modern tools are specialists.</p>
+<p>Midnight Commander is a generalist.  It's the difference between carrying a toolbox and carrying a multitool.</p>
+<p>If I'm building a highly optimized workflow on my own machine, I may reach for individual best-in-class tools.</p>
+<p>But if I'm SSH'd into a server at 2:00 a.m. trying to figure out why a process failed, MC is often the first thing I launch.</p>
+<p><strong>The Great Linux Contradiction</strong></p>
+<p>One of the more amusing things about the Linux community is its tendency to rediscover old ideas and package them as something new.</p>
+<p>Today you'll find countless videos and blog posts showcasing workflows built from:</p>
+<ul>
+<li>tmux</li>
+<li>fzf</li>
+<li>zoxide</li>
+<li>bat</li>
+<li>yazi</li>
+<li>ripgrep</li>
+<li>fd</li>
+</ul>
+<p>All excellent tools.</p>
+<p>But many of those workflows ultimately solve the same usability problems that Midnight Commander addressed years ago.</p>
+<p>The difference is mostly philosophical.  Modern tools embrace composition.  MC embraces integration.  Neither approach is wrong.</p>
+<p>But I sometimes wonder how many Linux users have assembled five separate utilities to avoid using the one package that already solved most of the problem.</p>
+<p><strong>A Rust Thought Experiment</strong></p>
+<p>Every so often I imagine what would happen if someone rewrote Midnight Commander from scratch in Rust.</p>
+<ul>
+<li>Give it a modern terminal UI.</li>
+<li>GPU-accelerated rendering.</li>
+<li>Native previews.</li>
+<li>Git awareness.</li>
+<li>Plugin architecture.</li>
+<li>Async operations.</li>
+<li>Rich file metadata.</li>
+<li>Maybe even optional integration with Docker, Kubernetes, and SSH session management.</li>
+</ul>
+<p>The Linux community would probably lose its mind.</p>
+<p>People would rave about how innovative it was.  YouTubers would call it a game changer.</p>
+<p>Yet the funny thing is that after the excitement faded, most of us would still be using it for the exact same reasons we use Midnight Commander today.</p>
+<p>Because the underlying idea was already right.</p>
+<p>A fast, keyboard-driven, terminal-native environment for managing systems is simply useful.</p>
+<p>The implementation details are secondary.</p>
+<p><strong>Old Software Doesn't Mean Obsolete Software</strong></p>
+<p>Technology has a tendency to confuse age with irrelevance.  Sometimes that's justified.  Sometimes an old tool really has been surpassed.</p>
+<p>But occasionally you find software that survives not because it's nostalgic, but because it remains effective.  Midnight Commander falls firmly into that category.</p>
+<p>It's not flashy.  It's not trendy.  It's not winning social media popularity contests.</p>
+<p>But while everyone else is debating terminal themes and assembling ever more elaborate command-line workflows, Midnight Commander continues doing what it's done for decades:</p>
+<p>Helping administrators get things done.</p>
+<p>And sometimes that's exactly what you need.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>The End of Data Copies? What a Google Cloud Iceberg Demo Reveals About the Future of Analytics</title>
                 <link>https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html</link>

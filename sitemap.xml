@@ -40,6 +40,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/midnight-commander-the-most-underrated-tool-in-linux-administration.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -490,7 +495,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-developer-tools.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-devops.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-disaster-preparedness.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-docker.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -550,12 +570,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-homelab.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-human-ai-interaction.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-humanitarian-aid.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-it-infrastructure.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -600,6 +630,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-productivity.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-public-data.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -635,6 +670,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts-self-hosting.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts-semantic-layer.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -656,6 +696,11 @@
   </url>
   <url>
     <loc>https://davidgsmith.net/thoughts-sustainable-tech.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://davidgsmith.net/thoughts-system-administration.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
