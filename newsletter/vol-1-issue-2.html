@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T0MRLF4V8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4T0MRLF4V8', { send_page_view: true });
+    </script>
+
+    <!-- Clarity tracking code for https://davidgsmith.net/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yolwcmk37v");
+    </script>
+
+    <title>Vol. 1, Issue 2: GeoAI Imagery Data Pipelines — Technical &amp; Geospatial Intelligence Briefing | David G. Smith</title>
+    <meta name="description" content="Vol. 1, Issue 2 (November 22, 2026) — GeoAI Imagery Data Pipelines · Cloud-Native Map Tiles With No Drama · CNG Forum 2026 Sessions Posted to…">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Thoughts & Insights — David G. Smith">
+    <link rel="service-desc" type="application/openapi+json" href="/openapi.json">
+    <link rel="alternate" type="application/json" href="/api/v1/book-manifest.json" title="AI System RAG Manifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://davidgsmith.net/newsletter/vol-1-issue-2.html">
+
+    <!-- OpenGraph -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="David G. Smith">
+    <meta property="og:title" content="Vol. 1, Issue 2: GeoAI Imagery Data Pipelines — David G. Smith">
+    <meta property="og:description" content="Vol. 1, Issue 2 (November 22, 2026) — GeoAI Imagery Data Pipelines · Cloud-Native Map Tiles With No Drama · CNG Forum 2026 Sessions Posted to…">
+    <meta property="og:url" content="https://davidgsmith.net/newsletter/vol-1-issue-2.html">
+    <meta property="og:image" content="https://davidgsmith.net/assets/img/david-smith-og.jpg">
+    <meta property="og:image:secure_url" content="https://davidgsmith.net/assets/img/david-smith-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="article:published_time" content="2026-11-22T10:26:43.411Z">
+    <meta property="article:author" content="https://davidgsmith.net/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vol. 1, Issue 2: GeoAI Imagery Data Pipelines — David G. Smith">
+    <meta name="twitter:description" content="Vol. 1, Issue 2 (November 22, 2026) — GeoAI Imagery Data Pipelines · Cloud-Native Map Tiles With No Drama · CNG Forum 2026 Sessions Posted to…">
+    <meta name="twitter:image" content="https://davidgsmith.net/assets/img/david-smith-og.jpg">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            muted: '#334155',
+                            accent: '#b45309',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://davidgsmith.net/#website",
+      "url": "https://davidgsmith.net/",
+      "name": "David G. Smith",
+      "publisher": {
+        "@id": "https://davidgsmith.net/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://davidgsmith.net/#person",
+      "name": "David G. Smith",
+      "url": "https://davidgsmith.net/",
+      "image": "https://davidgsmith.net/images/DaveSmithrPortrait.jpg",
+      "jobTitle": "Data Scientist, Technical Architect & Author"
+    },
+    {
+      "@type": "NewsArticle",
+      "@id": "https://davidgsmith.net/newsletter/vol-1-issue-2.html#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://davidgsmith.net/newsletter/vol-1-issue-2.html"
+      },
+      "headline": "Vol. 1, Issue 2: GeoAI Imagery Data Pipelines — Technical & Geospatial Intelligence Briefing",
+      "description": "Vol. 1, Issue 2 (November 22, 2026) — GeoAI Imagery Data Pipelines · Cloud-Native Map Tiles With No Drama · CNG Forum 2026 Sessions Posted to…",
+      "datePublished": "2026-11-22T10:26:43.411Z",
+      "dateModified": "2026-11-22T10:26:43.411Z",
+      "issueNumber": "1.2",
+      "author": {
+        "@id": "https://davidgsmith.net/#person"
+      },
+      "publisher": {
+        "@id": "https://davidgsmith.net/#person"
+      },
+      "image": "https://davidgsmith.net/assets/img/david-smith-og.jpg",
+      "isPartOf": {
+        "@type": "Periodical",
+        "@id": "https://davidgsmith.net/newsletter/#periodical",
+        "name": "Technical & Geospatial Intelligence Briefing",
+        "url": "https://davidgsmith.net/newsletter/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://davidgsmith.net/newsletter/vol-1-issue-2.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://davidgsmith.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Newsletter Archive",
+          "item": "https://davidgsmith.net/newsletter/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Vol. 1, Issue 2",
+          "item": "https://davidgsmith.net/newsletter/vol-1-issue-2.html"
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <style>
+        body { background-color: #fcfcfc; }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(12px);
+        }
+        /* Harmonize inline email styles with davidgsmith.net Lora + Inter typography */
+        .newsletter-web-body h1,
+        .newsletter-web-body h2,
+        .newsletter-web-body h3 {
+            font-family: 'Lora', Georgia, serif !important;
+            color: #0f172a !important;
+        }
+        .newsletter-web-body h1 {
+            font-size: 2rem !important;
+            line-height: 1.25 !important;
+            margin-top: 0.35rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        .newsletter-web-body h3 a {
+            color: #0f172a !important;
+            transition: color 0.15s ease;
+        }
+        .newsletter-web-body h3 a:hover {
+            color: #b45309 !important;
+        }
+        .newsletter-web-body p.txt {
+            font-size: 1rem !important;
+            line-height: 1.75 !important;
+            color: #334155 !important;
+        }
+        .newsletter-web-body .soft {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        .newsletter-web-body a.pill:hover {
+            background-color: #fef3c7 !important;
+            color: #b45309 !important;
+        }
+    </style>
+
+    <script src="/js/site-core.js" defer></script>
+</head>
+<body class="font-sans text-brand-muted antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen">
+
+    <!-- Standardized Header -->
+    <header>
+        <nav aria-label="Main Navigation" class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0">
+                        <a href="/" class="text-xl font-serif font-semibold text-white tracking-tight">
+                            David G. Smith
+                        </a>
+                    </div>
+
+                    <div class="hidden md:flex space-x-7 items-center">
+                        <a href="/#about" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">About</a>
+                        <a href="/#work" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Work</a>
+                        <a href="/cloud-native-geospatial-stack.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Geo &amp; DuckDB Hub</a>
+                        <a href="/thoughts.html" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Thoughts</a>
+                        <a href="/newsletter/" class="text-amber-400 transition-colors text-sm font-semibold">Newsletter</a>
+                        <a href="/books.html" data-book-funnel="nav_books" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Books</a>
+                        <a href="/#advisory" class="text-slate-200 hover:text-amber-400 transition-colors text-sm font-medium">Advisory</a>
+                        <a href="/#contact" class="px-5 py-2 rounded border border-slate-600 text-white hover:border-amber-400 hover:text-amber-400 transition-all text-sm font-medium">Contact</a>
+                    </div>
+
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" type="button" class="text-white focus:outline-none p-2" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 shadow-xl">
+                <div class="px-4 pt-2 pb-5 space-y-1.5">
+                    <a href="/#about" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">About</a>
+                    <a href="/#work" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Thoughts</a>
+                    <a href="/newsletter/" class="mobile-link block py-2 text-base font-semibold text-amber-400">Newsletter</a>
+                    <a href="/books.html" data-book-funnel="mobile_nav_books" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Books</a>
+                    <a href="/#advisory" class="mobile-link block py-2 text-base font-medium text-slate-200 hover:text-amber-400">Advisory</a>
+                    <a href="/#contact" class="mobile-link block py-2 text-base font-medium text-amber-400 font-semibold">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <!-- Top Breadcrumb & Archive Back-Link -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6 text-xs font-medium text-slate-500">
+                <nav aria-label="Breadcrumb" class="flex items-center gap-2">
+                    <a href="/" class="hover:text-brand-dark transition-colors">Home</a>
+                    <span>/</span>
+                    <a href="/newsletter/" class="hover:text-brand-dark transition-colors">Newsletter Archive</a>
+                    <span>/</span>
+                    <span class="text-brand-dark font-semibold">Vol. 1, Issue 2</span>
+                </nav>
+                <a href="/newsletter/" class="text-brand-accent hover:text-amber-700 font-semibold transition-colors">
+                    &larr; All Past Issues
+                </a>
+            </div>
+
+            <!-- Newsletter Issue Article Card -->
+            <article class="newsletter-web-body bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-12">
+                
+
+              
+  
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:2px solid #0b5cad;margin-bottom:20px;">
+                <tr>
+                  <td style="padding-bottom:14px;">
+                    <div class="link" style="font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:#0b5cad;">David G. Smith</div>
+                    <h1 class="txt h1" style="margin:4px 0 6px 0;font-size:24px;line-height:1.2;color:#1f2328;">Technical &amp; Geospatial Intelligence Briefing</h1>
+                    <div class="muted" style="font-size:13px;color:#57606a;">Washington, DC &middot; Volume 1, Issue 2 &middot; November 22, 2026</div>
+                  </td>
+                </tr>
+              </table>
+
+              <div><p class="txt" style="margin:0 0 12px 0;font-size:15px;line-height:1.6;color:#1f2328;">The geospatial industry is currently undergoing a fundamental transition as the focus shifts from developing novel model architectures to building robust, scalable data infrastructure. This week’s briefing highlights how the friction of data preparation is being addressed through standardized, open-source tooling like the geoai-datacubes project, which aims to harmonize multi-mission satellite data into machine-learning-ready formats. This evolution reflects a broader recognition that the most significant productivity gains in Earth observation are found in reducing the engineering burden of data wrangling, allowing practitioners to dedicate more time to scientific analysis and operational decision-making.</p><p class="txt" style="margin:0 0 12px 0;font-size:15px;line-height:1.6;color:#1f2328;">Simultaneously, the architectural landscape is moving toward a more modular and interoperable state. The emergence of agentic engineering platforms and the demonstration of multi-engine lakehouse architectures using Apache Iceberg signal a departure from monolithic systems. By enabling disparate engines like BigQuery, Spark, and Trino to operate on a single source of truth without the need for constant synchronization, organizations are gaining the flexibility to select the right tool for specific workloads.</p></div>
+              
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:20px 0;">
+      <tr>
+        <td class="soft" style="background:#f3f7fc;border:1px solid #d8dee4;border-left:4px solid #0b5cad;border-radius:6px;padding:16px;">
+          <div class="link" style="font-size:11px;font-weight:bold;letter-spacing:.05em;text-transform:uppercase;color:#0b5cad;margin-bottom:8px;">Start here</div>
+          
+    <div class="line-b" style="margin-bottom:8px;padding-bottom:4px;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 15 · 3 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:19px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html" style="color:#0b5cad;text-decoration:none;">GeoAI Imagery Data Pipelines</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">The Earth observation community is living through a golden age of AI. Today, it&#39;s easier than ever to download a pretrained model, fine tune it on satellite...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-geoai.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">GeoAI</a><a class="pill" href="https://davidgsmith.net/thoughts-earth-observation.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Earth Observation</a><a class="pill" href="https://davidgsmith.net/thoughts-remote-sensing.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Remote Sensing</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-strategy.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Strategy</a><a class="pill" href="https://davidgsmith.net/thoughts-open-source-gis.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Source GIS</a><a class="pill" href="https://davidgsmith.net/thoughts-python.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Python</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-ai-agents.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Agents</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>246</strong> views &middot; <strong>209</strong> readers &middot; <strong>0.3</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/geoai-imagery-data-pipelines.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+        </td>
+      </tr>
+    </table>
+  
+              
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">From Dave Smith&#39;s Desk</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 16 · 3 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html" style="color:#0b5cad;text-decoration:none;">Cloud-Native Map Tiles With No Drama</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">For a long time, running your own map service was a real chore. You didn&#39;t just need map data. You needed tile servers. Databases. Caches. Load balancing....</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-open-source-gis.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Source GIS</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>68</strong> views &middot; <strong>51</strong> readers &middot; <strong>0.6</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/cloud-native-map-tiles-with-no-drama.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 20 · 4 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html" style="color:#0b5cad;text-decoration:none;">CNG Forum 2026 Sessions Posted to YouTube</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">If like me you missed the Cloud-Native Geospatial (CNG) Forum 2026 in Snowbird, Utah this October, or if you were there and couldn&#39;t clone yourself to attend...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-ai-workflows.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">AI Workflows</a><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-data-visualization.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Visualization</a><a class="pill" href="https://davidgsmith.net/thoughts-data-governance.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Governance</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-earth-observation.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Earth Observation</a><a class="pill" href="https://davidgsmith.net/thoughts-geoai.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">GeoAI</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-open-data.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Data</a><a class="pill" href="https://davidgsmith.net/thoughts-open-source-gis.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Source GIS</a><a class="pill" href="https://davidgsmith.net/thoughts-remote-sensing.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Remote Sensing</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-sql.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial SQL</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>42</strong> views &middot; <strong>27</strong> readers &middot; <strong>0.6</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/cng-forum-2026-sessions-posted-to-youtube.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 18 · 4 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/happy-gis-day-2026.html" style="color:#0b5cad;text-decoration:none;">Happy GIS Day 2026!</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Today, November 18, 2026, the global geospatial community is celebrating the people who turn spatial data into real-world action:...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-cloud-native-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Cloud-Native Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-earth-observation.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Earth Observation</a><a class="pill" href="https://davidgsmith.net/thoughts-geoai.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">GeoAI</a><a class="pill" href="https://davidgsmith.net/thoughts-geospatial.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Geospatial</a><a class="pill" href="https://davidgsmith.net/thoughts-open-source-gis.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Open Source GIS</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-sql.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial SQL</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-statistics.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial Statistics</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>24</strong> views &middot; <strong>20</strong> readers &middot; <strong>0.5</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/happy-gis-day-2026.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 21 · 3 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html" style="color:#0b5cad;text-decoration:none;">DuckDB 2.0.1: The Release That Shows DuckDB Is Growing Up</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Most software projects become popular because of new features. The successful ones become boring. At first glance, the DuckDB 2.0.1 LTS release looks like a...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-data-governance.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Governance</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a><a class="pill" href="https://davidgsmith.net/thoughts-duckdb.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">DuckDB</a><a class="pill" href="https://davidgsmith.net/thoughts-python.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Python</a><a class="pill" href="https://davidgsmith.net/thoughts-spatial-sql.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Spatial SQL</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>15</strong> views &middot; <strong>11</strong> readers &middot; <strong>0.6</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/duckdb-201-the-release-that-shows-duckdb-is-growing-up.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 21 · 4 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html" style="color:#0b5cad;text-decoration:none;">The End of Data Copies? What a Google Cloud Iceberg Demo Reveals About the Future of Analytics</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">For years, the modern data stack has suffered from an oddly accepted inefficiency: everybody gets their own copy of the data. To illustrate an example of it:...</p>
+      
+      <div style="margin-top:10px;"><a class="pill" href="https://davidgsmith.net/thoughts-apache-iceberg.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Apache Iceberg</a><a class="pill" href="https://davidgsmith.net/thoughts-data-engineering.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Engineering</a><a class="pill" href="https://davidgsmith.net/thoughts-data-infrastructure.html" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Data Infrastructure</a></div>
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>7</strong> views &middot; <strong>6</strong> readers &middot; <strong>0.4</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-end-of-data-copies-what-a-google-cloud-iceberg-demo-reveals-about-the-future-of-analytics.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 15 · 1 min read</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-latest-issue-of-my-weekly-geospatial-technology-briefing-is-now-live.html" style="color:#0b5cad;text-decoration:none;">The latest issue of my weekly Geospatial Technology Briefing is now live.</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">My weekly newsletter is now live and available for subscribing. This week&#39;s newsletter highlights notable developments, trends, and observations from across...</p>
+      
+      
+      
+      <div class="soft muted" style="margin-top:10px;font-size:12px;color:#57606a;background:#f3f7fc;padding:6px 10px;border-radius:4px;display:inline-block;border:1px solid #e1e7ed;">
+        <strong>7</strong> views &middot; <strong>6</strong> readers &middot; <strong>0</strong> min avg. engagement
+        <span style="opacity:.75;margin-left:4px;">(last 30 days, as of Nov 22)</span>
+      </div>
+      <div style="margin-top:10px;">
+        <a class="link" href="https://davidgsmith.net/thoughts/the-latest-issue-of-my-weekly-geospatial-technology-briefing-is-now-live.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">In The News</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 20 · accessnewswire.com</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://www.accessnewswire.com/newsroom/en/business-and-professional-services/wherobots-announces-waldo-bringing-agentic-engineering-to-physic-1253172" style="color:#0b5cad;text-decoration:none;">Wherobots Announces Waldo: Bringing Agentic Engineering to Physical World Data</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Wherobots launches Waldo, an agentic engineering platform that translates natural language into production-grade spatial analytics on Apache Sedona. It enables cloud-native geospatial workflows without specialized coding.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://www.accessnewswire.com/newsroom/en/business-and-professional-services/wherobots-announces-waldo-bringing-agentic-engineering-to-physic-1253172" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 18 · AOL</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://www.aol.com/articles/clouds-block-satellite-cameras-ai-181145000.html" style="color:#0b5cad;text-decoration:none;">Clouds block satellite cameras, so an AI learned how to redraw the ground beneath them</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">A new AI model, GeoCore-9B, reconstructs ground details obscured by clouds in satellite imagery. It leverages geolocation and pixel-scale awareness to infer missing features.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://www.aol.com/articles/clouds-block-satellite-cameras-ai-181145000.html" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 17 · note</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://note.com/pacificspatial/n/n362ea5889514?hl=en" style="color:#0b5cad;text-decoration:none;">[GeoAI] Vol. 27: Location Fingerprints, Geospatial Foundation Models Competed by Google and CARTO</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Google and CARTO unveiled competing geospatial foundation models that encode locations as 330-dimensional vectors. These models fuse mobility, commerce, and environmental data to create numerical fingerprints for every place on Earth.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">News</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://note.com/pacificspatial/n/n362ea5889514?hl=en" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Recent Blog Posts Of Interest</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 20 · KDnuggets</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://www.kdnuggets.com/one-table-many-engines-running-bigquery-spark-and-trino-on-a-single-iceberg-copy" style="color:#0b5cad;text-decoration:none;">One Table, Many Engines: Running BigQuery, Spark, and Trino on a Single Iceberg Copy</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Demonstrates running BigQuery, Spark, and Trino on a single Apache Iceberg table in Google Cloud with no copies, detailing concurrent commit handling.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://www.kdnuggets.com/one-table-many-engines-running-bigquery-spark-and-trino-on-a-single-iceberg-copy" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 15 · Journal of Open Source Software</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://joss.theoj.org/papers/10.21105/joss.11034" style="color:#0b5cad;text-decoration:none;">Journal of Open Source Software: geoai-datacubes: AI-ready multi-mission satellite data cubes for Earth-observation machine learning</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">A JOSS paper introduces geoai-datacubes, a Python library for creating analysis-ready, multi-mission satellite data cubes from Sentinel-1, Sentinel-2, Landsat, and PlanetScope for Earth observation machine learning.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://joss.theoj.org/papers/10.21105/joss.11034" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 19 · MDPI</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="https://www.mdpi.com/2072-4292/18/22/3975" style="color:#0b5cad;text-decoration:none;">Benchmarking Geospatial Foundation Models Against a Supervised Baseline for Fine-Grained Alpine Habitat Change Detection with Very High-Resolution Imagery and LiDAR</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">An MDPI paper benchmarks five geospatial foundation models (Clay v1.0, v1.5, Prithvi-EO-2.0, DOFA, TerraMind) against supervised U-Net baselines for fine-grained alpine habitat change detection using VHR imagery and LiDAR.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Read</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="https://www.mdpi.com/2072-4292/18/22/3975" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Research &amp; Deep Dives</h2>
+      </td>
+      
+    </tr>
+  </table>
+
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 19 · Coen van den Elsen, Laurens Geffert</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="http://arxiv.org/abs/2611.22496v1" style="color:#0b5cad;text-decoration:none;">DARWIN: a Geospatial Foundation Model for Marine Intelligence</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Delivers a production-ready geospatial foundation model purpose-built for the marine domain, tackling missingness, multi-modal physical variables, and sparse labels — directly applicable to planetary-scale EO pipelines and spatial analytics architectures.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Paper</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="http://arxiv.org/abs/2611.22496v1" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+    <div class="line-b" style="margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #d8dee4;">
+      <div class="muted" style="margin-bottom:6px;font-size:12px;color:#57606a;">Nov 17 · Linwei Chen et al.</div>
+      <h3 style="margin:0 0 6px 0;font-size:16px;line-height:1.35;">
+        <a class="link" href="http://arxiv.org/abs/2611.19576v1" style="color:#0b5cad;text-decoration:none;">Consistency-Aware Map Generation at Multiple Zoom Levels Using Aerial Image</a>
+      </h3>
+      <p class="txt" style="margin:0;font-size:14px;color:#1f2328;line-height:1.55;">Directly addresses automated multi-scale map tile production from aerial imagery, a core cloud-native geospatial infrastructure task that eliminates expensive manual vector data updates.</p>
+      
+      <div style="margin-top:10px;"><span class="pill" style="display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#eef1f4;color:#424a53;margin:0 6px 4px 0;text-decoration:none;">Paper</span></div>
+      
+      <div style="margin-top:10px;">
+        <a class="link" href="http://arxiv.org/abs/2611.19576v1" style="font-size:12px;color:#0b5cad;font-weight:bold;text-decoration:none;">Read more &rarr;</a>
+      </div>
+    </div>
+  
+              
+              
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 14px 0;border-bottom:2px solid #0b5cad;">
+    <tr>
+      <td style="padding:0 0 6px 0;">
+        <h2 class="txt" style="margin:0;font-size:18px;color:#1f2328;">Upcoming Events (Next 3 Months)</h2>
+      </td>
+      <td align="right" style="padding:0 0 6px 0;font-size:12px;white-space:nowrap;"><a class="link" href="https://davidgsmith.net/events.html" style="color:#0b5cad;font-weight:bold;text-decoration:none;">Full calendar &rarr;</a></td>
+    </tr>
+  </table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:13px;margin-top:8px;"><tr><td colspan="2" class="line-b link" style="padding:10px 0 4px 0;font-weight:bold;color:#0b5cad;font-size:13px;text-transform:uppercase;border-bottom:1px solid #d8dee4;">November 2026</td></tr>
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 23</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.geoworldevent.com/" style="color:#0b5cad;text-decoration:none;font-weight:500;">GEO WORLD</a><br><span class="muted" style="color:#57606a;font-size:12px;">Al Thanyah 2, Dubai Emirate, United Arab Emirates</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Nov 30</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://pgrsc.org/pacific-gis-rs-users-conference/" style="color:#0b5cad;text-decoration:none;font-weight:500;">2026 Pacific Islands GIS &amp; Remote Sensing User Conference</a><br><span class="muted" style="color:#57606a;font-size:12px;">Suva, Central, Fiji</span></td>
+        </tr>
+      <tr><td colspan="2" class="line-b link" style="padding:10px 0 4px 0;font-weight:bold;color:#0b5cad;font-size:13px;text-transform:uppercase;border-bottom:1px solid #d8dee4;">December 2026</td></tr>
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 1</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.airmeet.com/e/bf8b43b0-d485-11f1-88bb-45ffbe021e73" style="color:#0b5cad;text-decoration:none;font-weight:500;">Scaling Earth Observation Across the Enterprise</a><br><span class="muted" style="color:#57606a;font-size:12px;">null</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 2</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.linkedin.com/events/7529226223819100161?viewAsMember=true" style="color:#0b5cad;text-decoration:none;font-weight:500;">World Models for the Build World</a><br><span class="muted" style="color:#57606a;font-size:12px;">null</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 3</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://usgif.org/event/geogala-2026/" style="color:#0b5cad;text-decoration:none;font-weight:500;">GEOGala</a><br><span class="muted" style="color:#57606a;font-size:12px;">McLean, Virginia, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 7–9</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://geoinfobr.github.io/" style="color:#0b5cad;text-decoration:none;font-weight:500;">GEOINFO 2026</a><br><span class="muted" style="color:#57606a;font-size:12px;">São José dos Campos, São Paulo, Brazil</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 7</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.agu.org/plan-for-a-meeting/agumeetings" style="color:#0b5cad;text-decoration:none;font-weight:500;">AGU 2026</a><br><span class="muted" style="color:#57606a;font-size:12px;">San Francisco, California, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Dec 7–10</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.ncsi.com/event/dodiis/" style="color:#0b5cad;text-decoration:none;font-weight:500;">DoDIIS Worldwide Conference</a><br><span class="muted" style="color:#57606a;font-size:12px;">Phoenix, Arizona, United States</span></td>
+        </tr>
+      <tr><td colspan="2" class="line-b link" style="padding:10px 0 4px 0;font-weight:bold;color:#0b5cad;font-size:13px;text-transform:uppercase;border-bottom:1px solid #d8dee4;">January 2027</td></tr>
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Jan 10–14</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://www.trb.org/AnnualMeeting/AnnualMeeting.aspx" style="color:#0b5cad;text-decoration:none;font-weight:500;">TRB Annual Meeting (Transportation Research Board)</a><br><span class="muted" style="color:#57606a;font-size:12px;">Washington, District of Columbia, United States</span></td>
+        </tr>
+      
+        <tr>
+          <td class="muted date-col" style="padding:6px 12px 6px 0;vertical-align:top;white-space:nowrap;font-weight:bold;color:#57606a;width:90px;">Jan 25</td>
+          <td style="padding:6px 0;vertical-align:top;"><a class="link" href="https://thegpn.org/page/CalGIS" style="color:#0b5cad;text-decoration:none;font-weight:500;">CalGIS 2027</a><br><span class="muted" style="color:#57606a;font-size:12px;">California, United States</span></td>
+        </tr>
+      </table><div class="muted" style="margin-top:14px;font-size:12px;line-height:1.5;color:#57606a;"><strong>Dates to be announced:</strong> <a class="link" href="https://geoaiconference.org/?page_id=616" style="color:#0b5cad;text-decoration:none;">GeoAI 2027</a>, <a class="link" href="https://blog.openstreetmap.org/2026/05/11/state-of-the-map-2027-call-for-venues-is-now-open/" style="color:#0b5cad;text-decoration:none;">State of the Map 2027</a>, <a class="link" href="https://wsbw.com/media-press/become-a-media-partner/" style="color:#0b5cad;text-decoration:none;">World Satellite Business Week 2027</a></div><div style="margin-top:12px;font-size:12px;"><a class="link" href="https://davidgsmith.net/events.html" style="color:#0b5cad;font-weight:bold;text-decoration:none;">See all 16 upcoming events &rarr;</a></div>
+
+              
+            </article>
+
+            <!-- Web Subscribe Box Below Issue -->
+            <section id="newsletter" aria-labelledby="newsletter-heading" class="mt-12 bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl text-white">
+                <div class="max-w-2xl mx-auto text-center space-y-4">
+                    <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
+                        Weekly Curated Briefing
+                    </span>
+                    <h2 id="newsletter-heading" class="text-2xl font-serif font-medium text-white">
+                        Enjoyed this issue? Get the next one in your inbox.
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Receive David G. Smith's weekly synthesis of cloud-native geospatial architecture, DuckDB, data engineering, and AI governance.
+                    </p>
+                    <form data-newsletter-form data-source-page="newsletter_issue_1_2" action="https://webhook.davidgsmith.net/webhook/subscriber-capture" method="post"
+                          class="pt-2 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                        <input type="email" name="email" required placeholder="Enter your email address..."
+                               aria-label="Email address"
+                               class="flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-accent">
+                        <input type="hidden" name="tag" value="newsletter-issue-v1-i2">
+                        <button type="submit" data-submit-btn
+                                class="px-6 py-3 bg-brand-accent hover:bg-amber-700 disabled:opacity-50 text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap shadow-lg inline-flex items-center justify-center gap-2">
+                            <span>Subscribe &rarr;</span>
+                        </button>
+                    </form>
+                    <p class="text-xs text-slate-400">Published weekly &bull; Unsubscribe in one click &bull; Zero spam.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Standardized Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 pb-28 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <a href="/" class="text-lg font-serif font-semibold text-white tracking-tight">David G. Smith</a>
+                    <p class="text-xs text-slate-500 mt-1">Data Scientist, Technical Architect &amp; Author &bull; Washington, DC</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-slate-300">
+                    <a href="/#about" class="hover:text-amber-400 transition-colors">About</a>
+                    <a href="/#work" class="hover:text-amber-400 transition-colors">Work</a>
+                    <a href="/cloud-native-geospatial-stack.html" class="hover:text-amber-400 transition-colors">Geo &amp; DuckDB Hub</a>
+                    <a href="/thoughts.html" class="hover:text-amber-400 transition-colors">Thoughts</a>
+                    <a href="/newsletter/" class="text-amber-400 hover:text-amber-300 transition-colors">Newsletter</a>
+                    <a href="/books.html" data-book-funnel="footer_books" class="hover:text-amber-400 transition-colors">Books</a>
+                    <a href="/critical-thinking.html" data-book-funnel="footer_critical_thinking" class="hover:text-amber-400 transition-colors">Critical Thinking</a>
+                    <a href="/rss.xml" class="hover:text-amber-400 transition-colors">RSS</a>
+                    <a href="/#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>&copy; <span id="year"></span> David G. Smith. All rights reserved.</div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/davidgsmith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                    <a href="https://www.amazon.com/stores/David-G-Smith/author/B0HH5CQD2F" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Amazon Author</a>
+                    <a href="https://www.goodreads.com/author/show/72277946.David_G_Smith" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Goodreads</a>
+                    <a href="https://www.bookbub.com/authors/david-g-smith-fa581830-75e6-4711-99c6-5a145a2ec887" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">BookBub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Nepal Relief Banner -->
+    <div id="sticky-relief-banner" class="fixed bottom-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-t border-gray-700 text-white shadow-2xl py-4 px-4 sm:px-6 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left text-sm sm:text-base">
+                <span class="font-black text-brand-accent uppercase tracking-wider text-sm sm:text-base block sm:inline sm:mr-2">2026 Nepal Floods:</span>
+                <span class="text-gray-200">
+                    Through November, 20% of my net book royalties will go to <a href="https://donate.redcrossredcrescent.org/ifrc/nepal-flash-floods/~my-donation?_cv=1" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline hover:text-amber-400 font-semibold transition-colors">relief efforts</a>.
+                </span>
+            </div>
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <a href="https://www.amazon.com/dp/B0HH3CYK79?tag=davidgsmith-20"
+                   target="_blank" rel="noopener noreferrer"
+                   data-book-buy="Amazon Paperback (Sticky Relief Banner)"
+                   onclick="if(window.DGSAnalytics){DGSAnalytics.trackBook(event, this, 'book_purchase_click', 'Amazon', 'sticky_relief_banner');}"
+                   class="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white text-brand-dark rounded text-sm font-medium hover:bg-gray-100 transition-all shadow">
+                    <span>Buy My Book</span>
+                </a>
+                <button id="close-sticky-banner" class="text-gray-400 hover:text-white p-1 focus:outline-none" aria-label="Close banner">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu && !btn.dataset.navBound) {
+            btn.dataset.navBound = 'true';
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(!isHidden));
+            });
+        }
+        const closeStickyBtn = document.getElementById('close-sticky-banner');
+        if (closeStickyBtn && !closeStickyBtn.dataset.bound) {
+            closeStickyBtn.dataset.bound = 'true';
+            closeStickyBtn.addEventListener('click', function() {
+                document.getElementById('sticky-relief-banner').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
