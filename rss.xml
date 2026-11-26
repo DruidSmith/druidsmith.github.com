@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Thu, 26 Nov 2026 16:02:43 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 26 Nov 2026 16:05:47 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -17,9 +17,9 @@
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
             <item>
-                <title>Giving Thanks for the Map Ahead: Five Geospatial and GeoAI Breakthroughs Worth Celebrating in 2026</title>
-                <link>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-five-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</link>
-                <guid>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-five-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</guid>
+                <title>Giving Thanks for the Map Ahead: The Geospatial and GeoAI Breakthroughs Worth Celebrating in 2026</title>
+                <link>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-the-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</link>
+                <guid>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-the-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</guid>
                 <pubDate>Thu, 26 Nov 2026 16:02:23 +0000</pubDate>
                 <dc:creator>David G. Smith</dc:creator>
                 <description>As we celebrate this Thanksgiving and take stock of the past year, those of us working in GIS, remote sensing, and location intelligence have plenty to be...</description>
