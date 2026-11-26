@@ -40,6 +40,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-five-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://davidgsmith.net/thoughts/midnight-commander-the-most-underrated-tool-in-linux-administration.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

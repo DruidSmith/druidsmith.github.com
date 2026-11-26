@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Wed, 25 Nov 2026 20:47:12 +0000</lastBuildDate>
+            <lastBuildDate>Thu, 26 Nov 2026 16:02:43 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,71 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Giving Thanks for the Map Ahead: Five Geospatial and GeoAI Breakthroughs Worth Celebrating in 2026</title>
+                <link>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-five-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</link>
+                <guid>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-five-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</guid>
+                <pubDate>Thu, 26 Nov 2026 16:02:23 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>As we celebrate this Thanksgiving and take stock of the past year, those of us working in GIS, remote sensing, and location intelligence have plenty to be...</description>
+                <category>Geospatial</category>
+            <category>GeoAI</category>
+            <category>Remote Sensing</category>
+            <category>Cloud-Native Geospatial</category>
+            <category>Data Engineering</category>
+            <category>Gaussian Splatting</category>
+            <category>Earth Observation</category>
+            <category>Emergency Management</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/geothanksgiving-mwxqpuql-5b222bff.webp" />
+                <content:encoded><![CDATA[<p><img alt="GeoThanksgiving" src="https://davidgsmith.net/thoughts/images/geothanksgiving-mwxqpuql-5b222bff.webp"><br>
+As we celebrate this Thanksgiving and take stock of the past year, those of us working in GIS, remote sensing, and location intelligence have plenty to be grateful for.</p>
+<p>For much of the history of geospatial technology, the hardest part wasn't answering questions. It was everything that had to happen beforehand. Finding data. Cleaning it. Transforming it. Moving it between systems. Preparing it for analysis. Entire projects could spend far more time getting data ready than generating insights from it.</p>
+<p>This year felt different.</p>
+<p>Across GeoAI, cloud-native architectures, 3D visualization, and open ecosystems, we saw meaningful progress toward reducing that burden. Not because the technology itself is exciting, although much of it is, but because it gives practitioners more time to focus on the mission, the community, and the decisions they're ultimately trying to support.</p>
+<p>As we close out 2026, here are five developments I'm especially thankful for.</p>
+<p><strong>Reducing Data Wrangling Bottlenecks</strong></p>
+<p>If there's one thing nearly every GIS professional can appreciate, it's spending less time wrestling with data.</p>
+<p>Over the last year, vision foundation models and specialized AI classifiers reached a level of maturity where automated feature extraction has become a practical part of production workflows. Roads, buildings, land cover, utility assets, and ground points can increasingly be identified directly from imagery and point clouds with a level of speed and consistency that would have seemed remarkable only a few years ago.</p>
+<p>For many of us, the goal was never drawing polygons or cleaning attribute fields. The goal was helping organizations make better decisions.</p>
+<p>The most exciting part of these advances isn't automation for automation's sake. It's that analysts, scientists, and GIS professionals can spend more time interpreting results, understanding context, and answering meaningful questions rather than manually preparing datasets.</p>
+<p>The work hasn't disappeared. It's simply shifted toward higher-value activities where human judgment matters most.</p>
+<p><strong>The Arrival of Agentic GIS</strong></p>
+<p>For years, AI-powered GIS existed largely as demonstrations, prototypes, and conference presentations.</p>
+<p>In 2026, that began to change.</p>
+<p>AI agents are increasingly moving into real-world workflows, helping organizations connect data warehouses, imagery repositories, business systems, and spatial analytics into more cohesive decision-support environments.</p>
+<p>What excites me most isn't replacing GIS professionals. It's expanding who can benefit from spatial thinking.</p>
+<p>Subject matter experts who aren't GIS specialists can increasingly ask spatial questions using natural language, while geospatial professionals can focus on designing, validating, and governing increasingly sophisticated workflows. Instead of manually monitoring thousands of assets, miles of infrastructure, or large geographic regions, organizations can leverage agents to identify anomalies, highlight areas of concern, and surface insights for human review.</p>
+<p>The result isn't less need for geospatial expertise. In many ways, it's the opposite. Spatial professionals become even more important as the architects and stewards of these systems.</p>
+<p><strong>Gaussian Splatting Comes Into Its Own</strong></p>
+<p>Not long ago, creating realistic digital representations of the physical world often required choosing between visual realism and technical practicality.</p>
+<p>This year, Gaussian Splatting continued its rapid evolution from an emerging research technique into a genuinely useful tool for geospatial visualization.</p>
+<p>Combined with drone imagery, mobile mapping platforms, and reality capture workflows, Gaussian Splats now offer a remarkably immersive way to represent real-world environments while remaining accessible enough for broader organizational use.</p>
+<p>What makes this exciting isn't simply that the visuals look impressive.</p>
+<p>It's that digital twins have become easier to share with people who don't speak the language of GIS.</p>
+<p>Urban planners, emergency managers, utility operators, elected officials, and community stakeholders can engage with realistic environments that make complex spatial problems easier to understand. Better communication often leads to better decisions, and better decisions are ultimately why we build these systems in the first place.</p>
+<p><strong>Real-Time Insight When Seconds Matter</strong></p>
+<p>For much of geospatial history, analysis has been retrospective. We collected data, processed it, studied it, and learned from it after the fact.</p>
+<p>Increasingly, that's no longer the only option.</p>
+<p>The continued growth of cloud-native analytics, streaming sensor networks, edge computing, and near real-time imagery processing has made it possible to move from understanding what happened to understanding what is happening.</p>
+<p>Few areas illustrate this better than disaster response and environmental resilience.</p>
+<p>Organizations can now assess storm damage, flood impacts, wildfire progression, and infrastructure disruptions far faster than was possible only a few years ago. That means emergency managers can prioritize resources more effectively, responders can gain situational awareness more quickly, and communities can begin recovery sooner.</p>
+<p>Technology doesn't solve these challenges on its own. People do.</p>
+<p>But it's encouraging to see geospatial tools increasingly helping people make critical decisions when time matters most.</p>
+<p><strong>Open Formats and a Stronger Community</strong></p>
+<p>Not all of this year's progress came from breakthroughs in AI or visualization.</p>
+<p>Some of the most important advances happened quietly.</p>
+<p>The continued adoption of open standards, cloud-native formats, interoperable architectures, and open-source tools has made it easier for organizations to avoid data silos and build workflows that span multiple platforms.</p>
+<p>When data can move freely and systems can communicate with one another, innovation tends to emerge from unexpected places.</p>
+<p>Some of the most interesting ideas in geospatial aren't coming from the largest vendors. They're coming from practitioners sharing code on GitHub, contributing to open-source projects, publishing standards, participating in communities, and helping one another solve problems in public.</p>
+<p>That collaborative spirit has always been one of the greatest strengths of the geospatial community, and it feels stronger than ever.</p>
+<p><strong>Looking Ahead</strong></p>
+<p>None of this means our work is finished.</p>
+<p>Data governance, model transparency, responsible AI, privacy, workforce development, and the ongoing challenge of integrating increasingly complex systems will continue to demand our attention. The geospatial community still has important conversations ahead of it.</p>
+<p>But it's worth taking a moment to appreciate how much progress has been made.</p>
+<p>We can answer questions faster than we could a year ago. We can visualize the world in ways that were barely practical a few years ago. And increasingly, we can spend less time wrestling with data and more time helping people make informed decisions.</p>
+<p>That's something worth being thankful for.</p>
+<p>Here's to another year of learning, building, mapping, and exploring together.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Midnight Commander: The Most Underrated Tool in Linux Administration</title>
                 <link>https://davidgsmith.net/thoughts/midnight-commander-the-most-underrated-tool-in-linux-administration.html</link>
