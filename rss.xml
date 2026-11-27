@@ -5,7 +5,7 @@
             <link>https://davidgsmith.net/thoughts.html</link>
             <description>Latest perspectives on technical architecture, enterprise data, and critical thinking.</description>
             <language>en-US</language>
-            <lastBuildDate>Thu, 26 Nov 2026 20:38:57 +0000</lastBuildDate>
+            <lastBuildDate>Fri, 27 Nov 2026 19:21:09 +0000</lastBuildDate>
             <managingEditor>d.smith.publishing@gmail.com (David G. Smith)</managingEditor>
             <webMaster>d.smith.publishing@gmail.com (David G. Smith)</webMaster>
             <atom:author>
@@ -16,6 +16,66 @@
             <atom:link href="https://davidgsmith.net/rss.xml" rel="self" type="application/rss+xml" />
             <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
             
+            <item>
+                <title>Geospatial AI Has a Benchmark Problem. This Paper Finally Says the Quiet Part Out Loud.</title>
+                <link>https://davidgsmith.net/thoughts/geospatial-ai-has-a-benchmark-problem-this-paper-finally-says-the-quiet-part-out-loud.html</link>
+                <guid>https://davidgsmith.net/thoughts/geospatial-ai-has-a-benchmark-problem-this-paper-finally-says-the-quiet-part-out-loud.html</guid>
+                <pubDate>Fri, 27 Nov 2026 19:20:54 +0000</pubDate>
+                <dc:creator>David G. Smith</dc:creator>
+                <description>The geospatial AI community has spent the past several years building increasingly sophisticated foundation models for Earth observation. New architectures...</description>
+                <category>AI Agents</category>
+            <category>AI Workflows</category>
+            <category>GeoAI</category>
+            <category>Remote Sensing</category>
+            <category>Geospatial</category>
+            <category>Open Source GIS</category>
+            <media:thumbnail url="https://davidgsmith.net/thoughts/images/geo-eval-harness-mwzd9c2y-b64545b6.png" />
+                <content:encoded><![CDATA[<p>The geospatial AI community has spent the past several years building increasingly sophisticated foundation models for Earth observation. New architectures arrive every few months, each claiming state-of-the-art results across land cover classification, flood mapping, building extraction, agricultural monitoring, and other remote sensing tasks.</p>
+<p>But what if many of those comparisons aren't actually comparable?</p>
+<p>A new paper, ["geo-eval-harness: An Evaluation Harness for Geospatial Foundation Models," ]https://arxiv.org/pdf/2611.33990v1)tackles a problem that many practitioners have suspected for years: evaluation inconsistencies may be obscuring the true performance of geospatial foundation models.</p>
+<p><strong>The uncomfortable finding</strong></p>
+<p>The authors begin with a striking observation.</p>
+<p>A previous review of 152 geospatial foundation model papers found dozens of cases where the <em>same model</em> achieved substantially different reported scores on the <em>same benchmark</em>. In many cases, results differed by five points or more. Some differed by ten points or more.</p>
+<p>That's a red flag.</p>
+<p>If researchers cannot reliably reproduce benchmark results, how can organizations confidently choose models for operational use?</p>
+<p>The paper's answer is refreshingly straightforward: stop comparing models using different evaluation pipelines.</p>
+<p><strong>The problem isn't always the model</strong></p>
+<p>One of the most fascinating findings is how sensitive model rankings are to seemingly mundane implementation details.</p>
+<p>The authors show that changing from a k-nearest-neighbor probe to a linear probe changes average scores by more than 15 points and can significantly reorder rankings. Input normalization choices can alter scores by up to 37.5 points.</p>
+<p>Read that again.</p>
+<p>A preprocessing decision can have a larger impact than the performance gap between leading models.</p>
+<p>That means many "model A beats model B" claims may actually be "evaluation pipeline A beats evaluation pipeline B."</p>
+<p><strong>A surprise for the geospatial AI community</strong></p>
+<p>Another result challenges a common assumption.</p>
+<p>When evaluated under controlled conditions, several general-purpose computer vision models performed surprisingly well. DINOv3 and standard vision backbones were competitive with, and sometimes outperformed, specialized geospatial foundation models on RGB classification and high-resolution segmentation tasks.</p>
+<p>Specialized geospatial models still showed important advantages, particularly on multispectral tasks where access to non-RGB bands matters. But the findings suggest that the value of geospatial pretraining depends heavily on the specific task and sensor modalities involved.</p>
+<p>This is an important reminder that domain specialization does not automatically guarantee better downstream performance.</p>
+<p><strong>Accuracy isn't the whole story</strong></p>
+<p>My favorite section of the paper focuses on operational reality.</p>
+<p>The authors compare model accuracy with computational cost when applied to real-world mapping workloads. They show cases where a model delivers less than a one-point improvement in mIoU while requiring nearly six times the compute.</p>
+<p>In a research paper, that extra point might seem worthwhile.</p>
+<p>In production, that same point could translate into days of additional GPU time when generating maps across millions of square kilometers.</p>
+<p>Anyone building systems for disaster response, environmental monitoring, agriculture, infrastructure analysis, or national-scale mapping understands why that tradeoff matters.</p>
+<p><strong>What geo-eval-harness actually contributes</strong></p>
+<p>The real contribution isn't another leaderboard.</p>
+<p>The project provides an open-source, standardized framework that evaluates models using consistent preprocessing, normalization, probing methods, segmentation heads, cost measurement, and reporting. The authors used it to evaluate roughly 100 models across multiple classification and segmentation datasets.<br>
+<img alt="geo eval harness" src="https://davidgsmith.net/thoughts/images/geo-eval-harness-mwzd9c2y-b64545b6.png"><br>
+That may sound mundane compared to proposing a new foundation model.</p>
+<p>In reality, it's exactly the kind of infrastructure a maturing field needs.</p>
+<p>The LLM ecosystem benefited enormously from shared evaluation frameworks. Geospatial AI appears to be reaching a similar inflection point.</p>
+<p><strong>Why this matters beyond remote sensing</strong></p>
+<p>The lesson extends well beyond Earth observation.</p>
+<p>As foundation models proliferate across domains, benchmark scores increasingly function as marketing. Yet those scores often depend on dozens of implementation choices that rarely appear in headline results.</p>
+<p>This paper reminds us that scientific progress requires more than better models.</p>
+<p>It requires better measurement.</p>
+<p>Sometimes the most valuable contribution isn't a new architecture. It's creating the conditions under which architectures can be compared fairly.</p>
+<p><strong>Final thoughts</strong></p>
+<p>My biggest takeaway is simple:</p>
+<p>The geospatial AI community may not have a model problem. It may have an evaluation problem.</p>
+<p>Until we can compare models under consistent, transparent, reproducible conditions, claims about state-of-the-art performance should be viewed with healthy skepticism.</p>
+<p>geo-eval-harness is a meaningful step toward fixing that.</p>
+<p>And in the long run, that may matter more than whichever model currently sits at the top of the leaderboard.</p>]]></content:encoded>
+            </item>
             <item>
                 <title>Giving Thanks for the Map Ahead: The Geospatial and GeoAI Breakthroughs Worth Celebrating in 2026</title>
                 <link>https://davidgsmith.net/thoughts/giving-thanks-for-the-map-ahead-the-geospatial-and-geoai-breakthroughs-worth-celebrating-in-2026.html</link>
